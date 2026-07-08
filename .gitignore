@@ -16,8 +16,13 @@ env/
 # notebooks
 .ipynb_checkpoints/
 
-# datasets
-data/
+# datasets — keep small reference files, ignore large generated/downloaded data
+data/*
+!data/ensembl/
+!data/gencode/
+!data/osdr/
+data/osdr/raw/
+data/osdr/*.parquet
 datasets/
 *.parquet
 *.h5
