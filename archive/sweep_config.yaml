@@ -1,0 +1,50 @@
+program: /home/walt/Attention/sweep_train.sh
+command:
+  - ${env}                 # sets WANDB env vars for each run
+  - ${program}             # runs the shell wrapper which calls torchrun
+method: grid
+run_cap: 8
+metric:
+  name: val_loss
+  goal: minimize
+
+parameters:
+  # ── Fixed Architecture (fast sweeps) ──
+  hidden_dim:
+    values: [512]
+  # ffn_dim is auto-computed as hidden_dim * 4 in train.py
+  num_heads:
+    values: [8]
+  num_layers:
+    values: [2]
+  epochs:
+    values: [5]
+
+  # ── Input scale ──
+  normalization:
+    values: ["log1p_tpm"]
+
+  # ── REE (Expression Embedding) ──
+  ree_base:
+    values: [100.0]
+    # Controls frequency spread of sinusoidal encoding
+    # Lower  = higher frequency, more sensitive to small expression changes
+    # Higher = lower frequency, smoother, more like standard positional encoding
+    # 100 = Google's default, 10000 = standard Transformer
+
+  # ── Training ──
+  batch_size:
+    values: [4]
+  learning_rate:
+    values: [2e-4]
+    # distribution: log_uniform_values
+    # min: 1e-5
+    # max: 1e-3
+  weight_decay:
+    # values: [0.0, 1e-5, 1e-4, 1e-3]
+    values: [0.0]
+  mask_ratio:
+    values: [0.15]
+    # Fraction of genes masked per sample. Higher = harder task but more training signal
+  early_stopping:
+    values: [false]

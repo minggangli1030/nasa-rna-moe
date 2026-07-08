@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+
+# environments
+.venv/
+venv/
+env/
+.env
+*.env
+
+# local/editor
+.claude/
+.vscode/
+
+# notebooks
+.ipynb_checkpoints/
+
+# datasets
+data/
+datasets/
+*.parquet
+*.h5
+
+# models
+checkpoints/
+checkpoints_moe/
+*.pt
+*.pth
+
+# experiment logs
+wandb/
+logs/
+slurm-*.out
+*.out
+
+# misc
+.DS_Store

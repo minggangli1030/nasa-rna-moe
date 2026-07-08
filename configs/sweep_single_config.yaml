@@ -1,0 +1,51 @@
+program: /global/scratch/users/minggangli/bridge-rna/sweep_train_single.sh
+project: Attention
+command:
+  - ${env}
+  - ${program}
+method: random
+run_cap: 18
+metric:
+  name: val_loss
+  goal: minimize
+
+parameters:
+  # === SWEPT ===
+  hidden_dim:
+    values: [256, 512]
+  num_layers:
+    values: [2, 4, 8]
+  batch_size:
+    values: [4, 8, 16]
+  learning_rate:
+    values: [0.0001, 0.0002, 0.0003]
+
+  # === FIXED DEFAULTS ===
+  num_heads:
+    values: [8]        # always divides 256 and 512 evenly
+  mask_ratio:
+    values: [0.15]
+  ree_base:
+    values: [100.0]
+  weight_decay:
+    values: [0.0]
+  normalization:
+    values: ["log1p_tpm"]
+  feature_type:
+    values: ["sqr"]
+  compute_type:
+    values: ["iter"]
+  data_mode:
+    values: ["streaming"]
+  epochs:
+    values: [5]
+  early_stopping:
+    values: [true]
+  patience:
+    values: [3]
+  train_subset:
+    values: [15000]
+  val_subset:
+    values: [3000]
+  seed:
+    values: [42]
