@@ -17,11 +17,11 @@
   - `data/osdr/human_mouse_orthologs.csv`
   - `data/osdr/metadata_new.csv` (converted from `sp26_nasa/osdr_data/selected_sample_metadata.tsv`, 2,896 samples)
   - This incidentally fixes the old sibling-directory path bug in `evaluate_osdr.py` (previously assumed `bridge-rna-moe` and `sp26_nasa` sat as sibling directories on Savio scratch; now finds everything locally under `data/osdr/`).
-- Ran `fetch_reference_data.py` against Ensembl BioMart to build:
-  - `data/ensembl/orthologs_one2one.txt`
-  - `data/ensembl/protein_coding_ortholog_genes.txt` (copied from `sp26_nasa/archs4_preprocessing_demo/`)
-  - `data/gencode/gencode_v49_gene_exon_lengths.csv`
-  - `data/gencode/gencode_v49_mouse_gene_exon_lengths.csv`
+- Ran `fetch_reference_data.py` against Ensembl BioMart to build reference gene data. The exon-length queries (mouse + human) hung indefinitely on the public BioMart server — full-genome exon-coordinate queries with no filtering are known-slow there. Worked around by reusing the already-computed `mouse_exon_lengths_df.csv` / `human_exon_lengths_df.csv` tables from the old monorepo (`archs4_preprocessing/`, `archs4_preprocessing_demo/`) instead of re-deriving from BioMart. Only the ortholog query (fast, filtered) and the protein-coding copy actually hit BioMart/disk.
+  - `data/ensembl/orthologs_one2one.txt` (BioMart, 17,065 one-to-one pairs)
+  - `data/ensembl/protein_coding_ortholog_genes.txt` (copied from `sp26_nasa/archs4_preprocessing_demo/`, 15,734 genes)
+  - `data/gencode/gencode_v49_gene_exon_lengths.csv`, `gencode_v49_mouse_gene_exon_lengths.csv` (converted from precomputed monorepo tables, not BioMart)
+- **Bug caught and fixed**: the repo's original `.gitignore` blanket-excluded `data/`, which silently dropped the OSDR reference files from the very first commit even though `git push` reported success. Fixed `.gitignore` to keep `data/ensembl/`, `data/gencode/`, `data/osdr/` (small, hard-won reference files) while still excluding `data/osdr/raw/`, `*.parquet`, `*.h5` (large generated/downloaded data). Re-verified with `git status --short` before the next commit that exactly the 4 intended files were staged.
 
 ## Scope decisions
 
@@ -30,7 +30,7 @@
 
 ## Next up
 
-- [ ] Persistent Cinder volume for growing data (ARCHS4 parquet, checkpoints, results), decoupled from instance lifecycle
+- [ ] Decide: persistent Cinder volume for growing data (ARCHS4 parquet, checkpoints, results), decoupled from instance lifecycle — recommended, not yet done
 - [ ] Build 5k-scale ARCHS4 parquet (human / mouse / mixed) via S3 streaming, shared canonical vocab
 - [ ] Train `human_5k_v2` / `mouse_5k_v2` / `mixed_5k_v2` experts fresh on the A100
 - [ ] Run `check_alignment.py` + `analyze_moe_headroom.py` on the v2 experts
