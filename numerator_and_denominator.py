@@ -17,7 +17,7 @@
 """Utilities for numerator and denominator computation in the prefix sum in an autoregressive Performer."""
 import torch
 
-_ITER_CHUNK_SIZE = 1024
+_ITER_CHUNK_SIZE = 512
 
 
 class _NumIter(torch.autograd.Function):

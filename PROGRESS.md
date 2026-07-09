@@ -65,12 +65,14 @@
   - `_ITER_CHUNK_SIZE`: 64 → 1024 (16× fewer loop iterations; ~1.2GB per chunk even at the larger batch size below, well within 40GB)
   - `batch_size`: 4 → 16 (4× fewer batches/epoch: 1000 → 250)
   - Deliberately did **not** switch `compute_type` to `"ps"` (a different single-shot implementation) — that materializes a much larger tensor at once with a less predictable memory footprint; the chunk-size bump gets most of the same win with bounded, safer memory.
-- **Caveat, noted honestly**: bumping batch size 4× without also scaling the learning rate is a known simplification (linear-scaling-rule purists would bump LR too). Not doing that now — priority is a valid v2 result by tomorrow, not a fully hyperparameter-tuned one. Worth revisiting if training continues past this sprint.
-- Restarted training after the fix — first ticker line after restart will confirm the actual speedup empirically (the honest number, not a guess).
+- **Caveat, noted honestly**: bumping batch size without also scaling the learning rate is a known simplification (linear-scaling-rule purists would bump LR too). Not doing that now — priority is a valid v2 result by tomorrow, not a fully hyperparameter-tuned one. Worth revisiting if training continues past this sprint.
+- **First restart OOM'd**: `chunk_size=1024` and `batch_size=16` together (16×4=64× the original transient tensor size, not a modest bump) exceeded 40GB during backward — `torch.OutOfMemoryError` trying to allocate 4.50GiB with only 873MB free, ~32GB already held by activations/optimizer state/allocator fragmentation. The mistake: scaling chunk size and batch size simultaneously without doing the multiplicative memory arithmetic first.
+- **Corrected**: `_ITER_CHUNK_SIZE` → 512 (was 1024), `batch_size` → 8 (was 16) — a 4× smaller transient tensor than the OOM'd config, while still 8× fewer loop iterations and 2× fewer batches/epoch than the original tiny config. Also added `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True`, PyTorch's own suggested fix for the allocator-fragmentation part of the error.
+- Switched off `WANDB_MODE=offline` — logged into W&B properly for live run tracking instead.
 
 ## Next up
 
-- [ ] Confirm the speedup from the chunk-size + batch-size fix via the first post-restart ticker line
+- [ ] Confirm the corrected chunk/batch combo doesn't OOM and note the real speedup from the first post-restart ticker line
 - [ ] Run `scripts/train_5k_v2.sh` — 3 v2 experts fresh on the A100 (in progress)
 - [ ] Run `scripts/run_diagnostics.sh` (zero-shot OSDR eval → alignment check → MoE headroom)
 - [ ] Fill in the `PENDING` results table + alignment-check summary in `presentation/2026-07-09-biweekly.html`
