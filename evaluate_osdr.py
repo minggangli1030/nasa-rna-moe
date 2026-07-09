@@ -104,7 +104,7 @@ ORTHOLOG_FILE = BRIDGE_RNA_DATA / "ensembl" / "orthologs_one2one.txt"
 CANONICAL_GENES_FILE = BRIDGE_RNA_DATA / "ensembl" / "protein_coding_ortholog_genes.txt"
 MOUSE_EXON_FILE = BRIDGE_RNA_DATA / "gencode" / "gencode_v49_mouse_gene_exon_lengths.csv"
 
-# NASA OSDR metadata (included in bridge-rna repo via sp26_nasa reference)
+# NASA OSDR metadata (committed to this repo directly under data/osdr/)
 # Users can override with --metadata-csv
 DEFAULT_METADATA_CSV = Path(__file__).parent / "data" / "osdr" / "metadata_new.csv"
 DEFAULT_OSDR_CACHE = Path(__file__).parent / "data" / "osdr"
@@ -299,7 +299,6 @@ def preprocess_osdr(
         idx = tpm.index
         if idx[0].startswith("ENSMUSG"):
             # Need ENSMUSG → mouse symbol → human symbol
-            # Use the sp26_nasa osdr orthologs for ENSMUSG mapping
             ensmusg_to_human = _build_ensmusg_to_human_map()
             tpm.index = [ensmusg_to_human.get(g, "") for g in idx]
         else:
