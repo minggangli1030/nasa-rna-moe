@@ -49,12 +49,18 @@
 - Confirmed (grep across all file types, not just code) that nothing in `nasa-rna-moe` still depends on the local `sp26_nasa` checkout, then deleted it from the Mac (`/Users/minggangli/Projects/sp26_nasa`). It's untouched on GitHub if ever needed again. **Not yet done**: the VM still has its own `~/sp26_nasa` sparse checkout (used to source `archs4_preprocessing_demo/protein_coding_ortholog_genes.txt` and the original OSDR files, both already committed into `nasa-rna-moe` now) — safe to `rm -rf ~/sp26_nasa` there too whenever convenient, not urgent.
 - Added `presentation/2026-07-09-biweekly.html` — a self-contained (no external assets) scroll-snap slide deck for tomorrow's biweekly update. Slides 1-5 are ready (recap, v1 findings, the vocab-fix rationale, infra migration story). Slides 6-7 have real v1 numbers for context but the v2 results are explicit `PENDING` placeholders — **must be filled in with real numbers from `scripts/run_diagnostics.sh` before presenting**.
 
+## 2026-07-09 — .h5 download confirmed, preprocessing done in under 2 minutes
+
+- `data/archs4/human_matrix_v11.h5` (17G) and `mouse_matrix_v11.h5` (18G) both landed intact (`ls -lh` matches the `Content-Length` check from the day before, just GiB- vs byte-rounding).
+- Ran `scripts/preprocess_5k_v2.sh`: all three v2 5k variants (human/mouse/mixed) built successfully. The local-`.h5` fix fully paid off — this took **under 2 minutes total** for all three, versus 15+ minutes stalled on a single batch of one variant via S3 streaming the day before.
+  - `mixed_5k_v2`: 2,146 human + 2,107 mouse = 4,253 samples × 15,448 canonical genes.
+  - Confirms the earlier diagnosis was right: the S3-streaming path wasn't a fluke slowdown, it was structurally reading close to the entire remote file every time.
+- Also revised `presentation/2026-07-09-biweekly.html` per feedback: added 5 SVG figures (results bar chart, collapse-vs-baseline chart, MoE architecture diagram, headroom dumbbell chart, ARCHS4-vs-OSDR stat pair), switched to horizontal scroll-snap navigation with keyboard/wheel support, and bumped body text to 16pt. Background section restructured so slides 5-8 center my own diagnostic work (OSDR eval, collapse check, MoE gate, headroom analysis) rather than reiterating the team poster — teammates get a brief, explicit credit instead of being the focus.
+
 ## Next up
 
-- [ ] Finish `.h5` download, run `scripts/preprocess_5k_v2.sh` (human / mouse / mixed)
-- [ ] Run `scripts/train_5k_v2.sh` — 3 v2 experts fresh on the A100
+- [ ] Run `scripts/train_5k_v2.sh` — 3 v2 experts fresh on the A100 (in progress)
 - [ ] Run `scripts/run_diagnostics.sh` (zero-shot OSDR eval → alignment check → MoE headroom)
 - [ ] Fill in the `PENDING` results table + alignment-check summary in `presentation/2026-07-09-biweekly.html`
 - [ ] Optional: `rm -rf ~/sp26_nasa` on the VM (already fully superseded there too)
-- [ ] Build `presentation/` slides for tomorrow's biweekly update, fill in real numbers once diagnostics finish
 - [ ] Time permitting: MoE gate training if headroom justifies it
