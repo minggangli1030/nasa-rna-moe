@@ -620,7 +620,7 @@ VARIANT_CONFIGS = {
 		"num_layers": 4,
 		"mask_ratio": 0.30,
 		"weight_decay": 0.01,
-		"epochs": 12,
+		"epochs": 20,
 	},
 	"mixed_5k_v2": {
 		"expression_parquet": "./data/archs4/mixed_5k_v2_merged/expression.parquet",
@@ -632,7 +632,7 @@ VARIANT_CONFIGS = {
 		"num_layers": 4,
 		"mask_ratio": 0.30,
 		"weight_decay": 0.01,
-		"epochs": 12,
+		"epochs": 20,
 	},
 }
 
