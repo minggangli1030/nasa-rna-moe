@@ -46,11 +46,15 @@
 - Removed `prep_osdr_from_kmeng.py` (dead — pointed at a collaborator's inaccessible Savio scratch path, not referenced anywhere else, and superseded by `evaluate_osdr.py`'s own NASA GeneLab download path).
 - Simplified `evaluate_osdr.py`'s `_build_ensmusg_to_human_map()` and OSDR-metadata loading — both used to fall back to a sibling `sp26_nasa/` checkout that doesn't exist in this repo's layout; now they just use the local `data/osdr/` files directly (this was the dead-fallback bug flagged in the original migration survey).
 - Updated `README.md` and `fetch_reference_data.py`'s docstring to match current reality (standalone repo, Jetstream VM, no more Savio/`sp26_nasa` framing).
+- Confirmed (grep across all file types, not just code) that nothing in `nasa-rna-moe` still depends on the local `sp26_nasa` checkout, then deleted it from the Mac (`/Users/minggangli/Projects/sp26_nasa`). It's untouched on GitHub if ever needed again. **Not yet done**: the VM still has its own `~/sp26_nasa` sparse checkout (used to source `archs4_preprocessing_demo/protein_coding_ortholog_genes.txt` and the original OSDR files, both already committed into `nasa-rna-moe` now) — safe to `rm -rf ~/sp26_nasa` there too whenever convenient, not urgent.
+- Added `presentation/2026-07-09-biweekly.html` — a self-contained (no external assets) scroll-snap slide deck for tomorrow's biweekly update. Slides 1-5 are ready (recap, v1 findings, the vocab-fix rationale, infra migration story). Slides 6-7 have real v1 numbers for context but the v2 results are explicit `PENDING` placeholders — **must be filled in with real numbers from `scripts/run_diagnostics.sh` before presenting**.
 
 ## Next up
 
 - [ ] Finish `.h5` download, run `scripts/preprocess_5k_v2.sh` (human / mouse / mixed)
 - [ ] Run `scripts/train_5k_v2.sh` — 3 v2 experts fresh on the A100
 - [ ] Run `scripts/run_diagnostics.sh` (zero-shot OSDR eval → alignment check → MoE headroom)
+- [ ] Fill in the `PENDING` results table + alignment-check summary in `presentation/2026-07-09-biweekly.html`
+- [ ] Optional: `rm -rf ~/sp26_nasa` on the VM (already fully superseded there too)
 - [ ] Build `presentation/` slides for tomorrow's biweekly update, fill in real numbers once diagnostics finish
 - [ ] Time permitting: MoE gate training if headroom justifies it
