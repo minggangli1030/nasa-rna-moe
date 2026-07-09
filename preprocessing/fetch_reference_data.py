@@ -187,7 +187,7 @@ def main():
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=Path(__file__).parent / "data",
+        default=Path(__file__).parent.parent / "data",
         help="Base output directory (default: ./data)",
     )
     args = parser.parse_args()

@@ -37,6 +37,7 @@ import scipy.stats as stats
 import torch
 import torch.nn.functional as F
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "core"))
 from slim_performer_model import SLiMPerformerLayer
 
 # ── Inline model definition (mirrors train_single.py) ─────────────────────────
@@ -99,15 +100,15 @@ class ExpressionPerformer(torch.nn.Module):
 
 # ── Data paths ─────────────────────────────────────────────────────────────────
 
-BRIDGE_RNA_DATA = Path(__file__).parent / "data"
+BRIDGE_RNA_DATA = Path(__file__).resolve().parent.parent / "data"
 ORTHOLOG_FILE = BRIDGE_RNA_DATA / "ensembl" / "orthologs_one2one.txt"
 CANONICAL_GENES_FILE = BRIDGE_RNA_DATA / "ensembl" / "protein_coding_ortholog_genes.txt"
 MOUSE_EXON_FILE = BRIDGE_RNA_DATA / "gencode" / "gencode_v49_mouse_gene_exon_lengths.csv"
 
 # NASA OSDR metadata (committed to this repo directly under data/osdr/)
 # Users can override with --metadata-csv
-DEFAULT_METADATA_CSV = Path(__file__).parent / "data" / "osdr" / "metadata_new.csv"
-DEFAULT_OSDR_CACHE = Path(__file__).parent / "data" / "osdr"
+DEFAULT_METADATA_CSV = BRIDGE_RNA_DATA / "osdr" / "metadata_new.csv"
+DEFAULT_OSDR_CACHE = BRIDGE_RNA_DATA / "osdr"
 
 # Mask ratios + block masking for evaluation
 MASK_RATIOS = [0.15, 0.50, 0.80]
@@ -351,7 +352,7 @@ def _build_ensmusg_to_human_map() -> dict[str, str]:
     Build ENSMUSG → human gene symbol map from data/osdr/human_mouse_orthologs.csv
     (has ENSMUSG IDs, unlike data/ensembl/orthologs_one2one.txt which is symbol-only).
     """
-    p = Path(__file__).parent / "data" / "osdr" / "human_mouse_orthologs.csv"
+    p = BRIDGE_RNA_DATA / "osdr" / "human_mouse_orthologs.csv"
     if p.exists():
         df = pd.read_csv(p)
         df = df[df.get("Mouse homology type", "ortholog_one2one") == "ortholog_one2one"]

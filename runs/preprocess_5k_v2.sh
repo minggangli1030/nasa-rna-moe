@@ -1,16 +1,21 @@
 #!/bin/bash
 # Build the 3 shared-canonical-vocab 5k variants (human / mouse / mixed) via
 # archs4py local sampling. Requires data/archs4/{human,mouse}_matrix_v11.h5 to be
-# present locally -- the S3-streaming fallback in preprocessing.py is usable but
-# pathologically slow for random samples scattered across the full remote matrix
-# (each "contiguous window" read ends up spanning most of the file). See
-# PROGRESS.md for why we download the .h5 files instead.
+# present locally -- the S3-streaming fallback in preprocessing/preprocessing.py
+# is usable but pathologically slow for random samples scattered across the full
+# remote matrix (each "contiguous window" read ends up spanning most of the
+# file). See CLAUDE.md for why we download the .h5 files instead.
+#
+# Run once per fresh instance, from repo root, before any of the train_*.sh
+# scripts. Produces data/archs4/{variant}_merged/expression.parquet for all 3
+# variants -- copy just the ones a given instance needs (see CLAUDE.md for the
+# instance-to-variant assignment used this sprint).
 set -eo pipefail
 cd "$(dirname "$0")/.."
 
 CANON="data/ensembl/canonical_genes_shared.txt"
 if [ ! -f "$CANON" ]; then
-    echo "ERROR: $CANON not found. Run: python compute_shared_canonical.py"
+    echo "ERROR: $CANON not found. Run: python preprocessing/compute_shared_canonical.py"
     exit 1
 fi
 
@@ -25,7 +30,7 @@ for i in "${!VARIANTS[@]}"; do
     echo "========================================"
     echo "=== $VARIANT (species=$SP, max-samples=$N) ==="
     echo "========================================"
-    python preprocessing.py \
+    python preprocessing/preprocessing.py \
         --species "$SP" \
         --max-samples "$N" \
         --output-dir "data/archs4/$VARIANT" \
@@ -33,7 +38,7 @@ for i in "${!VARIANTS[@]}"; do
         --gene-set shared_orthologs \
         --qc-min-nonzero 14000 \
         --canonical-genes-file "$CANON"
-    python merge.py \
+    python preprocessing/merge.py \
         --input-dir "data/archs4/$VARIANT" \
         --output-dir "data/archs4/${VARIANT}_merged"
     echo "Done: data/archs4/${VARIANT}_merged/expression.parquet"

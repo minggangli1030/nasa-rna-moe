@@ -157,8 +157,9 @@ def cache_predictions(args, cache_path: Path):
     else:
         device = torch.device(args.device)
     print(f"[setup] device: {device}", flush=True)
-    # SLiMPerformer OOMs on 1080Ti at ~14k genes (see scripts/savio_evaluate_osdr.sh).
-    # CPU is the safe default for the cache phase on Savio.
+    # SLiMPerformer OOMs on an 11GB 1080Ti at ~14k genes (Savio-era constraint,
+    # doesn't apply to the current A100 instances -- see CLAUDE.md). CPU remains
+    # a safe default for the cache phase regardless of GPU.
 
     expert_paths = {
         "human_5k": args.human_ckpt,

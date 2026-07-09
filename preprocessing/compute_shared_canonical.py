@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pandas as pd
 
-REPO = Path(__file__).resolve().parent
+REPO = Path(__file__).resolve().parent.parent
 ORTHOLOGS = REPO / "data/ensembl/orthologs_one2one.txt"
 PROTEIN_CODING = REPO / "data/ensembl/protein_coding_ortholog_genes.txt"
 HUMAN_LENGTHS = REPO / "data/gencode/gencode_v49_gene_exon_lengths.csv"
