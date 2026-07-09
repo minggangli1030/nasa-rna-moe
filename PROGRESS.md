@@ -57,8 +57,20 @@
   - Confirms the earlier diagnosis was right: the S3-streaming path wasn't a fluke slowdown, it was structurally reading close to the entire remote file every time.
 - Also revised `presentation/2026-07-09-biweekly.html` per feedback: added 5 SVG figures (results bar chart, collapse-vs-baseline chart, MoE architecture diagram, headroom dumbbell chart, ARCHS4-vs-OSDR stat pair), switched to horizontal scroll-snap navigation with keyboard/wheel support, and bumped body text to 16pt. Background section restructured so slides 5-8 center my own diagnostic work (OSDR eval, collapse check, MoE gate, headroom analysis) rather than reiterating the team poster — teammates get a brief, explicit credit instead of being the focus.
 
+## 2026-07-09 — Training was ~42h ETA, root-caused and fixed to a fraction of that
+
+- First real training ticker (`human_5k_v2`, epoch 1) reported a steady **5.12s/batch**, which the script's own ETA math projected to **~42 hours** for all three variants at 30 epochs each — completely unworkable for tomorrow.
+- Root-caused rather than guessed: `CONFIG["compute_type"] = "iter"` computes the model's prefix-sum linear attention via a **Python-level loop over 64-position chunks** (`numerator_and_denominator.py`, `_ITER_CHUNK_SIZE`). For a 15,448-gene sequence that's ~242 sequential chunk iterations per layer per forward+backward pass — dominated by Python/kernel-launch overhead, not actual GPU FLOPs. `batch_size=4` showed the same fingerprint: both values trace back to a comment elsewhere in the codebase noting SLiMPerformer OOMs on an **11GB 1080 Ti** at this gene count — a constraint that doesn't apply to a 40GB A100 at all.
+- Fix (mathematically identical output — same prefix-sum math, computed in fewer/larger chunks, not an approximation):
+  - `_ITER_CHUNK_SIZE`: 64 → 1024 (16× fewer loop iterations; ~1.2GB per chunk even at the larger batch size below, well within 40GB)
+  - `batch_size`: 4 → 16 (4× fewer batches/epoch: 1000 → 250)
+  - Deliberately did **not** switch `compute_type` to `"ps"` (a different single-shot implementation) — that materializes a much larger tensor at once with a less predictable memory footprint; the chunk-size bump gets most of the same win with bounded, safer memory.
+- **Caveat, noted honestly**: bumping batch size 4× without also scaling the learning rate is a known simplification (linear-scaling-rule purists would bump LR too). Not doing that now — priority is a valid v2 result by tomorrow, not a fully hyperparameter-tuned one. Worth revisiting if training continues past this sprint.
+- Restarted training after the fix — first ticker line after restart will confirm the actual speedup empirically (the honest number, not a guess).
+
 ## Next up
 
+- [ ] Confirm the speedup from the chunk-size + batch-size fix via the first post-restart ticker line
 - [ ] Run `scripts/train_5k_v2.sh` — 3 v2 experts fresh on the A100 (in progress)
 - [ ] Run `scripts/run_diagnostics.sh` (zero-shot OSDR eval → alignment check → MoE headroom)
 - [ ] Fill in the `PENDING` results table + alignment-check summary in `presentation/2026-07-09-biweekly.html`

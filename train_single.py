@@ -73,7 +73,7 @@ CONFIG = {
 	"mask_token": -10,
 	"learning_rate": 2e-4,
 	"weight_decay": 0,
-	"batch_size": 4,
+	"batch_size": 16,
 	"epochs": 30,
 	"early_stopping": True,
 	"patience": 5,
