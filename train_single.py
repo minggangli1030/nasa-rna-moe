@@ -526,10 +526,11 @@ def format_duration(seconds):
 def _init_ddp():
 	local_rank = int(os.environ.get("LOCAL_RANK", 0))
 	torch.cuda.set_device(local_rank)
+	backend = os.environ.get("DDP_BACKEND", "nccl")
 	try:
-		dist.init_process_group(backend="nccl", device_id=torch.device(f"cuda:{local_rank}"))
+		dist.init_process_group(backend=backend, device_id=torch.device(f"cuda:{local_rank}"))
 	except TypeError:
-		dist.init_process_group(backend="nccl")
+		dist.init_process_group(backend=backend)
 	rank = dist.get_rank()
 	world = dist.get_world_size()
 	device = torch.device(f"cuda:{local_rank}")
