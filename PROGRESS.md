@@ -78,3 +78,26 @@
 - [ ] Fill in the `PENDING` results table + alignment-check summary in `presentation/2026-07-09-biweekly.html`
 - [ ] Optional: `rm -rf ~/sp26_nasa` on the VM (already fully superseded there too)
 - [ ] Time permitting: MoE gate training if headroom justifies it
+
+## 2026-07-09 — Went from 1 GPU to 3, parallelizing the remaining two variants
+
+- Quota reality check: allocation is 2 A100s total (not unlimited) — `moe-reboot` already counted as 1, so only **one** more full A100 (`moe-reboot2`) was available, plus a separate partial-GPU quota bucket (**1** more, a vGPU slice).
+- Reassigned the plan: `human_5k_v2` stays on `moe-reboot` (uncapped, already progressing, not worth interrupting). `mouse_5k_v2` → `moe-reboot2` (full A100). `mixed_5k_v2` → new instance `moe-reboot-partial` (vGPU partition, 20GB).
+- **Set up direct SSH from the Mac to all instances** (bypassing the Exosphere web shell) — added the Mac's existing key to each instance's `authorized_keys`, configured `~/.ssh/config` aliases (`moe-reboot`, `moe-reboot2`, `moe-reboot-partial`). From here on, driving setup and training launches directly via SSH rather than relaying commands for manual execution — user explicitly opted into this given the time pressure and round-trip friction of copy-pasting terminal output all night.
+- Transferred already-preprocessed data (merged parquet, ~280-290MB per variant) directly instance-to-instance via piped `tar` through the SSH relay, instead of re-downloading raw `.h5` files (18-36GB) on each new instance — avoided ~35-40 min of redundant download per instance.
+- **Epoch-budget asymmetry caught and fixed**: the original 12-epoch cap on mouse/mixed was a conservative estimate that turned out to leave real slack (12 epochs only needed 6h45m of the 16h budget once actual throughput was measured) — but it meant mouse/mixed would train for meaningfully fewer epochs than `human_5k_v2`'s uncapped 30, confounding the three-way comparison the whole point of this sprint is to make. Raised the cap to **20 epochs** for both (~11.4h at measured throughput, still real margin under 16h).
+- **New bug found and fixed**: `moe-reboot-partial`'s vGPU (`GRID A100X-20C`, an NVIDIA virtualized/partitioned A100, 20GB) failed with `CUDA driver error: operation not supported` on `dist.init_process_group(backend="nccl")` — even in single-process mode. Root-caused by bisection rather than guessing:
+  1. Tried `NCCL_P2P_DISABLE=1`/`NCCL_SHM_DISABLE=1`/`NCCL_IB_DISABLE=1` — still failed, now inside NCCL's object-broadcast tensor serialization.
+  2. Switched `backend="nccl"` → `"gloo"` (made configurable via a new `DDP_BACKEND` env var, defaults to `nccl` — zero behavior change for `moe-reboot`/`moe-reboot2`) — got further, but then failed on a plain `model.to(device)` call. This proved the issue wasn't NCCL-specific at all.
+  3. Isolated with a 2-line Python repro: `torch.randn(10,10).to('cuda')` failed with `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` set, succeeded without it. **Root cause: `expandable_segments` uses CUDA's virtual-memory-management driver APIs, which this vGPU partition doesn't expose** — unrelated to the NCCL error's surface symptom, which was a red herring from testing both changes near-simultaneously.
+  - Final working config for `moe-reboot-partial`: `DDP_BACKEND=gloo`, no `PYTORCH_CUDA_ALLOC_CONF`. Training now stable at 15GB/20GB VRAM, 98% GPU utilization.
+- All three instances training in parallel as of this entry:
+  - `moe-reboot`: `human_5k_v2`, uncapped, epoch 3+, val loss 0.937→0.919→0.905
+  - `moe-reboot2`: `mouse_5k_v2`, 20-epoch cap, restarted clean, ~4.1s/batch (matches `moe-reboot`'s rate)
+  - `moe-reboot-partial`: `mixed_5k_v2`, 20-epoch cap, just started, throughput reading pending
+
+## Next up
+
+- [ ] Set up a scheduled check (timer) that fires once mouse/mixed are expected to finish: review all three instances' results, and if they look meaningful, fill in the presentation's `PENDING` sections and summarize findings; if something looks broken, diagnose before presenting
+- [ ] Fill in the `PENDING` results table + alignment-check summary in `presentation/2026-07-09-biweekly.html`
+- [ ] Time permitting: MoE gate training if headroom justifies it
