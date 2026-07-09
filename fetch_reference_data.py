@@ -4,7 +4,7 @@ Generate all reference files needed by bridge-rna preprocessing.py.
 
 Outputs (relative to script location):
   data/ensembl/orthologs_one2one.txt          mouse↔human one-to-one orthologs (TSV)
-  data/ensembl/protein_coding_ortholog_genes.txt  (copied from sp26_nasa if path given)
+  data/ensembl/protein_coding_ortholog_genes.txt  (copied from --protein-coding path)
   data/gencode/gencode_v49_gene_exon_lengths.csv  human exon lengths
   data/gencode/gencode_v49_mouse_gene_exon_lengths.csv  mouse exon lengths
 
@@ -12,10 +12,12 @@ Usage:
   # Generate all files (downloads from Ensembl BioMart):
   python fetch_reference_data.py
 
-  # Also copy human exon lengths from sp26_nasa instead of downloading:
+  # Or supply precomputed exon-length tables directly instead of hitting BioMart
+  # (the mouse/human full-genome exon queries are known to be extremely slow on
+  # the public BioMart server):
   python fetch_reference_data.py \
-      --human-exon-lengths ../sp26_nasa/data_preprocessing/human_exon_lengths_df.csv \
-      --protein-coding ../sp26_nasa/data_preprocessing/protein_coding_ortholog_genes.txt
+      --human-exon-lengths /path/to/human_exon_lengths_df.csv \
+      --protein-coding /path/to/protein_coding_ortholog_genes.txt
 """
 
 import argparse

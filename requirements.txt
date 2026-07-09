@@ -12,3 +12,5 @@ torch
 tqdm
 wandb
 s3fs
+archs4py
+requests

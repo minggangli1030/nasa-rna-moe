@@ -1,12 +1,12 @@
-# bridge-rna
+# nasa-rna-moe
 
-Research archive for ExpressionBERT-style masked gene-expression modeling with a SLiMPerformer Transformer.
+ExpressionBERT-style masked gene-expression modeling with a SLiMPerformer Transformer, extended to explore mixture-of-experts (MoE) routing over human, mouse, and mixed RNA-seq experts.
 
-This repository is a fork of Walter Alvarado's `bridge-rna` work, extended to explore cross-species training, shared gene vocabularies, zero-shot NASA OSDR evaluation, and mixture-of-experts (MoE) routing over human, mouse, and mixed RNA-seq experts.
+This repo is a personal, standalone continuation of the MoE work originally developed inside the `sp26_nasa` team monorepo (itself a fork of Walter Alvarado's `bridge-rna` work). Split out 2026-07-08 to keep scope to just what this project needs going forward — see `PROGRESS.md` for the full migration history and current status.
 
-## Archive Status
+## Status
 
-This repo is prepared as an archive of the MoE exploration state as of May 2026. It keeps the active training/evaluation code, Savio job scripts, lightweight run metadata, reference gene files, and notebooks. Large generated datasets, local W&B run directories, full checkpoints, and scratch parquet files are intentionally excluded from Git.
+Active development, running on a Jetstream Cloud VM (not Savio — see `PROGRESS.md` for the environment). Large generated datasets, local W&B run directories, full checkpoints, and scratch parquet files are intentionally excluded from Git; small reference gene files needed to run the pipeline are kept.
 
 ## Research Goal
 
@@ -58,16 +58,17 @@ The shared-vocabulary preprocessing job completed and confirmed identical column
 
 ```text
 .
-├── archive/                    # Superseded scripts and early experiments
-├── checkpoints_performer/      # Lightweight tracked run metadata and plots
+├── checkpoints_performer/      # Lightweight tracked run metadata + plots (v1 sweep history)
 ├── configs/                    # W&B sweep config and launch scripts
 ├── data/
-│   ├── ensembl/                # Ortholog and canonical gene reference files
+│   ├── ensembl/                # Ortholog, protein-coding, and canonical gene reference files
 │   ├── gencode/                # Exon-length reference tables
-│   └── osdr/                   # OSDR metadata/reference mapping
+│   ├── osdr/                   # OSDR metadata/reference mapping
+│   └── archs4/                 # ARCHS4 .h5 + generated parquet (gitignored, symlinked to a volume)
 ├── examples/                   # Analysis notebooks
-├── results/                    # Evaluation output directory
-├── scripts/                    # Savio batch scripts
+├── results/                    # Evaluation output (gitignored, symlinked to a volume)
+├── checkpoints/, checkpoints_moe/  # Model weights (gitignored, symlinked to a volume)
+├── scripts/                    # Plain-bash run scripts for this VM (no SLURM)
 ├── analyze_moe_headroom.py     # Training-free MoE headroom analysis
 ├── build_mixed_eval.py         # Build mixed OSDR + TCGA evaluation set
 ├── check_alignment.py          # Post-training diagnostic checks
@@ -77,12 +78,12 @@ The shared-vocabulary preprocessing job completed and confirmed identical column
 ├── evaluate_osdr_moe.py        # MoE OSDR evaluation
 ├── preprocessing.py            # ARCHS4 preprocessing
 ├── train_moe.py                # Frozen-expert gate training
-└── train_single.py             # Single-expert training
+├── train_single.py             # Single-expert training
+├── PROGRESS.md                 # Running log of what's been done, in order
+└── presentation/                # Biweekly progress-report slides (HTML)
 ```
 
 ## Setup
-
-Create a fresh environment rather than committing local environments:
 
 ```bash
 python3 -m venv .venv
@@ -90,51 +91,32 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-For Savio runs, use the cluster environment documented in the scripts: account `ic_cdss170`, GPU partition `savio2_1080ti`, CPU partition `savio2`, and conda environment `bridge-rna`.
+See `PROGRESS.md` for the full VM bring-up sequence (GPU driver check, volume mount, reference-data fetch) — that's the part worth reading before re-running this from a fresh machine.
 
 ## Common Workflows
 
-Generate the shared canonical gene list:
+Generate the shared canonical gene list (pure function of already-fetched reference files, re-run only if those change):
 
 ```bash
 python compute_shared_canonical.py
 ```
 
-Run v2 preprocessing on Savio:
+Build the 3 v2 5k datasets (human / mouse / mixed), train them, then run diagnostics — each script checks that its inputs exist and fails fast with a clear message if not:
 
 ```bash
-sbatch scripts/savio_preprocess_5k_v2.sh
+scripts/preprocess_5k_v2.sh
+scripts/train_5k_v2.sh
+scripts/run_diagnostics.sh
 ```
 
-Train v2 5k variants after preprocessing:
+Evaluate an MoE gate once trained:
 
 ```bash
-sbatch --dependency=afterok:<preprocess_job_id> scripts/savio_train_5k_v2.sh
+python evaluate_osdr_moe.py --gate checkpoints_moe/best_gate.pt
 ```
 
-Check a trained checkpoint for alignment and gene-mean collapse:
+## Notes
 
-```bash
-python check_alignment.py \
-  --checkpoint checkpoints/human_5k_v2/best_model.pt \
-  --osdr-parquet data/osdr/osdr_expression.parquet
-```
-
-Run mixed-species MoE headroom analysis:
-
-```bash
-sbatch scripts/savio_analyze_moe_headroom_mixed.sh
-```
-
-Evaluate an MoE gate:
-
-```bash
-python evaluate_osdr_moe.py --gate checkpoints/moe_gate/best_gate.pt
-```
-
-## Archive Notes
-
-- Agent-local notes, local editor settings, caches, and local parquet scratch outputs were removed for archive readiness.
-- `data/` is mostly ignored by default, but small reference files required to understand the pipeline are retained.
-- Full `.pt` checkpoints, ARCHS4 matrices, W&B run directories, and TCGA parquet files should live outside Git or in an artifact store.
-- The checked-in checkpoint metadata under `checkpoints_performer/` is lightweight and kept as run-history context, not as full model weights.
+- `data/` is gitignored by default (`data/*`), except `data/ensembl/`, `data/gencode/`, `data/osdr/` which hold small reference files needed to run the pipeline and are explicitly un-ignored.
+- Full `.pt` checkpoints, ARCHS4 `.h5` matrices, generated parquet, W&B run directories, and eval results live on an attached volume (see `PROGRESS.md`), not in Git.
+- The checked-in checkpoint metadata under `checkpoints_performer/` is lightweight run-history context (config/loss curves) from the original v1 sweep, not full model weights.

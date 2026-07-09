@@ -349,21 +349,14 @@ def preprocess_osdr(
 
 def _build_ensmusg_to_human_map() -> dict[str, str]:
     """
-    Build ENSMUSG → human gene symbol map from bridge-rna reference data.
-    Requires the sp26_nasa orthologs CSV at the default path, or falls back
-    to the bridge-rna orthologs.
+    Build ENSMUSG → human gene symbol map from data/osdr/human_mouse_orthologs.csv
+    (has ENSMUSG IDs, unlike data/ensembl/orthologs_one2one.txt which is symbol-only).
     """
-    # Try sp26_nasa OSDR orthologs first (has ENSMUSG IDs)
-    candidates = [
-        Path(__file__).parent / "data" / "osdr" / "human_mouse_orthologs.csv",
-        Path(__file__).parent.parent / "sp26_nasa" / "osdr_data" / "human_mouse_orthologs.csv",
-        Path(__file__).parent.parent / "workspace" / "sp26_nasa" / "osdr_data" / "human_mouse_orthologs.csv",
-    ]
-    for p in candidates:
-        if p.exists():
-            df = pd.read_csv(p)
-            df = df[df.get("Mouse homology type", "ortholog_one2one") == "ortholog_one2one"]
-            return dict(zip(df["Mouse gene stable ID"].str.strip(), df["Gene name"].str.strip()))
+    p = Path(__file__).parent / "data" / "osdr" / "human_mouse_orthologs.csv"
+    if p.exists():
+        df = pd.read_csv(p)
+        df = df[df.get("Mouse homology type", "ortholog_one2one") == "ortholog_one2one"]
+        return dict(zip(df["Mouse gene stable ID"].str.strip(), df["Gene name"].str.strip()))
 
     return {}
 
@@ -613,22 +606,10 @@ def main():
     else:
         metadata_csv = Path(args.metadata_csv) if args.metadata_csv else DEFAULT_METADATA_CSV
         if not metadata_csv.exists():
-            # Try to copy from sp26_nasa
-            sp26 = Path(__file__).parent.parent / "workspace" / "sp26_nasa" / "osdr_data" / "metadata_new.csv"
-            if sp26.exists():
-                import shutil
-                metadata_csv.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy(sp26, metadata_csv)
-                # Also copy orthologs
-                orth_src = sp26.parent / "human_mouse_orthologs.csv"
-                if orth_src.exists():
-                    shutil.copy(orth_src, metadata_csv.parent / "human_mouse_orthologs.csv")
-                print(f"[EVAL] Copied OSDR metadata from sp26_nasa → {metadata_csv}", flush=True)
-            else:
-                raise FileNotFoundError(
-                    f"OSDR metadata not found at {metadata_csv}.\n"
-                    "Supply --metadata-csv or ensure data/osdr/metadata_new.csv exists."
-                )
+            raise FileNotFoundError(
+                f"OSDR metadata not found at {metadata_csv}.\n"
+                "Supply --metadata-csv or ensure data/osdr/metadata_new.csv exists."
+            )
 
         raw_dir = Path(args.osdr_raw_dir) if args.osdr_raw_dir else None
         osdr_df = preprocess_osdr(
