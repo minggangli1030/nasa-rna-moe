@@ -144,6 +144,15 @@
   .pending-block{border:1px dashed var(--pending); background:var(--pending-soft); border-radius:8px; padding:14px 18px; margin-top:12px;}
   .pending-block p{color:#6b4a0d; margin:0; font-size:19px;}
 
+  .notebox{border:1px solid var(--pending); background:var(--pending-soft); border-radius:8px; padding:14px 18px; margin-top:12px;}
+  .notebox p{color:#6b4a0d; margin:0; font-size:19px;}
+
+  .done-badge{
+    display:inline-flex; align-items:center; gap:7px; font-family:var(--mono); font-size:14px;
+    letter-spacing:.06em; text-transform:uppercase; font-weight:700; color:var(--good);
+    background:var(--good-soft); border:1px solid var(--good); border-radius:5px; padding:4px 10px;
+  }
+
   .goodbox{border:1px solid var(--good); background:var(--good-soft); border-radius:8px; padding:14px 18px; margin-top:12px; max-width:74ch;}
   .goodbox p{color:var(--good); margin:0; font-size:19px;}
 
@@ -162,73 +171,46 @@
 
 <section class="slide title-slide">
   <div class="inner">
-    <span class="eyebrow">Biweekly progress update · SPARC</span>
+    <span class="eyebrow">Biweekly progress update · SPARC · Sprint 1</span>
     <h1>Mixture-of-Experts for Spaceflight Transcriptomic Classification</h1>
     <p class="lede">Can specialized experts model heterogeneous space-biology data better than a single monolithic model — once the problems that broke the first attempt are actually fixed?</p>
     <div class="meta">
       <span><b>Date</b> 2026-07-09</span>
-      <span><b>Presenter</b> Minggang Li</span>
-      <span><b>Mentor</b> Dr. Walter Alvarado, NASA Ames</span>
-      <span><b>Target</b> ~10 min</span>
+      <span><b>Presenter</b> Martin</span>
+      <span><b>Institution</b> NASA Ames</span>
     </div>
   </div>
-  <span class="slide-num">01 · ~20s</span>
+  <span class="slide-num">01</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Background · Why this matters</span>
-    <h2>Longer space missions need better biology models</h2>
-    <ul>
-      <li>Missions are getting longer, which means more cumulative exposure to microgravity, ionizing radiation, confinement, and disrupted circadian cycles — all of which leave molecular fingerprints in gene expression.</li>
-      <li>There's no existing foundation model built specifically for interpreting spaceflight transcriptomic experiments.</li>
-      <li>Spaceflight experiments are expensive and slow to run, so actual human spaceflight data is rare and tightly regulated — models need to transfer from abundant ground data to a scarce target domain, not just fit it directly.</li>
-    </ul>
-  </div>
-  <span class="slide-num">02 · ~35s</span>
-</section>
-
-<section class="slide">
-  <div class="inner">
-    <span class="eyebrow">Background · Data and last year's team effort</span>
-    <h2>A team project I was part of set up the pipeline</h2>
-    <p class="lede">Berkeley CDSS Data Discovery, mentored by Dr. Walter Alvarado (NASA Ames) — myself, Abraham Guan, Brian Zhou, Karen Meng, and Ishanth Hombaiah.</p>
+    <span class="eyebrow">Background · Setup</span>
+    <h2>Continuation of Last Semester Team Project</h2>
+    <p class="lede">Longer missions mean more cumulative microgravity, radiation, and circadian disruption — with no existing foundation model built to interpret it, and real spaceflight data too scarce to train on directly. Berkeley CDSS Data Discovery, mentored by Dr. Walter Alvarado (NASA Ames) — myself, Abraham Guan, Brian Zhou, Karen Meng, and Ishanth Hombaiah — built a pretrain-then-transfer pipeline to address that.</p>
     <div class="statrow">
       <div class="stat"><div class="n">1.16M</div><div class="l">ARCHS4 ground samples (pretrain)</div></div>
       <div class="statarrow">→</div>
       <div class="stat"><div class="n">2,151</div><div class="l">NASA OSDR spaceflight samples (target)</div></div>
     </div>
-    <p class="statcap">~540× fewer samples in the domain we actually care about — the whole reason pretrain-then-transfer is the strategy, not training on spaceflight data directly.</p>
+    <p class="statcap">~540× fewer samples in the domain we actually care about.</p>
+    <div class="pipe" style="margin-top:8px;">
+      <div class="pstep"><span class="pnum">1</span><b>Raw input</b><span>ARCHS4 human+mouse, OSDR</span></div>
+      <div class="pstep"><span class="pnum">2</span><b>QC + ortholog map</b><span>1:1 mouse↔human protein-coding</span></div>
+      <div class="pstep"><span class="pnum">3</span><b>TPM + log1p</b><span>remove gene-length/lab bias</span></div>
+      <div class="pstep"><span class="pnum">4</span><b>Output</b><span>15,523 shared genes, tokenized</span></div>
+    </div>
+    <p style="margin-top:8px; font-size:16.5px; color:var(--ink-muted);">Pretrained via masked-expression reconstruction on ARCHS4 (Brian led this backbone), evaluated zero-shot on OSDR — my part starts next.</p>
   </div>
-  <span class="slide-num">03 · ~40s</span>
+  <span class="slide-num">02</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Background · Data pipeline (brief)</span>
-    <h2>Raw counts → a shared 15,523-gene vocabulary</h2>
-    <div class="pipe">
-      <div class="pstep"><span class="pnum">1</span><b>Raw input</b><span>ARCHS4 human+mouse, OSDR ~2,860</span></div>
-      <div class="pstep"><span class="pnum">2</span><b>QC filter</b><span>drop dupes, low-count, single-cell</span></div>
-      <div class="pstep"><span class="pnum">3</span><b>Ortholog map</b><span>1:1 mouse↔human protein-coding</span></div>
-      <div class="pstep"><span class="pnum">4</span><b>TPM norm</b><span>remove gene-length/lab bias</span></div>
-      <div class="pstep"><span class="pnum">5</span><b>log1p</b><span>stabilize gradients</span></div>
-      <div class="pstep"><span class="pnum">6</span><b>Output</b><span>15,523 shared genes</span></div>
-    </div>
-    <div class="cols" style="margin-top:6px;">
-      <div class="card"><h3>ARCHS4</h3><p>1,162,443 samples retained — 52% of raw</p></div>
-      <div class="card"><h3>OSDR</h3><p>2,151 samples retained — 75.2% of raw</p></div>
-    </div>
-    <p style="margin-top:10px;">Genes treated like tokens (same idea as scBERT/Geneformer); pretrained via masked-expression reconstruction on ARCHS4, evaluated zero-shot on OSDR. Brian led this pretraining backbone — my part starts next.</p>
-  </div>
-  <span class="slide-num">04 · ~45s</span>
-</section>
-
-<section class="slide">
-  <div class="inner">
-    <span class="eyebrow">My work, last semester</span>
-    <h2>I built the zero-shot OSDR evaluation — nobody had actually tested whether pretraining transferred</h2>
+    <span class="eyebrow">Our work, Last semester</span>
+    <h2>Zero-shot OSDR evaluation — testing whether pretraining actually transferred</h2>
     <p class="lede">The team had four pretrained variants. My question: do any of them actually generalize to real spaceflight data?</p>
+    <p style="font-size:17px; color:var(--ink-muted); margin-top:-6px;"><strong>Task:</strong> mask a random subset of genes in each sample, then ask the model to predict the missing values from the rest of the sequence. The number reported is how accurately it reconstructs them — Pearson correlation between predicted and true expression at the masked positions.</p>
     <div class="figure">
       <svg viewBox="0 0 600 210" role="img" aria-label="Zero-shot OSDR Pearson correlation by pretraining variant: Mouse 5k 0.78, Mixed 5k 0.76, Human 5k 0.69, Human 20k 0.81">
         <line class="svg-grid" x1="70" y1="190" x2="570" y2="190"/>
@@ -258,15 +240,19 @@
       </svg>
       <p class="fig-caption">Zero-shot OSDR reconstruction (Pearson correlation), by pretraining variant — measured with the evaluation pipeline I built.</p>
     </div>
+    <div class="goodbox" style="margin-top:12px;">
+      <p><strong>Note:</strong> OSDR here is 100% mouse spaceflight/control data — that's why the ranking tracks species match: mouse (0.78) highest, mixed (0.76) close behind since it saw mouse data too, human (0.69) lowest since it never saw mouse expression at all. Two takeaways: <strong>(1)</strong> the model is learning real, species-specific biology, not noise — species-matched pretraining measurably wins; <strong>(2)</strong> scale still matters within a species — human 5k → 20k nearly closes the gap (0.69 → 0.81).</p>
+    </div>
     <p style="margin-top:10px; font-size:16.5px; color:var(--ink-muted);">These numbers look reasonable in isolation. They aren't — next slide.</p>
   </div>
-  <span class="slide-num">05 · ~50s</span>
+  <span class="slide-num">03</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">My work, last semester</span>
-    <h2>I diagnosed why: the model was just predicting the gene mean</h2>
+    <span class="eyebrow">Our work, Last semester</span>
+    <h2>Gene-mean collapse — the model found a shortcut, not meaningful learning</h2>
+    <p style="font-size:17px; color:var(--ink-muted); margin-top:-14px;">Same masked-gene-reconstruction task as before — but here we check the accuracy number against a trivial baseline instead of reading it in isolation.</p>
     <div class="figure">
       <svg viewBox="0 0 600 210" role="img" aria-label="Same four bars, now with a gene-mean baseline reference line at 0.847 — all four bars fall at or below it">
         <line class="svg-grid" x1="70" y1="190" x2="570" y2="190"/>
@@ -295,7 +281,7 @@
         <text class="svg-label" x="507" y="207" text-anchor="middle">Human (20k)</text>
 
         <line class="svg-baseline" x1="70" y1="46" x2="570" y2="46"/>
-        <text class="svg-baseline-label" x="575" y="42" text-anchor="end">gene-mean baseline 0.847 (trivial predictor)</text>
+        <text class="svg-baseline-label" x="575" y="13" text-anchor="end">gene-mean baseline 0.847 (trivial predictor)</text>
       </svg>
       <p class="fig-caption">Every variant sits at or below the trivial "predict the average" baseline — real learned signal is much weaker than the raw correlation suggests.</p>
     </div>
@@ -303,16 +289,15 @@
       <li>Built <code>check_alignment.py</code> to compare reconstruction against that trivial gene-mean baseline directly.</li>
       <li>Scaling human-only 5k → 20k closed most of the gap (<strong>0.69 → 0.81</strong>). Architecture tweaks alone, without more data, moved the needle far less — scale was the dominant lever.</li>
     </ul>
-    <div class="attrib">Building on the shared team pipeline (Walter Alvarado, Brian Zhou) — the diagnostic itself is mine.</div>
   </div>
-  <span class="slide-num">06 · ~55s</span>
+  <span class="slide-num">04</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">My work, last semester</span>
-    <h2>I built the team's first MoE gate</h2>
-    <p class="lede">Idea: route between species-specialized experts instead of relying on one monolithic model.</p>
+    <span class="eyebrow">Our work, Last semester</span>
+    <h2>The team's first MoE gate</h2>
+    <p class="lede">Why MoE: the zero-shot transfer results already show a single generalist model can learn some cross-species biology. The open question is whether a set of <em>specialized</em> experts — each deeply tuned to one species — reconstructs unseen genes even better than one generalist when combined, rather than diluting that shared signal. If that holds for species, the same principle should extend to other biological axes: organ, tissue, stressor type.</p>
     <div class="figure">
       <svg viewBox="0 0 600 220" role="img" aria-label="Architecture diagram: a gating network routes weights to Human, Mouse, and Mixed experts, which are combined by a weighted sum into reconstructed expression output">
         <rect class="svg-box" x="220" y="10" width="160" height="42" rx="7"/>
@@ -345,12 +330,12 @@
     </div>
     <p style="margin-top:8px;">Also caught a bug with <code>check_moe_gene_counts.py</code>: each expert had trained on its own gene ordering, so the gate's inputs weren't even comparable across experts.</p>
   </div>
-  <span class="slide-num">07 · ~50s</span>
+  <span class="slide-num">05</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">My work, last semester</span>
+    <span class="eyebrow">Our work, Last semester</span>
     <h2>The diagnostic that flagged the gate as premature</h2>
     <p class="lede">Before spending compute training the gate: if you always picked the <em>best</em> expert per sample, how much would you gain over the single best expert overall?</p>
     <div class="figure">
@@ -383,9 +368,9 @@
       </svg>
       <p class="fig-caption">Headroom (built with <code>analyze_moe_headroom.py</code>) is near-zero everywhere except the mixed split — and that gap turned out to be a species-ID artifact, not real routing signal.</p>
     </div>
-    <p style="margin-top:10px;"><strong>My conclusion for the team: MoE was limited by expert quality, not routing</strong> — the exact question this SPARC project picks up.</p>
+    <p style="margin-top:10px;"><strong>MoE was limited by expert quality, not routing</strong> — the exact question this SPARC project picks up.</p>
   </div>
-  <span class="slide-num">08 · ~50s</span>
+  <span class="slide-num">06</span>
 </section>
 
 <section class="slide">
@@ -399,7 +384,7 @@
       <li><strong>Objective 3</strong> — benchmark against existing baselines and assess biological interpretability, not just correlation numbers.</li>
     </ul>
   </div>
-  <span class="slide-num">09 · ~35s</span>
+  <span class="slide-num">07</span>
 </section>
 
 <section class="slide">
@@ -407,69 +392,85 @@
     <span class="eyebrow">This sprint · The fix</span>
     <h2>v2: one shared gene vocabulary, deeper architecture</h2>
     <ul>
-      <li>Built <code>compute_shared_canonical.py</code> — a canonical gene list (protein-coding orthologs ∩ human exon lengths ∩ mouse exon lengths) so human, mouse, and mixed experts all share identical column order. Directly fixes the vocab-mismatch bug from slide 7.</li>
-      <li>Moved to a deeper architecture (4 layers vs. 2, 30% mask ratio vs. 15%, weight decay 0.01) — informed by the "scale is the real lever" finding from slide 6.</li>
+      <li>Built <code>compute_shared_canonical.py</code> — a canonical gene list (protein-coding orthologs ∩ human exon lengths ∩ mouse exon lengths) so human, mouse, and mixed experts all share identical column order. Directly fixes the vocab-mismatch bug from slide 5.</li>
+      <li>Moved to a deeper architecture (4 layers vs. 2, 30% mask ratio vs. 15%, weight decay 0.01) — informed by the "scale is the real lever" finding from slide 4.</li>
       <li>This sprint: rebuilding three v2 5k experts (human / mouse / mixed) under this fix, then re-running the same headroom diagnostic on data that's actually comparable this time.</li>
     </ul>
   </div>
-  <span class="slide-num">10 · ~35s</span>
+  <span class="slide-num">08</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">This sprint · Infrastructure</span>
-    <h2>Moved off the shared Savio queue to a dedicated GPU</h2>
+    <span class="eyebrow">This sprint · Setup</span>
+    <h2>New dedicated infrastructure, then rebuilding the three v2 5k experts</h2>
     <ul class="tl">
       <li><span class="dot"></span><div><strong>Jetstream VM</strong> — full A100-40GB, 32 CPU, 117GB RAM — no more waiting behind other people's SLURM jobs.</div></li>
-      <li><span class="dot"></span><div><strong>Standalone repo</strong> — split my work out of the team's monorepo into its own scoped repo.</div></li>
-      <li><span class="dot"></span><div><strong>Persistent volume + reference data</strong> — checkpoints and data decoupled from the VM's own lifecycle; all reference tables rebuilt and version-controlled from scratch.</div></li>
+      <li><span class="dot"></span><div><strong>Standalone repo + persistent volume</strong> — split out of the team's monorepo; checkpoints, data, and reference tables rebuilt and version-controlled from scratch, decoupled from the VM's own lifecycle.</div></li>
     </ul>
-  </div>
-  <span class="slide-num">11 · ~25s</span>
-</section>
-
-<section class="slide">
-  <div class="inner">
-    <span class="eyebrow">Status right now</span>
-    <h2>Rebuilding the three v2 5k experts</h2>
-    <div class="scrollwrap">
+    <div class="scrollwrap" style="margin-top:14px;">
       <table>
-        <thead><tr><th>Variant</th><th>Species</th><th>Samples</th><th>Vocabulary</th><th>Status</th></tr></thead>
+        <thead><tr><th>Variant</th><th>Species</th><th>Samples</th><th>Vocabulary</th><th>Best val loss</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td><code>human_5k_v2</code></td><td>Human</td><td>5,000</td><td>Shared canonical (15,448 genes)</td><td><span class="pending-badge">In progress</span></td></tr>
-          <tr><td><code>mouse_5k_v2</code></td><td>Mouse</td><td>5,000</td><td>Shared canonical (15,448 genes)</td><td><span class="pending-badge">In progress</span></td></tr>
-          <tr><td><code>mixed_5k_v2</code></td><td>Human + Mouse</td><td>2,500 + 2,500</td><td>Shared canonical (15,448 genes)</td><td><span class="pending-badge">In progress</span></td></tr>
+          <tr><td><code>human_5k_v2</code></td><td>Human</td><td>5,000</td><td>Shared canonical (15,448 genes)</td><td>0.4318 (epoch 29/30)</td><td><span class="done-badge">Done</span></td></tr>
+          <tr><td><code>mouse_5k_v2</code></td><td>Mouse</td><td>5,000</td><td>Shared canonical (15,448 genes)</td><td>0.5188 (20/20 epochs)</td><td><span class="done-badge">Done</span></td></tr>
+          <tr><td><code>mixed_5k_v2</code></td><td>Human + Mouse</td><td>2,146 + 2,107</td><td>Shared canonical (15,448 genes)</td><td>0.8047 (20/20 epochs)</td><td><span class="done-badge">Done</span></td></tr>
         </tbody>
       </table>
     </div>
   </div>
-  <span class="slide-num">12 · ~20s</span>
+  <span class="slide-num">09</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Results — fill in before presenting</span>
-    <h2>Does v2 escape collapse? Is there MoE headroom now?</h2>
+    <span class="eyebrow">Results</span>
+    <h2>v2 escapes collapse — but MoE headroom is still noise-level</h2>
     <h3>Alignment check</h3>
-    <div class="pending-block">
-      <p><strong>PENDING —</strong> per-variant Pearson vs. gene-mean baseline. Does any v2 expert clear ~0.85 OSDR Pearson? Do species-specific experts beat <code>mixed_5k_v2</code> on their own species?</p>
+    <div class="goodbox">
+      <p><strong>Fixed:</strong> corr(prediction, per-gene mean) is 0.665–0.724 across all three experts — well under the 0.9 collapse threshold from slide 4. All three v2 experts are making real, sample-dependent predictions, not falling back to a gene average.</p>
     </div>
-    <h3 style="margin-top:18px;">MoE headroom</h3>
+    <h3 style="margin-top:18px;">MoE headroom (OSDR mouse spaceflight eval, n=2318, 15% mask, common 15,448-gene space)</h3>
     <div class="scrollwrap">
       <table>
-        <thead><tr><th>Evaluation split (v2, shared vocab)</th><th>Best single expert</th><th>Oracle choice</th><th>Headroom</th></tr></thead>
+        <thead><tr><th>Condition</th><th>Mean Pearson r</th></tr></thead>
         <tbody>
-          <tr><td>Human OSDR subset</td><td class="fill">—</td><td class="fill">—</td><td class="fill">—</td></tr>
-          <tr><td>Mouse OSDR subset</td><td class="fill">—</td><td class="fill">—</td><td class="fill">—</td></tr>
-          <tr><td>Global mixed set</td><td class="fill">—</td><td class="fill">—</td><td class="fill">—</td></tr>
+          <tr><td>human_5k_v2</td><td class="fill">0.7081</td></tr>
+          <tr><td>mouse_5k_v2 (best single)</td><td class="fill">0.7683</td></tr>
+          <tr><td>mixed_5k_v2</td><td class="fill">0.7386</td></tr>
+          <tr><td>Oracle per-sample routing</td><td class="fill">0.7701</td></tr>
+          <tr><td>Fixed blend (30% human / 70% mouse)</td><td class="fill">0.7766</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="goodbox">
-      <p><strong>Decision rule going in:</strong> if headroom is still noise-level (~v1's +0.0003–0.02) under the fixed vocab, that's a real finding — architecture, not the vocab bug, is the bottleneck. If it opens up meaningfully, that justifies training the MoE gate next.</p>
+    <div class="notebox">
+      <p><strong>Headroom (oracle − best single) = +0.0018</strong> — same tiny order of magnitude as v1's per-species gaps (+0.0003, +0.0014), not v1's inflated +0.0199 "global mixed" number. mouse_5k_v2 already wins almost every sample on this mouse-domain eval, so there's little left for a gate to route between. A static <strong>fixed blend beats the oracle gap ~4-5x over</strong> (+0.0084) — smoothing/ensembling helps more than per-sample selection does.</p>
     </div>
   </div>
-  <span class="slide-num">13 · ~55s</span>
+  <span class="slide-num">10</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Related work</span>
+    <h2>Other MoE-for-genomics work routes on OOD risk or modality, not on species identity</h2>
+    <div class="cols">
+      <div class="card">
+        <h3>MoEFold2D: robust RNA secondary structure prediction with a mixture of DL and physics-based experts</h3>
+        <p style="font-family:var(--mono); font-size:14px; color:var(--ink-faint); margin-top:-6px;">Xiangyun Qiu</p>
+        <p>Trains a cluster-held-out ensemble of DL models — each one an "expert" on all but one structural cluster. For a new sequence, if the DL models agree it's <strong>in-distribution</strong> → average their predictions. If they strongly disagree, that's an <strong>OOD</strong> signal → fall back to a physics-based model instead. The routing signal is <em>ensemble disagreement</em>, detected at inference with no access to training data — not a learned gate.</p>
+      </div>
+      <div class="card">
+        <h3>CodonMoE: DNA Language Models for mRNA Analyses</h3>
+        <p style="font-family:var(--mono); font-size:14px; color:var(--ink-faint); margin-top:-6px;">Du, Liang, Li, Kingsford</p>
+        <p>A lightweight codon-level MoE adapter that turns a frozen DNA language model into an RNA analyzer with no RNA-specific pretraining — a universal approximator at the codon level. HyenaDNA+CodonMoE hits SOTA on 4 RNA tasks (stability, expression, regulation) with 80% fewer parameters than specialized RNA models. The gain comes from bridging two <em>modalities</em> (DNA → RNA) through one shared backbone, not from routing between independently-trained full models.</p>
+      </div>
+    </div>
+    <div class="notebox" style="margin-top:16px;">
+      <p><strong>What this suggests:</strong> my ARCHS4-trained → OSDR-spaceflight zero-shot eval is structurally an ID/OOD generalization problem, the same shape MoEFold2D targets — but I've been routing on <em>species identity</em>, which is usually obvious and doesn't need a gate. MoEFold2D's actual signal is <em>ensemble disagreement</em>: agreement → trust the DL average; disagreement → fall back to something more conservative. Worth trying directly: use disagreement across my three experts as a per-sample OOD flag on spaceflight data, rather than trying to pick "the right species." Separately, CodonMoE argues for one shared backbone + lightweight adapters over three independently-trained full models — likely why routing among my experts has so little headroom to find.</p>
+    </div>
+  </div>
+  <span class="slide-num">11</span>
 </section>
 
 <section class="slide">
@@ -477,13 +478,14 @@
     <span class="eyebrow">Next steps</span>
     <h2>What happens after this sprint</h2>
     <ul>
-      <li>If headroom justifies it: train the MoE gate over the three v2 experts and re-evaluate zero-shot on OSDR.</li>
-      <li>If headroom is still ~noise: that's this update's finding — investigate scale (e.g. a v2 <code>human_20k</code>) before revisiting MoE machinery again.</li>
-      <li>Either way: expert-specialization analysis is the natural next diagnostic once there's a valid gate to inspect (Objective 2).</li>
+      <li><strong>The v1 vocab-bug fix resolved a real confound</strong> — v1's apparent MoE benefit doesn't hold up once the comparison is valid. That's the actual deliverable of this sprint: a trustworthy negative result instead of an inflated positive one.</li>
+      <li><strong>Chasing a sharper lead</strong> — a static 30/70 human/mouse blend beat the best single expert by 4-5x the oracle gap. Next: confirm on a held-out split (not grid-search-fit on the eval set), then decide if it generalizes.</li>
+      <li><strong>Fixing the eval domain confound</strong> — this OSDR set is 100% mouse spaceflight/control, so mouse_5k_v2 wins almost everywhere by construction. Need samples where the "right" expert isn't obvious in advance to actually test cross-species routing.</li>
+      <li><strong>Parallel path: expert scale/quality</strong> (e.g. a v2 <code>human_20k</code>) — consistent with the "scale is the real lever" finding from slide 4, independent of whether MoE routing pans out.</li>
       <li>Dedicated infrastructure means the next iteration doesn't wait on a shared queue — faster turnaround for the rest of the summer.</li>
     </ul>
   </div>
-  <span class="slide-num">14 · ~25s</span>
+  <span class="slide-num">12</span>
 </section>
 
 </div>

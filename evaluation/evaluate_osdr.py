@@ -102,7 +102,7 @@ class ExpressionPerformer(torch.nn.Module):
 
 BRIDGE_RNA_DATA = Path(__file__).resolve().parent.parent / "data"
 ORTHOLOG_FILE = BRIDGE_RNA_DATA / "ensembl" / "orthologs_one2one.txt"
-CANONICAL_GENES_FILE = BRIDGE_RNA_DATA / "ensembl" / "protein_coding_ortholog_genes.txt"
+CANONICAL_GENES_FILE = BRIDGE_RNA_DATA / "ensembl" / "canonical_genes_shared.txt"
 MOUSE_EXON_FILE = BRIDGE_RNA_DATA / "gencode" / "gencode_v49_mouse_gene_exon_lengths.csv"
 
 # NASA OSDR metadata (committed to this repo directly under data/osdr/)
@@ -156,32 +156,25 @@ def tpm_normalize_mouse(counts_df: pd.DataFrame, exon_lengths: pd.Series) -> pd.
 
 def download_osdr_study(study_id: str, counts_filename: str, cache_dir: Path) -> Optional[pd.DataFrame]:
     """
-    Download a single OSDR study counts CSV from NASA GeneLab.
+    Download a single OSDR study counts CSV from NASA OSDR.
+
+    NASA retired the old genelab-data.ndc.nasa.gov static file server (now
+    redirects to osdr.nasa.gov) in favor of a JSON file-listing API plus a
+    signed-URL download endpoint. We look up the study's file list, find the
+    entry matching counts_filename, and download its (redirect-chained,
+    presigned S3) URL.
     Returns DataFrame indexed by gene, columns = samples, or None on failure.
     """
     import re
+    import json
     import urllib.request
 
-    # The static file server uses GLDS-{num} paths, not OSD-{num}.
-    # Extract GLDS id from the filename itself (e.g. "GLDS-100_rna_seq_..." → "GLDS-100").
-    m = re.match(r"(GLDS-\d+)", counts_filename)
-    glds_id = m.group(1) if m else study_id
-
-    # Also try with the numeric OSD id mapped to GLDS pattern
     osd_m = re.match(r"OSD-(\d+)", study_id)
-    glds_from_osd = f"GLDS-{osd_m.group(1)}" if osd_m else glds_id
-
-    base_urls = [
-        # Primary: GLDS id extracted from filename
-        f"https://genelab-data.ndc.nasa.gov/genelab/static/media/dataset/{glds_id}/rna_seq/{counts_filename}",
-        # Fallback: GLDS id derived from OSD accession number
-        f"https://genelab-data.ndc.nasa.gov/genelab/static/media/dataset/{glds_from_osd}/rna_seq/{counts_filename}",
-        # Some files sit at the dataset root, not in rna_seq/
-        f"https://genelab-data.ndc.nasa.gov/genelab/static/media/dataset/{glds_id}/{counts_filename}",
-    ]
-    # Deduplicate while preserving order
-    seen = set()
-    base_urls = [u for u in base_urls if not (u in seen or seen.add(u))]
+    if not osd_m:
+        print(f"    SKIP: could not parse OSD number from study_id={study_id}", flush=True)
+        return None
+    osd_num = osd_m.group(1)
+    osd_key = f"OSD-{osd_num}"
 
     out_path = cache_dir / "raw" / counts_filename
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -190,17 +183,25 @@ def download_osdr_study(study_id: str, counts_filename: str, cache_dir: Path) ->
         print(f"    [cache hit] {counts_filename}", flush=True)
         return pd.read_csv(out_path, index_col=0)
 
-    for url in base_urls:
-        try:
-            print(f"    Downloading {counts_filename} from {url} ...", flush=True)
-            urllib.request.urlretrieve(url, out_path)
-            df = pd.read_csv(out_path, index_col=0)
-            print(f"    OK: {df.shape}", flush=True)
-            return df
-        except Exception as e:
-            print(f"    WARN: {url} failed: {e}", flush=True)
-            if out_path.exists():
-                out_path.unlink()
+    try:
+        listing_url = f"https://osdr.nasa.gov/osdr/data/osd/files/{osd_num}"
+        with urllib.request.urlopen(listing_url, timeout=30) as resp:
+            listing = json.load(resp)
+        study_files = listing["studies"][osd_key]["study_files"]
+        match = next((f for f in study_files if f["file_name"] == counts_filename), None)
+        if match is None:
+            print(f"    SKIP: {counts_filename} not in OSDR file listing for {osd_key}", flush=True)
+            return None
+        download_url = "https://osdr.nasa.gov" + match["remote_url"]
+        print(f"    Downloading {counts_filename} from {download_url} ...", flush=True)
+        urllib.request.urlretrieve(download_url, out_path)
+        df = pd.read_csv(out_path, index_col=0)
+        print(f"    OK: {df.shape}", flush=True)
+        return df
+    except Exception as e:
+        print(f"    WARN: {counts_filename} failed: {e}", flush=True)
+        if out_path.exists():
+            out_path.unlink()
 
     print(f"    SKIP: could not download {counts_filename}", flush=True)
     return None
@@ -397,6 +398,17 @@ def load_checkpoint(ckpt_path: Path, device: torch.device) -> tuple[ExpressionPe
         pf = pq.ParquetFile(parquet_path)
         gene_list = [c for c in pf.schema_arrow.names
                      if c not in ("geo_accession", "__index_level_0__", "sample_id")]
+    elif num_genes == 15448:
+        # v2 experts all train on the shared canonical vocabulary in canonical
+        # order (verified directly against each variant's training parquet
+        # schema -- see CLAUDE.md), so when the parquet itself isn't present
+        # on this machine (multi-instance training split across VMs) we can
+        # recover the same gene list from the canonical file instead of
+        # failing alignment entirely.
+        print(f"    [WARN] training parquet {parquet_path!r} not found locally; "
+              f"falling back to canonical_genes_shared.txt order (verified match "
+              f"for v2 experts)", flush=True)
+        gene_list = load_canonical_genes()
 
     return model, cfg, gene_list
 

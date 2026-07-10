@@ -190,6 +190,10 @@ class PreprocessingConfig:
     # with valid_len_genes for safety) and skip the variant-specific all-zero
     # filter. Required for cross-variant column alignment (MoE / ensemble).
     canonical_genes_file: Optional[str] = None
+    # If set, one GSM accession per line to exclude from sampling -- used to
+    # build a held-out eval set that's provably disjoint from a training set's
+    # sample IDs (see build_holdout_eval.py).
+    exclude_ids_file: Optional[str] = None
 
     # --- Reproducibility ---
     seed: int = 42
@@ -507,6 +511,14 @@ class ExpressionLoader:
 
         print(f"    Got {raw_df.shape[1]:,} bulk samples × {raw_df.shape[0]:,} genes "
               f"in {time.time() - t0:.0f}s")
+
+        if cfg.exclude_ids_file:
+            with open(cfg.exclude_ids_file) as f:
+                exclude_ids = {line.strip() for line in f if line.strip()}
+            before = raw_df.shape[1]
+            raw_df = raw_df.loc[:, ~raw_df.columns.isin(exclude_ids)]
+            print(f"    Excluded {before - raw_df.shape[1]:,} samples present in "
+                  f"{cfg.exclude_ids_file} ({raw_df.shape[1]:,} remain)")
 
         # Filter to genes with exon lengths
         valid_genes = set(gene_lengths.index)
@@ -1108,6 +1120,14 @@ if __name__ == "__main__":
                              "(intersected with valid exon-length genes) and skip "
                              "the variant-specific all-zero filter. Required for "
                              "cross-variant column alignment (MoE / ensemble).")
+    parser.add_argument("--seed", type=int, default=42,
+                        help="Random seed for archs4py/S3 sample selection. Use a "
+                             "different seed than the training runs to draw a "
+                             "disjoint held-out set for evaluation.")
+    parser.add_argument("--exclude-ids-file", default=None,
+                        help="Optional file with one GSM accession per line to "
+                             "exclude from sampling (e.g. training sample IDs), "
+                             "so the drawn set is provably disjoint.")
     args = parser.parse_args()
 
     config = PreprocessingConfig(
@@ -1119,6 +1139,8 @@ if __name__ == "__main__":
         debug_tpm_denominator=args.debug_tpm_denominator,
         max_samples_per_species=args.max_samples,
         canonical_genes_file=args.canonical_genes_file,
+        seed=args.seed,
+        exclude_ids_file=args.exclude_ids_file,
     )
 
     builder = RNADatasetBuilder(config=config)
