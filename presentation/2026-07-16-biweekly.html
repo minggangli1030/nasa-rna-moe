@@ -27,7 +27,7 @@
   html,body{margin:0;height:100%;overflow:hidden;}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.45;-webkit-font-smoothing:antialiased;}
   ::selection{background:var(--accent-soft);color:var(--accent-ink);}
-  .deck{display:flex;width:100vw;height:100vh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;}
+  .deck{display:flex;width:100vw;height:100vh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;}
   .deck::-webkit-scrollbar{display:none;}
   .slide{scroll-snap-align:start;flex:0 0 100vw;height:100vh;overflow:hidden;display:flex;align-items:center;padding:42px 7vw;position:relative;border-right:1px solid var(--rule);}
   .inner{width:100%;max-width:1120px;margin:0 auto;}
@@ -108,7 +108,7 @@
   .goal span{font-size:15px;line-height:1.35;color:var(--muted);}
   .paperplot-slide{padding:8px 2vw;align-items:center;}
   .paperplot-slide .inner{max-width:none;display:flex;flex-direction:column;align-items:center;}
-  .paperplot-slide .eyebrow{display:none;}
+  .paperplot-slide .eyebrow{display:inline-block;margin-bottom:10px;font-size:15px;letter-spacing:.04em;}
   .paperplot-slide .slide-num{display:none;}
   .research-question{font-size:30px;line-height:1.1;margin-bottom:8px;max-width:1360px;text-align:center;}
   .paperplot-frame{width:fit-content;max-width:100%;border:1px solid var(--rule);border-radius:8px;background:var(--panel);padding:5px;margin:0 auto;text-align:center;}
@@ -306,7 +306,7 @@
 
 <section class="slide paperplot-slide">
   <div class="inner">
-    <span class="eyebrow">Stage 2 · Proposed experiment</span>
+    <span class="eyebrow gq">Guiding question</span>
     <h2 class="research-question">With the same training data and approximately the same inference compute, does blind organ-specialist routing reconstruct masked genes better than one general model?</h2>
     <div class="paperplot-frame">
       <img class="paperplot-img" src="human-organ-moe-overarching-plan.png" alt="Two-panel research plan connecting validated blind interspecies routing to a fair organ-specialist versus general-human-model experiment.">
@@ -392,7 +392,22 @@
   var deck=document.querySelector('.deck');
   var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
   function current(){return Math.round(deck.scrollLeft/window.innerWidth);}
-  function go(i){i=Math.max(0,Math.min(slides.length-1,i));deck.scrollTo({left:i*window.innerWidth,behavior:'smooth'});}
+  var anim=null;
+  function go(i){
+    i=Math.max(0,Math.min(slides.length-1,i));
+    var start=deck.scrollLeft,end=i*window.innerWidth,dist=end-start;
+    if(anim)cancelAnimationFrame(anim);
+    if(Math.abs(dist)<1){deck.scrollLeft=end;return;}
+    var dur=180,t0=null;
+    function step(ts){
+      if(t0===null)t0=ts;
+      var p=Math.min(1,(ts-t0)/dur);
+      var e=p<0.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+      deck.scrollLeft=start+dist*e;
+      if(p<1){anim=requestAnimationFrame(step);}else{anim=null;}
+    }
+    anim=requestAnimationFrame(step);
+  }
   document.addEventListener('keydown',function(event){
     if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(event.key)>-1){event.preventDefault();go(current()+1);}
     if(['ArrowLeft','ArrowUp','PageUp'].indexOf(event.key)>-1){event.preventDefault();go(current()-1);}
