@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-15 11:35 PDT / 2026-07-15 18:35 UTC
+**Last updated:** 2026-07-15 12:00 PDT / 2026-07-15 19:00 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -34,8 +34,10 @@ serve as the primary interspecies-routing benchmark.
   `mixed20k_shuffled_20260715`. It uses the same 16,000 train / 3,200
   validation rows and V3 architecture, but `data_mode=preload` makes the
   `DistributedSampler` shuffle individual rows globally. Remote preflight found
-  1,983/2,000 epoch-0 batches contained both species. At 18:35 UTC it was at
-  epoch 1 batch 500/2,000, about 4.11 seconds/batch and 98% A100 utilization.
+  1,983/2,000 epoch-0 batches contained both species. At 19:01 UTC it was at
+  epoch 1 batch 1,000/2,000, about 4.11 seconds/batch and 100% A100 utilization,
+  with an estimated 33 hours 14 minutes remaining. It is therefore not expected
+  to finish within 24 hours or before the July 16 presentation.
   Logs are in `results/mixed_20k_v3_shuffled_train.log`; checkpoints write
   directly to persistent
   `/media/volume/moe-reboot/checkpoints/mixed_20k_v3_shuffled`.
@@ -43,6 +45,13 @@ serve as the primary interspecies-routing benchmark.
   clean training exit. It will immediately run full, strict, and blind-gate
   evaluation with the frozen sample order and masks, write separate shuffled
   result directories, and refuse to overwrite any existing output.
+- The July 16 ten-minute update is ready in
+  `presentation/2026-07-16-biweekly.html`, with timed notes in
+  `presentation/2026-07-16-biweekly-script.md`. Its nine-slide story covers the
+  corrected evaluation, V3 scale/finding, blind gate, bounded Stage 1 claim, and
+  fair Stage 2 organ design. The current pooled retrain is labeled ongoing, not
+  presented as a partial result. Desktop/laptop/mobile render checks pass with
+  no horizontal overflow or clipped elements.
 - The original V3 checkpoints and all prior evaluation artifacts remain
   untouched on persistent storage.
 - **Original three 20k runs and backups complete.** Final epoch-15 checkpoints are human

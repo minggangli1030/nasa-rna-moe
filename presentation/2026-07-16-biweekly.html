@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mixture-of-Experts for Spaceflight Transcriptomics - Biweekly Update, 2026-07-16</title>
+<style>
+  :root{
+    --bg:#f5f6f2;
+    --panel:#ffffff;
+    --ink:#161a17;
+    --muted:#5b655e;
+    --faint:#8b948b;
+    --rule:#dbded5;
+    --accent:#2b5d57;
+    --accent-ink:#173733;
+    --accent-soft:#dce8e4;
+    --good:#2b6b45;
+    --good-soft:#dcefe1;
+    --warm:#9c6a12;
+    --warm-soft:#f4e7d2;
+    --mono:ui-monospace,"SF Mono","Cascadia Code","JetBrains Mono",Menlo,Consolas,monospace;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;overflow:hidden;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.45;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--accent-soft);color:var(--accent-ink);}
+  .deck{display:flex;width:100vw;height:100vh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;}
+  .deck::-webkit-scrollbar{display:none;}
+  .slide{scroll-snap-align:start;flex:0 0 100vw;height:100vh;overflow:hidden;display:flex;align-items:center;padding:42px 7vw;position:relative;border-right:1px solid var(--rule);}
+  .inner{width:100%;max-width:1120px;margin:0 auto;}
+  .eyebrow{font-family:var(--mono);font-size:14px;text-transform:uppercase;color:var(--accent-ink);background:var(--accent-soft);display:inline-block;padding:5px 12px;border-radius:3px;margin-bottom:18px;}
+  h1,h2,h3,p{letter-spacing:0;}
+  h1{font-family:var(--serif);font-weight:600;font-size:58px;line-height:1.07;margin:0 0 18px;max-width:1000px;text-wrap:balance;}
+  h2{font-family:var(--serif);font-weight:600;font-size:40px;line-height:1.12;margin:0 0 19px;max-width:1000px;text-wrap:balance;}
+  h3{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.2;margin:0 0 8px;}
+  p{font-size:20px;max-width:68ch;margin:0 0 12px;}
+  p.lede{font-size:23px;line-height:1.42;color:var(--muted);max-width:66ch;}
+  strong{font-weight:680;}
+  code{font-family:var(--mono);font-size:.84em;color:var(--accent-ink);background:var(--accent-soft);padding:1px 6px;border-radius:3px;}
+  ul{margin:0;padding-left:22px;max-width:74ch;}
+  li{font-size:20px;margin-bottom:8px;}
+  .slide-num{position:absolute;right:7vw;bottom:20px;font-family:var(--mono);font-size:13px;color:var(--faint);}
+  .title-slide{background:var(--panel);}
+  .meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:9px;font-family:var(--mono);font-size:15px;color:var(--muted);}
+  .meta b{color:var(--ink);font-weight:650;}
+  .rule{height:1px;background:var(--rule);margin:17px 0;}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
+  .cols.wide-left{grid-template-columns:1.18fr .82fr;}
+  .panel{border:1px solid var(--rule);border-radius:8px;background:var(--panel);padding:18px 20px;}
+  .panel p,.panel li{font-size:18px;}
+  .panel ul{padding-left:20px;}
+  .callout{border-left:4px solid var(--accent);background:var(--accent-soft);padding:13px 17px;margin-top:14px;max-width:78ch;}
+  .callout p{font-size:19px;color:var(--accent-ink);margin:0;}
+  .callout.warm{border-color:var(--warm);background:var(--warm-soft);}
+  .callout.warm p{color:#6b4a0d;}
+  .badge{display:inline-block;font-family:var(--mono);font-size:13px;text-transform:uppercase;padding:4px 9px;border:1px solid var(--good);color:var(--good);background:var(--good-soft);border-radius:4px;font-weight:700;}
+  .badge.running{border-color:var(--warm);color:var(--warm);background:var(--warm-soft);}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+  .stat{border-top:3px solid var(--accent);background:var(--panel);padding:15px 16px;border-radius:0 0 6px 6px;min-height:108px;}
+  .stat .n{font-family:var(--mono);font-size:31px;line-height:1.05;font-weight:750;color:var(--accent-ink);font-variant-numeric:tabular-nums;}
+  .stat .label{font-size:15px;line-height:1.35;color:var(--muted);margin-top:8px;}
+  .table-wrap{border:1px solid var(--rule);border-radius:8px;background:var(--panel);overflow:hidden;}
+  table{border-collapse:collapse;width:100%;font-size:17px;}
+  th{text-align:left;font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--muted);padding:10px 13px;border-bottom:1px solid var(--rule);white-space:nowrap;}
+  td{padding:10px 13px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums;}
+  tr:last-child td{border-bottom:0;}
+  .figure{border:1px solid var(--rule);border-radius:8px;background:var(--panel);padding:12px 16px 8px;margin-top:10px;}
+  .figure svg{display:block;width:100%;height:auto;max-height:310px;}
+  .caption{text-align:center;color:var(--muted);font-size:14px;margin:6px 0 0;max-width:none;}
+  .grid{stroke:var(--rule);stroke-width:1;}
+  .axis-label{font-family:var(--sans);font-size:13px;fill:var(--muted);}
+  .value{font-family:var(--mono);font-size:14px;fill:var(--ink);font-weight:700;}
+  .bar5{fill:#91aaa4;}
+  .bar20{fill:var(--accent);}
+  .barblind{fill:var(--good);}
+  .box{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5;}
+  .box-white{fill:var(--panel);stroke:var(--ink);stroke-width:1.4;}
+  .box-text{font-family:var(--sans);font-size:14px;fill:var(--accent-ink);font-weight:650;text-anchor:middle;}
+  .box-text-dark{font-family:var(--sans);font-size:14px;fill:var(--ink);font-weight:650;text-anchor:middle;}
+  .conn{stroke:var(--faint);stroke-width:1.6;fill:none;}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;}
+  .step{border-top:2px solid var(--accent);padding:11px 12px;background:var(--panel);min-height:116px;}
+  .step .k{font-family:var(--mono);font-size:12px;color:var(--accent-ink);margin-bottom:5px;}
+  .step b{display:block;font-size:17px;margin-bottom:4px;}
+  .step span{font-size:14px;line-height:1.35;color:var(--muted);}
+  .checklist{list-style:none;padding:0;max-width:none;}
+  .checklist li{display:grid;grid-template-columns:82px 1fr;gap:12px;padding:9px 0;border-bottom:1px dashed var(--rule);margin:0;}
+  .checklist li:last-child{border-bottom:0;}
+  .checklist .when{font-family:var(--mono);font-size:13px;color:var(--accent-ink);padding-top:4px;}
+  .checklist .what{font-size:19px;}
+  .source{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:10px;max-width:none;}
+  @media(max-width:860px){
+    .slide{padding:28px 5vw;overflow-y:auto;align-items:flex-start;}
+    h1{font-size:38px;} h2{font-size:30px;} p.lede{font-size:19px;} p,li{font-size:17px;}
+    .cols,.cols.wide-left{grid-template-columns:1fr;gap:14px;}
+    .stats{grid-template-columns:1fr;gap:8px;}.stat{min-height:0;}
+    .steps{grid-template-columns:1fr 1fr;}.figure svg{max-height:260px;}
+    table{table-layout:fixed;font-size:11px;}
+    th,td{font-size:11px;padding:6px 5px;white-space:normal;overflow-wrap:anywhere;}
+    .slide-num{display:none;}
+  }
+  @media print{
+    html,body{height:auto;overflow:visible;}.deck{display:block;height:auto;overflow:visible;}
+    .slide{height:7.5in;width:13.333in;page-break-after:always;overflow:hidden;border:0;}
+  }
+</style>
+</head>
+<body>
+<main class="deck">
+
+<section class="slide title-slide">
+  <div class="inner">
+    <span class="eyebrow">Biweekly progress update · SPARC · Sprint 2</span>
+    <h1>Mixture-of-Experts for Spaceflight Transcriptomics</h1>
+    <p class="lede">A corrected evaluation changes the Stage 1 conclusion: species-specialized experts have substantial routing headroom, and expression alone can recover it.</p>
+    <div class="meta">
+      <span><b>Date</b> 2026-07-16</span>
+      <span><b>Presenter</b> Martin</span>
+      <span><b>Institution</b> NASA Ames</span>
+    </div>
+  </div>
+  <span class="slide-num">01</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Last update → this update</span>
+    <h2>The earlier “no headroom” result was not a valid MoE test</h2>
+    <div class="cols">
+      <div>
+        <h3>What July 9 appeared to show</h3>
+        <p class="lede">A fixed blend helped slightly, but choosing among specialists added almost nothing.</p>
+        <div class="callout warm"><p><strong>Old conclusion:</strong> expert quality may be too weak to justify routing.</p></div>
+      </div>
+      <div class="panel">
+        <h3>What was wrong</h3>
+        <ul>
+          <li>Raw TPM entered models trained on <code>log1p(TPM)</code>.</li>
+          <li>Blend weights were fitted on the reporting cohort.</li>
+          <li>The gene-mean baseline came from test data.</li>
+          <li>A hard selector was treated as the routing ceiling.</li>
+          <li>Large GEO studies dominated sample-weighted averages.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout"><p><strong>This sprint’s main contribution:</strong> freeze a leakage-resistant, study-aware evaluation before interpreting MoE headroom.</p></div>
+  </div>
+  <span class="slide-num">02</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">V3 · Scale experiment</span>
+    <h2>Same experts and objective, four times more data</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dimension</th><th>V2 · 5k</th><th>V3 · 20k</th><th>Held constant</th></tr></thead>
+        <tbody>
+          <tr><td>Train / validation rows</td><td>4,000 / 800</td><td>16,000 / 3,200</td><td>Species-balanced design</td></tr>
+          <tr><td>Experts</td><td>Human · Mouse · Mixed</td><td>Human · Mouse · Mixed</td><td>One 15,448-gene vocabulary</td></tr>
+          <tr><td>Backbone</td><td>4-layer Performer</td><td>Same</td><td>Architecture and gene order</td></tr>
+          <tr><td>Objective</td><td>30% masked reconstruction</td><td>Same</td><td><code>log1p_tpm</code>, wd 0.01</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">0.279</div><div class="label">Human V3 best validation loss</div></div>
+      <div class="stat"><div class="n">0.231</div><div class="label">Mouse V3 best validation loss</div></div>
+      <div class="stat"><div class="n">0.546</div><div class="label">Pooled mixed V3 validation loss</div></div>
+    </div>
+    <p class="source">Caveat: V2/V3 draws and epoch budgets differ, so this is controlled in architecture/objective, not a perfect single-variable experiment.</p>
+  </div>
+  <span class="slide-num">03</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Corrected protocol</span>
+    <h2>A frozen interspecies test with no answer leakage</h2>
+    <div class="steps">
+      <div class="step"><div class="k">01 · COHORT</div><b>Human + mouse</b><span>667-sample diagnostic; 103-study strict sensitivity cohort.</span></div>
+      <div class="step"><div class="k">02 · INPUT</div><b>Training space</b><span>Exactly one <code>log1p</code> transform and a shared 30% mask.</span></div>
+      <div class="step"><div class="k">03 · FIT</div><b>Out of fold</b><span>Fixed and species-soft weights fit without using held-out studies.</span></div>
+      <div class="step"><div class="k">04 · ESTIMATE</div><b>Study balanced</b><span>Equal study weight within species; clustered bootstrap intervals.</span></div>
+    </div>
+    <div class="figure" style="margin-top:18px;">
+      <svg viewBox="0 0 760 180" role="img" aria-label="Evaluation ladder from pooled model through fixed blend and adaptive routing to oracle">
+        <rect class="box-white" x="20" y="55" width="150" height="58" rx="6"/><text class="box-text-dark" x="95" y="79">One pooled model</text><text class="axis-label" x="95" y="100" text-anchor="middle">single expert baseline</text>
+        <path class="conn" d="M170 84 H215"/><text class="value" x="193" y="75" text-anchor="middle">→</text>
+        <rect class="box" x="215" y="55" width="150" height="58" rx="6"/><text class="box-text" x="290" y="79">Fixed blend</text><text class="axis-label" x="290" y="100" text-anchor="middle">ensemble control</text>
+        <path class="conn" d="M365 84 H410"/><text class="value" x="388" y="75" text-anchor="middle">→</text>
+        <rect class="box" x="410" y="55" width="150" height="58" rx="6"/><text class="box-text" x="485" y="79">Adaptive router</text><text class="axis-label" x="485" y="100" text-anchor="middle">must beat fixed</text>
+        <path class="conn" d="M560 84 H605"/><text class="value" x="583" y="75" text-anchor="middle">→</text>
+        <rect class="box-white" x="605" y="55" width="135" height="58" rx="6"/><text class="box-text-dark" x="672" y="79">Soft oracle</text><text class="axis-label" x="672" y="100" text-anchor="middle">target-seeing ceiling</text>
+      </svg>
+      <p class="caption">MoE evidence requires adaptive routing to beat the fixed ensemble, not merely the pooled model.</p>
+    </div>
+  </div>
+  <span class="slide-num">04</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Stage 1 result</span>
+    <h2>Correct evaluation reveals large routing headroom</h2>
+    <div class="figure">
+      <svg viewBox="0 0 760 300" role="img" aria-label="Relative MSE reduction versus the out-of-fold fixed blend for 5k and 20k species routing conditions">
+        <line class="grid" x1="175" y1="245" x2="720" y2="245"/>
+        <line class="grid" x1="175" y1="190" x2="720" y2="190"/>
+        <line class="grid" x1="175" y1="135" x2="720" y2="135"/>
+        <line class="grid" x1="175" y1="80" x2="720" y2="80"/>
+        <text class="axis-label" x="164" y="250" text-anchor="end">0%</text><text class="axis-label" x="164" y="195" text-anchor="end">10%</text><text class="axis-label" x="164" y="140" text-anchor="end">20%</text><text class="axis-label" x="164" y="85" text-anchor="end">30%</text>
+        <rect class="bar5" x="220" y="146" width="58" height="99" rx="3"/><rect class="bar20" x="286" y="61" width="58" height="184" rx="3"/>
+        <text class="value" x="249" y="136" text-anchor="middle">17.9%</text><text class="value" x="315" y="51" text-anchor="middle">33.5%</text><text class="axis-label" x="282" y="269" text-anchor="middle">Hard species route</text>
+        <rect class="bar5" x="415" y="142" width="58" height="103" rx="3"/><rect class="bar20" x="481" y="54" width="58" height="191" rx="3"/>
+        <text class="value" x="444" y="132" text-anchor="middle">18.7%</text><text class="value" x="510" y="44" text-anchor="middle">34.7%</text><text class="axis-label" x="477" y="269" text-anchor="middle">Soft species route</text>
+        <rect class="bar5" x="610" y="139" width="58" height="106" rx="3"/><rect class="bar20" x="676" y="52" width="44" height="193" rx="3"/>
+        <text class="value" x="639" y="129" text-anchor="middle">19.3%</text><text class="value" x="698" y="42" text-anchor="middle">35.0%</text><text class="axis-label" x="665" y="269" text-anchor="middle">Soft oracle</text>
+        <rect class="bar5" x="520" y="282" width="15" height="10"/><text class="axis-label" x="541" y="291">V2 · 5k</text><rect class="bar20" x="610" y="282" width="15" height="10"/><text class="axis-label" x="631" y="291">V3 · 20k</text>
+      </svg>
+      <p class="caption">Strict study-disjoint cohort · relative MSE reduction versus the out-of-fold fixed blend.</p>
+    </div>
+    <div class="callout"><p><strong>Strict 20k soft routing:</strong> 34.7% lower MSE; absolute gain 0.1649, 95% CI [0.1575, 0.1726]; residual-Pearson gain +0.1198, CI [0.1130, 0.1267].</p></div>
+  </div>
+  <span class="slide-num">05</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Deployment question</span>
+    <h2>Can expression infer the route without being told the species?</h2>
+    <div class="cols wide-left">
+      <div class="figure" style="margin-top:0;">
+        <svg viewBox="0 0 650 245" role="img" aria-label="Masked expression enters a blind gate that routes to human and mouse experts before combining their predictions">
+          <rect class="box-white" x="15" y="87" width="150" height="58" rx="6"/><text class="box-text-dark" x="90" y="110">Masked expression</text><text class="axis-label" x="90" y="132" text-anchor="middle">targets hidden</text>
+          <path class="conn" d="M165 116 H220"/><text class="value" x="193" y="107" text-anchor="middle">→</text>
+          <rect class="box" x="220" y="87" width="130" height="58" rx="6"/><text class="box-text" x="285" y="110">Blind gate</text><text class="axis-label" x="285" y="132" text-anchor="middle">expression only</text>
+          <path class="conn" d="M350 116 C390 116 390 58 430 58"/><path class="conn" d="M350 116 C390 116 390 174 430 174"/>
+          <rect class="box" x="430" y="30" width="170" height="56" rx="6"/><text class="box-text" x="515" y="54">Human expert</text><text class="axis-label" x="515" y="74" text-anchor="middle">frozen V3</text>
+          <rect class="box" x="430" y="146" width="170" height="56" rx="6"/><text class="box-text" x="515" y="170">Mouse expert</text><text class="axis-label" x="515" y="190" text-anchor="middle">frozen V3</text>
+        </svg>
+        <p class="caption">Gate calibration and strict test share no connected GEO study groups.</p>
+      </div>
+      <div>
+        <div class="stat"><div class="n">99.03%</div><div class="label">Strict species accuracy · 102/103 samples</div></div>
+        <div class="stat" style="margin-top:12px;"><div class="n">33.95%</div><div class="label">Blind-soft MSE reduction versus fixed blend</div></div>
+        <div class="stat" style="margin-top:12px;"><div class="n">1.11%</div><div class="label">MSE gap from blind-soft to true-species soft</div></div>
+      </div>
+    </div>
+    <div class="callout"><p><strong>Answer:</strong> for species, expression alone recovers almost all of the measurable routing ceiling.</p></div>
+  </div>
+  <span class="slide-num">06</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Interpretation</span>
+    <h2>What Stage 1 now establishes — and what it does not</h2>
+    <div class="cols">
+      <div class="panel">
+        <span class="badge">Supported</span>
+        <h3 style="margin-top:12px;">Species specialization is useful</h3>
+        <ul>
+          <li>Hard routing already gives most of the gain.</li>
+          <li>Soft routing adds a smaller refinement.</li>
+          <li>A blind expression gate recovers the route.</li>
+          <li>Scaling 5k → 20k increases adaptive headroom.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <span class="badge running">Still controlled</span>
+        <h3 style="margin-top:12px;">Not yet a complete systems claim</h3>
+        <ul>
+          <li>Three full experts store more parameters than one model.</li>
+          <li>The pooled V3 model had species-local batches.</li>
+          <li>Current results are reconstruction, not downstream spaceflight classification.</li>
+          <li>Organ specialization must be tested independently.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warm"><p><strong>Active control:</strong> the pooled model is being retrained with globally shuffled cross-species batches; frozen evaluation will start automatically after completion.</p></div>
+  </div>
+  <span class="slide-num">07</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Stage 2 hypothesis</span>
+    <h2>Unknown human organ → expression gate → organ specialist</h2>
+    <div class="figure">
+      <svg viewBox="0 0 790 230" role="img" aria-label="Unknown human RNA-seq is routed by an expression-only organ gate to one of several organ experts and compared with a pooled general model">
+        <rect class="box-white" x="18" y="84" width="155" height="62" rx="6"/><text class="box-text-dark" x="95" y="108">Unknown human</text><text class="box-text-dark" x="95" y="129">RNA-seq</text>
+        <path class="conn" d="M173 115 H225"/><text class="value" x="199" y="106" text-anchor="middle">→</text>
+        <rect class="box" x="225" y="84" width="145" height="62" rx="6"/><text class="box-text" x="297" y="108">Expression-only</text><text class="box-text" x="297" y="129">organ gate</text>
+        <path class="conn" d="M370 115 C410 115 410 38 455 38"/><path class="conn" d="M370 115 H455"/><path class="conn" d="M370 115 C410 115 410 192 455 192"/>
+        <rect class="box" x="455" y="14" width="145" height="48" rx="6"/><text class="box-text" x="527" y="43">Brain expert</text>
+        <rect class="box" x="455" y="91" width="145" height="48" rx="6"/><text class="box-text" x="527" y="120">Liver expert</text>
+        <rect class="box" x="455" y="168" width="145" height="48" rx="6"/><text class="box-text" x="527" y="197">Other experts</text>
+        <path class="conn" d="M600 38 C650 38 650 84 690 84"/><path class="conn" d="M600 115 H690"/><path class="conn" d="M600 192 C650 192 650 146 690 146"/>
+        <rect class="box-white" x="690" y="84" width="84" height="62" rx="6"/><text class="box-text-dark" x="732" y="108">Masked</text><text class="box-text-dark" x="732" y="129">genes</text>
+      </svg>
+      <p class="caption">Primary test: blind top-1 organ routing versus one pooled human model on the exact same training-sample union.</p>
+    </div>
+    <div class="cols" style="margin-top:14px;">
+      <div><h3>Fair data</h3><p><code>Σ specialist Nₖ = pooled N</code>. Every specialist row appears exactly once in the pooled training union.</p></div>
+      <div><h3>Fair inference</h3><p>Top-1 executes one expert plus a small gate; report the extra storage cost separately.</p></div>
+    </div>
+  </div>
+  <span class="slide-num">08</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Stage 2 · Immediate plan</span>
+    <h2>A five-organ pipeline pilot, then scale only if it survives controls</h2>
+    <div class="cols wide-left">
+      <div>
+        <div class="stats" style="grid-template-columns:repeat(3,1fr);margin-top:0;">
+          <div class="stat"><div class="n">K = 5</div><div class="label">Brain · skin · liver · colon · lung</div></div>
+          <div class="stat"><div class="n">2,856</div><div class="label">Conservative pilot samples</div></div>
+          <div class="stat"><div class="n">317</div><div class="label">Connected GEO study groups</div></div>
+        </div>
+        <ul class="checklist">
+          <li><span class="when">NOW</span><span class="what"><strong>Clean labels:</strong> remove residual tumor/cell-source shorthand and expand ontology-backed coverage.</span></li>
+          <li><span class="when">NEXT</span><span class="what"><strong>Smoke test:</strong> pooled model, organ experts, fixed blend, true-organ route, blind gate, soft oracle.</span></li>
+          <li><span class="when">GO / NO-GO</span><span class="what"><strong>Scale only if</strong> blind top-1 improves MSE by at least 5%, with positive study-bootstrap and residual-correlation intervals.</span></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <span class="badge running">Current run</span>
+        <h3 style="margin-top:12px;">Shuffled pooled control</h3>
+        <p>Expected after this presentation, not used as a result today.</p>
+        <p><strong>Automatic next step:</strong> full + strict evaluation and blind-gate rerun on the frozen masks.</p>
+        <div class="rule"></div>
+        <p style="color:var(--muted);"><strong>Decision:</strong> Stage 1 is strong enough to begin Stage 2 data work, but not to skip the controls.</p>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">09</span>
+</section>
+
+</main>
+<script>
+(function(){
+  var deck=document.querySelector('.deck');
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  function current(){return Math.round(deck.scrollLeft/window.innerWidth);}
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i));deck.scrollTo({left:i*window.innerWidth,behavior:'smooth'});}
+  document.addEventListener('keydown',function(event){
+    if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(event.key)>-1){event.preventDefault();go(current()+1);}
+    if(['ArrowLeft','ArrowUp','PageUp'].indexOf(event.key)>-1){event.preventDefault();go(current()-1);}
+  });
+  deck.addEventListener('wheel',function(event){if(Math.abs(event.deltaY)>Math.abs(event.deltaX)){event.preventDefault();deck.scrollLeft+=event.deltaY;}},{passive:false});
+})();
+</script>
+</body>
+</html>
