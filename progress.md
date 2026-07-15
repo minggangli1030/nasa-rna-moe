@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-15 12:31 PDT / 2026-07-15 19:31 UTC
+**Last updated:** 2026-07-15 12:52 PDT / 2026-07-15 19:52 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -34,9 +34,9 @@ serve as the primary interspecies-routing benchmark.
   `mixed20k_shuffled_20260715`. It uses the same 16,000 train / 3,200
   validation rows and V3 architecture, but `data_mode=preload` makes the
   `DistributedSampler` shuffle individual rows globally. Remote preflight found
-  1,983/2,000 epoch-0 batches contained both species. At 19:01 UTC it was at
-  epoch 1 batch 1,000/2,000, about 4.11 seconds/batch and 100% A100 utilization,
-  with an estimated 33 hours 14 minutes remaining. It is therefore not expected
+  1,983/2,000 epoch-0 batches contained both species. At 19:34 UTC it was at
+  epoch 1 batch 1,500/2,000, about 4.11 seconds/batch and 100% A100 utilization,
+  with an estimated 32 hours 38 minutes remaining. It is therefore not expected
   to finish within 24 hours or before the July 16 presentation.
   Logs are in `results/mixed_20k_v3_shuffled_train.log`; checkpoints write
   directly to persistent
@@ -58,10 +58,18 @@ serve as the primary interspecies-routing benchmark.
   and fair Stage 2 organ design. The current pooled retrain is labeled ongoing,
   not presented as a partial result. Slide 9 embeds the final PaperPlot figure,
   `presentation/human-organ-moe-overarching-plan.png`, beneath the exact fair
-  comparison question and explicitly states the practical value of blind routing,
-  top-1 specialist execution, and low-confidence fallback. Its source prompt is
+  comparison question. The slide uses a centered, near-full-bleed layout for
+  diagram legibility; practical implications remain in the speaker notes rather
+  than a competing footer bar. Its source prompt is
   `presentation/paperplot-human-organ-moe-prompt.md`. Desktop/laptop/mobile
   render checks pass with no horizontal overflow or clipped elements.
+- Keep `moe-reboot-partial` shelved for now. The active shuffled 20k control is
+  the decision-critical GPU experiment; organ progress is currently limited by
+  manual label/QC work and evaluator preparation, not compute. Reassess the
+  partial VM after shuffled evaluation determines whether the next GPU run
+  should be a replication/control or a frozen-cohort Stage 2 pilot. If it is
+  reused, write all checkpoints and results directly to persistent storage
+  because the partial VM is ephemeral.
 - The original V3 checkpoints and all prior evaluation artifacts remain
   untouched on persistent storage.
 - **Original three 20k runs and backups complete.** Final epoch-15 checkpoints are human
