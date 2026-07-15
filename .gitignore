@@ -36,6 +36,8 @@ checkpoints_moe/
 # experiment logs
 wandb/
 logs/
+backups/
+results/
 slurm-*.out
 *.out
 

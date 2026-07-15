@@ -17,13 +17,15 @@ Usage:
   # Skip download if cached parquet already exists:
   python evaluate_osdr.py \\
     --checkpoints checkpoints/human_5k/best_model.pt \\
-    --osdr-parquet data/osdr/osdr_expression.parquet \\
+    --osdr-parquet data/osdr/osdr_expression_v3.parquet \\
+    --osdr-coverage data/osdr/osdr_coverage_v3.npz \\
     --output-dir results/osdr_eval
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -109,10 +111,16 @@ MOUSE_EXON_FILE = BRIDGE_RNA_DATA / "gencode" / "gencode_v49_mouse_gene_exon_len
 # Users can override with --metadata-csv
 DEFAULT_METADATA_CSV = BRIDGE_RNA_DATA / "osdr" / "metadata_new.csv"
 DEFAULT_OSDR_CACHE = BRIDGE_RNA_DATA / "osdr"
+OSDR_CACHE_SCHEMA_VERSION = 3
+OSDR_EXPRESSION_FILENAME = "osdr_expression_v3.parquet"
+OSDR_COVERAGE_FILENAME = "osdr_coverage_v3.npz"
+OSDR_MANIFEST_FILENAME = "osdr_manifest_v3.json"
+OSDR_EXPRESSION_SPACE = "log1p_tpm"
+OSDR_NORMALIZATION_ORDER = "decode_valid_length_qc_map_aggregate_canonical_tpm_log1p"
 
 # Mask ratios + block masking for evaluation
 MASK_RATIOS = [0.15, 0.50, 0.80]
-BLOCK_SIZES = [50]  # block masking: mask contiguous runs of this many genes
+BLOCK_SIZES = []     # alphabetical vocabulary blocks are not a biological mask
 BATCH_SIZE = 4      # inference batch size (conservative for 11GB 1080 Ti with 14k+ genes)
 
 
@@ -147,11 +155,229 @@ def tpm_normalize_mouse(counts_df: pd.DataFrame, exon_lengths: pd.Series) -> pd.
     counts_df: rows = genes (mouse symbols), cols = samples
     Returns TPM DataFrame, same shape.
     """
-    L = exon_lengths.reindex(counts_df.index).fillna(1000).replace(0, 1000) / 1000.0
+    L = exon_lengths.reindex(counts_df.index)
+    if L.isna().any() or (L <= 0).any():
+        missing = L.index[L.isna() | (L <= 0)].tolist()
+        raise ValueError(f"missing/invalid exon lengths for genes: {missing[:5]}")
+    L = L / 1000.0
     rpk = counts_df.div(L, axis=0)
     scaling = rpk.sum(axis=0)
+    if scaling.isna().any() or (scaling <= 0).any():
+        raise ValueError("TPM denominator is nonfinite or zero")
     tpm = rpk.div(scaling, axis=1) * 1e6
     return tpm.astype("float32")
+
+
+def build_mouse_canonical_reference(
+    canonical_genes: list[str],
+    exon_lengths: pd.Series,
+    ortholog_map: dict[str, str],
+    osdr_mapping_path: Optional[Path] = None,
+) -> tuple[dict[str, str], dict[str, str], pd.Series]:
+    """Return training-exact symbol mappings plus ENSMUSG ID resolution."""
+    canonical_set = set(canonical_genes)
+    training_pairs = [
+        (str(mouse).strip(), str(human).strip())
+        for mouse, human in ortholog_map.items()
+        if str(human).strip() in canonical_set
+    ]
+    symbol_to_human = dict(training_pairs)
+    human_to_symbols: dict[str, list[str]] = {}
+    for mouse, human in training_pairs:
+        human_to_symbols.setdefault(human, []).append(mouse)
+    missing = [gene for gene in canonical_genes if gene not in human_to_symbols]
+    ambiguous = [gene for gene, symbols in human_to_symbols.items() if len(symbols) != 1]
+    if missing or ambiguous:
+        raise ValueError(
+            "training ortholog map is not one-to-one for canonical genes: "
+            f"missing={missing[:5]}, ambiguous={ambiguous[:5]}"
+        )
+
+    mouse_symbols = [human_to_symbols[gene][0] for gene in canonical_genes]
+    if len(set(mouse_symbols)) != len(mouse_symbols):
+        raise ValueError("training mouse symbols are not unique in canonical space")
+    canonical_lengths = exon_lengths.reindex(mouse_symbols)
+    canonical_lengths.index = canonical_genes
+    if canonical_lengths.isna().any() or (canonical_lengths <= 0).any():
+        bad = canonical_lengths.index[canonical_lengths.isna() | (canonical_lengths <= 0)].tolist()
+        raise ValueError(f"canonical mouse exon lengths are missing: {bad[:5]}")
+
+    # This table only decodes stable IDs to mouse symbols. Canonical identity
+    # and normalization lengths stay pinned to the training ortholog table.
+    path = osdr_mapping_path or (BRIDGE_RNA_DATA / "osdr" / "human_mouse_orthologs.csv")
+    table = pd.read_csv(path).dropna(subset=["Mouse gene stable ID", "Mouse gene name"])
+    table = table[table["Mouse homology type"] == "ortholog_one2one"].copy()
+    table["Gene name"] = table["Gene name"].fillna("").astype(str).str.strip()
+    table["Mouse gene stable ID"] = table["Mouse gene stable ID"].astype(str).str.strip()
+    table["Mouse gene name"] = table["Mouse gene name"].astype(str).str.strip()
+    human_to_mouse = {human: mouse for mouse, human in symbol_to_human.items()}
+    table["resolved_mouse_symbol"] = [
+        human_to_mouse.get(human, mouse)
+        for human, mouse in zip(table["Gene name"], table["Mouse gene name"])
+    ]
+    conflicts = table.groupby("Mouse gene stable ID")["resolved_mouse_symbol"].nunique()
+    conflicts = conflicts[conflicts > 1]
+    if len(conflicts):
+        raise ValueError(
+            f"ENSMUSG IDs resolve to multiple mouse symbols: {conflicts.index[:5].tolist()}"
+        )
+    ensmusg_to_mouse = dict(zip(table["Mouse gene stable ID"], table["resolved_mouse_symbol"]))
+    return symbol_to_human, ensmusg_to_mouse, canonical_lengths
+
+
+def decode_mouse_counts_for_qc(
+    counts: pd.DataFrame,
+    exon_lengths: pd.Series,
+    ensmusg_to_mouse: dict[str, str],
+) -> pd.DataFrame:
+    """Decode IDs, aggregate duplicate symbols, and retain valid-length genes."""
+    values = counts.to_numpy(dtype=np.float64)
+    if not np.isfinite(values).all():
+        raise ValueError("raw OSDR counts contain nonfinite values")
+    if values.size and float(values.min()) < 0:
+        raise ValueError("raw OSDR counts contain negative values")
+
+    decoded = []
+    for raw_id in counts.index.astype(str):
+        gene_id = raw_id.strip()
+        if gene_id.startswith("ENSMUSG"):
+            gene_id = gene_id.split(".", 1)[0]
+            decoded.append(ensmusg_to_mouse.get(gene_id, ""))
+        else:
+            decoded.append(gene_id)
+    valid_length_symbols = set(exon_lengths.index[exon_lengths.notna() & (exon_lengths > 0)])
+    use = np.asarray([symbol in valid_length_symbols for symbol in decoded], dtype=bool)
+    if not use.any():
+        raise ValueError("OSDR count table has no mouse genes with valid exon lengths")
+    filtered = counts.loc[use].copy()
+    filtered.index = np.asarray(decoded, dtype=object)[use]
+    return filtered.groupby(level=0, sort=False).sum()
+
+
+def canonicalize_mouse_counts(
+    counts: pd.DataFrame,
+    canonical_genes: list[str],
+    symbol_to_human: dict[str, str],
+    ensmusg_to_mouse: dict[str, str],
+) -> tuple[pd.DataFrame, np.ndarray]:
+    """Map and aggregate raw mouse counts in canonical human-symbol space."""
+    values = counts.to_numpy(dtype=np.float64)
+    if not np.isfinite(values).all():
+        raise ValueError("raw OSDR counts contain nonfinite values")
+    if values.size and float(values.min()) < 0:
+        raise ValueError("raw OSDR counts contain negative values")
+    mapped = []
+    for raw_id in counts.index.astype(str):
+        gene_id = raw_id.strip()
+        if gene_id.startswith("ENSMUSG"):
+            gene_id = gene_id.split(".", 1)[0]
+            mouse_symbol = ensmusg_to_mouse.get(gene_id, "")
+        else:
+            mouse_symbol = gene_id
+        mapped.append(symbol_to_human.get(mouse_symbol, ""))
+    use = np.asarray([bool(gene) for gene in mapped])
+    if not use.any():
+        raise ValueError("OSDR count table has no strict canonical ortholog mappings")
+    canonical = counts.loc[use].copy()
+    canonical.index = np.asarray(mapped, dtype=object)[use]
+    canonical = canonical.groupby(level=0, sort=False).sum()
+    coverage = np.asarray([gene in canonical.index for gene in canonical_genes], dtype=bool)
+    canonical = canonical.reindex(canonical_genes, fill_value=0.0)
+    return canonical, coverage
+
+
+def parse_spaceflight_condition(value) -> tuple[str, float]:
+    """Preserve condition text and map only exact flight/ground labels."""
+    if pd.isna(value):
+        return "", float("nan")
+    condition = " ".join(str(value).strip().split())
+    normalized = condition.casefold()
+    if normalized == "space flight":
+        return condition, 1.0
+    if normalized == "ground control":
+        return condition, 0.0
+    return condition, float("nan")
+
+
+def validate_spaceflight_labels(frame: pd.DataFrame) -> np.ndarray:
+    """Return numeric flight labels, rejecting missing columns or invalid states."""
+    if "spaceflight" not in frame.columns:
+        raise ValueError("OSDR expression is missing required 'spaceflight' labels")
+    try:
+        labels = pd.to_numeric(frame["spaceflight"], errors="raise").to_numpy(dtype=float)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("OSDR spaceflight labels must be numeric 0, 1, or NaN") from exc
+    invalid = ~(np.isnan(labels) | (labels == 0.0) | (labels == 1.0))
+    if invalid.any():
+        values = np.unique(labels[invalid]).tolist()
+        raise ValueError(f"OSDR spaceflight labels contain invalid values: {values[:5]}")
+    return labels
+
+
+def validate_log1p_tpm(values: np.ndarray, context: str = "OSDR expression") -> None:
+    """Reject raw TPM and other expression spaces before model inference."""
+    values = np.asarray(values)
+    if values.ndim != 2 or not values.shape[0] or not values.shape[1]:
+        raise ValueError(f"{context} must be a nonempty 2D matrix")
+    if not np.isfinite(values).all():
+        raise ValueError(f"{context} contains nonfinite values")
+    if float(values.min()) < -1e-6:
+        raise ValueError(f"{context} contains negative log1p-TPM values")
+    max_log_tpm = float(np.log1p(1e6))
+    if float(values.max()) > max_log_tpm + 1e-3:
+        raise ValueError(f"{context} is not log1p TPM (value exceeds log1p(1e6))")
+    with np.errstate(over="ignore", invalid="ignore"):
+        tpm_sums = np.expm1(values.astype(np.float64)).sum(axis=1)
+    if not np.isfinite(tpm_sums).all() or not np.allclose(
+        tpm_sums, 1e6, rtol=1e-3, atol=100.0
+    ):
+        raise ValueError(
+            f"{context} is not log1p TPM (reconstructed TPM rows do not sum to 1e6)"
+        )
+
+
+def _sha256_bytes(value: bytes) -> str:
+    return hashlib.sha256(value).hexdigest()
+
+
+def make_osdr_cache_fingerprint(
+    metadata_csv: Path,
+    canonical_genes: list[str],
+    symbol_to_human: dict[str, str],
+    ensmusg_to_mouse: dict[str, str],
+    canonical_lengths: pd.Series,
+    qc_min_nonzero: int,
+) -> tuple[str, dict]:
+    """Fingerprint lightweight inputs that determine the processed cache."""
+    human_to_mouse = {human: mouse for mouse, human in symbol_to_human.items()}
+    canonical_rows = [
+        (gene, human_to_mouse[gene], float(canonical_lengths.loc[gene]))
+        for gene in canonical_genes
+    ]
+    inputs = {
+        "metadata_sha256": _sha256_bytes(Path(metadata_csv).read_bytes()),
+        "canonical_reference_sha256": _sha256_bytes(
+            json.dumps(canonical_rows, separators=(",", ":")).encode()
+        ),
+        "ensmusg_resolution_sha256": _sha256_bytes(
+            json.dumps(sorted(ensmusg_to_mouse.items()), separators=(",", ":")).encode()
+        ),
+        "qc_min_nonzero": int(qc_min_nonzero),
+        "expression_space": OSDR_EXPRESSION_SPACE,
+        "normalization_order": OSDR_NORMALIZATION_ORDER,
+    }
+    fingerprint = _sha256_bytes(
+        json.dumps(inputs, sort_keys=True, separators=(",", ":")).encode()
+    )
+    return fingerprint, inputs
+
+
+def _expression_sha256(values: np.ndarray, sample_ids: np.ndarray, genes: list[str]) -> str:
+    digest = hashlib.sha256()
+    digest.update(json.dumps(genes, separators=(",", ":")).encode())
+    digest.update(json.dumps(sample_ids.astype(str).tolist(), separators=(",", ":")).encode())
+    digest.update(np.ascontiguousarray(values, dtype="<f4").tobytes())
+    return digest.hexdigest()
 
 
 def download_osdr_study(study_id: str, counts_filename: str, cache_dir: Path) -> Optional[pd.DataFrame]:
@@ -215,6 +441,8 @@ def preprocess_osdr(
     canonical_genes: list[str],
     exon_lengths: pd.Series,
     download: bool = True,
+    force_rebuild: bool = False,
+    qc_min_nonzero: int = 14_000,
 ) -> pd.DataFrame:
     """
     Build (or reload from cache) an OSDR expression matrix aligned to bridge-rna gene space.
@@ -222,15 +450,51 @@ def preprocess_osdr(
     Returns DataFrame: rows = samples, cols = canonical_genes (human symbols), values = log1p(TPM).
     Missing genes filled with 0.
     """
-    cache_parquet = cache_dir / "osdr_expression.parquet"
-    if cache_parquet.exists():
-        print(f"[OSDR] Loading cached parquet: {cache_parquet}", flush=True)
-        return pd.read_parquet(cache_parquet)
+    cache_parquet = cache_dir / OSDR_EXPRESSION_FILENAME
+    coverage_path = cache_dir / OSDR_COVERAGE_FILENAME
+    manifest_path = cache_dir / OSDR_MANIFEST_FILENAME
+    symbol_to_human, ensmusg_to_mouse, canonical_lengths = build_mouse_canonical_reference(
+        canonical_genes, exon_lengths, ortholog_map
+    )
+    cache_fingerprint, cache_inputs = make_osdr_cache_fingerprint(
+        metadata_csv,
+        canonical_genes,
+        symbol_to_human,
+        ensmusg_to_mouse,
+        canonical_lengths,
+        qc_min_nonzero,
+    )
+    if cache_parquet.exists() and coverage_path.exists() and manifest_path.exists() and not force_rebuild:
+        manifest = json.loads(manifest_path.read_text())
+        if manifest.get("schema_version") != OSDR_CACHE_SCHEMA_VERSION:
+            raise ValueError("OSDR cache schema is stale; rebuild with --force-rebuild")
+        if manifest.get("expression_space") != OSDR_EXPRESSION_SPACE:
+            raise ValueError("OSDR cache expression space is invalid; rebuild with --force-rebuild")
+        if manifest.get("cache_fingerprint") != cache_fingerprint:
+            raise ValueError("OSDR cache inputs changed; rebuild with --force-rebuild")
+        cached = pd.read_parquet(cache_parquet)
+        gene_values = cached[canonical_genes].to_numpy(dtype=np.float32)
+        validate_log1p_tpm(gene_values, "corrected OSDR cache")
+        validate_spaceflight_labels(cached)
+        sample_ids = cached.index.astype(str).to_numpy()
+        expression_sha256 = _expression_sha256(gene_values, sample_ids, canonical_genes)
+        if manifest.get("expression_sha256") != expression_sha256:
+            raise ValueError("OSDR cache expression hash differs from its manifest")
+        load_coverage_artifact(
+            coverage_path,
+            sample_ids,
+            canonical_genes,
+            expected_cache_fingerprint=cache_fingerprint,
+            expected_expression_sha256=expression_sha256,
+        )
+        print(f"[OSDR] Loading corrected cache: {cache_parquet}", flush=True)
+        return cached
 
     print(f"[OSDR] Building expression matrix from {metadata_csv} ...", flush=True)
     meta = pd.read_csv(metadata_csv)
 
-    # Filter to mouse RNA-seq samples with spaceflight label
+    # Reconstruction uses all bulk mouse RNA-seq samples. Binary downstream
+    # analyses can select only exact Space Flight / Ground Control labels.
     required_cols = {"id.sample name", "id.accession", "counts_file", "counts_path",
                      "study.factor value.spaceflight", "study.characteristics.organism",
                      "has_rna_sequencing_rna_seq"}
@@ -240,18 +504,16 @@ def preprocess_osdr(
 
     meta = meta[meta["study.characteristics.organism"] == "Mus musculus"]
     meta = meta[meta["has_rna_sequencing_rna_seq"] == 1]
+    if "has_single_cell_rna_sequencing" in meta.columns:
+        meta = meta[meta["has_single_cell_rna_sequencing"].fillna(0).astype(int) != 1]
     meta = meta.dropna(subset=["counts_file", "id.accession"])
-    print(f"[OSDR] {len(meta)} mouse RNA-seq samples across {meta['id.accession'].nunique()} studies", flush=True)
+    print(f"[OSDR] {len(meta)} bulk mouse RNA-seq metadata rows across "
+          f"{meta['id.accession'].nunique()} studies", flush=True)
 
-    # Build mouse gene → human gene map (symbol level)
-    # ortholog_map: mouse_symbol → human_symbol
-    canonical_set = set(canonical_genes)
-
-    # Will accumulate per-study DataFrames (rows = samples, cols = mouse ENSMUSG or symbol)
     study_frames = []
+    coverage_frames = []
 
-    for study_id, grp in meta.groupby("id.accession"):
-        counts_filename = grp["counts_file"].iloc[0]
+    for (study_id, counts_filename), grp in meta.groupby(["id.accession", "counts_file"]):
 
         # Try to load from local raw dir first
         counts_df = None
@@ -268,98 +530,169 @@ def preprocess_osdr(
             print(f"  [{study_id}] SKIPPED (no data)", flush=True)
             continue
 
-        # counts_df: rows = genes, cols = sample names
+        # Normalize known filename-specific sample suffixes before matching.
+        counts_df.columns = counts_df.columns.astype(str).str.strip()
+        if "GLDS-462" in counts_filename:
+            counts_df.columns = counts_df.columns.str.replace("_mRNA", "", regex=False)
+
         sample_names = grp["id.sample name"].tolist()
         available = [s for s in sample_names if s in counts_df.columns]
-        if not available:
-            # Try stripping whitespace
-            counts_df.columns = counts_df.columns.str.strip()
-            available = [s for s in sample_names if s in counts_df.columns]
         if not available:
             print(f"  [{study_id}] WARN: no matching sample columns found", flush=True)
             continue
 
-        # Handle special case for GLDS-462
-        if "GLDS-462" in counts_filename:
-            counts_df.columns = counts_df.columns.str.replace("_mRNA", "", regex=False)
-            available = [s for s in sample_names if s in counts_df.columns]
-
         sub = counts_df[available].copy()
-
-        # QC: filter samples with too few nonzero genes
-        nonzero = (sub > 0).sum(axis=0)
-        sub = sub.loc[:, nonzero >= 8000]
-        if sub.shape[1] == 0:
+        sub = sub.apply(pd.to_numeric, errors="raise")
+        try:
+            mouse_counts = decode_mouse_counts_for_qc(sub, exon_lengths, ensmusg_to_mouse)
+        except ValueError as exc:
+            print(f"  [{study_id}] WARN: {exc}", flush=True)
+            continue
+        nonzero = (mouse_counts > 0).sum(axis=0)
+        mouse_counts = mouse_counts.loc[:, nonzero >= qc_min_nonzero]
+        if mouse_counts.shape[1] == 0:
             print(f"  [{study_id}] WARN: all samples failed QC", flush=True)
             continue
 
-        # TPM normalize
-        tpm = tpm_normalize_mouse(sub, exon_lengths)
-
-        # Map gene index to human symbols
-        # counts_df index could be mouse symbols (Akt1, Trp53...) OR ENSMUSG IDs
-        idx = tpm.index
-        if idx[0].startswith("ENSMUSG"):
-            # Need ENSMUSG → mouse symbol → human symbol
-            ensmusg_to_human = _build_ensmusg_to_human_map()
-            tpm.index = [ensmusg_to_human.get(g, "") for g in idx]
-        else:
-            # mouse symbol → human symbol
-            tpm.index = [ortholog_map.get(g, ortholog_map.get(g.capitalize(), "")) for g in idx]
-
-        tpm = tpm[tpm.index != ""]  # drop unmapped
-        tpm = tpm[~tpm.index.duplicated(keep="first")]
-
-        # Keep only canonical genes
-        keep = tpm.index.isin(canonical_set)
-        tpm = tpm[keep]
-        if tpm.shape[0] == 0:
-            print(f"  [{study_id}] WARN: no canonical genes after mapping", flush=True)
+        try:
+            canonical_counts, coverage = canonicalize_mouse_counts(
+                mouse_counts, canonical_genes, symbol_to_human, ensmusg_to_mouse
+            )
+        except ValueError as exc:
+            print(f"  [{study_id}] WARN: {exc}", flush=True)
             continue
-
-        # log1p transform; transpose to (samples x genes)
+        tpm = tpm_normalize_mouse(canonical_counts, canonical_lengths)
         log_tpm = np.log1p(tpm).T.astype("float32")
+        if not np.isfinite(log_tpm.to_numpy()).all():
+            raise ValueError(f"{study_id} preprocessing produced nonfinite log1p TPM")
 
-        # Attach spaceflight label
-        label_map = dict(zip(grp["id.sample name"], grp["study.factor value.spaceflight"].notna().astype(int)))
-        log_tpm["spaceflight"] = log_tpm.index.map(lambda s: 1 if str(label_map.get(s, "")).lower() == "space flight" else 0)
+        metadata_by_sample = grp.drop_duplicates("id.sample name").set_index("id.sample name")
+        parsed = [
+            parse_spaceflight_condition(
+                metadata_by_sample.loc[sample, "study.factor value.spaceflight"]
+            )
+            for sample in log_tpm.index
+        ]
+        original_names = log_tpm.index.astype(str).tolist()
+        sample_uids = [f"{study_id}::{sample}" for sample in original_names]
+        log_tpm.index = sample_uids
+        log_tpm["sample_name"] = original_names
+        log_tpm["condition"] = [condition for condition, _ in parsed]
+        log_tpm["spaceflight"] = [label for _, label in parsed]
         log_tpm["study_id"] = study_id
+        log_tpm["species"] = "mouse"
         study_frames.append(log_tpm)
-        print(f"  [{study_id}] {log_tpm.shape[0]} samples, {(keep).sum()} genes matched", flush=True)
+        coverage_frames.append(np.broadcast_to(coverage, (len(log_tpm), len(coverage))).copy())
+        print(f"  [{study_id}] {log_tpm.shape[0]} samples, {int(coverage.sum())} genes measured", flush=True)
 
     if not study_frames:
         raise RuntimeError("No OSDR studies loaded — check metadata, raw data dir, and download flag.")
 
-    expr = pd.concat(study_frames, axis=0)
-
-    # Align to canonical gene order; fill missing with 0
-    meta_cols = ["spaceflight", "study_id"]
-    gene_cols = [g for g in canonical_genes if g in expr.columns]
-    missing_genes = [g for g in canonical_genes if g not in expr.columns]
-    print(f"[OSDR] {len(gene_cols)}/{len(canonical_genes)} canonical genes present, {len(missing_genes)} filled with 0", flush=True)
-
-    aligned = expr[gene_cols].reindex(columns=canonical_genes, fill_value=0.0).astype("float32")
-    aligned[meta_cols] = expr[meta_cols].values
+    aligned = pd.concat(study_frames, axis=0)
+    if aligned.index.duplicated().any():
+        raise ValueError("corrected OSDR sample UIDs are not unique")
+    gene_values = aligned[canonical_genes].to_numpy(dtype=np.float32)
+    validate_log1p_tpm(gene_values, "corrected OSDR expression")
+    validate_spaceflight_labels(aligned)
+    coverage_matrix = np.concatenate(coverage_frames, axis=0).astype(bool, copy=False)
+    if coverage_matrix.shape != gene_values.shape:
+        raise RuntimeError("OSDR coverage and expression shapes differ")
     aligned.index.name = "sample_id"
+    sample_ids = aligned.index.astype(str).to_numpy()
+    expression_sha256 = _expression_sha256(gene_values, sample_ids, canonical_genes)
 
     cache_dir.mkdir(parents=True, exist_ok=True)
     aligned.to_parquet(cache_parquet)
-    print(f"[OSDR] Cached to {cache_parquet}  shape={aligned.shape}", flush=True)
+    np.savez_compressed(
+        coverage_path,
+        schema_version=np.int64(OSDR_CACHE_SCHEMA_VERSION),
+        expression_space=np.asarray(OSDR_EXPRESSION_SPACE),
+        cache_fingerprint=np.asarray(cache_fingerprint),
+        expression_sha256=np.asarray(expression_sha256),
+        coverage=coverage_matrix,
+        genes=np.asarray(canonical_genes, dtype="U"),
+        sample_ids=sample_ids.astype("U"),
+    )
+    manifest = {
+        "schema_version": OSDR_CACHE_SCHEMA_VERSION,
+        "expression_space": OSDR_EXPRESSION_SPACE,
+        "normalization_order": OSDR_NORMALIZATION_ORDER,
+        "cache_fingerprint": cache_fingerprint,
+        "cache_inputs": cache_inputs,
+        "expression_sha256": expression_sha256,
+        "qc_min_nonzero": qc_min_nonzero,
+        "n_samples": len(aligned),
+        "n_genes": len(canonical_genes),
+        "n_studies": int(aligned["study_id"].nunique()),
+        "flight": int((aligned["spaceflight"] == 1).sum()),
+        "ground_control": int((aligned["spaceflight"] == 0).sum()),
+        "unlabeled_or_other": int(aligned["spaceflight"].isna().sum()),
+    }
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+    print(f"[OSDR] Cached corrected expression to {cache_parquet}  shape={aligned.shape}", flush=True)
+    print(f"[OSDR] Coverage: {coverage_path}; labels: "
+          f"{manifest['flight']} flight / {manifest['ground_control']} exact ground / "
+          f"{manifest['unlabeled_or_other']} other", flush=True)
     return aligned
 
 
-def _build_ensmusg_to_human_map() -> dict[str, str]:
-    """
-    Build ENSMUSG → human gene symbol map from data/osdr/human_mouse_orthologs.csv
-    (has ENSMUSG IDs, unlike data/ensembl/orthologs_one2one.txt which is symbol-only).
-    """
-    p = BRIDGE_RNA_DATA / "osdr" / "human_mouse_orthologs.csv"
-    if p.exists():
-        df = pd.read_csv(p)
-        df = df[df.get("Mouse homology type", "ortholog_one2one") == "ortholog_one2one"]
-        return dict(zip(df["Mouse gene stable ID"].str.strip(), df["Gene name"].str.strip()))
+def load_coverage_artifact(
+    coverage_path: Path,
+    sample_ids: np.ndarray,
+    gene_order: list[str],
+    expected_cache_fingerprint: Optional[str] = None,
+    expected_expression_sha256: Optional[str] = None,
+) -> np.ndarray:
+    with np.load(coverage_path, allow_pickle=False) as z:
+        required = {
+            "coverage", "genes", "sample_ids", "schema_version", "expression_space",
+            "cache_fingerprint", "expression_sha256",
+        }
+        if not required.issubset(z.files):
+            raise ValueError(f"coverage artifact must contain {sorted(required)}")
+        if int(z["schema_version"]) != OSDR_CACHE_SCHEMA_VERSION:
+            raise ValueError("OSDR coverage artifact uses a stale schema")
+        if str(z["expression_space"].item()) != OSDR_EXPRESSION_SPACE:
+            raise ValueError("OSDR coverage artifact has the wrong expression space")
+        if (
+            expected_cache_fingerprint is not None
+            and str(z["cache_fingerprint"].item()) != expected_cache_fingerprint
+        ):
+            raise ValueError("OSDR coverage and manifest cache fingerprints differ")
+        if (
+            expected_expression_sha256 is not None
+            and str(z["expression_sha256"].item()) != expected_expression_sha256
+        ):
+            raise ValueError("OSDR coverage and expression hashes differ")
+        if not np.array_equal(z["sample_ids"].astype(str), sample_ids.astype(str)):
+            raise ValueError("OSDR coverage sample order differs from expression parquet")
+        artifact_genes = z["genes"].astype(str).tolist()
+        if len(set(artifact_genes)) != len(artifact_genes):
+            raise ValueError("OSDR coverage artifact contains duplicate genes")
+        gene_to_idx = {gene: i for i, gene in enumerate(artifact_genes)}
+        missing = [gene for gene in gene_order if gene not in gene_to_idx]
+        if missing:
+            raise ValueError(f"OSDR coverage is missing evaluation genes: {missing[:5]}")
+        coverage = np.asarray(z["coverage"], dtype=bool)
+        if coverage.shape != (len(sample_ids), len(artifact_genes)):
+            raise ValueError("OSDR coverage shape does not match its labels")
+        return coverage[:, [gene_to_idx[gene] for gene in gene_order]]
 
-    return {}
+
+def load_gene_mean_artifact(path: Path, gene_order: list[str]) -> np.ndarray:
+    z = np.load(path, allow_pickle=False)
+    if not {"genes", "mean"}.issubset(z.files):
+        raise ValueError("gene-mean artifact must contain genes and mean")
+    genes = z["genes"].astype(str).tolist()
+    mean = np.asarray(z["mean"], dtype=np.float32)
+    gene_to_idx = {gene: i for i, gene in enumerate(genes)}
+    missing = [gene for gene in gene_order if gene not in gene_to_idx]
+    if missing:
+        raise ValueError(f"gene-mean artifact is missing evaluation genes: {missing[:5]}")
+    aligned = mean[[gene_to_idx[gene] for gene in gene_order]]
+    if not np.isfinite(aligned).all():
+        raise ValueError("gene-mean artifact contains nonfinite values")
+    return aligned
 
 
 # ── Checkpoint loading ─────────────────────────────────────────────────────────
@@ -401,7 +734,7 @@ def load_checkpoint(ckpt_path: Path, device: torch.device) -> tuple[ExpressionPe
     elif num_genes == 15448:
         # v2 experts all train on the shared canonical vocabulary in canonical
         # order (verified directly against each variant's training parquet
-        # schema -- see CLAUDE.md), so when the parquet itself isn't present
+        # schema -- see PROGESS.md), so when the parquet itself isn't present
         # on this machine (multi-instance training split across VMs) we can
         # recover the same gene list from the canonical file instead of
         # failing alignment entirely.
@@ -421,8 +754,10 @@ def pearson_per_sample(pred: np.ndarray, true: np.ndarray, mask_idx: np.ndarray)
     for i in range(len(pred)):
         p = pred[i, mask_idx[i]]
         t = true[i, mask_idx[i]]
-        if len(p) < 3 or np.std(p) < 1e-9 or np.std(t) < 1e-9:
+        if len(p) < 3 or np.std(t) < 1e-9:
             rs.append(float("nan"))
+        elif np.std(p) < 1e-9:
+            rs.append(0.0)
         else:
             rs.append(float(np.corrcoef(p, t)[0, 1]))
     return np.array(rs)
@@ -455,8 +790,22 @@ def make_mask_random(num_genes: int, num_mask: int, n: int, rng: np.random.Gener
     return mask_idx
 
 
+def make_mask_random_coverage(
+    coverage: np.ndarray, num_mask: int, rng: np.random.Generator
+) -> np.ndarray:
+    coverage = np.asarray(coverage, dtype=bool)
+    if coverage.ndim != 2:
+        raise ValueError("coverage must have shape (samples, genes)")
+    if np.any(coverage.sum(axis=1) < num_mask):
+        raise ValueError("at least one sample has insufficient measured genes for masking")
+    return np.stack([
+        rng.choice(np.flatnonzero(coverage[i]), num_mask, replace=False)
+        for i in range(len(coverage))
+    ])
+
+
 def make_mask_block(num_genes: int, block_size: int, n: int, rng: np.random.Generator) -> np.ndarray:
-    starts = rng.integers(0, num_genes - block_size, size=n)
+    starts = rng.integers(0, num_genes - block_size + 1, size=n)
     mask_idx = np.stack([np.arange(s, s + block_size) for s in starts])
     return mask_idx
 
@@ -471,6 +820,7 @@ def evaluate_model(
     device: torch.device,
     mask_token: float = -10.0,
     rng_seed: int = 42,
+    gene_mean_reference: np.ndarray | None = None,
 ) -> dict:
     """
     Runs zero-shot imputation on x_true.
@@ -481,13 +831,22 @@ def evaluate_model(
     N, G = x_true.shape
     results = {}
 
-    # Pre-compute baselines using available genes only
-    avail = x_true[:, osdr_gene_mask]  # (N, num_osdr_genes)
-    gene_mean = avail.mean(axis=0)  # (num_osdr_genes,)
-    sample_mean = avail.mean(axis=1, keepdims=True)  # (N, 1)
+    if not np.isfinite(x_true).all():
+        raise ValueError("evaluation expression contains nonfinite values")
+    coverage = np.asarray(osdr_gene_mask, dtype=bool)
+    if coverage.ndim == 1:
+        coverage = np.broadcast_to(coverage, (N, G)).copy()
+    if coverage.shape != (N, G):
+        raise ValueError("OSDR coverage must have shape (genes,) or (samples, genes)")
+    min_available = int(coverage.sum(axis=1).min())
+    if gene_mean_reference is not None:
+        gene_mean_reference = np.asarray(gene_mean_reference, dtype=np.float32)
+        if gene_mean_reference.shape != (G,) or not np.isfinite(gene_mean_reference).all():
+            raise ValueError("gene_mean_reference must be a finite vector in model gene order")
 
     strategies = (
-        [(f"random_{int(r*100)}pct", "random", int(G * r)) for r in mask_ratios]
+        [(f"random_{int(r*100)}pct", "random", max(3, int(min_available * r)))
+         for r in mask_ratios]
         + [(f"block_{b}", "block", b) for b in block_sizes]
     )
 
@@ -504,13 +863,17 @@ def evaluate_model(
             batch = x_true[batch_start : batch_start + batch_size]
             b = len(batch)
 
+            batch_coverage = coverage[batch_start : batch_start + b]
             if strat_type == "random":
-                mask_idx = make_mask_random(G, param, b, rng)
+                mask_idx = make_mask_random_coverage(batch_coverage, param, rng)
             else:
+                if not np.all(batch_coverage):
+                    raise ValueError("block masks are unsupported with incomplete per-sample coverage")
                 mask_idx = make_mask_block(G, param, b, rng)
 
             # Build masked input
             x_masked = batch.copy()
+            x_masked[~batch_coverage] = mask_token
             for i in range(b):
                 x_masked[i, mask_idx[i]] = mask_token
 
@@ -518,6 +881,8 @@ def evaluate_model(
             with torch.no_grad():
                 x_t = torch.from_numpy(x_masked).to(device)
                 pred_t = model(x_t).cpu().numpy()
+            if not np.isfinite(pred_t).all():
+                raise ValueError("model produced nonfinite OSDR predictions")
 
             # Metrics (model)
             all_pearson.append(pearson_per_sample(pred_t, batch, mask_idx))
@@ -526,14 +891,19 @@ def evaluate_model(
 
             # Baselines — for masked positions, predict gene mean or sample mean
             # Gene mean baseline: for each masked gene j, predict gene_mean[j]
-            gene_mean_full = np.zeros(G, dtype=np.float32)
-            gene_mean_full[osdr_gene_mask] = gene_mean
-            pred_gm = np.broadcast_to(gene_mean_full, (b, G)).copy()
-            all_pearson_gene_mean.append(pearson_per_sample(pred_gm, batch, mask_idx))
-            all_mse_gene_mean.append(mse_per_sample(pred_gm, batch, mask_idx))
+            if gene_mean_reference is not None:
+                pred_gm = np.broadcast_to(gene_mean_reference, (b, G)).copy()
+                all_pearson_gene_mean.append(pearson_per_sample(pred_gm, batch, mask_idx))
+                all_mse_gene_mean.append(mse_per_sample(pred_gm, batch, mask_idx))
 
-            # Sample mean baseline: predict each sample's own mean for masked positions
-            pred_sm = np.broadcast_to(sample_mean[batch_start : batch_start + b], (b, G)).copy()
+            # Sample mean uses observed, unmasked genes only; masked truths never
+            # contribute to their own baseline prediction.
+            sample_means = np.empty((b, 1), dtype=np.float32)
+            for i in range(b):
+                visible = batch_coverage[i].copy()
+                visible[mask_idx[i]] = False
+                sample_means[i, 0] = float(batch[i, visible].mean())
+            pred_sm = np.broadcast_to(sample_means, (b, G)).copy()
             all_pearson_sample_mean.append(pearson_per_sample(pred_sm, batch, mask_idx))
             all_mse_sample_mean.append(mse_per_sample(pred_sm, batch, mask_idx))
 
@@ -553,9 +923,9 @@ def evaluate_model(
             "spearman_mean":       nanmean(cat(all_spearman)),
             "spearman_median":     nanmedian(cat(all_spearman)),
             "mse_mean":            nanmean(cat(all_mse)),
-            "baseline_gene_mean_pearson":   nanmean(cat(all_pearson_gene_mean)),
+            "baseline_gene_mean_pearson":   nanmean(cat(all_pearson_gene_mean)) if all_pearson_gene_mean else float("nan"),
             "baseline_sample_mean_pearson": nanmean(cat(all_pearson_sample_mean)),
-            "baseline_gene_mean_mse":       nanmean(cat(all_mse_gene_mean)),
+            "baseline_gene_mean_mse":       nanmean(cat(all_mse_gene_mean)) if all_mse_gene_mean else float("nan"),
             "baseline_sample_mean_mse":     nanmean(cat(all_mse_sample_mean)),
         }
 
@@ -572,12 +942,18 @@ def main():
                         help="Directory to write results CSV and JSON")
     parser.add_argument("--osdr-parquet", default=None,
                         help="Pre-built OSDR expression parquet (skips download+preprocess)")
+    parser.add_argument("--osdr-coverage", default=None,
+                        help="Corrected per-sample coverage NPZ paired with --osdr-parquet")
     parser.add_argument("--metadata-csv", default=None,
                         help="OSDR metadata CSV (default: data/osdr/metadata_new.csv)")
     parser.add_argument("--osdr-raw-dir", default=None,
                         help="Directory containing pre-downloaded GLDS-*.csv raw count files")
     parser.add_argument("--no-download", action="store_true",
                         help="Do not download OSDR data from NASA (requires --osdr-parquet or --osdr-raw-dir)")
+    parser.add_argument("--force-rebuild", action="store_true",
+                        help="Ignore and rebuild the versioned corrected OSDR cache")
+    parser.add_argument("--baseline-mean-npz", default=None,
+                        help="Disjoint training-derived log1p-TPM gene means")
     parser.add_argument("--batch-size", type=int, default=BATCH_SIZE)
     parser.add_argument("--device", default="auto",
                         help="cuda / cpu / auto")
@@ -615,6 +991,12 @@ def main():
             raise FileNotFoundError(f"OSDR parquet not found: {osdr_parquet}")
         print(f"[EVAL] Loading OSDR parquet: {osdr_parquet}", flush=True)
         osdr_df = pd.read_parquet(osdr_parquet)
+        if not args.osdr_coverage:
+            raise ValueError(
+                "--osdr-coverage is required with a pre-built OSDR parquet; "
+                "measured zeros cannot be distinguished from absent genes otherwise"
+            )
+        coverage_path = Path(args.osdr_coverage)
     else:
         metadata_csv = Path(args.metadata_csv) if args.metadata_csv else DEFAULT_METADATA_CSV
         if not metadata_csv.exists():
@@ -632,24 +1014,39 @@ def main():
             canonical_genes=canonical_genes,
             exon_lengths=exon_lengths,
             download=not args.no_download,
+            force_rebuild=args.force_rebuild,
         )
+        coverage_path = DEFAULT_OSDR_CACHE / OSDR_COVERAGE_FILENAME
 
     print(f"[EVAL] OSDR shape: {osdr_df.shape}", flush=True)
 
     # Separate expression from metadata columns
-    meta_cols = [c for c in osdr_df.columns if c in ("spaceflight", "study_id")]
-    gene_cols = [c for c in canonical_genes if c in osdr_df.columns]
     x_osdr = osdr_df[canonical_genes].values.astype("float32")  # (N, num_canonical_genes)
-    osdr_gene_mask = np.array([(g in set(osdr_df.columns)) for g in canonical_genes], dtype=bool)
+    validate_log1p_tpm(x_osdr)
+    sample_ids = osdr_df.index.astype(str).to_numpy()
+    expression_sha256 = _expression_sha256(x_osdr, sample_ids, canonical_genes)
+    osdr_gene_mask = load_coverage_artifact(
+        coverage_path,
+        sample_ids,
+        canonical_genes,
+        expected_expression_sha256=expression_sha256,
+    )
+    baseline_mean = (
+        load_gene_mean_artifact(Path(args.baseline_mean_npz), canonical_genes)
+        if args.baseline_mean_npz else None
+    )
 
-    spaceflight_labels = osdr_df.get("spaceflight", pd.Series(np.zeros(len(osdr_df), dtype=int))).values
+    spaceflight_labels = validate_spaceflight_labels(osdr_df)
     n_flight   = int(np.nansum(spaceflight_labels == 1))
     n_control  = int(np.nansum(spaceflight_labels == 0))
     n_unlabeled = int(np.sum(np.isnan(spaceflight_labels.astype(float))))
 
     print(f"[EVAL] {x_osdr.shape[0]} samples: {n_flight} spaceflight, "
           f"{n_control} control, {n_unlabeled} unlabeled", flush=True)
-    print(f"[EVAL] Gene coverage: {osdr_gene_mask.sum()}/{len(canonical_genes)} canonical genes present in OSDR", flush=True)
+    coverage_counts = osdr_gene_mask.sum(axis=1)
+    print(f"[EVAL] Per-sample gene coverage: min={coverage_counts.min()}, "
+          f"median={int(np.median(coverage_counts))}, max={coverage_counts.max()} "
+          f"of {len(canonical_genes)}", flush=True)
 
     # ── W&B ────────────────────────────────────────────────────────────────────
     wandb_run = None
@@ -663,7 +1060,8 @@ def main():
                 config={
                     "n_samples": x_osdr.shape[0],
                     "n_genes": x_osdr.shape[1],
-                    "osdr_gene_coverage": int(osdr_gene_mask.sum()),
+                    "osdr_gene_coverage_min": int(coverage_counts.min()),
+                    "osdr_gene_coverage_median": int(np.median(coverage_counts)),
                     "mask_ratios": MASK_RATIOS,
                     "block_sizes": BLOCK_SIZES,
                     "spaceflight_samples": n_flight,
@@ -698,13 +1096,23 @@ def main():
                 # Re-align OSDR to training gene order
                 gene_order = train_gene_list
                 x_aligned = pd.DataFrame(x_osdr, columns=canonical_genes).reindex(columns=gene_order, fill_value=0.0).values.astype("float32")
-                gene_mask_aligned = np.array([(g in set(gene_cols)) for g in gene_order], dtype=bool)
+                canonical_to_idx = {gene: i for i, gene in enumerate(canonical_genes)}
+                missing = [gene for gene in gene_order if gene not in canonical_to_idx]
+                if missing:
+                    raise ValueError(f"checkpoint genes are absent from OSDR canonical space: {missing[:5]}")
+                gene_mask_aligned = osdr_gene_mask[:, [canonical_to_idx[g] for g in gene_order]]
+                baseline_aligned = (
+                    baseline_mean[[canonical_to_idx[g] for g in gene_order]]
+                    if baseline_mean is not None else None
+                )
             else:
                 x_aligned = x_osdr
                 gene_mask_aligned = osdr_gene_mask
+                baseline_aligned = baseline_mean
         else:
             x_aligned = x_osdr
             gene_mask_aligned = osdr_gene_mask
+            baseline_aligned = baseline_mean
 
         print(f"  Model: {sum(p.numel() for p in model.parameters()):,} params", flush=True)
         print(f"  Evaluating {x_aligned.shape[0]} samples, {x_aligned.shape[1]} genes ...", flush=True)
@@ -720,6 +1128,7 @@ def main():
             batch_size=args.batch_size,
             device=device,
             mask_token=mask_token,
+            gene_mean_reference=baseline_aligned,
         )
 
         elapsed = time.time() - t0

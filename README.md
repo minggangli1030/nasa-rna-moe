@@ -2,11 +2,11 @@
 
 ExpressionBERT-style masked gene-expression modeling with a SLiMPerformer Transformer, extended to explore mixture-of-experts (MoE) routing over human, mouse, and mixed RNA-seq experts.
 
-This repo is a personal, standalone continuation of the MoE work originally developed inside the `sp26_nasa` team monorepo (itself a fork of Walter Alvarado's `bridge-rna` work). Split out 2026-07-08 to keep scope to just what this project needs going forward — see `CLAUDE.md` for the full migration history and current status.
+This repo is a personal, standalone continuation of the MoE work originally developed inside the `sp26_nasa` team monorepo (itself a fork of Walter Alvarado's `bridge-rna` work). Split out 2026-07-08 to keep scope to just what this project needs going forward — see `PROGESS.md` for the full migration history and current status.
 
 ## Status
 
-Active development, running on Jetstream Cloud VMs (not Savio — see `CLAUDE.md` for the environment and current instance assignments). Large generated datasets, local W&B run directories, full checkpoints, and scratch parquet files are intentionally excluded from Git; small reference gene files needed to run the pipeline are kept.
+Active development, running on Jetstream Cloud VMs (not Savio — see `PROGESS.md` for the environment and current instance assignments). Large generated datasets, local W&B run directories, full checkpoints, and scratch parquet files are intentionally excluded from Git; small reference gene files needed to run the pipeline are kept.
 
 ## Research Goal
 
@@ -19,7 +19,7 @@ The project studies masked reconstruction of bulk RNA-seq expression:
 
 ## Model And Data Pipeline
 
-The repo is organized into 4 stages — see `CLAUDE.md` for the full directory tree and import notes.
+The repo is organized into 4 stages — see `PROGESS.md` for the full directory tree and import notes.
 
 - **`preprocessing/`** — `preprocessing.py` streams ARCHS4 H5 matrices, applies QC, converts counts to TPM, applies `log1p`, aligns orthologous genes, and writes parquet batches. `merge.py` merges parquet batches into an `expression.parquet` per dataset variant.
 - **`core/`** — `train_single.py` trains one SLiMPerformer variant with distributed data parallelism; the variant is selected by `DATASET_VARIANT`. `slim_performer_model.py` and `numerator_and_denominator.py` implement the SLiMPerformer attention machinery. `train_moe.py` trains a lightweight gate over frozen experts when the experts share a compatible gene order.
@@ -52,7 +52,7 @@ Implemented v2 variants in `core/train_single.py`:
 | `mouse_5k_v2` | mouse | 4,175 | shared 15,448 genes | v2 |
 | `mixed_5k_v2` | human + mouse | 2,146 + 2,107 | shared 15,448 genes | v2 |
 
-Preprocessing for all three completed successfully. Training is in progress across 3 GPU instances in parallel as of this writing — see `CLAUDE.md` for live status, per-instance quirks, and what to do once it finishes.
+Preprocessing for all three completed successfully. Training is in progress across 3 GPU instances in parallel as of this writing — see `PROGESS.md` for live status, per-instance quirks, and what to do once it finishes.
 
 ## Repository Layout
 
@@ -72,11 +72,11 @@ Preprocessing for all three completed successfully. Training is in progress acro
 ├── examples/                    # Analysis notebooks
 ├── results/                     # Evaluation output (gitignored, symlinked to a volume)
 ├── checkpoints/, checkpoints_moe/  # Model weights (gitignored, symlinked to a volume)
-├── CLAUDE.md                    # Repo orientation + running log of what's been done, in order
+├── PROGESS.md                    # Repo orientation + running log of what's been done, in order
 └── presentation/                # Biweekly progress-report slides (HTML)
 ```
 
-See `CLAUDE.md` for the full tree with every file inside each stage, plus a note on the two files that import across stage folders.
+See `PROGESS.md` for the full tree with every file inside each stage, plus a note on the two files that import across stage folders.
 
 ## Setup
 
@@ -86,7 +86,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-See `CLAUDE.md` for the full VM bring-up sequence (GPU driver check, volume mount, reference-data fetch) — that's the part worth reading before re-running this from a fresh machine.
+See `PROGESS.md` for the full VM bring-up sequence (GPU driver check, volume mount, reference-data fetch) — that's the part worth reading before re-running this from a fresh machine.
 
 ## Common Workflows
 
@@ -96,7 +96,7 @@ Generate the shared canonical gene list (pure function of already-fetched refere
 python preprocessing/compute_shared_canonical.py
 ```
 
-Build the 3 v2 5k datasets (human / mouse / mixed), train each (one variant per script — see `CLAUDE.md` for why), then run diagnostics — each script checks that its inputs exist and fails fast with a clear message if not:
+Build the 3 v2 5k datasets (human / mouse / mixed), train each (one variant per script — see `PROGESS.md` for why), then run diagnostics — each script checks that its inputs exist and fails fast with a clear message if not:
 
 ```bash
 runs/preprocess_5k_v2.sh
@@ -113,5 +113,5 @@ python evaluation/evaluate_osdr_moe.py --gate checkpoints_moe/best_gate.pt
 ## Notes
 
 - `data/` is gitignored by default (`data/*`), except `data/ensembl/`, `data/gencode/`, `data/osdr/` which hold small reference files needed to run the pipeline and are explicitly un-ignored.
-- Full `.pt` checkpoints, ARCHS4 `.h5` matrices, generated parquet, W&B run directories, and eval results live on an attached volume (see `CLAUDE.md`), not in Git.
+- Full `.pt` checkpoints, ARCHS4 `.h5` matrices, generated parquet, W&B run directories, and eval results live on an attached volume (see `PROGESS.md`), not in Git.
 - The checked-in checkpoint metadata under `checkpoints_performer/` is lightweight run-history context (config/loss curves) from the original v1 sweep, not full model weights.

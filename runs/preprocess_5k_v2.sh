@@ -4,11 +4,11 @@
 # present locally -- the S3-streaming fallback in preprocessing/preprocessing.py
 # is usable but pathologically slow for random samples scattered across the full
 # remote matrix (each "contiguous window" read ends up spanning most of the
-# file). See CLAUDE.md for why we download the .h5 files instead.
+# file). See PROGESS.md for why we download the .h5 files instead.
 #
 # Run once per fresh instance, from repo root, before any of the train_*.sh
 # scripts. Produces data/archs4/{variant}_merged/expression.parquet for all 3
-# variants -- copy just the ones a given instance needs (see CLAUDE.md for the
+# variants -- copy just the ones a given instance needs (see PROGESS.md for the
 # instance-to-variant assignment used this sprint).
 set -eo pipefail
 cd "$(dirname "$0")/.."

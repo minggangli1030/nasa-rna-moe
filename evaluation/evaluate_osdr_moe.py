@@ -108,9 +108,12 @@ def main():
     parser.add_argument("--gate", required=True, help="Path to best_gate.pt from train_moe.py")
     parser.add_argument("--output-dir", default="results/osdr_eval_moe")
     parser.add_argument("--osdr-parquet", default=None)
+    parser.add_argument("--osdr-coverage", default=None)
     parser.add_argument("--metadata-csv", default=None)
     parser.add_argument("--osdr-raw-dir", default=None)
     parser.add_argument("--no-download", action="store_true")
+    parser.add_argument("--force-rebuild", action="store_true")
+    parser.add_argument("--baseline-mean-npz", default=None)
     parser.add_argument("--batch-size", type=int, default=eo.BATCH_SIZE)
     parser.add_argument("--device", default="auto")
     parser.add_argument("--variant-name", default="moe", help="Label used in results CSV/JSON and W&B")
@@ -149,6 +152,9 @@ def main():
             raise FileNotFoundError(f"OSDR parquet not found: {osdr_parquet}")
         print(f"[EVAL] Loading OSDR parquet: {osdr_parquet}", flush=True)
         osdr_df = pd.read_parquet(osdr_parquet)
+        if not args.osdr_coverage:
+            raise ValueError("--osdr-coverage is required with --osdr-parquet")
+        coverage_path = Path(args.osdr_coverage)
     else:
         metadata_csv = Path(args.metadata_csv) if args.metadata_csv else eo.DEFAULT_METADATA_CSV
         raw_dir = Path(args.osdr_raw_dir) if args.osdr_raw_dir else None
@@ -160,13 +166,20 @@ def main():
             canonical_genes=canonical_genes,
             exon_lengths=exon_lengths,
             download=not args.no_download,
+            force_rebuild=args.force_rebuild,
         )
+        coverage_path = eo.DEFAULT_OSDR_CACHE / eo.OSDR_COVERAGE_FILENAME
 
     print(f"[EVAL] OSDR shape: {osdr_df.shape}", flush=True)
-    gene_cols_present = [c for c in canonical_genes if c in osdr_df.columns]
     x_osdr_canonical = osdr_df[canonical_genes].values.astype("float32")
-    osdr_gene_mask_canonical = np.array(
-        [(g in set(gene_cols_present)) for g in canonical_genes], dtype=bool
+    if not np.isfinite(x_osdr_canonical).all():
+        raise ValueError("OSDR expression contains nonfinite values; legacy cache rejected")
+    osdr_gene_mask_canonical = eo.load_coverage_artifact(
+        coverage_path, osdr_df.index.astype(str).to_numpy(), canonical_genes
+    )
+    baseline_canonical = (
+        eo.load_gene_mean_artifact(Path(args.baseline_mean_npz), canonical_genes)
+        if args.baseline_mean_npz else None
     )
 
     # Load MoE
@@ -193,12 +206,17 @@ def main():
               .reindex(columns=train_gene_list, fill_value=0.0)
               .values.astype("float32")
         )
-        gene_mask_aligned = np.array(
-            [(g in set(gene_cols_present)) for g in train_gene_list], dtype=bool
-        )
+        canonical_to_idx = {gene: i for i, gene in enumerate(canonical_genes)}
+        missing = [gene for gene in train_gene_list if gene not in canonical_to_idx]
+        if missing:
+            raise ValueError(f"expert genes are absent from canonical space: {missing[:5]}")
+        aligned_idx = [canonical_to_idx[gene] for gene in train_gene_list]
+        gene_mask_aligned = osdr_gene_mask_canonical[:, aligned_idx]
+        baseline_aligned = baseline_canonical[aligned_idx] if baseline_canonical is not None else None
     else:
         x_aligned = x_osdr_canonical
         gene_mask_aligned = osdr_gene_mask_canonical
+        baseline_aligned = baseline_canonical
 
     total_params = sum(p.numel() for p in wrapper.parameters())
     print(f"  Wrapper params (experts + gate): {total_params:,}", flush=True)
@@ -213,6 +231,7 @@ def main():
         batch_size=args.batch_size,
         device=device,
         mask_token=float(mask_token),
+        gene_mean_reference=baseline_aligned,
     )
 
     elapsed = time.time() - t0

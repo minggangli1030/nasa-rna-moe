@@ -635,6 +635,60 @@ VARIANT_CONFIGS = {
 		"weight_decay": 0.01,
 		"epochs": 20,
 	},
+	# V3 scale-up: the three v2-architecture experts (4 layers / mask 0.30 /
+	# weight_decay 0.01) retrained at 20k scale on the SAME shared canonical vocab
+	# (data/ensembl/canonical_genes_shared.txt) as the 5k_v2 experts, so all six
+	# live in one 15,448-gene space and the MoE headroom analysis stays valid.
+	# Motivation: at 5k the experts are distribution-bound (on the balanced ARCHS4
+	# held-out set they reconstruct the shared expression profile only 0.17-0.51,
+	# losing to the gene-mean baseline at 0.686) and MoE routing has ~zero headroom
+	# because all three collapse toward the same weak solution. human_20k v1 already
+	# showed 4x data more than halves val_loss (0.72->0.32) and lifts OSDR Pearson
+	# 0.687->0.813, so this tests whether scale (a) closes the OOD gap and (b) makes
+	# the experts specialize enough that per-sample routing finally pays.
+	# Training draws EXCLUDE the 667 balanced-holdout eval IDs (via preprocessing
+	# --exclude-ids-file) so that eval set stays a clean OOD test for V3 too.
+	# batch_size 8 for all three (compute-bound at ~0.51 s/sample: batch 16 gave no
+	# wall-clock speedup over 8, so batch 8 keeps all three comparable + matches V2).
+	"human_20k_v3": {
+		"expression_parquet": "./data/archs4/human_20k_v3_merged/expression.parquet",
+		"samples_json": "./data/archs4/human_20k_v3/samples.json",
+		"checkpoint_dir": "./checkpoints/human_20k_v3",
+		"train_subset": 16000,
+		"val_subset": 3200,
+		"balanced_sampling": False,
+		"num_layers": 4,
+		"mask_ratio": 0.30,
+		"weight_decay": 0.01,
+		"batch_size": 8,
+		"epochs": 15,
+	},
+	"mouse_20k_v3": {
+		"expression_parquet": "./data/archs4/mouse_20k_v3_merged/expression.parquet",
+		"samples_json": "./data/archs4/mouse_20k_v3/samples.json",
+		"checkpoint_dir": "./checkpoints/mouse_20k_v3",
+		"train_subset": 16000,
+		"val_subset": 3200,
+		"balanced_sampling": False,
+		"num_layers": 4,
+		"mask_ratio": 0.30,
+		"weight_decay": 0.01,
+		"batch_size": 8,
+		"epochs": 15,
+	},
+	"mixed_20k_v3": {
+		"expression_parquet": "./data/archs4/mixed_20k_v3_merged/expression.parquet",
+		"samples_json": "./data/archs4/mixed_20k_v3/samples.json",
+		"checkpoint_dir": "./checkpoints/mixed_20k_v3",
+		"train_subset": 16000,
+		"val_subset": 3200,
+		"balanced_sampling": True,
+		"num_layers": 4,
+		"mask_ratio": 0.30,
+		"weight_decay": 0.01,
+		"batch_size": 8,
+		"epochs": 15,
+	},
 }
 
 

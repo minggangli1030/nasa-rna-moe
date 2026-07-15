@@ -55,6 +55,11 @@ All launcher scripts `cd` to repo root first, so run them from anywhere: `runs/t
 - Both sides push/pull over SSH using the same GitHub account (`minggangli1030`).
 - **This sprint runs 3 GPU instances in parallel**, one variant each (see the 2026-07-09 log entry for why). SSH aliases are set up on the Mac (`~/.ssh/config`): `ssh moe-reboot`, `ssh moe-reboot2`, `ssh moe-reboot-partial`. Only `moe-reboot` was ever `git clone`d — the other two got their code via `rsync`/`scp` from the Mac (no `.git` history there), so **use `scp`/`rsync` to push updates to them, not `git pull`**.
 - Data/checkpoints/results live under a volume mount or the VM's own disk, never committed — `data/archs4`, `checkpoints/`, `checkpoints_moe/`, `results/` are all gitignored.
+- **Always launch training inside a tmux session on the VM, never as a bare command over a direct SSH connection.** A bare launch dies on `SIGHUP` when the launching SSH session detaches (this killed the `mixed`/`human` V3 runs on 2026-07-13, costing ~1.5h). Use `tmux new -s train` (or `tmux attach -t train`), start the run redirected to a logfile, then detach with `Ctrl-b d`.
+
+## Research resources (MCP)
+
+Prior-art / literature / model-search guidance lives in the **global `~/.claude/CLAUDE.md`** now (alphaxiv, hf-mcp-server, github — applies to all projects). Repo-specific angles worth a prior-art check with those tools: MoE routing / gating headroom, frozen-backbone + lightweight-adapter designs (the CodonMoE-style refactor in "Next up"), linear-attention / Performer variants (the SLiMPerformer backbone), OOD generalization in genomic sequence models (the gene-mean-beats-experts gap), and ARCHS4-derived datasets / RNA foundation models on the Hub.
 
 ## Progress Log
 
@@ -167,14 +172,198 @@ All launcher scripts `cd` to repo root first, so run them from anywhere: `runs/t
   - **Caveat surfaced, not hidden**: the trivial gene-mean baseline (0.686) beats every trained expert (0.14-0.39) on this harder, more heterogeneous ARCHS4 slice — a much larger gap than the ambiguous OSDR baseline comparison (n=68 there vs n=667 here). Reads as a real generalization gap between the narrow 5k-sample training distributions and broader ARCHS4 diversity (different tissues/cell-lines/conditions never seen in training), not a fluke — worth investigating before trusting the experts' zero-shot behavior outside their training distribution.
 - **Backup pass**: local `checkpoints/` directory didn't exist — all 3 final checkpoints were only on `moe-reboot2`'s ephemeral root disk (`/dev/sda1` mounted at `/`, not a separate persistent volume, unlike `moe-reboot`'s attached Cinder volume). Pulled all 3 checkpoints + both headroom `report.json`s to the Mac (MD5-verified against the VM copies), and committed+pushed all code changes to GitHub (`f8f8e12`).
 
+### 2026-07-13 — Steps 1 & 2 diagnostics closed the case for scale; launched V3 (20k)
+
+**Reasoning trail (why we're here):**
+1. The original OSDR headroom test is **100% mouse spaceflight data** — the mouse-trained expert wins by construction, so it can't actually test cross-species/expert routing. We built a genuinely **balanced held-out set** (331 human + 336 mouse from held-out ARCHS4) for an honest test.
+2. On that balanced set MoE headroom stayed **minimal (+0.0031)**, and — the loud signal — the trivial **gene-mean baseline (0.686) beat every trained expert (0.14–0.39)**. That's an out-of-distribution generalization failure worth explaining before trusting the experts.
+3. **Step 1 decomposition** (`scratchpad/steps12.py`, run on the cached `predictions.npz`): split each per-sample Pearson into "recovers the shared cross-gene profile" vs "captures sample-specific residual". Experts recover the shared profile only **0.17 / 0.36 / 0.51** (human/mouse/mixed) — i.e. worse than trivially copying the dataset-mean profile the baseline uses — and add only ~**0.15** of residual signal. Their outputs are also magnitude-collapsed (std ≈ 0.2–0.4% of truth). `mixed` recovers the profile best (0.51), which is exactly why it's best-single on both species. **Conclusion: the 5k experts are distribution-bound, not that the baseline is clever.**
+4. **This aligns with the earlier scale finding**: `human_20k` v1 more than halved val_loss vs `human_5k` v1 (0.72→0.32, still descending at ep 28) and lifted OSDR Pearson 0.687→0.813, nearly closing the gene-mean gap. At 5k, data scale dominates architecture ~6–7×. So the fix is **scale, not more architecture tweaks**.
+5. **Step 2** (K-fold CV blend validation): the OSDR **30/70 human/mouse blend is NOT overfit** — same-set advantage +0.0084 reproduces out-of-sample at +0.0084 (20/20 folds, stable weights). The balanced-set blend edge is real but negligible (+0.0007, all weight on `mixed`). Fixed blending gives a small real gain; per-sample routing (oracle +0.0018) still adds ~nothing **at 5k**.
+
+**Decision → V3 = 20k scale-up.** Retrain all three experts at 20k on the *same* shared canonical vocab and v2 architecture, to test whether scale (a) closes the OOD gap and (b) makes the experts specialize enough that MoE routing finally has headroom — i.e. whether the "routing doesn't pay" conclusion is itself a 5k artifact. Evaluated on the same balanced held-out set (which V3 training explicitly excludes — see below).
+
+**V1 → V2 → V3 at a glance:**
+| | V1 (5k) | V2 (5k) | V3 (20k) — *this sprint* |
+|---|---|---|---|
+| samples/expert | ~5k drawn | ~5k drawn | ~20k drawn (4×) |
+| gene vocab | per-variant (~14.8k, mismatched) | shared canonical 15,448 | shared canonical 15,448 |
+| architecture | 2 layers, mask 0.15, wd 0 | 4 layers, mask 0.30, wd 0.01 | same as V2 |
+| what it fixed | (baseline) | vocab mismatch → MoE headroom now *measurable* | tests whether *scale* closes the OOD gap + unlocks routing headroom |
+| result | OSDR collapsed to gene-mean (0.687 vs 0.847) | val 0.43/0.52/0.80; headroom ~0; still distribution-bound on balanced set | *pending* |
+
+**V3 mechanics (launched this session):**
+- New variant configs `human_20k_v3` / `mouse_20k_v3` / `mixed_20k_v3` in `core/train_single.py`; launchers `runs/train_*_20k_v3.sh`, preprocessor `runs/preprocess_20k_v3.sh`.
+- Preprocessing draws 24k/24k/12k-per-species (over-draw to net ≥19,200 after QC), `--seed 123`, and **`--exclude-ids-file data/holdout_eval/exclude_holdout_all.txt`** (the 667 balanced-holdout IDs) so that eval set stays a clean OOD test for V3.
+- Allocation: `mixed`→`moe-reboot` (full A100), `human`→`moe-reboot2` (full A100), `mouse`→`moe-reboot-partial` (vGPU, gloo backend). 15 epochs each; `best_model.pt` rewritten every improving epoch so intermediate reads are safe.
+- **batch_size 8 for all three** (not the 16 initially used on the full A100s). Measured throughput showed the runs are compute-bound at ~0.51 s/sample, so batch 16 gave *zero* wall-clock speedup over batch 8 (8.22 s/16-batch vs 4.13 s/8-batch) while halving optimizer steps/epoch at a fixed LR and diverging from the batch-8 config the 5k V2 experts used. Restarted human/mixed at batch 8 ~1h in (nothing checkpointed yet) so all three are directly comparable to each other and to V2. Wall-clock unchanged: **~33 h / 15 epochs** for all three (they finish together — no long-pole asymmetry; ~2000 batches/epoch × ~4.1 s).
+- `human_matrix_v11.h5` re-downloaded to `moe-reboot` (was deleted for space); mouse matrix was still present. Current code rsync'd fresh to all 3 VMs (they were on stale/flat layouts).
+- **NOTE the pre-existing `human_20k_v2` config is the OLD non-canonical v1-era A/B — not part of V3.** V3 uses the `_20k_v3` keys.
+
+### 2026-07-13 (later) — V3 monitoring: mixed/human were SIGHUP-restarted, now ~1.5h behind mouse
+
+- Checked all 3 VMs mid-training. `mouse_20k_v3` (`moe-reboot-partial`) has run uninterrupted since ~18:26 and is on epoch 1, batch ~1500/2000 (~4.13 s/batch, Run ETA ~32h40m).
+- `mixed_20k_v3` (`moe-reboot`) and `human_20k_v3` (`moe-reboot2`) both got **SIGHUP (`SignalException: got signal: 1`) on their original launches** — the earlier PID (e.g. 145065 on `moe-reboot`) died when its launching SSH session detached (they were started outside tmux). Both were **relaunched at ~19:59 inside the tmux `train` session** (`bash -c ... bash runs/train_*_20k_v3.sh > ~/train_*_20k_v3.log 2>&1`), so they now survive disconnects. Verified the *current* runs are genuinely training (GPU compute-app PIDs holding ~15GB, worker state R, CPU time climbing, ~30 min alive) — they just hadn't hit the batch-500 print interval yet. Net effect: **mixed/human are ~1.5h behind mouse**, so the three no longer finish simultaneously; expect completion staggered by that much (~mid-day 2026-07-15).
+- **Gotcha for reading these logs**: batch progress lines use `\r`, so plain `grep` reports the log as a "binary file" and finds nothing — decode with `tr '\r' '\n'` first. The stale SIGHUP traceback sits mid-file in `train_mixed_20k_v3.log`; it's from the dead PID 145065, not the live run.
+- Local background watcher polling all 3 every 15 min (`scratchpad/vm_watch.sh` → `vm_watch.log`); exits and re-notifies on all-complete, a real crash (process gone without "Training complete!"), OOM/CUDA error, or a 40h ceiling.
+
+### 2026-07-14/15 - Corrected interspecies evaluation audit (in progress)
+
+**Decision:** finish and evaluate the human/mouse interspecies experiment at both
+5k and 20k before starting organ experts. OSDR is no longer the primary MoE
+headroom benchmark because its current cohort is mouse-only. The primary data
+source is a frozen human+mouse ARCHS4 holdout; OSDR remains a secondary
+spaceflight-domain check.
+
+**The previously reported balanced-ARCHS4 headroom and gene-mean numbers are
+invalid and must not be used.** The old evaluator fed raw TPM directly to models
+trained on `log1p(TPM)`. It also tuned a fixed blend on the test samples, used a
+test-derived gene mean, and called a hard expert selector the oracle even though
+a soft convex gate can do better. Those faults are sufficient to invalidate the
+old `+0.0031` headroom and `0.686` gene-mean comparison.
+
+Corrected protocol now implemented locally:
+
+- Frozen full holdout: 667 samples, 331 human / 336 mouse, ordered ID SHA256
+  `84c607dd83f93964430877f572291836fddd7315dd4f7eae3bcbf12f70fc0d65`.
+  This is sample-disjoint but has training-series overlap, so it is a
+  **held-out-sample diagnostic**, not unseen-study OOD evidence.
+- Strict sensitivity cohort: exact reconstruction of every V2/V3 train+val
+  split, global exclusion of all whitespace-tokenized GEO series, leaving 103
+  samples (50 human / 53 mouse), ordered ID SHA256
+  `e52a695f5e518be24803dcb1fba266c7a67b7d4696520dba35466f5f38da2b18`.
+- Exact `log1p(TPM)` input transform; one shared deterministic mask at the
+  training-matched 30% mask rate; connected GEO-series grouping; grouped
+  out-of-fold fitting for fixed blends and metadata-species routing.
+- Separate hard Pearson oracle, hard MSE oracle, and exact per-sample soft
+  convex MSE oracle. True-species routing is explicitly labeled a
+  metadata-conditioned upper bound, not a learned unknown-species gate.
+- Exact train-row-only global and species-specific gene means; no test-derived
+  baseline. Primary estimates and paired bootstrap intervals give every study
+  equal weight within species, then weight human and mouse equally.
+- Paired 5k-versus-20k comparison requires identical sample order, folds,
+  common gene space, and mask hashes. Raw Pearson/MSE are compared across scale;
+  residual-Pearson scale deltas are intentionally omitted because the two scales
+  use different train-derived centering profiles.
+
+Current status at this checkpoint:
+
+- Corrected evaluator, headroom math, scale comparison, launch guards, and OSDR
+  preprocessing safeguards passed final local review. The expanded local suite
+  passes 29/29 tests.
+- Remote grouped/full and exact study-disjoint artifacts were regenerated with
+  the final scripts. The strict result reproduced exactly: 103 samples (50
+  human / 53 mouse), ordered ID SHA256 `e52a...2b18`. The launcher rejects stale
+  artifacts by full/strict ID hashes and required `series_group_id` metadata.
+- Exact train-only baseline artifacts are complete and split-hash verified.
+  The 5k mean uses 4,000 rows (2,024 human / 1,976 mouse), artifact SHA256
+  `2cef96f9...2b533fd77`; the 20k mean uses 16,000 rows (7,989 human / 8,011
+  mouse), artifact SHA256 `35bfe19a...d56ad51f`.
+- All three V3 runs are healthy in epoch 14/15. Latest best validation losses:
+  mixed `0.594307`, human `0.288136`, mouse `0.232793`. Do not evaluate a V3
+  checkpoint until its log says `Training complete!` and all corresponding
+  `train_single.py` processes have exited.
+- The current mixed V3 run inherited a species-contiguous row-group batch-order
+  bug. Its result is still useful diagnostically, but a weak mixed checkpoint
+  cannot by itself prove the MoE method fails; a corrected mixed retrain is a
+  possible follow-up after this frozen evaluation.
+
+### Overnight completion and backup automation (armed 2026-07-15 05:09 UTC)
+
+All work required before unattended completion is now staged on `moe-reboot`:
+the six training parquets, both ARCHS4 H5 files, frozen holdouts, exact baseline
+means, selected 5k checkpoints, corrected evaluator modules, and launch scripts.
+Local and remote evaluator SHA256 values match exactly. Real 5k and 20k
+checkpoint snapshots also load successfully through the final evaluator on CPU:
+15,448 model genes, 15,448 aligned gene labels, `log1p_tpm`, mask ratio `0.3`,
+mask token `-10`. Only the full real-model forward pass awaits a free GPU.
+
+Before waiting, each live 20k `best_model.pt` was frozen under a separate name
+and copied to the Mac and `moe-reboot`'s persistent checkpoint volume with
+checksum verification. These snapshots guarantee that the completed hours are
+recoverable even if an instance fails before epoch 15:
+
+- human epoch-13 snapshot: MD5 `079aac312215539be8e259363912bd61`
+- mouse epoch-14 snapshot: MD5 `07d2714f85d2f2807bae3a82bc7b4227`
+- mixed epoch-13 snapshot: MD5 `2f11bc192701b006437d6997281715cc`
+
+Three standard detached macOS `screen` sessions are active, each wrapped in
+`caffeinate -dims` so the Mac stays awake:
+
+- `nasa_moe_backup_final`: polls all VMs. A final is accepted only after the
+  training log contains `Training complete!` and no `train_single.py` PID
+  remains. It downloads the final model atomically, verifies remote/local MD5,
+  archives non-weight metadata and the training log, mirrors human/mouse finals
+  into `moe-reboot` persistent checkpoint storage, then writes
+  `<run>.SAFE_TO_SHELVE`. It writes `ALL_SAFE_TO_SHELVE` only after all three.
+- `nasa_moe_eval`: waits for `ALL_SAFE_TO_SHELVE`, then launches the corrected
+  5k+20k full/strict evaluation in remote tmux on the freed `moe-reboot` A100.
+  It copies all result directories back to the Mac and runs
+  `validate_corrected_eval_outputs.py`; success writes
+  `EVALUATION_COMPLETE_AND_VALIDATED`.
+- `nasa_moe_git`: waits for validated evaluation, stages an explicit allowlist
+  of repository code/docs/scripts/tests (never checkpoints, data, backups, or
+  results), validates the staged diff, commits, and retries the push to `origin`
+  until it succeeds. Success writes `GIT_BACKUP_PUSHED` with the branch and full
+  commit SHA.
+
+Monitor without attaching:
+
+```bash
+screen -ls
+tail -f backups/20k_v3_final/backup_watcher.log
+tail -f backups/20k_v3_final/evaluation_watcher.log
+```
+
+**Where the watchers run:** both `screen` sessions and their `caffeinate`
+processes run on the Mac, not inside a VM. Closing the Terminal app/window is
+safe because `screen` is detached. Shutting down the Mac, disconnecting its
+network, or closing a laptop lid is **not safe** for the automated handoff;
+`caffeinate` prevents idle sleep while the lid remains open, but it is not a
+guarantee against lid-close sleep. The remote training jobs themselves continue
+inside VM tmux sessions, and the pre-completion snapshots are already safe, but
+final download/central mirroring and automatic evaluation require the Mac
+watchers to remain alive. Keep the Mac powered, lid open, and online until
+`EVALUATION_COMPLETE_AND_VALIDATED` exists.
+
+**Model-capacity downgrade checkpoint: safe now.** The high-capacity audit,
+protocol correction, artifact freezing, tests, central staging, and unattended
+handoff are complete. Scientific results are still pending overnight inference,
+but the remaining path is scripted and integrity-gated. **VM shelving is a
+different checkpoint:** only shelve an individual VM after its corresponding
+`backups/20k_v3_final/<run>.SAFE_TO_SHELVE` marker exists.
+
 ## Next up
 
-- [ ] Investigate the gene-mean-beats-everyone gap on the ARCHS4 held-out set before trusting v2 experts' out-of-training-distribution behavior
-- [ ] Validate the 30/70 blend result on a proper held-out split (found via grid search on the same eval set it's reported on — real overfit risk)
-- [ ] Organ-based MoE: ARCHS4's `source_name_ch1` field has clean per-sample organ labels (liver 2,194 / brain 1,001 / lung 594 / skin 491 / colon 415 bulk samples available) — reuses the same `.h5` already exercised this sprint, no new download needed
-- [ ] Frozen-backbone + lightweight-adapter architecture (CodonMoE-style) — scoped as next sprint's main engineering task, not a same-day add-on; current 3-independent-full-experts design is the likely reason routing has so little headroom to find
-- [ ] `data/holdout_eval/` source data (raw batch parquets, `predictions.npz`) wasn't backed up locally, only the checkpoints and report JSONs — regenerable from the checkpoints + exclusion-ID files if needed, but not currently duplicated off `moe-reboot2`
-- [ ] Sync the reorganized repo structure to all 3 VMs (still not done — `moe-reboot`/`moe-reboot2` are running the old flat layout with individually-patched files, not `git pull`ed)
+- [x] Investigate the gene-mean-beats-everyone gap on the ARCHS4 held-out set → **done** (distribution-bound; see step 1 above). Re-check on V3.
+- [x] Validate the blend on a proper held-out split → **done** (CV; OSDR 30/70 not overfit, balanced-set edge negligible; see step 2 above).
+- [ ] **V3 (in progress)**: when all 3 20k experts finish, rerun `analyze_moe_headroom.py` on `mixed_holdout.parquet` (the balanced set) and OSDR; compare headroom + gene-mean gap to V2. Back up the 3 new `best_model.pt` to the Mac (MD5-verified) as before.
+- [ ] Then the organ-split test (see below).
+- [ ] Frozen-backbone + lightweight-adapter architecture (CodonMoE-style) — the 3-independent-full-experts design is the likely reason routing has so little headroom; scoped as a later engineering task.
+- [ ] `data/holdout_eval/` source data (raw batch parquets, `predictions.npz`) is only on `moe-reboot`/`moe-reboot2`, not backed up to the Mac (predictions.npz for both eval sets were pulled to `scratchpad/` this session for steps 1&2).
+
+## V3 decision framework (what to do when the 20k runs finish)
+
+The plan is: (1) wait for all three 20k experts to finish, (2) check whether MoE routing now has meaningful headroom, (3) branch on the result. Concretely, run `analyze_moe_headroom.py` on both eval sets (`mixed_holdout.parquet` balanced + OSDR) and read **two** numbers:
+
+- **OOD gap** — do the 20k experts beat the gene-mean baseline (0.686)? At V2/5k they collapsed to 0.14–0.39. Tests whether *scale* fixed the generalization failure.
+- **Routing headroom** — oracle per-sample routing minus best-single-expert. V2 reference: **+0.0031** (balanced) / **+0.0018** (OSDR oracle), i.e. noise.
+
+**"Meaningful" bar:** oracle − best-single **≥ ~+0.02** (≈7–10× the V2 noise floor), *and* ideally a learnable gate (not just the oracle upper bound) captures a real fraction of it. Under ~+0.01 = same "routing doesn't pay" result at bigger scale.
+
+**Branch:**
+- **Headroom ≥ +0.02** → scale unlocked specialization → pursue the gating direction (train the MoE gate, then frozen-backbone + lightweight-adapter / CodonMoE-style design).
+- **Headroom ~0 but OOD gap closed** (experts now beat gene-mean) → experts generalize, species axis just doesn't separate them → **pivot to the organ-split test below**.
+- **Headroom ~0 AND OOD gap persists** (still lose to gene-mean at 20k) → bottleneck is backbone/data, not routing → reconsider frozen-backbone+adapter architecture or more data *before* spending compute on organ experts.
+
+## Planned: MoE organ-split test
+
+The species axis barely separates the experts (`mixed` dominates everywhere), so routing has nothing to arbitrate. **Organ is a finer, more biologically meaningful axis** — the hypothesis is that organ-specialized experts diverge enough that per-sample routing finally shows real headroom. Deferred behind V3 so we first know whether scale alone matters.
+
+- **Data**: mouse `.h5` `source_name_ch1` has ample organ coverage (verified 2026-07-13: brain ~28k, lung ~26k, bone ~26k, liver ~19k, colon/spleen/skin ~6–7k). Reuses the mouse matrix already on `moe-reboot` — no new download. (Human organ labels would need the human matrix; start mouse-only.)
+- **Design**: pick 3–5 organs by count; add organ-based sample selection to `preprocessing.py` (new `--organ`/`--source-filter` flag — filter `source_name_ch1` before sampling, mirroring `--exclude-ids-file`). Train one expert per organ on the shared canonical vocab / v2 arch.
+- **Eval**: draw an organ-labeled held-out set (exclude training IDs), compute **oracle-by-organ routing vs best-single-organ-expert** headroom — the organ analogue of the current species headroom analysis. Key comparison: is organ headroom > the ~0 species headroom?
+- **Open questions**: organ count vs samples-per-organ tradeoff; whether to route by true organ label (upper bound) or a learned gate; whether to fold in V3-scale per organ if 5k-per-organ underfits the same way.
 
 ## Provenance
 
