@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-15 12:00 PDT / 2026-07-15 19:00 UTC
+**Last updated:** 2026-07-15 12:10 PDT / 2026-07-15 19:10 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -45,13 +45,20 @@ serve as the primary interspecies-routing benchmark.
   clean training exit. It will immediately run full, strict, and blind-gate
   evaluation with the frozen sample order and masks, write separate shuffled
   result directories, and refuse to overwrite any existing output.
+- Remote tmux session `mixed20k_shuffled_freeze_watch_20260715` is independently
+  waiting for the same clean training exit. It will atomically copy the completed
+  checkpoint directory to persistent
+  `checkpoints/mixed_20k_v3_shuffled_frozen`, verify every copied file with
+  SHA256, and refuse to overwrite an existing freeze.
 - The July 16 ten-minute update is ready in
   `presentation/2026-07-16-biweekly.html`, with timed notes in
-  `presentation/2026-07-16-biweekly-script.md`. Its nine-slide story covers the
-  corrected evaluation, V3 scale/finding, blind gate, bounded Stage 1 claim, and
-  fair Stage 2 organ design. The current pooled retrain is labeled ongoing, not
-  presented as a partial result. Desktop/laptop/mobile render checks pass with
-  no horizontal overflow or clipped elements.
+  `presentation/2026-07-16-biweekly-script.md`. Its ten-slide story explains the
+  masked-gene training task and practical value, corrected evaluation, V3
+  scale/finding, blind gate, bounded Stage 1 claim, overarching research goal,
+  and fair Stage 2 organ design. The current pooled retrain is labeled ongoing,
+  not presented as a partial result. The PaperPlot illustration prompt is
+  `presentation/paperplot-human-organ-moe-prompt.md`. Desktop/laptop/mobile
+  render checks pass with no horizontal overflow or clipped elements.
 - The original V3 checkpoints and all prior evaluation artifacts remain
   untouched on persistent storage.
 - **Original three 20k runs and backups complete.** Final epoch-15 checkpoints are human
@@ -183,11 +190,20 @@ true-organ and oracle conditions measures unrealized routing headroom.
 
 ### Proposed success criterion
 
-Proceed beyond the pilot if the blind top-1 system beats the pooled general model
-and the relevant inference-matched control by at least 5% relative MSE, has a
-positive study-bootstrap interval, improves residual Pearson, and captures a
-substantial preregistered fraction of the true-organ routing ceiling. Organ-
-classifier accuracy is secondary to end-to-end reconstruction performance.
+The primary Stage 2 claim is practically convincing only if blind top-1 routing:
+
+1. beats the pooled general model by at least 5% relative MSE reduction;
+2. has a paired absolute-MSE improvement CI with lower bound above zero;
+3. has a residual-Pearson improvement CI with lower bound above zero; and
+4. recovers at least 80% of the true-organ hard-routing improvement over the
+   pooled model, using the same strict test samples.
+
+Biological specialization additionally requires the organ fixed ensemble to beat
+the random-shard fixed ensemble by at least 3% relative MSE with a positive
+absolute-MSE CI. Adaptive soft-routing evidence requires blind soft routing to
+beat the organ fixed ensemble by at least 3% with a positive absolute-MSE CI.
+Organ-classifier accuracy is diagnostic, not a substitute for end-to-end
+reconstruction performance.
 
 ## Stage Transition Decision
 
@@ -209,6 +225,219 @@ full-scale `K`-organ training campaign:
 The successful blind gate is strong enough to continue organ metadata cleanup
 and pipeline development. The active pooled retrain and organ label validation
 still block the strongest publication claim and major Stage 2 compute spending.
+
+## Active Run Completion Runbook
+
+This section is the source of truth for the next agent. Do not launch a duplicate
+training, freeze, or evaluation process without checking these states first.
+
+### First status check
+
+Run from a machine with the existing SSH alias:
+
+```bash
+ssh moe-reboot 'cd /home/exouser/nasa-rna-moe && \
+  date -Is && nvidia-smi && tmux list-sessions && \
+  tail -30 results/mixed_20k_v3_shuffled_train.log && \
+  cat results/mixed_20k_v3_shuffled_freeze.status && \
+  cat results/mixed_20k_v3_shuffled_eval.status'
+```
+
+Expected while training: three tmux sessions named
+`mixed20k_shuffled_20260715`, `mixed20k_shuffled_freeze_watch_20260715`, and
+`mixed20k_shuffled_eval_watch_20260715`. Both watchers should say
+`WAITING_FOR_TRAINING`. Closing the local terminal/computer does not stop them.
+
+### Automated sequence after training
+
+1. `runs/train_mixed_20k_v3_shuffled.sh` writes the best checkpoint under the
+   persistent `checkpoints/mixed_20k_v3_shuffled` directory and writes
+   `results/mixed_20k_v3_shuffled_train.exit_code` when the tmux wrapper exits.
+2. `runs/freeze_shuffled_mixed_when_complete.sh` requires exit code zero and
+   `best_model.pt`, copies the entire stable checkpoint directory through an
+   `.incomplete` staging directory, verifies `SHA256SUMS`, and creates:
+   - `checkpoints/mixed_20k_v3_shuffled_frozen/`
+   - `results/mixed_20k_v3_shuffled_freeze.COMPLETE`
+   - `results/mixed_20k_v3_shuffled_freeze.status`
+3. `runs/evaluate_shuffled_mixed_when_complete.sh` independently requires the
+   same clean exit and checkpoint, then runs:
+   - corrected full-cohort inference with the original frozen mask;
+   - strict 103-study analysis from that cache;
+   - the leakage-protected blind species gate on the new three-expert cache;
+   - frozen mask, sample count/order, and checkpoint-path validation.
+4. Successful evaluation creates:
+   - `results/interspecies_headroom_20k_v3_shuffled_corrected/report.json`
+   - `results/interspecies_headroom_20k_v3_shuffled_strict_study_disjoint/report.json`
+   - `results/blind_species_gate_20k_v3_shuffled/report.json`
+   - `results/mixed_20k_v3_shuffled_eval.COMPLETE`
+   - `results/mixed_20k_v3_shuffled_eval.status`
+   - `results/mixed_20k_v3_shuffled_eval.log`
+
+The watchers do **not** update `progress.md`, `report.md`, the presentation, or
+Git, and they do not copy reports back to the Mac. Those are required manual
+post-completion steps below.
+
+### Stage 1 decision after shuffled evaluation
+
+Use the **strict 103-study result** as primary; full-cohort results are diagnostic.
+In `results/blind_species_gate_20k_v3_shuffled/report.json`, inspect
+`blind_soft_vs_fixed`, `blind_soft_vs_mixed`, `metadata_soft_vs_fixed`, and
+`soft_oracle_vs_fixed`.
+
+- **Practically convincing Stage 1:** blind soft beats both the out-of-fold fixed
+  blend and shuffled pooled model by at least 5% relative MSE; both absolute-MSE
+  CIs have lower bounds above zero; blind-soft residual-Pearson versus fixed has
+  a CI lower bound above zero; and soft oracle versus fixed clears 3%.
+- **Promising but not yet practical:** blind soft beats fixed with positive
+  absolute-MSE CI and at least 3% relative MSE, but misses the 5% or
+  residual-Pearson criterion.
+- **Ensemble-only benefit:** blind routing beats the pooled model but not the
+  fixed blend. Do not describe this as useful adaptive MoE routing.
+- **Adaptive ensemble benefit but no general-model win:** blind routing beats
+  fixed but not the shuffled pooled model. The router improves the ensemble but
+  is not a better practical system than the fairer general control.
+- **No meaningful routing ceiling:** soft oracle versus fixed is below 3% or its
+  absolute-MSE CI includes zero. Stop gate tuning and revisit expert/data design.
+- **Study-generalization failure:** a positive full-cohort result disappears on
+  strict. Treat this as study leakage/domain dependence, not evidence for MoE.
+
+Classifier accuracy/AUC is secondary. The deployment claim is reconstruction
+improvement from a gate that sees only masked expression.
+
+### Required manual steps after both COMPLETE markers
+
+1. Verify both exit codes are zero and run `sha256sum -c` inside the frozen
+   checkpoint directory once more.
+2. Record best epoch, train/validation loss, checkpoint SHA256, runtime, and the
+   three strict comparisons above.
+3. Copy the small report JSON files, freeze metadata, and SHA256 manifest to a
+   new local `artifacts/stage1_5_shuffled_control/` directory. Do not commit model
+   weights to Git.
+4. Compare old versus shuffled pooled MSE on identical strict samples and state
+   whether the Stage 1 conclusion survives. Do not compare different masks,
+   cohorts, or estimands.
+5. Append a timestamped result to `report.md`; update current status and decision
+   in `progress.md`; replace the slide 10 current-run panel only if the complete
+   frozen evaluation is available.
+6. Run syntax checks, focused tests, the full suite, and `git diff --check`, then
+   commit and push. The current baseline is 41/41 tests.
+7. `moe-reboot` is safe to shelve only after training, freeze, and evaluation
+   have all exited and both COMPLETE markers/checksums are verified. Persistent
+   volume paths must resolve before shelving.
+
+### Failure recovery without destroying artifacts
+
+- **Training exit nonzero:** both watchers intentionally become `BLOCKED`. Keep
+  every checkpoint and inspect the training log. Resume only from the newest
+  verified per-epoch file under
+  `checkpoints/mixed_20k_v3_shuffled/<run_id>/epoch_*.pt` using
+  `RESUME_FROM=<path>` with `DATASET_VARIANT=mixed_20k_v3_shuffled`. Launch the
+  resume under tmux and point new versioned watchers at its exit marker; never
+  delete or overwrite the failed run.
+- **Freeze FAILED/BLOCKED:** inspect
+  `results/mixed_20k_v3_shuffled_freeze.log` and any `.incomplete` directory.
+  Verify the source checkpoint before moving the incomplete copy to a timestamped
+  quarantine path and starting a versioned retry. Do not remove it blindly.
+- **Evaluation FAILED:** inspect `results/mixed_20k_v3_shuffled_eval.log` first.
+  The watcher refuses to overwrite partial output directories. Preserve them by
+  moving them to timestamped diagnostic names, correct the underlying issue,
+  then use new versioned output paths for a retry. Reuse the exact frozen masks
+  and strict IDs.
+- **Watcher missing while training continues:** training is independent. Recopy
+  the committed watcher script and relaunch only the missing tmux session after
+  confirming no process with the same script is alive.
+
+## Stage 2 Organ Execution Runbook
+
+Do not launch the definitive organ models from the current V2 pilot manifest.
+It is sufficient for pipeline smoke testing but still contains label ambiguity
+and only 220-783 training rows per specialist.
+
+### Cohort readiness gate
+
+Before a definitive GPU campaign:
+
+1. retain enough raw metadata to audit each label, including characteristics;
+2. replace or supplement regex labels with ontology-backed normalization;
+3. exclude cell lines, cultures, organoids, xenografts, tumors, ambiguous organs,
+   and connected study groups spanning multiple organ labels;
+4. manually review at least 50 stratified samples per selected organ and require
+   at least 95% label precision before freezing;
+5. require at least 1,000 clean training samples and 30 independent training
+   study groups per included organ for the definitive run; organs below this can
+   remain in a smoke test but must not drive the primary claim;
+6. choose `K` only from these preregistered availability rules, not from model
+   performance; and
+7. freeze sample order, connected-group splits, hashes, exclusions, and the exact
+   pooled/specialist union before training.
+
+### Ordered implementation plan
+
+1. **Label audit V2/V3:** extend `evaluation/audit_archs4_organs.py` to retain
+   auditable metadata and produce stratified manual-review sheets. Resolve GBM,
+   HSAEpC, tumor acronyms, and tissue-versus-derived-cell ambiguity. Rerun
+   `evaluation/build_organ_pilot_manifest.py` only after the rules are frozen.
+2. **Exact dataset extraction:** implement a manifest-driven extractor from the
+   human ARCHS4 H5 into the shared 15,448-gene raw-TPM space. It must assert no
+   duplicate sample IDs, no train/calibration/test study overlap, identical gene
+   order, and exact equality between pooled train IDs and the union of specialist
+   train IDs. This extractor does not yet exist.
+3. **Training controls:** train one pooled human model on the exact union, `K`
+   organ specialists on disjoint partitions of that union, and `K` size-matched
+   random-shard experts. Use the same architecture, optimizer, mask rate, epoch
+   exposure, gene order, and globally shuffled pooled batches. Store/freeze each
+   run on persistent storage with hashes.
+4. **Frozen evaluation:** implement an organ evaluator using the corrected
+   interspecies conventions: exactly one `log1p`, one deterministic 30% mask,
+   train-only gene mean, study-macro estimand, paired clustered bootstrap, and
+   strict study-disjoint test. Required conditions are pooled general, random
+   fixed ensemble, organ fixed ensemble, true-organ hard/soft, blind top-1/soft,
+   and per-sample soft oracle.
+5. **Blind gate:** train/calibrate only on calibration studies. The gate receives
+   the same masked expression as the expert, never hidden target values. True
+   organ labels may supervise calibration but are unavailable at test. Include a
+   confidence threshold and pooled-model fallback for ambiguous/out-of-taxonomy
+   samples.
+6. **Smoke test before scale:** run a short one-epoch or tiny-subset end-to-end
+   job solely to validate schemas, checkpoints, caching, masks, and comparison
+   code. Do not interpret it biologically.
+7. **Definitive run and decision:** launch only after the readiness gate and
+   smoke tests pass. Apply the preregistered criteria below without tuning them
+   after seeing test outcomes.
+
+### Stage 2 outcome interpretation
+
+- **Full success:** all primary blind-top-1 criteria pass, organ fixed beats
+  random fixed, and blind routing recovers at least 80% of the true-organ hard
+  ceiling. This supports an accurate, inference-efficient organ MoE, with extra
+  storage reported as a cost.
+- **Experts work, gate fails:** true-organ routing passes but blind routing does
+  not. Improve router inputs/calibration or fallback logic; do not retrain experts
+  first unless their ceiling is also weak.
+- **Generic ensemble only:** organ fixed does not beat random fixed. Any gain is
+  attributable to sharding/ensembling, not organ biology.
+- **No organ specialization:** true-organ hard routing fails to beat pooled by
+  at least 5% with positive MSE/residual intervals. Revisit labels, data scale,
+  organ granularity, or architecture; do not claim transfer from Stage 1.
+- **Statistically positive but practically small:** MSE CI is positive but the
+  primary gain is below 5%. Report it as preliminary and do not scale solely on
+  that basis.
+- **Strict-only failure:** full cohort passes but strict study-disjoint test does
+  not. Treat as study/domain leakage and improve cohort diversity.
+- **Efficiency failure:** accuracy passes but top-1 inference is not roughly one
+  expert plus a small gate, or fallback activates excessively. Report as an
+  ensemble result rather than an efficient MoE system.
+
+### Stage 2 artifacts already available
+
+- Audit code: `evaluation/audit_archs4_organs.py`
+- Manifest builder: `evaluation/build_organ_pilot_manifest.py`
+- Pilot reports/manifest: `artifacts/stage2_organ_pilot/`
+- Overarching figure prompt:
+  `presentation/paperplot-human-organ-moe-prompt.md`
+- Current V2 pilot: brain, skin, liver, colon, lung; 2,856 samples; 317 groups;
+  exact pooled/specialist train-union hash
+  `6d0e274b994ad3c9e1e93d671824d7c879651e2524b0ff95543bb8a642bc396a`.
 
 ## Repository and Compute
 

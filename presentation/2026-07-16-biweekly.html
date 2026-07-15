@@ -46,6 +46,10 @@
   .title-slide{background:var(--panel);}
   .meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:9px;font-family:var(--mono);font-size:15px;color:var(--muted);}
   .meta b{color:var(--ink);font-weight:650;}
+  .task-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;padding-top:17px;border-top:1px solid var(--rule);max-width:1000px;}
+  .task-item .k{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--accent-ink);margin-bottom:5px;}
+  .task-item p{font-size:16px;line-height:1.4;color:var(--muted);margin:0;}
+  .task-item strong{color:var(--ink);}
   .rule{height:1px;background:var(--rule);margin:17px 0;}
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
   .cols.wide-left{grid-template-columns:1.18fr .82fr;}
@@ -91,11 +95,25 @@
   .checklist li:last-child{border-bottom:0;}
   .checklist .when{font-family:var(--mono);font-size:13px;color:var(--accent-ink);padding-top:4px;}
   .checklist .what{font-size:19px;}
+  .research-stage{display:grid;grid-template-columns:145px 1fr 190px;gap:20px;align-items:center;padding:18px 20px;border-top:3px solid var(--accent);background:var(--panel);}
+  .research-stage.stage-two{background:var(--accent-soft);}
+  .research-stage .stage-label{font-family:var(--mono);font-size:13px;text-transform:uppercase;color:var(--accent-ink);}
+  .research-stage h3{font-size:24px;margin:0 0 4px;}
+  .research-stage p{font-size:17px;color:var(--muted);margin:0;}
+  .research-stage .evidence{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--accent-ink);text-align:right;}
+  .transfer-note{text-align:center;font-family:var(--mono);font-size:13px;color:var(--muted);padding:9px 0;}
+  .goal-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;}
+  .goal{border-top:2px solid var(--accent);padding:11px 12px;background:var(--panel);}
+  .goal b{display:block;font-size:18px;margin-bottom:3px;}
+  .goal span{font-size:15px;line-height:1.35;color:var(--muted);}
   .source{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:10px;max-width:none;}
   @media(max-width:860px){
     .slide{padding:28px 5vw;overflow-y:auto;align-items:flex-start;}
     h1{font-size:38px;} h2{font-size:30px;} p.lede{font-size:19px;} p,li{font-size:17px;}
     .cols,.cols.wide-left{grid-template-columns:1fr;gap:14px;}
+    .task-summary,.goal-row{grid-template-columns:1fr;gap:9px;}
+    .research-stage{grid-template-columns:1fr;gap:7px;}
+    .research-stage .evidence{text-align:left;}
     .stats{grid-template-columns:1fr;gap:8px;}.stat{min-height:0;}
     .steps{grid-template-columns:1fr 1fr;}.figure svg{max-height:260px;}
     table{table-layout:fixed;font-size:11px;}
@@ -115,11 +133,16 @@
   <div class="inner">
     <span class="eyebrow">Biweekly progress update · SPARC · Sprint 2</span>
     <h1>Mixture-of-Experts for Spaceflight Transcriptomics</h1>
-    <p class="lede">A corrected evaluation changes the Stage 1 conclusion: species-specialized experts have substantial routing headroom, and expression alone can recover it.</p>
+    <p class="lede">We teach models to reconstruct hidden genes from the rest of an RNA-seq profile, then ask whether routing to a biological specialist improves that reconstruction.</p>
     <div class="meta">
       <span><b>Date</b> 2026-07-16</span>
       <span><b>Presenter</b> Martin</span>
       <span><b>Institution</b> NASA Ames</span>
+    </div>
+    <div class="task-summary">
+      <div class="task-item"><div class="k">Training task</div><p><strong>Mask 30% of genes</strong>, then predict their expression from the observed 70%.</p></div>
+      <div class="task-item"><div class="k">What it learns</div><p><strong>Gene co-expression programs</strong> and biological context, not a species label.</p></div>
+      <div class="task-item"><div class="k">Why it matters</div><p><strong>Pretrain on abundant ground data</strong>, then transfer representations to scarce spaceflight studies.</p></div>
     </div>
   </div>
   <span class="slide-num">01</span>
@@ -288,6 +311,30 @@
 
 <section class="slide">
   <div class="inner">
+    <span class="eyebrow">Overarching research goal</span>
+    <h2>Transfer the Stage 1 lesson from species to human organs</h2>
+    <div class="research-stage">
+      <div class="stage-label">Stage 1 · Proof</div>
+      <div><h3>Unknown species → expression router → species expert</h3><p>Human and mouse biology differ enough that specialist routing improves masked-gene reconstruction.</p></div>
+      <div class="evidence">33.95% lower MSE<br>blind vs fixed</div>
+    </div>
+    <div class="transfer-note">APPLY THE SAME TESTABLE LOGIC TO WITHIN-HUMAN BIOLOGY ↓</div>
+    <div class="research-stage stage-two">
+      <div class="stage-label">Stage 2 · Hypothesis</div>
+      <div><h3>Unknown organ → trained organ router → organ expert</h3><p>Inter-organ biology is distinct enough that a routed specialist will outperform one general human model.</p></div>
+      <div class="evidence">primary comparison:<br>blind top-1 vs general</div>
+    </div>
+    <div class="goal-row">
+      <div class="goal"><b>More accurate</b><span>Specialists model organ-specific gene relationships instead of averaging them away.</span></div>
+      <div class="goal"><b>Efficient at inference</b><span>Top-1 routing executes one expert plus a small gate, not every stored expert.</span></div>
+      <div class="goal"><b>Biologically interpretable</b><span>Routes and failure cases map to an explicit biological axis: organ identity.</span></div>
+    </div>
+  </div>
+  <span class="slide-num">08</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
     <span class="eyebrow">Stage 2 hypothesis</span>
     <h2>Unknown human organ → expression gate → organ specialist</h2>
     <div class="figure">
@@ -309,7 +356,7 @@
       <div><h3>Fair inference</h3><p>Top-1 executes one expert plus a small gate; report the extra storage cost separately.</p></div>
     </div>
   </div>
-  <span class="slide-num">08</span>
+  <span class="slide-num">09</span>
 </section>
 
 <section class="slide">
@@ -339,7 +386,7 @@
       </div>
     </div>
   </div>
-  <span class="slide-num">09</span>
+  <span class="slide-num">10</span>
 </section>
 
 </main>

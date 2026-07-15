@@ -1,4 +1,4 @@
-# Talking script - 2026-07-16 biweekly (~10 min, 9 slides)
+# Talking script - 2026-07-16 biweekly (~10 min, 10 slides)
 
 The slides hold the numbers. Use the script to keep the methodological story
 clear without reading every bullet.
@@ -7,27 +7,30 @@ clear without reading every bullet.
 
 | Slide | Target | Running total |
 |---|---:|---:|
-| 01 - Title | 0:35 | 0:35 |
-| 02 - Why the conclusion changed | 1:15 | 1:50 |
-| 03 - V3 scale experiment | 0:55 | 2:45 |
-| 04 - Corrected protocol | 1:10 | 3:55 |
-| 05 - Headroom result | 1:25 | 5:20 |
-| 06 - Blind gate | 1:10 | 6:30 |
-| 07 - Interpretation | 1:05 | 7:35 |
-| 08 - Stage 2 hypothesis | 1:10 | 8:45 |
-| 09 - Immediate plan | 1:05 | 9:50 |
+| 01 - Title and training task | 0:50 | 0:50 |
+| 02 - Why the conclusion changed | 1:05 | 1:55 |
+| 03 - V3 scale experiment | 0:50 | 2:45 |
+| 04 - Corrected protocol | 1:00 | 3:45 |
+| 05 - Headroom result | 1:15 | 5:00 |
+| 06 - Blind gate | 1:05 | 6:05 |
+| 07 - Interpretation | 0:55 | 7:00 |
+| 08 - Overarching research goal | 0:55 | 7:55 |
+| 09 - Fair Stage 2 experiment | 1:00 | 8:55 |
+| 10 - Immediate plan | 1:00 | 9:55 |
 
 ---
 
-**01 - Title**
+**01 - Title and training task**
 
-Hi everyone, I'm Martin. Last week I showed what looked like a negative result:
-after fixing the expert vocabulary, Mixture-of-Experts still appeared to have
-almost no useful routing headroom. This week the conclusion changes. The main
-reason is not a new architecture; it is that I found and fixed several problems
-in how headroom was being measured. Under the corrected evaluation, species
-specialization is large, and a gate can infer the correct route directly from
-expression.
+Hi everyone, I'm Martin. First, to make the task concrete: this is self-supervised
+RNA-seq pretraining. I hide 30 percent of a sample's genes and ask the model to
+reconstruct their expression from the other 70 percent. That teaches the model
+which genes and biological programs move together, without requiring a disease
+or species label for every sample. The practical strategy is to learn those
+representations from abundant ground-based ARCHS4 data and later transfer them
+to rare spaceflight studies. My MoE question is whether a biological specialist
+can reconstruct those hidden genes better than one general model. Last week that
+appeared negative; this week the conclusion changes after correcting evaluation.
 
 **02 - The earlier result was not a valid MoE test**
 
@@ -97,7 +100,20 @@ shuffling, and it will run the same frozen evaluation automatically when done.
 It is not expected to finish before this talk, so I am not presenting a partial
 result.
 
-**08 - Stage 2 hypothesis**
+**08 - Overarching research goal**
+
+This is the overall arc of the project. Stage 1 is not just a human-versus-mouse
+classifier. It is a proof that biological subdomains can support different
+predictive relationships, and that expression itself can identify which
+specialist to use. Stage 2 transfers that lesson within human biology. The
+hypothesis is that organ-specific gene programs are distinct enough that a
+trained expression router plus the appropriate organ expert will beat one
+general human model on an unknown-organ sample. The desired system is more
+accurate through specialization, efficient at inference because top-one routing
+runs only one expert, and interpretable because the route has an explicit organ
+meaning. Stored model size still increases, and I will report that cost.
+
+**09 - Fair Stage 2 experiment**
 
 The biologically more interesting extension is within human data. Given a human
 bulk RNA-seq sample without an organ label, can expression identify the relevant
@@ -109,7 +125,7 @@ so inference compute is roughly comparable; the extra model-storage cost is
 reported separately. Fixed, metadata, random-shard, and oracle controls tell us
 whether any gain is biological specialization or generic ensembling.
 
-**09 - Immediate plan**
+**10 - Immediate plan**
 
 The first conservative ARCHS4 audit supports a five-organ pipeline pilot: brain,
 skin, liver, colon, and lung, with 2,856 samples across 317 connected studies.
@@ -126,7 +142,7 @@ remaining controls prevent us from overclaiming.
 ## Optional current-run insert
 
 Only use this if the shuffled pooled run and its automatic frozen evaluation
-finish before the presentation. Replace the current-run panel on slide 9 with:
+finish before the presentation. Replace the current-run panel on slide 10 with:
 
 - shuffled pooled strict MSE;
 - blind-soft versus shuffled fixed blend relative MSE reduction and CI;
