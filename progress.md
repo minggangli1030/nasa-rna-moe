@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-15 09:37 PDT / 2026-07-15 16:37 UTC
+**Last updated:** 2026-07-15 09:54 PDT / 2026-07-15 16:54 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -8,14 +8,16 @@ evaluation numbers are intentionally not repeated as current evidence.
 
 ## Current Objective
 
-Finish the human/mouse interspecies experiment before starting human-organ MoE:
+Stage 1 interspecies training, backup, evaluation, reporting, and Git archival are
+complete. The next objective is to close two targeted Stage 1 controls while
+beginning a bounded Stage 2 human-organ pilot:
 
-1. Complete all human, mouse, and mixed V3 20k training.
-2. Freeze and back up final checkpoints from ephemeral instances.
-3. Evaluate corrected 5k models on a frozen human+mouse ARCHS4 holdout.
-4. Evaluate 20k models on the identical samples, genes, folds, and masks.
-5. Quantify routing headroom and paired 20k-minus-5k changes.
-6. Append a timestamped diagnosis and future plan to `report.md`, then push Git.
+1. Test a blind expression-derived species gate against the true-species ceiling.
+2. Retrain the pooled mixed control with globally shuffled cross-species batches.
+3. Audit organ labels and choose a data-supported number of organ experts.
+4. Freeze organ-balanced, study-disjoint train/calibration/test cohorts.
+5. Compare a pooled human model with fair specialist, fixed-ensemble, metadata,
+   blind-gate, and oracle controls.
 
 NASA OSDR is secondary because the current OSDR cohort is mouse-only. It cannot
 serve as the primary interspecies-routing benchmark.
@@ -78,6 +80,85 @@ V3 contributes a real scale result on top: on the strict paired cohort, adaptive
 MSE headroom over the fixed blend increases by `0.04064` from 5k to 20k (95% CI
 `[0.03210, 0.04928]`), and Pearson headroom increases by `0.00552` (95% CI
 `[0.00413, 0.00693]`).
+
+## Stage 2 Hypothesis and Experimental Design
+
+### Primary hypothesis
+
+Given a human bulk RNA-seq sample with no organ label, a gate using only the
+observed expression input can select an organ-specialized expert whose masked-
+gene reconstruction is better than one general human model trained on the exact
+same union of samples.
+
+The number of experts is a data-driven `K`, not a fixed four. Include only organs
+with enough samples and independent GEO studies to support specialist training
+and a genuinely study-disjoint test. If expert `k` receives `N_k` training rows,
+the fair-data constraint is:
+
+```text
+sum(N_k for k in 1..K) = N
+general model training rows = the identical N-sample union
+```
+
+### Fair training and inference
+
+- Use the same human gene vocabulary, architecture, masking, optimizer, and
+  number of sample exposures for the pooled model and every specialist.
+- Each training sample belongs to exactly one organ expert and also appears in
+  the general model's union; no specialist receives extra data.
+- The primary practical system uses a blind top-1 gate, so each sample executes
+  one expert plus a small classifier, approximately matching general-model
+  inference FLOPs. Report the `K`-fold storage/parameter cost separately.
+- The gate sees only the same masked/observed expression available to the expert,
+  never the reconstruction targets. Train/calibrate it on studies excluded from
+  the final test.
+- Add a confidence threshold and general-model fallback for ambiguous, mixed, or
+  out-of-taxonomy organs.
+
+### Required comparison ladder
+
+1. **One pooled general human model on all `N` samples:** practical baseline.
+2. **`K` random-shard experts with fixed weights:** controls for generic
+   sharding, extra stored parameters, and ensembling without organ specialization.
+3. **`K` organ experts with fixed weights:** isolates biological specialization
+   from random-shard ensembling, but evaluates all experts at inference.
+4. **True-organ hard/soft routing:** metadata-conditioned specialization ceiling.
+5. **Blind expression-derived top-1/soft gate:** deployable unknown-organ system.
+6. **Per-sample soft oracle:** non-deployable upper bound using target values.
+
+The primary effectiveness comparison is blind top-1 organ MoE versus the pooled
+general model. Blind versus fixed organ ensemble isolates adaptive routing; organ
+versus random-shard ensemble isolates organ specialization; blind versus
+true-organ and oracle conditions measures unrealized routing headroom.
+
+### Proposed success criterion
+
+Proceed beyond the pilot if the blind top-1 system beats the pooled general model
+and the relevant inference-matched control by at least 5% relative MSE, has a
+positive study-bootstrap interval, improves residual Pearson, and captures a
+substantial preregistered fraction of the true-organ routing ceiling. Organ-
+classifier accuracy is secondary to end-to-end reconstruction performance.
+
+## Stage Transition Decision
+
+Stage 1 is strong enough to begin Stage 2 dataset auditing, cohort freezing, and
+a small organ pilot now. The strict result is large, statistically separated from
+zero, present under hard routing, and stronger at 20k, so further species-only
+ceiling analysis has diminishing value.
+
+Two Stage 1.5 experiments should still be completed before a definitive Stage 1
+claim or a full-scale `K`-organ training campaign:
+
+1. **Blind species gate:** use expression only, train on separate calibration
+   studies, and measure how much of the true-species ceiling it recovers. This is
+   relatively cheap with frozen experts/cached predictions and validates the
+   exact gate pipeline needed for organs.
+2. **Corrected pooled mixed retrain:** globally shuffle cross-species batches and
+   rerun the frozen evaluation. This removes the known V3 pooled-control weakness
+   before using Stage 1 as evidence that specialists beat a fair general model.
+
+These controls need not block organ metadata cleanup and pilot design. They should
+block only the strongest publication claim and major Stage 2 compute expenditure.
 
 ## Repository and Compute
 
@@ -189,76 +270,15 @@ persistent storage, so completed training hours are already recoverable:
 - mouse epoch-14: `07d2714f85d2f2807bae3a82bc7b4227`
 - mixed epoch-13: `2f11bc192701b006437d6997281715cc`
 
-## Overnight Automation
+## Completed Overnight Automation
 
-The Mac must remain powered, lid open, and online. Closing Terminal is safe;
-closing the laptop lid or shutting down is not. Backup, report, and Git run in
-detached macOS `screen` sessions. The evaluation watcher is an init-adopted
-detached process after its obsolete screen socket was removed; it remains alive
-under `caffeinate -dims` and intentionally was not restarted. All four are
-independent of an open Terminal window.
-
-### 1. `nasa_moe_backup_final`
-
-- Waits for `Training complete!` and zero `train_single.py` PIDs.
-- Downloads each final checkpoint atomically and verifies remote/local MD5.
-- Archives loss history, metadata, and training logs.
-- Mirrors human/mouse final models into persistent `moe-reboot` storage.
-- Writes `<run>.SAFE_TO_SHELVE`; after all three, `ALL_SAFE_TO_SHELVE`.
-
-### 2. Evaluation watcher (live detached process)
-
-- Waits for `ALL_SAFE_TO_SHELVE`.
-- Confirms `moe-reboot2` and partial have no training PID or GPU compute process;
-  writes `WORKER_INSTANCES_IDLE`.
-- Starts corrected evaluation on `moe-reboot` only. The launcher runs 5k first,
-  then 20k, then strict subset analyses and paired scale comparisons.
-- Copies the complete result bundle to the Mac and validates hashes/schema.
-- Writes `EVALUATION_COMPLETE_AND_VALIDATED`.
-
-### 3. `nasa_moe_report`
-
-- Waits for validated evaluation.
-- Appends an idempotent timestamped addendum to `report.md` containing result
-  tables, paired confidence intervals, diagnosis, limitations, and future plans.
-- Writes `REPORT_READY`.
-
-### 4. `nasa_moe_git`
-
-- Waits for `REPORT_READY`.
-- Stages only repository code/docs/scripts/tests, validates the staged diff,
-  commits, and retries `git push origin main` until successful.
-- Data, checkpoints, results, and backup logs are explicitly Git-ignored.
-- Writes `GIT_BACKUP_PUSHED` with the final commit SHA.
-
-Monitor without attaching:
-
-```bash
-screen -ls
-pgrep -af evaluate_after_20k_backup
-tail -f backups/20k_v3_final/backup_watcher.log
-tail -f backups/20k_v3_final/evaluation_watcher.log
-tail -f backups/20k_v3_final/report_watcher.log
-tail -f backups/20k_v3_final/git_backup_watcher.log
-```
-
-Do not shelve an instance until its own `SAFE_TO_SHELVE` marker exists. The final
-overnight success marker is `EVALUATION_COMPLETE_AND_VALIDATED`; the final report
-and Git markers are `REPORT_READY` and `GIT_BACKUP_PUSHED`.
-
-## Decision Framework for Tomorrow
-
-1. **Metadata soft router clears the strict fixed-blend threshold:** consider a
-   new blind learned gate, but compare it with the true-species ceiling and fair
-   pooled controls; no corrected blind gate exists yet.
-2. **Soft oracle positive, metadata router weak:** complementary signal exists
-   but is not species-aligned; learn expression state rather than species.
-3. **No strict oracle headroom, models improve with scale:** species is the wrong
-   specialization axis; move to organ experts after correcting the mixed control.
-4. **No headroom and weak 20k models:** prioritize sampler/backbone/data quality
-   before spending compute on organs or gate training.
-
-Regardless of outcome, the next defensible controls are: globally shuffled mixed
-retraining, union-data pooled training, parameter/inference-budget matching, and
-profile-controlled metrics. Only then extend the same frozen-ceiling methodology
-to human organs and an unknown-organ RNA-seq gate.
+- All three final V3 checkpoints and metadata archives are checksum-verified on
+  the Mac and persistent `moe-reboot` storage. Human and mouse workers are safe
+  to shelve.
+- Corrected 5k/20k full and strict evaluations completed, the copied bundle
+  passed frozen hash/schema validation, and the timestamped report was generated.
+- All backup/evaluation/report/Git watchers exited. Final markers include
+  `ALL_SAFE_TO_SHELVE`, `EVALUATION_COMPLETE_AND_VALIDATED`, `REPORT_READY`, and
+  `GIT_BACKUP_PUSHED`.
+- The completed Stage 1 code, reports, and interpretation are pushed to
+  `origin/main`.
