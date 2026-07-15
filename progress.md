@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-15 12:52 PDT / 2026-07-15 19:52 UTC
+**Last updated:** 2026-07-15 13:16 PDT / 2026-07-15 20:16 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -52,17 +52,19 @@ serve as the primary interspecies-routing benchmark.
   SHA256, and refuse to overwrite an existing freeze.
 - The July 16 ten-minute update is ready in
   `presentation/2026-07-16-biweekly.html`, with timed notes in
-  `presentation/2026-07-16-biweekly-script.md`. Its ten-slide story explains the
-  masked-gene training task and practical value, corrected evaluation, V3
-  scale/finding, blind gate, bounded Stage 1 claim, overarching research goal,
-  and fair Stage 2 organ design. The current pooled retrain is labeled ongoing,
-  not presented as a partial result. Slide 9 embeds the final PaperPlot figure,
-  `presentation/human-organ-moe-overarching-plan.png`, beneath the exact fair
-  comparison question. The slide uses a centered, near-full-bleed layout for
-  diagram legibility; practical implications remain in the speaker notes rather
-  than a competing footer bar. Its source prompt is
-  `presentation/paperplot-human-organ-moe-prompt.md`. Desktop/laptop/mobile
-  render checks pass with no horizontal overflow or clipped elements.
+  `presentation/2026-07-16-biweekly-script.md`. Reorganized 2026-07-15 into a
+  ten-slide arc: slide 1 title/task; slides 2-5 a concise Stage 1 interspecies
+  recap (evaluation fix, headroom result + scale, blind gate, what it does/does
+  not prove); slides 6-8 the overarching goal and fair Stage 2 organ design, with
+  slide 7 the near-full-bleed PaperPlot figure
+  (`presentation/human-organ-moe-overarching-plan.png`, source prompt
+  `presentation/paperplot-human-organ-moe-prompt.md`) beneath the exact fair
+  comparison question; slide 9 the one still-running control (shuffled pooled
+  retrain) presented as a decision tree of actions per outcome, not a partial
+  result; and slide 10 the new Stage 3 direction (D1 organ interference matrix),
+  framed as reviewed-related-work, novel, and worth testing, with a schematic
+  matrix figure. The current pooled retrain remains labeled ongoing throughout.
+  Desktop/laptop/mobile render checks should be re-run after this reorganization.
 - Keep `moe-reboot-partial` shelved for now. The active shuffled 20k control is
   the decision-critical GPU experiment; organ progress is currently limited by
   manual label/QC work and evaluator preparation, not compute. Reassess the
@@ -449,6 +451,103 @@ Before a definitive GPU campaign:
 - Current V2 pilot: brain, skin, liver, colon, lung; 2,856 samples; 317 groups;
   exact pooled/specialist train-union hash
   `6d0e274b994ad3c9e1e93d671824d7c879651e2524b0ff95543bb8a642bc396a`.
+
+## Stage 3 Research Directions (Post-Stage-2)
+
+**Gating condition.** Do not start Stage 3 until Stage 2 resolves. If Stage 2 is a
+*win* (blind top-1 routing clears the preregistered primary criteria against the
+fair pooled general model, and organ-fixed beats random-shard-fixed), D1 runs as the
+headline follow-up. If Stage 2 is a *null*, D1 still runs but reframes: the
+interference matrix becomes the *explanation* for why organ specialization does not
+help, which remains publishable. Either way, D1 is the committed Stage 3 direction.
+
+**Selected direction: D1 is the default.** D2 is the backup / second result; D3 and
+the phase-boundary idea are archived (see end of section). The goal is to move the
+paper from a confirmatory result ("organ MoE beats a general model," an expected
+pattern) toward a generative one — a measurement of *where and why* organ
+specialization helps. Full prior-art record with arXiv IDs and scoop risks is in
+`related-works.md`; keep it in sync.
+
+### D1 — Organ-by-organ transfer / interference matrix (Stage 3 default)
+
+**Question.** For each ordered organ pair `(A, B)`, does adding organ `B`'s data to
+joint training help or hurt masked-gene reconstruction on a held-out, study-disjoint
+test set of organ `A`? Report a signed `K x K` matrix (negative = interference,
+positive = beneficial transfer).
+
+**Why this is the direction.** It reuses essentially all Stage 2 infrastructure,
+turns "did MoE win" into "here is the transfer structure of the human transcriptome
+under masked reconstruction," and — per `related-works.md` block D1 — is a novel
+measurement in genomics on established task-affinity methodology (no located work
+builds this matrix from a masked bulk-expression model). It also directly explains
+Stage 2: organs with strong mutual interference are where specialist routing should
+help most; organs with beneficial transfer are where pooling wins.
+
+**Experimental design (plan; preregister before looking).**
+
+1. *Cohort and protocol — inherited, frozen.* Same manifest-driven extractor, shared
+   15,448-gene space, one `log1p`, one deterministic 30% mask, study-disjoint splits,
+   study-macro estimand, and paired clustered bootstrap as Stage 2. Each organ `A`
+   has a fixed strict study-disjoint test set used for *every* matrix cell in row `A`
+   so rows are internally comparable. Test studies never appear in any training pool.
+2. *Cells.* Diagonal baseline: an `A`-only specialist. Off-diagonal `M[A,B]`: a model
+   jointly trained on `A + B`, evaluated on `A`'s strict test, minus the `A`-only
+   baseline. A single joint `A+B` model yields two cells (`M[A,B]` on `A`'s test and
+   `M[B,A]` on `B`'s test), so donor/recipient asymmetry is measured directly and is
+   itself a result.
+3. *Size-confound control (critical).* Adding `B` also adds data, so a raw `A+B` vs
+   `A` delta conflates "more data helps" with "`B` specifically helps/hurts `A`."
+   Each `M[A,B]` is therefore measured against a **size-matched neutral-filler
+   control**: `A + B` versus `A` plus an equal-size draw of more `A` (or, if `A` is
+   too small, a size-matched random draw from the global pool). The matrix then reads
+   as the effect of `B`'s *identity*, net of its volume. Report the raw
+   (uncontrolled) matrix too, for transparency.
+4. *Held-fixed training.* Same architecture, optimizer, mask rate, epoch/exposure
+   budget, gene order, globally shuffled batches, and seed policy across all cells.
+5. *Statistics.* Paired clustered bootstrap over `A`'s test studies per cell; flag
+   cells whose CI excludes zero; apply Benjamini-Hochberg across the `K^2` cells and
+   report both raw and FDR-controlled significance.
+6. *Cost at K=5.* `C(5,2)=10` joint pairwise models + `5` solo baselines +
+   size-matched controls ≈ 15-25 small Performer runs, plus the full-pool model
+   already trained in Stage 2. Feasible on one A100 over a few days. If `K` grows,
+   switch to leave-one-organ-out marginal contributions (`O(K)`) instead of full
+   pairwise.
+
+**Exploratory analyses (labeled as such; run after the preregistered matrix).**
+Cluster the matrix and test whether organs group by known biology (germ layer,
+epithelial vs non-epithelial); regress interference against a biological-distance
+axis (transcriptome correlation, shared marker programs) to ask whether interference
+*tracks* a predictable axis. A positive answer is the generative finding and also
+feeds D2.
+
+**Primary deliverable.** The signed, size-controlled `K x K` interference matrix
+with CIs, its asymmetry structure, and whether interference predicts the Stage 2
+per-organ specialist wins/losses.
+
+### D2 — Learned expert partition vs organ ontology (backup / second result)
+
+If Stage 2 and D1 leave room for a second contribution: let experts be
+learnable/soft rather than hard-assigned by organ, and test whether the emergent
+partition aligns with the organ taxonomy or a different biological axis. **Scoop risk
+is real** — "do MoE experts specialize by domain" is an active LLM-interpretability
+topic (see `related-works.md` D2 block, several 2026 entries). Our novelty is
+strictly the biological alternative hypothesis in the genomics setting; the intro
+must differentiate from the LLM wave rather than rediscover it. Reuses the Stage 2
+experts/gate plus an alignment analysis (expert-vs-label contingency, routing-cluster
+recovery of known ontologies). Naturally continues D1's exploratory clustering.
+
+### Archived (not planned)
+
+- **D3 — router weights as deconvolution.** Bulk RNA-seq deconvolution is a mature
+  field (CIBERSORT, Scaden, and the neural/Bayesian methods in `related-works.md` D3
+  block), and MoE-for-cell-type already exists (GC-MoE). Only the "emergent,
+  unsupervised byproduct of reconstruction routing" framing was defensible, and it
+  still competes with unsupervised deconvolution. Archived; if revisited, run it only
+  as a router interpretability check benchmarked against an established method, never
+  as a new deconvolution claim.
+- **Data-dependent phase boundary.** A "samples-per-organ crossover where specialists
+  overtake pooling" was dropped: the crossover depends heavily on dataset, organ
+  granularity, and gene space, so it does not generalize into a unifiable claim.
 
 ## Repository and Compute
 

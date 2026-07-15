@@ -165,16 +165,12 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Last update → this update</span>
-    <h2>The earlier “no headroom” result was not a valid MoE test</h2>
+    <span class="eyebrow">Stage 1 · Evaluation fix</span>
+    <h2>The earlier “no headroom” result was a broken test — so I rebuilt the evaluation</h2>
     <div class="cols">
-      <div>
-        <h3>What July 9 appeared to show</h3>
-        <p class="lede">A fixed blend helped slightly, but choosing among specialists added almost nothing.</p>
-        <div class="callout warm"><p><strong>Old conclusion:</strong> expert quality may be too weak to justify routing.</p></div>
-      </div>
       <div class="panel">
-        <h3>What was wrong</h3>
+        <span class="badge running">Was wrong</span>
+        <h3 style="margin-top:12px;">Why July 9 was not a valid MoE test</h3>
         <ul>
           <li>Raw TPM entered models trained on <code>log1p(TPM)</code>.</li>
           <li>Blend weights were fitted on the reporting cohort.</li>
@@ -183,67 +179,26 @@
           <li>Large GEO studies dominated sample-weighted averages.</li>
         </ul>
       </div>
+      <div class="panel">
+        <span class="badge">Rebuilt</span>
+        <h3 style="margin-top:12px;">A frozen, study-aware protocol</h3>
+        <ul>
+          <li>103-study strict cohort, disjoint from every training study.</li>
+          <li>Exactly one <code>log1p</code> and a shared deterministic 30% mask.</li>
+          <li>Blend and router weights fit out of fold.</li>
+          <li>Equal study weight; clustered-bootstrap intervals.</li>
+        </ul>
+      </div>
     </div>
-    <div class="callout"><p><strong>This sprint’s main contribution:</strong> freeze a leakage-resistant, study-aware evaluation before interpreting MoE headroom.</p></div>
+    <div class="callout"><p><strong>The bar that matters:</strong> beating one pooled model is only ensemble evidence — to claim adaptive MoE value the router must beat the <em>fixed ensemble</em>.</p></div>
   </div>
   <span class="slide-num">02</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">V3 · Scale experiment</span>
-    <h2>Same experts and objective, four times more data</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Dimension</th><th>V2 · 5k</th><th>V3 · 20k</th><th>Held constant</th></tr></thead>
-        <tbody>
-          <tr><td>Train / validation rows</td><td>4,000 / 800</td><td>16,000 / 3,200</td><td>Species-balanced design</td></tr>
-          <tr><td>Experts</td><td>Human · Mouse · Mixed</td><td>Human · Mouse · Mixed</td><td>One 15,448-gene vocabulary</td></tr>
-          <tr><td>Backbone</td><td>4-layer Performer</td><td>Same</td><td>Architecture and gene order</td></tr>
-          <tr><td>Objective</td><td>30% masked reconstruction</td><td>Same</td><td><code>log1p_tpm</code>, wd 0.01</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="n">0.279</div><div class="label">Human V3 best validation loss</div></div>
-      <div class="stat"><div class="n">0.231</div><div class="label">Mouse V3 best validation loss</div></div>
-      <div class="stat"><div class="n">0.546</div><div class="label">Pooled mixed V3 validation loss</div></div>
-    </div>
-    <p class="source">Caveat: V2/V3 draws and epoch budgets differ, so this is controlled in architecture/objective, not a perfect single-variable experiment.</p>
-  </div>
-  <span class="slide-num">03</span>
-</section>
-
-<section class="slide">
-  <div class="inner">
-    <span class="eyebrow">Corrected protocol</span>
-    <h2>A frozen interspecies test with no answer leakage</h2>
-    <div class="steps">
-      <div class="step"><div class="k">01 · COHORT</div><b>Human + mouse</b><span>667-sample diagnostic; 103-study strict sensitivity cohort.</span></div>
-      <div class="step"><div class="k">02 · INPUT</div><b>Training space</b><span>Exactly one <code>log1p</code> transform and a shared 30% mask.</span></div>
-      <div class="step"><div class="k">03 · FIT</div><b>Out of fold</b><span>Fixed and species-soft weights fit without using held-out studies.</span></div>
-      <div class="step"><div class="k">04 · ESTIMATE</div><b>Study balanced</b><span>Equal study weight within species; clustered bootstrap intervals.</span></div>
-    </div>
-    <div class="figure" style="margin-top:18px;">
-      <svg viewBox="0 0 760 180" role="img" aria-label="Evaluation ladder from pooled model through fixed blend and adaptive routing to oracle">
-        <rect class="box-white" x="20" y="55" width="150" height="58" rx="6"/><text class="box-text-dark" x="95" y="79">One pooled model</text><text class="axis-label" x="95" y="100" text-anchor="middle">single expert baseline</text>
-        <path class="conn" d="M170 84 H215"/><text class="value" x="193" y="75" text-anchor="middle">→</text>
-        <rect class="box" x="215" y="55" width="150" height="58" rx="6"/><text class="box-text" x="290" y="79">Fixed blend</text><text class="axis-label" x="290" y="100" text-anchor="middle">ensemble control</text>
-        <path class="conn" d="M365 84 H410"/><text class="value" x="388" y="75" text-anchor="middle">→</text>
-        <rect class="box" x="410" y="55" width="150" height="58" rx="6"/><text class="box-text" x="485" y="79">Adaptive router</text><text class="axis-label" x="485" y="100" text-anchor="middle">must beat fixed</text>
-        <path class="conn" d="M560 84 H605"/><text class="value" x="583" y="75" text-anchor="middle">→</text>
-        <rect class="box-white" x="605" y="55" width="135" height="58" rx="6"/><text class="box-text-dark" x="672" y="79">Soft oracle</text><text class="axis-label" x="672" y="100" text-anchor="middle">target-seeing ceiling</text>
-      </svg>
-      <p class="caption">MoE evidence requires adaptive routing to beat the fixed ensemble, not merely the pooled model.</p>
-    </div>
-  </div>
-  <span class="slide-num">04</span>
-</section>
-
-<section class="slide">
-  <div class="inner">
-    <span class="eyebrow">Stage 1 result</span>
-    <h2>Correct evaluation reveals large routing headroom</h2>
+    <span class="eyebrow">Stage 1 · Result</span>
+    <h2>Corrected evaluation reveals large routing headroom — and scale strengthens it</h2>
     <div class="figure">
       <svg viewBox="0 0 760 300" role="img" aria-label="Relative MSE reduction versus the out-of-fold fixed blend for 5k and 20k species routing conditions">
         <line class="grid" x1="175" y1="245" x2="720" y2="245"/>
@@ -259,17 +214,18 @@
         <text class="value" x="639" y="129" text-anchor="middle">19.3%</text><text class="value" x="698" y="42" text-anchor="middle">35.0%</text><text class="axis-label" x="665" y="269" text-anchor="middle">Soft oracle</text>
         <rect class="bar5" x="520" y="282" width="15" height="10"/><text class="axis-label" x="541" y="291">V2 · 5k</text><rect class="bar20" x="610" y="282" width="15" height="10"/><text class="axis-label" x="631" y="291">V3 · 20k</text>
       </svg>
-      <p class="caption">Strict study-disjoint cohort · relative MSE reduction versus the out-of-fold fixed blend.</p>
+      <p class="caption">Strict study-disjoint cohort · relative MSE reduction vs the out-of-fold fixed blend. V3 (20k) holds architecture, objective, and the 15,448-gene vocabulary fixed and adds 4× data.</p>
     </div>
-    <div class="callout"><p><strong>Strict 20k soft routing:</strong> 34.7% lower MSE; absolute gain 0.1649, 95% CI [0.1575, 0.1726]; residual-Pearson gain +0.1198, CI [0.1130, 0.1267].</p></div>
+    <div class="callout"><p><strong>Strict 20k soft routing:</strong> 34.7% lower MSE; absolute gain 0.1649, 95% CI [0.1575, 0.1726]; residual-Pearson gain +0.1198, CI [0.1130, 0.1267]. Hard routing already delivers most of it; the soft oracle (35.0%) shows species explains nearly the entire measured ceiling.</p></div>
+    <p class="source">Caveat: V2/V3 draws and epoch budgets differ, so 5k → 20k is controlled in architecture and objective, not a perfect single-variable ablation.</p>
   </div>
-  <span class="slide-num">05</span>
+  <span class="slide-num">03</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Deployment question</span>
-    <h2>Can expression infer the route without being told the species?</h2>
+    <span class="eyebrow">Stage 1 · Deployment</span>
+    <h2>A blind expression gate recovers the route without the species label</h2>
     <div class="cols wide-left">
       <div class="figure" style="margin-top:0;">
         <svg viewBox="0 0 650 245" role="img" aria-label="Masked expression enters a blind gate that routes to human and mouse experts before combining their predictions">
@@ -290,12 +246,12 @@
     </div>
     <div class="callout"><p><strong>Answer:</strong> for species, expression alone recovers almost all of the measurable routing ceiling.</p></div>
   </div>
-  <span class="slide-num">06</span>
+  <span class="slide-num">04</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Interpretation</span>
+    <span class="eyebrow">Stage 1 · Interpretation</span>
     <h2>What Stage 1 now establishes — and what it does not</h2>
     <div class="cols">
       <div class="panel">
@@ -319,9 +275,9 @@
         </ul>
       </div>
     </div>
-    <div class="callout warm"><p><strong>Active control:</strong> the pooled model is being retrained with globally shuffled cross-species batches; frozen evaluation will start automatically after completion.</p></div>
+    <div class="callout"><p><strong>Open control (slide 9):</strong> the pooled model is being retrained with globally shuffled cross-species batches to remove the one known baseline weakness before the strongest claim.</p></div>
   </div>
-  <span class="slide-num">07</span>
+  <span class="slide-num">05</span>
 </section>
 
 <section class="slide">
@@ -345,7 +301,7 @@
       <div class="goal"><b>Biologically interpretable</b><span>Routes and failure cases map to an explicit biological axis: organ identity.</span></div>
     </div>
   </div>
-  <span class="slide-num">08</span>
+  <span class="slide-num">06</span>
 </section>
 
 <section class="slide paperplot-slide">
@@ -356,33 +312,74 @@
       <img class="paperplot-img" src="human-organ-moe-overarching-plan.png" alt="Two-panel research plan connecting validated blind interspecies routing to a fair organ-specialist versus general-human-model experiment.">
     </div>
   </div>
-  <span class="slide-num">09</span>
+  <span class="slide-num">07</span>
 </section>
 
 <section class="slide">
   <div class="inner">
     <span class="eyebrow">Stage 2 · Immediate plan</span>
     <h2>A five-organ pipeline pilot, then scale only if it survives controls</h2>
+    <div class="stats" style="margin-top:4px;">
+      <div class="stat"><div class="n">K = 5</div><div class="label">Brain · skin · liver · colon · lung — data-driven, not fixed in advance</div></div>
+      <div class="stat"><div class="n">2,856</div><div class="label">Conservative pilot samples; pooled-ID hash = specialist union</div></div>
+      <div class="stat"><div class="n">317</div><div class="label">Connected GEO study groups, split atomically</div></div>
+    </div>
+    <ul class="checklist">
+      <li><span class="when">NOW</span><span class="what"><strong>Clean labels:</strong> remove residual tumor/cell-source shorthand and expand ontology-backed coverage before any long run.</span></li>
+      <li><span class="when">NEXT</span><span class="what"><strong>End-to-end smoke test:</strong> pooled model, organ experts, random-shard experts, fixed blend, true-organ route, blind gate, soft oracle.</span></li>
+      <li><span class="when">GO / NO-GO</span><span class="what"><strong>Scale only if</strong> blind top-1 beats the pooled and inference-matched controls by ≥5% MSE, with positive study-bootstrap and residual-correlation intervals.</span></li>
+    </ul>
+    <div class="callout"><p><strong>Decision:</strong> Stage 1 is strong enough to begin Stage 2 data work now — but not to skip the fair controls.</p></div>
+  </div>
+  <span class="slide-num">08</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">In flight · Decision tree</span>
+    <h2>One control is still training — here is how each outcome changes the plan</h2>
+    <div class="callout warm"><p><strong>Running now, ETA after this talk:</strong> the pooled model is retraining with globally shuffled cross-species batches (fixing the one known baseline weakness). On a clean exit it <em>automatically</em> runs full + strict evaluation and the blind-gate rerun on the frozen masks — so there is no partial result to show today, only the branch we take tomorrow.</p></div>
+    <div class="steps">
+      <div class="step"><div class="k">IF — best case</div><b>Blind-soft still beats fixed <em>and</em> the fairer pooled model by ≥5%</b><span>Stage 1 is practically convincing. Green-light Stage 2 organ training after label cleanup.</span></div>
+      <div class="step"><div class="k">IF — partial</div><b>Beats the fixed ensemble but not the shuffled pooled model</b><span>Adaptive-ensemble benefit, not a better general model. Reframe the claim; keep every control.</span></div>
+      <div class="step"><div class="k">IF — ceiling gone</div><b>Soft oracle vs fixed drops below 3%</b><span>No real routing ceiling on this cohort. Revisit expert/data design before spending Stage 2 compute.</span></div>
+      <div class="step"><div class="k">IF — leakage</div><b>Full-cohort positive but strict fails</b><span>Treat as study/domain leakage, not MoE evidence. Improve cohort diversity first.</span></div>
+    </div>
+  </div>
+  <span class="slide-num">09</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Next · New direction under review</span>
+    <h2>Beyond “does it win”: map the organ-by-organ transfer structure</h2>
     <div class="cols wide-left">
       <div>
-        <div class="stats" style="grid-template-columns:repeat(3,1fr);margin-top:0;">
-          <div class="stat"><div class="n">K = 5</div><div class="label">Brain · skin · liver · colon · lung</div></div>
-          <div class="stat"><div class="n">2,856</div><div class="label">Conservative pilot samples</div></div>
-          <div class="stat"><div class="n">317</div><div class="label">Connected GEO study groups</div></div>
+        <p class="lede">Reviewing the multi-task and transcriptomics literature, the "does MoE beat a dense model" win is an expected pattern. The open, novel question is <strong>where and why</strong> organ specialization helps.</p>
+        <div class="panel">
+          <h3>The experiment</h3>
+          <ul>
+            <li>Build a signed <strong>organ × organ interference matrix</strong>: does adding organ B to joint training help or hurt masked-gene reconstruction on held-out organ A?</li>
+            <li>Size-matched controls isolate B's <em>identity</em> from its volume; study-disjoint tests; clustered-bootstrap CIs.</li>
+            <li>It reuses the entire Stage 2 pipeline — mostly a change of training-set composition.</li>
+          </ul>
         </div>
-        <ul class="checklist">
-          <li><span class="when">NOW</span><span class="what"><strong>Clean labels:</strong> remove residual tumor/cell-source shorthand and expand ontology-backed coverage.</span></li>
-          <li><span class="when">NEXT</span><span class="what"><strong>Smoke test:</strong> pooled model, organ experts, fixed blend, true-organ route, blind gate, soft oracle.</span></li>
-          <li><span class="when">GO / NO-GO</span><span class="what"><strong>Scale only if</strong> blind top-1 improves MSE by at least 5%, with positive study-bootstrap and residual-correlation intervals.</span></li>
-        </ul>
+        <div class="callout"><p><strong>Why I find it worth doing:</strong> no prior work builds this matrix from a masked bulk-expression model. It reframes the paper from "MoE works" to "here is the transfer structure of the human transcriptome" — and it explains the Stage 2 per-organ wins.</p></div>
       </div>
-      <div class="panel">
-        <span class="badge running">Current run</span>
-        <h3 style="margin-top:12px;">Shuffled pooled control</h3>
-        <p>Expected after this presentation, not used as a result today.</p>
-        <p><strong>Automatic next step:</strong> full + strict evaluation and blind-gate rerun on the frozen masks.</p>
-        <div class="rule"></div>
-        <p style="color:var(--muted);"><strong>Decision:</strong> Stage 1 is strong enough to begin Stage 2 data work, but not to skip the controls.</p>
+      <div class="figure" style="margin-top:0;">
+        <svg viewBox="0 0 300 300" role="img" aria-label="Schematic five-by-five organ interference matrix; blue cells indicate beneficial transfer and orange cells indicate interference">
+          <text class="axis-label" x="150" y="16" text-anchor="middle">adding organ B →</text>
+          <text class="axis-label" x="150" y="292" text-anchor="middle">schematic — illustrates the deliverable, not results</text>
+          <g transform="translate(60,28)">
+            <rect x="0" y="0" width="45" height="45" fill="#eef1ec" stroke="#dbded5"/><rect x="45" y="0" width="45" height="45" fill="#c9dcd6" stroke="#dbded5"/><rect x="90" y="0" width="45" height="45" fill="#f0d9b8" stroke="#dbded5"/><rect x="135" y="0" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/><rect x="180" y="0" width="45" height="45" fill="#e6a765" stroke="#dbded5"/>
+            <rect x="0" y="45" width="45" height="45" fill="#c9dcd6" stroke="#dbded5"/><rect x="45" y="45" width="45" height="45" fill="#eef1ec" stroke="#dbded5"/><rect x="90" y="45" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/><rect x="135" y="45" width="45" height="45" fill="#eecb9a" stroke="#dbded5"/><rect x="180" y="45" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/>
+            <rect x="0" y="90" width="45" height="45" fill="#f0d9b8" stroke="#dbded5"/><rect x="45" y="90" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/><rect x="90" y="90" width="45" height="45" fill="#eef1ec" stroke="#dbded5"/><rect x="135" y="90" width="45" height="45" fill="#a9cbc3" stroke="#dbded5"/><rect x="180" y="90" width="45" height="45" fill="#eecb9a" stroke="#dbded5"/>
+            <rect x="0" y="135" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/><rect x="45" y="135" width="45" height="45" fill="#eecb9a" stroke="#dbded5"/><rect x="90" y="135" width="45" height="45" fill="#a9cbc3" stroke="#dbded5"/><rect x="135" y="135" width="45" height="45" fill="#eef1ec" stroke="#dbded5"/><rect x="180" y="135" width="45" height="45" fill="#c9dcd6" stroke="#dbded5"/>
+            <rect x="0" y="180" width="45" height="45" fill="#e6a765" stroke="#dbded5"/><rect x="45" y="180" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/><rect x="90" y="180" width="45" height="45" fill="#eecb9a" stroke="#dbded5"/><rect x="135" y="180" width="45" height="45" fill="#c9dcd6" stroke="#dbded5"/><rect x="180" y="180" width="45" height="45" fill="#eef1ec" stroke="#dbded5"/>
+          </g>
+          <text class="axis-label" x="12" y="150" text-anchor="middle" transform="rotate(-90 12 150)">held-out organ A ↓</text>
+        </svg>
+        <p class="caption">Blue = beneficial transfer, orange = interference, diagonal = organ-only baseline. Asymmetry (A→B ≠ B→A) is itself a finding.</p>
       </div>
     </div>
   </div>

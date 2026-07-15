@@ -1,6 +1,6 @@
 # Bridge-RNA Project Report: Corrected Interspecies MoE Evaluation
 
-**Updated:** 2026-07-15 09:37 PDT / 2026-07-15 16:37 UTC
+**Updated:** 2026-07-15 13:16 PDT / 2026-07-15 20:16 UTC
 
 ## Executive Status
 
@@ -454,3 +454,65 @@ review and for the shuffled pooled Stage 1 control.
 
 Reproducible outputs are versioned under
 `artifacts/stage1_5_blind_gate/` and `artifacts/stage2_organ_pilot/`.
+
+## Stage 3 Proposed Direction (planned, not yet run) - 2026-07-15
+
+Stage 3 is scoped after a quick prior-art review (recorded with arXiv IDs in
+`related-works.md`). It is gated on Stage 2: it runs regardless of the Stage 2
+outcome, but a Stage 2 win makes it the headline follow-up while a Stage 2 null
+makes it the *explanation* for why organ specialization did not help.
+
+### Motivation
+
+"Router + K experts beats one dense model" is, by itself, a confirmatory instance
+of an established pattern: mixture-of-experts theory shows MoE beats a matched dense
+model when the data has genuine latent cluster structure, and dense multi-task
+models are known to suffer negative transfer across conflicting objectives. Bulk
+RNA-seq has strong tissue structure, so a modest Stage 2 win is expected and
+low-surprise. The generative question is not *whether* organ specialization helps
+but *where and why* it does.
+
+### D1 — organ-by-organ transfer/interference matrix (default)
+
+For each ordered organ pair `(A, B)`, measure how much adding organ `B`'s data to
+joint training changes masked-gene reconstruction on a held-out, study-disjoint test
+set of organ `A`, relative to an `A`-only specialist. Report a signed `K x K` matrix
+(negative = interference, positive = beneficial transfer).
+
+- **Inherited protocol.** Same extractor, shared 15,448-gene space, one `log1p`, one
+  deterministic 30% mask, study-disjoint splits, study-macro estimand, and paired
+  clustered bootstrap as Stage 1/2. Each organ `A` uses a fixed strict test set for
+  every cell in its row.
+- **Cells and asymmetry.** A single joint `A+B` model yields both `M[A,B]` (on `A`'s
+  test) and `M[B,A]` (on `B`'s test); donor/recipient asymmetry is a first-class
+  result.
+- **Size-confound control (critical).** Adding `B` also adds data. Each `M[A,B]` is
+  measured against a size-matched neutral-filler control (`A + B` vs `A` + an
+  equal-size draw of more `A`, or a size-matched random global draw when `A` is
+  small), so the matrix isolates `B`'s biological identity from its volume. The raw
+  matrix is reported too.
+- **Statistics.** Per-cell clustered bootstrap over `A`'s test studies; flag cells
+  whose CI excludes zero; Benjamini-Hochberg across the `K^2` cells.
+- **Cost at K=5.** ~15-25 small Performer runs plus the existing full-pool model;
+  feasible on one A100. Scale to leave-one-organ-out marginals if `K` grows.
+- **Novelty.** The task-affinity / task-grouping methodology is established and cited;
+  no located work builds a per-organ interference matrix from a masked bulk-expression
+  reconstruction model. The contribution is the measurement in genomics, not a new
+  method. Exploratory follow-ups (clustering the matrix, regressing interference on a
+  biological-distance axis) are labeled as such.
+
+### D2 — learned expert partition vs organ ontology (backup)
+
+Let experts be learnable/soft rather than hard-assigned by organ and test whether the
+emergent partition matches the organ taxonomy or a different biological axis (germ
+layer, epithelial vs non-epithelial, cell composition). Scoop risk is real — MoE
+expert-specialization interpretability is an active LLM-side topic — so the framing
+must be strictly the biological alternative hypothesis in the genomics setting.
+
+### Archived
+
+Router-weights-as-deconvolution was archived: bulk deconvolution is a mature field
+(CIBERSORT, Scaden, and neural/Bayesian methods) and MoE-for-cell-type already
+exists, so only an "emergent, unsupervised byproduct of reconstruction routing"
+framing survived, and even that competes with unsupervised deconvolution. A
+data-dependent samples-per-organ phase boundary was also dropped as non-unifiable.

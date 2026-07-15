@@ -8,14 +8,16 @@ This repo is a personal, standalone continuation of the MoE work originally deve
 
 Active development, running on Jetstream Cloud VMs (not Savio — see `progress.md` for the environment and current instance assignments). Large generated datasets, local W&B run directories, full checkpoints, and scratch parquet files are intentionally excluded from Git; small reference gene files needed to run the pipeline are kept.
 
+**Current stage (2026-07-15):** Stage 1 (interspecies routing) is complete and, under a rebuilt leakage-resistant evaluation, shows a large study-disjoint routing headroom that a blind expression-only gate recovers. One fair-baseline control (a globally shuffled pooled retrain) is still running. Stage 2 (a fair human-organ MoE) is designed with a five-organ pipeline pilot frozen and awaiting label cleanup. Stage 3 is scoped to D1, an organ-by-organ interference matrix. The authoritative, detailed record is `progress.md`; results live in `report.md`; the prior-art record is `related-works.md`.
+
 ## Research Goal
 
-The project studies masked reconstruction of bulk RNA-seq expression:
+The project studies masked reconstruction of bulk RNA-seq expression and, on top of it, when a routed specialist beats one general model:
 
-- Train `ExpressionPerformer` models on ARCHS4 human, mouse, and mixed human/mouse RNA-seq.
-- Evaluate zero-shot reconstruction behavior on NASA OSDR spaceflight expression data.
-- Test whether species-specialized experts have enough complementary signal to justify an MoE gate.
-- Fix gene-vocabulary alignment issues that made the first MoE proof of concept invalid.
+- Train `ExpressionPerformer` models on ARCHS4 human, mouse, and mixed human/mouse RNA-seq under one shared 15,448-gene vocabulary.
+- Under a corrected, study-aware evaluation, test whether species-specialized experts carry enough complementary signal that adaptive routing beats a cross-fitted fixed ensemble — and whether a blind expression-only gate recovers that route (**Stage 1: yes**).
+- Transfer the same testable logic within human biology: does blind organ-specialist routing reconstruct masked genes better than one general human model trained on the identical sample union (**Stage 2, in progress**)?
+- Map *where and why* specialization helps via an organ-by-organ transfer/interference matrix (**Stage 3, planned**).
 
 ## Model And Data Pipeline
 
@@ -28,31 +30,30 @@ The repo is organized into 4 stages — see `progress.md` for the full directory
 
 ## Key Findings
 
-The first 5k human, mouse, and mixed experts trained with per-variant vocabularies, which caused an invalid MoE assumption: `gene_embedding[i]` referred to different genes in different experts. The v1 experts also showed gene-mean collapse on OSDR.
+**Superseded early result (historical).** The first 5k experts trained with per-variant vocabularies, an invalid MoE assumption because `gene_embedding[i]` referred to different genes in different experts. A training-free headroom analysis on those v1 experts appeared to show almost no per-species routing headroom. That analysis was later found methodologically invalid — it fed raw TPM to `log1p(TPM)` models, fit blend weights on the reporting cohort, and used a test-derived gene mean — so its numbers are **not** current evidence and are retained only in Git history. See `report.md` §"Why the Previous Balanced Results Are Superseded".
 
-Training-free headroom analysis on the v1 experts found almost no per-species MoE headroom:
+**Current Stage 1 result (corrected evaluation).** With one shared 15,448-gene vocabulary and a rebuilt study-aware protocol (one `log1p`, out-of-fold weights, study-macro estimand, clustered-bootstrap intervals, a 103-study strict cohort disjoint from every training study), species routing shows large headroom over a cross-fitted **fixed ensemble** — the bar that actually indicates adaptive MoE value, versus merely beating one pooled model:
 
-| Evaluation split | Best single expert | Oracle expert choice | Gap |
-| --- | ---: | ---: | ---: |
-| Human TCGA subset | 0.7989 | 0.7992 | +0.0003 |
-| Mouse OSDR subset | 0.7822 | 0.7835 | +0.0014 |
-| Global mixed set | 0.7715 | 0.7914 | +0.0199 |
+| Strict 20k condition vs out-of-fold fixed blend | Relative MSE reduction |
+| --- | ---: |
+| True-species hard router | 33.5% |
+| True-species soft router | 34.7% |
+| Soft convex MSE oracle | 35.0% |
+| **Blind expression-only gate (soft)** | **33.95%** |
 
-The global improvement was interpreted as a species-ID artifact rather than useful routing. The practical next step became retraining the three 5k experts under a shared canonical vocabulary.
+The blind gate sees only masked expression (targets hidden) and lands within 1.11% of the true-species router, so expression alone recovers nearly the whole measured ceiling. Full tables, confidence intervals, and the 5k→20k scale effect are in `report.md`.
 
 ## Current MoE State
 
-The v2 path adds a shared 15,448-gene vocabulary generated by `preprocessing/compute_shared_canonical.py` and used through `preprocessing.py --canonical-genes-file`.
+All three experts use the shared 15,448-gene vocabulary from `preprocessing/compute_shared_canonical.py`. Both the V2 5k and V3 20k human/mouse/mixed experts are trained and checksum-verified; V3 is a deliberate **scale** experiment (same backbone/objective, 4× data), not a new architecture. The frozen interspecies evaluation and blind-gate test are complete.
 
-Implemented v2 variants in `core/train_single.py`:
+| Stage | State |
+| --- | --- |
+| Stage 1 — interspecies routing | Complete; one shuffled pooled-baseline control still running |
+| Stage 2 — human-organ MoE | Designed; five-organ pilot manifest (`K=5`: brain, skin, liver, colon, lung) frozen, awaiting label cleanup before a definitive run |
+| Stage 3 — organ interference matrix (D1) | Planned; see `progress.md` §"Stage 3 Research Directions" |
 
-| Variant | Species | Samples (after QC) | Vocabulary | Architecture |
-| --- | --- | ---: | --- | --- |
-| `human_5k_v2` | human | 5,000 | shared 15,448 genes | v2 |
-| `mouse_5k_v2` | mouse | 4,175 | shared 15,448 genes | v2 |
-| `mixed_5k_v2` | human + mouse | 2,146 + 2,107 | shared 15,448 genes | v2 |
-
-Preprocessing for all three completed successfully. Training is in progress across 3 GPU instances in parallel as of this writing — see `progress.md` for live status, per-instance quirks, and what to do once it finishes.
+See `progress.md` for live run status, the completion runbooks, and per-instance quirks.
 
 ## Repository Layout
 
