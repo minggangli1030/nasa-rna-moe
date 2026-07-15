@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-15 12:10 PDT / 2026-07-15 19:10 UTC
+**Last updated:** 2026-07-15 12:31 PDT / 2026-07-15 19:31 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -56,7 +56,10 @@ serve as the primary interspecies-routing benchmark.
   masked-gene training task and practical value, corrected evaluation, V3
   scale/finding, blind gate, bounded Stage 1 claim, overarching research goal,
   and fair Stage 2 organ design. The current pooled retrain is labeled ongoing,
-  not presented as a partial result. The PaperPlot illustration prompt is
+  not presented as a partial result. Slide 9 embeds the final PaperPlot figure,
+  `presentation/human-organ-moe-overarching-plan.png`, beneath the exact fair
+  comparison question and explicitly states the practical value of blind routing,
+  top-1 specialist execution, and low-confidence fallback. Its source prompt is
   `presentation/paperplot-human-organ-moe-prompt.md`. Desktop/laptop/mobile
   render checks pass with no horizontal overflow or clipped elements.
 - The original V3 checkpoints and all prior evaluation artifacts remain

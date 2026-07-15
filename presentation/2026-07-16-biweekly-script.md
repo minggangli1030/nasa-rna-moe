@@ -115,15 +115,17 @@ meaning. Stored model size still increases, and I will report that cost.
 
 **09 - Fair Stage 2 experiment**
 
-The biologically more interesting extension is within human data. Given a human
-bulk RNA-seq sample without an organ label, can expression identify the relevant
-organ expert, and can that routed specialist reconstruct masked genes better
-than one general human model? The fairness constraint is important: if the
-specialists collectively see N samples, the pooled model sees the identical
-N-sample union. Top-one routing then executes only one expert plus a small gate,
-so inference compute is roughly comparable; the extra model-storage cost is
-reported separately. Fixed, metadata, random-shard, and oracle controls tell us
-whether any gain is biological specialization or generic ensembling.
+This figure states the primary experiment. With the same training data and
+approximately the same inference compute, does blind organ-specialist routing
+reconstruct masked genes better than one general model? The specialists
+collectively see N samples, and the pooled model sees the identical N-sample
+union. At inference, the organ label is hidden. The router uses the expression
+we already measured, activates one expert, and sends low-confidence samples to
+the general model. This is practical because real samples may arrive with
+missing or unreliable metadata, and top-one routing avoids running all K
+experts. The cost is extra model storage, which I report separately. Fixed,
+metadata, random-shard, and oracle controls distinguish organ specialization
+from generic ensembling.
 
 **10 - Immediate plan**
 

@@ -106,6 +106,11 @@
   .goal{border-top:2px solid var(--accent);padding:11px 12px;background:var(--panel);}
   .goal b{display:block;font-size:18px;margin-bottom:3px;}
   .goal span{font-size:15px;line-height:1.35;color:var(--muted);}
+  .research-question{font-size:33px;line-height:1.16;margin-bottom:11px;max-width:1080px;}
+  .paperplot-frame{border:1px solid var(--rule);border-radius:8px;background:var(--panel);padding:5px;margin-top:0;text-align:center;}
+  .paperplot-img{display:block;width:auto;max-width:100%;height:auto;max-height:525px;margin:0 auto;}
+  .practicality{border-left:4px solid var(--accent);background:var(--accent-soft);padding:10px 15px;margin-top:10px;}
+  .practicality p{font-size:17px;line-height:1.38;color:var(--accent-ink);margin:0;max-width:none;}
   .source{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:10px;max-width:none;}
   @media(max-width:860px){
     .slide{padding:28px 5vw;overflow-y:auto;align-items:flex-start;}
@@ -118,6 +123,15 @@
     .steps{grid-template-columns:1fr 1fr;}.figure svg{max-height:260px;}
     table{table-layout:fixed;font-size:11px;}
     th,td{font-size:11px;padding:6px 5px;white-space:normal;overflow-wrap:anywhere;}
+    .research-question{font-size:27px;}
+    .paperplot-img{width:100%;max-height:none;}
+    .slide-num{display:none;}
+  }
+  @media(max-height:780px) and (min-width:861px){
+    .research-question{font-size:29px;margin-bottom:8px;}
+    .paperplot-img{max-height:405px;}
+    .practicality{margin-top:8px;padding:8px 13px;}
+    .practicality p{font-size:15px;}
     .slide-num{display:none;}
   }
   @media print{
@@ -335,25 +349,13 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Stage 2 hypothesis</span>
-    <h2>Unknown human organ → expression gate → organ specialist</h2>
-    <div class="figure">
-      <svg viewBox="0 0 790 230" role="img" aria-label="Unknown human RNA-seq is routed by an expression-only organ gate to one of several organ experts and compared with a pooled general model">
-        <rect class="box-white" x="18" y="84" width="155" height="62" rx="6"/><text class="box-text-dark" x="95" y="108">Unknown human</text><text class="box-text-dark" x="95" y="129">RNA-seq</text>
-        <path class="conn" d="M173 115 H225"/><text class="value" x="199" y="106" text-anchor="middle">→</text>
-        <rect class="box" x="225" y="84" width="145" height="62" rx="6"/><text class="box-text" x="297" y="108">Expression-only</text><text class="box-text" x="297" y="129">organ gate</text>
-        <path class="conn" d="M370 115 C410 115 410 38 455 38"/><path class="conn" d="M370 115 H455"/><path class="conn" d="M370 115 C410 115 410 192 455 192"/>
-        <rect class="box" x="455" y="14" width="145" height="48" rx="6"/><text class="box-text" x="527" y="43">Brain expert</text>
-        <rect class="box" x="455" y="91" width="145" height="48" rx="6"/><text class="box-text" x="527" y="120">Liver expert</text>
-        <rect class="box" x="455" y="168" width="145" height="48" rx="6"/><text class="box-text" x="527" y="197">Other experts</text>
-        <path class="conn" d="M600 38 C650 38 650 84 690 84"/><path class="conn" d="M600 115 H690"/><path class="conn" d="M600 192 C650 192 650 146 690 146"/>
-        <rect class="box-white" x="690" y="84" width="84" height="62" rx="6"/><text class="box-text-dark" x="732" y="108">Masked</text><text class="box-text-dark" x="732" y="129">genes</text>
-      </svg>
-      <p class="caption">Primary test: blind top-1 organ routing versus one pooled human model on the exact same training-sample union.</p>
+    <span class="eyebrow">Stage 2 · Proposed experiment</span>
+    <h2 class="research-question">With the same training data and approximately the same inference compute, does blind organ-specialist routing reconstruct masked genes better than one general model?</h2>
+    <div class="paperplot-frame">
+      <img class="paperplot-img" src="human-organ-moe-overarching-plan.png" alt="Two-panel research plan connecting validated blind interspecies routing to a fair organ-specialist versus general-human-model experiment.">
     </div>
-    <div class="cols" style="margin-top:14px;">
-      <div><h3>Fair data</h3><p><code>Σ specialist Nₖ = pooled N</code>. Every specialist row appears exactly once in the pooled training union.</p></div>
-      <div><h3>Fair inference</h3><p>Top-1 executes one expert plus a small gate; report the extra storage cost separately.</p></div>
+    <div class="practicality">
+      <p><strong>Why this is practical:</strong> an unseen sample may lack trusted organ metadata. The router uses expression already measured, executes one specialist rather than all <em>K</em>, and falls back to the general model when uncertain. A positive result would trade extra storage for better reconstruction without <em>K</em>-fold inference cost.</p>
     </div>
   </div>
   <span class="slide-num">09</span>
