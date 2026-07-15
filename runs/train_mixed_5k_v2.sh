@@ -4,7 +4,7 @@
 # Capped at 20 epochs, same reasoning as train_mouse_5k_v2.sh.
 #
 # IMPORTANT -- this vGPU partition needs two deviations from the full-A100
-# scripts, found by bisection after two separate CUDA failures (see PROGESS.md):
+# scripts, found by bisection after two separate CUDA failures (see progress.md):
 #   1. DDP_BACKEND=gloo -- the default NCCL backend fails even in single-process
 #      mode with "CUDA driver error: operation not supported" on this vGPU.
 #   2. Do NOT set PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True here -- that

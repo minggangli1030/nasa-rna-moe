@@ -67,6 +67,26 @@ def validate(root: Path) -> dict:
         missing = required_conditions - set(report["conditions"])
         if missing:
             raise ValueError(f"{name} lacks required conditions: {sorted(missing)}")
+        for comparison in report["comparisons"]:
+            required_relative = {
+                "candidate_mse_mean", "reference_mse_mean", "relative_mse_reduction"
+            }
+            absent = required_relative - set(comparison)
+            if absent:
+                raise ValueError(
+                    f"{name} comparison {comparison['name']} lacks relative MSE fields: "
+                    f"{sorted(absent)}"
+                )
+            reference_mse = float(comparison["reference_mse_mean"])
+            if reference_mse <= 0:
+                raise ValueError(f"{name} comparison {comparison['name']} has nonpositive MSE")
+            expected_relative = (
+                reference_mse - float(comparison["candidate_mse_mean"])
+            ) / reference_mse
+            if abs(expected_relative - float(comparison["relative_mse_reduction"])) > 1e-10:
+                raise ValueError(
+                    f"{name} comparison {comparison['name']} has inconsistent relative MSE"
+                )
 
     for cohort in ("full", "strict"):
         five = reports[f"{cohort}_5k"]

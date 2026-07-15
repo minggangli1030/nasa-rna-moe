@@ -446,6 +446,10 @@ def _summarize_condition(name, pred_masked, true_masked, baseline_masked, mask_i
 def _comparison(name, candidate, reference, groups, strata, seed, n_bootstrap):
     pearson_diff = candidate["pearson"] - reference["pearson"]
     mse_improvement = reference["mse"] - candidate["mse"]
+    reference_mse = balanced_group_mean(reference["mse"], groups, strata)
+    candidate_mse = balanced_group_mean(candidate["mse"], groups, strata)
+    if reference_mse <= 0:
+        raise ValueError(f"{name} has nonpositive reference MSE: {reference_mse}")
     result = {
         "name": name,
         "estimand": "species-balanced study-macro mean" if strata is not None else "study-macro mean",
@@ -457,6 +461,9 @@ def _comparison(name, candidate, reference, groups, strata, seed, n_bootstrap):
         "mse_improvement_ci95": paired_bootstrap_ci(
             mse_improvement, seed + 1, n_bootstrap, groups=groups, strata=strata
         ),
+        "candidate_mse_mean": candidate_mse,
+        "reference_mse_mean": reference_mse,
+        "relative_mse_reduction": (reference_mse - candidate_mse) / reference_mse,
     }
     if "residual_pearson" in candidate and "residual_pearson" in reference:
         residual_diff = candidate["residual_pearson"] - reference["residual_pearson"]
@@ -747,7 +754,8 @@ def analyze(args, cache_path: Path, out_dir: Path):
             f"  {comparison['name']}: Pearson {comparison['pearson_gain_mean']:+.5f} "
             f"CI{tuple(round(x, 5) for x in comparison['pearson_gain_ci95'])}; "
             f"MSE {comparison['mse_improvement_mean']:+.6f} "
-            f"CI{tuple(round(x, 6) for x in comparison['mse_improvement_ci95'])}"
+            f"CI{tuple(round(x, 6) for x in comparison['mse_improvement_ci95'])}; "
+            f"relative-MSE {comparison['relative_mse_reduction']:+.1%}"
             + (
                 f"; residual-r {comparison['residual_pearson_gain_mean']:+.5f} "
                 f"CI{tuple(round(x, 5) for x in comparison['residual_pearson_gain_ci95'])}"

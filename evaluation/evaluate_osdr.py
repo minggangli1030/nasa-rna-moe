@@ -734,7 +734,7 @@ def load_checkpoint(ckpt_path: Path, device: torch.device) -> tuple[ExpressionPe
     elif num_genes == 15448:
         # v2 experts all train on the shared canonical vocabulary in canonical
         # order (verified directly against each variant's training parquet
-        # schema -- see PROGESS.md), so when the parquet itself isn't present
+        # schema -- see progress.md), so when the parquet itself isn't present
         # on this machine (multi-instance training split across VMs) we can
         # recover the same gene list from the canonical file instead of
         # failing alignment entirely.

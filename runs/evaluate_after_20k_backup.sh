@@ -23,7 +23,28 @@ log "Evaluation watcher started; waiting for ALL_SAFE_TO_SHELVE."
 until [ -f "$BACKUP_DIR/ALL_SAFE_TO_SHELVE" ]; do
     sleep "$POLL_SECONDS"
 done
-log "All final checkpoints are verified; launching corrected evaluation."
+
+worker_idle() {
+    local host=$1
+    ssh "${SSH_OPTS[@]}" "$host" \
+        "if pgrep -af '[t]rain_single.py' >/dev/null; then exit 1; fi; if command -v nvidia-smi >/dev/null 2>&1; then test -z \"\$(nvidia-smi --query-compute-apps=pid --format=csv,noheader 2>/dev/null | tr -d '[:space:]')\"; fi"
+}
+
+while :; do
+    all_idle=1
+    for host in moe-reboot2 moe-reboot-partial; do
+        if worker_idle "$host"; then
+            log "IDLE $host has no training PID or GPU compute process."
+        else
+            all_idle=0
+            log "WAIT $host is not yet fully idle."
+        fi
+    done
+    [ "$all_idle" -eq 1 ] && break
+    sleep "$POLL_SECONDS"
+done
+touch "$BACKUP_DIR/WORKER_INSTANCES_IDLE"
+log "All final checkpoints are verified and worker instances are idle; launching corrected evaluation on $CENTRAL_HOST."
 
 if ! ssh "${SSH_OPTS[@]}" "$CENTRAL_HOST" \
     "cd '$REMOTE_REPO' && test -x runs/run_corrected_interspecies_eval_once.sh && tmux new-session -d -s corrected_interspecies_eval 'cd $REMOTE_REPO && bash runs/run_corrected_interspecies_eval_once.sh'"; then

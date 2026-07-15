@@ -1,224 +1,325 @@
-# Bridge-RNA Mid-Project Report: Model Architecture Experiments
+# Bridge-RNA Project Report: Corrected Interspecies MoE Evaluation
 
-## Summary
+**Updated:** 2026-07-14 22:43 PDT / 2026-07-15 05:43 UTC
 
-This project explores masked reconstruction of bulk RNA-seq expression with a SLiMPerformer (`ExpressionPerformer`), trained on ARCHS4 human and mouse data and evaluated zero-shot on NASA OSDR spaceflight expression. The architecture-side experiments compared three single-expert variants (human-only, mouse-only, 50/50 mixed) at two scales (5k and 20k samples), and one mixture-of-experts (MoE) attempt that routes between species-specialized experts. The four headline findings are:
+## Executive Status
 
-1. Single-expert variants do capture species-specific signal — model performance on mouse OSDR ranks `mouse > mixed > human`, consistent with training-species alignment driving zero-shot transfer.
-2. At 5k scale, all three variants suffered gene-mean collapse: predictions are no more correlated with the true expression than they are with the dataset gene-mean baseline (Pearson 0.687 vs 0.847 for human).
-3. Scaling 5k → 20k samples (under fixed v1 architecture) closes most of the OSDR gap — Pearson rises from 0.687 to 0.813, val_loss falls from 0.7177 to 0.317. Scale is the dominant lever; holding 5k fixed and switching to v2 architecture only closes a small fraction of the val_loss gap.
-4. A naïve MoE over the three 5k experts is not viable — two distinct issues had to be fixed (vocabulary incompatibility and expert collapse) before MoE has any chance of working. A v2 retrain under shared vocabulary just completed (`human_5k_v2` best val_loss 0.6564); the MoE-vs-best-single comparison is the next decision point.
+This project tests masked reconstruction of bulk RNA-seq expression with a
+SLiMPerformer (`ExpressionPerformer`) and asks whether human-, mouse-, and
+mixed-trained experts contain enough complementary signal for mixture routing to
+beat a pooled model or a fixed ensemble.
+
+The immediate experiment is deliberately narrow: finish the 20k human/mouse
+scale-up, run a corrected paired 5k-versus-20k interspecies evaluation, diagnose
+the routing ceiling, then decide whether to train a blind gate or pivot to human
+organ specialists. The final corrected results will be appended automatically
+to this document after overnight inference and validation.
+
+## Historical Work, Condensed
+
+### Foundation and Independent Contribution
+
+The repository continues Walter Alvarado's UChicago `bridge-rna` work within the
+NASA Ames / Berkeley Data Discovery project. The inherited foundation includes
+SLiMPerformer attention, `ExpressionPerformer`, ARCHS4 preprocessing, and the
+base single-expert training loop.
+
+This continuation added:
+
+- NASA OSDR zero-shot evaluation and alignment diagnostics;
+- human, mouse, and mixed expert variants at 5k and 20k scales;
+- shared human/mouse canonical vocabulary and ortholog alignment;
+- frozen-expert MoE gating and training-free routing-ceiling analysis;
+- Jetstream A100 infrastructure and reproducible launchers;
+- the corrected ARCHS4 holdout, study-overlap audit, exact train-only baselines,
+  paired scale statistics, backup automation, and report validation used here.
+
+Detailed chronological implementation logs remain in Git history through commit
+`10a5e0e` and are summarized in `progress.md`.
+
+### Findings That Motivated the Current Experiment
+
+- The original mouse OSDR evaluation showed species-aligned ordering, but it is
+  mouse-only and therefore cannot test interspecies routing.
+- Early 5k models showed narrow generalization and output collapse toward static
+  gene profiles. Scaling a v1 human model from 5k to 20k substantially improved
+  validation loss and mouse-OSDR Pearson, motivating a controlled V3 scale test.
+- Naive MoE was initially invalid because independently preprocessed experts had
+  incompatible gene vocabularies. V2/V3 use one shared 15,448-gene vocabulary.
+- A preliminary balanced ARCHS4 evaluation appeared to show little headroom,
+  but its methodology was later found faulty and its numerical conclusions are
+  not current evidence.
+
+## Why the Previous Balanced Results Are Superseded
+
+The old balanced-ARCHS4 path:
+
+1. fed raw TPM to checkpoints trained on `log1p(TPM)`;
+2. fitted blend weights on the same samples used for reporting;
+3. computed the gene-mean baseline from the final test cohort;
+4. treated hard expert selection as the oracle despite a soft convex gate;
+5. used sample-weighted estimates despite GEO study-size imbalance.
+
+Therefore the earlier balanced headroom and gene-mean values must not be cited as
+method evidence. They are retained only in Git history as part of the debugging
+trail.
+
+## Corrected Evaluation Design
+
+### Frozen Cohorts
+
+- **Full diagnostic:** 667 ARCHS4 samples, 331 human / 336 mouse. It is
+  sample-disjoint but contains GEO-series overlap with training, so it measures
+  held-out samples rather than unseen-study OOD generalization.
+- **Strict sensitivity:** exact reconstruction of all V2/V3 train+validation
+  splits followed by global GEO-series exclusion leaves 103 samples, 50 human /
+  53 mouse, each in a distinct connected series component.
+
+Frozen ordered ID hashes:
+
+- full: `84c607dd83f93964430877f572291836fddd7315dd4f7eae3bcbf12f70fc0d65`
+- strict: `e52a695f5e518be24803dcb1fba266c7a67b7d4696520dba35466f5f38da2b18`
+
+### Model-Space and Statistical Corrections
+
+- Validate raw TPM and apply exactly one `log1p` transform.
+- Use the training-matched 30% mask rate and identical masks for 5k and 20k.
+- Keep connected GEO-series groups intact during cross-fitting.
+- Fit fixed blends and true-species metadata routers only on other folds.
+- Report hard Pearson, hard MSE, and exact soft convex MSE oracles separately.
+- Use exact mixed-model training rows for global and species-specific mean
+  baselines; never derive a baseline from final evaluation samples.
+- Give every study equal weight within species, then human and mouse equal weight.
+- Use paired clustered bootstrap intervals for headroom and scale comparisons.
+- Require identical sample, gene, fold, mask, and filter identities before a
+  20k-minus-5k comparison is accepted.
+
+### Claims This Design Can and Cannot Support
+
+A positive per-sample oracle establishes complementary frozen predictions only
+when it clears the practical threshold against the fixed blend. A metadata soft
+router beating pooled `mixed` alone shows ensemble benefit; it establishes
+adaptive known-species usefulness only when it clears the strict fixed-blend
+criteria below. Neither result proves that a blind learned gate will succeed.
+
+The pooled mixed expert is also not parameter, data-exposure, or inference-cost
+matched to a three-model ensemble. In addition, the current mixed V3 training run
+used species-contiguous row-group batch order. A weak pooled result is diagnostic
+but cannot alone establish method failure; a globally shuffled mixed retrain is
+the first required control.
+
+## Validated Inputs Before Overnight Inference
+
+- 34/34 local tests pass, including adaptive-usefulness thresholds and the
+  automated report renderer.
+- Full/strict cohorts and exact 5k/20k train means reproduce frozen hashes.
+- Local and central evaluator source hashes match.
+- Selected 5k checkpoints are checksum-identical locally and on `moe-reboot`.
+- Current-best 20k snapshots are checksum-verified on the Mac and central
+  persistent storage, so completed training hours are already recoverable.
+- Real 5k and 20k snapshots load through the final checkpoint loader with 15,448
+  genes, `log1p_tpm`, mask ratio `0.3`, and mask token `-10`.
+
+## Overnight Sequence
+
+**Armed:** 2026-07-14 22:30 PDT / 2026-07-15 05:30 UTC
+
+1. Wait until all human, mouse, and mixed training logs contain
+   `Training complete!` and their training PIDs exit.
+2. Freeze final checkpoints; verify remote/local checksums; archive logs and run
+   metadata; mirror human/mouse finals into persistent `moe-reboot` storage.
+3. Confirm `moe-reboot2` and `moe-reboot-partial` have no training PID or GPU
+   compute process. They are then safe to shelve.
+4. On the freed central A100, run the corrected **5k evaluation first**.
+5. Run **20k evaluation second** with the identical full cohort and mask, then
+   analyze the strict subset from the cached predictions.
+6. Compute paired full/strict 20k-minus-5k scale and routing-headroom changes.
+7. Validate cohort hashes, schema, masks, paired identities, and finite outputs;
+   copy the complete result bundle to the Mac.
+8. Append a timestamped result section below with tables, confidence intervals,
+   diagnosis, limitations, and a conditional future plan.
+9. Commit and push the updated code, `progress.md`, and this report to
+   `origin/main`.
+
+The Mac watchers run in detached `screen` sessions under `caffeinate`. The Mac
+must remain powered, lid open, and online until completion.
+
+## Interpretation Framework
+
+The final diagnosis will prioritize the 103-sample study-disjoint sensitivity
+cohort while treating its uncertainty honestly. The 667-sample cohort provides a
+higher-powered held-out-sample diagnostic but is not independent at study level.
+
+Every paired comparison reports absolute MSE improvement with its existing
+clustered-bootstrap interval plus relative MSE reduction. Beating pooled `mixed`
+alone is an ensemble benefit. A promising adaptive MoE ceiling requires the
+metadata soft router to beat the out-of-fold fixed blend on strict 20k with a
+positive absolute-MSE CI and at least 3% relative MSE reduction. At least 5% plus
+a positive residual-Pearson CI is practically convincing. The soft oracle must
+also clear the positive-interval and 3% criteria for meaningful routing headroom.
+This path evaluates frozen-expert ceilings only; it does not implement a corrected
+blind learned gate, and `train_moe.py` remains an older softmax proof of concept.
+
+Decision branches:
+
+1. **Strict metadata soft routing clears the fixed-blend threshold:** the frozen
+   ceiling is promising; consider implementing a new blind expression-derived
+   gate and quantify the gap to the true-species ceiling.
+2. **Soft oracle is positive but species metadata routing is weak:** experts are
+   complementary along another biological/technical axis. Learn latent state,
+   not species identity.
+3. **No strict routing headroom but scale improves individual models:** species
+   is the wrong expert partition. Correct the mixed control, then test organ
+   specialists using the same frozen-ceiling methodology.
+4. **No headroom and 20k remains weak:** prioritize sampler order, backbone, data
+   diversity, and objective design before gate or organ training.
+
+## Future Work Required Regardless of Outcome
+
+1. Retrain mixed with globally shuffled cross-species batches.
+2. Train a pooled union-data control matched more fairly to specialist exposure.
+3. Add parameter- and inference-budget-matched single-model controls.
+4. Require profile-controlled improvement in MSE and residual Pearson, not raw
+   across-gene Pearson alone.
+5. Expand the prospective study-disjoint cohort beyond 103 studies.
+6. Only then extend to human organs: build organ-disjoint experts and a frozen
+   organ-balanced holdout, measure soft/hard and true-organ ceilings, and train an
+   unknown-organ gate only if those ceilings justify it.
+
+## Pending Automated Result Addendum
+
+After `EVALUATION_COMPLETE_AND_VALIDATED`, the report generator will append the
+final checkpoint identities, full and strict metric tables, paired confidence
+intervals, 20k-minus-5k changes, diagnosis, limitations, and recommended next
+experiments below this line. The append is fingerprinted and idempotent.
 
 ---
 
-## 1. Setup
+<!-- corrected-interspecies-report:ae87c68280b09bd8844d743c32b2428e80408e1c1ba52a6e365bf483bd24f270 -->
+## Corrected Interspecies MoE Evaluation - 2026-07-15T09:31:07-07:00
+
+> This append-only addendum supersedes the earlier balanced-ARCHS4 and gene-mean conclusions above. The historical text is retained for provenance, but its old headroom numbers used raw TPM in a log1p-TPM model, test-fitted blends, and a test-derived mean baseline.
+
+### Executive conclusion
+
+**Practically convincing adaptive MoE ceiling:** on the strict 20k cohort, the metadata soft router beats the out-of-fold fixed blend by at least 5% relative MSE and has a positive residual-Pearson confidence-interval lower bound. The metadata-soft versus pooled-`mixed` comparison remains a pooled-model control; it is not sufficient by itself to justify MoE. The per-sample soft oracle also exceeds the fixed blend by at least 3% relative MSE with a positive absolute-MSE interval, indicating a meaningful routing ceiling.
+
+The result must still be interpreted with two design constraints: the metadata router receives the true species label and is an upper bound rather than a learned blind gate; and the pooled mixed model is not compute/data/parameter matched to a three-model ensemble. The mixed V3 run also used species-contiguous row-group ordering, so a weak pooled checkpoint cannot by itself establish method failure.
+
+### Frozen protocol
+
+- Full held-out-sample diagnostic: 667 samples; strict study-disjoint sensitivity: 103 samples.
+- Shared common space: 15,448 genes; masked positions per sample: 4,634 (training-matched 30%).
+- Primary estimand: species-balanced study-macro mean; uncertainty: paired study bootstrap.
+- Fixed blend and metadata routing weights are fitted out of fold with connected GEO-series groups.
+- Baselines use exact mixed-model training rows only, with separate human/mouse means.
+- The full cohort has study overlap with training and is diagnostic; the 103-sample strict cohort is the cleaner sensitivity analysis and has wider intervals.
+
+### 5K Full results
+
+| Condition | Pearson* | Residual Pearson* | MSE* |
+|---|---:|---:|---:|
+| Human expert | 0.8759 | 0.5673 | 0.74731 |
+| Mouse expert | 0.8608 | 0.4810 | 0.82752 |
+| Pooled mixed expert | 0.8680 | 0.4784 | 0.78746 |
+| OOF fixed blend | 0.8996 | 0.5987 | 0.61290 |
+| Metadata-species soft router | 0.9231 | 0.7055 | 0.47045 |
+| Per-sample soft MSE oracle | 0.9237 | 0.7076 | 0.46702 |
+| Species train-mean baseline | 0.8380 | 0.0000 | 1.07974 |
+
+- **OOF fixed blend vs pooled mixed:** Pearson +0.0316 CI [+0.0299, +0.0333]; MSE improvement +0.17456 CI [+0.16737, +0.18258]; relative MSE reduction 22.2%, residual Pearson +0.1203 CI [+0.1153, +0.1256].
+- **Metadata-species soft router vs pooled mixed:** Pearson +0.0551 CI [+0.0532, +0.0572]; MSE improvement +0.31700 CI [+0.30831, +0.32637]; relative MSE reduction 40.3%, residual Pearson +0.2271 CI [+0.2204, +0.2333].
+- **Metadata-species soft router vs OOF fixed blend:** Pearson +0.0236 CI [+0.0228, +0.0243]; MSE improvement +0.14245 CI [+0.13819, +0.14651]; relative MSE reduction 23.2%, residual Pearson +0.1068 CI [+0.1038, +0.1097].
+- **Per-sample soft oracle vs OOF fixed blend:** Pearson +0.0242 CI [+0.0235, +0.0249]; MSE improvement +0.14589 CI [+0.14201, +0.14983]; relative MSE reduction 23.8%, residual Pearson +0.1089 CI [+0.1062, +0.1117].
+
+### 20K Full results
+
+| Condition | Pearson* | Residual Pearson* | MSE* |
+|---|---:|---:|---:|
+| Human expert | 0.8953 | 0.6504 | 0.63648 |
+| Mouse expert | 0.8920 | 0.6319 | 0.65382 |
+| Pooled mixed expert | 0.9112 | 0.7022 | 0.55773 |
+| OOF fixed blend | 0.9309 | 0.7375 | 0.43036 |
+| Metadata-species soft router | 0.9582 | 0.8473 | 0.26210 |
+| Per-sample soft MSE oracle | 0.9585 | 0.8482 | 0.26065 |
+| Species train-mean baseline | 0.8380 | 0.0000 | 1.07927 |
+
+- **OOF fixed blend vs pooled mixed:** Pearson +0.0197 CI [+0.0188, +0.0207]; MSE improvement +0.12737 CI [+0.12205, +0.13264]; relative MSE reduction 22.8%, residual Pearson +0.0353 CI [+0.0324, +0.0382].
+- **Metadata-species soft router vs pooled mixed:** Pearson +0.0470 CI [+0.0458, +0.0484]; MSE improvement +0.29563 CI [+0.28866, +0.30263]; relative MSE reduction 53.0%, residual Pearson +0.1451 CI [+0.1408, +0.1493].
+- **Metadata-species soft router vs OOF fixed blend:** Pearson +0.0273 CI [+0.0267, +0.0280]; MSE improvement +0.16827 CI [+0.16474, +0.17157]; relative MSE reduction 39.1%, residual Pearson +0.1098 CI [+0.1072, +0.1124].
+- **Per-sample soft oracle vs OOF fixed blend:** Pearson +0.0275 CI [+0.0269, +0.0282]; MSE improvement +0.16972 CI [+0.16628, +0.17316]; relative MSE reduction 39.4%, residual Pearson +0.1107 CI [+0.1081, +0.1134].
+
+### 5K Strict results
+
+| Condition | Pearson* | Residual Pearson* | MSE* |
+|---|---:|---:|---:|
+| Human expert | 0.8725 | 0.5293 | 0.78741 |
+| Mouse expert | 0.8561 | 0.4170 | 0.88078 |
+| Pooled mixed expert | 0.8630 | 0.4101 | 0.84009 |
+| OOF fixed blend | 0.8932 | 0.5426 | 0.66561 |
+| Metadata-species soft router | 0.9135 | 0.6462 | 0.54132 |
+| Per-sample soft MSE oracle | 0.9143 | 0.6492 | 0.53689 |
+| Species train-mean baseline | 0.8526 | 0.0000 | 1.02541 |
+
+- **OOF fixed blend vs pooled mixed:** Pearson +0.0302 CI [+0.0273, +0.0333]; MSE improvement +0.17448 CI [+0.16006, +0.18929]; relative MSE reduction 20.8%, residual Pearson +0.1325 CI [+0.1189, +0.1462].
+- **Metadata-species soft router vs pooled mixed:** Pearson +0.0506 CI [+0.0472, +0.0541]; MSE improvement +0.29876 CI [+0.28256, +0.31534]; relative MSE reduction 35.6%, residual Pearson +0.2361 CI [+0.2210, +0.2511].
+- **Metadata-species soft router vs OOF fixed blend:** Pearson +0.0203 CI [+0.0190, +0.0217]; MSE improvement +0.12429 CI [+0.11651, +0.13232]; relative MSE reduction 18.7%, residual Pearson +0.1036 CI [+0.0957, +0.1113].
+- **Per-sample soft oracle vs OOF fixed blend:** Pearson +0.0211 CI [+0.0198, +0.0226]; MSE improvement +0.12872 CI [+0.12097, +0.13694]; relative MSE reduction 19.3%, residual Pearson +0.1066 CI [+0.0990, +0.1140].
+
+### 20K Strict results
+
+| Condition | Pearson* | Residual Pearson* | MSE* |
+|---|---:|---:|---:|
+| Human expert | 0.8898 | 0.6094 | 0.68534 |
+| Mouse expert | 0.8911 | 0.5886 | 0.67952 |
+| Pooled mixed expert | 0.9032 | 0.6571 | 0.61934 |
+| OOF fixed blend | 0.9253 | 0.6908 | 0.47541 |
+| Metadata-species soft router | 0.9512 | 0.8106 | 0.31049 |
+| Per-sample soft MSE oracle | 0.9515 | 0.8117 | 0.30883 |
+| Species train-mean baseline | 0.8527 | 0.0000 | 1.02478 |
+
+- **OOF fixed blend vs pooled mixed:** Pearson +0.0221 CI [+0.0201, +0.0242]; MSE improvement +0.14393 CI [+0.13323, +0.15566]; relative MSE reduction 23.2%, residual Pearson +0.0337 CI [+0.0263, +0.0415].
+- **Metadata-species soft router vs pooled mixed:** Pearson +0.0480 CI [+0.0455, +0.0506]; MSE improvement +0.30885 CI [+0.29535, +0.32167]; relative MSE reduction 49.9%, residual Pearson +0.1535 CI [+0.1454, +0.1620].
+- **Metadata-species soft router vs OOF fixed blend:** Pearson +0.0259 CI [+0.0248, +0.0269]; MSE improvement +0.16493 CI [+0.15751, +0.17255]; relative MSE reduction 34.7%, residual Pearson +0.1198 CI [+0.1130, +0.1267].
+- **Per-sample soft oracle vs OOF fixed blend:** Pearson +0.0261 CI [+0.0251, +0.0273]; MSE improvement +0.16659 CI [+0.15946, +0.17409]; relative MSE reduction 35.0%, residual Pearson +0.1209 CI [+0.1143, +0.1278].
+
+### Paired scale effect: 20k minus 5k
+
+**Full cohort**
+- Human expert: Pearson +0.0195 CI [+0.0181, +0.0208]; MSE improvement +0.11083 CI [+0.10454, +0.11776].
+- Mouse expert: Pearson +0.0313 CI [+0.0292, +0.0337]; MSE improvement +0.17370 CI [+0.16243, +0.18589].
+- Pooled mixed expert: Pearson +0.0432 CI [+0.0404, +0.0461]; MSE improvement +0.22973 CI [+0.21596, +0.24590].
+- OOF fixed blend: Pearson +0.0313 CI [+0.0296, +0.0333]; MSE improvement +0.18254 CI [+0.17364, +0.19223].
+- Metadata-species soft router: Pearson +0.0351 CI [+0.0328, +0.0376]; MSE improvement +0.20836 CI [+0.19663, +0.22048].
+
+**Strict cohort**
+- Human expert: Pearson +0.0174 CI [+0.0147, +0.0204]; MSE improvement +0.10206 CI [+0.08873, +0.11680].
+- Mouse expert: Pearson +0.0351 CI [+0.0298, +0.0411]; MSE improvement +0.20126 CI [+0.17365, +0.23013].
+- Pooled mixed expert: Pearson +0.0402 CI [+0.0345, +0.0467]; MSE improvement +0.22075 CI [+0.18974, +0.25101].
+- OOF fixed blend: Pearson +0.0321 CI [+0.0280, +0.0366]; MSE improvement +0.19020 CI [+0.16879, +0.21200].
+- Metadata-species soft router: Pearson +0.0376 CI [+0.0330, +0.0426]; MSE improvement +0.23083 CI [+0.20310, +0.25932].
 
-- **Model:** SLiMPerformer-based `ExpressionPerformer`, masked-language-modeling objective on log1p-TPM gene expression vectors.
-- **Training data:** ARCHS4 bulk RNA-seq, three species splits — human-only, mouse-only, and 50/50 human+mouse mixed.
-- **Scales:** 5k samples per variant (v1 + v2) and 20k samples (human only).
-- **Evaluation:** zero-shot reconstruction on NASA OSDR spaceflight expression (predominantly mouse). Metric is per-sample Pearson correlation on masked positions vs. ground-truth expression. The reference baseline is `gene_mean` — predicting the dataset-wide mean for every masked gene yields per-sample Pearson ≈ 0.85, so any model below this is "worse than predicting the mean".
+### Diagnosis
 
-### Provenance: inherited foundation vs. this work
+- **20k strict metadata router vs pooled mixed:** Pearson +0.0480 CI [+0.0455, +0.0506]; MSE improvement +0.30885 CI [+0.29535, +0.32167]; relative MSE reduction 49.9%, residual Pearson +0.1535 CI [+0.1454, +0.1620].
+- **20k strict metadata router vs fixed blend:** Pearson +0.0259 CI [+0.0248, +0.0269]; MSE improvement +0.16493 CI [+0.15751, +0.17255]; relative MSE reduction 34.7%, residual Pearson +0.1198 CI [+0.1130, +0.1267].
+- **20k strict soft oracle vs fixed blend:** Pearson +0.0261 CI [+0.0251, +0.0273]; MSE improvement +0.16659 CI [+0.15946, +0.17409]; relative MSE reduction 35.0%, residual Pearson +0.1209 CI [+0.1143, +0.1278].
 
-This repo is a fork of Walter Alvarado's `bridge-rna` (UChicago, March 14–23, 2026, 14 commits ending at `4e18975 osdr review`). Walt established the model and the 5k human baseline; this report covers what was built on top of that foundation.
+These are frozen-expert ceiling measurements. No corrected blind learned gate is implemented in this overnight path; `train_moe.py` remains an older softmax proof of concept. A positive metadata comparison against pooled `mixed` alone is an ensemble result, while adaptive-routing evidence requires improvement over the out-of-fold fixed blend.
 
-**Inherited from Walt (the foundation):**
+### Recommended next work
 
-- The SLiMPerformer architecture and attention machinery — `slim_performer_model.py` (516 lines), `numerator_and_denominator.py` (211 lines). The `ExpressionPerformer` wrapper class.
-- The ARCHS4 preprocessing pipeline — `preprocessing.py` (1024 lines) for H5 streaming, QC, TPM, log1p, ortholog alignment, parquet batching. `merge.py` for parquet consolidation.
-- The base single-expert training loop — `train_single.py` (1010 lines), DDP, W&B sweep integration.
-- An initial Bayes hyperparameter sweep at 5k human scale (~60 W&B runs preserved in `checkpoints_performer/`).
-- Walt's final commit was titled "osdr review" but did not implement OSDR evaluation — only flagged it as a target.
+1. **Correct the mixed sampler and rerun the pooled control.** Shuffle batches globally across species, preserve the frozen holdouts, and reproduce this report before rejecting the method.
+2. **Add fair controls.** Compare against a pooled model trained on the union of specialist data and against parameter/inference-budget-matched single models; report ensemble cost explicitly.
+3. **Test a blind learned router only when the ceiling warrants it.** Train routing on calibration studies, never the final cohort, and evaluate on the strict grouped split. Compare with the true-species metadata ceiling to measure how much routable signal is learnable from expression alone.
+4. **Use profile-controlled endpoints.** Require paired improvement in MSE and residual Pearson, not raw across-gene Pearson alone, because static gene profiles can dominate that metric.
+5. **Then evaluate the human-organ hypothesis.** Build organ-disjoint specialists and a frozen organ-balanced holdout. First measure hard/soft oracle and true-organ metadata ceilings; proceed to an unknown-organ gate only if those ceilings clearly exceed the corrected species result.
+6. **Treat the strict cohort as uncertainty-limited.** Its 103 studies are clean but small; repeat the grouped sampling or build a larger prospective study-disjoint holdout before a definitive claim.
 
-**Added independently in this work (April 4 – May 3, 2026):**
+### Reproducibility artifacts
 
-| Direction | Files / changes (all confirmed not in Walt's tree at `4e18975`) |
-|---|---|
-| Zero-shot OSDR evaluation | `evaluate_osdr.py`, `prep_osdr_from_kmeng.py`, `evaluate_osdr_moe.py`, `build_mixed_eval.py`, `prep_tcga.py` |
-| Diagnostics | `check_alignment.py` (gene-mean collapse check), `analyze_moe_headroom.py` (training-free oracle ceiling), `check_moe_gene_counts.py` (vocab mismatch) |
-| Scale-up A/B | `human_20k` and `human_20k_v2` variant configs; +204 lines to `train_single.py` for variant routing, `RESUME_FROM`, walltime-fallback resume |
-| v2 architecture | 4-layer / mask-0.30 / weight-decay variants `human_5k_v2`, `mouse_5k_v2`, `mixed_5k_v2`, `human_20k_v2` |
-| MoE pipeline | `train_moe.py` (gate over frozen experts), `compute_shared_canonical.py` (shared 15,581-gene vocab), +158 lines to `preprocessing.py` for `--canonical-genes-file` path |
-| Compute infrastructure | All 17 Savio sbatch wrappers in `scripts/` (no `scripts/` directory existed at handoff); distributed-training fixes (DDP device handling, port collisions, AMP dtype, GLIBCXX, S3 streaming fallback for ARCHS4 v11) |
-| Reference data | `fetch_reference_data.py` for ortholog/gencode references |
-
-In short: Walt provided the model and the human-only 5k baseline + sweep. **The independent contribution covers everything downstream of that foundation** — the OSDR evaluation pipeline, the discovery of gene-mean collapse, the 5k → 20k scale-up A/B, the v2 architectural retrains, the entire MoE exploration (including the discovery of two distinct failure modes — per-variant vocabularies and expert collapse — and the methodology to detect each), and the Savio infrastructure that makes any of these experiments reproducible. Sections 2–7 below describe and quantify that work.
-
----
-
-## 2. Single-Expert Architecture: Human / Mouse / 50-50
-
-Three variants were trained at 5k samples with identical architecture (v1: 2-layer SLiMPerformer, mask ratio 0.15, no weight decay). OSDR zero-shot results, mouse OSDR random_15pct masking, per-sample Pearson:
-
-| Variant   | Training species   | OSDR Pearson | vs. gene_mean (0.85) |
-|-----------|--------------------|--------------:|----------------------|
-| `mouse_5k`  | mouse           | **0.781**     | below baseline       |
-| `mixed_5k`  | 50/50 human+mouse | 0.758        | below baseline       |
-| `human_5k`  | human           | 0.687         | below baseline       |
-
-### Findings
-
-- **Species specialization signal is real.** The ordering `mouse > mixed > human` on a mouse-evaluation set is consistent with training-species alignment — the mixed model is *not* the average, it sits between, and the cross-species (human → mouse OSDR) transfer is the worst. This is the most defensible empirical signal in the architecture side of the project.
-- **All three variants underperform the gene-mean baseline (0.85).** Diagnostic alignment checks (`check_alignment.py`) confirm `corr(pred, true) ≈ corr(pred, gene_mean)` across all three — predictions are essentially constant, just at the dataset mean. The model is not learning per-sample structure, it is regurgitating the marginal distribution.
-
-This collapse motivated everything that follows: it is the dominant failure mode at 5k scale with a shallow architecture, and it is what makes any MoE over these experts uninformative.
-
----
-
-## 3. Issue Encountered: Gene-Mean Collapse
-
-`check_alignment.py` runs the trained model on OSDR and compares two correlations per sample:
-
-- `corr(pred, true)` — the metric we care about
-- `corr(pred, gene_mean)` — how much the prediction tracks the dataset mean
-
-If those numbers are ~equal, the model is producing the gene-mean as its prediction regardless of input. That is what we observe at 5k scale across all three species splits. This is not a bug in evaluation; it is the model finding a low-loss solution that ignores the input sample.
-
-Likely contributing factors:
-
-- **Shallow architecture:** v1 used 2 transformer layers. Likely insufficient depth to encode per-sample gene-gene structure.
-- **Low mask ratio:** 0.15 — too little signal, easy to land on the mean and not lose much loss.
-- **No weight decay.**
-- **Limited data:** 5k samples is modest given the gene-vocabulary size (~14k–15k genes).
-
----
-
-## 4. Scaling Up: 5k → 20k (v1 architecture)
-
-To isolate the effect of scale, both `human_5k` and `human_20k` were trained under the **same v1 architecture** (24.4M params, 14,818 genes, AdamW lr=2e-4, 30-epoch budget). The only difference between runs is training-set size (4k vs 16k samples).
-
-### Validation-loss trajectory comparison
-
-`human_5k` v1 plateaus around epoch 26 at val_loss ≈ 0.72; `human_20k` v1 was still descending at epoch 28 at val_loss ≈ 0.32. Selected milestones:
-
-| Epoch | `human_5k` val_loss | `human_20k` val_loss |
-|------:|--------------------:|---------------------:|
-| 1     | 1.008               | 0.947                |
-| 5     | 0.934               | 0.736                |
-| 10    | 0.891               | 0.490                |
-| 15    | 0.868               | 0.398                |
-| 20    | 0.762               | 0.348                |
-| 25    | 0.724               | 0.323                |
-| 28    | 0.719               | **0.317** (still descending) |
-| Best  | **0.7177** (ep. 26) | **0.317** (ep. 28)   |
-
-`human_5k` triggered the early-stopping no-improvement counter for 4 of its last 5 epochs — the model effectively saturated at this data scale. `human_20k` showed no overfitting signal (train 0.301, val 0.317 closely tracking) and was still improving when the run ended.
-
-### Zero-shot OSDR comparison (the bio-signal test)
-
-Per-sample Pearson on NASA OSDR spaceflight expression, masked-reconstruction. Gene-mean baseline ≈ 0.85 (predicting the dataset mean for every masked gene).
-
-| Variant       | Samples | Best val_loss | OSDR Pearson (random_15pct) | Gap vs gene_mean (0.847) |
-|---------------|---------|--------------:|----------------------------:|-------------------------:|
-| `human_5k`    | 5k      | 0.7177        | **0.687**                   | −0.160 (severely under)  |
-| `human_20k`   | 20k     | 0.317         | **0.8131**                  | −0.034 (closing in)      |
-
-### `human_20k` v1 OSDR by masking strategy
-
-| Masking      | Pearson  | Spearman | MSE    | Gene-mean Pearson |
-|--------------|---------:|---------:|-------:|------------------:|
-| random_15pct | **0.8131** | 0.8114 | 1.083  | 0.8466            |
-| random_50pct | 0.7937   | 0.7950   | 1.257  | 0.8465            |
-| random_80pct | 0.6781   | 0.6946   | 1.986  | 0.8467            |
-| block_50     | 0.7914   | 0.7691   | 1.098  | 0.8404            |
-
-### Findings
-
-- **Scaling 5k → 20k buys ~5× reduction in the OSDR gene-mean gap.** `human_5k` was 0.16 below the gene-mean baseline on OSDR; `human_20k` is only 0.034 below. The 4× increase in data closed most of the distance to the trivial baseline under the same v1 architecture.
-- **Validation loss tells a much stronger story than OSDR alone.** Held-out human val_loss dropped from 0.7177 → 0.317 — more than a 2× reduction. The OSDR gain is real but smaller because OSDR is a different distribution (mostly mouse, spaceflight) and the v1 architecture still doesn't cleanly model per-sample structure.
-- **20k still hasn't cleared the gene-mean baseline.** Pearson 0.813 < 0.847 means a learned model is still slightly worse than just predicting the dataset mean for every masked gene. Scaling alone is not sufficient to escape the baseline at v1 architecture; closing the last ~0.03 gap requires either further scale (40k, 80k human-only) or architectural changes.
-- **Performance degrades gracefully with masking ratio.** Pearson 0.81 / 0.79 / 0.68 across 15/50/80% random masking confirms the 20k model is doing something context-dependent — it is *not* a constant-output collapse. This is meaningful improvement over the 5k regime, even though the absolute number is still below baseline.
-
-### Architecture vs scale at 5k: scale wins
-
-A v2 retrain at the original 5k scale (`human_5k_v2`: 4-layer, mask 0.30, weight decay 0.01, 38M params, shared 15,581-gene vocab) lets us isolate the architectural axis from the scale axis.
-
-| Variant         | Samples | Arch        | Params | Mask | Best val_loss |
-|-----------------|--------:|-------------|-------:|------:|--------------:|
-| `human_5k`      | 5k      | v1 (2-layer) | 24M    | 0.15  | 0.7177        |
-| `human_5k_v2`   | 5k      | v2 (4-layer) | 38M    | 0.30  | **0.6564** (ep. 29, run cut mid-ep. 30) |
-| `human_20k`     | 20k     | v1 (2-layer) | 24M    | 0.15  | **0.317** (still descending)            |
-
-Caveat: `human_5k_v2` uses a *harder* training task (mask 0.30 reconstructs 2× more positions than mask 0.15), so the val_losses are not strictly comparable across rows. The qualitative pattern is still informative:
-
-- **At fixed 5k scale, v2 architecture closes ~0.06 of the val_loss gap** despite the harder objective. Architectural depth + weight decay help, but the gain is modest.
-- **At fixed v1 architecture, 4× scale closes ~0.40 of the val_loss gap.** Order-of-magnitude larger improvement.
-- **Implication for compute allocation:** under this regime, sample scale is the dominant lever. The v2 architectural changes are still important (they enable shared-vocabulary MoE — see section 5), but expect them to amplify scaling gains rather than substitute for them.
-
----
-
-## 5. MoE Attempt
-
-Hypothesis: if mouse-only and human-only experts each carry species-specific bio knowledge that the mixed expert dilutes, a per-sample softmax gate over the three experts should outperform the best single expert.
-
-### Implementation
-
-`train_moe.py` loads the three 5k checkpoints with `eval()` + `requires_grad=False`, learns only a small per-sample softmax gate (Linear → GELU → Dropout → Linear → softmax, ~3.8M params), and trains for ~30 epochs with the same masked-reconstruction loss. Single-GPU is sufficient because only the gate has gradients.
-
-### Issue 1: Vocabulary Incompatibility
-
-The v1 5k variants were each trained with their own per-variant gene vocabulary. This silently breaks the MoE assumption: `gene_embedding[i]` does not refer to the same gene across the three experts, so combining their outputs at index `i` is meaningless. This is a methodological lesson — naïve MoE over per-dataset-trained genomics experts requires a shared vocabulary.
-
-**Fix:** `compute_shared_canonical.py` generates a canonical 15,581-gene vocabulary from the intersection of human and mouse orthologs, used through `preprocessing.py --canonical-genes-file`. The v2 retrain (`human_5k_v2`, `mouse_5k_v2`, `mixed_5k_v2`) uses this shared vocab — column order is now identical across variants.
-
-### Issue 2: Expert Collapse Bounds the MoE Ceiling
-
-Training a gate over collapsed experts cannot recover signal that none of the experts have. To check this without committing 24–48h to gate training, `analyze_moe_headroom.py` runs all three experts on OSDR in a common gene space and computes a *training-free oracle* — for each sample, cheat by picking the best expert. This is an upper bound on what any learned gate could achieve.
-
-V1 oracle headroom (oracle minus best single expert, per-sample Pearson):
-
-| Evaluation split    | Best single | Oracle  | Gap        |
-|---------------------|------------:|--------:|------------|
-| Human TCGA          | 0.7989      | 0.7992  | **+0.0003** |
-| Mouse OSDR          | 0.7822      | 0.7835  | **+0.0014** |
-| Global mixed        | 0.7715      | 0.7914  | +0.0199    |
-
-The per-species gaps are at noise level. A *trained* gate would land below oracle, so the practical ceiling for v1 MoE is ≈ +0.001. The +0.0199 on the mixed set was attributed to species-ID leakage — the gate would learn "this looks like a human sample → human expert", not real per-sample routing.
-
-**Conclusion on v1 MoE:** not worth gate-training. The oracle headroom analysis itself is a reusable methodology contribution — it lets you decide whether MoE is worth the compute *before* spending it.
-
-### V2 Status
-
-The three v2 5k experts just finished training under the shared vocabulary. The MoE pipeline now runs on a methodologically valid foundation. Two diagnostics determine whether gate training is justified:
-
-1. `check_alignment.py` on each v2 checkpoint — did v2 escape gene-mean collapse? (1h GPU job × 3, can run in parallel)
-2. `analyze_moe_headroom.py` on the three v2 experts — what is the oracle ceiling now? (~4h CPU job)
-
-If oracle headroom on a single-species split (e.g. mouse OSDR) is meaningfully above the v1 figure (>~+0.01), gate training is justified. If it is still ~+0.001, MoE is not the right shape of method for this data and the next move is single-expert scaling, not routing.
-
----
-
-## 6. Key Takeaways
-
-1. **Species-specialization signal exists in single-expert models.** `mouse > mixed > human` on mouse OSDR is the cleanest empirical finding from this work.
-2. **Gene-mean collapse is the dominant failure mode at 5k + shallow architecture.** Architectural depth + higher mask ratio + weight decay (the v2 changes) + scale up to 20k together appear to address it — confirmed on val_loss; pending OSDR alignment confirmation.
-3. **20k > 5k by a wide margin, but 20k still does not clear the gene-mean baseline on OSDR.** Val_loss dropped from 0.7177 → 0.317 (2.3×) with 4× the data; OSDR Pearson improved from 0.687 → 0.813 (gap to baseline closed from −0.160 to −0.034). Scaling helps enormously but is not sufficient at v1 architecture.
-4. **At 5k scale, sample scale dominates architecture.** Holding architecture fixed at v1 and scaling 5k → 20k closed ~0.40 of val_loss; holding scale fixed at 5k and going from v1 (2-layer) → v2 (4-layer + shared vocab + weight decay) closed only ~0.06, despite the v2 task being harder (mask 0.30 vs 0.15). The pragmatic takeaway: prioritize data scale over architectural depth at this regime.
-5. **MoE on per-dataset experts requires shared vocabulary.** Per-variant vocabs make `gene_embedding[i]` semantically inconsistent across experts. This is a methodological lesson that transfers to any future MoE work over genomics models.
-6. **Oracle headroom is a cheap pre-flight check before committing compute to gate training.** v1 MoE was killed on a 4h CPU job rather than a 48h GPU run.
-
----
-
-## 7. What To Do Next
-
-**Immediate (this week):**
-
-- Run `check_alignment.py` on `human_5k_v2`, `mouse_5k_v2`, `mixed_5k_v2` checkpoints — confirm whether the v2 architecture (4 layers, mask 0.30, weight decay) breaks the gene-mean ceiling at 5k scale. The 20k v1 result shows that pure scaling under v1 arch closes most but not all of the OSDR gap; the v2 retrains test whether deeper architecture at the original 5k scale gets there from a different angle.
-- Run `analyze_moe_headroom.py` on the three v2 experts — determine the per-species oracle ceiling under the corrected setup. Compare against v1 numbers (+0.0003 / +0.0014 / +0.0199) to decide whether gate training is justified.
-- Run OSDR evaluation on `human_5k_v2` to enable a clean "5k v1 vs 5k v2" comparison alongside the "5k v1 vs 20k v1" comparison already in section 4. This isolates the architectural contribution from the data-scale contribution.
-
-**Conditional next step (if v2 oracle headroom is meaningful):**
-
-- Train the MoE gate (`train_moe.py`, 24–48h on a single GPU). The script needs a small edit to point its hardcoded data paths at the v2 parquet files before submission.
-- Compare MoE OSDR Pearson against the best single v2 expert.
-
-**Conditional next step (if v2 still collapses or oracle headroom is still ~0):**
-
-- Drop MoE for now. Push single-expert scaling further (20k mouse, 20k mixed) under the v2 architecture.
-- Reframe MoE in writeup as a negative result with a clear methodological contribution: oracle headroom analysis as a pre-flight diagnostic, plus the shared-vocab requirement.
-
-**Open questions:**
-
-- Why is mouse the strongest single-species expert on mouse OSDR but human is the worst on the same eval — even after accounting for species mismatch? Is the gap closed by 20k mouse?
-- Does the mixed model's intermediate position survive at 20k, or does mixed approach the species-matched expert?
-- Is there a route to per-sample routing signal that doesn't rely on species ID — for instance, tissue or condition?
+- Result fingerprint: `ae87c68280b09bd8844d743c32b2428e80408e1c1ba52a6e365bf483bd24f270`
+- Full mask SHA256: `0092b55fe7e8e23c0448a6957fd741369f77f3916f93d4e17d434a9119999e34`
+- Strict mask SHA256: `739709804e7d56f54dc8a08e38fe0547e97b44d35b42fc5df4c02fd78e1a1059`
+- Validation artifact: `results/corrected_interspecies_eval.validation.json`
+- Scale reports: `results/interspecies_scale_change_full.json` and `results/interspecies_scale_change_strict_study_disjoint.json`

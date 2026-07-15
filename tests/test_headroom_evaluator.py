@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sys
 import tempfile
 import unittest
@@ -137,10 +138,15 @@ def test_synthetic_cache_analysis_writes_crossfit_report():
 
         analyze(args, cache, output)
 
-        report = (output / "report.json").read_text()
-        assert '"fixed_blend_mse_crossfit"' in report
-        assert '"soft_oracle_mse"' in report
-        assert '"metadata_species_soft_mse_crossfit"' in report
+        report = json.loads((output / "report.json").read_text())
+        assert "fixed_blend_mse_crossfit" in report["conditions"]
+        assert "soft_oracle_mse" in report["conditions"]
+        assert "metadata_species_soft_mse_crossfit" in report["conditions"]
+        for comparison in report["comparisons"]:
+            expected = (
+                comparison["reference_mse_mean"] - comparison["candidate_mse_mean"]
+            ) / comparison["reference_mse_mean"]
+            assert abs(comparison["relative_mse_reduction"] - expected) < 1e-12
 
 
 def load_tests(loader, tests, pattern):

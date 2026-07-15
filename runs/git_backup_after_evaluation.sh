@@ -17,16 +17,17 @@ log() {
 }
 
 [ -f "$SUCCESS" ] && exit 0
-log "Git watcher started; waiting for validated evaluation results."
-until [ -f "$BACKUP_DIR/EVALUATION_COMPLETE_AND_VALIDATED" ]; do
+log "Git watcher started; waiting for the validated timestamped report."
+until [ -f "$BACKUP_DIR/REPORT_READY" ]; do
     sleep "$POLL_SECONDS"
 done
 
 log "Evaluation is validated; staging repository code, docs, scripts, and tests."
-git add -A -- \
+git add -u
+git add -- \
     .gitignore \
-    CLAUDE.md \
-    PROGESS.md \
+    progress.md \
+    report.md \
     README.md \
     core/train_single.py \
     evaluation \
@@ -39,7 +40,7 @@ if ! git diff --cached --check >> "$LOG" 2>&1; then
 fi
 
 if ! git diff --cached --quiet; then
-    if ! git commit -m "Fix interspecies evaluation and automate V3 backup" >> "$LOG" 2>&1; then
+    if ! git commit -m "Tighten interspecies MoE usefulness diagnosis" >> "$LOG" 2>&1; then
         log "ERROR git commit failed; inspect $LOG"
         exit 1
     fi
