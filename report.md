@@ -1,6 +1,6 @@
 # Bridge-RNA Project Report: Corrected Interspecies MoE Evaluation
 
-**Updated:** 2026-07-14 22:43 PDT / 2026-07-15 05:43 UTC
+**Updated:** 2026-07-15 09:37 PDT / 2026-07-15 16:37 UTC
 
 ## Executive Status
 
@@ -9,11 +9,10 @@ SLiMPerformer (`ExpressionPerformer`) and asks whether human-, mouse-, and
 mixed-trained experts contain enough complementary signal for mixture routing to
 beat a pooled model or a fixed ensemble.
 
-The immediate experiment is deliberately narrow: finish the 20k human/mouse
-scale-up, run a corrected paired 5k-versus-20k interspecies evaluation, diagnose
-the routing ceiling, then decide whether to train a blind gate or pivot to human
-organ specialists. The final corrected results will be appended automatically
-to this document after overnight inference and validation.
+The 20k human/mouse scale-up and corrected paired 5k-versus-20k evaluation are
+complete. The result supports a practically convincing frozen, true-species
+routing ceiling, while stopping short of claiming that an unknown-species blind
+gate or a compute-matched production MoE has been demonstrated.
 
 ## Historical Work, Condensed
 
@@ -186,12 +185,12 @@ Decision branches:
    organ-balanced holdout, measure soft/hard and true-organ ceilings, and train an
    unknown-organ gate only if those ceilings justify it.
 
-## Pending Automated Result Addendum
+## Automated Result Addendum
 
-After `EVALUATION_COMPLETE_AND_VALIDATED`, the report generator will append the
-final checkpoint identities, full and strict metric tables, paired confidence
-intervals, 20k-minus-5k changes, diagnosis, limitations, and recommended next
-experiments below this line. The append is fingerprinted and idempotent.
+After `EVALUATION_COMPLETE_AND_VALIDATED`, the report generator appended the
+final full/strict tables, paired confidence intervals, scale changes, diagnosis,
+limitations, and recommended experiments below. The append is fingerprinted and
+idempotent.
 
 ---
 
@@ -323,3 +322,79 @@ These are frozen-expert ceiling measurements. No corrected blind learned gate is
 - Strict mask SHA256: `739709804e7d56f54dc8a08e38fe0547e97b44d35b42fc5df4c02fd78e1a1059`
 - Validation artifact: `results/corrected_interspecies_eval.validation.json`
 - Scale reports: `results/interspecies_scale_change_full.json` and `results/interspecies_scale_change_strict_study_disjoint.json`
+
+## V2-to-V3 Interpretation and the MoE Claim
+
+### What V3 changed
+
+V3 did not introduce a new backbone or gating architecture. Both V2 and V3 use
+the same four-layer `ExpressionPerformer`, shared 15,448-gene ordering,
+`log1p_tpm` input space, 30% masking objective, and weight decay `0.01`. The main
+change was four times more training and validation rows per expert:
+
+| Dimension | V2 5k | V3 20k |
+|---|---:|---:|
+| Training rows | 4,000 | 16,000 |
+| Validation rows | 800 | 3,200 |
+| Epochs | human 30; mouse/mixed 20 | 15 |
+| Batch size | 8 | 8 |
+| Preprocessing draw | original seeded draw | seed 123 with 667 frozen IDs excluded |
+
+This is a controlled scale comparison in architecture and objective, but not a
+perfect single-variable experiment: data draws, epoch budgets, and explicit
+holdout exclusion differ. The V3 mixed run also inherited species-contiguous
+row-group ordering, so it remains necessary to retrain that pooled control with
+globally shuffled cross-species batches.
+
+### Why the conclusion changed
+
+The old near-zero-headroom conclusion was not a valid V2 baseline. It came from
+raw TPM being passed into models trained on `log1p(TPM)`, test-fitted ensemble
+weights, a test-derived gene mean, sample-weighted aggregation, and a hard
+per-sample selector being treated as the only oracle. Correcting those problems
+changes the qualitative result even for the unchanged V2 5k checkpoints.
+
+On the strict study-disjoint cohort:
+
+| Condition versus OOF fixed blend | V2 5k relative MSE reduction | V3 20k relative MSE reduction |
+|---|---:|---:|
+| True-species hard router | 17.9% | 33.5% |
+| True-species soft router | 18.7% | 34.7% |
+| Hard MSE oracle | 17.9% | 33.8% |
+| Soft convex MSE oracle | 19.3% | 35.0% |
+
+The discovery is therefore not mainly caused by replacing a hard oracle with a
+soft oracle. Hard true-species routing already produces most of the improvement.
+Soft routing improves MSE over hard routing by about 0.9% at 5k and 1.8% at 20k;
+the soft oracle provides a similarly modest refinement over the hard MSE oracle.
+The large effect comes from correctly evaluating species-conditioned routing in
+model space and comparing it with an out-of-fold fixed ensemble.
+
+The pooled `mixed` checkpoint is not an oracle. It is one jointly trained expert:
+on strict 20k its MSE is `0.61934`, versus `0.47541` for the fixed ensemble,
+`0.31611` for the hard true-species router, `0.31049` for the soft true-species
+router, and `0.30883` for the soft oracle.
+
+### What scale contributed
+
+V3 improves every principal condition and increases adaptive headroom beyond the
+evaluation-only discovery. On the paired strict cohort, metadata-soft MSE
+headroom over the fixed blend rises from `0.12429` at 5k to `0.16493` at 20k, a
+20k-minus-5k increase of `0.04064` with 95% CI `[0.03210, 0.04928]`. Pearson
+headroom rises by `0.00552`, CI `[0.00413, 0.00693]`. Thus scale strengthens both
+the experts and the value of species-conditioned routing.
+
+### Defensible conclusion
+
+This experiment shows that a **frozen, species-conditioned MoE works in the
+corrected offline setting**: using true species metadata to select or softly mix
+experts beats a pooled single expert and a cross-fitted fixed ensemble on a
+study-disjoint cohort, with practically large effects and positive clustered
+confidence intervals. The near equality of metadata-soft routing and the
+per-sample soft oracle shows that species explains almost all measured routing
+ceiling for these experts.
+
+It does not yet show that a blind learned gate can infer the correct mixture from
+RNA expression alone, nor that three full experts beat a parameter-, data-, and
+inference-matched single model. Those are the next claims to test before calling
+the method deployment-ready or transferring the conclusion directly to organs.

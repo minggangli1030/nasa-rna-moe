@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-15 09:32 PDT / 2026-07-15 16:32 UTC
+**Last updated:** 2026-07-15 09:37 PDT / 2026-07-15 16:37 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -41,6 +41,43 @@ serve as the primary interspecies-routing benchmark.
 - This is not yet a blind learned gate result. It establishes that known species
   is a useful routing variable for the frozen experts; fair pooled/sampler
   controls and a newly implemented blind gate remain required.
+
+## What Changed from V2 to V3
+
+V3 is primarily a data-scale experiment, not a new MoE architecture:
+
+| Dimension | V2 5k | V3 20k | Interpretation |
+|---|---|---|---|
+| Train / validation rows per expert | 4,000 / 800 | 16,000 / 3,200 | 4x more rows |
+| Model | 4-layer `ExpressionPerformer` | Same | Architecture held fixed |
+| Gene space | Shared 15,448 genes | Same | All six checkpoints are compatible |
+| Objective | `log1p_tpm`, 30% mask, wd 0.01 | Same | Same reconstruction task |
+| Training | V2 seed/draw; 20-30 epochs | seed 123; 15 epochs, batch 8 | Not a perfectly single-variable scale test |
+| Holdout | Removed retrospectively for corrected evaluation | 667 IDs excluded during preprocessing | V3 explicitly protects the frozen cohort |
+
+The qualitative discovery is mostly an **evaluation correction**, because the
+same V2 checkpoints that previously appeared to have approximately zero routing
+headroom show a strong effect under the corrected protocol. V3 then amplifies
+that effect:
+
+| Strict study-disjoint comparison vs OOF fixed blend | V2 5k | V3 20k |
+|---|---:|---:|
+| True-species hard router: relative MSE reduction | 17.9% | 33.5% |
+| True-species soft router: relative MSE reduction | 18.7% | 34.7% |
+| Hard MSE oracle: relative MSE reduction | 17.9% | 33.8% |
+| Soft MSE oracle: relative MSE reduction | 19.3% | 35.0% |
+
+Thus this is not mainly a soft-oracle artifact. Hard true-species routing already
+works; soft mixing adds about 0.9% relative MSE over hard routing at 5k and 1.8%
+at 20k. The important changes were applying the training-space `log1p` transform,
+using grouped out-of-fold comparisons and train-only baselines, distinguishing a
+pooled single expert from a fixed ensemble, and measuring routing against that
+fixed ensemble. The `mixed` checkpoint is one pooled expert, not an oracle.
+
+V3 contributes a real scale result on top: on the strict paired cohort, adaptive
+MSE headroom over the fixed blend increases by `0.04064` from 5k to 20k (95% CI
+`[0.03210, 0.04928]`), and Pearson headroom increases by `0.00552` (95% CI
+`[0.00413, 0.00693]`).
 
 ## Repository and Compute
 
