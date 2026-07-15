@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "human_h5": "/media/volume/moe-reboot/archs4/human_matrix_v11.h5",
+  "thresholds": {
+    "max_single_cell_probability": 0.5,
+    "min_samples": 1000,
+    "min_series_groups": 50,
+    "max_group_fraction": 0.2
+  },
+  "n_conservative_candidates": 14096,
+  "n_connected_series_groups": 603,
+  "exclusions": {
+    "single_cell_probability": 195698,
+    "cell_like_metadata": 165331,
+    "empty_series": 0,
+    "unmatched": 66231,
+    "ambiguous_organ": 0
+  },
+  "eligible_organs": [
+    "brain"
+  ],
+  "eligible_sample_id_sha256": "69186a8bfb491f9f7e882df611a1cd06099dd64276e50f738008f2bc5e0f7e3d",
+  "organ_summary": [
+    {
+      "organ": "brain",
+      "n_samples": 3461,
+      "n_series_groups": 126,
+      "median_samples_per_group": 9.0,
+      "largest_group_samples": 427,
+      "largest_group_fraction": 0.12337474718289512,
+      "tumor_like_samples": 178,
+      "source_labeled_samples": 3377,
+      "eligible_for_pilot": true
+    },
+    {
+      "organ": "liver",
+      "n_samples": 2634,
+      "n_series_groups": 84,
+      "median_samples_per_group": 6.5,
+      "largest_group_samples": 1285,
+      "largest_group_fraction": 0.4878511769172361,
+      "tumor_like_samples": 443,
+      "source_labeled_samples": 2633,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "skin",
+      "n_samples": 1821,
+      "n_series_groups": 71,
+      "median_samples_per_group": 7.0,
+      "largest_group_samples": 453,
+      "largest_group_fraction": 0.2487644151565074,
+      "tumor_like_samples": 15,
+      "source_labeled_samples": 1813,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "lung",
+      "n_samples": 796,
+      "n_series_groups": 65,
+      "median_samples_per_group": 3.0,
+      "largest_group_samples": 189,
+      "largest_group_fraction": 0.23743718592964824,
+      "tumor_like_samples": 161,
+      "source_labeled_samples": 794,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "colon",
+      "n_samples": 655,
+      "n_series_groups": 63,
+      "median_samples_per_group": 2.0,
+      "largest_group_samples": 86,
+      "largest_group_fraction": 0.13129770992366413,
+      "tumor_like_samples": 162,
+      "source_labeled_samples": 593,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "skeletal_muscle",
+      "n_samples": 1590,
+      "n_series_groups": 47,
+      "median_samples_per_group": 21.0,
+      "largest_group_samples": 133,
+      "largest_group_fraction": 0.08364779874213836,
+      "tumor_like_samples": 0,
+      "source_labeled_samples": 1546,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "kidney",
+      "n_samples": 342,
+      "n_series_groups": 44,
+      "median_samples_per_group": 3.0,
+      "largest_group_samples": 48,
+      "largest_group_fraction": 0.14035087719298245,
+      "tumor_like_samples": 12,
+      "source_labeled_samples": 341,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "adipose",
+      "n_samples": 1013,
+      "n_series_groups": 42,
+      "median_samples_per_group": 11.5,
+      "largest_group_samples": 382,
+      "largest_group_fraction": 0.3770977295162882,
+      "tumor_like_samples": 0,
+      "source_labeled_samples": 1010,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "heart",
+      "n_samples": 807,
+      "n_series_groups": 39,
+      "median_samples_per_group": 3.0,
+      "largest_group_samples": 366,
+      "largest_group_fraction": 0.45353159851301117,
+      "tumor_like_samples": 0,
+      "source_labeled_samples": 806,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "placenta",
+      "n_samples": 214,
+      "n_series_groups": 30,
+      "median_samples_per_group": 3.0,
+      "largest_group_samples": 78,
+      "largest_group_fraction": 0.3644859813084112,
+      "tumor_like_samples": 0,
+      "source_labeled_samples": 214,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "pancreas",
+      "n_samples": 167,
+      "n_series_groups": 22,
+      "median_samples_per_group": 3.5,
+      "largest_group_samples": 72,
+      "largest_group_fraction": 0.4311377245508982,
+      "tumor_like_samples": 27,
+      "source_labeled_samples": 167,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "testis",
+      "n_samples": 78,
+      "n_series_groups": 21,
+      "median_samples_per_group": 2.0,
+      "largest_group_samples": 23,
+      "largest_group_fraction": 0.2948717948717949,
+      "tumor_like_samples": 0,
+      "source_labeled_samples": 78,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "ovary",
+      "n_samples": 66,
+      "n_series_groups": 21,
+      "median_samples_per_group": 1.0,
+      "largest_group_samples": 22,
+      "largest_group_fraction": 0.3333333333333333,
+      "tumor_like_samples": 13,
+      "source_labeled_samples": 65,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "prostate",
+      "n_samples": 231,
+      "n_series_groups": 14,
+      "median_samples_per_group": 5.0,
+      "largest_group_samples": 99,
+      "largest_group_fraction": 0.42857142857142855,
+      "tumor_like_samples": 151,
+      "source_labeled_samples": 230,
+      "eligible_for_pilot": false
+    },
+    {
+      "organ": "breast",
+      "n_samples": 221,
+      "n_series_groups": 10,
+      "median_samples_per_group": 10.5,
+      "largest_group_samples": 65,
+      "largest_group_fraction": 0.29411764705882354,
+      "tumor_like_samples": 150,
+      "source_labeled_samples": 221,
+      "eligible_for_pilot": false
+    }
+  ],
+  "warning": "Labels are conservative regex normalization of ARCHS4 source/title metadata, not a validated tissue ontology. Manually audit candidates before freezing cohorts."
+}

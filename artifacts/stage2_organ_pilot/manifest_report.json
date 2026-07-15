@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "seed": 42,
+  "selection": {
+    "exclude_tumor_like": true,
+    "max_samples_per_group": 20,
+    "min_series_groups": 45,
+    "min_capped_samples": 300,
+    "max_organs": 0
+  },
+  "split_fractions": {
+    "calibration": 0.15,
+    "test": 0.15
+  },
+  "excluded_rows": {
+    "tumor_like": 1312,
+    "multi_organ_group": 520
+  },
+  "organs": [
+    "brain",
+    "skin",
+    "liver",
+    "colon",
+    "lung"
+  ],
+  "n_experts": 5,
+  "n_samples": 2856,
+  "n_train_samples": 1998,
+  "n_connected_series_groups": 317,
+  "pooled_train_sample_sha256": "332760cf8ca98535e3d0a4f3548e733a0723d6c8ea985e4268e9a7c06990c35d",
+  "specialist_union_train_sample_sha256": "332760cf8ca98535e3d0a4f3548e733a0723d6c8ea985e4268e9a7c06990c35d",
+  "pooled_train_is_exact_specialist_union": true,
+  "manifest_sample_sha256": "141cb7e2256194dc7e2b750abf1b3ded72edb6fee67e6937c16dc951c9457d51",
+  "availability": [
+    {
+      "organ": "adipose",
+      "n_capped_samples": 449,
+      "n_series_groups": 40,
+      "eligible": false
+    },
+    {
+      "organ": "brain",
+      "n_capped_samples": 1119,
+      "n_series_groups": 100,
+      "eligible": true
+    },
+    {
+      "organ": "breast",
+      "n_capped_samples": 22,
+      "n_series_groups": 3,
+      "eligible": false
+    },
+    {
+      "organ": "colon",
+      "n_capped_samples": 314,
+      "n_series_groups": 49,
+      "eligible": true
+    },
+    {
+      "organ": "heart",
+      "n_capped_samples": 264,
+      "n_series_groups": 35,
+      "eligible": false
+    },
+    {
+      "organ": "kidney",
+      "n_capped_samples": 232,
+      "n_series_groups": 30,
+      "eligible": false
+    },
+    {
+      "organ": "liver",
+      "n_capped_samples": 493,
+      "n_series_groups": 57,
+      "eligible": true
+    },
+    {
+      "organ": "lung",
+      "n_capped_samples": 345,
+      "n_series_groups": 46,
+      "eligible": true
+    },
+    {
+      "organ": "ovary",
+      "n_capped_samples": 13,
+      "n_series_groups": 10,
+      "eligible": false
+    },
+    {
+      "organ": "pancreas",
+      "n_capped_samples": 73,
+      "n_series_groups": 17,
+      "eligible": false
+    },
+    {
+      "organ": "placenta",
+      "n_capped_samples": 135,
+      "n_series_groups": 24,
+      "eligible": false
+    },
+    {
+      "organ": "prostate",
+      "n_capped_samples": 50,
+      "n_series_groups": 6,
+      "eligible": false
+    },
+    {
+      "organ": "skeletal_muscle",
+      "n_capped_samples": 589,
+      "n_series_groups": 41,
+      "eligible": false
+    },
+    {
+      "organ": "skin",
+      "n_capped_samples": 585,
+      "n_series_groups": 65,
+      "eligible": true
+    },
+    {
+      "organ": "testis",
+      "n_capped_samples": 33,
+      "n_series_groups": 12,
+      "eligible": false
+    }
+  ],
+  "cohort_counts": [
+    {
+      "organ": "brain",
+      "split": "calibration",
+      "n_samples": 168,
+      "n_series_groups": 15
+    },
+    {
+      "organ": "brain",
+      "split": "test",
+      "n_samples": 168,
+      "n_series_groups": 15
+    },
+    {
+      "organ": "brain",
+      "split": "train",
+      "n_samples": 783,
+      "n_series_groups": 70
+    },
+    {
+      "organ": "colon",
+      "split": "calibration",
+      "n_samples": 47,
+      "n_series_groups": 7
+    },
+    {
+      "organ": "colon",
+      "split": "test",
+      "n_samples": 47,
+      "n_series_groups": 7
+    },
+    {
+      "organ": "colon",
+      "split": "train",
+      "n_samples": 220,
+      "n_series_groups": 35
+    },
+    {
+      "organ": "liver",
+      "split": "calibration",
+      "n_samples": 74,
+      "n_series_groups": 9
+    },
+    {
+      "organ": "liver",
+      "split": "test",
+      "n_samples": 74,
+      "n_series_groups": 9
+    },
+    {
+      "organ": "liver",
+      "split": "train",
+      "n_samples": 345,
+      "n_series_groups": 39
+    },
+    {
+      "organ": "lung",
+      "split": "calibration",
+      "n_samples": 52,
+      "n_series_groups": 7
+    },
+    {
+      "organ": "lung",
+      "split": "test",
+      "n_samples": 52,
+      "n_series_groups": 7
+    },
+    {
+      "organ": "lung",
+      "split": "train",
+      "n_samples": 241,
+      "n_series_groups": 32
+    },
+    {
+      "organ": "skin",
+      "split": "calibration",
+      "n_samples": 88,
+      "n_series_groups": 10
+    },
+    {
+      "organ": "skin",
+      "split": "test",
+      "n_samples": 88,
+      "n_series_groups": 10
+    },
+    {
+      "organ": "skin",
+      "split": "train",
+      "n_samples": 409,
+      "n_series_groups": 45
+    }
+  ],
+  "warning": "This freezes a conservative regex-labeled pipeline pilot. Manually validate labels and expand ontology-backed coverage before a definitive organ-specialization claim."
+}

@@ -689,6 +689,24 @@ VARIANT_CONFIGS = {
 		"batch_size": 8,
 		"epochs": 15,
 	},
+	# Fair pooled-control retrain. Preloading makes DistributedSampler shuffle
+	# individual rows globally, so batches mix species instead of retaining the
+	# single-species composition of streaming parquet row groups.
+	"mixed_20k_v3_shuffled": {
+		"expression_parquet": "./data/archs4/mixed_20k_v3_merged/expression.parquet",
+		"samples_json": "./data/archs4/mixed_20k_v3/samples.json",
+		"checkpoint_dir": "./checkpoints/mixed_20k_v3_shuffled",
+		"train_subset": 16000,
+		"val_subset": 3200,
+		"balanced_sampling": True,
+		"num_layers": 4,
+		"mask_ratio": 0.30,
+		"weight_decay": 0.01,
+		"batch_size": 8,
+		"epochs": 15,
+		"data_mode": "preload",
+		"num_workers": 0,
+	},
 }
 
 

@@ -394,7 +394,63 @@ confidence intervals. The near equality of metadata-soft routing and the
 per-sample soft oracle shows that species explains almost all measured routing
 ceiling for these experts.
 
-It does not yet show that a blind learned gate can infer the correct mixture from
-RNA expression alone, nor that three full experts beat a parameter-, data-, and
-inference-matched single model. Those are the next claims to test before calling
-the method deployment-ready or transferring the conclusion directly to organs.
+At the time of this frozen-evaluation addendum, it did not yet show that a blind
+learned gate could infer the correct mixture from RNA expression alone, nor that
+three full experts beat a parameter-, data-, and inference-matched single model.
+The timestamped Stage 1.5 addendum below resolves the first question; the fair
+pooled control remains active.
+
+## Stage 1.5 Blind Gate and Stage 2 Pilot - 2026-07-15T11:35:00-07:00
+
+### Blind expression-derived species gate
+
+The previously missing deployment test now succeeds on the frozen 20k experts.
+A balanced logistic classifier was trained only on the masked expression seen by
+the experts; reconstruction targets were replaced by the mask token. Its 564
+calibration samples (518 connected studies) have zero study-group overlap with
+the unchanged strict test of 103 samples/103 studies.
+
+The gate achieved 99.03% strict species accuracy, balanced accuracy 0.99, and
+AUC 1.0. Blind-soft routing reached MSE `0.31404`, compared with `0.47547` for
+the calibration-fitted fixed blend and `0.31059` for the true-species soft
+router. Versus fixed blending, that is a 33.95% relative MSE reduction,
+absolute improvement `0.16143` with 95% clustered CI `[0.15336, 0.16926]`, and
+residual-Pearson improvement `+0.11450` with CI `[0.10768, 0.12144]`. Blind
+soft is only 1.11% worse than metadata soft. Therefore, for species, the useful
+routing signal is recoverable from expression without being told the answer.
+
+This closes the blind-gate ceiling test but not the fair-general-model control.
+The original pooled checkpoint used locality-aware streaming in which shuffled
+row groups still emitted single-species batches. A separate
+`mixed_20k_v3_shuffled` retrain now uses the identical V3 dataset split and
+hyperparameters with global individual-row shuffling; 1,983/2,000 inspected
+epoch-0 batches mix species. It is actively training on the persistent
+`moe-reboot` A100. A remote completion watcher will immediately evaluate its
+best checkpoint on the same frozen full/strict masks and rerun the blind gate.
+
+### Data-driven organ pilot
+
+The first conservative ARCHS4 audit found 14,096 bulk-tissue candidates across
+603 connected GEO study groups. After excluding tumor-like rows and groups that
+span more than one candidate organ, and capping each study at 20 samples, the
+preregistered availability rule (at least 45 groups and 300 capped samples)
+selects `K=5`: brain, skin, liver, colon, and lung. This is evidence-based `K`
+selection, not a fixed request for four experts.
+
+The study-disjoint V2 pilot manifest contains 2,856 samples from 317 groups,
+including 1,998 training rows. The pooled model's sorted training-ID hash is
+identical to the union of all specialist training IDs
+(`6d0e274b994ad3c9e1e93d671824d7c879651e2524b0ff95543bb8a642bc396a`).
+This enforces the primary fair-data comparison: one general model sees exactly
+the same total samples as the five specialists collectively.
+
+The manifest is suitable for pipeline development, not yet for a definitive
+biological conclusion. Manual spot checking exposed residual shorthand and
+cell-source ambiguity, including GBM and HSAEpC examples, and the specialist
+training sets range from only 220 to 783 rows. The next Stage 2 work is therefore
+manual/ontology-backed label validation and coverage expansion, followed by a
+small end-to-end smoke run. A full organ training campaign should wait for that
+review and for the shuffled pooled Stage 1 control.
+
+Reproducible outputs are versioned under
+`artifacts/stage1_5_blind_gate/` and `artifacts/stage2_organ_pilot/`.

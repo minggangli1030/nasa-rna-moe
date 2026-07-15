@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "claim": "expression-only blind species gate on frozen 20k experts",
+  "cache": "/media/volume/moe-reboot/results/interspecies_headroom_20k_v3_corrected/predictions.npz",
+  "mask_token": -10.0,
+  "calibration": {
+    "n_samples": 564,
+    "n_groups": 518,
+    "oof_accuracy": 0.9893617021276596,
+    "oof_balanced_accuracy": 0.98932384341637,
+    "oof_roc_auc": 1.0,
+    "oof_log_loss": 0.06633977977820871,
+    "sample_id_sha256": "ebdf12e9a14a6df8dbe1b1bc3af14e87ead2ff475e816c879b802e877c876dfa"
+  },
+  "strict_test": {
+    "n_samples": 103,
+    "n_groups": 103,
+    "sample_id_sha256": "e52a695f5e518be24803dcb1fba266c7a67b7d4696520dba35466f5f38da2b18",
+    "accuracy": 0.9902912621359223,
+    "balanced_accuracy": 0.99,
+    "roc_auc": 1.0,
+    "log_loss": 0.053960988180725686,
+    "confusion_matrix_human_mouse": [
+      [
+        49,
+        1
+      ],
+      [
+        0,
+        53
+      ]
+    ]
+  },
+  "router": {
+    "expert_order": [
+      "human",
+      "mouse",
+      "mixed"
+    ],
+    "fixed_weights": [
+      0.1619844491208335,
+      0.4217951799485156,
+      0.41622037093065095
+    ],
+    "hard_expert_by_species": {
+      "human": "human",
+      "mouse": "mouse"
+    },
+    "soft_weights_by_species": {
+      "human": [
+        0.6613153684506179,
+        0.0,
+        0.3386846315493821
+      ],
+      "mouse": [
+        0.0,
+        0.9733125401874788,
+        0.026687459812521186
+      ]
+    }
+  },
+  "conditions": {
+    "human": {
+      "primary_pearson_study_macro": 0.8898217801554751,
+      "primary_residual_pearson_study_macro": 0.6093963756347486,
+      "primary_mse_study_macro": 0.6853447220304218
+    },
+    "mouse": {
+      "primary_pearson_study_macro": 0.8911426818169713,
+      "primary_residual_pearson_study_macro": 0.5885752927832247,
+      "primary_mse_study_macro": 0.6795214026657591
+    },
+    "mixed": {
+      "primary_pearson_study_macro": 0.9032037970124891,
+      "primary_residual_pearson_study_macro": 0.6571478942760637,
+      "primary_mse_study_macro": 0.6193390303640985
+    },
+    "fixed_calibration": {
+      "primary_pearson_study_macro": 0.9253459996912631,
+      "primary_residual_pearson_study_macro": 0.6939664221913094,
+      "primary_mse_study_macro": 0.47546747469218537
+    },
+    "metadata_species_hard_calibration": {
+      "primary_pearson_study_macro": 0.9501783590960711,
+      "primary_residual_pearson_study_macro": 0.8063627006608873,
+      "primary_mse_study_macro": 0.31610984078779614
+    },
+    "metadata_species_soft_calibration": {
+      "primary_pearson_study_macro": 0.9511625154511614,
+      "primary_residual_pearson_study_macro": 0.8105545524042131,
+      "primary_mse_study_macro": 0.3105875361223996
+    },
+    "blind_species_hard": {
+      "primary_pearson_study_macro": 0.948959785914731,
+      "primary_residual_pearson_study_macro": 0.8050138679892948,
+      "primary_mse_study_macro": 0.3188554753783067
+    },
+    "blind_species_soft": {
+      "primary_pearson_study_macro": 0.9504866550722421,
+      "primary_residual_pearson_study_macro": 0.8084664199402876,
+      "primary_mse_study_macro": 0.3140376685304117
+    },
+    "soft_oracle": {
+      "primary_pearson_study_macro": 0.9514723420142284,
+      "primary_residual_pearson_study_macro": 0.811729294540041,
+      "primary_mse_study_macro": 0.30882691121057076
+    }
+  },
+  "comparisons": [
+    {
+      "name": "blind_hard_vs_mixed",
+      "pearson_gain_mean": 0.045755988902241695,
+      "pearson_gain_ci95": [
+        0.041852759403250187,
+        0.04895539029078994
+      ],
+      "residual_pearson_gain_mean": 0.147865973713231,
+      "residual_pearson_gain_ci95": [
+        0.13793719404766197,
+        0.1564542783363622
+      ],
+      "mse_improvement_mean": 0.3004835549857919,
+      "mse_improvement_ci95": [
+        0.2852337567103766,
+        0.3154323779791941
+      ],
+      "candidate_mse_mean": 0.3188554753783067,
+      "reference_mse_mean": 0.6193390303640985,
+      "relative_mse_reduction": 0.4851681231992481
+    },
+    {
+      "name": "blind_hard_vs_fixed",
+      "pearson_gain_mean": 0.023613786223467825,
+      "pearson_gain_ci95": [
+        0.020201783782597793,
+        0.025841519445113006
+      ],
+      "residual_pearson_gain_mean": 0.11104744579798527,
+      "residual_pearson_gain_ci95": [
+        0.10314743038456617,
+        0.11845416853658762
+      ],
+      "mse_improvement_mean": 0.15661199931387862,
+      "mse_improvement_ci95": [
+        0.14438623871715212,
+        0.16683852010459202
+      ],
+      "candidate_mse_mean": 0.3188554753783067,
+      "reference_mse_mean": 0.47546747469218537,
+      "relative_mse_reduction": 0.32938530530457055
+    },
+    {
+      "name": "blind_soft_vs_mixed",
+      "pearson_gain_mean": 0.0472828580597528,
+      "pearson_gain_ci95": [
+        0.04458263491171537,
+        0.050015537425506795
+      ],
+      "residual_pearson_gain_mean": 0.151318525664224,
+      "residual_pearson_gain_ci95": [
+        0.1429562671775843,
+        0.1597228343160001
+      ],
+      "mse_improvement_mean": 0.3053013618336869,
+      "mse_improvement_ci95": [
+        0.29184187660273603,
+        0.3192791757432403
+      ],
+      "candidate_mse_mean": 0.3140376685304117,
+      "reference_mse_mean": 0.6193390303640985,
+      "relative_mse_reduction": 0.4929470723881321
+    },
+    {
+      "name": "blind_soft_vs_fixed",
+      "pearson_gain_mean": 0.02514065538097892,
+      "pearson_gain_ci95": [
+        0.023857693738936918,
+        0.0264308053045864
+      ],
+      "residual_pearson_gain_mean": 0.11449999774897826,
+      "residual_pearson_gain_ci95": [
+        0.10767984930643042,
+        0.12143531269429388
+      ],
+      "mse_improvement_mean": 0.16142980616177366,
+      "mse_improvement_ci95": [
+        0.1533613248716269,
+        0.16925694697296306
+      ],
+      "candidate_mse_mean": 0.3140376685304117,
+      "reference_mse_mean": 0.47546747469218537,
+      "relative_mse_reduction": 0.3395180843154041
+    },
+    {
+      "name": "blind_soft_vs_metadata_soft",
+      "pearson_gain_mean": -0.0006758603789192996,
+      "pearson_gain_ci95": [
+        -0.0014608263668237239,
+        -0.0002155451776970555
+      ],
+      "residual_pearson_gain_mean": -0.0020881324639254245,
+      "residual_pearson_gain_ci95": [
+        -0.003379591426611836,
+        -0.0010349827592438371
+      ],
+      "mse_improvement_mean": -0.0034501324080120745,
+      "mse_improvement_ci95": [
+        -0.005519530057892457,
+        -0.0018181931571359345
+      ],
+      "candidate_mse_mean": 0.3140376685304117,
+      "reference_mse_mean": 0.3105875361223996,
+      "relative_mse_reduction": -0.011108405865496336
+    },
+    {
+      "name": "metadata_soft_vs_fixed",
+      "pearson_gain_mean": 0.025816515759898222,
+      "pearson_gain_ci95": [
+        0.024722149189814007,
+        0.026867801907119702
+      ],
+      "residual_pearson_gain_mean": 0.11658813021290368,
+      "residual_pearson_gain_ci95": [
+        0.11047304690846163,
+        0.12322174481590221
+      ],
+      "mse_improvement_mean": 0.16487993856978572,
+      "mse_improvement_ci95": [
+        0.15766051796475786,
+        0.17212166430145398
+      ],
+      "candidate_mse_mean": 0.3105875361223996,
+      "reference_mse_mean": 0.47546747469218537,
+      "relative_mse_reduction": 0.3467743796282343
+    },
+    {
+      "name": "soft_oracle_vs_fixed",
+      "pearson_gain_mean": 0.026126342322965145,
+      "pearson_gain_ci95": [
+        0.02504132733339205,
+        0.027197121893173432
+      ],
+      "residual_pearson_gain_mean": 0.11776287234873142,
+      "residual_pearson_gain_ci95": [
+        0.11139543532805267,
+        0.12438903154017938
+      ],
+      "mse_improvement_mean": 0.16664056348161457,
+      "mse_improvement_ci95": [
+        0.15951782592067779,
+        0.1735668698530644
+      ],
+      "candidate_mse_mean": 0.30882691121057076,
+      "reference_mse_mean": 0.47546747469218537,
+      "relative_mse_reduction": 0.3504773141201649
+    }
+  ]
+}

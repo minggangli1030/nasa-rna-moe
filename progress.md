@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-15 09:54 PDT / 2026-07-15 16:54 UTC
+**Last updated:** 2026-07-15 11:35 PDT / 2026-07-15 18:35 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -12,19 +12,40 @@ Stage 1 interspecies training, backup, evaluation, reporting, and Git archival a
 complete. The next objective is to close two targeted Stage 1 controls while
 beginning a bounded Stage 2 human-organ pilot:
 
-1. Test a blind expression-derived species gate against the true-species ceiling.
-2. Retrain the pooled mixed control with globally shuffled cross-species batches.
-3. Audit organ labels and choose a data-supported number of organ experts.
-4. Freeze organ-balanced, study-disjoint train/calibration/test cohorts.
+1. **Complete:** test a blind expression-derived species gate against the
+   true-species ceiling.
+2. **Running:** retrain the pooled mixed control with globally shuffled
+   cross-species batches.
+3. **Pilot frozen:** audit organ labels, choose a data-supported `K`, and build
+   study-disjoint train/calibration/test manifests.
+4. **Next:** manually validate and expand organ labels before spending a long
+   specialist-training run.
 5. Compare a pooled human model with fair specialist, fixed-ensemble, metadata,
    blind-gate, and oracle controls.
 
 NASA OSDR is secondary because the current OSDR cohort is mouse-only. It cannot
 serve as the primary interspecies-routing benchmark.
 
-## Live Overnight Status
+## Current Runtime Status
 
-- **All 20k training and backup complete.** Final epoch-15 checkpoints are human
+- `moe-reboot` is the only active VM. `moe-reboot2` and
+  `moe-reboot-partial` are shelved and are not referenced by current work.
+- The corrected pooled control is running in remote tmux session
+  `mixed20k_shuffled_20260715`. It uses the same 16,000 train / 3,200
+  validation rows and V3 architecture, but `data_mode=preload` makes the
+  `DistributedSampler` shuffle individual rows globally. Remote preflight found
+  1,983/2,000 epoch-0 batches contained both species. At 18:35 UTC it was at
+  epoch 1 batch 500/2,000, about 4.11 seconds/batch and 98% A100 utilization.
+  Logs are in `results/mixed_20k_v3_shuffled_train.log`; checkpoints write
+  directly to persistent
+  `/media/volume/moe-reboot/checkpoints/mixed_20k_v3_shuffled`.
+- Remote tmux session `mixed20k_shuffled_eval_watch_20260715` is waiting for a
+  clean training exit. It will immediately run full, strict, and blind-gate
+  evaluation with the frozen sample order and masks, write separate shuffled
+  result directories, and refuse to overwrite any existing output.
+- The original V3 checkpoints and all prior evaluation artifacts remain
+  untouched on persistent storage.
+- **Original three 20k runs and backups complete.** Final epoch-15 checkpoints are human
   val `0.2791703`, MD5 `2bfad4ab0fa14ea7dd5a7ca5207b8df1`; mouse val
   `0.2310176`, MD5 `9d5a4c342a566f8bcfc5e9d186020d01`; mixed val
   `0.5455396`, MD5 `5d7f6fe24bd750f6b3fd1dd38916375e`. Each is verified
@@ -40,9 +61,29 @@ serve as the primary interspecies-routing benchmark.
   and residual Pearson `+0.1198` (95% CI `[0.1130, 0.1267]`). The soft oracle
   reaches `35.0%` relative MSE reduction, showing the metadata router captures
   nearly all measured routing ceiling on this cohort.
-- This is not yet a blind learned gate result. It establishes that known species
-  is a useful routing variable for the frozen experts; fair pooled/sampler
-  controls and a newly implemented blind gate remain required.
+- **Blind species gating is now validated.** A leakage-protected logistic gate
+  saw only the masked expression input, trained on 564 calibration samples from
+  518 groups, and was evaluated on the unchanged 103-study strict cohort with
+  zero group overlap. Strict accuracy was `99.03%` (49/50 human, 53/53 mouse;
+  AUC `1.0`). Blind-soft routing reached MSE `0.31404`, versus `0.47547` for the
+  calibration-fitted fixed blend: `33.95%` relative reduction, absolute gain
+  `0.16143` with 95% CI `[0.15336, 0.16926]`, and residual-Pearson gain
+  `+0.11450` with CI `[0.10768, 0.12144]`. It is only 1.11% worse in MSE than
+  the true-species soft router (`0.31059`), so expression recovers nearly all of
+  the measured routing ceiling.
+- **Organ audit/pilot manifest complete.** Conservative ARCHS4 normalization
+  produced 14,096 candidates across 603 connected study groups. After removing
+  tumor-like rows, multi-organ groups, and capping each group at 20 samples, the
+  data-driven criteria (at least 45 groups and 300 capped samples) select five
+  organs: brain, skin, liver, colon, and lung. The V2 manifest has 2,856 samples,
+  317 groups, and 1,998 training rows. Studies are split atomically; calibration
+  and test sample counts are balanced within each organ; and the pooled training
+  hash exactly equals the union of specialist training IDs.
+- The organ manifest is a **pipeline pilot**, not a frozen scientific cohort.
+  Manual spot checking found residual acronym/cell-source ambiguity (for
+  example GBM and HSAEpC metadata). Label review or ontology-backed expansion is
+  required before organ-model training. Current specialist train counts are also
+  small (brain 783, skin 409, liver 345, lung 241, colon 220).
 
 ## What Changed from V2 to V3
 
@@ -146,26 +187,26 @@ a small organ pilot now. The strict result is large, statistically separated fro
 zero, present under hard routing, and stronger at 20k, so further species-only
 ceiling analysis has diminishing value.
 
-Two Stage 1.5 experiments should still be completed before a definitive Stage 1
-claim or a full-scale `K`-organ training campaign:
+Two Stage 1.5 experiments were required before a definitive Stage 1 claim or a
+full-scale `K`-organ training campaign:
 
-1. **Blind species gate:** use expression only, train on separate calibration
-   studies, and measure how much of the true-species ceiling it recovers. This is
-   relatively cheap with frozen experts/cached predictions and validates the
-   exact gate pipeline needed for organs.
-2. **Corrected pooled mixed retrain:** globally shuffle cross-species batches and
-   rerun the frozen evaluation. This removes the known V3 pooled-control weakness
-   before using Stage 1 as evidence that specialists beat a fair general model.
+1. **Blind species gate: complete.** The expression-only gate recovers almost all
+   of the true-species ceiling and strongly beats both the pooled model and fixed
+   ensemble on the strict study-disjoint cohort.
+2. **Corrected pooled mixed retrain: running.** Global row shuffling removes the
+   known V3 pooled-control weakness; rerun the frozen evaluation after its best
+   checkpoint is finalized.
 
-These controls need not block organ metadata cleanup and pilot design. They should
-block only the strongest publication claim and major Stage 2 compute expenditure.
+The successful blind gate is strong enough to continue organ metadata cleanup
+and pipeline development. The active pooled retrain and organ label validation
+still block the strongest publication claim and major Stage 2 compute spending.
 
 ## Repository and Compute
 
 - Local repo: `/Users/minggangli/Projects/nasa-rna-moe`
 - Central persistent VM: `moe-reboot`
-- Human training VM: `moe-reboot2` (ephemeral root disk)
-- Mouse training VM: `moe-reboot-partial` (hostname `moe-reboot3`, ephemeral)
+- Shelved human VM: `moe-reboot2` (ephemeral root disk)
+- Shelved mouse VM: `moe-reboot-partial` (hostname `moe-reboot3`, ephemeral)
 - Central paths `data/archs4`, `checkpoints`, and `results` use the persistent
   `/media/volume/moe-reboot` volume.
 - Training runs inside VM tmux. Never launch long work through a bare SSH shell.
@@ -247,8 +288,12 @@ The current experiment exists to replace, not refine, those numbers.
 
 ## Validated Artifacts
 
-- Local test suite: 34/34 passing, including adaptive-usefulness thresholds and
-  the automated report renderer.
+- Current local suite: 41/41 passing, including adaptive-usefulness thresholds,
+  blind-gate leakage checks, and organ-manifest invariants. Python and shell
+  syntax checks and `git diff --check` pass.
+- Versioned result summaries:
+  `artifacts/stage1_5_blind_gate/report.json` and
+  `artifacts/stage2_organ_pilot/`.
 - Local and central evaluator source SHA256 values match.
 - Real 5k and 20k snapshots load through the final evaluator with 15,448 genes,
   `log1p_tpm`, mask ratio `0.3`, and mask token `-10`.
