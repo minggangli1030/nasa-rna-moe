@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-16 12:50 PDT / 2026-07-16 19:50 UTC
+**Last updated:** 2026-07-16 14:57 PDT / 2026-07-16 21:57 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -25,9 +25,13 @@ beginning a bounded Stage 1 human-organ pilot:
    cross-species batches.
 3. **Pilot frozen:** audit organ labels, choose a data-supported `K`, and build
    study-disjoint train/calibration/test manifests.
-4. **Next:** manually validate and expand organ labels before spending a long
+4. **Next engineering:** implement and test the manifest-aware deterministic
+   extractor/trainer/evaluator plus the organ smoke launcher. The experiment
+   sequence is frozen, but these planned files do not exist yet, so Stage 1 is
+   not push-button runnable today.
+5. **Next data:** manually validate and expand organ labels before spending a long
    specialist-training run.
-5. Compare a pooled human model with fair specialist, fixed-ensemble, metadata,
+6. Compare a pooled human model with fair specialist, fixed-ensemble, metadata,
    blind-gate, and oracle controls.
 
 ### Stage 1 -> Stage 2 decision snapshot (frozen 2026-07-15)
@@ -85,11 +89,11 @@ serve as the primary interspecies-routing benchmark.
   `mixed20k_shuffled_20260715`. It uses the same 16,000 train / 3,200
   validation rows and V3 architecture, but `data_mode=preload` makes the
   `DistributedSampler` shuffle individual rows globally. Remote preflight found
-  1,983/2,000 epoch-0 batches contained both species. At 21:32 UTC on July 16 it
-  was at epoch 12, batch 1,000/2,000, at about 4.11 seconds/batch and 100% A100
+  1,983/2,000 epoch-0 batches contained both species. At 21:57 UTC on July 16 it
+  was at epoch 12, batch 1,500/2,000, at about 4.11 seconds/batch and 100% A100
   utilization. The latest finalized best is epoch 11, validation loss `0.324663`,
   versus `0.5455396` for the original mixed V3 checkpoint. The live estimate is
-  roughly 8.4 hours to training completion, around 22:55 PDT July 16 / 05:55 UTC
+  roughly 7.8 hours to training completion, around 22:45 PDT July 16 / 05:45 UTC
   July 17, followed
   automatically by freeze and frozen evaluation.
   Logs are in `results/mixed_20k_v3_shuffled_train.log`; checkpoints write
@@ -125,6 +129,13 @@ serve as the primary interspecies-routing benchmark.
   mobile uses vertical scrolling without horizontal overflow. The HTML contains
   ten balanced slide sections. Repository validation also passes 41/41 tests;
   the four emitted warnings are existing PyTorch AMP deprecations.
+- **Future presentation-script rule (requested 2026-07-16):** write the main
+  narration for a nontechnical audience in short, conversational sentences. Lead
+  with one plain-language takeaway per slide, define any necessary ML/biology term
+  before using it, and move dense thresholds, acronyms, and methodological caveats
+  into the slide, speaker backup, or Q&A. Prefer phrasing that is easy to say aloud
+  over paper-style prose. This is a forward-looking rule; the July 16 script does
+  not need another rewrite before this week's meeting.
 - Keep `moe-reboot-partial` shelved for now. The active shuffled 20k control is
   the decision-critical GPU experiment; organ progress is currently limited by
   manual label/QC work and evaluator preparation, not compute. Reassess the
