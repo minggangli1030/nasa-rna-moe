@@ -1,6 +1,12 @@
 # Bridge-RNA Project Report: Corrected Interspecies MoE Evaluation
 
-**Updated:** 2026-07-15 13:16 PDT / 2026-07-15 20:16 UTC
+**Updated:** 2026-07-16 12:50 PDT / 2026-07-16 19:50 UTC
+
+**Vocabulary:** `Stage` identifies the research phase: Stage 0 is inherited
+human/mouse/mixed completion, Stage 1 is the original organ-specialization work,
+and Stage 2 is transfer-validated label-free discovery. `V1/V2/V3` remain the
+independent data/model/debugging generations within Stage 0. `D1/D2/D3` remain
+candidate research directions.
 
 ## Executive Status
 
@@ -9,10 +15,11 @@ SLiMPerformer (`ExpressionPerformer`) and asks whether human-, mouse-, and
 mixed-trained experts contain enough complementary signal for mixture routing to
 beat a pooled model or a fixed ensemble.
 
-The 20k human/mouse scale-up and corrected paired 5k-versus-20k evaluation are
-complete. The result supports a practically convincing frozen, true-species
-routing ceiling, while stopping short of claiming that an unknown-species blind
-gate or a compute-matched production MoE has been demonstrated.
+The 20k human/mouse scale-up, corrected paired 5k-versus-20k evaluation, and
+expression-only blind species gate are complete. Stage 0 shows a large adaptive
+routing ceiling over a fixed ensemble. Its final fair-general-model control—a
+globally shuffled pooled human/mouse retrain—is still active, so the practical
+claim versus one strong generalist remains conditional on that frozen evaluation.
 
 ## Historical Work, Condensed
 
@@ -397,10 +404,10 @@ ceiling for these experts.
 At the time of this frozen-evaluation addendum, it did not yet show that a blind
 learned gate could infer the correct mixture from RNA expression alone, nor that
 three full experts beat a parameter-, data-, and inference-matched single model.
-The timestamped Stage 1.5 addendum below resolves the first question; the fair
+The timestamped Stage 0 blind-gate follow-up below resolves the first question; the fair
 pooled control remains active.
 
-## Stage 1.5 Blind Gate and Stage 2 Pilot - 2026-07-15T11:35:00-07:00
+## Stage 0 Blind-Gate Follow-up and Stage 1 Pilot - 2026-07-15T11:35:00-07:00
 
 ### Blind expression-derived species gate
 
@@ -437,82 +444,81 @@ preregistered availability rule (at least 45 groups and 300 capped samples)
 selects `K=5`: brain, skin, liver, colon, and lung. This is evidence-based `K`
 selection, not a fixed request for four experts.
 
-The study-disjoint V2 pilot manifest contains 2,856 samples from 317 groups,
+The study-disjoint organ-pilot manifest contains 2,856 samples from 317 groups,
 including 1,998 training rows. The pooled model's sorted training-ID hash is
 identical to the union of all specialist training IDs
-(`6d0e274b994ad3c9e1e93d671824d7c879651e2524b0ff95543bb8a642bc396a`).
+(`332760cf8ca98535e3d0a4f3548e733a0723d6c8ea985e4268e9a7c06990c35d`).
 This enforces the primary fair-data comparison: one general model sees exactly
 the same total samples as the five specialists collectively.
 
 The manifest is suitable for pipeline development, not yet for a definitive
 biological conclusion. Manual spot checking exposed residual shorthand and
 cell-source ambiguity, including GBM and HSAEpC examples, and the specialist
-training sets range from only 220 to 783 rows. The next Stage 2 work is therefore
+training sets range from only 220 to 783 rows. The next Stage 1 work is therefore
 manual/ontology-backed label validation and coverage expansion, followed by a
 small end-to-end smoke run. A full organ training campaign should wait for that
-review and for the shuffled pooled Stage 1 control.
+review and for the shuffled pooled Stage 0 control.
 
 Reproducible outputs are versioned under
-`artifacts/stage1_5_blind_gate/` and `artifacts/stage2_organ_pilot/`.
+`artifacts/stage0_blind_gate/` and `artifacts/stage1_organ_pilot/`.
 
-## Stage 3 Proposed Direction (planned, not yet run) - 2026-07-15
+The approved Stage 1 progression is deliberately incremental: first a 64-128-sample
+micro-overfit test, then a one-seed five-organ mechanical smoke that exercises every
+pooled/specialist/random/router/oracle path, then a cleaned brain/skin feasibility
+pilot with seeds 17, 42, and 101 and matched 3-5 epoch exposure. Pilot studies become
+burned engineering data after inspection. A definitive claim requires a rebuilt,
+expanded cohort with newly frozen validation, calibration, final-test, and discovery-
+lockbox partitions.
 
-Stage 3 is scoped after a quick prior-art review (recorded with arXiv IDs in
-`related-works.md`). It is gated on Stage 2: it runs regardless of the Stage 2
-outcome, but a Stage 2 win makes it the headline follow-up while a Stage 2 null
-makes it the *explanation* for why organ specialization did not help.
+### Stage 1 entry decision recorded 2026-07-15
 
-### Motivation
+The present decision is **NO-GO for a definitive Stage 1 claim and GO only for
+pipeline smoke testing**. A green transition to the primary Stage 2 experiment
+requires leakage-free provenance, healthy pooled and specialist backbones, three-seed
+stability, at least 5% true-organ improvement over pooled, at least 3% organ-fixed
+improvement over matched random-fixed experts, at least 3% oracle headroom over the
+organ-fixed assignment, and at least 5% blind top-1 improvement over pooled with
+positive MSE/residual-Pearson intervals and at least 80% recovery of the true-organ
+gain. These are project decision thresholds to be checked against prospective power,
+not post-result definitions of success.
 
-"Router + K experts beats one dense model" is, by itself, a confirmatory instance
-of an established pattern: mixture-of-experts theory shows MoE beats a matched dense
-model when the data has genuine latent cluster structure, and dense multi-task
-models are known to suffer negative transfer across conflicting objectives. Bulk
-RNA-seq has strong tissue structure, so a modest Stage 2 win is expected and
-low-surprise. The generative question is not *whether* organ specialization helps
-but *where and why* it does.
+If specialists pass but the blind gate fails, only selected controlled-transfer work
+is permitted while the router is repaired. If expert complementarity exists but organ
+identity fails, at most a bounded label-free feasibility pilot is permitted. Backbone,
+strict-study, provenance, oracle-headroom, or seed-stability failure stops Stage 2.
+The exact boundaries, missing implementation, planned command sequence, and artifact
+contract are frozen in `stage1-stage2-experiment-plan.md`; commands labeled `PLANNED`
+there are specifications rather than currently executable code.
 
-### D1 — organ-by-organ transfer/interference matrix (default)
+## Stage 2 Revised Direction (planned, not yet run) - 2026-07-15
 
-For each ordered organ pair `(A, B)`, measure how much adding organ `B`'s data to
-joint training changes masked-gene reconstruction on a held-out, study-disjoint test
-set of organ `A`, relative to an `A`-only specialist. Report a signed `K x K` matrix
-(negative = interference, positive = beneficial transfer).
+Claude's full organ-by-organ matrix is retained as a candidate experiment, not the
+default campaign. The current pilot cannot support it convincingly: specialists have
+only 220-783 training rows and 7-15 held-out study groups per organ, while a controlled
+`K=5`, three-seed matrix can require roughly 60-105+ runs. A technically invalid or
+underpowered Stage 1 null is not a reason to spend that compute.
 
-- **Inherited protocol.** Same extractor, shared 15,448-gene space, one `log1p`, one
-  deterministic 30% mask, study-disjoint splits, study-macro estimand, and paired
-  clustered bootstrap as Stage 1/2. Each organ `A` uses a fixed strict test set for
-  every cell in its row.
-- **Cells and asymmetry.** A single joint `A+B` model yields both `M[A,B]` (on `A`'s
-  test) and `M[B,A]` (on `B`'s test); donor/recipient asymmetry is a first-class
-  result.
-- **Size-confound control (critical).** Adding `B` also adds data. Each `M[A,B]` is
-  measured against a size-matched neutral-filler control (`A + B` vs `A` + an
-  equal-size draw of more `A`, or a size-matched random global draw when `A` is
-  small), so the matrix isolates `B`'s biological identity from its volume. The raw
-  matrix is reported too.
-- **Statistics.** Per-cell clustered bootstrap over `A`'s test studies; flag cells
-  whose CI excludes zero; Benjamini-Hochberg across the `K^2` cells.
-- **Cost at K=5.** ~15-25 small Performer runs plus the existing full-pool model;
-  feasible on one A100. Scale to leave-one-organ-out marginals if `K` grows.
-- **Novelty.** The task-affinity / task-grouping methodology is established and cited;
-  no located work builds a per-organ interference matrix from a masked bulk-expression
-  reconstruction model. The contribution is the measurement in genomics, not a new
-  method. Exploratory follow-ups (clustering the matrix, regressing interference on a
-  biological-distance axis) are labeled as such.
+The revised Stage 2 is a linked, gated test of what the representation learns.
 
-### D2 — learned expert partition vs organ ontology (backup)
+1. **Finish Stage 1 first.** Freeze an audited cohort, global study-disjoint splits,
+   manifest-driven trainer/evaluator, random-shard control, and fair pooled comparison.
+2. **Screen transfer cheaply.** On development studies, estimate directed gradient
+   affinity, then preregister a few positive, negative, and near-zero organ pairs.
+3. **Confirm selected pairs.** Compare fixed same-budget blocks `A1+A2` and `A1+B1`
+   over three explicit seeds; positive controlled transfer means the donor block lowers
+   recipient test MSE. Use study-clustered uncertainty, training-seed variation,
+   pseudogroup controls, and fixed optimizer exposures.
+4. **Pilot label-free routing.** Add a sample router and small residual experts to a
+   shared ExpressionPerformer trunk without organ/study labels. Start with a frozen
+   trunk, then scale only if routes are non-collapsed, cross-study stable, and not
+   explained by platform, library, disease, or GEO study.
+5. **Test the joint claim.** Ask whether route co-assignment predicts independently
+   confirmed transfer/interference and whether any beyond-organ program survives
+   pathway analysis and independent replication. Organ recovery alone is validation
+   of known biology, not hidden-pattern discovery.
 
-Let experts be learnable/soft rather than hard-assigned by organ and test whether the
-emergent partition matches the organ taxonomy or a different biological axis (germ
-layer, epithelial vs non-epithelial, cell composition). Scoop risk is real — MoE
-expert-specialization interpretability is an active LLM-side topic — so the framing
-must be strictly the biological alternative hypothesis in the genomics setting.
-
-### Archived
-
-Router-weights-as-deconvolution was archived: bulk deconvolution is a mature field
-(CIBERSORT, Scaden, and neural/Bayesian methods) and MoE-for-cell-type already
-exists, so only an "emergent, unsupervised byproduct of reconstruction routing"
-framing survived, and even that competes with unsupervised deconvolution. A
-data-dependent samples-per-organ phase boundary was also dropped as non-unifiable.
+Only expand to the full transfer matrix if the selected-edge pilot is powered and
+seed-stable. The authoritative estimands, controls, gates, cost analysis, and ordered
+Stage 1-to-2 transition are maintained in `progress.md`; the concrete code/decision
+runbook is `stage1-stage2-experiment-plan.md`; direct competitors and claim boundaries
+are maintained in `related-works.md`.

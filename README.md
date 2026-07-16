@@ -8,20 +8,24 @@ This repo is a personal, standalone continuation of the MoE work originally deve
 
 Active development, running on Jetstream Cloud VMs (not Savio — see `progress.md` for the environment and current instance assignments). Large generated datasets, local W&B run directories, full checkpoints, and scratch parquet files are intentionally excluded from Git; small reference gene files needed to run the pipeline are kept.
 
-**Current stage (2026-07-15):** Stage 1 (interspecies routing) is complete and, under a rebuilt leakage-resistant evaluation, shows a large study-disjoint routing headroom that a blind expression-only gate recovers. One fair-baseline control (a globally shuffled pooled retrain) is still running. Stage 2 (a fair human-organ MoE) is designed with a five-organ pipeline pilot frozen and awaiting label cleanup. Stage 3 is scoped to D1, an organ-by-organ interference matrix. The authoritative, detailed record is `progress.md`; results live in `report.md`; the prior-art record is `related-works.md`.
+**Current stage (2026-07-16):** Stage 0 (the inherited interspecies work) is completing its final fair-baseline control: a globally shuffled 20k pooled human-mouse retrain. Stage 1 (the first original summer work, a fair human-organ MoE) has a five-organ pipeline pilot frozen, but its current definitive decision is **NO-GO**: the cohort needs label cleanup and expansion before biological training claims; only progressive smoke and feasibility testing is authorized. Stage 2 is the gated discovery phase: selected directed-transfer confirmations plus label-free MoE routing, with a full organ matrix only if data, variance, and compute justify it. The authoritative dated status is in `progress.md`; concrete Stage 1/2 gates and planned commands are in `stage1-stage2-experiment-plan.md`; results live in `report.md`; prior art lives in `related-works.md`.
+
+**Vocabulary:** `Stage` denotes the research phase: **Stage 0 = inherited human/mouse/mixed completion**, **Stage 1 = organ-specialization tests**, and **Stage 2 = transfer-validated label-free discovery**. `V1`, `V2`, and `V3` independently denote data/model/debugging generations inside Stage 0 and are never renumbered. `D1`, `D2`, and `D3` denote candidate research directions, not stages.
 
 ## Research Goal
 
 The project studies masked reconstruction of bulk RNA-seq expression and, on top of it, when a routed specialist beats one general model:
 
 - Train `ExpressionPerformer` models on ARCHS4 human, mouse, and mixed human/mouse RNA-seq under one shared 15,448-gene vocabulary.
-- Under a corrected, study-aware evaluation, test whether species-specialized experts carry enough complementary signal that adaptive routing beats a cross-fitted fixed ensemble — and whether a blind expression-only gate recovers that route (**Stage 1: yes**).
-- Transfer the same testable logic within human biology: does blind organ-specialist routing reconstruct masked genes better than one general human model trained on the identical sample union (**Stage 2, in progress**)?
-- Map *where and why* specialization helps via an organ-by-organ transfer/interference matrix (**Stage 3, planned**).
+- Under a corrected, study-aware evaluation, test whether species-specialized experts carry enough complementary signal that adaptive routing beats a cross-fitted fixed ensemble — and whether a blind expression-only gate recovers that route (**Stage 0: yes**).
+- Transfer the same testable logic within human biology: does blind organ-specialist routing reconstruct masked genes better than one general human model trained on the identical sample union (**Stage 1, in progress**)?
+- Probe *what structure the model learns*: screen and confirm directed organ transfer,
+  then test whether label-free expert routing recovers the same cross-study biological
+  organization rather than technical batch structure (**Stage 2, conditional**).
 
 ## Model And Data Pipeline
 
-The repo is organized into 4 stages — see `progress.md` for the full directory tree and import notes.
+The repository pipeline is organized into four code components—not research stages. See `progress.md` for the full directory tree and import notes.
 
 - **`preprocessing/`** — `preprocessing.py` streams ARCHS4 H5 matrices, applies QC, converts counts to TPM, applies `log1p`, aligns orthologous genes, and writes parquet batches. `merge.py` merges parquet batches into an `expression.parquet` per dataset variant.
 - **`core/`** — `train_single.py` trains one SLiMPerformer variant with distributed data parallelism; the variant is selected by `DATASET_VARIANT`. `slim_performer_model.py` and `numerator_and_denominator.py` implement the SLiMPerformer attention machinery. `train_moe.py` trains a lightweight gate over frozen experts when the experts share a compatible gene order.
@@ -32,7 +36,7 @@ The repo is organized into 4 stages — see `progress.md` for the full directory
 
 **Superseded early result (historical).** The first 5k experts trained with per-variant vocabularies, an invalid MoE assumption because `gene_embedding[i]` referred to different genes in different experts. A training-free headroom analysis on those v1 experts appeared to show almost no per-species routing headroom. That analysis was later found methodologically invalid — it fed raw TPM to `log1p(TPM)` models, fit blend weights on the reporting cohort, and used a test-derived gene mean — so its numbers are **not** current evidence and are retained only in Git history. See `report.md` §"Why the Previous Balanced Results Are Superseded".
 
-**Current Stage 1 result (corrected evaluation).** With one shared 15,448-gene vocabulary and a rebuilt study-aware protocol (one `log1p`, out-of-fold weights, study-macro estimand, clustered-bootstrap intervals, a 103-study strict cohort disjoint from every training study), species routing shows large headroom over a cross-fitted **fixed ensemble** — the bar that actually indicates adaptive MoE value, versus merely beating one pooled model:
+**Current Stage 0 result (corrected evaluation).** With one shared 15,448-gene vocabulary and a rebuilt study-aware protocol (one `log1p`, out-of-fold weights, study-macro estimand, clustered-bootstrap intervals, a 103-study strict cohort disjoint from every training study), species routing shows large headroom over a cross-fitted **fixed ensemble** — the bar that actually indicates adaptive MoE value, versus merely beating one pooled model:
 
 | Strict 20k condition vs out-of-fold fixed blend | Relative MSE reduction |
 | --- | ---: |
@@ -49,9 +53,9 @@ All three experts use the shared 15,448-gene vocabulary from `preprocessing/comp
 
 | Stage | State |
 | --- | --- |
-| Stage 1 — interspecies routing | Complete; one shuffled pooled-baseline control still running |
-| Stage 2 — human-organ MoE | Designed; five-organ pilot manifest (`K=5`: brain, skin, liver, colon, lung) frozen, awaiting label cleanup before a definitive run |
-| Stage 3 — organ interference matrix (D1) | Planned; see `progress.md` §"Stage 3 Research Directions" |
+| Stage 0 — interspecies routing | Complete; one shuffled pooled-baseline control still running |
+| Stage 1 — human-organ MoE | Pipeline pilot only; current definitive decision is NO-GO pending label cleanup, cohort expansion, and missing manifest-aware training/evaluation infrastructure |
+| Stage 2 — transfer + label-free structure | Conditional after Stage 1; selected edges first, full matrix only if gated; see `progress.md` §"Stage 2 Research Direction" |
 
 See `progress.md` for live run status, the completion runbooks, and per-instance quirks.
 
@@ -59,10 +63,10 @@ See `progress.md` for live run status, the completion runbooks, and per-instance
 
 ```text
 .
-├── preprocessing/               # Stage 1: raw ARCHS4/OSDR -> canonical-vocab parquet
-├── core/                        # Stage 2: model + training
-├── evaluation/                  # Stage 3: diagnostics and zero-shot eval
-├── runs/                        # Stage 4: per-variant launcher scripts
+├── preprocessing/               # Raw ARCHS4/OSDR -> canonical-vocab parquet
+├── core/                        # Model definitions and training
+├── evaluation/                  # Diagnostics, routing, and zero-shot evaluation
+├── runs/                        # Per-variant launcher scripts
 ├── checkpoints_performer/       # Lightweight tracked run metadata + plots (v1 sweep history)
 ├── configs/                     # W&B sweep config and launch scripts
 ├── data/
@@ -74,6 +78,7 @@ See `progress.md` for live run status, the completion runbooks, and per-instance
 ├── results/                     # Evaluation output (gitignored, symlinked to a volume)
 ├── checkpoints/, checkpoints_moe/  # Model weights (gitignored, symlinked to a volume)
 ├── progress.md                   # Repo orientation + current status and archived milestones
+├── stage1-stage2-experiment-plan.md # Organ/discovery gates + planned implementation/run commands
 └── presentation/                # Biweekly progress-report slides (HTML)
 ```
 

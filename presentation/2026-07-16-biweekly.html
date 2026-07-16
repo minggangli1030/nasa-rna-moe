@@ -29,51 +29,51 @@
   ::selection{background:var(--accent-soft);color:var(--accent-ink);}
   .deck{display:flex;width:100vw;height:100vh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;}
   .deck::-webkit-scrollbar{display:none;}
-  .slide{scroll-snap-align:start;flex:0 0 100vw;height:100vh;overflow:hidden;display:flex;align-items:center;padding:42px 7vw;position:relative;border-right:1px solid var(--rule);}
-  .inner{width:100%;max-width:1120px;margin:0 auto;}
-  .eyebrow{font-family:var(--mono);font-size:14px;text-transform:uppercase;color:var(--accent-ink);background:var(--accent-soft);display:inline-block;padding:5px 12px;border-radius:3px;margin-bottom:18px;}
+  .slide{scroll-snap-align:start;flex:0 0 100vw;height:100vh;overflow:hidden;display:flex;align-items:center;padding:36px 4vw;position:relative;border-right:1px solid var(--rule);}
+  .inner{width:100%;max-width:1280px;margin:0 auto;}
+  .eyebrow{font-family:var(--mono);font-size:15px;text-transform:uppercase;color:var(--accent-ink);background:var(--accent-soft);display:inline-block;padding:5px 12px;border-radius:3px;margin-bottom:16px;}
   h1,h2,h3,p{letter-spacing:0;}
-  h1{font-family:var(--serif);font-weight:600;font-size:58px;line-height:1.07;margin:0 0 18px;max-width:1000px;text-wrap:balance;}
-  h2{font-family:var(--serif);font-weight:600;font-size:40px;line-height:1.12;margin:0 0 19px;max-width:1000px;text-wrap:balance;}
-  h3{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.2;margin:0 0 8px;}
-  p{font-size:20px;max-width:68ch;margin:0 0 12px;}
-  p.lede{font-size:23px;line-height:1.42;color:var(--muted);max-width:66ch;}
+  h1{font-family:var(--serif);font-weight:600;font-size:62px;line-height:1.07;margin:0 0 18px;max-width:1120px;text-wrap:balance;}
+  h2{font-family:var(--serif);font-weight:600;font-size:44px;line-height:1.12;margin:0 0 18px;max-width:1160px;text-wrap:balance;}
+  h3{font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.2;margin:0 0 8px;}
+  p{font-size:21px;max-width:72ch;margin:0 0 12px;}
+  p.lede{font-size:24px;line-height:1.4;color:var(--muted);max-width:72ch;}
   strong{font-weight:680;}
   code{font-family:var(--mono);font-size:.84em;color:var(--accent-ink);background:var(--accent-soft);padding:1px 6px;border-radius:3px;}
   ul{margin:0;padding-left:22px;max-width:74ch;}
-  li{font-size:20px;margin-bottom:8px;}
-  .slide-num{position:absolute;right:7vw;bottom:20px;font-family:var(--mono);font-size:13px;color:var(--faint);}
+  li{font-size:21px;margin-bottom:8px;}
+  .slide-num{position:absolute;right:4vw;bottom:18px;font-family:var(--mono);font-size:14px;color:var(--faint);}
   .title-slide{background:var(--panel);}
   .meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:9px;font-family:var(--mono);font-size:15px;color:var(--muted);}
   .meta b{color:var(--ink);font-weight:650;}
-  .task-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;padding-top:17px;border-top:1px solid var(--rule);max-width:1000px;}
+  .task-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px;padding-top:17px;border-top:1px solid var(--rule);max-width:1140px;}
   .task-item .k{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--accent-ink);margin-bottom:5px;}
-  .task-item p{font-size:16px;line-height:1.4;color:var(--muted);margin:0;}
+  .task-item p{font-size:17px;line-height:1.4;color:var(--muted);margin:0;}
   .task-item strong{color:var(--ink);}
   .rule{height:1px;background:var(--rule);margin:17px 0;}
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
   .cols.wide-left{grid-template-columns:1.18fr .82fr;}
   .panel{border:1px solid var(--rule);border-radius:8px;background:var(--panel);padding:18px 20px;}
-  .panel p,.panel li{font-size:18px;}
+  .panel p,.panel li{font-size:19px;}
   .panel ul{padding-left:20px;}
   .callout{border-left:4px solid var(--accent);background:var(--accent-soft);padding:13px 17px;margin-top:14px;max-width:78ch;}
-  .callout p{font-size:19px;color:var(--accent-ink);margin:0;}
+  .callout p{font-size:20px;color:var(--accent-ink);margin:0;}
   .callout.warm{border-color:var(--warm);background:var(--warm-soft);}
   .callout.warm p{color:#6b4a0d;}
   .badge{display:inline-block;font-family:var(--mono);font-size:13px;text-transform:uppercase;padding:4px 9px;border:1px solid var(--good);color:var(--good);background:var(--good-soft);border-radius:4px;font-weight:700;}
   .badge.running{border-color:var(--warm);color:var(--warm);background:var(--warm-soft);}
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
   .stat{border-top:3px solid var(--accent);background:var(--panel);padding:15px 16px;border-radius:0 0 6px 6px;min-height:108px;}
-  .stat .n{font-family:var(--mono);font-size:31px;line-height:1.05;font-weight:750;color:var(--accent-ink);font-variant-numeric:tabular-nums;}
-  .stat .label{font-size:15px;line-height:1.35;color:var(--muted);margin-top:8px;}
+  .stat .n{font-family:var(--mono);font-size:33px;line-height:1.05;font-weight:750;color:var(--accent-ink);font-variant-numeric:tabular-nums;}
+  .stat .label{font-size:16px;line-height:1.35;color:var(--muted);margin-top:8px;}
   .table-wrap{border:1px solid var(--rule);border-radius:8px;background:var(--panel);overflow:hidden;}
-  table{border-collapse:collapse;width:100%;font-size:17px;}
+  table{border-collapse:collapse;width:100%;font-size:18px;}
   th{text-align:left;font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--muted);padding:10px 13px;border-bottom:1px solid var(--rule);white-space:nowrap;}
   td{padding:10px 13px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums;}
   tr:last-child td{border-bottom:0;}
   .figure{border:1px solid var(--rule);border-radius:8px;background:var(--panel);padding:12px 16px 8px;margin-top:10px;}
   .figure svg{display:block;width:100%;height:auto;max-height:310px;}
-  .caption{text-align:center;color:var(--muted);font-size:14px;margin:6px 0 0;max-width:none;}
+  .caption{text-align:center;color:var(--muted);font-size:15px;margin:6px 0 0;max-width:none;}
   .grid{stroke:var(--rule);stroke-width:1;}
   .axis-label{font-family:var(--sans);font-size:13px;fill:var(--muted);}
   .value{font-family:var(--mono);font-size:14px;fill:var(--ink);font-weight:700;}
@@ -88,35 +88,61 @@
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;}
   .step{border-top:2px solid var(--accent);padding:11px 12px;background:var(--panel);min-height:116px;}
   .step .k{font-family:var(--mono);font-size:12px;color:var(--accent-ink);margin-bottom:5px;}
-  .step b{display:block;font-size:17px;margin-bottom:4px;}
-  .step span{font-size:14px;line-height:1.35;color:var(--muted);}
+  .step b{display:block;font-size:18px;margin-bottom:4px;}
+  .step span{font-size:15px;line-height:1.35;color:var(--muted);}
   .checklist{list-style:none;padding:0;max-width:none;}
   .checklist li{display:grid;grid-template-columns:82px 1fr;gap:12px;padding:9px 0;border-bottom:1px dashed var(--rule);margin:0;}
   .checklist li:last-child{border-bottom:0;}
   .checklist .when{font-family:var(--mono);font-size:13px;color:var(--accent-ink);padding-top:4px;}
-  .checklist .what{font-size:19px;}
+  .checklist .what{font-size:20px;}
   .research-stage{display:grid;grid-template-columns:145px 1fr 190px;gap:20px;align-items:center;padding:18px 20px;border-top:3px solid var(--accent);background:var(--panel);}
-  .research-stage.stage-two{background:var(--accent-soft);}
+  .research-stage.organ-stage{background:var(--accent-soft);}
   .research-stage .stage-label{font-family:var(--mono);font-size:13px;text-transform:uppercase;color:var(--accent-ink);}
-  .research-stage h3{font-size:24px;margin:0 0 4px;}
-  .research-stage p{font-size:17px;color:var(--muted);margin:0;}
-  .research-stage .evidence{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--accent-ink);text-align:right;}
+  .research-stage h3{font-size:26px;margin:0 0 4px;}
+  .research-stage p{font-size:18px;color:var(--muted);margin:0;}
+  .research-stage .evidence{font-family:var(--mono);font-size:16px;font-weight:700;color:var(--accent-ink);text-align:right;}
   .transfer-note{text-align:center;font-family:var(--mono);font-size:13px;color:var(--muted);padding:9px 0;}
   .goal-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;}
   .goal{border-top:2px solid var(--accent);padding:11px 12px;background:var(--panel);}
-  .goal b{display:block;font-size:18px;margin-bottom:3px;}
-  .goal span{font-size:15px;line-height:1.35;color:var(--muted);}
-  .paperplot-slide{padding:8px 2vw;align-items:center;}
+  .goal b{display:block;font-size:19px;margin-bottom:3px;}
+  .goal span{font-size:16px;line-height:1.35;color:var(--muted);}
+  .paperplot-slide{padding:4px 1vw;align-items:center;}
   .paperplot-slide .inner{max-width:none;display:flex;flex-direction:column;align-items:center;}
   .paperplot-slide .eyebrow{display:inline-block;margin-bottom:10px;font-size:15px;letter-spacing:.04em;}
   .paperplot-slide .slide-num{display:none;}
-  .research-question{font-size:30px;line-height:1.1;margin-bottom:8px;max-width:1360px;text-align:center;}
+  .research-question{font-size:32px;line-height:1.1;margin-bottom:8px;max-width:1480px;text-align:center;}
   .paperplot-frame{width:fit-content;max-width:100%;border:1px solid var(--rule);border-radius:8px;background:var(--panel);padding:5px;margin:0 auto;text-align:center;}
-  .paperplot-img{display:block;width:auto;max-width:94vw;height:auto;max-height:85vh;margin:0 auto;}
-  .source{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:10px;max-width:none;}
+  .paperplot-img{display:block;width:auto;max-width:97vw;height:auto;max-height:84vh;margin:0 auto;}
+  .source{font-family:var(--mono);font-size:13px;color:var(--faint);margin-top:10px;max-width:none;}
+  .discovery-slide h2{font-size:41px;max-width:1200px;}
+  .discovery-pipeline{display:grid;grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr) 30px minmax(0,1fr);gap:10px;align-items:stretch;margin-top:17px;}
+  .discovery-card{border:1px solid var(--rule);border-top:3px solid var(--accent);border-radius:0 0 8px 8px;background:var(--panel);padding:15px 16px;min-height:224px;display:flex;flex-direction:column;}
+  .discovery-card .k{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--accent-ink);margin-bottom:7px;}
+  .discovery-card h3{font-size:21px;}
+  .discovery-card p{font-size:17px;line-height:1.4;color:var(--muted);margin:0 0 9px;}
+  .discovery-card .output{margin-top:auto;padding-top:9px;border-top:1px dashed var(--rule);font-family:var(--mono);font-size:13px;line-height:1.35;color:var(--accent-ink);}
+  .discovery-arrow{display:flex;align-items:center;justify-content:center;font-size:29px;color:var(--accent);font-weight:700;}
+  .discovery-verdict{display:grid;grid-template-columns:1.15fr 1fr;gap:18px;margin-top:14px;padding:13px 16px;background:var(--accent-soft);border-left:4px solid var(--accent);}
+  .discovery-verdict p{font-size:17px;line-height:1.4;color:var(--accent-ink);margin:0;max-width:none;}
+  .novelty-slide h2{max-width:1240px;}
+  .prior-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:17px;}
+  .prior-card{border-top:3px solid var(--accent);background:var(--panel);padding:14px 16px;min-height:142px;display:flex;flex-direction:column;}
+  .prior-card .k{font-family:var(--mono);font-size:13px;text-transform:uppercase;color:var(--accent-ink);margin-bottom:6px;}
+  .prior-card h3{font-size:24px;margin-bottom:5px;}
+  .prior-card p{font-size:17px;line-height:1.35;color:var(--muted);margin:0 0 8px;}
+  .prior-card .cite{margin-top:auto;font-family:var(--mono);font-size:13px;line-height:1.35;color:var(--accent-ink);}
+  .novelty-gap{display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:center;margin-top:14px;padding:11px 15px;background:var(--accent-soft);border-left:4px solid var(--accent);}
+  .novelty-gap .k{font-family:var(--mono);font-size:13px;text-transform:uppercase;color:var(--accent-ink);}
+  .novelty-gap p{font-size:19px;line-height:1.35;color:var(--accent-ink);margin:0;max-width:none;}
+  .experiment-options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;}
+  .experiment-option{border:1px solid var(--rule);background:var(--panel);padding:10px 13px;}
+  .experiment-option.selected{border-top:3px solid var(--good);}
+  .experiment-option.conditional{border-top:3px solid var(--warm);}
+  .experiment-option b{display:block;font-size:18px;margin-bottom:3px;}
+  .experiment-option span{font-size:15px;line-height:1.35;color:var(--muted);}
   @media(max-width:860px){
-    .slide{padding:28px 5vw;overflow-y:auto;align-items:flex-start;}
-    h1{font-size:38px;} h2{font-size:30px;} p.lede{font-size:19px;} p,li{font-size:17px;}
+    .slide{padding:24px 4vw;overflow-y:auto;align-items:flex-start;}
+    h1{font-size:40px;} h2{font-size:32px;} p.lede{font-size:20px;} p,li{font-size:18px;}
     .cols,.cols.wide-left{grid-template-columns:1fr;gap:14px;}
     .task-summary,.goal-row{grid-template-columns:1fr;gap:9px;}
     .research-stage{grid-template-columns:1fr;gap:7px;}
@@ -127,12 +153,47 @@
     th,td{font-size:11px;padding:6px 5px;white-space:normal;overflow-wrap:anywhere;}
     .research-question{font-size:27px;}
     .paperplot-img{width:100%;max-height:none;}
+    .discovery-pipeline,.prior-grid,.experiment-options{grid-template-columns:1fr;gap:8px;}
+    .novelty-gap{grid-template-columns:1fr;gap:5px;}
+    .discovery-arrow{height:18px;transform:rotate(90deg);}
+    .discovery-card{min-height:0;}
+    .discovery-verdict{grid-template-columns:1fr;gap:8px;}
     .slide-num{display:none;}
   }
   @media(max-height:780px) and (min-width:861px){
-    .paperplot-slide{padding:8px 2vw;}
-    .research-question{font-size:26px;margin-bottom:6px;}
-    .paperplot-img{max-height:87vh;}
+    .slide{padding:24px 4vw;}
+    .eyebrow{font-size:14px;margin-bottom:13px;}
+    h1{font-size:56px;}
+    h2{font-size:40px;margin-bottom:15px;}
+    .result-slide .figure svg{max-height:278px;}
+    .paperplot-slide{padding:4px 1vw;}
+    .research-question{font-size:28px;margin-bottom:6px;}
+    .paperplot-img{max-height:78vh;}
+    .organ-plan-slide h2{font-size:37px;margin-bottom:11px;}
+    .organ-plan-slide .stats{gap:12px;margin:2px 0 10px;}
+    .organ-plan-slide .stat{padding:10px 12px;min-height:84px;}
+    .organ-plan-slide .stat .n{font-size:29px;}
+    .organ-plan-slide .stat .label{font-size:14px;margin-top:5px;}
+    .organ-plan-slide .checklist li{padding:6px 0;}
+    .organ-plan-slide .checklist .what{font-size:17px;line-height:1.32;}
+    .organ-plan-slide .callout{padding:9px 13px;margin-top:9px;}
+    .organ-plan-slide .callout p{font-size:17px;}
+    .novelty-slide h2{font-size:38px;}
+    .prior-grid{gap:10px;margin-top:12px;}
+    .prior-card{min-height:124px;padding:10px 13px;}
+    .prior-card h3{font-size:21px;}
+    .prior-card p{font-size:15px;}
+    .prior-card .cite{font-size:11px;}
+    .novelty-gap{margin-top:10px;padding:8px 12px;}
+    .novelty-gap p{font-size:16px;}
+    .experiment-options{gap:10px;margin-top:10px;}
+    .experiment-option{padding:8px 11px;}
+    .experiment-option b{font-size:16px;}
+    .experiment-option span{font-size:13px;}
+    .discovery-card{min-height:190px;padding:11px 13px;}
+    .discovery-card p{font-size:14px;}
+    .discovery-verdict{padding:9px 13px;}
+    .discovery-verdict p{font-size:14px;}
     .slide-num{display:none;}
   }
   @media print{
@@ -146,18 +207,19 @@
 
 <section class="slide title-slide">
   <div class="inner">
-    <span class="eyebrow">Biweekly progress update · SPARC · Sprint 2</span>
-    <h1>Mixture-of-Experts for Spaceflight Transcriptomics</h1>
-    <p class="lede">We teach models to reconstruct hidden genes from the rest of an RNA-seq profile, then ask whether routing to a biological specialist improves that reconstruction.</p>
+    <span class="eyebrow">Recap · Continuing last semester's project</span>
+    <h1>From inherited species models to a biological discovery program</h1>
+    <p class="lede">Last semester produced human-, mouse-, and mixed-trained RNA-seq reconstructors. This summer asks whether specialization can expose reproducible biology—not merely improve one score.</p>
     <div class="meta">
       <span><b>Date</b> 2026-07-16</span>
       <span><b>Presenter</b> Martin</span>
       <span><b>Institution</b> NASA Ames</span>
+      <span><b>Roadmap</b> Stage 0 inherited · Stage 1 organs · Stage 2 discovery</span>
     </div>
     <div class="task-summary">
-      <div class="task-item"><div class="k">Training task</div><p><strong>Mask 30% of genes</strong>, then predict their expression from the observed 70%.</p></div>
-      <div class="task-item"><div class="k">What it learns</div><p><strong>Gene co-expression programs</strong> and biological context, not a species label.</p></div>
-      <div class="task-item"><div class="k">Why it matters</div><p><strong>Pretrain on abundant ground data</strong>, then transfer representations to scarce spaceflight studies.</p></div>
+      <div class="task-item"><div class="k">Last semester · Stage 0</div><p><strong>Human, mouse, and mixed models</strong> learned to reconstruct 30% hidden genes; V1→V3 repaired data/vocabulary issues and scaled training.</p></div>
+      <div class="task-item"><div class="k">Last week's question</div><p><strong>Do the models learn complementary biology?</strong> Compare one pooled model, a fixed ensemble, and adaptive routing.</p></div>
+      <div class="task-item"><div class="k">New path this summer</div><p><strong>Species positive control → organs → label-free discovery</strong>, with connected-study-disjoint tests at every step.</p></div>
     </div>
   </div>
   <span class="slide-num">01</span>
@@ -165,40 +227,39 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Stage 1 · Evaluation fix</span>
-    <h2>The earlier “no headroom” result was a broken test — so I rebuilt the evaluation</h2>
+    <span class="eyebrow">Recap · Last week's apparent dead end</span>
+    <h2>The first read said “blend, don't route” — but the test could not support that conclusion</h2>
     <div class="cols">
       <div class="panel">
-        <span class="badge running">Was wrong</span>
-        <h3 style="margin-top:12px;">Why July 9 was not a valid MoE test</h3>
+        <span class="badge running">Last week's read</span>
+        <h3 style="margin-top:12px;">What the first result seemed to say</h3>
+        <ul>
+          <li>A fixed blend helped more than selecting a specialist.</li>
+          <li>The reported “oracle” showed almost no routing headroom.</li>
+          <li>The tempting conclusion was to stop adaptive routing.</li>
+          <li>That would have ended the MoE path before organ experiments.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <span class="badge">Why I reopened it</span>
+        <h3 style="margin-top:12px;">The evaluator invalidated the apparent null</h3>
         <ul>
           <li>Raw TPM entered models trained on <code>log1p(TPM)</code>.</li>
-          <li>Blend weights were fitted on the reporting cohort.</li>
-          <li>The gene-mean baseline came from test data.</li>
-          <li>A hard selector was treated as the routing ceiling.</li>
+          <li>Weights and the gene-mean baseline used reporting data.</li>
+          <li>A hard selector was mislabeled as the routing ceiling.</li>
           <li>Large GEO studies dominated sample-weighted averages.</li>
         </ul>
       </div>
-      <div class="panel">
-        <span class="badge">Rebuilt</span>
-        <h3 style="margin-top:12px;">A frozen, study-aware protocol</h3>
-        <ul>
-          <li>103-study strict cohort, disjoint from every training study.</li>
-          <li>Exactly one <code>log1p</code> and a shared deterministic 30% mask.</li>
-          <li>Blend and router weights fit out of fold.</li>
-          <li>Equal study weight; clustered-bootstrap intervals.</li>
-        </ul>
-      </div>
     </div>
-    <div class="callout"><p><strong>The bar that matters:</strong> beating one pooled model is only ensemble evidence — to claim adaptive MoE value the router must beat the <em>fixed ensemble</em>.</p></div>
+    <div class="callout"><p><strong>Thought progression:</strong> apparent null → evaluator audit → frozen study-aware protocol (103 disjoint connected groups, deterministic masks, out-of-fold fitting) → rerun before abandoning MoE.</p></div>
   </div>
   <span class="slide-num">02</span>
 </section>
 
-<section class="slide">
+<section class="slide result-slide">
   <div class="inner">
-    <span class="eyebrow">Stage 1 · Result</span>
-    <h2>Corrected evaluation reveals large routing headroom — and scale strengthens it</h2>
+    <span class="eyebrow">Stage 0 · Result</span>
+    <h2>Corrected evaluation reveals large routing headroom — and the larger V3 cohort shows more</h2>
     <div class="figure">
       <svg viewBox="0 0 760 300" role="img" aria-label="Relative MSE reduction versus the out-of-fold fixed blend for 5k and 20k species routing conditions">
         <line class="grid" x1="175" y1="245" x2="720" y2="245"/>
@@ -216,7 +277,7 @@
       </svg>
       <p class="caption">Strict study-disjoint cohort · relative MSE reduction vs the out-of-fold fixed blend. V3 (20k) holds architecture, objective, and the 15,448-gene vocabulary fixed and adds 4× data.</p>
     </div>
-    <div class="callout"><p><strong>Strict 20k soft routing:</strong> 34.7% lower MSE; absolute gain 0.1649, 95% CI [0.1575, 0.1726]; residual-Pearson gain +0.1198, CI [0.1130, 0.1267]. Hard routing already delivers most of it; the soft oracle (35.0%) shows species explains nearly the entire measured ceiling.</p></div>
+    <div class="callout"><p><strong>Strict 20k soft routing:</strong> 34.7% lower MSE; absolute gain 0.1649, 95% CI [0.1575, 0.1726]; residual-Pearson gain +0.1198, CI [0.1130, 0.1267]. Hard routing already delivers most of it; among these three frozen models on this cohort, the soft oracle reaches 35.0%.</p></div>
     <p class="source">Caveat: V2/V3 draws and epoch budgets differ, so 5k → 20k is controlled in architecture and objective, not a perfect single-variable ablation.</p>
   </div>
   <span class="slide-num">03</span>
@@ -224,35 +285,40 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Stage 1 · Deployment</span>
-    <h2>A blind expression gate recovers the route without the species label</h2>
+    <span class="eyebrow">Stage 0 · Blind-gate feasibility</span>
+    <h2>A species-supervised gate recovers the route from expression alone at test time</h2>
     <div class="cols wide-left">
       <div class="figure" style="margin-top:0;">
-        <svg viewBox="0 0 650 245" role="img" aria-label="Masked expression enters a blind gate that routes to human and mouse experts before combining their predictions">
-          <rect class="box-white" x="15" y="87" width="150" height="58" rx="6"/><text class="box-text-dark" x="90" y="110">Masked expression</text><text class="axis-label" x="90" y="132" text-anchor="middle">targets hidden</text>
-          <path class="conn" d="M165 116 H220"/><text class="value" x="193" y="107" text-anchor="middle">→</text>
-          <rect class="box" x="220" y="87" width="130" height="58" rx="6"/><text class="box-text" x="285" y="110">Blind gate</text><text class="axis-label" x="285" y="132" text-anchor="middle">expression only</text>
-          <path class="conn" d="M350 116 C390 116 390 58 430 58"/><path class="conn" d="M350 116 C390 116 390 174 430 174"/>
-          <rect class="box" x="430" y="30" width="170" height="56" rx="6"/><text class="box-text" x="515" y="54">Human expert</text><text class="axis-label" x="515" y="74" text-anchor="middle">frozen V3</text>
-          <rect class="box" x="430" y="146" width="170" height="56" rx="6"/><text class="box-text" x="515" y="170">Mouse expert</text><text class="axis-label" x="515" y="190" text-anchor="middle">frozen V3</text>
+        <svg viewBox="0 0 650 245" role="img" aria-label="Masked expression feeds a blind species gate and three frozen human, mouse, and pooled models; calibration-fitted weights combine their predictions">
+          <defs><marker id="arrow-slide-4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8b948b"/></marker></defs>
+          <rect class="box-white" x="10" y="95" width="120" height="54" rx="6"/><text class="box-text-dark" x="70" y="117">Masked expression</text><text class="axis-label" x="70" y="138" text-anchor="middle">targets hidden</text>
+          <path class="conn" marker-end="url(#arrow-slide-4)" d="M130 122 H150 C166 122 166 67 185 67"/>
+          <path class="conn" marker-end="url(#arrow-slide-4)" d="M130 122 H150 C166 122 166 185 185 185"/>
+          <rect class="box" x="185" y="40" width="125" height="54" rx="6"/><text class="box-text" x="247.5" y="62">Blind gate</text><text class="axis-label" x="247.5" y="83" text-anchor="middle">p(mouse)</text>
+          <rect class="box" x="185" y="150" width="125" height="70" rx="6"/><text class="box-text" x="247.5" y="177">3 frozen models</text><text class="axis-label" x="247.5" y="199" text-anchor="middle">human · mouse · pooled</text>
+          <path class="conn" marker-end="url(#arrow-slide-4)" d="M310 67 H365"/>
+          <rect class="box" x="365" y="40" width="135" height="54" rx="6"/><text class="box-text" x="432.5" y="62">Calibrated weights</text><text class="axis-label" x="432.5" y="83" text-anchor="middle">interpolate by p(mouse)</text>
+          <path class="conn" marker-end="url(#arrow-slide-4)" d="M500 67 C522 67 522 110 540 110"/>
+          <path class="conn" marker-end="url(#arrow-slide-4)" d="M310 185 H500 C522 185 522 140 540 140"/>
+          <rect class="box-white" x="540" y="95" width="100" height="60" rx="6"/><text class="box-text-dark" x="590" y="119">Weighted</text><text class="box-text-dark" x="590" y="140">reconstruction</text>
         </svg>
-        <p class="caption">Gate calibration and strict test share no connected GEO study groups.</p>
+        <p class="caption">The gate is supervised on calibration groups; at strict test it sees neither species nor targets, and the connected groups are disjoint.</p>
       </div>
       <div>
-        <div class="stat"><div class="n">99.03%</div><div class="label">Strict species accuracy · 102/103 samples</div></div>
+        <div class="stat"><div class="n">99.03%</div><div class="label">Strict-test species accuracy · 102/103 samples</div></div>
         <div class="stat" style="margin-top:12px;"><div class="n">33.95%</div><div class="label">Blind-soft MSE reduction versus fixed blend</div></div>
         <div class="stat" style="margin-top:12px;"><div class="n">1.11%</div><div class="label">MSE gap from blind-soft to true-species soft</div></div>
       </div>
     </div>
-    <div class="callout"><p><strong>Answer:</strong> for species, expression alone recovers almost all of the measurable routing ceiling.</p></div>
+    <div class="callout"><p><strong>Answer:</strong> expression alone at test time recovers almost all measured species-routing headroom. The soft result establishes routability, not sparse-inference efficiency.</p></div>
   </div>
   <span class="slide-num">04</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Stage 1 · Interpretation</span>
-    <h2>What Stage 1 now establishes — and what it does not</h2>
+    <span class="eyebrow">Stage 0 · Interpretation</span>
+    <h2>What Stage 0 now establishes — and what it does not</h2>
     <div class="cols">
       <div class="panel">
         <span class="badge">Supported</span>
@@ -268,14 +334,14 @@
         <span class="badge running">Still controlled</span>
         <h3 style="margin-top:12px;">Not yet a complete systems claim</h3>
         <ul>
-          <li>Three full experts store more parameters than one model.</li>
+          <li>Three full frozen models store more parameters than one model.</li>
           <li>The pooled V3 model had species-local batches.</li>
           <li>Current results are reconstruction, not downstream spaceflight classification.</li>
           <li>Organ specialization must be tested independently.</li>
         </ul>
       </div>
     </div>
-    <div class="callout"><p><strong>Open control (slide 9):</strong> the pooled model is being retrained with globally shuffled cross-species batches to remove the one known baseline weakness before the strongest claim.</p></div>
+    <div class="callout"><p><strong>Control still in flight:</strong> the pooled model is retraining with globally shuffled cross-species batches. Its frozen evaluation will update the Stage 0 systems claim, but it does not waive any Stage 1 gate.</p></div>
   </div>
   <span class="slide-num">05</span>
 </section>
@@ -283,15 +349,15 @@
 <section class="slide">
   <div class="inner">
     <span class="eyebrow">Overarching research goal</span>
-    <h2>Transfer the Stage 1 lesson from species to human organs</h2>
+    <h2>Use the Stage 0 positive control to ask a harder within-human question</h2>
     <div class="research-stage">
-      <div class="stage-label">Stage 1 · Proof</div>
-      <div><h3>Unknown species → expression router → species expert</h3><p>Human and mouse biology differ enough that specialist routing improves masked-gene reconstruction.</p></div>
-      <div class="evidence">33.95% lower MSE<br>blind vs fixed</div>
+      <div class="stage-label">Stage 0 · Positive control</div>
+      <div><h3>Species hidden at test → expression gate → calibrated expert mixture</h3><p>A maximally separable biological axis shows that the evaluation can detect specialist headroom and blinded routing.</p></div>
+      <div class="evidence">33.95% lower MSE<br>blind-soft vs fixed</div>
     </div>
-    <div class="transfer-note">APPLY THE SAME TESTABLE LOGIC TO WITHIN-HUMAN BIOLOGY ↓</div>
-    <div class="research-stage stage-two">
-      <div class="stage-label">Stage 2 · Hypothesis</div>
+    <div class="transfer-note">NOW TEST WHETHER THE SAME LOGIC HOLDS FOR SUBTLER WITHIN-HUMAN BIOLOGY ↓</div>
+    <div class="research-stage organ-stage">
+      <div class="stage-label">Stage 1 · Hypothesis</div>
       <div><h3>Unknown organ → trained organ router → organ expert</h3><p>Inter-organ biology is distinct enough that a routed specialist will outperform one general human model.</p></div>
       <div class="evidence">primary comparison:<br>blind top-1 vs general</div>
     </div>
@@ -309,78 +375,80 @@
     <span class="eyebrow gq">Guiding question</span>
     <h2 class="research-question">With the same training data and approximately the same inference compute, does blind organ-specialist routing reconstruct masked genes better than one general model?</h2>
     <div class="paperplot-frame">
-      <img class="paperplot-img" src="human-organ-moe-overarching-plan.png" alt="Two-panel research plan connecting validated blind interspecies routing to a fair organ-specialist versus general-human-model experiment.">
+      <img class="paperplot-img" src="human-organ-moe-overarching-plan.png" alt="Two-panel plan connecting the validated Stage 0 blind hard-routing positive control to the prospective Stage 1 organ-specialist versus general-human-model experiment.">
     </div>
   </div>
   <span class="slide-num">07</span>
 </section>
 
-<section class="slide">
+<section class="slide organ-plan-slide">
   <div class="inner">
-    <span class="eyebrow">Stage 2 · Immediate plan</span>
+    <span class="eyebrow">Stage 1 · Immediate plan</span>
     <h2>A five-organ pipeline pilot, then scale only if it survives controls</h2>
     <div class="stats" style="margin-top:4px;">
       <div class="stat"><div class="n">K = 5</div><div class="label">Brain · skin · liver · colon · lung — data-driven, not fixed in advance</div></div>
-      <div class="stat"><div class="n">2,856</div><div class="label">Conservative pilot samples; pooled-ID hash = specialist union</div></div>
+      <div class="stat"><div class="n">2,856</div><div class="label">Provisional regex-derived pipeline rows; manifest training-ID hash = specialist union</div></div>
       <div class="stat"><div class="n">317</div><div class="label">Connected GEO study groups, split atomically</div></div>
     </div>
     <ul class="checklist">
-      <li><span class="when">NOW</span><span class="what"><strong>Clean labels:</strong> remove residual tumor/cell-source shorthand and expand ontology-backed coverage before any long run.</span></li>
-      <li><span class="when">NEXT</span><span class="what"><strong>End-to-end smoke test:</strong> pooled model, organ experts, random-shard experts, fixed blend, true-organ route, blind gate, soft oracle.</span></li>
-      <li><span class="when">GO / NO-GO</span><span class="what"><strong>Scale only if</strong> blind top-1 beats the pooled and inference-matched controls by ≥5% MSE, with positive study-bootstrap and residual-correlation intervals.</span></li>
+      <li><span class="when">DATA GATE</span><span class="what"><strong>Definitive cohort:</strong> ≥95% audited precision; per organ ≥1,000 clean train rows plus 30/10/15 train/calibration/final-test groups.</span></li>
+      <li><span class="when">CODE + SMOKE</span><span class="what"><strong>Manifest-aware deterministic path:</strong> micro-overfit → K=5 mechanical test → brain/skin three-seed feasibility.</span></li>
+      <li><span class="when">STAGE 2 ENTRY</span><span class="what"><strong>All five comparisons clear frozen thresholds:</strong> true-organ &gt; pooled 5%; organ-fixed &gt; random-fixed 3%; oracle &gt; organ-fixed 3%; blind top-1 &gt; pooled 5% (+80% recovery); blind-soft &gt; organ-fixed 3%. Positive paired MSE CIs; positive top-1 residual-Pearson CI.</span></li>
     </ul>
-    <div class="callout"><p><strong>Decision:</strong> Stage 1 is strong enough to begin Stage 2 data work now — but not to skip the fair controls.</p></div>
+    <div class="callout"><p><strong>Current decision:</strong> definitive Stage 1 training is NO-GO; pipeline smoke testing only. The cohort, code, split, and smoke gates must pass first.</p></div>
   </div>
   <span class="slide-num">08</span>
 </section>
 
-<section class="slide">
+<section class="slide novelty-slide">
   <div class="inner">
-    <span class="eyebrow">In flight · Decision tree</span>
-    <h2>One control is still training — here is how each outcome changes the plan</h2>
-    <div class="callout warm"><p><strong>Running now, ETA after this talk:</strong> the pooled model is retraining with globally shuffled cross-species batches (fixing the one known baseline weakness). On a clean exit it <em>automatically</em> runs full + strict evaluation and the blind-gate rerun on the frozen masks — so there is no partial result to show today, only the branch we take tomorrow.</p></div>
-    <div class="steps">
-      <div class="step"><div class="k">IF — best case</div><b>Blind-soft still beats fixed <em>and</em> the fairer pooled model by ≥5%</b><span>Stage 1 is practically convincing. Green-light Stage 2 organ training after label cleanup.</span></div>
-      <div class="step"><div class="k">IF — partial</div><b>Beats the fixed ensemble but not the shuffled pooled model</b><span>Adaptive-ensemble benefit, not a better general model. Reframe the claim; keep every control.</span></div>
-      <div class="step"><div class="k">IF — ceiling gone</div><b>Soft oracle vs fixed drops below 3%</b><span>No real routing ceiling on this cohort. Revisit expert/data design before spending Stage 2 compute.</span></div>
-      <div class="step"><div class="k">IF — leakage</div><b>Full-cohort positive but strict fails</b><span>Treat as study/domain leakage, not MoE evidence. Improve cohort diversity first.</span></div>
+    <span class="eyebrow">Related work · Novelty boundary</span>
+    <h2>“MoE beats one general model” is established; the open question is what the routes reveal</h2>
+    <div class="prior-grid">
+      <div class="prior-card"><div class="k">Established 01</div><h3>MoE specialization</h3><p>Compute-matched gains, task interference, and task grouping are known ML patterns.</p><div class="cite">strict-resource MoE · Standley 2020 · Fifty 2021</div></div>
+      <div class="prior-card"><div class="k">Established 02</div><h3>RNA-seq representation</h3><p>Masked reconstruction and bulk/single-cell foundation models already learn expression embeddings.</p><div class="cite">xTrimoGene 2023 · BulkFormer 2025 · TxFM 2026</div></div>
+      <div class="prior-card"><div class="k">Established 03</div><h3>Transcriptomic MoE/discovery</h3><p>“First MoE” and broad hidden-pattern claims are already occupied.</p><div class="cite">scMoE 2024 · GLARE 2025 · CellOS 2026</div></div>
+    </div>
+    <div class="novelty-gap"><div class="k">Underexplored test</div><p><strong>Do label-free routes predict controlled cross-domain transfer—and do route-derived groups improve learning on untouched studies?</strong></p></div>
+    <div class="experiment-options">
+      <div class="experiment-option selected"><b>D1 · Controlled transfer</b><span>Directed help/interference; selected equal-budget pairs; practical supervised anchor.</span></div>
+      <div class="experiment-option selected"><b>D2 · Label-free shared-trunk MoE</b><span>Higher novelty; test routes against transfer and retrained grouping function.</span></div>
+      <div class="experiment-option conditional"><b>D3 · Within-organ latent states</b><span>Highest biological upside, but metadata- and replication-heavy; conditional follow-up.</span></div>
     </div>
   </div>
   <span class="slide-num">09</span>
 </section>
 
-<section class="slide">
+<section class="slide discovery-slide">
   <div class="inner">
-    <span class="eyebrow">Next · New direction under review</span>
-    <h2>Beyond “does it win”: map the organ-by-organ transfer structure</h2>
-    <div class="cols wide-left">
-      <div>
-        <p class="lede">Reviewing the multi-task and transcriptomics literature, the "does MoE beat a dense model" win is an expected pattern. The open, novel question is <strong>where and why</strong> organ specialization helps.</p>
-        <div class="panel">
-          <h3>The experiment</h3>
-          <ul>
-            <li>Build a signed <strong>organ × organ interference matrix</strong>: does adding organ B to joint training help or hurt masked-gene reconstruction on held-out organ A?</li>
-            <li>Size-matched controls isolate B's <em>identity</em> from its volume; study-disjoint tests; clustered-bootstrap CIs.</li>
-            <li>It reuses the entire Stage 2 pipeline — mostly a change of training-set composition.</li>
-          </ul>
-        </div>
-        <div class="callout"><p><strong>Why I find it worth doing:</strong> no prior work builds this matrix from a masked bulk-expression model. It reframes the paper from "MoE works" to "here is the transfer structure of the human transcriptome" — and it explains the Stage 2 per-organ wins.</p></div>
+    <span class="eyebrow">Stage 2 · Full coupled test needs Stage 1 green</span>
+    <h2>Can label-free routing discover which RNA-seq domains learn well together?</h2>
+    <p class="lede">Estimate the relationship separately through controlled training and label-free routing, then test agreement and function on an untouched lockbox.</p>
+    <div class="discovery-pipeline">
+      <div class="discovery-card">
+        <div class="k">01 · Controlled intervention</div>
+        <h3>Measure who helps whom</h3>
+        <p>Compare <code>A1 + A2</code> with <code>A1 + B1</code>, matching samples, studies, updates, and compute. Evaluate both on unseen A studies.</p>
+        <div class="output">OUTPUT · directed transfer B → A<br>+ benefit · − interference</div>
       </div>
-      <div class="figure" style="margin-top:0;">
-        <svg viewBox="0 0 300 300" role="img" aria-label="Schematic five-by-five organ interference matrix; blue cells indicate beneficial transfer and orange cells indicate interference">
-          <text class="axis-label" x="150" y="16" text-anchor="middle">adding organ B →</text>
-          <text class="axis-label" x="150" y="292" text-anchor="middle">schematic — illustrates the deliverable, not results</text>
-          <g transform="translate(60,28)">
-            <rect x="0" y="0" width="45" height="45" fill="#eef1ec" stroke="#dbded5"/><rect x="45" y="0" width="45" height="45" fill="#c9dcd6" stroke="#dbded5"/><rect x="90" y="0" width="45" height="45" fill="#f0d9b8" stroke="#dbded5"/><rect x="135" y="0" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/><rect x="180" y="0" width="45" height="45" fill="#e6a765" stroke="#dbded5"/>
-            <rect x="0" y="45" width="45" height="45" fill="#c9dcd6" stroke="#dbded5"/><rect x="45" y="45" width="45" height="45" fill="#eef1ec" stroke="#dbded5"/><rect x="90" y="45" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/><rect x="135" y="45" width="45" height="45" fill="#eecb9a" stroke="#dbded5"/><rect x="180" y="45" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/>
-            <rect x="0" y="90" width="45" height="45" fill="#f0d9b8" stroke="#dbded5"/><rect x="45" y="90" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/><rect x="90" y="90" width="45" height="45" fill="#eef1ec" stroke="#dbded5"/><rect x="135" y="90" width="45" height="45" fill="#a9cbc3" stroke="#dbded5"/><rect x="180" y="90" width="45" height="45" fill="#eecb9a" stroke="#dbded5"/>
-            <rect x="0" y="135" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/><rect x="45" y="135" width="45" height="45" fill="#eecb9a" stroke="#dbded5"/><rect x="90" y="135" width="45" height="45" fill="#a9cbc3" stroke="#dbded5"/><rect x="135" y="135" width="45" height="45" fill="#eef1ec" stroke="#dbded5"/><rect x="180" y="135" width="45" height="45" fill="#c9dcd6" stroke="#dbded5"/>
-            <rect x="0" y="180" width="45" height="45" fill="#e6a765" stroke="#dbded5"/><rect x="45" y="180" width="45" height="45" fill="#dce8e4" stroke="#dbded5"/><rect x="90" y="180" width="45" height="45" fill="#eecb9a" stroke="#dbded5"/><rect x="135" y="180" width="45" height="45" fill="#c9dcd6" stroke="#dbded5"/><rect x="180" y="180" width="45" height="45" fill="#eef1ec" stroke="#dbded5"/>
-          </g>
-          <text class="axis-label" x="12" y="150" text-anchor="middle" transform="rotate(-90 12 150)">held-out organ A ↓</text>
-        </svg>
-        <p class="caption">Blue = beneficial transfer, orange = interference, diagonal = organ-only baseline. Asymmetry (A→B ≠ B→A) is itself a finding.</p>
+      <div class="discovery-arrow" aria-hidden="true">→</div>
+      <div class="discovery-card">
+        <div class="k">02 · Architecture control + label-free</div>
+        <h3>Validate, then let the MoE find groups</h3>
+        <p>First require supervised routing over balanced random, stable non-collapsed experts, and matched active compute. Then remove all labels.</p>
+        <div class="output">OUTPUT · route co-assignment<br>which samples share experts?</div>
       </div>
+      <div class="discovery-arrow" aria-hidden="true">→</div>
+      <div class="discovery-card">
+        <div class="k">03 · Held-out falsification</div>
+        <h3>Do the two maps agree?</h3>
+        <p>On an untouched lockbox, co-routed domains should transfer compatibly. Retrain route-derived groups and compare with organ, random, and pooled groupings at matched compute.</p>
+        <div class="output">OUTPUT · a functional map<br>not just a cluster visualization</div>
+      </div>
+    </div>
+    <div class="discovery-verdict">
+      <p><strong>Novelty test:</strong> two separately constructed measurements must agree on the lockbox and improve learning. Recovering organ alone is a positive control—not hidden discovery.</p>
+      <p><strong>Entry logic:</strong> green runs the coupled test; router-failure amber permits transfer only; wrong-axis amber permits only a bounded label-free pilot.</p>
     </div>
   </div>
   <span class="slide-num">10</span>

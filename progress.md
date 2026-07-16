@@ -1,16 +1,23 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-15 13:16 PDT / 2026-07-15 20:16 UTC
+**Last updated:** 2026-07-16 12:50 PDT / 2026-07-16 19:50 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
 evaluation numbers are intentionally not repeated as current evidence.
 
+**Vocabulary:** `Stage` is the research phase: **Stage 0** is inherited
+human/mouse/mixed completion, **Stage 1** is the original organ-specialization
+work, and **Stage 2** is transfer-validated label-free discovery. `V1/V2/V3`
+remain independent data/model/debugging generations inside Stage 0; they are not
+renumbered. `D1/D2/D3` remain candidate research directions.
+
 ## Current Objective
 
-Stage 1 interspecies training, backup, evaluation, reporting, and Git archival are
-complete. The next objective is to close two targeted Stage 1 controls while
-beginning a bounded Stage 2 human-organ pilot:
+The core Stage 0 interspecies training, backup, evaluation, reporting, and Git
+archival are complete. The next objective is to close the final fair pooled
+Stage 0 control while
+beginning a bounded Stage 1 human-organ pilot:
 
 1. **Complete:** test a blind expression-derived species gate against the
    true-species ceiling.
@@ -23,6 +30,50 @@ beginning a bounded Stage 2 human-organ pilot:
 5. Compare a pooled human model with fair specialist, fixed-ensemble, metadata,
    blind-gate, and oracle controls.
 
+### Stage 1 -> Stage 2 decision snapshot (frozen 2026-07-15)
+
+- **Current decision: definitive Stage 1 is NO-GO; pipeline smoke testing is
+  allowed.** The five specialist training sets contain only 783 brain, 409 skin,
+  345 liver, 241 lung, and 220 colon rows, with 7-15 final-test connected groups
+  per organ. At least 94/2,856 manifest rows match obvious residual exclusion
+  terms or ambiguous cell-source descriptions. The cohort must be cleaned and
+  expanded before a biological MoE conclusion.
+- **Green boundary for the primary Stage 2 experiment:** zero connected-study
+  leakage; deterministic masks and exact pooled/specialist sample equality;
+  healthy pooled and specialist backbones; three seed-stable runs; true-organ
+  routing over pooled by at least 5%; organ-fixed over matched random-fixed by at
+  least 3%; soft oracle over organ-fixed by at least 3%; and blind top-1 over
+  pooled by at least 5%, with positive MSE/residual-Pearson intervals and at
+  least 80% recovery of the true-organ gain.
+- **Conditional branches:** if specialists and oracle pass but the blind router
+  fails, run only selected controlled-transfer confirmations and repair the
+  router. If oracle complementarity exists but organ identity fails against
+  pooled/random controls, permit only a bounded label-free feasibility pilot.
+  If the backbone, provenance, strict-study result, oracle headroom, or seed
+  stability fails, stop Stage 2 and repair Stage 1.
+- **Post-green execution order:** emit a machine-readable Stage 1 decision;
+  freeze equal-budget transfer blocks; run one development-only affinity screen;
+  preregister positive, negative, and near-zero pairs; confirm `A1+A2` versus
+  `A1+B1` across three seeds; validate the shared-trunk architecture with
+  supervised and random routing; run the frozen-trunk label-free MoE; then test
+  route-transfer agreement and route-derived grouping function on the untouched
+  discovery lockbox.
+
+The authoritative thresholds, code gaps, artifact contracts, compute guardrails,
+and exact proposed command order are backed up in
+`stage1-stage2-experiment-plan.md`. Its commands marked `PLANNED` describe files
+that must still be implemented; they are not runnable today.
+
+### Research scheduling note (late 2026, evidence first)
+
+A late-2026 submission window (roughly September-December) is a useful horizon,
+not a reason to force a paper before the central results exist. Stage 1 cohort
+quality, the end-to-end organ experiment, and a bounded Stage 2 feasibility pilot
+remain the decision gates. Reassess venues only after those results establish a
+defensible claim; until then, spend writing effort on protocols, experiment logs,
+and the continuously updated citation ledger in `related-works.md`. Do not tune
+cohort rules, claims, or success criteria to meet a venue date.
+
 NASA OSDR is secondary because the current OSDR cohort is mouse-only. It cannot
 serve as the primary interspecies-routing benchmark.
 
@@ -34,10 +85,13 @@ serve as the primary interspecies-routing benchmark.
   `mixed20k_shuffled_20260715`. It uses the same 16,000 train / 3,200
   validation rows and V3 architecture, but `data_mode=preload` makes the
   `DistributedSampler` shuffle individual rows globally. Remote preflight found
-  1,983/2,000 epoch-0 batches contained both species. At 19:34 UTC it was at
-  epoch 1 batch 1,500/2,000, about 4.11 seconds/batch and 100% A100 utilization,
-  with an estimated 32 hours 38 minutes remaining. It is therefore not expected
-  to finish within 24 hours or before the July 16 presentation.
+  1,983/2,000 epoch-0 batches contained both species. At 21:32 UTC on July 16 it
+  was at epoch 12, batch 1,000/2,000, at about 4.11 seconds/batch and 100% A100
+  utilization. The latest finalized best is epoch 11, validation loss `0.324663`,
+  versus `0.5455396` for the original mixed V3 checkpoint. The live estimate is
+  roughly 8.4 hours to training completion, around 22:55 PDT July 16 / 05:55 UTC
+  July 17, followed
+  automatically by freeze and frozen evaluation.
   Logs are in `results/mixed_20k_v3_shuffled_train.log`; checkpoints write
   directly to persistent
   `/media/volume/moe-reboot/checkpoints/mixed_20k_v3_shuffled`.
@@ -53,23 +107,29 @@ serve as the primary interspecies-routing benchmark.
 - The July 16 ten-minute update is ready in
   `presentation/2026-07-16-biweekly.html`, with timed notes in
   `presentation/2026-07-16-biweekly-script.md`. Reorganized 2026-07-15 into a
-  ten-slide arc: slide 1 title/task; slides 2-5 a concise Stage 1 interspecies
-  recap (evaluation fix, headroom result + scale, blind gate, what it does/does
-  not prove); slides 6-8 the overarching goal and fair Stage 2 organ design, with
+  ten-slide arc: slides 1-2 recap last semester and last week's apparent negative
+  result for anyone who missed that meeting; slides 3-5 present the corrected
+  Stage 0 headroom result, blind gate, and bounded interpretation; slides 6-8 the
+  overarching goal and fair Stage 1 organ design, with
   slide 7 the near-full-bleed PaperPlot figure
   (`presentation/human-organ-moe-overarching-plan.png`, source prompt
-  `presentation/paperplot-human-organ-moe-prompt.md`) beneath the exact fair
-  comparison question; slide 9 the one still-running control (shuffled pooled
-  retrain) presented as a decision tree of actions per outcome, not a partial
-  result; and slide 10 the new Stage 3 direction (D1 organ interference matrix),
-  framed as reviewed-related-work, novel, and worth testing, with a schematic
-  matrix figure. The current pooled retrain remains labeled ongoing throughout.
-  Desktop/laptop/mobile render checks should be re-run after this reorganization.
+  `presentation/paperplot-human-organ-moe-prompt.md`) with the embedded labels
+  corrected to Stage 0/Stage 1 and the hard 32.94% result, beneath the exact fair
+  comparison question; slide 9 the related-work novelty boundary and D1/D2/D3
+  experiment choice; and slide 10 the selected gated Stage 2 experiment:
+  controlled transfer, label-free routing, and a held-out agreement/functional test. Slide 8 now
+  separates cohort, smoke-test, and Stage 2 decision gates. The current pooled
+  retrain remains labeled ongoing on slide 5 and in the script.
+  Desktop (1440x900), laptop (1280x720), and mobile (390x844) render checks passed
+  after this reorganization: the desktop/laptop slides have no clipping, and
+  mobile uses vertical scrolling without horizontal overflow. The HTML contains
+  ten balanced slide sections. Repository validation also passes 41/41 tests;
+  the four emitted warnings are existing PyTorch AMP deprecations.
 - Keep `moe-reboot-partial` shelved for now. The active shuffled 20k control is
   the decision-critical GPU experiment; organ progress is currently limited by
   manual label/QC work and evaluator preparation, not compute. Reassess the
   partial VM after shuffled evaluation determines whether the next GPU run
-  should be a replication/control or a frozen-cohort Stage 2 pilot. If it is
+  should be a replication/control or a frozen-cohort Stage 1 pilot. If it is
   reused, write all checkpoints and results directly to persistent storage
   because the partial VM is ephemeral.
 - The original V3 checkpoints and all prior evaluation artifacts remain
@@ -104,7 +164,7 @@ serve as the primary interspecies-routing benchmark.
   produced 14,096 candidates across 603 connected study groups. After removing
   tumor-like rows, multi-organ groups, and capping each group at 20 samples, the
   data-driven criteria (at least 45 groups and 300 capped samples) select five
-  organs: brain, skin, liver, colon, and lung. The V2 manifest has 2,856 samples,
+  organs: brain, skin, liver, colon, and lung. The organ-pilot manifest has 2,856 samples,
   317 groups, and 1,998 training rows. Studies are split atomically; calibration
   and test sample counts are balanced within each organ; and the pooled training
   hash exactly equals the union of specialist training IDs.
@@ -151,7 +211,7 @@ MSE headroom over the fixed blend increases by `0.04064` from 5k to 20k (95% CI
 `[0.03210, 0.04928]`), and Pearson headroom increases by `0.00552` (95% CI
 `[0.00413, 0.00693]`).
 
-## Stage 2 Hypothesis and Experimental Design
+## Stage 1 Hypothesis and Experimental Design
 
 ### Primary hypothesis
 
@@ -203,7 +263,7 @@ true-organ and oracle conditions measures unrealized routing headroom.
 
 ### Proposed success criterion
 
-The primary Stage 2 claim is practically convincing only if blind top-1 routing:
+The primary Stage 1 claim is practically convincing only if blind top-1 routing:
 
 1. beats the pooled general model by at least 5% relative MSE reduction;
 2. has a paired absolute-MSE improvement CI with lower bound above zero;
@@ -220,12 +280,12 @@ reconstruction performance.
 
 ## Stage Transition Decision
 
-Stage 1 is strong enough to begin Stage 2 dataset auditing, cohort freezing, and
+Stage 0 is strong enough to begin Stage 1 dataset auditing, cohort freezing, and
 a small organ pilot now. The strict result is large, statistically separated from
 zero, present under hard routing, and stronger at 20k, so further species-only
 ceiling analysis has diminishing value.
 
-Two Stage 1.5 experiments were required before a definitive Stage 1 claim or a
+Two Stage 0 experiments were required before a definitive Stage 0 claim or a
 full-scale `K`-organ training campaign:
 
 1. **Blind species gate: complete.** The expression-only gate recovers almost all
@@ -237,7 +297,7 @@ full-scale `K`-organ training campaign:
 
 The successful blind gate is strong enough to continue organ metadata cleanup
 and pipeline development. The active pooled retrain and organ label validation
-still block the strongest publication claim and major Stage 2 compute spending.
+still block the strongest publication claim and major Stage 1 compute spending.
 
 ## Active Run Completion Runbook
 
@@ -290,14 +350,14 @@ The watchers do **not** update `progress.md`, `report.md`, the presentation, or
 Git, and they do not copy reports back to the Mac. Those are required manual
 post-completion steps below.
 
-### Stage 1 decision after shuffled evaluation
+### Stage 0 decision after shuffled evaluation
 
 Use the **strict 103-study result** as primary; full-cohort results are diagnostic.
 In `results/blind_species_gate_20k_v3_shuffled/report.json`, inspect
 `blind_soft_vs_fixed`, `blind_soft_vs_mixed`, `metadata_soft_vs_fixed`, and
 `soft_oracle_vs_fixed`.
 
-- **Practically convincing Stage 1:** blind soft beats both the out-of-fold fixed
+- **Practically convincing Stage 0:** blind soft beats both the out-of-fold fixed
   blend and shuffled pooled model by at least 5% relative MSE; both absolute-MSE
   CIs have lower bounds above zero; blind-soft residual-Pearson versus fixed has
   a CI lower bound above zero; and soft oracle versus fixed clears 3%.
@@ -324,13 +384,13 @@ improvement from a gate that sees only masked expression.
 2. Record best epoch, train/validation loss, checkpoint SHA256, runtime, and the
    three strict comparisons above.
 3. Copy the small report JSON files, freeze metadata, and SHA256 manifest to a
-   new local `artifacts/stage1_5_shuffled_control/` directory. Do not commit model
+   new local `artifacts/stage0_shuffled_control/` directory. Do not commit model
    weights to Git.
 4. Compare old versus shuffled pooled MSE on identical strict samples and state
-   whether the Stage 1 conclusion survives. Do not compare different masks,
+   whether the Stage 0 conclusion survives. Do not compare different masks,
    cohorts, or estimands.
 5. Append a timestamped result to `report.md`; update current status and decision
-   in `progress.md`; replace the slide 10 current-run panel only if the complete
+   in `progress.md`; replace the slide 5 current-run sentence only if the complete
    frozen evaluation is available.
 6. Run syntax checks, focused tests, the full suite, and `git diff --check`, then
    commit and push. The current baseline is 41/41 tests.
@@ -360,9 +420,9 @@ improvement from a gate that sees only masked expression.
   the committed watcher script and relaunch only the missing tmux session after
   confirming no process with the same script is alive.
 
-## Stage 2 Organ Execution Runbook
+## Stage 1 Organ Execution Runbook
 
-Do not launch the definitive organ models from the current V2 pilot manifest.
+Do not launch the definitive organ models from the current organ-pilot manifest.
 It is sufficient for pipeline smoke testing but still contains label ambiguity
 and only 220-783 training rows per specialist.
 
@@ -386,7 +446,7 @@ Before a definitive GPU campaign:
 
 ### Ordered implementation plan
 
-1. **Label audit V2/V3:** extend `evaluation/audit_archs4_organs.py` to retain
+1. **Label audit and expansion:** extend `evaluation/audit_archs4_organs.py` to retain
    auditable metadata and produce stratified manual-review sheets. Resolve GBM,
    HSAEpC, tumor acronyms, and tissue-versus-derived-cell ambiguity. Rerun
    `evaluation/build_organ_pilot_manifest.py` only after the rules are frozen.
@@ -411,14 +471,37 @@ Before a definitive GPU campaign:
    organ labels may supervise calibration but are unavailable at test. Include a
    confidence threshold and pooled-model fallback for ambiguous/out-of-taxonomy
    samples.
-6. **Smoke test before scale:** run a short one-epoch or tiny-subset end-to-end
-   job solely to validate schemas, checkpoints, caching, masks, and comparison
-   code. Do not interpret it biologically.
+6. **Progressive smoke before scale:** use the three-rung design below. Each rung
+   has a different purpose; do not treat a mechanical smoke result as biology.
 7. **Definitive run and decision:** launch only after the readiness gate and
    smoke tests pass. Apply the preregistered criteria below without tuning them
    after seeing test outcomes.
 
-### Stage 2 outcome interpretation
+### Approved progressive Stage 1 pilot design
+
+1. **Micro overfit test:** use 64-128 samples and 20-50 updates to verify target
+   hiding, loss decrease, gradient flow, deterministic masks, checkpoint resume,
+   and cached-prediction identity.
+2. **Five-organ mechanical smoke:** use the current `K=5` manifest, one seed, and
+   approximately 50 updates per model. Exercise pooled, five organ specialists,
+   matched random shards, fixed blend, true-organ routing, blind routing, and
+   oracle evaluation end to end. Passing means the machinery is correct; the
+   result has no biological interpretation.
+3. **Two-organ feasibility pilot:** after removing obvious label failures, select
+   brain and skin prospectively because they have the greatest sample/study
+   support. Use the production backbone, matched 3-5 epoch exposure, and seeds
+   17, 42, and 101. Compare pooled, organ specialists, and size/study-matched
+   random shards using one frozen mask and equal-organ/equal-study macro metrics.
+   This estimates wall time, seed variance, oracle headroom, and whether the
+   longer definitive campaign is worth running.
+
+The current pilot test studies are engineering data and become burned after this
+inspection. A definitive Stage 1 cohort must receive newly frozen model-validation,
+gate-calibration, final-test, and discovery-lockbox partitions after label cleanup
+and expansion. Approximate 5%/3% effect thresholds guide feasibility, but only the
+powered definitive run supports a biological claim.
+
+### Stage 1 outcome interpretation
 
 - **Full success:** all primary blind-top-1 criteria pass, organ fixed beats
   random fixed, and blind routing recovers at least 80% of the true-organ hard
@@ -431,7 +514,7 @@ Before a definitive GPU campaign:
   attributable to sharding/ensembling, not organ biology.
 - **No organ specialization:** true-organ hard routing fails to beat pooled by
   at least 5% with positive MSE/residual intervals. Revisit labels, data scale,
-  organ granularity, or architecture; do not claim transfer from Stage 1.
+  organ granularity, or architecture; do not claim transfer from Stage 0.
 - **Statistically positive but practically small:** MSE CI is positive but the
   primary gain is below 5%. Report it as preliminary and do not scale solely on
   that basis.
@@ -441,100 +524,227 @@ Before a definitive GPU campaign:
   expert plus a small gate, or fallback activates excessively. Report as an
   ensemble result rather than an efficient MoE system.
 
-### Stage 2 artifacts already available
+### Stage 1 artifacts already available
 
 - Audit code: `evaluation/audit_archs4_organs.py`
 - Manifest builder: `evaluation/build_organ_pilot_manifest.py`
-- Pilot reports/manifest: `artifacts/stage2_organ_pilot/`
+- Pilot reports/manifest: `artifacts/stage1_organ_pilot/`
 - Overarching figure prompt:
   `presentation/paperplot-human-organ-moe-prompt.md`
-- Current V2 pilot: brain, skin, liver, colon, lung; 2,856 samples; 317 groups;
+- Current organ pilot: brain, skin, liver, colon, lung; 2,856 samples; 317 groups;
   exact pooled/specialist train-union hash
-  `6d0e274b994ad3c9e1e93d671824d7c879651e2524b0ff95543bb8a642bc396a`.
+  `332760cf8ca98535e3d0a4f3548e733a0723d6c8ea985e4268e9a7c06990c35d`.
+- A 2026-07-15 cap-sensitivity check on the same conservative candidates, after
+  tumor and multi-organ-group exclusion, confirms that simply raising the
+  per-study cap does not rescue the definitive `K=5` cohort. At cap 60, capped
+  totals are brain 2,039, skeletal muscle 1,246, skin 971, liver 707, adipose
+  670, colon 446, and lung 418; an approximate 70% training allocation leaves
+  only brain above 1,000. Removing the cap would let a few organs cross 1,000
+  but reintroduces severe single-study dominance. The practical options are
+  ontology-backed label expansion, a prospectively justified lower threshold,
+  or a smaller `K`—never a post-result threshold change.
 
-## Stage 3 Research Directions (Post-Stage-2)
+## Stage 2 Research Direction (prepare during Stage 1; run after readiness gates)
 
-**Gating condition.** Do not start Stage 3 until Stage 2 resolves. If Stage 2 is a
-*win* (blind top-1 routing clears the preregistered primary criteria against the
-fair pooled general model, and organ-fixed beats random-shard-fixed), D1 runs as the
-headline follow-up. If Stage 2 is a *null*, D1 still runs but reframes: the
-interference matrix becomes the *explanation* for why organ specialization does not
-help, which remains publishable. Either way, D1 is the committed Stage 3 direction.
+### Scientific aim
 
-**Selected direction: D1 is the default.** D2 is the backup / second result; D3 and
-the phase-boundary idea are archived (see end of section). The goal is to move the
-paper from a confirmatory result ("organ MoE beats a general model," an expected
-pattern) toward a generative one — a measurement of *where and why* organ
-specialization helps. Full prior-art record with arXiv IDs and scoop risks is in
-`related-works.md`; keep it in sync.
+Use MoE specialization as a probe of what structure a masked RNA-seq model learns:
+which human expression domains should share parameters, which interfere, and whether
+label-free routing recovers reproducible biological programs that were never supplied
+as training labels. The organ interference matrix remains valuable, but it is an
+anchor measurement rather than the entire Stage 2 claim.
 
-### D1 — Organ-by-organ transfer / interference matrix (Stage 3 default)
+Stage 1 remains the immediate priority and the calibration experiment: first establish
+whether explicit, audited organ specialists and a blind gate beat the fair pooled and
+random-shard controls. Stage 2 infrastructure, deterministic smoke tests, a separate
+lockbox, and a small variance/cost pilot may be prepared in parallel. Definitive
+Stage 2 analyses must not inspect a test set already used to choose a Stage 1 story.
 
-**Question.** For each ordered organ pair `(A, B)`, does adding organ `B`'s data to
-joint training help or hurt masked-gene reconstruction on a held-out, study-disjoint
-test set of organ `A`? Report a signed `K x K` matrix (negative = interference,
-positive = beneficial transfer).
+The organ strata all optimize the same masked-reconstruction objective, so describe
+D1 precisely as **cross-domain transfer/interference**, not literally distinct-task
+multi-task learning. Task-affinity methods are methodological ancestors, not evidence
+that the biological result is already known.
 
-**Why this is the direction.** It reuses essentially all Stage 2 infrastructure,
-turns "did MoE win" into "here is the transfer structure of the human transcriptome
-under masked reconstruction," and — per `related-works.md` block D1 — is a novel
-measurement in genomics on established task-affinity methodology (no located work
-builds this matrix from a masked bulk-expression model). It also directly explains
-Stage 2: organs with strong mutual interference are where specialist routing should
-help most; organs with beneficial transfer are where pooling wins.
+### Practicality and novelty decision
 
-**Experimental design (plan; preregister before looking).**
+Claude's full pairwise D1 is not the unconditional default. The current best bet is a
+**hybrid**: use a cheap development-only gradient-affinity screen to identify likely
+positive and negative transfer edges, confirm a small number with controlled pair
+training, and ask whether a label-free MoE independently learns the same grouping.
+Scale to a full matrix only if the cohort and pilot justify it.
 
-1. *Cohort and protocol — inherited, frozen.* Same manifest-driven extractor, shared
-   15,448-gene space, one `log1p`, one deterministic 30% mask, study-disjoint splits,
-   study-macro estimand, and paired clustered bootstrap as Stage 2. Each organ `A`
-   has a fixed strict study-disjoint test set used for *every* matrix cell in row `A`
-   so rows are internally comparable. Test studies never appear in any training pool.
-2. *Cells.* Diagonal baseline: an `A`-only specialist. Off-diagonal `M[A,B]`: a model
-   jointly trained on `A + B`, evaluated on `A`'s strict test, minus the `A`-only
-   baseline. A single joint `A+B` model yields two cells (`M[A,B]` on `A`'s test and
-   `M[B,A]` on `B`'s test), so donor/recipient asymmetry is measured directly and is
-   itself a result.
-3. *Size-confound control (critical).* Adding `B` also adds data, so a raw `A+B` vs
-   `A` delta conflates "more data helps" with "`B` specifically helps/hurts `A`."
-   Each `M[A,B]` is therefore measured against a **size-matched neutral-filler
-   control**: `A + B` versus `A` plus an equal-size draw of more `A` (or, if `A` is
-   too small, a size-matched random draw from the global pool). The matrix then reads
-   as the effect of `B`'s *identity*, net of its volume. Report the raw
-   (uncontrolled) matrix too, for transparency.
-4. *Held-fixed training.* Same architecture, optimizer, mask rate, epoch/exposure
-   budget, gene order, globally shuffled batches, and seed policy across all cells.
-5. *Statistics.* Paired clustered bootstrap over `A`'s test studies per cell; flag
-   cells whose CI excludes zero; apply Benjamini-Hochberg across the `K^2` cells and
-   report both raw and FDR-controlled significance.
-6. *Cost at K=5.* `C(5,2)=10` joint pairwise models + `5` solo baselines +
-   size-matched controls ≈ 15-25 small Performer runs, plus the full-pool model
-   already trained in Stage 2. Feasible on one A100 over a few days. If `K` grows,
-   switch to leave-one-organ-out marginal contributions (`O(K)`) instead of full
-   pairwise.
+| Candidate | Novelty if successful | Data / implementation | Compute / storage | Decision |
+|---|---|---|---|---|
+| Full `K x K` organ transfer matrix | Moderate: useful genomics measurement, but task/domain affinity is established | Needs at least four well-powered organs and all Stage 1 infrastructure | Roughly 60-105+ seeded runs; current 434 MB checkpoints make per-epoch retention infeasible | Conditional follow-up, not first Stage 2 run |
+| Gradient-affinity screen + selected pair confirmation | Moderate alone; strong as a bridge from optimization to biology | One balanced pooled development run plus 2-4 prespecified pairs | Approximately 10-20 runs including seeds/controls | Recommended D1 implementation |
+| Label-free shared-trunk MoE | Higher upside: asks whether routing discovers stable RNA-seq structure without organ labels | Can use the full clean pooled cohort; requires a new router/expert path and strict batch controls | Frozen-trunk pilot first; at least three full-cohort runs only after its gate | Recommended Stage 2 core pilot |
+| Hierarchical organ -> latent-state MoE | High discovery upside if it finds a replicated within-organ program rather than rediscovering tissue | Brain is currently the only plausible first organ; requires curated disease/age/treatment/sex/composition metadata and independent studies | Small `K=2-3`, but validation and metadata work dominate | Conditional follow-up after the label-free pilot, not an immediate run |
+| Pathway- or cell-type-supervised experts | Lower discovery value because the answer is injected through labels; mature neighboring literature | Requires external annotations/deconvolution and a different task definition | Moderate | Interpretation control only |
 
-**Exploratory analyses (labeled as such; run after the preregistered matrix).**
-Cluster the matrix and test whether organs group by known biology (germ layer,
-epithelial vs non-epithelial); regress interference against a biological-distance
-axis (transcriptome correlation, shared marker programs) to ask whether interference
-*tracks* a predictable axis. A positive answer is the generative finding and also
-feeds D2.
+The exciting claim is not "MoE works on RNA-seq." It is that label-free routing finds a
+reproducible biological organization, that the organization predicts measured transfer,
+and that it improves reconstruction under fair active-compute controls. If only the
+first or second component holds, narrow the claim accordingly.
 
-**Primary deliverable.** The signed, size-controlled `K x K` interference matrix
-with CIs, its asymmetry structure, and whether interference predicts the Stage 2
-per-organ specialist wins/losses.
+### D1 — Directed organ transfer graph (screen first, confirm selected edges)
 
-### D2 — Learned expert partition vs organ ontology (backup / second result)
+First estimate a directed domain-affinity graph on development studies during one
+balanced pooled-training run: measure how an update from donor-domain `B` changes the
+held-out development loss for recipient `A`, following established gradient-affinity
+work. Use this only to screen and preregister a small number of strongest positive,
+negative, and near-zero pairs. Confirm those edges by training joint `A+B` models and
+evaluating on a fixed, study-disjoint test set for `A`. One unordered pair model supplies
+both directions, but the effects need not be symmetric. The screen is not a substitute
+for actual pair-training confirmation.
 
-If Stage 2 and D1 leave room for a second contribution: let experts be
-learnable/soft rather than hard-assigned by organ, and test whether the emergent
-partition aligns with the organ taxonomy or a different biological axis. **Scoop risk
-is real** — "do MoE experts specialize by domain" is an active LLM-interpretability
-topic (see `related-works.md` D2 block, several 2026 entries). Our novelty is
-strictly the biological alternative hypothesis in the genomics setting; the intro
-must differentiate from the LLM wave rather than rediscover it. Reuses the Stage 2
-experts/gate plus an alignment analysis (expert-vs-label contingency, routing-cluster
-recovery of known ontologies). Naturally continues D1's exploratory clustering.
+**Estimands and sign (freeze before results).** Let `L_A(f)` be study-macro masked MSE
+of model `f` on recipient `A`. Positive values always mean beneficial transfer:
+
+```text
+raw_transfer[A <- B] = (L_A(f_A) - L_A(f_A+B)) / L_A(f_A)
+controlled_transfer[A <- B] =
+    (L_A(f_A1+A2) - L_A(f_A1+B1)) / L_A(f_A1+A2)
+```
+
+For the primary controlled comparison, split eligible development/training studies
+within each organ into fixed blocks. `A1+A2` and `A1+B1` have matched sample counts,
+study-count targets, optimizer updates, and sampling weights. This changes the question
+from "does adding any data help?" to "is the same budget better spent on another block
+of the recipient or on donor `B`?" If an organ cannot supply a credible `A2` reserve,
+omit the confirmatory cell rather than silently substitute an unmatched global pool.
+Also report two transparent secondary controls:
+
+1. an `A1`-replay exposure control, which controls optimization budget but not the
+   information in new unique samples; and
+2. deterministic matched random-pseudogroup blocks, which test whether apparent
+   structure arises from arbitrary sample sharding rather than organ identity.
+
+**Protocol requirements.**
+
+1. Freeze a global connected-study split and a discovery lockbox before Stage 1 test
+   inspection. No recipient or donor test study may enter any model's training,
+   validation, gate calibration, or reference-donor pool.
+2. Require a prospective test-study/power gate per recipient; the current 7-15 test
+   groups per organ are not automatically adequate for 20 off-diagonal comparisons.
+3. Fix optimizer updates, recipient:donor sampling ratio, loss weighting, LR schedule,
+   deterministic validation mask, and checkpoint-selection rule. Equal epochs are not
+   an equal exposure budget when pair datasets differ.
+4. Use at least three explicit training seeds for definitive cells. Clustered bootstrap
+   over test studies measures cohort uncertainty but not model-training stochasticity;
+   report both. Apply Benjamini-Hochberg to the `K(K-1)` off-diagonal hypotheses, not
+   structural diagonal cells, and preregister a practical effect threshold.
+5. Report absolute and recipient-standardized effects, train-only organ gene-mean and
+   pooled baselines, residual correlation, and gene-module-stratified errors. Otherwise
+   a heatmap may mostly rediscover organ expression means.
+6. Test an omnibus organ-identity effect against the pseudogroup null before treating
+   individual edges as biological. Add leave-one-organ-out models or use the
+   development-only affinity graph to choose grouped
+   experts and validate that grouping on the untouched lockbox. Pairwise effects alone
+   do not establish the higher-order behavior of a full pooled model.
+
+**Cost gate.** The earlier 15-25-run estimate was too optimistic. At `K=5`, five solo
+models, ten pair models, controls, and three seeds can easily become 60-105+ runs. A
+current inference/training checkpoint is about 434 MB, so retaining per-epoch files for
+that grid would also exceed the 117 GB currently free on the central volume. First run
+one two-organ, three-seed pilot; measure wall time and seed variance; keep only
+checksum-verified best/last inference artifacts plus compact histories; then freeze a
+complete run table and compute/storage budget. The default is to confirm selected edges,
+not to launch the full grid.
+
+### D2 — Label-free MoE routing as a biological representation probe
+
+This is the linked discovery experiment, not a claim that can be made from the current
+organ experts. Experts trained from organ labels can validate a gate, but they cannot
+show that organ or hidden biological structure *emerged*.
+
+1. Reuse `ExpressionPerformer` through its final hidden states as a shared trunk. Pool
+   only observed-gene hidden states to drive a sample-level router; attach `K` small
+   residual FFN adapters plus scalar reconstruction heads. Train soft routing first and
+   evaluate top-1 dispatch, with an explicit load-balancing term and capacity limit.
+   Do not provide organ, study, platform, disease, or other phenotype labels to the
+   router or experts. Choose `K`, balancing strength, and adapter size on development
+   studies only.
+2. Use a two-step feasibility path: first freeze a Stage 1 pooled trunk and train only
+   adapters/router (cheap test of routing signal); then fine-tune the full model only if
+   routes are non-collapsed and cross-study stable. The current `train_moe.py` blends
+   frozen, predefined expert predictions and cannot answer this emergence question.
+3. Compare against the pooled model, matched active-parameter/FLOP controls,
+   random/permuted routing, random-shard experts, and the supervised organ-expert
+   ceiling. For claimed representation structure, also compare raw expression, PCA,
+   NMF, and shared-trunk geometry. Track collapse, expert utilization, storage, and
+   total training compute.
+4. Measure routing/expert-advantage stability across seeds, masking realizations, and
+   held-out studies before interpreting clusters. Evaluate every sample against every
+   expert to report counterfactual routing regret, not only router assignments. Known-
+   organ recovery is a positive control, not a hidden discovery.
+5. Test whether routing aligns with study, platform, library size, and other technical
+   variables. A route that identifies GEO study or processing protocol is a confound,
+   not biology. Require cross-study replication and conditional analyses within organ;
+   retain multi-organ studies when a global group split can use them as technically
+   valuable controls.
+6. Attribute route decisions to observed genes, test frozen pathway/gene-program
+   enrichments, and validate any beyond-organ pattern against independent metadata or
+   an external cohort. Findings chosen after looking remain explicitly exploratory.
+7. Compare the learned route co-assignment graph with D1 transfer effects on held-out
+   data. The strongest joint result would be that label-free routes group domains that
+   demonstrably transfer, and separate domains that interfere.
+
+**Claim ladder.**
+
+- If routing is unstable across seeds or dominated by study/platform, make no latent-
+  biology claim.
+- If it reproducibly recovers only organ, report recovery of known tissue structure as
+  validation, not discovery.
+- A hidden-pattern claim requires a stable beyond-organ association, technical-confound
+  controls, pathway-level interpretation, and independent replication.
+- A useful MoE claim additionally requires reconstruction improvement over the fair
+  pooled/random controls at matched active inference compute; interpretability alone
+  does not establish a better predictive system.
+
+**Conditional within-organ discovery branch.** If the first label-free router mostly
+recovers the dominant organ axis, do not call that hidden biology. If brain remains the
+only sufficiently powered organ, a later `K=2-3` brain-only pilot may remove/condition
+on organ identity and ask whether routes reproduce a disease, age, treatment, cell-
+composition, or pathway state across independent studies. Freeze the route definition
+before metadata association, require within-study and cross-study replication, and
+compare against PCA/NMF/clustering baselines. Do not start this branch until the relevant
+metadata are curated well enough to distinguish biology from study design.
+
+### Ordered Stage 1 -> Stage 2 execution
+
+1. **Cohort feasibility and audit:** retain auditable metadata, validate labels, and
+   determine `K` from frozen quality/study/power rules. The current pilot fails the
+   definitive 1,000-training-sample rule for every organ and is not a final cohort.
+   Reconsider automatic deletion of multi-organ studies: keep them when sample labels
+   are valid and assign the entire connected group to one split; they provide unusually
+   strong within-study technical controls.
+2. **Split design:** prefer study-disjoint model-validation and discovery-lockbox
+   partitions distinct from gate calibration and final Stage 1 test. If study counts
+   cannot support a separate lockbox, freeze all Stage 2 hypotheses before the first
+   Stage 1 test access and require independent external replication for discovery claims.
+3. **Shared infrastructure:** implement the manifest-driven extractor, manifest-aware
+   seeded trainer, deterministic evaluator, and artifact/run manifests with code/data/
+   split hashes.
+4. **Smoke and variance pilot:** run schema tests, then a two-organ, three-seed pilot
+   solely to estimate variance, power, and cost. Do not elevate pilot biology to a
+   claim.
+5. **Definitive Stage 1:** run the preregistered pooled, random-shard, organ-specialist,
+   metadata, blind-gate, and oracle ladder.
+6. **Stage 2 screen:** compute development-only gradient affinity, preregister selected
+   positive/negative/null edges, and run their matched-block confirmation. Do not infer
+   biology from the screen alone.
+7. **Label-free pilot:** run the frozen-trunk adapter/router experiment if Stage 1
+   infrastructure is stable; scale it only if routes are non-collapsed, cross-study
+   stable, and not explained by technical metadata.
+8. **Expansion decision:** build the full D1 matrix only if the selected-edge pilot is
+   seed-stable, clears the practical-effect threshold, and the powered organ count is
+   sufficient. Otherwise spend compute on replication and biological validation of the
+   smaller, stronger result.
+
+The exact Stage 1 decision boundaries, current code gaps, proposed CLI contracts,
+artifact schema, and post-Stage-1 command order are in
+`stage1-stage2-experiment-plan.md`. Commands marked `PLANNED` there are not runnable
+until their named files and tests exist.
 
 ### Archived (not planned)
 
@@ -640,8 +850,8 @@ The current experiment exists to replace, not refine, those numbers.
   blind-gate leakage checks, and organ-manifest invariants. Python and shell
   syntax checks and `git diff --check` pass.
 - Versioned result summaries:
-  `artifacts/stage1_5_blind_gate/report.json` and
-  `artifacts/stage2_organ_pilot/`.
+  `artifacts/stage0_blind_gate/report.json` and
+  `artifacts/stage1_organ_pilot/`.
 - Local and central evaluator source SHA256 values match.
 - Real 5k and 20k snapshots load through the final evaluator with 15,448 genes,
   `log1p_tpm`, mask ratio `0.3`, and mask token `-10`.
@@ -673,5 +883,5 @@ persistent storage, so completed training hours are already recoverable:
 - All backup/evaluation/report/Git watchers exited. Final markers include
   `ALL_SAFE_TO_SHELVE`, `EVALUATION_COMPLETE_AND_VALIDATED`, `REPORT_READY`, and
   `GIT_BACKUP_PUSHED`.
-- The completed Stage 1 code, reports, and interpretation are pushed to
+- The completed Stage 0 code, reports, and interpretation are pushed to
   `origin/main`.

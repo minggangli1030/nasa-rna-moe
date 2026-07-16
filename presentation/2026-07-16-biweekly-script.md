@@ -1,162 +1,147 @@
 # Talking script - 2026-07-16 biweekly (~10 min, 10 slides)
 
 The slides hold the numbers. Use the script to keep the methodological story
-clear without reading every bullet. Structure: slides 2-5 recap the finished
-Stage 1 interspecies work concisely, slides 6-8 lay out the Stage 2 organ
-hypothesis and fair design, slide 9 is the one experiment still running plus the
-decision tree, and slide 10 is the new Stage 3 direction I want to pursue.
+clear without reading every bullet. Structure: slides 1-2 recap last semester and
+last week's apparent dead end for anyone who missed that meeting; slides 3-5 give
+the corrected Stage 0 result; slides 6-8 define Stage 1; slide 9 narrows the novelty
+through related work; and slide 10 gives the selected gated Stage 2 experiment.
+Here `Stage` is the research phase; V1/V2/V3 remain the inherited model/debugging
+generations inside Stage 0.
 
 ## Timing
 
 | Slide | Target | Running total |
 |---|---:|---:|
-| 01 - Title and training task | 0:50 | 0:50 |
-| 02 - Stage 1: the evaluation was broken | 1:00 | 1:50 |
-| 03 - Stage 1: large headroom, and scale | 1:10 | 3:00 |
-| 04 - Stage 1: blind gate | 1:00 | 4:00 |
-| 05 - Stage 1: what it proves and does not | 0:50 | 4:50 |
+| 01 - Recap: last semester to summer question | 0:55 | 0:55 |
+| 02 - Recap: last week's apparent dead end | 1:00 | 1:55 |
+| 03 - Stage 0: large headroom in larger V3 | 1:05 | 3:00 |
+| 04 - Stage 0: blind gate | 1:00 | 4:00 |
+| 05 - Stage 0: what it proves and does not | 0:50 | 4:50 |
 | 06 - Overarching goal: species to organs | 0:50 | 5:40 |
-| 07 - The fair Stage 2 experiment | 0:55 | 6:35 |
-| 08 - Stage 2 immediate plan | 0:50 | 7:25 |
-| 09 - Running control and decision tree | 1:00 | 8:25 |
-| 10 - New direction: interference matrix | 1:05 | 9:30 |
+| 07 - The fair Stage 1 experiment | 0:55 | 6:35 |
+| 08 - Stage 1 immediate plan | 1:00 | 7:35 |
+| 09 - Related work and experiment choice | 1:05 | 8:40 |
+| 10 - Selected Stage 2: two maps, one test | 1:20 | 10:00 |
 
 ---
 
-**01 - Title and training task**
+**01 - Recap: last semester to the summer question**
 
-Hi everyone, I'm Martin. To make the task concrete: this is self-supervised
-RNA-seq pretraining. I hide 30 percent of a sample's genes and ask the model to
-reconstruct their expression from the other 70 percent. That teaches which genes
-and biological programs move together, without needing a disease or species label
-for every sample. The strategy is to learn those representations from abundant
-ground-based ARCHS4 data and transfer them to rare spaceflight studies. My MoE
-question is whether a biological specialist reconstructs those hidden genes better
-than one general model. Last sprint that looked negative; this sprint the
-conclusion changes after I corrected the evaluation.
+Since not everyone could join last week, I will start with the thread from last
+semester. The inherited project trained human, mouse, and mixed models to reconstruct
+30 percent masked genes from the rest of each RNA-seq profile. V1 through V3 repaired
+data and vocabulary problems and scaled the models. My summer contribution shifts
+from completing those checkpoints to a scientific question: do specialists learn
+complementary biology that routing can exploit? The roadmap is Stage 0 species as a
+positive control, Stage 1 organ specialization, and Stage 2 label-free discovery.
 
-**02 - Stage 1: the evaluation was broken**
+**02 - Recap: last week's apparent dead end**
 
-The July 9 result made fixed ensembling look slightly useful and adaptive routing
-look useless. Before accepting that, I audited the evaluator end to end and found
-it was invalid: it fed raw TPM to models trained on log-TPM, fitted blend weights
-on the reporting set, used a test-derived gene mean, called a hard selector the
-oracle, and let large GEO studies dominate the average. So the real work this
-sprint was rebuilding a frozen, study-aware protocol: a 103-study strict cohort
-disjoint from every training study, one log-one-plus transform, out-of-fold
-weights, and clustered-bootstrap intervals. The key principle is on the slide:
-beating one pooled model is only ensemble evidence; to claim adaptive MoE value
-the router has to beat the fixed ensemble.
+Last week's first read looked like a dead end: a fixed blend helped, while the
+reported selector had almost no headroom, suggesting “blend, don't route.” Before
+ending the MoE path, I audited the test and found the conclusion was unsupported:
+wrong input scale, reporting-set fitting, a test-derived baseline, the wrong oracle,
+and large-study dominance. I therefore rebuilt a frozen protocol around 103
+disjoint connected groups, deterministic masks, out-of-fold fitting, equal group
+weight, and clustered intervals. Slide 3 is what happened when that honest test ran.
 
-**03 - Stage 1: large headroom, and scale strengthens it**
+**03 - Stage 0: large headroom in the larger V3 cohort**
 
-Under the corrected protocol the result flips, including on the unchanged 5k
-checkpoints. At 5k, true-species soft routing lowers MSE by 18.7 percent versus
-the fixed blend; at 20k it grows to 34.7 percent, with the absolute gain interval
-entirely above zero and residual correlation also improving. Hard routing already
-delivers most of that; soft mixing is a smaller refinement; and the soft oracle at
-35 percent shows species explains almost the entire measured ceiling. V3 here is
-just scale - same four-layer Performer, same 15,448 genes, same objective, four
-times the data - so I call it a controlled scale comparison, not a perfect
-ablation, because draws and epoch budgets differ. The headline discovery is the
-evaluation fix, since 5k moves too.
+The corrected result flips even for the unchanged 5k checkpoints: soft routing
+beats fixed by 18.7 percent at 5k and 34.7 percent at 20k, with positive MSE and
+residual-correlation intervals. Hard routing delivers most of the gain, while the
+35 percent oracle is the ceiling among these three frozen models on this cohort.
+V3 keeps architecture, objective, and 15,448 genes fixed while adding four times
+the data. Because draws and epoch budgets differ, I call this a controlled scale
+comparison, not a perfect ablation. The main finding is still the evaluation fix,
+because 5k changes too.
 
-**04 - Stage 1: blind expression gate**
+**04 - Stage 0: species-supervised blind-gate feasibility**
 
-Next: is this useful when the species label is not handed to the system? I trained
-a small balanced logistic gate on separate calibration studies. It sees exactly
-the masked expression the expert sees; the targets are hidden. On the strict cohort
-it identifies 102 of 103 samples, its soft route lowers MSE by 33.95 percent versus
-the fixed blend, and it is only 1.11 percent behind routing with the true species.
-So for human versus mouse, expression itself contains a route a blind gate can
-recover without answer leakage.
+Can the route be recovered with species hidden at test? A species-supervised gate
+is fitted only on separate calibration groups; at test it sees masked expression,
+not species or targets. Its probability interpolates calibrated weights over the
+human, mouse, and pooled predictions. It gets 102 of 103 species calls right,
+lowers MSE by 33.95 percent versus fixed, and trails true-species soft routing by
+only 1.11 percent. This establishes expression-derived routability without answer
+leakage. Because the soft condition executes all three models, it is not yet a
+sparse-inference result.
 
-**05 - Stage 1: what it proves and does not**
+**05 - Stage 0: what it proves and does not**
 
-The Stage 1 conclusion is now positive but bounded. Supported: real
-species-conditioned specialization - hard routing works, blind routing works, and
-more data increases headroom. Not yet supported: that storing three full experts
-is the best systems tradeoff, or that this improves a downstream spaceflight
-endpoint, and organ specialization has to be tested on its own. There is also one
-open control, which I will come back to on slide 9. The honest one-line summary is
-that adaptive routing beats the fixed ensemble cleanly; the "beats a fair single
-general model" claim is what the open control is there to settle.
+Stage 0 is positive but bounded. Species-conditioned hard and blind routing work,
+and the larger V3 cohort shows more headroom. It does not establish the best
+parameter/storage tradeoff, a downstream spaceflight benefit, or organ
+specialization. Adaptive routing cleanly beats fixed. The shuffled pooled control
+still running will update the stronger single-general-model claim, but it does not
+waive any Stage 1 gate.
 
 **06 - Overarching goal: species to organs**
 
-This is the arc of the project. Stage 1 is not just a human-versus-mouse
-classifier - it is a proof that biological subdomains support different predictive
-relationships, and that expression alone can identify which specialist to use.
-Stage 2 transfers that lesson within human biology: organ-specific gene programs
-may be distinct enough that a trained expression router plus the right organ expert
-beats one general human model on an unknown-organ sample. The target system is more
-accurate through specialization, efficient because top-one routing runs a single
-expert, and interpretable because the route has an explicit organ meaning. Stored
-size still grows, and I report that as a cost.
+Species is a maximally separable positive control, not the novelty. Stage 0 shows
+that the pipeline can detect specialist headroom and recover a label-hidden route;
+it does not prove subtler domains will specialize. Stage 1 asks whether organ
+programs differ enough that an expression gate plus one organ expert beats a
+general human model. The target is more accurate, top-one at inference, and
+interpretable through an explicit organ route, while reporting extra stored models
+as a cost.
 
-**07 - The fair Stage 2 experiment**
+**07 - The fair Stage 1 experiment**
 
-This figure states the primary experiment. With the same training data and roughly
-the same inference compute, does blind organ-specialist routing reconstruct masked
-genes better than one general model? The specialists collectively see N samples and
-the pooled model sees the identical N-sample union, so no specialist gets extra
-data. At inference the organ label is hidden: the router uses expression we already
-measured, activates one expert, and sends low-confidence samples to the general
-model. This is practical because real samples often arrive with missing or
-unreliable organ metadata. Fixed, metadata, random-shard, and oracle controls
-separate genuine organ specialization from generic ensembling.
+Panel A shows the exact hard Stage 0 bridge: 32.94 percent lower MSE than fixed
+while executing one species expert. Panel B is the fair organ experiment. All
+specialists collectively see exactly the same N training samples as the pooled
+model. At test, organ is hidden as a scientific stress test; the expression gate
+activates one expert and sends low-confidence cases to the general model. Fixed,
+true-organ, random-shard, blind, and oracle controls separate organ biology from
+generic sharding, ensembling, and routing error. The primary comparison is blind
+top-one versus the general model at approximately matched active compute.
 
-**08 - Stage 2 immediate plan**
+**08 - Stage 1 immediate plan**
 
-A conservative ARCHS4 audit supports a five-organ pipeline pilot - brain, skin,
-liver, colon, lung - 2,856 samples across 317 connected studies, with K chosen from
-data rather than fixed in advance and the pooled training-ID hash exactly equal to
-the specialist union. I am not launching the full campaign yet: spot checks found
-residual tumor and cell-source shorthand and some specialists are still small. Next
-is label cleanup and a bounded end-to-end smoke test across all controls, including
-the random-shard experts. I scale only if blind top-one beats the pooled and
-inference-matched controls by at least five percent MSE with positive study-level
-and residual-correlation intervals.
+The provisional five-organ manifest has 2,856 rows across 317 connected studies,
+and the pooled manifest hash equals the specialist union. It is pipeline data, not
+a definitive cohort: no organ reaches 1,000 clean training rows. Before a long
+run, each organ needs audited labels and 30/10/15 train/calibration/test groups,
+plus a deterministic manifest-aware trainer and evaluator. Testing then climbs
+three rungs: micro-overfit, the K=5 mechanical path, and brain/skin three-seed
+feasibility. A green result must clear all five visible comparisons with positive
+paired MSE intervals, a positive top-one residual interval, and 80 percent recovery
+of known-organ gain. Today definitive Stage 1 is NO-GO; smoke testing only.
 
-**09 - Running control and decision tree**
+**09 - Related work and experiment choice**
 
-One experiment is still in flight. The original pooled mixed model trained with
-species-contiguous batches - a known weakness - so I am retraining it with global
-row shuffling. On a clean exit it automatically runs the full and strict evaluation
-and the blind-gate rerun on the frozen masks. It will not finish before this talk,
-so I am deliberately not showing a partial result; instead here is the decision
-tree. If blind-soft still beats both the fixed ensemble and this fairer pooled model
-by at least five percent, Stage 1 is practically convincing and I green-light Stage
-2 training after label cleanup. If it beats the fixed ensemble but not the shuffled
-pooled model, that is an adaptive-ensemble benefit, not a better general model, and
-I reframe the claim. If the soft oracle drops below three percent, there is no real
-routing ceiling and I revisit expert and data design before spending compute. And
-if a full-cohort win disappears on the strict cohort, I treat it as study leakage,
-not MoE evidence.
+Related work moves the novelty boundary. Compute-matched MoE gains, task grouping,
+and negative transfer are established. xTrimoGene, BulkFormer, and TxFM already
+cover masked transcriptomic representation learning. CellOS and scMoE mean this is
+not the first transcriptomic MoE, while GLARE already claims hidden-pattern
+discovery. So Stage 1 is necessary validation, not the final contribution. Three
+directions remain: D1 measures directed transfer, D2 learns label-free routes, and
+D3 searches within-organ latent states. I select D1 plus D2 because the held-out
+route-to-transfer link is both falsifiable and practical; D3 waits for replicated
+within-organ evidence.
 
-**10 - New direction: organ interference matrix**
+**10 - New direction: two maps, one held-out test**
 
-Finally, where I want to take this next. Reviewing the multi-task and
-transcriptomics literature, I realized "does MoE beat a dense model" is a mostly
-expected pattern - the interesting, and as far as I found genuinely novel, question
-is where and why organ specialization helps. So the proposed Stage 3 experiment is
-an organ-by-organ interference matrix: for each pair, does adding organ B to joint
-training help or hurt reconstruction on a held-out, study-disjoint organ A? I
-control for the fact that adding B also adds data with size-matched fillers, so the
-matrix isolates B's biological identity. It reuses essentially the whole Stage 2
-pipeline - mainly a change of training-set composition - and it reframes the paper
-from "MoE works" to the transfer structure of the human transcriptome, while also
-explaining which organs the Stage 2 router should help most. I could not find prior
-work building this matrix from a masked bulk-expression model, so I think it is both
-novel and worth testing. A backup direction is asking whether the learned experts
-even match the organ ontology or cut across it along a different biological axis.
+The full Stage 2 experiment requires Stage 1 green; amber outcomes authorize only
+the bounded component shown in the entry rule. Controlled transfer asks whether an
+equal budget from donor B helps or interferes with untouched recipient-A studies.
+Separately, a shared-trunk MoE must first pass supervised-vs-random, anti-collapse,
+stability, and compute controls; only then is its router trained without organ,
+study, disease, or platform labels. On the untouched lockbox, co-routed domains
+should also transfer compatibly. Transfer is directed while co-assignment is
+symmetric, so initial selected-pair tests use preregistered sign/rank concordance,
+not a graph-wide correlation. Finally, route-derived groups are retrained and
+compared with organ, random, and pooled groups at matched compute. Recovering organ
+is only a positive control; a biological claim also needs pathway coherence,
+confound rejection, and independent-study replication.
 
-## Optional current-run insert (slide 09)
+## Optional current-run insert (slide 05)
 
 Only if the shuffled pooled run and its automatic frozen evaluation finish before
-the talk: replace the decision tree's framing with the realized branch and report
+the talk: replace slide 5's in-flight sentence with the realized branch and report
 shuffled pooled strict MSE, blind-soft versus shuffled fixed-blend relative MSE
-reduction and CI, and one sentence on whether the Stage 1 conclusion survives. Do
+reduction and CI, and one sentence on whether the Stage 0 conclusion survives. Do
 not report a partial epoch or validation loss as an evaluation result.
 
 ## Likely questions
@@ -181,9 +166,9 @@ parameter budget.
 
 **Why five organs?**
 
-K is selected by minimum capped sample count and number of independent connected
-GEO study groups after conservative filtering. Five organs currently pass; K can
-change as label coverage improves.
+K is selected by provisional sample count and number of independent connected GEO
+groups. Five organs pass the pipeline-pilot threshold; zero currently pass the
+definitive training gate. K can change after label cleanup and coverage expansion.
 
 **Why reconstruction instead of classification?**
 
@@ -191,9 +176,50 @@ Masked reconstruction is the pretraining objective and gives a controlled zero-s
 specialization test. Downstream spaceflight classification improvement is a later,
 separate claim.
 
-**Is the Stage 3 interference matrix just multi-task task-grouping?**
+**What exactly is novel in Stage 2?**
 
-The methodology descends from task-affinity and task-grouping work, which I cite.
-The novelty is the measurement in genomics - a per-organ interference matrix from a
-masked bulk-expression model, which I did not find in prior work - not a new
-algorithm.
+Neither masked RNA-seq reconstruction, MoE, clustering, nor task affinity is new by
+itself. The proposed contribution is the held-out link between two independently
+measured structures: label-free route compatibility and controlled training
+transfer. The route must predict transfer and produce a better grouping when
+retrained, rather than merely yielding an interpretable-looking cluster plot.
+
+**Does Stage 2 require a complete Stage 1 win?**
+
+The full coupled experiment requires a green Stage 1. If specialists and oracle pass
+but the blind gate fails, selected controlled transfer can still diagnose domains,
+but label-free interpretation waits. If oracle complementarity exists but organ
+fails, a bounded label-free feasibility pilot can ask whether organ was the wrong
+axis. If the oracle itself has no meaningful headroom, Stage 2 stops.
+
+**Isn't human-versus-mouse routing nearly trivial?**
+
+Yes, and that is why Stage 0 is a positive control rather than the novelty. Its value
+is validating the specialist/evaluation machinery before the subtler organ test.
+
+**Is the blind gate unsupervised?**
+
+No. Stage 0 and planned Stage 1 gates use labels on disjoint calibration groups, then
+hide labels and reconstruction targets at test. Only the Stage 2 router is label-free.
+
+**Why learn an organ router when tissue is usually known?**
+
+Blinding organ is primarily a scientific test of whether expression supports the
+specialization. Imperfect metadata, low-confidence fallback, and out-of-taxonomy
+detection are secondary practical motivations.
+
+**Could the routes just recover GEO study, platform, disease, or cell composition?**
+
+Yes; that is the main alternative explanation. A biological claim requires strict
+study lockboxes, adversarial confound checks, pathway coherence, and replication.
+
+**Does this beat an equal-total-parameter dense model?**
+
+Not yet. The primary top-1 comparison matches active inference compute and reports
+stored parameters; a shared-backbone or parameter-matched dense control remains a
+separate systems comparison.
+
+**Are three selected transfer pairs enough to prove map agreement?**
+
+No. They support preregistered sign/rank confirmation. A formal graph-level
+correlation requires more powered edges.
