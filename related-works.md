@@ -5,7 +5,14 @@ record relevant work now without forcing a paper claim before Stage 1/2 results.
 Organized by the argument each block supports. Use this to (a) position a future
 contribution, (b) avoid redoing known experiments, and (c) pull citations.
 
-**Last updated:** 2026-07-16.
+**Last updated:** 2026-07-16 (re-swept alphaXiv + HF this date; no new bulk-organ MoE
+competitor found — new bio hits are all histology→expression spatial models or
+single-cell generative models, a different task. D2 expert-specialization cluster
+gained several entries, all reinforcing the "routing reflects geometry, not domain"
+skeptical prior. Also swept bioRxiv/medRxiv via the Europe PMC REST API [SRC:PPR] —
+no dedicated preprint MCP is connected — confirming no new bulk-organ-routing MoE;
+new MoE-genomics preprints GenoME and GatorSC are different tasks. Direct bulk
+comparators Pande VAE and TifBERT re-confirmed present, nothing newer).
 
 **Provenance convention.** Entries marked **[verified]** were checked against an
 official paper page (publisher/proceedings/OpenReview/arXiv) on 2026-07-15. Entries
@@ -240,6 +247,19 @@ biological programs rather than technical variables, and predict measured transf
   390M-cell scale. Its purpose and representation differ, but it makes both "MoE for
   transcriptomics" and sparse expert scaling non-novel; our differentiator must be a
   controlled biological measurement, not architecture transfer.
+- **[verified]** [*GenoME: a MoE-based generative model for individualized, multimodal
+  prediction and perturbation of genomic profiles*](https://doi.org/10.64898/2025.12.28.696482)
+  — Wei, Xue, Chai, and Gao, bioRxiv 2025. MoE over DNA sequence + cell-type ATAC-seq
+  to predict a unified epigenome/transcriptome/3D-conformation profile with in-silico
+  perturbation. Different task (sequence-to-function regulatory genomics, not sample
+  routing), but further establishes that "MoE for genomics/transcriptomics" is occupied.
+- **[verified]** [*GatorSC: Multi-Scale Cell and Gene Graphs with Mixture-of-Experts
+  Fusion for Single-Cell Transcriptomics*](https://doi.org/10.64898/2025.12.03.691688)
+  — Liu et al., bioRxiv 2025 (→ Brief. Bioinform. 2026). MoE is used as a *fusion*
+  gate over cell/gene graph views for self-supervised scRNA-seq representation, not as
+  organ/tissue experts. Reinforces that sparse-expert transcriptomic representation
+  learning is occupied; our differentiator is the controlled organ measurement, not the
+  architecture.
 - **[verified]** [*scMoE: single-cell mixture of experts for learning hierarchical,
   cell-type-specific, and interpretable representations from heterogeneous scRNA-seq
   data*](https://doi.org/10.1101/2024.10.24.620111) — Huang and Li, bioRxiv/ACM-BCB
@@ -252,13 +272,46 @@ biological programs rather than technical variables, and predict measured transf
   optimization conflict and interpretability across single-cell modalities/tasks.
   Distinguish the proposed single-modality bulk reconstruction setting and its
   independently tested route-to-transfer link.
-- **[verified]** [*Transcriptomic age prediction using mixture-of-experts models
-  reveals tissue-specific aging signatures in large-scale human RNA-sequencing
-  data*](https://www.medrxiv.org/content/10.1101/2025.06.28.25330474v1.full) —
-  medRxiv 2025. Applies learned gating and age-range experts to ARCHS4 bulk data and
-  reports tissue-specific interpretation. Audit its split design and evidentiary
-  quality before citing claims, but it already blocks a blanket "first MoE on bulk
-  ARCHS4 with tissue-specific insight" statement.
+- **[verified — CLOSEST BULK-ARCHS4 COMPETITOR; full text read 2026-07-16, PDF backed
+  up at `backups/literature/quill-2025-age-moe-archs4.pdf`]**
+  [*Transcriptomic age prediction using mixture-of-experts models reveals tissue-
+  specific aging signatures in large-scale human RNA-sequencing data*](https://www.medrxiv.org/content/10.1101/2025.06.28.25330474v1.full)
+  — Quill, Agarwal, Li, Patil, Kassis, and Gopinath (**Biostate AI**), medRxiv 2025.
+  MoE on ARCHS4 (~56,877 bulk human RNA-seq samples, ages 2–114, diverse tissues);
+  R²=0.812, MAE=7.58 yr; per-organ R² lung 0.828, brain 0.822, blood 0.802, colon
+  0.772, liver 0.673; top features FOSB / C4B_2 / PAX8-AS1 / MT-RNR2 / GFAP.
+
+  **What overlaps (this is the entry that blocks an architecture-first claim):**
+  (1) same dataset (ARCHS4 bulk), same "MoE on bulk human RNA-seq" framing;
+  (2) a *learned* gating network routing per sample;
+  (3) explicit **tissue-/organ-stratified performance reporting** and a **cross-organ
+  transfer/"transferability" analysis** (their Fig 7B: lung↔brain ≈0.8, liver reduced)
+  — this is the nearest existing thing to our D1 organ-transfer/interference matrix.
+  → Blocks "first MoE on bulk ARCHS4 with tissue-specific insight" AND weakens a naive
+  "we discover organ transfer structure" framing. Must be cited and distinguished.
+
+  **What does NOT overlap (our differentiators — lead with these):**
+  (a) **Experts partition on AGE, not organ** — three age-range submodels (0–60 / 60–80
+  / 80+, i.e. young n=6,236 / middle n=2,477 / old n=601). We route to *organ* experts.
+  (b) **Supervised age target**, not label-free reconstruction; they do not test whether
+  routes *emerge* to match organs without label supervision (our D2 core).
+  (c) **No cross-study / cross-cohort split** — the split is age-stratified random
+  (train 34,125 / val 11,376 / test 11,375, matched on age mean/SD only). Same-study
+  samples can leak across train/test, so their per-organ R² and "transferability" are
+  within-distribution — exactly the cross-study confound flagged in block B2
+  (Bernau 2014; Nygaard 2016). Our connected-study splits are a rigor differentiator.
+  (d) Their **cross-organ transfer is post-hoc transfer of one supervised age model**,
+  NOT interference *induced by jointly training organ experts*, and comes with no
+  geometry/PCA control or counterfactual expert-advantage test.
+
+  **Evidentiary-quality caveat:** industry preprint with low-rigor signals — internal
+  sample-count inconsistency (56,877 vs 56,876), informal/uncheckable citations
+  ("David Sinclair's epigenetic clock"; Jeong 2025; Diamandis & Romanni 2023),
+  generic AI-style figure captions, single-sample "110s decade," and no cross-study
+  control. Cite it as *precedent that the space is occupied*, but its specific
+  aging-signature and transfer claims are not a strong result to benchmark against;
+  our contribution is to do the organ measurement *properly* (cross-study, controlled,
+  label-free), which this paper does not.
 
 - **[verified]** *The Illusion of Specialization: Unveiling the Domain-Invariant
   "Standing Committee" in Mixture-of-Experts Models* — arXiv 2601.03425 (2026).
@@ -284,6 +337,26 @@ biological programs rather than technical variables, and predict measured transf
   similarity may follow hidden-state geometry without semantic expert functions.
   Compare route partitions with simple input/PCA/trunk-geometry clusters and measure
   counterfactual expert advantage before using the word specialization.
+- **[verified]** [*Equifinality in Mixture of Experts: Routing Topology Does Not
+  Determine Language Modeling Quality*](https://arxiv.org/abs/2604.14419) —
+  Ternovtsii and Bilak, arXiv 2604.14419 (2026). Hash and frozen-random routing land
+  within ~1–2 PPL of learned routing; different seeds/topologies converge to
+  functionally overlapping experts through unrelated weights. Strongest new caution
+  for D2: reinforces that routing structure can reflect geometry/optimization rather
+  than domain, so route partitions need geometry/PCA controls and counterfactual
+  expert-advantage tests before "specialization" is claimed.
+- **[verified]** *The Expert Strikes Back: Interpreting Mixture-of-Experts Language
+  Models at Expert Level* — arXiv 2604.02178 (2026). Expert-level interpretability
+  method; a tooling/framing neighbor for the "do experts specialize by organ" analysis.
+- **[verified]** *How Many Experts Are Enough? Towards Optimal Semantic Specialization
+  for Mixture-of-Experts* — arXiv 2512.19765 (2025). Frames semantic differentiation
+  among experts as the design objective; relevant to justifying the K-expert choice.
+- **[verified]** *STAR: Rethinking MoE Routing as Structure-Aware Subspace Learning* —
+  arXiv 2606.08814 (2026). Ties routing stability to principal subspaces — another
+  "geometry drives routing" data point for the D2 controls.
+- **[verified]** *Input Domain Aware MoE: Decoupling Routing Decisions from Task
+  Optimization in Mixture of Experts* — arXiv 2510.16448 (2025). Decouples routing
+  from task optimization; general-ML analogue of label-free vs. label-aligned routing.
 - **[verified]** [*Improving Expert Specialization in Mixture of
   Experts*](https://arxiv.org/abs/2302.14703) — Krishnamurthy, Watkins, and Gaertner,
   arXiv 2302.14703 (2023). Vanilla MoE does not guarantee intuitive decompositions or

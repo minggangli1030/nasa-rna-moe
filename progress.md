@@ -869,6 +869,80 @@ before metadata association, require within-study and cross-study replication, a
 compare against PCA/NMF/clustering baselines. Do not start this branch until the relevant
 metadata are curated well enough to distinguish biology from study design.
 
+### D4 — Spaceflight organ-perturbation localizer (NASA transfer to OSDR)
+
+The NASA-facing application arm. Prepared during Stage 1; run only once audited organ
+experts exist and after Stage 1 test decisions are frozen. Added 2026-07-16.
+
+**Scientific aim.** Reuse the Stage 1 ground-trained organ experts as instruments to
+localize *where and how* the spaceflight transcriptome departs from its terrestrial
+organ baseline. Ground ARCHS4 organ experts supply a well-powered, organ-conditional
+expectation; applied to NASA OSDR/GeneLab flight samples and their matched ground
+controls, the structured, control-subtracted reconstruction residual becomes a
+per-organ, per-pathway measure of spaceflight perturbation. This turns NASA's actual
+data reality (huge ground corpus, tiny space corpus, no need for flight labels) into
+the method's strength.
+
+**Why this is not just "how good is the expert."** Absolute reconstruction error on a
+flight sample is dominated by the expert's intrinsic quality (the liver expert is weak
+regardless of spaceflight) and by space-vs-ground batch. The estimand must cancel both.
+Decompose per-sample masked error as `expert_floor(organ) + batch(cohort) +
+biology(condition) + noise`. `expert_floor` is identical for flight and matched control,
+so it cancels in a within-expert, within-tissue contrast; organs are ranked by the
+control-subtracted delta, never by absolute error.
+
+**Estimand (freeze before results).** For organ/expert `e`, with flight set `F_e` and
+matched ground-control set `C_e` from the same OSDR study/processing:
+
+```text
+Delta_e = z_e(residual(F_e)) - z_e(residual(C_e))
+```
+
+where `z_e` standardizes against expert `e`'s held-out ground residual distribution
+(so "liver expert is bad" is already in the null). `Delta_e > 0` means flight departs
+from the organ baseline more than its own ground control does. Characterize the residual
+as a gene/pathway vector, not only a scalar: a real perturbation produces reproducible,
+pathway-coherent residuals across flight replicates; a merely weak expert produces
+high-variance unstructured residuals. Report a router-shift readout (did the gate
+reassign the flight sample vs ground samples of that tissue?) separately from the
+reconstruction residual — input geometry moving is a distinct axis from expert failure.
+
+**Win condition and the null.** Good reconstruction of flight data is the *null*, not the
+result: if the ground expert reconstructs flight perfectly, flight looks like ground and
+no effect is detected. The signal is differential, structured reconstruction failure that
+is larger and more coherent under flight than under matched control. Never frame "we can
+reconstruct spaceflight transcriptomes" as success.
+
+**Controls (mandatory).**
+
+1. Matched ground control per flight sample (habitat/vivarium controls, shared
+   processing). No control pairing -> no claim.
+2. Ground-vs-ground negative control: run the identical pipeline on two ground cohorts
+   from different labs/platforms; the flight delta must exceed this batch-only delta.
+3. Benchmark against plain flight-vs-control differential expression (limma/DESeq2) on
+   the same OSDR study. The model only earns its place if borrowing strength from the
+   ground corpus gives a better-powered, better-calibrated, cross-organ-comparable
+   perturbation readout than tiny-study DE. If DE matches it, report that the model adds
+   nothing.
+
+**Feasibility / reuse.** Largely an inference-time analysis on top of existing machinery:
+`train_moe.py` already computes per-expert, per-variant masked-MSE, which is the exact
+primitive the residual score generalizes. Requires audited Stage 1 organ experts; an
+OSDR/GeneLab flight+matched-control cohort with tissue labels mapped to the expert organ
+set and to the ARCHS4 gene space; and confirmation of matched-tissue counts (check the
+OSDR catalog before committing — human matched tissue is scarce; rodent missions carry
+most matched multi-organ samples).
+
+**Novelty boundary.** Routing/residual as an OOD/anomaly signal is established in ML
+(vision-FM+MoE OOD 2510.10584, MoECLIP, the DLR multimodal-anomaly MoE) and is NOT novel
+as a mechanism. Spaceflight transcriptomics ML exists but is task-specific (npj
+Microgravity 2026 retinal-damage ensemble; NASA GeneLab authors) or non-MoE
+representation learning on plants (GLARE, in `related-works.md` block C). The open
+contribution is the rigorous biological application — ground-pretrained organ experts as
+a control-subtracted, cross-study, pathway-resolved spaceflight-perturbation localizer on
+OSDR — not the anomaly mechanism. Positions naturally with D1: do organs that are coupled
+in the interference graph also co-respond to spaceflight?
+
 ### Ordered Stage 1 -> Stage 2 execution
 
 1. **Cohort feasibility and audit:** retain auditable metadata, validate labels, and
