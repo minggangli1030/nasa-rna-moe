@@ -8,7 +8,7 @@ This repo is a personal, standalone continuation of the MoE work originally deve
 
 Active development, running on Jetstream Cloud VMs (not Savio — see `progress.md` for the environment and current instance assignments). Large generated datasets, local W&B run directories, full checkpoints, and scratch parquet files are intentionally excluded from Git; small reference gene files needed to run the pipeline are kept.
 
-**Current stage (2026-07-16):** Stage 0 (the inherited interspecies work) is completing its final fair-baseline control: a globally shuffled 20k pooled human-mouse retrain. Stage 1 (the first original summer work, a fair human-organ MoE) has a five-organ pipeline pilot frozen, but its current definitive decision is **NO-GO**: the cohort needs label cleanup and expansion before biological training claims; only progressive smoke and feasibility testing is authorized. Stage 2 is the gated discovery phase: selected directed-transfer confirmations plus label-free MoE routing, with a full organ matrix only if data, variance, and compute justify it. The authoritative dated status is in `progress.md`; concrete Stage 1/2 gates and planned commands are in `stage1-stage2-experiment-plan.md`; results live in `report.md`; prior art lives in `related-works.md`.
+**Current stage (2026-07-16):** Stage 0 (the inherited interspecies work) is completing its final fair-baseline control: a globally shuffled 20k pooled human-mouse retrain. Stage 1 (the first original summer work, a fair human-organ MoE) now has a synthetic-tested, manifest-driven five-organ smoke path, but its current definitive decision is **NO-GO**: the cohort needs label cleanup and expansion before biological training claims. The present 220-per-organ balanced protocol is for software validation only. Stage 2 is the gated discovery phase: selected directed-transfer confirmations plus label-free MoE routing, with a full organ matrix only if data, variance, and compute justify it. The authoritative dated status is in `progress.md`; concrete Stage 1/2 gates and commands are in `stage1-stage2-experiment-plan.md`; results live in `report.md`; prior art lives in `related-works.md`.
 
 **Vocabulary:** `Stage` denotes the research phase: **Stage 0 = inherited human/mouse/mixed completion**, **Stage 1 = organ-specialization tests**, and **Stage 2 = transfer-validated label-free discovery**. `V1`, `V2`, and `V3` independently denote data/model/debugging generations inside Stage 0 and are never renumbered. `D1`, `D2`, and `D3` denote candidate research directions, not stages.
 
@@ -27,10 +27,10 @@ The project studies masked reconstruction of bulk RNA-seq expression and, on top
 
 The repository pipeline is organized into four code components—not research stages. See `progress.md` for the full directory tree and import notes.
 
-- **`preprocessing/`** — `preprocessing.py` streams ARCHS4 H5 matrices, applies QC, converts counts to TPM, applies `log1p`, aligns orthologous genes, and writes parquet batches. `merge.py` merges parquet batches into an `expression.parquet` per dataset variant.
-- **`core/`** — `train_single.py` trains one SLiMPerformer variant with distributed data parallelism; the variant is selected by `DATASET_VARIANT`. `slim_performer_model.py` and `numerator_and_denominator.py` implement the SLiMPerformer attention machinery. `train_moe.py` trains a lightweight gate over frozen experts when the experts share a compatible gene order.
-- **`evaluation/`** — `evaluate_osdr.py` evaluates checkpoints on OSDR with several masking strategies; `check_alignment.py`, `analyze_moe_headroom.py`, `check_moe_gene_counts.py` are diagnostic scripts.
-- **`runs/`** — plain-bash launcher scripts, one per variant, that tie the above together end to end.
+- **`preprocessing/`** — `preprocessing.py` builds the Stage 0 sampled datasets. `extract_manifest_expression.py` instead extracts the exact Stage 1 manifest IDs, verifies their frozen split/provenance, and writes canonical-gene raw TPM so the trainer applies `log1p` exactly once.
+- **`core/`** — `train_single.py` trains the Stage 0 variants with distributed data parallelism. `train_manifest.py` is the deterministic Stage 1 trainer: it accepts explicit splits and roles, fixed update budgets, balanced sampling, and frozen prediction exports. `slim_performer_model.py` and `numerator_and_denominator.py` implement the SLiMPerformer attention machinery.
+- **`evaluation/`** — Stage 0 diagnostics coexist with the Stage 1 balanced-protocol builder, prediction cache, five-class blind router, pooled/fixed/true-organ/oracle/random-control evaluator, and automatic decision script.
+- **`runs/`** — fail-fast launchers tie each workflow together. `run_organ_smoke.sh` exercises the entire Stage 1 mechanical path and marks its output `SMOKE_ONLY` so it cannot be mistaken for biological evidence.
 
 ## Key Findings
 
@@ -54,7 +54,7 @@ All three experts use the shared 15,448-gene vocabulary from `preprocessing/comp
 | Stage | State |
 | --- | --- |
 | Stage 0 — interspecies routing | Complete; one shuffled pooled-baseline control still running |
-| Stage 1 — human-organ MoE | Pipeline pilot only; current definitive decision is NO-GO pending label cleanup, cohort expansion, and missing manifest-aware training/evaluation infrastructure |
+| Stage 1 — human-organ MoE | End-to-end smoke code implemented and synthetic-tested; definitive decision remains NO-GO pending label cleanup, cohort expansion, five-way lockbox splitting, and multi-seed evidence |
 | Stage 2 — transfer + label-free structure | Conditional after Stage 1; selected edges first, full matrix only if gated; see `progress.md` §"Stage 2 Research Direction" |
 
 See `progress.md` for live run status, the completion runbooks, and per-instance quirks.
@@ -78,7 +78,7 @@ See `progress.md` for live run status, the completion runbooks, and per-instance
 ├── results/                     # Evaluation output (gitignored, symlinked to a volume)
 ├── checkpoints/, checkpoints_moe/  # Model weights (gitignored, symlinked to a volume)
 ├── progress.md                   # Repo orientation + current status and archived milestones
-├── stage1-stage2-experiment-plan.md # Organ/discovery gates + planned implementation/run commands
+├── stage1-stage2-experiment-plan.md # Stage 1 runnable smoke/gates + planned Stage 2 commands
 └── presentation/                # Biweekly progress-report slides (HTML)
 ```
 
@@ -115,6 +115,17 @@ Evaluate an MoE gate once trained:
 ```bash
 python evaluation/evaluate_osdr_moe.py --gate checkpoints_moe/best_gate.pt
 ```
+
+Check the Stage 1 five-organ smoke environment without launching training:
+
+```bash
+runs/run_organ_smoke.sh --preflight
+```
+
+The launcher will not run by default until the Stage 0 shuffled-control evaluation
+has written its completion marker. Its current five-organ input is deliberately
+balanced to 220 training samples per organ and is an engineering smoke cohort, not
+a definitive biological dataset.
 
 ## Notes
 

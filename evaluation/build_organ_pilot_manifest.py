@@ -157,7 +157,8 @@ def build_manifest(frame: pd.DataFrame, args) -> tuple[pd.DataFrame, dict]:
     ).reset_index(drop=True)
     columns = [
         "sample_id", "organ", "series_group_id", "split", "label_evidence",
-        "series_id", "source_name", "title", "single_cell_probability", "tumor_like",
+        "series_id", "source_name", "title", "characteristics",
+        "single_cell_probability", "tumor_like",
     ]
     selected = selected[[column for column in columns if column in selected.columns]]
 

@@ -11,8 +11,8 @@ Stage 0 shuffled-pooled control must complete and be evaluated according to
 
 This is the implementation contract for deciding whether the basic human-organ MoE
 works and, only then, running the transfer-validated label-free routing experiment.
-It intentionally separates commands that exist today from proposed commands that
-must be implemented and tested before use.
+It separates the implemented Stage 1 mechanical-smoke path from definitive-cohort
+and Stage 2 commands that still require data work or code.
 
 ## Current decision: Stage 1 definitive run is NO-GO
 
@@ -23,16 +23,66 @@ The checked-in `K=5` manifest is useful for pipeline development only.
 - Each organ has only 7-15 final-test connected study groups.
 - At least 94 of 2,856 rows match obvious missed exclusions such as `GBM`,
   `glioblastoma`, `U87`, `cell_line`, `organoids`, `HSAEpC`, or `cancerous`.
-- There is no manifest-driven extractor/trainer, deterministic organ prediction
-  cache/evaluator, random-shard campaign, blind-organ gate, or Stage 1 launcher.
-- `core/train_single.py` creates its own random row split, does not consume the
-  organ manifest, does not initialize all Torch/NumPy RNGs, and regenerates
-  validation masks. A result produced by it directly would not answer Stage 1.
+- The complete manifest-driven mechanical-smoke stack now exists: exact extraction,
+  deterministic training, balanced random shards, frozen prediction cache, five-class
+  blind gate, full comparison ladder, decision code, and fail-fast launcher. It has
+  passed an end-to-end synthetic run but has not yet run on the remote ARCHS4 H5.
+- `core/train_single.py` remains unsuitable for Stage 1 because it creates its own
+  random row split. Stage 1 uses `core/train_manifest.py` instead.
 - `core/train_moe.py` is an older gate over three frozen 5k species experts. It is
   not the shared-trunk latent MoE required for Stage 2.
 
 The current cohort may be used for schema and one-epoch smoke tests. Its losses must
 not be interpreted as biological evidence.
+
+### Why the current cohort is small, and how imbalance is controlled
+
+ARCHS4 itself is not small. The mounted human v11 H5 contains 441,356 samples and
+35,238 gene rows; the current official human gene-level release lists 1,093,742
+samples. The conservative local audit retained only 14,096/441,356 rows (3.2%):
+195,698 were removed by the single-cell-probability filter, 165,331 as cell/culture-
+like, and 66,231 because the current free-text metadata did not support one clear
+organ assignment. The shortage is therefore validated bulk-tissue labels and
+independent studies per organ, compounded by an older local snapshot—not raw ARCHS4
+expression. See the [ARCHS4 downloads](https://archs4.org/download) and
+[tissue-atlas help](https://archs4.org/help) pages.
+
+ARCHS4 does provide a tissue atlas, but its tissue groups are a derived search/atlas
+layer over GEO metadata rather than a sample-level ground-truth organ field in this
+H5. Use those groups to expand candidate retrieval, then verify source metadata and
+ontology mappings before freezing scientific labels.
+
+The smoke comparison prevents brain prevalence from dominating:
+
+- select exactly 220 training rows from each of five organs, spread across studies;
+- train five random controls of 220 rows each, every one containing exactly 44 rows
+  from each organ;
+- use the same organ/study-balanced sampling rule for pooled, specialist, and random
+  models, plus equal-organ/equal-study checkpoint selection;
+- fit the blind router with balanced class weights and equal-study weights; and
+- make equal-organ/equal-study test MSE primary while retaining the natural sample
+  distribution only as a secondary sensitivity analysis.
+
+Balancing makes the comparison fair. It cannot create label precision, additional
+independent studies, or statistical power, which is why the same cohort remains a
+mechanical smoke rather than a biological experiment.
+
+After the smoke, label recovery should proceed as a separate data track:
+
+1. export ARCHS4 atlas assignments and all local `source_name`, title, and
+   `characteristics` fields for unmatched/ambiguous samples;
+2. normalize explicit anatomy terms to a frozen UBERON-style organ hierarchy and keep
+   disease/tumor/cell-source status as separate fields rather than mixing it into organ;
+3. query original GEO sample/study metadata only where the local H5 text is missing or
+   contradictory;
+4. assign `high_confidence`, `ambiguous`, and `unlabeled` tiers with a reason/provenance
+   trail, never silently force a label; and
+5. give the PI a compact policy sheet for biologically consequential edge cases—such
+   as diseased non-tumor tissue, adjacent anatomy, and tissue-derived primary cells—
+   after automated reconciliation has reduced the review burden.
+
+Only high-confidence rows enter the definitive cohort. The current smoke does not wait
+for this track because it tests software structure, not the biological hypothesis.
 
 ## Stage 1 decision boundary
 
@@ -165,12 +215,16 @@ random sharding and study leakage.
 
 | Purpose | Current file | Limitation |
 |---|---|---|
-| Conservative metadata audit | `evaluation/audit_archs4_organs.py` | Regex labels still miss known tumor/cell-source terms |
-| Pilot manifest and connected-group split | `evaluation/build_organ_pilot_manifest.py` | Three splits only; pilot thresholds; removes all multi-organ groups |
-| Backbone/model template | `core/train_single.py` | Random row split; not manifest-aware or fully deterministic |
-| Statistical helpers | `evaluation/headroom_metrics.py` | Reusable, but no organ evaluator calls them yet |
-| Blind-gate template | `evaluation/evaluate_blind_species_gate.py` | Binary species-specific implementation |
-| Tests | `tests/test_organ_audit.py`, `tests/test_organ_pilot_manifest.py` | Unit coverage only, not an end-to-end Stage 1 path |
+| Conservative metadata audit | `evaluation/audit_archs4_organs.py` | Expanded tumor/cell exclusions and retained characteristics; regex labels still need manual/ontology validation |
+| Pilot manifest and connected-group split | `evaluation/build_organ_pilot_manifest.py` | Three splits and pilot thresholds; current frozen pilot removed multi-organ groups |
+| Balanced smoke/random protocol | `evaluation/build_balanced_organ_protocol.py` | Exactly 220 rows per organ; intentionally underpowered for biological inference |
+| Exact expression extraction | `preprocessing/extract_manifest_expression.py` | Reads the frozen manifest and v11 H5; current definitive cohort is not ready |
+| Deterministic role-aware training | `core/train_manifest.py` | Implements pooled/organ/random Stage 1 roles; Stage 2 transfer/latent roles remain planned |
+| Prediction identity/cache | `evaluation/cache_organ_predictions.py` | Closed-cohort smoke contract; definitive external/unknown-organ handling remains |
+| Five-class routing and comparison ladder | `evaluation/evaluate_organ_moe.py` | One report per training seed; smoke results are not decision evidence |
+| Frozen decision rules | `evaluation/decide_organ_specialization.py` | Definitive use requires three independent seed reports |
+| End-to-end smoke launcher | `runs/run_organ_smoke.sh` | Waits for Stage 0 by default and writes `SMOKE_ONLY`; no definitive launcher yet |
+| Tests | `tests/test_*organ*`, `tests/test_extract_manifest_expression.py`, `tests/test_train_manifest.py` | Synthetic end-to-end path passes; the real H5 smoke is the next integration check |
 
 The currently runnable audit commands are:
 
@@ -192,6 +246,17 @@ python3 evaluation/build_organ_pilot_manifest.py \
 
 The `300` threshold is explicitly a pipeline-pilot threshold, not the definitive
 post-split 1,000-training-row rule.
+
+Preflight the implemented smoke without bypassing the Stage 0 execution gate:
+
+```bash
+runs/run_organ_smoke.sh --preflight
+```
+
+While Stage 0 is still running, `--preflight --allow-stage0-incomplete` may be used
+only to inspect dependencies and paths. Do not use that override to launch the actual
+smoke. After Stage 0 evaluation writes its completion marker, the default launcher
+builds a timestamped, non-overwriting result directory and exercises the full path.
 
 ### Progressive Stage 1 pilot approved before definitive training
 
@@ -216,39 +281,38 @@ partitions, including a never-inspected discovery lockbox. A failure at rung 1 o
 blocks scale because the implementation is invalid. A weak rung-3 effect blocks a
 long campaign under the current design, but is not a powered biological null.
 
-### Must be implemented before Stage 1 can decide anything
+### Implemented smoke stack and remaining definitive work
 
-These names define the intended interfaces; the files do not exist yet.
+Implemented on 2026-07-16:
 
-1. `preprocessing/extract_manifest_expression.py`
-   - extract exact sample IDs from ARCHS4 into the shared 15,448-gene TPM space;
-   - fail on missing/duplicate IDs or gene-order mismatch;
-   - write sample/gene/source hashes.
-2. `evaluation/build_organ_manifest.py`
-   - create model-train, model-validation, gate-calibration, final-test, and
-     discovery-lockbox partitions at connected-study level;
-   - create matched random shards without changing counts or study composition.
-3. `core/train_manifest.py`
-   - accept explicit manifest IDs and model role (`pooled`, `organ`, `random`,
-     `same_organ_control`, `cross_organ_pair`);
-   - globally shuffle individual samples;
-   - use explicit seeds, fixed validation masks, fixed sample/update budgets, and
-     best/last-only retention by default.
-4. `evaluation/cache_organ_predictions.py`
-   - evaluate every model on the same frozen masks and write per-sample/per-gene
-     predictions plus metadata and hashes.
-5. `evaluation/evaluate_organ_moe.py`
-   - compute pooled, random fixed/oracle, organ fixed, true-organ hard/soft, blind
-     top-1/soft, and soft oracle comparisons with study+seed uncertainty.
-6. `evaluation/decide_organ_specialization.py`
-   - apply the frozen gates above and emit `green`, named `amber`, or `red` without
-     manual judgment after test access.
-7. `runs/run_organ_smoke.sh` and `runs/run_organ_definitive.sh`
-   - versioned, fail-fast orchestration; never overwrite prior artifacts.
+1. `preprocessing/extract_manifest_expression.py` — exact IDs, canonical-gene TPM,
+   provenance hashes, split checks, and fail-loud expression QC.
+2. `evaluation/build_balanced_organ_protocol.py` — equal organ subsets plus size- and
+   mixture-matched random shards while retaining natural-frequency rows.
+3. `evaluation/filter_manifest_by_expression_qc.py` — explicit two-pass removal and
+   rebalance if the extractor identifies low-information profiles.
+4. `core/train_manifest.py` — explicit splits, seeded pooled/organ/random roles, fixed
+   masks/updates, best/last retention, balanced validation, and prediction export.
+5. `evaluation/cache_organ_predictions.py` and `evaluation/evaluate_organ_moe.py` —
+   frozen masks/cache plus pooled, random, fixed, true-organ, blind, and oracle tests.
+6. `evaluation/decide_organ_specialization.py` — frozen green/amber/red rules across
+   independent seed reports.
+7. `runs/run_organ_smoke.sh` — versioned, fail-fast, non-overwriting orchestration.
 
-Required tests include exact ID extraction, five-way split leakage, mask determinism,
-complete RNG provenance, target-hidden routing, random-shard matching, three-seed
-aggregation, and every decision branch.
+The local suite passes 70 tests, including exact extraction, split leakage, RNG/mask
+determinism, random-shard matching, target-hidden routing, cache identity, evaluator
+comparisons, decision branches, and launcher guards. A synthetic mini-H5 was run
+through extraction, all model roles, caching, blind routing, and report generation.
+
+Still required before Stage 1 can make a definitive decision:
+
+1. expand and manually/ontology validate the human bulk-organ cohort;
+2. implement/freeze `evaluation/build_organ_manifest.py` with separate model-train,
+   model-validation, gate-calibration, final-test, and discovery-lockbox studies;
+3. add calibrated abstention/pooled fallback and efficiency/latency measurement;
+4. add `runs/run_organ_definitive.sh`, persistent remote artifact handling, and the
+   exact three-seed campaign; and
+5. run the real-H5 mechanical smoke, then the preregistered two-organ variance pilot.
 
 ## Planned Stage 2 code
 
@@ -272,7 +336,8 @@ Implement and unit-test the named files before launching GPU work.
 3. `evaluation/select_transfer_pairs.py`
    - select a frozen small set of strongest positive, strongest negative, and near-zero
      unordered pairs from development data without lockbox access.
-4. Reuse `core/train_manifest.py` for same-organ controls and selected cross-organ pairs.
+4. Extend `core/train_manifest.py` with `same_organ_control` and `cross_organ_pair`
+   roles, then reuse it for same-organ controls and selected cross-organ pairs.
 5. `evaluation/evaluate_transfer.py`
    - compute raw and controlled directed transfer on discovery-lockbox studies;
    - combine clustered-study and training-seed uncertainty; apply the frozen practical
@@ -304,15 +369,19 @@ values before test access if desired; never choose seeds from observed results.
 ### 0. Machine-readable Stage 1 decision
 
 ```bash
-# PLANNED — evaluation/decide_organ_specialization.py does not exist yet.
+# IMPLEMENTED — repeat --report once per independent definitive training seed.
 python3 evaluation/decide_organ_specialization.py \
-  --report results/stage1_organ_definitive/report.json \
+  --report results/stage1_organ_definitive/seed17/report.json \
+  --report results/stage1_organ_definitive/seed42/report.json \
+  --report results/stage1_organ_definitive/seed101/report.json \
   --output artifacts/stage1_organ_definitive/decision.json
 ```
 
 - `green`: continue with selected transfer and frozen-trunk latent MoE.
 - `amber_router`: run transfer only; pause label-free interpretation.
 - `amber_axis`: at most run the small shared-trunk feasibility pilot.
+- `amber_ensemble`: retain only the mechanistic ensemble result; do not claim a
+  better practical system.
 - `red`: stop.
 
 ### 1. Freeze equal-budget transfer blocks before screening

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "seed": 314159,
+  "train_split": "train",
+  "organs": [
+    "brain",
+    "colon",
+    "liver",
+    "lung",
+    "skin"
+  ],
+  "n_organs": 5,
+  "target_per_organ": 220,
+  "available_train_counts": {
+    "brain": 783,
+    "colon": 220,
+    "liver": 345,
+    "lung": 241,
+    "skin": 409
+  },
+  "balanced_train_counts": {
+    "brain": 220,
+    "colon": 220,
+    "liver": 220,
+    "lung": 220,
+    "skin": 220
+  },
+  "random_shard_counts": {
+    "random_0": 220,
+    "random_1": 220,
+    "random_2": 220,
+    "random_3": 220,
+    "random_4": 220
+  },
+  "random_shard_source_organ_counts": {
+    "random_0": {
+      "brain": 44,
+      "colon": 44,
+      "liver": 44,
+      "lung": 44,
+      "skin": 44
+    },
+    "random_1": {
+      "brain": 44,
+      "colon": 44,
+      "liver": 44,
+      "lung": 44,
+      "skin": 44
+    },
+    "random_2": {
+      "brain": 44,
+      "colon": 44,
+      "liver": 44,
+      "lung": 44,
+      "skin": 44
+    },
+    "random_3": {
+      "brain": 44,
+      "colon": 44,
+      "liver": 44,
+      "lung": 44,
+      "skin": 44
+    },
+    "random_4": {
+      "brain": 44,
+      "colon": 44,
+      "liver": 44,
+      "lung": 44,
+      "skin": 44
+    }
+  },
+  "random_shard_connected_study_counts": {
+    "random_0": 147,
+    "random_1": 146,
+    "random_2": 145,
+    "random_3": 146,
+    "random_4": 145
+  },
+  "random_shard_counts_by_split": {
+    "calibration": {
+      "random_0": 86,
+      "random_1": 86,
+      "random_2": 86,
+      "random_3": 85,
+      "random_4": 86
+    },
+    "test": {
+      "random_0": 86,
+      "random_1": 86,
+      "random_2": 86,
+      "random_3": 85,
+      "random_4": 86
+    },
+    "train": {
+      "random_0": 220,
+      "random_1": 220,
+      "random_2": 220,
+      "random_3": 220,
+      "random_4": 220
+    }
+  },
+  "balanced_sample_id_sha256": "b977fa9857e869216cbc9b5526177489599e668106ca0dbc8b3f92e2fcbc1160",
+  "random_shard_assignment_sha256": "ffc4ef4e46868915730d5f2a6d880c4ec5f3f1dcb09467c10d55929f1d32ee55",
+  "natural_rows_retained": 2856,
+  "notes": [
+    "balanced_train is the primary class-balanced protocol subset",
+    "organ_balanced_weight supports a full-union balanced-sampling sensitivity run",
+    "natural class frequencies are retained for secondary evaluation"
+  ]
+}

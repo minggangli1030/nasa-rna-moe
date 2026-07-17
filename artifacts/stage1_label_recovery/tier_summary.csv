@@ -1,0 +1,16 @@
+organ,uberon_id,n_high_confidence,n_ambiguous,n_series_high_confidence,meets_min_training_rows,meets_min_series
+brain,UBERON:0000955,3247,11554,111,True,True
+adipose,UBERON:0001013,2539,603,76,True,True
+liver,UBERON:0002107,2484,6751,97,True,True
+skin,UBERON:0002097,2379,7216,114,True,True
+skeletal_muscle,UBERON:0001134,1949,209,65,True,True
+colon,UBERON:0001155,1217,4793,84,True,True
+heart,UBERON:0000948,1215,3298,87,True,True
+kidney,UBERON:0002113,854,4547,74,False,True
+lung,UBERON:0002048,707,10177,82,False,True
+pancreas,UBERON:0001264,639,16815,41,False,True
+placenta,UBERON:0001987,421,595,49,False,True
+prostate,UBERON:0002367,257,2765,27,False,False
+breast,UBERON:0000310,216,10535,22,False,False
+testis,UBERON:0000473,107,989,26,False,False
+ovary,UBERON:0000992,100,1995,23,False,False

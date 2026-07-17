@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "human_h5": "/media/volume/moe-reboot/archs4/human_matrix_v11.h5",
+  "n_samples": 441356,
+  "text_fields": [
+    "geo_accession",
+    "series_id",
+    "source_name_ch1",
+    "title",
+    "characteristics_ch1",
+    "molecule_ch1",
+    "organism_ch1",
+    "library_strategy",
+    "library_source",
+    "library_selection",
+    "platform_id",
+    "instrument_model",
+    "last_update_date",
+    "submission_date",
+    "taxid_ch1"
+  ],
+  "numeric_fields": [
+    "singlecellprobability",
+    "readsaligned",
+    "readstotal"
+  ],
+  "missing_fields": [],
+  "geo_accession_sha256": "784035aa00284f2a8c0c500a391f88d9c6986621c22dd7f622a06284d731eba0",
+  "source": {
+    "n_samples": 441356,
+    "version": "11",
+    "creation-date": "11/13/21"
+  },
+  "output_parquet": "/home/exouser/nasa-rna-moe/artifacts/stage1_label_recovery/human_sample_metadata.parquet",
+  "note": "Read-only ARCHS4 meta/samples snapshot for the Stage 1 label-recovery track. Expression matrix was not read."
+}

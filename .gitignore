@@ -21,6 +21,7 @@ data/*
 !data/ensembl/
 !data/gencode/
 !data/osdr/
+!data/ontology/
 data/osdr/raw/
 data/osdr/*.parquet
 datasets/

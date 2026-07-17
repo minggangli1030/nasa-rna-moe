@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-16 14:57 PDT / 2026-07-16 21:57 UTC
+**Last updated:** 2026-07-16 19:05 PDT / 2026-07-17 02:05 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -12,6 +12,22 @@ work, and **Stage 2** is transfer-validated label-free discovery. `V1/V2/V3`
 remain independent data/model/debugging generations inside Stage 0; they are not
 renumbered. `D1/D2/D3` remain candidate research directions.
 
+## PI meeting agenda (next meeting ~2026-07-30)
+
+Questions to raise about scaling Stage 1 past the ARCHS4 regex-recovery bootstrap:
+
+1. **Which organs matter for the biological hypothesis?** Keep K science-driven, not
+   data-availability-driven — heart/colon/lung currently move in/out purely on clean-row
+   counts (functional test is K=5: brain, adipose, liver, skin, skeletal_muscle).
+2. **GTEx (or recount3) access/preference?** Gold-standard curated organ labels (~17k
+   bulk RNA-seq, ~54 tissues) would replace regex labels and skip the Gate 0 manual
+   precision review — is there a lab pipeline/access, or pull the open tables directly?
+3. **Any lab-internal curated cohort or target tissue panel** to align to?
+
+Bring to the meeting: the K=5 organ smoke results
+(`results/stage1_organ_k5_smoke_*/evaluation/report.json`) as evidence the
+router+experts path works.
+
 ## Current Objective
 
 The core Stage 0 interspecies training, backup, evaluation, reporting, and Git
@@ -22,17 +38,113 @@ beginning a bounded Stage 1 human-organ pilot:
 1. **Complete:** test a blind expression-derived species gate against the
    true-species ceiling.
 2. **Running:** retrain the pooled mixed control with globally shuffled
-   cross-species batches.
+   cross-species batches. As of 2026-07-16 23:35 UTC it is at epoch 13/15
+   (~6.5 h ETA) on `moe-reboot`, GPU saturated. The eval and freeze watchers are
+   queued behind it in tmux (`mixed20k_shuffled_eval_watch_*`,
+   `mixed20k_shuffled_freeze_watch_*`).
 3. **Pilot frozen:** audit organ labels, choose a data-supported `K`, and build
    study-disjoint train/calibration/test manifests.
-4. **Next engineering:** implement and test the manifest-aware deterministic
-   extractor/trainer/evaluator plus the organ smoke launcher. The experiment
-   sequence is frozen, but these planned files do not exist yet, so Stage 1 is
-   not push-button runnable today.
+4. **Engineering complete for the mechanical smoke:** the exact extractor,
+   deterministic manifest trainer, balanced random controls, prediction cache,
+   five-class blind router/evaluator, decision script, and fail-fast launcher are
+   implemented and synthetic-tested end to end.
 5. **Next data:** manually validate and expand organ labels before spending a long
-   specialist-training run.
-6. Compare a pooled human model with fair specialist, fixed-ensemble, metadata,
-   blind-gate, and oracle controls.
+   specialist-training run. The present bottleneck is label/QC coverage and
+   independent studies, not the total number of expression profiles in ARCHS4.
+   After the smoke, use ARCHS4 tissue-atlas groups plus source GEO metadata and
+   UBERON-style anatomy normalization to recover candidate labels, assign confidence
+   tiers, and generate a short ambiguity/policy sheet for PI review.
+6. **Next execution (now automated) — the three-step GPU chain:**
+   `20k-mixed training -> quick species eval -> K=5 organ smoke/code test`, all
+   hands-off on the one A100.
+   - Step 2 (species closeout): `runs/evaluate_shuffled_mixed_when_complete.sh`
+     (tmux `mixed20k_shuffled_eval_watch_*`) runs headroom full+strict + blind
+     species gate on the corrected pool, writing
+     `results/mixed_20k_v3_shuffled_eval.COMPLETE`. Purpose is to resolve whether
+     the weak species-MoE result was real or a batch-order artifact — a report
+     closeout, not an organ dependency.
+   - Step 3 (jump straight to five organs):
+     `runs/run_organ_k5_when_eval_complete.sh` (tmux `stage1_organ_k5_watch_*`)
+     polls for that marker, guards on eval `exit_code==0`, then runs
+     `runs/run_organ_smoke.sh --manifest artifacts/stage1_organ_k5/organ_pilot_manifest.csv`
+     (`MAX_UPDATES=300`) into `results/stage1_organ_k5_smoke_<ts>/`. This is a
+     software + behavior sanity run on the real chosen five organs before any
+     longer multi-seed run; losses are not biological evidence. The older
+     220-per-organ pilot-manifest smoke
+     (`runs/run_organ_smoke_when_eval_complete.sh`) is retired in favor of this and
+     its watcher session was stopped. Status:
+     `results/stage1_organ_k5_smoke.status`/`.COMPLETE`.
+   - Step 4 (actual K=5 training): `runs/run_organ_k5_train_when_smoke_complete.sh`
+     (tmux `stage1_organ_k5_train_watch_*`) fires only after the smoke completes AND
+     its `mechanical_health.json` reports `pass`, so a real budget is never spent on
+     a broken pipeline. It reruns the same pipeline with `RUN_MODE=full`,
+     `MAX_UPDATES=1500`, `VALIDATION_INTERVAL=150` (periodic best-validation
+     checkpointing) into `results/stage1_organ_k5_train_<ts>/`. First real
+     single-seed behavior run; multi-seed Gate 1 rigor comes later (after the PI
+     meeting / GTEx decision). `run_organ_smoke.sh` gained backward-compatible
+     `VALIDATION_INTERVAL` and `RUN_MODE` env knobs for this. K=5 preflight passes
+     on the VM. The local test suite is 89/89 passing.
+7. **Label-recovery track (started 2026-07-16, runs concurrently, no GPU):** a
+   metadata-only reconciliation pass that mines `characteristics_ch1` — the explicit
+   `tissue:` key/value fields the original audit ignored — and separates
+   disease/tumor/cell-source status from the organ label. See the label-recovery
+   result below; it materially relaxes the row-count blocker behind the NO-GO.
+
+### Label-recovery result (2026-07-16, automated pass — precision review pending)
+
+The full ARCHS4 human `meta/samples` (441,356 rows) was exported read-only to
+`artifacts/stage1_label_recovery/human_sample_metadata.parquet` (23 MB) and run
+through `evaluation/recover_organ_labels.py` against the frozen
+`data/ontology/uberon_organ_map.json`. Tiers: **18,331 high_confidence / 83,170
+ambiguous / 339,855 unlabeled**. Ambiguous is dominated by exactly the contaminants
+we want excluded (cell_source ~42k, single_cell ~29k, tumor ~7k, disease ~2k).
+
+**Seven organs now clear the Gate 0 structural bar** (≥1,000 high-confidence training
+rows AND ≥30 high-confidence series): brain (4,334 rows / 154 series), liver (2,656 /
+96), skin (2,379 / 115), adipose (2,055 / 56), skeletal_muscle (1,949 / 65), colon
+(1,226 / 86), heart (1,215 / 87). This is the row-count blocker the original NO-GO
+rested on — previously no organ cleared 1,000 clean rows (best was brain 783).
+Caveats before any decision flip: (a) these are automated tiers — Gate 0 rule 4 still
+requires ≥50 stratified manual reviews per organ at ≥95% precision (spot-check of 8 was
+clean); (b) counts use raw series, not connected study groups — the 55 needed
+train/calib/test groups must be reconfirmed after `connected_series_groups` merging;
+(c) the ontology UBERON ids are recalled and flagged `verify_before_freeze`.
+Outputs: `tier_summary.csv`, `pi_ambiguity_sheet.csv` (1,874 stratified edge cases),
+`recovery_report.json`.
+
+### First functional cohort: K=5 organ set (frozen 2026-07-16)
+
+**Chosen five: brain, adipose, liver, skin, skeletal_muscle.** This is the first
+real router+experts behavior test, not the definitive claim.
+
+Why these five (not the original pilot's brain/skin/liver/lung/colon): the recovery
+pass scored all 15 organs against the Gate 0 bar and the eligible set *changed* rather
+than merely grew. Lung fell out (only 707 clean rows; it is swamped by tumor/cell-line
+samples — 10,177 ambiguous), while adipose, skeletal_muscle, and heart entered because
+mining `characteristics_ch1` and separating contamination surfaced clean structural/
+metabolic tissues that are rarely cell lines (adipose 603 ambiguous, skeletal_muscle
+209). Among all passing sets, **K=5 = {brain, adipose, liver, skin, skeletal_muscle}
+maximizes balanced clean data**: balanced-cohort size is `K x (smallest organ)`, which
+peaks at 5 x 1,949 = 9,745 rows (vs 8,505 at K=7, where heart+colon drag the floor to
+~1,215). It gives the highest per-organ floor of any multi-organ set, zero imbalance
+after capping, biologically diverse tissues (neural / metabolic-fat / hepatic /
+epithelial-skin / muscle) so specialization should be detectable if it exists, and all
+five clear the 30-train-group requirement.
+
+Frozen manifest: `artifacts/stage1_organ_k5/organ_pilot_manifest.csv` (5,628 samples;
+study-disjoint; `pooled == specialist-union` verified; multi-organ groups excluded).
+Per-organ train groups 34-65, test 14-26; skeletal_muscle is 1 short of the 10-calib/
+15-test Gate 0 minimum (boundary — fine for a functional test, expand for definitive).
+Training imbalance is handled by the `organ_balanced` sampler, so manifest row counts
+(2.2x spread) only set each organ's unique-sample pool. Built via
+`evaluation/build_recovered_candidates.py` -> `evaluation/build_organ_pilot_manifest.py`.
+
+Future expansion path: **K=7** adds heart + colon (both ready now, ~1,215-row floor) at
+the cost of balance; **kidney + lung** need more clean rows (currently 854 / 707,
+recoverable from the ambiguous pool via manual review of the tumor/cell-line demotions);
+the remaining organs (pancreas, placenta, prostate, breast, testis, ovary) are row- or
+group-limited and need further recovery or are deferred. Any expansion re-runs
+`build_recovered_candidates.py --organs ...`.
 
 ### Stage 1 -> Stage 2 decision snapshot (frozen 2026-07-15)
 
@@ -63,10 +175,11 @@ beginning a bounded Stage 1 human-organ pilot:
   route-transfer agreement and route-derived grouping function on the untouched
   discovery lockbox.
 
-The authoritative thresholds, code gaps, artifact contracts, compute guardrails,
-and exact proposed command order are backed up in
-`stage1-stage2-experiment-plan.md`. Its commands marked `PLANNED` describe files
-that must still be implemented; they are not runnable today.
+The authoritative thresholds, remaining data gaps, artifact contracts, compute
+guardrails, and command order are backed up in
+`stage1-stage2-experiment-plan.md`. The Stage 1 mechanical smoke command is now
+runnable after its Stage 0 completion marker and remote-data preflight; definitive
+Stage 1 and Stage 2 commands remain gated or planned.
 
 ### Research scheduling note (late 2026, evidence first)
 
@@ -89,11 +202,11 @@ serve as the primary interspecies-routing benchmark.
   `mixed20k_shuffled_20260715`. It uses the same 16,000 train / 3,200
   validation rows and V3 architecture, but `data_mode=preload` makes the
   `DistributedSampler` shuffle individual rows globally. Remote preflight found
-  1,983/2,000 epoch-0 batches contained both species. At 21:57 UTC on July 16 it
-  was at epoch 12, batch 1,500/2,000, at about 4.11 seconds/batch and 100% A100
-  utilization. The latest finalized best is epoch 11, validation loss `0.324663`,
+  1,983/2,000 epoch-0 batches contained both species. At 23:05 UTC on July 16 it
+  was at epoch 13, batch 500/2,000, at about 4.11 seconds/batch. The latest
+  finalized best is epoch 12, validation loss `0.313560`,
   versus `0.5455396` for the original mixed V3 checkpoint. The live estimate is
-  roughly 7.8 hours to training completion, around 22:45 PDT July 16 / 05:45 UTC
+  roughly 6.6 hours to training completion, around 22:41 PDT July 16 / 05:41 UTC
   July 17, followed
   automatically by freeze and frozen evaluation.
   Logs are in `results/mixed_20k_v3_shuffled_train.log`; checkpoints write
@@ -127,7 +240,7 @@ serve as the primary interspecies-routing benchmark.
   Desktop (1440x900), laptop (1280x720), and mobile (390x844) render checks passed
   after this reorganization: the desktop/laptop slides have no clipping, and
   mobile uses vertical scrolling without horizontal overflow. The HTML contains
-  ten balanced slide sections. Repository validation also passes 41/41 tests;
+  ten balanced slide sections. Repository validation also passes 70/70 tests;
   the four emitted warnings are existing PyTorch AMP deprecations.
 - **Future presentation-script rule (requested 2026-07-16):** write the main
   narration for a nontechnical audience in short, conversational sentences. Lead
@@ -138,7 +251,7 @@ serve as the primary interspecies-routing benchmark.
   not need another rewrite before this week's meeting.
 - Keep `moe-reboot-partial` shelved for now. The active shuffled 20k control is
   the decision-critical GPU experiment; organ progress is currently limited by
-  manual label/QC work and evaluator preparation, not compute. Reassess the
+  manual label/QC work and smoke staging, not missing evaluator code. Reassess the
   partial VM after shuffled evaluation determines whether the next GPU run
   should be a replication/control or a frozen-cohort Stage 1 pilot. If it is
   reused, write all checkpoints and results directly to persistent storage
@@ -179,11 +292,28 @@ serve as the primary interspecies-routing benchmark.
   317 groups, and 1,998 training rows. Studies are split atomically; calibration
   and test sample counts are balanced within each organ; and the pooled training
   hash exactly equals the union of specialist training IDs.
+- **The raw archive is not the size bottleneck.** The mounted ARCHS4 v11 human H5
+  contains 441,356 samples and 35,238 gene rows. The conservative audit retained
+  only 14,096 candidates (3.2%): 195,698 rows were removed by the single-cell
+  probability filter, 165,331 as cell/culture-like, and 66,231 because the current
+  metadata regex did not assign one clear organ. ARCHS4's current official human
+  gene-level release is larger still. The limiting resource is therefore validated
+  bulk-organ labels distributed across enough independent studies, compounded by
+  the age of the local v11 snapshot—not raw expression availability.
 - The organ manifest is a **pipeline pilot**, not a frozen scientific cohort.
   Manual spot checking found residual acronym/cell-source ambiguity (for
   example GBM and HSAEpC metadata). Label review or ontology-backed expansion is
-  required before organ-model training. Current specialist train counts are also
+  required before definitive organ-model training. Current specialist train counts are also
   small (brain 783, skin 409, liver 345, lung 241, colon 220).
+- **Class-balanced smoke protocol frozen.** The primary engineering subset contains
+  exactly 220 training rows for each of brain, colon, liver, lung, and skin. Each
+  of five matched random shards also contains 220 rows—exactly 44 from each organ—
+  while the full 2,856-row natural cohort is retained for secondary reporting.
+  Pooled, specialist, and random-control training use the same organ/study-balanced
+  rule; checkpoint selection, blind-router fitting, and primary evaluation are also
+  organ/study balanced, so brain frequency cannot win the comparison by itself. This
+  removes frequency bias but does not manufacture label accuracy,
+  statistical power, or independent studies.
 
 ## What Changed from V2 to V3
 
@@ -404,7 +534,7 @@ improvement from a gate that sees only masked expression.
    in `progress.md`; replace the slide 5 current-run sentence only if the complete
    frozen evaluation is available.
 6. Run syntax checks, focused tests, the full suite, and `git diff --check`, then
-   commit and push. The current baseline is 41/41 tests.
+   commit and push. The current baseline is 70/70 tests.
 7. `moe-reboot` is safe to shelve only after training, freeze, and evaluation
    have all exited and both COMPLETE markers/checksums are verified. Persistent
    volume paths must resolve before shelving.
@@ -455,38 +585,44 @@ Before a definitive GPU campaign:
 7. freeze sample order, connected-group splits, hashes, exclusions, and the exact
    pooled/specialist union before training.
 
-### Ordered implementation plan
+### Ordered Stage 1 execution plan
 
-1. **Label audit and expansion:** extend `evaluation/audit_archs4_organs.py` to retain
-   auditable metadata and produce stratified manual-review sheets. Resolve GBM,
-   HSAEpC, tumor acronyms, and tissue-versus-derived-cell ambiguity. Rerun
-   `evaluation/build_organ_pilot_manifest.py` only after the rules are frozen.
-2. **Exact dataset extraction:** implement a manifest-driven extractor from the
-   human ARCHS4 H5 into the shared 15,448-gene raw-TPM space. It must assert no
-   duplicate sample IDs, no train/calibration/test study overlap, identical gene
-   order, and exact equality between pooled train IDs and the union of specialist
-   train IDs. This extractor does not yet exist.
-3. **Training controls:** train one pooled human model on the exact union, `K`
-   organ specialists on disjoint partitions of that union, and `K` size-matched
-   random-shard experts. Use the same architecture, optimizer, mask rate, epoch
-   exposure, gene order, and globally shuffled pooled batches. Store/freeze each
-   run on persistent storage with hashes.
-4. **Frozen evaluation:** implement an organ evaluator using the corrected
-   interspecies conventions: exactly one `log1p`, one deterministic 30% mask,
-   train-only gene mean, study-macro estimand, paired clustered bootstrap, and
-   strict study-disjoint test. Required conditions are pooled general, random
-   fixed ensemble, organ fixed ensemble, true-organ hard/soft, blind top-1/soft,
-   and per-sample soft oracle.
-5. **Blind gate:** train/calibrate only on calibration studies. The gate receives
-   the same masked expression as the expert, never hidden target values. True
-   organ labels may supervise calibration but are unavailable at test. Include a
-   confidence threshold and pooled-model fallback for ambiguous/out-of-taxonomy
-   samples.
-6. **Progressive smoke before scale:** use the three-rung design below. Each rung
-   has a different purpose; do not treat a mechanical smoke result as biology.
-7. **Definitive run and decision:** launch only after the readiness gate and
-   smoke tests pass. Apply the preregistered criteria below without tuning them
-   after seeing test outcomes.
+1. **Label audit and expansion — still open:** retain auditable metadata and produce
+   stratified manual-review sheets. Resolve GBM, HSAEpC, tumor acronyms, and tissue-
+   versus-derived-cell ambiguity. Use ARCHS4 tissue-atlas groupings only as candidate
+   expansion, then validate against source GEO metadata/ontologies before freezing.
+2. **Exact dataset extraction — implemented:**
+   `preprocessing/extract_manifest_expression.py` extracts only frozen manifest IDs
+   into the shared 15,448-gene raw-TPM space, preserves row order, records hashes,
+   and fails on missing/duplicate IDs, gene mismatches, connected-study leakage, or
+   explicit expression QC failures. It never silently drops rows.
+3. **Balanced controls and training — implemented for the smoke:**
+   `evaluation/build_balanced_organ_protocol.py` freezes equal organ subsets and
+   exactly matched random shards. `core/train_manifest.py` trains pooled, organ, and
+   random roles from explicit splits with deterministic masks/RNGs, fixed update
+   budgets, balanced sampling/checkpoint selection, and full prediction export. The
+   pooled smoke receives `K` times one specialist's updates, matching exposure to the
+   collective specialist system.
+4. **Frozen prediction/evaluation — implemented:**
+   `evaluation/cache_organ_predictions.py` checks sample/gene/mask identity before
+   caching. `evaluation/evaluate_organ_moe.py` reports pooled, individual experts,
+   organ/random fixed ensembles, true-organ hard/soft, blind hard/soft, and hard/soft
+   oracle conditions using equal-organ/equal-study primary metrics, natural-frequency
+   secondary metrics, and study-clustered uncertainty.
+5. **Blind gate — implemented for the closed five-organ smoke:** the five-class
+   logistic router is fit only on calibration rows, receives the target-hidden masked
+   expression, and uses balanced class plus equal-study weights. Unknown-organ
+   abstention/fallback remains a definitive-cohort extension because the current
+   closed taxonomy contains only the five selected organs.
+6. **Mechanical smoke — ready but not launched:** `runs/run_organ_smoke.sh` performs
+   dependency/marker preflight, balances the cohort, runs an explicit QC-and-rebalance
+   pass if necessary, trains every matched model, builds the cache, evaluates, and
+   writes `SMOKE_ONLY` plus `COMPLETE`. It refuses to overwrite outputs and waits by
+   default for the Stage 0 shuffled-evaluation completion marker.
+7. **Definitive run and decision — still gated:** build an expanded, manually audited
+   five-way manifest (model train, model validation, gate calibration, final test,
+   discovery lockbox), add the definitive launcher, run three seeds, and apply the
+   preregistered criteria without tuning after test access.
 
 ### Approved progressive Stage 1 pilot design
 
@@ -540,6 +676,18 @@ powered definitive run supports a biological claim.
 - Audit code: `evaluation/audit_archs4_organs.py`
 - Manifest builder: `evaluation/build_organ_pilot_manifest.py`
 - Pilot reports/manifest: `artifacts/stage1_organ_pilot/`
+- Exact expression extractor: `preprocessing/extract_manifest_expression.py`
+- Deterministic role-aware trainer: `core/train_manifest.py`
+- Balanced organ/random protocol:
+  `evaluation/build_balanced_organ_protocol.py` and
+  `artifacts/stage1_organ_smoke_protocol/`
+- Explicit QC filter/rebalance pass:
+  `evaluation/filter_manifest_by_expression_qc.py`
+- Frozen prediction cache, five-class blind router, full comparison ladder, and
+  decision emitter: `evaluation/cache_organ_predictions.py`,
+  `evaluation/evaluate_organ_moe.py`, and
+  `evaluation/decide_organ_specialization.py`
+- End-to-end fail-fast launcher: `runs/run_organ_smoke.sh`
 - Overarching figure prompt:
   `presentation/paperplot-human-organ-moe-prompt.md`
 - Current organ pilot: brain, skin, liver, colon, lung; 2,856 samples; 317 groups;
@@ -733,10 +881,11 @@ metadata are curated well enough to distinguish biology from study design.
    partitions distinct from gate calibration and final Stage 1 test. If study counts
    cannot support a separate lockbox, freeze all Stage 2 hypotheses before the first
    Stage 1 test access and require independent external replication for discovery claims.
-3. **Shared infrastructure:** implement the manifest-driven extractor, manifest-aware
-   seeded trainer, deterministic evaluator, and artifact/run manifests with code/data/
-   split hashes.
-4. **Smoke and variance pilot:** run schema tests, then a two-organ, three-seed pilot
+3. **Shared infrastructure:** the manifest-driven extractor, manifest-aware seeded
+   trainer, deterministic Stage 1 evaluator, and hashed smoke artifacts are complete.
+   Extend their frozen contracts rather than creating an untracked alternate path.
+4. **Smoke and variance pilot:** run the five-organ mechanical smoke, then a two-organ,
+   three-seed pilot
    solely to estimate variance, power, and cost. Do not elevate pilot biology to a
    claim.
 5. **Definitive Stage 1:** run the preregistered pooled, random-shard, organ-specialist,
@@ -752,10 +901,10 @@ metadata are curated well enough to distinguish biology from study design.
    sufficient. Otherwise spend compute on replication and biological validation of the
    smaller, stronger result.
 
-The exact Stage 1 decision boundaries, current code gaps, proposed CLI contracts,
+The exact Stage 1 decision boundaries, remaining data/code gaps, CLI contracts,
 artifact schema, and post-Stage-1 command order are in
-`stage1-stage2-experiment-plan.md`. Commands marked `PLANNED` there are not runnable
-until their named files and tests exist.
+`stage1-stage2-experiment-plan.md`. The mechanical smoke is implemented; commands
+explicitly marked `PLANNED` there remain non-runnable specifications.
 
 ### Archived (not planned)
 
@@ -857,8 +1006,11 @@ The current experiment exists to replace, not refine, those numbers.
 
 ## Validated Artifacts
 
-- Current local suite: 41/41 passing, including adaptive-usefulness thresholds,
-  blind-gate leakage checks, and organ-manifest invariants. Python and shell
+- Current local suite: 87/87 passing, including label-recovery normalization/tiering,
+  exact extraction, deterministic
+  manifest training, balanced random controls, prediction-cache/mask identity,
+  target-hidden multiclass routing, decision branches, smoke-launcher guards,
+  adaptive-usefulness thresholds, and organ-manifest invariants. Python and shell
   syntax checks and `git diff --check` pass.
 - Versioned result summaries:
   `artifacts/stage0_blind_gate/report.json` and

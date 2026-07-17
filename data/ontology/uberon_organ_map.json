@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "ontology": "UBERON-style controlled vocabulary for ARCHS4 organ recovery",
+  "verify_before_freeze": true,
+  "notes": [
+    "UBERON ids below are recalled canonical terms and MUST be verified against a",
+    "pinned UBERON release before this map is frozen for a publication cohort.",
+    "Disease/tumor and cell-source status are kept as SEPARATE fields and never",
+    "folded into the organ label (plan Gate 0, label-recovery step 2).",
+    "Synonyms are matched case-insensitively as whole words against normalized text."
+  ],
+  "organs": {
+    "adipose": {
+      "uberon_id": "UBERON:0001013",
+      "synonyms": ["adipose", "adipose tissue", "subcutaneous fat", "subcutaneous adipose", "visceral fat", "visceral adipose", "omental fat", "white adipose tissue", "fat tissue"],
+      "adjacent": ["bone marrow", "breast fat"]
+    },
+    "brain": {
+      "uberon_id": "UBERON:0000955",
+      "synonyms": ["brain", "cerebellum", "cerebral cortex", "cerebral", "prefrontal cortex", "frontal cortex", "hippocampus", "hypothalamus", "amygdala", "temporal cortex", "substantia nigra", "putamen", "caudate", "cortex of brain"],
+      "adjacent": ["spinal cord", "nerve", "pituitary", "retina", "cortex"]
+    },
+    "breast": {
+      "uberon_id": "UBERON:0000310",
+      "synonyms": ["breast", "breast tissue", "mammary tissue", "mammary gland", "mammary"],
+      "adjacent": ["breast fat", "nipple"]
+    },
+    "colon": {
+      "uberon_id": "UBERON:0001155",
+      "synonyms": ["colon", "colon tissue", "colonic tissue", "colonic mucosa", "colorectal", "colorectal tissue", "large intestine", "sigmoid colon", "ascending colon", "descending colon", "rectum"],
+      "adjacent": ["small intestine", "ileum", "cecum", "intestine", "gut"]
+    },
+    "heart": {
+      "uberon_id": "UBERON:0000948",
+      "synonyms": ["heart", "heart tissue", "whole heart", "cardiac tissue", "cardiac", "myocardium", "myocardial", "left ventricle", "right ventricle", "left atrium", "right atrium", "ventricle", "atrium"],
+      "adjacent": ["aorta", "coronary artery", "pericardium"]
+    },
+    "kidney": {
+      "uberon_id": "UBERON:0002113",
+      "synonyms": ["kidney", "kidney tissue", "renal tissue", "renal", "kidney cortex", "kidney medulla", "renal cortex", "renal medulla", "nephron"],
+      "adjacent": ["adrenal gland", "ureter", "bladder"]
+    },
+    "liver": {
+      "uberon_id": "UBERON:0002107",
+      "synonyms": ["liver", "liver tissue", "hepatic tissue", "hepatic", "hepatocyte tissue", "liver biopsy"],
+      "adjacent": ["gallbladder", "bile duct", "biliary"]
+    },
+    "lung": {
+      "uberon_id": "UBERON:0002048",
+      "synonyms": ["lung", "lung tissue", "pulmonary tissue", "pulmonary", "lung parenchyma", "lung biopsy", "alveolar tissue", "bronchial tissue"],
+      "adjacent": ["airway", "bronchus", "trachea", "pleura"]
+    },
+    "ovary": {
+      "uberon_id": "UBERON:0000992",
+      "synonyms": ["ovary", "ovary tissue", "ovarian tissue", "ovarian"],
+      "adjacent": ["fallopian tube", "oviduct", "uterus"]
+    },
+    "pancreas": {
+      "uberon_id": "UBERON:0001264",
+      "synonyms": ["pancreas", "pancreas tissue", "pancreatic tissue", "pancreatic", "pancreatic islet", "islet of langerhans", "exocrine pancreas"],
+      "adjacent": ["duodenum", "spleen"]
+    },
+    "placenta": {
+      "uberon_id": "UBERON:0001987",
+      "synonyms": ["placenta", "placenta tissue", "placental tissue", "placental", "chorionic villi", "decidua"],
+      "adjacent": ["umbilical cord", "amnion", "chorion"]
+    },
+    "prostate": {
+      "uberon_id": "UBERON:0002367",
+      "synonyms": ["prostate", "prostate tissue", "prostatic tissue", "prostatic", "prostate biopsy"],
+      "adjacent": ["seminal vesicle", "bladder"]
+    },
+    "skeletal_muscle": {
+      "uberon_id": "UBERON:0001134",
+      "synonyms": ["skeletal muscle", "vastus lateralis", "gastrocnemius", "quadriceps muscle", "soleus muscle", "biceps muscle", "muscle biopsy"],
+      "adjacent": ["smooth muscle", "cardiac muscle", "tendon"]
+    },
+    "skin": {
+      "uberon_id": "UBERON:0002097",
+      "synonyms": ["skin", "skin tissue", "skin biopsy", "epidermal tissue", "epidermis", "dermal tissue", "dermis", "cutaneous tissue"],
+      "adjacent": ["hair follicle", "sweat gland", "subcutaneous"]
+    },
+    "testis": {
+      "uberon_id": "UBERON:0000473",
+      "synonyms": ["testis", "testis tissue", "testicular tissue", "testicular", "testes", "testes tissue", "seminiferous tubule"],
+      "adjacent": ["epididymis", "sperm", "spermatocyte"]
+    }
+  },
+  "tumor_terms": [
+    "tumou?r", "tumou?rs", "cancer", "cancers", "cancerous", "carcinoma",
+    "adenocarcinoma", "sarcoma", "melanoma", "leukemia", "leukaemia", "lymphoma",
+    "metastatic", "metastasis", "metastases", "neoplasm", "neoplastic",
+    "glioblastoma", "glioma", "GBM", "HCC", "malignant", "oncogenic"
+  ],
+  "disease_terms": [
+    "fibrosis", "fibrotic", "cirrhosis", "cirrhotic", "steatosis", "NASH", "NAFLD",
+    "inflammation", "inflamed", "colitis", "crohn", "ulcerative", "psoriasis",
+    "dermatitis", "asthma", "COPD", "emphysema", "infarction", "ischemi",
+    "diabetic", "hepatitis", "nephropathy", "atrophy", "lesion", "diseased",
+    "atherosclero"
+  ],
+  "cell_source_terms": [
+    "cell line", "cell-line", "cell_line", "cell culture", "cultured", "in vitro",
+    "organoid", "organoids", "xenograft", "iPSC", "induced pluripotent",
+    "embryonic stem", "ESC", "HeLa", "HEK[- ]?293", "MCF[- ]?7", "A549", "K562",
+    "Jurkat", "U[- ]?87", "HSAEpC", "immortalized", "immortalised", "spheroid"
+  ],
+  "primary_cell_terms": [
+    "primary cells", "primary cell", "isolated cells", "sorted cells",
+    "FACS-sorted", "purified cells", "dissociated cells", "single-cell suspension",
+    "fibroblasts", "hepatocytes", "keratinocytes", "myotubes", "PBMC",
+    "endothelial cells", "epithelial cells", "cell type"
+  ]
+}

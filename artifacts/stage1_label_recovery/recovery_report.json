@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "metadata_parquet": "/Users/minggangli/Projects/nasa-rna-moe/artifacts/stage1_label_recovery/human_sample_metadata.parquet",
+  "ontology_sha256": "7d8f2b23ad6edeac8f16b00417e18fb0bb2ce926a709e8f30af9d72b9f3eb13c",
+  "thresholds": {
+    "single_cell_threshold": 0.5,
+    "min_training_rows": 1000,
+    "min_series": 30,
+    "per_reason": 25
+  },
+  "n_samples": 441356,
+  "tier_counts": {
+    "high_confidence": 18331,
+    "ambiguous": 83170,
+    "unlabeled": 339855
+  },
+  "n_review_reasons": 10,
+  "n_ambiguity_sheet_rows": 1874,
+  "organs_meeting_gate0_rows": [
+    "brain",
+    "adipose",
+    "liver",
+    "skin",
+    "skeletal_muscle",
+    "colon",
+    "heart"
+  ],
+  "high_confidence_sample_id_sha256": "f4e7f335b8cf52d65e0b94c445d73a2c22aade919e4b0cf3f8afb7696e5055c3",
+  "per_organ_summary": [
+    {
+      "organ": "brain",
+      "uberon_id": "UBERON:0000955",
+      "n_high_confidence": 3247,
+      "n_ambiguous": 11554,
+      "n_series_high_confidence": 111,
+      "meets_min_training_rows": true,
+      "meets_min_series": true
+    },
+    {
+      "organ": "adipose",
+      "uberon_id": "UBERON:0001013",
+      "n_high_confidence": 2539,
+      "n_ambiguous": 603,
+      "n_series_high_confidence": 76,
+      "meets_min_training_rows": true,
+      "meets_min_series": true
+    },
+    {
+      "organ": "liver",
+      "uberon_id": "UBERON:0002107",
+      "n_high_confidence": 2484,
+      "n_ambiguous": 6751,
+      "n_series_high_confidence": 97,
+      "meets_min_training_rows": true,
+      "meets_min_series": true
+    },
+    {
+      "organ": "skin",
+      "uberon_id": "UBERON:0002097",
+      "n_high_confidence": 2379,
+      "n_ambiguous": 7216,
+      "n_series_high_confidence": 114,
+      "meets_min_training_rows": true,
+      "meets_min_series": true
+    },
+    {
+      "organ": "skeletal_muscle",
+      "uberon_id": "UBERON:0001134",
+      "n_high_confidence": 1949,
+      "n_ambiguous": 209,
+      "n_series_high_confidence": 65,
+      "meets_min_training_rows": true,
+      "meets_min_series": true
+    },
+    {
+      "organ": "colon",
+      "uberon_id": "UBERON:0001155",
+      "n_high_confidence": 1217,
+      "n_ambiguous": 4793,
+      "n_series_high_confidence": 84,
+      "meets_min_training_rows": true,
+      "meets_min_series": true
+    },
+    {
+      "organ": "heart",
+      "uberon_id": "UBERON:0000948",
+      "n_high_confidence": 1215,
+      "n_ambiguous": 3298,
+      "n_series_high_confidence": 87,
+      "meets_min_training_rows": true,
+      "meets_min_series": true
+    },
+    {
+      "organ": "kidney",
+      "uberon_id": "UBERON:0002113",
+      "n_high_confidence": 854,
+      "n_ambiguous": 4547,
+      "n_series_high_confidence": 74,
+      "meets_min_training_rows": false,
+      "meets_min_series": true
+    },
+    {
+      "organ": "lung",
+      "uberon_id": "UBERON:0002048",
+      "n_high_confidence": 707,
+      "n_ambiguous": 10177,
+      "n_series_high_confidence": 82,
+      "meets_min_training_rows": false,
+      "meets_min_series": true
+    },
+    {
+      "organ": "pancreas",
+      "uberon_id": "UBERON:0001264",
+      "n_high_confidence": 639,
+      "n_ambiguous": 16815,
+      "n_series_high_confidence": 41,
+      "meets_min_training_rows": false,
+      "meets_min_series": true
+    },
+    {
+      "organ": "placenta",
+      "uberon_id": "UBERON:0001987",
+      "n_high_confidence": 421,
+      "n_ambiguous": 595,
+      "n_series_high_confidence": 49,
+      "meets_min_training_rows": false,
+      "meets_min_series": true
+    },
+    {
+      "organ": "prostate",
+      "uberon_id": "UBERON:0002367",
+      "n_high_confidence": 257,
+      "n_ambiguous": 2765,
+      "n_series_high_confidence": 27,
+      "meets_min_training_rows": false,
+      "meets_min_series": false
+    },
+    {
+      "organ": "breast",
+      "uberon_id": "UBERON:0000310",
+      "n_high_confidence": 216,
+      "n_ambiguous": 10535,
+      "n_series_high_confidence": 22,
+      "meets_min_training_rows": false,
+      "meets_min_series": false
+    },
+    {
+      "organ": "testis",
+      "uberon_id": "UBERON:0000473",
+      "n_high_confidence": 107,
+      "n_ambiguous": 989,
+      "n_series_high_confidence": 26,
+      "meets_min_training_rows": false,
+      "meets_min_series": false
+    },
+    {
+      "organ": "ovary",
+      "uberon_id": "UBERON:0000992",
+      "n_high_confidence": 100,
+      "n_ambiguous": 1995,
+      "n_series_high_confidence": 23,
+      "meets_min_training_rows": false,
+      "meets_min_series": false
+    }
+  ],
+  "warning": "Automated metadata reconciliation only. High-confidence tiers still require >=50 stratified manual reviews per organ (>=95% precision) before any organ enters the definitive cohort (plan Gate 0)."
+}

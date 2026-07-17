@@ -5,7 +5,7 @@ record relevant work now without forcing a paper claim before Stage 1/2 results.
 Organized by the argument each block supports. Use this to (a) position a future
 contribution, (b) avoid redoing known experiments, and (c) pull citations.
 
-**Last updated:** 2026-07-15.
+**Last updated:** 2026-07-16.
 
 **Provenance convention.** Entries marked **[verified]** were checked against an
 official paper page (publisher/proceedings/OpenReview/arXiv) on 2026-07-15. Entries
@@ -125,6 +125,13 @@ ARCHS4 organ, disease, laboratory, platform, processing, and study are partially
 confounded, so Stage 2 must score biological conservation and technical association
 separately.
 
+- **[verified data source]** [ARCHS4 download catalog](https://archs4.org/download)
+  and [ARCHS4 tissue-atlas help](https://archs4.org/help). The official catalog listed
+  1,093,742 samples in the current human gene-level release on 2026-07-16, compared
+  with 441,356 samples in this project's mounted v11 H5. The help page documents
+  tissue-atlas grouping at several resolutions. Cite these for data-release/provenance
+  facts, not as evidence that every atlas assignment is publication-ready ground truth;
+  freeze the exact release and validate sample labels against source GEO metadata.
 - **[verified]** [*Cross-study validation for the assessment of prediction
   algorithms*](https://academic.oup.com/bioinformatics/article/30/12/i105/388164)
   — Bernau et al., Bioinformatics 2014. Genomic prediction can look substantially

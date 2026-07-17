@@ -455,12 +455,22 @@ The manifest is suitable for pipeline development, not yet for a definitive
 biological conclusion. Manual spot checking exposed residual shorthand and
 cell-source ambiguity, including GBM and HSAEpC examples, and the specialist
 training sets range from only 220 to 783 rows. The next Stage 1 work is therefore
-manual/ontology-backed label validation and coverage expansion, followed by a
+manual/ontology-backed label validation and coverage expansion in parallel with a
 small end-to-end smoke run. A full organ training campaign should wait for that
 review and for the shuffled pooled Stage 0 control.
 
-Reproducible outputs are versioned under
-`artifacts/stage0_blind_gate/` and `artifacts/stage1_organ_pilot/`.
+This is not evidence that ARCHS4 lacks expression profiles. The mounted human v11
+H5 contains 441,356 samples, whereas the conservative audit retained only 14,096
+(3.2%). Sequentially, 195,698 were removed by the single-cell-probability filter,
+165,331 as cell/culture-like, and 66,231 because free-text metadata did not provide
+one clear organ label. The bottleneck is validated bulk-organ labels across enough
+independent studies, compounded by an older local snapshot. ARCHS4's tissue atlas is
+useful for candidate expansion, but its derived tissue groupings still require source-
+metadata/ontology validation before they become frozen scientific labels.
+
+Reproducible outputs are versioned under `artifacts/stage0_blind_gate/`,
+`artifacts/stage1_organ_pilot/`, and
+`artifacts/stage1_organ_smoke_protocol/`.
 
 The approved Stage 1 progression is deliberately incremental: first a 64-128-sample
 micro-overfit test, then a one-seed five-organ mechanical smoke that exercises every
@@ -469,6 +479,29 @@ pilot with seeds 17, 42, and 101 and matched 3-5 epoch exposure. Pilot studies b
 burned engineering data after inspection. A definitive claim requires a rebuilt,
 expanded cohort with newly frozen validation, calibration, final-test, and discovery-
 lockbox partitions.
+
+### Stage 1 mechanical stack implemented 2026-07-16
+
+The missing engineering path is now implemented and synthetic-tested end to end:
+exact manifest-ID extraction from ARCHS4, deterministic manifest-aware training,
+matched random shards, frozen prediction caching, a five-class target-hidden blind
+router, pooled/fixed/true-organ/oracle/random comparisons, automatic decision rules,
+and a fail-fast smoke launcher.
+
+To prevent brain prevalence from deciding the result, the primary smoke subset uses
+exactly 220 training rows for each of brain, colon, liver, lung, and skin. Every random
+control also has 220 rows—44 from each organ. Pooled, specialist, and random-control
+training use the same organ/study-balanced rule; checkpoint selection, router fitting,
+and primary evaluation also use equal-organ/equal-study weighting. The natural 2,856-
+row distribution remains a secondary sensitivity analysis. The pooled control receives
+five times one specialist's updates, matching total exposure to the five-specialist
+system.
+
+Seventy repository tests pass, including a synthetic mini-H5 extraction through all
+training roles, prediction caching, blind routing, and report generation. The real-H5
+smoke has not been launched: its default launcher requires the Stage 0 shuffled-
+evaluation completion marker. Passing that smoke establishes software integrity only;
+the definitive data decision remains NO-GO.
 
 ### Stage 1 entry decision recorded 2026-07-15
 
@@ -486,9 +519,11 @@ If specialists pass but the blind gate fails, only selected controlled-transfer 
 is permitted while the router is repaired. If expert complementarity exists but organ
 identity fails, at most a bounded label-free feasibility pilot is permitted. Backbone,
 strict-study, provenance, oracle-headroom, or seed-stability failure stops Stage 2.
-The exact boundaries, missing implementation, planned command sequence, and artifact
-contract are frozen in `stage1-stage2-experiment-plan.md`; commands labeled `PLANNED`
-there are specifications rather than currently executable code.
+At the time of the 2026-07-15 entry, the exact boundaries, missing implementation,
+planned command sequence, and artifact contract were frozen in
+`stage1-stage2-experiment-plan.md`. The Stage 1 mechanical stack is now executable;
+the definitive five-way cohort/launcher and commands still labeled `PLANNED` remain
+specifications rather than runnable code.
 
 ## Stage 2 Revised Direction (planned, not yet run) - 2026-07-15
 

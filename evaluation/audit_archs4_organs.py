@@ -41,13 +41,15 @@ COMPILED_ORGANS = {
     label: re.compile(pattern, re.IGNORECASE) for label, pattern in ORGAN_PATTERNS.items()
 }
 CELL_LIKE = re.compile(
-    r"\b(cell line|cell culture|cultured|organoid|xenograft|iPSC|induced pluripotent|"
+    r"\b(cell[ _-]?line|cell culture|cultured|organoids?|xenograft|iPSC|induced pluripotent|"
     r"single[- ]cell|cells?|fibroblast|epithelial|endothelial|lymphocyte|monocyte|"
-    r"macrophage|HeLa|HEK[- ]?293|MCF[- ]?7|A549|K562|Jurkat)\b",
+    r"macrophage|derived cells?|HeLa|HEK[- ]?293|MCF[- ]?7|A549|K562|Jurkat|"
+    r"U[- ]?87|HSAEpC)\b",
     re.IGNORECASE,
 )
 TUMOR_LIKE = re.compile(
-    r"\b(tumou?r|cancer|carcinoma|adenocarcinoma|sarcoma|melanoma|leukemia|lymphoma|metastatic)\b",
+    r"\b(tumou?rs?|cancers?|cancerous|carcinoma|adenocarcinoma|sarcoma|melanoma|"
+    r"leukemia|lymphoma|metastatic|metastasis|neoplasm|glioblastoma|GBM|HCC)\b",
     re.IGNORECASE,
 )
 
@@ -86,6 +88,13 @@ def audit(args) -> dict:
     with h5py.File(args.human_h5, "r") as handle:
         samples = handle["meta/samples"]
         n_samples = len(samples["geo_accession"])
+        expression_shape = [int(value) for value in handle["data/expression"].shape]
+        info = handle.get("meta/info")
+        source_info = {}
+        if info is not None:
+            for key in ("version", "creation-date"):
+                if key in info:
+                    source_info[key] = _decode(info[key][()])
         for start in range(0, n_samples, args.chunk_size):
             stop = min(start + args.chunk_size, n_samples)
             accessions = samples["geo_accession"][start:stop]
@@ -123,6 +132,7 @@ def audit(args) -> dict:
                     "series_id": series,
                     "source_name": source,
                     "title": title,
+                    "characteristics": characteristics_text,
                     "single_cell_probability": float(sc_prob),
                     "tumor_like": bool(TUMOR_LIKE.search(all_text)),
                 })
@@ -168,6 +178,11 @@ def audit(args) -> dict:
     report = {
         "schema_version": 1,
         "human_h5": str(Path(args.human_h5).resolve()),
+        "source": {
+            "n_samples": int(n_samples),
+            "expression_shape": expression_shape,
+            **source_info,
+        },
         "thresholds": {
             "max_single_cell_probability": args.max_single_cell_probability,
             "min_samples": args.min_samples,
@@ -175,6 +190,7 @@ def audit(args) -> dict:
             "max_group_fraction": args.max_group_fraction,
         },
         "n_conservative_candidates": int(len(frame)),
+        "candidate_retention_fraction": float(len(frame) / n_samples),
         "n_connected_series_groups": int(frame["series_group_id"].nunique()),
         "exclusions": exclusions,
         "eligible_organs": eligible,
