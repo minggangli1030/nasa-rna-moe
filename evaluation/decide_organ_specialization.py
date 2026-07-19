@@ -69,6 +69,7 @@ def _aggregate_comparison(reports: list[dict], name: str) -> dict:
             "per_seed": values.tolist(),
             "seed_sd": seed_sd,
             "same_positive_sign": bool(np.all(values > 0.0)),
+            "same_negative_sign": bool(np.all(values < 0.0)),
             "seed_sd_fraction_of_mean": seed_sd / abs(mean) if abs(mean) > 1e-12 else float("inf"),
         }
 
@@ -102,6 +103,19 @@ def _effect_stable(aggregate: dict, threshold: float) -> bool:
     return bool(
         effect["same_positive_sign"]
         and effect["study_seed_ci95"][0] > 0.0
+        and effect["seed_sd_fraction_of_mean"] < threshold
+    )
+
+
+def _effect_reproducible(aggregate: dict, threshold: float) -> bool:
+    """Accept a stable nonzero sign; direction is judged by the downstream gate."""
+    effect = aggregate["mse"]
+    low, high = effect["study_seed_ci95"]
+    same_sign = effect["same_positive_sign"] or effect["same_negative_sign"]
+    excludes_zero = low > 0.0 or high < 0.0
+    return bool(
+        same_sign
+        and excludes_zero
         and effect["seed_sd_fraction_of_mean"] < threshold
     )
 
@@ -283,7 +297,7 @@ def decide(
     non_gating_diagnostics = _aggregate_non_gating_diagnostics(reports)
 
     core_stability = {
-        name: _effect_stable(aggregates[name], max_sd)
+        name: _effect_reproducible(aggregates[name], max_sd)
         for name in (
             "true_organ_hard_vs_pooled", "soft_oracle_vs_organ_fixed",
             "organ_fixed_vs_random_fixed",

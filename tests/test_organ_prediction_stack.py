@@ -357,6 +357,17 @@ def test_decider_emits_green_named_amber_branches_and_red():
         report["comparisons"]["true_organ_hard_vs_pooled"]["primary"] = _primary(0.01)
     assert decide(wrong_axis)["status"] == "amber_axis"
 
+    stable_negative_random_control = copy.deepcopy(reports)
+    for report in stable_negative_random_control:
+        primary = report["comparisons"]["organ_fixed_vs_random_fixed"]["primary"]
+        primary["mse_improvement_mean"] = -0.1
+        primary["mse_improvement_ci95"] = [-0.12, -0.08]
+        primary["relative_mse_reduction"] = -0.01
+    negative_decision = decide(stable_negative_random_control)
+    assert negative_decision["status"] == "amber_axis"
+    assert negative_decision["gates"]["training_seed_stability"] is True
+    assert negative_decision["gates"]["organ_vs_random_shards"] is False
+
     no_oracle = copy.deepcopy(reports)
     for report in no_oracle:
         report["comparisons"]["soft_oracle_vs_organ_fixed"]["primary"] = _primary(0.01)

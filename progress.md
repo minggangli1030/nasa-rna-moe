@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-18 22:08 PDT / 2026-07-19 05:08 UTC
+**Last updated:** 2026-07-18 22:10 PDT / 2026-07-19 05:10 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -157,6 +157,13 @@ only and true-organ routing on test; it never uses test reconstruction targets.
 This diagnostic is explicitly `gating=false`: it can explain the fixed-control
 geometry but cannot rescue or replace the preregistered gate.
 
+The decision code distinguishes reproducibility from direction: an effect with a
+consistent negative sign, an interval excluding zero, and acceptable seed SD is
+stable but fails its positive gate. Thus, if organ-fixed remains reproducibly worse
+than random-fixed while the other effects are stable, the formal branch is amber
+`organ_is_wrong_axis`, not the inaccurate label `seed_instability`. Thresholds and
+branch authorization are unchanged.
+
 Automation: `runs/run_organ_k5_replication_seeds.sh` first re-evaluates the frozen
 seed-42 prediction cache under schema v2, trains/evaluates seeds 43 and 44
 sequentially, verifies identical cache-input fingerprints across all reports, and
@@ -176,6 +183,17 @@ were checksum-deployed to `moe-reboot`, and the launcher preflight passed with
 recorded the commit and manifest hash in
 `results/stage1_organ_k5_replication/launch_provenance.json`. It first re-evaluates
 the frozen seed-42 cache under schema v2, then starts seed 43 automatically.
+
+The seed-42 schema-v2 diagnostic completed before seed 43 launched. The matching
+true-organ experts beat the calibration-selected best random expert for each organ
+by 33.02% primary MSE overall (`0.897672 -> 0.601255`), with absolute-MSE CI
+`[0.228346, 0.356657]`. Every organ is positive against its calibration-selected
+best random comparator: adipose 20.76%, brain 43.27%, liver 35.80%,
+skeletal_muscle 36.00%, and skin 25.48%, all with positive paired intervals. This
+strongly suggests that the seed-42 fixed-control failure is an averaging geometry
+issue rather than random experts directly outperforming matched organ specialists,
+but it remains exploratory and non-gating until the frozen three-seed analysis.
+Seed 43 entered preprocessing at 2026-07-19 05:08:42 UTC.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
