@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-18 22:04 PDT / 2026-07-19 05:04 UTC
+**Last updated:** 2026-07-18 22:08 PDT / 2026-07-19 05:08 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -168,6 +168,14 @@ then writes the one three-seed decision to
 free at start and 20 GiB before each new seed. The VM had 74 GiB free before launch;
 the two expected ~16 GiB outputs fit with headroom. Expected sequential compute is
 about 70 A100-hours.
+
+Launch checkpoint: commit `8b2312c` is pushed to `origin/main`, the committed files
+were checksum-deployed to `moe-reboot`, and the launcher preflight passed with
+77,238,124 KiB available. The persistent tmux session
+`stage1_organ_k5_replicates_20260719` started at 2026-07-19 05:07:45 UTC and
+recorded the commit and manifest hash in
+`results/stage1_organ_k5_replication/launch_provenance.json`. It first re-evaluates
+the frozen seed-42 cache under schema v2, then starts seed 43 automatically.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
