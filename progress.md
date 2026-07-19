@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-18 22:10 PDT / 2026-07-19 05:10 UTC
+**Last updated:** 2026-07-18 22:29 PDT / 2026-07-19 05:29 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -194,6 +194,26 @@ strongly suggests that the seed-42 fixed-control failure is an averaging geometr
 issue rather than random experts directly outperforming matched organ specialists,
 but it remains exploratory and non-gating until the frozen three-seed analysis.
 Seed 43 entered preprocessing at 2026-07-19 05:08:42 UTC.
+
+Parallel seed-44 launch checkpoint: `moe-reboot2` was unshelved with public IP
+`149.165.169.55`. Its fresh working copy was checksum-deployed from local commit
+`08562b0`; the seven critical code/protocol files and the frozen manifest hash match
+the local repository. Because the VM's 60 GiB ephemeral root has only 13 GiB free and
+the shared `/software` Ceph mount is read-only, the exact 18,182,709,422-byte central
+human H5 was transferred directly into the VM's 58 GiB `/dev/shm`, and the seed-44
+output is also RAM-backed. This avoids deleting prior checkpoints; the VM has 115 GiB
+RAM and retained about 93 GiB available after extraction began. Preflight passed, and
+tmux session `stage1_organ_k5_seed44_20260719` launched at 2026-07-19 05:27:48 UTC
+with training seed 44, protocol seed 314159, mask seed 271828, 1,500 updates per
+expert, validation every 150 updates, and 2,000 bootstrap replicates. Provenance/logs
+are under `results/stage1_organ_k5_parallel_seed44/` on `moe-reboot2`; live output is
+`/dev/shm/stage1_organ_k5_train_seed44_v1`. The central coordinator PID 325868 is
+SIGSTOP-paused while its seed-43 child remains active on the A100, preventing an
+automatic duplicate seed-44 launch. After both seeds finish, copy seed 44 to central
+persistent storage, expose it at the runner's expected output path, and SIGCONT the
+coordinator so it validates all reports and makes the single frozen three-seed
+decision. Do not shelve or reboot `moe-reboot2` before that copy completes because its
+seed-44 data and output are RAM-backed.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
