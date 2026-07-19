@@ -21,12 +21,14 @@ REQUIRED_VALIDATION = (
 REQUIRED_CONDITIONS = (
     "pooled", "organ_fixed", "true_organ_hard", "blind_organ_hard",
     "blind_organ_soft", "hard_oracle", "soft_oracle", "random_fixed",
-    "random_soft_oracle", "organ_gene_mean",
+    "random_soft_oracle", "calibration_best_random_by_true_organ",
+    "organ_gene_mean",
 )
 REQUIRED_COMPARISONS = (
     "pooled_vs_gene_mean", "true_organ_hard_vs_pooled",
     "organ_fixed_vs_random_fixed", "blind_hard_vs_pooled",
     "blind_soft_vs_organ_fixed", "soft_oracle_vs_organ_fixed",
+    "true_organ_hard_vs_calibration_best_random_by_organ",
 )
 
 
@@ -51,6 +53,15 @@ def check(report: dict) -> dict:
         issues.append("router target-hiding assertion failed")
     if router.get("uses_test_labels_or_targets_for_fit") is not False:
         issues.append("router test-isolation assertion failed")
+    direct_control = report.get("exploratory_random_controls", {})
+    if direct_control.get("gating") is not False:
+        issues.append("direct random control must be explicitly non-gating")
+    if direct_control.get("selection_split") != report.get("splits", {}).get("calibration"):
+        issues.append("direct random control was not selected on calibration")
+    if direct_control.get("uses_test_targets_for_selection") is not False:
+        issues.append("direct random control test-target isolation failed")
+    if direct_control.get("uses_test_organ_for_routing") is not True:
+        issues.append("direct random control must declare true-organ routing")
     conditions = report.get("conditions", {})
     comparisons = report.get("comparisons", {})
     for name in REQUIRED_CONDITIONS:

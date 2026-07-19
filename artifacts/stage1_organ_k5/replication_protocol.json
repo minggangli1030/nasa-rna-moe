@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "frozen_at_utc": "2026-07-19T04:02:50Z",
+  "purpose": "Resolve whether the seed-42 organ-fixed versus random-fixed failure is seed-specific while preserving the original Stage 1 gates.",
+  "base_run": "results/stage1_organ_k5_train_20260717T165507Z",
+  "manifest": {
+    "path": "artifacts/stage1_organ_k5/organ_pilot_manifest.csv",
+    "sha256": "25c62b071720117721a24930945fbd4c8c7cdc4a2a81ae003a920e9402441d5b"
+  },
+  "training_seeds": [
+    42,
+    43,
+    44
+  ],
+  "new_training_seeds": [
+    43,
+    44
+  ],
+  "protocol_seed": 314159,
+  "mask_seed": 271828,
+  "max_updates_per_expert": 1500,
+  "pooled_exposure_multiplier": 5,
+  "validation_interval": 150,
+  "bootstrap_replicates": 2000,
+  "fixed_across_seeds": [
+    "source manifest and label policy",
+    "connected-study split construction",
+    "random-shard assignment",
+    "canonical gene order",
+    "mask indices",
+    "model architecture",
+    "sampling mode and update budgets",
+    "original Stage 1 thresholds and decision branches"
+  ],
+  "varied_across_seeds": [
+    "model initialization RNG",
+    "training sampler RNG"
+  ],
+  "original_gate_policy": {
+    "unchanged": true,
+    "organ_fixed_vs_random_fixed_required_relative_mse": 0.03,
+    "maximum_seed_sd_fraction_of_mean": 0.5,
+    "minimum_training_seeds": 3,
+    "analysis_timing": "evaluate once after seeds 42, 43, and 44 are all available; do not add seeds to chase a pass"
+  },
+  "exploratory_direct_random_control": {
+    "gating": false,
+    "selection_split": "calibration",
+    "uses_test_targets_for_selection": false,
+    "uses_test_organ_for_routing": true,
+    "global_comparison": "true_organ_hard_vs_calibration_best_random_by_organ",
+    "per_organ_comparisons": "matching organ specialist versus every random expert and versus the calibration-selected best random expert",
+    "interpretation": "Post-seed-42 diagnostic only. It cannot replace or rescue the frozen organ-fixed gate."
+  }
+}

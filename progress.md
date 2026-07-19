@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-16 19:05 PDT / 2026-07-17 02:05 UTC
+**Last updated:** 2026-07-18 22:04 PDT / 2026-07-19 05:04 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -24,71 +24,150 @@ Questions to raise about scaling Stage 1 past the ARCHS4 regex-recovery bootstra
    precision review — is there a lab pipeline/access, or pull the open tables directly?
 3. **Any lab-internal curated cohort or target tissue panel** to align to?
 
-Bring to the meeting: the K=5 organ smoke results
-(`results/stage1_organ_k5_smoke_*/evaluation/report.json`) as evidence the
-router+experts path works.
+Bring to the meeting: the completed K=5 organ smoke and full single-seed behavior
+results (`results/stage1_organ_k5_smoke_20260717T061947Z/` and
+`results/stage1_organ_k5_train_20260717T165507Z/`), emphasizing the strong routed
+gain and the failed organ-fixed versus random-fixed control rather than presenting
+the run as a definitive biological claim.
 
 ## Current Objective
 
-The core Stage 0 interspecies training, backup, evaluation, reporting, and Git
-archival are complete. The next objective is to close the final fair pooled
-Stage 0 control while
-beginning a bounded Stage 1 human-organ pilot:
+The core Stage 0 interspecies work, including the final globally shuffled pooled
+control, is complete and validated. The first full K=5 Stage 1 human-organ
+single-seed behavior run is also complete. The immediate objective is to preserve
+its mixed gate interpretation while running the now-frozen two-seed replication:
 
-1. **Complete:** test a blind expression-derived species gate against the
-   true-species ceiling.
-2. **Running:** retrain the pooled mixed control with globally shuffled
-   cross-species batches. As of 2026-07-16 23:35 UTC it is at epoch 13/15
-   (~6.5 h ETA) on `moe-reboot`, GPU saturated. The eval and freeze watchers are
-   queued behind it in tmux (`mixed20k_shuffled_eval_watch_*`,
-   `mixed20k_shuffled_freeze_watch_*`).
-3. **Pilot frozen:** audit organ labels, choose a data-supported `K`, and build
-   study-disjoint train/calibration/test manifests.
-4. **Engineering complete for the mechanical smoke:** the exact extractor,
-   deterministic manifest trainer, balanced random controls, prediction cache,
-   five-class blind router/evaluator, decision script, and fail-fast launcher are
-   implemented and synthetic-tested end to end.
-5. **Next data:** manually validate and expand organ labels before spending a long
-   specialist-training run. The present bottleneck is label/QC coverage and
-   independent studies, not the total number of expression profiles in ARCHS4.
-   After the smoke, use ARCHS4 tissue-atlas groups plus source GEO metadata and
-   UBERON-style anatomy normalization to recover candidate labels, assign confidence
-   tiers, and generate a short ambiguity/policy sheet for PI review.
-6. **Next execution (now automated) — the three-step GPU chain:**
-   `20k-mixed training -> quick species eval -> K=5 organ smoke/code test`, all
-   hands-off on the one A100.
-   - Step 2 (species closeout): `runs/evaluate_shuffled_mixed_when_complete.sh`
-     (tmux `mixed20k_shuffled_eval_watch_*`) runs headroom full+strict + blind
-     species gate on the corrected pool, writing
-     `results/mixed_20k_v3_shuffled_eval.COMPLETE`. Purpose is to resolve whether
-     the weak species-MoE result was real or a batch-order artifact — a report
-     closeout, not an organ dependency.
-   - Step 3 (jump straight to five organs):
-     `runs/run_organ_k5_when_eval_complete.sh` (tmux `stage1_organ_k5_watch_*`)
-     polls for that marker, guards on eval `exit_code==0`, then runs
-     `runs/run_organ_smoke.sh --manifest artifacts/stage1_organ_k5/organ_pilot_manifest.csv`
-     (`MAX_UPDATES=300`) into `results/stage1_organ_k5_smoke_<ts>/`. This is a
-     software + behavior sanity run on the real chosen five organs before any
-     longer multi-seed run; losses are not biological evidence. The older
-     220-per-organ pilot-manifest smoke
-     (`runs/run_organ_smoke_when_eval_complete.sh`) is retired in favor of this and
-     its watcher session was stopped. Status:
-     `results/stage1_organ_k5_smoke.status`/`.COMPLETE`.
-   - Step 4 (actual K=5 training): `runs/run_organ_k5_train_when_smoke_complete.sh`
-     (tmux `stage1_organ_k5_train_watch_*`) fires only after the smoke completes AND
-     its `mechanical_health.json` reports `pass`, so a real budget is never spent on
-     a broken pipeline. It reruns the same pipeline with `RUN_MODE=full`,
-     `MAX_UPDATES=1500`, `VALIDATION_INTERVAL=150` (periodic best-validation
-     checkpointing) into `results/stage1_organ_k5_train_<ts>/`. First real
-     single-seed behavior run; multi-seed Gate 1 rigor comes later (after the PI
-     meeting / GTEx decision). `run_organ_smoke.sh` gained backward-compatible
-     `VALIDATION_INTERVAL` and `RUN_MODE` env knobs for this. K=5 preflight passes
-     on the VM. The local test suite is 89/89 passing.
-7. **Label-recovery track (started 2026-07-16, runs concurrently, no GPU):** a
-   metadata-only reconciliation pass that mines `characteristics_ch1` — the explicit
-   `tissue:` key/value fields the original audit ignored — and separates
-   disease/tumor/cell-source status from the organ label. See the label-recovery
+1. **Complete — shuffled 20k pooled control:** training finished at epoch 15 with
+   best validation loss `0.296133697` and checkpoint SHA256
+   `cb24c4f00047e198ca083f8880b28584952557c2d99ff7c63449ea4ae2701f4a`.
+   Freeze and corrected full/strict/blind evaluations all exited 0; frozen
+   shuffled-pool validation passed at 2026-07-17 06:19 UTC.
+2. **The shuffled 20k behaved as expected and repaired the confound:** on the
+   strict 103-study cohort, pooled mixed MSE improved from `0.619339` to
+   `0.361734`, and the fixed blend's advantage over pooled shrank from 23.24% to
+   2.03%. Thus the original species-contiguous batch order materially weakened
+   the old pooled control. Adaptive headroom survived the stronger control: the
+   blind soft router beat the fixed blend by 11.42% relative MSE, with MSE-gain
+   CI `[0.03352, 0.04820]` and residual-Pearson-gain CI
+   `[0.02330, 0.03275]`; blind species balanced accuracy was 99.0%. This clears
+   the preregistered practically-convincing threshold for Stage 0 cross-species
+   routing, while remaining distinct from the Stage 1 organ claim.
+3. **Pilot frozen:** the K=5 set is brain, adipose, liver, skin, and
+   skeletal_muscle, with a study-disjoint train/calibration/test manifest.
+4. **K=5 real-data smoke passed:** `runs/run_organ_k5_when_eval_complete.sh`
+   completed `results/stage1_organ_k5_smoke_20260717T061947Z` at 2026-07-17
+   16:51 UTC with exit code 0. `mechanical_health.json` reports `status=pass`, no
+   issues, leakage-free connected-study splits, verified gene/sample/mask hashes,
+   prediction-mask identity, and five matched random shards. The report correctly
+   labels this 300-update run `mechanical_only=true` and
+   `biological_evidence=false`.
+5. **Full K=5 single-seed behavior run completed:**
+   `results/stage1_organ_k5_train_20260717T165507Z` finished at 2026-07-19
+   03:55 UTC with exit code 0. All 22,500 scheduled updates completed (7,500
+   pooled; 1,500 each for five organ specialists and five matched random shards),
+   followed by prediction caching and a 2,000-replicate clustered bootstrap.
+   The 1,018-sample/87-study test is leakage-free, and all gene, sample, mask,
+   prediction-cache, and random-shard checks pass.
+6. **Single-seed routed result is strong:** blind-router balanced accuracy is
+   90.67%. Blind hard routing reduces primary MSE versus pooled by 16.95%
+   (`0.700827 -> 0.582042`), with positive MSE, Pearson, and residual-Pearson
+   intervals, and recovers 119.3% of the true-organ hard gain. Blind soft routing
+   reduces MSE by 19.45% (`0.700827 -> 0.564497`). True-organ hard routing reduces
+   MSE by 14.21% (`0.700827 -> 0.601255`), although its residual-Pearson interval
+   crosses zero. Soft-oracle headroom is large: 41.09% versus organ-fixed
+   (`0.907481 -> 0.534600`). All five matched specialists beat their train-only
+   organ gene-mean MSE baselines with positive intervals.
+7. **The biological-versus-generic-sharding control failed:** organ-fixed MSE is
+   `0.907481` versus `0.899724` for random-fixed, a -0.862% relative reduction
+   (organ-fixed is worse). The paired absolute-MSE improvement is `-0.007757`,
+   CI `[-0.011027, -0.004397]`, so this is not a within-seed statistical tie.
+   The preregistered requirement was at least +3% with a positive interval.
+   Random-shard soft-oracle headroom is only 1.09%, versus 41.09% for organ experts,
+   which shows much stronger sample-dependent complementarity in the organ experts
+   but does not replace the failed preregistered fixed-ensemble control.
+8. **Engineering complete:** the exact extractor, deterministic manifest trainer,
+   balanced random controls, prediction cache, five-class blind router/evaluator,
+   decision script, and fail-fast launcher are implemented and synthetic-tested
+   end to end. The local suite is 89/89 passing.
+9. **Next data:** manually validate and expand organ labels before treating the
+   single-seed specialist run as definitive biological evidence. The bottleneck
+   is label/QC coverage and independent studies, not total ARCHS4 profile count.
+10. **Label-recovery track (started 2026-07-16, runs concurrently, no GPU):** a
+   metadata-only reconciliation pass mines `characteristics_ch1` tissue fields
+   and separates disease/tumor/cell-source status from the organ label. See the
    result below; it materially relaxes the row-count blocker behind the NO-GO.
+
+### Interpretation of organ-fixed versus random-fixed
+
+`organ_fixed` is not true-organ routing. The evaluator fits one simplex of weights
+over the five organ specialists on calibration studies, freezes it, and applies the
+same mixture to every test sample. `random_fixed` independently fits and freezes the
+same kind of mixture over five size/exposure-matched random-shard experts. The
+comparison therefore asks whether organ partitioning produces intrinsically better
+*ungated ensemble ingredients* than arbitrary partitioning.
+
+The negative result means that, once sample identity and routing are removed, the
+organ specialists do not form a better global fixed average than random shards in
+this run. A plausible mechanism is that organ experts are deliberately narrow:
+each is strong on its matching organ and poor out of domain, so averaging them for
+every sample washes out their advantage. Random-shard experts see broader organ
+mixtures and can be slightly safer ingredients for a fixed global average. The
+separately calibrated weights support this geometry: organ-fixed is near-uniform
+(`0.170-0.226`), while random-fixed concentrates more weight on two shards
+(`0.299` and `0.341`).
+
+This does **not** say the organ labels or specialists are useless. Correctly routed
+organ experts beat pooled by 14.21%, the blind hard router beats pooled by 16.95%,
+and organ-expert soft-oracle headroom is 41.09% while random-expert oracle headroom
+is only 1.09%. Those results say the organ experts contain strong, structured,
+sample-dependent complementarity that must be routed; fixed averaging cannot use
+it. Blind routing exceeding true-organ hard routing is possible because some test
+samples are better reconstructed by a non-label expert and the five organ labels
+are coarse relative to biological heterogeneity.
+
+The preregistered interpretation must nevertheless remain conservative. Gate 2.3
+requires organ-fixed to beat random-fixed by at least 3%, so this seed fails the
+biological-versus-generic-sharding gate. Gate 1 also requires three training seeds,
+and the true-organ residual-Pearson interval is not wholly positive. Therefore this
+run is a promising routed-system result, not a green biological-specialization or
+Stage 2 expansion result. If the same pattern survives the two replication seeds,
+the frozen decision logic places it on the amber `organ_is_wrong_axis` branch: at
+most a bounded shared-trunk label-free feasibility pilot, while diagnosing why the
+organ axis helps routing but not the preregistered fixed-ensemble control. Do not
+change or substitute the failed control post hoc; additional random-router or
+per-organ analyses may be labeled exploratory diagnostics only.
+
+### Three-seed replication checkpoint (frozen 2026-07-19)
+
+The next experiment was approved after reviewing seed 42 and is frozen in
+`artifacts/stage1_organ_k5/replication_protocol.json`. Train exactly seeds 43 and
+44, then evaluate seeds 42/43/44 once. Do not add seeds to chase a pass. Across
+seeds, keep the recovered source manifest, connected-study protocol seed 314159,
+random-shard assignments, mask seed 271828, architecture, balanced sampler,
+7,500 pooled updates, 1,500 updates per organ/random expert, 150-update validation,
+and 2,000 bootstrap replicates fixed. Only initialization and training-sampler RNGs
+change. The frozen manifest SHA256 is
+`25c62b071720117721a24930945fbd4c8c7cdc4a2a81ae003a920e9402441d5b`.
+
+The original decision logic and +3% organ-fixed versus random-fixed gate remain
+unchanged. A new report-schema-v2 diagnostic directly compares each matching organ
+specialist with all five random experts and with the calibration-selected best
+random expert for that organ. The selected random expert uses calibration targets
+only and true-organ routing on test; it never uses test reconstruction targets.
+This diagnostic is explicitly `gating=false`: it can explain the fixed-control
+geometry but cannot rescue or replace the preregistered gate.
+
+Automation: `runs/run_organ_k5_replication_seeds.sh` first re-evaluates the frozen
+seed-42 prediction cache under schema v2, trains/evaluates seeds 43 and 44
+sequentially, verifies identical cache-input fingerprints across all reports, and
+then writes the one three-seed decision to
+`results/stage1_organ_k5_replication/three_seed_decision.json`. Runtime status is
+`results/stage1_organ_k5_replication/STATUS`; per-seed outputs are
+`results/stage1_organ_k5_train_seed43_v1/` and
+`results/stage1_organ_k5_train_seed44_v1/`. The launcher requires at least 40 GiB
+free at start and 20 GiB before each new seed. The VM had 74 GiB free before launch;
+the two expected ~16 GiB outputs fit with headroom. Expected sequential compute is
+about 70 A100-hours.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
@@ -146,7 +225,11 @@ the remaining organs (pancreas, placenta, prostate, breast, testis, ovary) are r
 group-limited and need further recovery or are deferred. Any expansion re-runs
 `build_recovered_candidates.py --organs ...`.
 
-### Stage 1 -> Stage 2 decision snapshot (frozen 2026-07-15)
+### Pre-K5 Stage 1 -> Stage 2 decision snapshot (frozen 2026-07-15)
+
+This is retained as the pre-recovery baseline; the completed K=5 single-seed
+interpretation above is the current result and does not yet supersede the required
+three-seed machine decision.
 
 - **Current decision: definitive Stage 1 is NO-GO; pipeline smoke testing is
   allowed.** The five specialist training sets contain only 783 brain, 409 skin,

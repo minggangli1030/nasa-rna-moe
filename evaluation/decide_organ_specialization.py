@@ -139,15 +139,23 @@ def _technical_audit(reports: list[dict], min_seeds: int) -> tuple[dict, list[st
         field: {report.get("splits", {}).get(field) for report in reports}
         for field in fingerprint_fields
     }
-    gene_hashes = {
-        report.get("cache_metadata", {}).get("content_sha256", {}).get("genes")
-        for report in reports
+    content_fields = (
+        "sample_ids", "organs", "series_group_id", "split", "train_eligible",
+        "random_shard", "genes", "expression", "mask_idx",
+    )
+    content_fingerprints = {
+        field: {
+            report.get("cache_metadata", {}).get("content_sha256", {}).get(field)
+            for report in reports
+        }
+        for field in content_fields
     }
     for field, values in fingerprints.items():
         if None in values or len(values) != 1:
             reasons.append(f"seed reports disagree on {field}")
-    if None in gene_hashes or len(gene_hashes) != 1:
-        reasons.append("seed reports disagree on gene identity/order")
+    for field, values in content_fingerprints.items():
+        if None in values or len(values) != 1:
+            reasons.append(f"seed reports disagree on cache input {field}")
 
     required_validation = (
         "leakage_free", "random_shard_count_matches_organs", "mask_hash_verified",
@@ -171,8 +179,55 @@ def _technical_audit(reports: list[dict], min_seeds: int) -> tuple[dict, list[st
         "minimum_training_seeds": min_seeds,
         "training_seeds": seeds,
         "fingerprints": {field: sorted(str(value) for value in values) for field, values in fingerprints.items()},
-        "gene_hashes": sorted(str(value) for value in gene_hashes),
+        "content_fingerprints": {
+            field: sorted(str(value) for value in values)
+            for field, values in content_fingerprints.items()
+        },
     }, reasons
+
+
+def _aggregate_non_gating_diagnostics(reports: list[dict]) -> dict:
+    comparison_name = "true_organ_hard_vs_calibration_best_random_by_organ"
+    if not all(comparison_name in report.get("comparisons", {}) for report in reports):
+        return {
+            "available": False,
+            "gating": False,
+            "reason": "one or more reports predate the direct organ-vs-random diagnostic",
+        }
+
+    organ_sets = [
+        set(report.get("exploratory_random_controls", {}).get("by_organ", {}))
+        for report in reports
+    ]
+    if not organ_sets or any(organs != organ_sets[0] for organs in organ_sets[1:]):
+        raise ValueError("seed reports disagree on direct-control organ sets")
+    by_organ = {}
+    for organ in sorted(organ_sets[0]):
+        synthetic = []
+        selected_random = []
+        for report in reports:
+            detail = report["exploratory_random_controls"]["by_organ"][organ]
+            selected_random.append(detail["calibration_selected_random_expert"])
+            synthetic.append({
+                "comparisons": {
+                    "direct": detail["matching_organ_vs_calibration_selected_random"]
+                }
+            })
+        by_organ[organ] = {
+            "calibration_selected_random_expert_per_seed": selected_random,
+            "matching_organ_vs_calibration_selected_random": _aggregate_comparison(
+                synthetic, "direct"
+            ),
+        }
+    return {
+        "available": True,
+        "gating": False,
+        "interpretation": (
+            "post-seed-42 diagnostic; cannot replace the frozen organ-fixed gate"
+        ),
+        "global": _aggregate_comparison(reports, comparison_name),
+        "by_organ": by_organ,
+    }
 
 
 def decide(
@@ -225,6 +280,7 @@ def decide(
     recovery = blind_gain / true_gain if true_gain > 1e-12 else float("nan")
     recovery_pass = _finite(recovery) and recovery >= limits["blind_recovery"]
     blind_pass = blind_hard_pass and blind_soft_pass and recovery_pass
+    non_gating_diagnostics = _aggregate_non_gating_diagnostics(reports)
 
     core_stability = {
         name: _effect_stable(aggregates[name], max_sd)
@@ -303,6 +359,7 @@ def decide(
         "blind_hard_recovery_of_true_organ_gain": float(recovery),
         "aggregates": aggregates,
         "backbone_aggregates": backbone,
+        "non_gating_diagnostics": non_gating_diagnostics,
         "reasons": reasons,
     }
 

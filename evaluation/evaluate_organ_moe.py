@@ -35,7 +35,7 @@ except ImportError:  # Direct execution: python evaluation/evaluate_organ_moe.py
     from headroom_metrics import balanced_group_mean, mse_rows, paired_bootstrap_ci, pearson_rows
 
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 EPS = 1e-12
 
 
@@ -470,8 +470,9 @@ def evaluate(args: argparse.Namespace) -> dict:
     if missing_experts:
         raise ValueError(f"missing organ experts for {sorted(missing_experts)}")
     expert_organs = sorted(organ_models)
+    random_names = sorted(random_models)
     organ_indices = np.asarray([organ_models[label] for label in expert_organs])
-    random_indices = np.asarray([random_models[label] for label in sorted(random_models)])
+    random_indices = np.asarray([random_models[label] for label in random_names])
 
     pred_masked = _masked_predictions(predictions, mask_idx)
     true_masked = _masked_values(gt, mask_idx)
@@ -487,6 +488,8 @@ def evaluate(args: argparse.Namespace) -> dict:
         random_calibration_pred, calibration_true, calibration_weight
     )
     soft_weights_by_organ: dict[str, np.ndarray] = {}
+    calibration_best_random_by_organ: dict[str, str] = {}
+    calibration_random_mse_by_organ: dict[str, dict[str, float]] = {}
     calibration_organs = organs[calibration]
     calibration_groups = groups[calibration]
     for organ in expert_organs:
@@ -499,6 +502,17 @@ def evaluate(args: argparse.Namespace) -> dict:
         soft_weights_by_organ[organ] = fit_simplex_weights(
             organ_calibration_pred[:, keep], calibration_true[keep], group_weight
         )
+        random_mse = np.mean(
+            (random_calibration_pred[:, keep] - calibration_true[keep][None, :, :]) ** 2,
+            axis=2,
+        )
+        random_score = random_mse @ group_weight
+        best_random_index = int(np.argmin(random_score))
+        calibration_best_random_by_organ[organ] = random_names[best_random_index]
+        calibration_random_mse_by_organ[organ] = {
+            label: float(random_score[index])
+            for index, label in enumerate(random_names)
+        }
 
     mask_token = float(metadata.get("mask_token", args.mask_token))
     gate_features = masked_gate_features(gt, mask_idx, mask_token)
@@ -528,10 +542,13 @@ def evaluate(args: argparse.Namespace) -> dict:
     true_hard_weights = np.zeros_like(fixed_organ_matrix)
     true_soft_weights = np.empty_like(fixed_organ_matrix)
     blind_hard_weights = np.zeros_like(fixed_organ_matrix)
+    calibration_random_hard_weights = np.zeros_like(fixed_random_matrix)
     for row, (truth, predicted) in enumerate(zip(test_organs, predicted_organs)):
         true_hard_weights[row, expert_organs.index(truth)] = 1.0
         true_soft_weights[row] = soft_weights_by_organ[truth]
         blind_hard_weights[row, expert_organs.index(predicted)] = 1.0
+        selected_random = calibration_best_random_by_organ[truth]
+        calibration_random_hard_weights[row, random_names.index(selected_random)] = 1.0
 
     soft_oracle_weights = per_sample_simplex_weights(test_organ_pred, test_true)
     random_oracle_weights = per_sample_simplex_weights(test_random_pred, test_true)
@@ -552,9 +569,14 @@ def evaluate(args: argparse.Namespace) -> dict:
         "soft_oracle": apply_sample_weights(test_organ_pred, soft_oracle_weights),
         "random_fixed": apply_sample_weights(test_random_pred, fixed_random_matrix),
         "random_soft_oracle": apply_sample_weights(test_random_pred, random_oracle_weights),
+        "calibration_best_random_by_true_organ": apply_sample_weights(
+            test_random_pred, calibration_random_hard_weights
+        ),
     }
     for label, index in organ_models.items():
         condition_predictions[f"expert:{label}"] = pred_masked[index, test]
+    for label, index in random_models.items():
+        condition_predictions[f"random_expert:{label}"] = pred_masked[index, test]
 
     baseline_masked, baseline_means = _organ_train_baseline(
         gt, organs, train, test_organs, mask_idx[test]
@@ -580,6 +602,11 @@ def evaluate(args: argparse.Namespace) -> dict:
         ("blind_soft_vs_organ_fixed", "blind_organ_soft", "organ_fixed"),
         ("soft_oracle_vs_organ_fixed", "soft_oracle", "organ_fixed"),
         ("random_soft_oracle_vs_random_fixed", "random_soft_oracle", "random_fixed"),
+        (
+            "true_organ_hard_vs_calibration_best_random_by_organ",
+            "true_organ_hard",
+            "calibration_best_random_by_true_organ",
+        ),
     )
     comparisons = {
         name: _comparison(
@@ -598,6 +625,7 @@ def evaluate(args: argparse.Namespace) -> dict:
     blind_recovery = blind_gain / true_gain if true_gain > EPS else float("nan")
 
     backbone_by_organ = {}
+    direct_random_controls_by_organ = {}
     for index, organ in enumerate(expert_organs):
         keep = test_organs == organ
         if not np.any(keep):
@@ -611,6 +639,35 @@ def evaluate(args: argparse.Namespace) -> dict:
             args.seed + 1000 + index * 5,
             args.bootstrap_reps,
         )
+        matching_arrays = {
+            metric: values[keep]
+            for metric, values in condition_arrays[f"expert:{organ}"].items()
+        }
+        random_comparisons = {}
+        for random_index, random_name in enumerate(random_names):
+            random_comparisons[random_name] = _comparison(
+                f"expert_{organ}_vs_random_{random_name}",
+                matching_arrays,
+                {
+                    metric: values[keep]
+                    for metric, values in condition_arrays[
+                        f"random_expert:{random_name}"
+                    ].items()
+                },
+                test_groups[keep],
+                test_organs[keep],
+                args.seed + 2000 + index * 100 + random_index * 5,
+                args.bootstrap_reps,
+            )
+        selected_random = calibration_best_random_by_organ[organ]
+        direct_random_controls_by_organ[organ] = {
+            "calibration_selected_random_expert": selected_random,
+            "calibration_random_mse": calibration_random_mse_by_organ[organ],
+            "matching_organ_vs_each_random": random_comparisons,
+            "matching_organ_vs_calibration_selected_random": random_comparisons[
+                selected_random
+            ],
+        }
 
     test_label_to_index = {label: index for index, label in enumerate(expert_organs)}
     y_true = np.asarray([test_label_to_index[label] for label in test_organs])
@@ -687,7 +744,7 @@ def evaluate(args: argparse.Namespace) -> dict:
         "models": {
             "model_names": model_names.tolist(),
             "organ_expert_order": expert_organs,
-            "random_expert_order": sorted(random_models),
+            "random_expert_order": random_names,
         },
         "calibration_rules": {
             "primary_weighting": "equal organ, then equal connected study within organ",
@@ -696,6 +753,7 @@ def evaluate(args: argparse.Namespace) -> dict:
             "soft_weights_by_true_organ": {
                 label: weights.tolist() for label, weights in soft_weights_by_organ.items()
             },
+            "calibration_best_random_by_true_organ": calibration_best_random_by_organ,
         },
         "router": router_report,
         "baselines": {
@@ -714,6 +772,19 @@ def evaluate(args: argparse.Namespace) -> dict:
         "backbone_checks": {
             "pooled_vs_gene_mean": comparisons["pooled_vs_gene_mean"],
             "by_organ": backbone_by_organ,
+        },
+        "exploratory_random_controls": {
+            "gating": False,
+            "interpretation": (
+                "post-seed-42 diagnostic; does not replace organ_fixed_vs_random_fixed"
+            ),
+            "selection_split": args.calibration_split,
+            "uses_test_targets_for_selection": False,
+            "uses_test_organ_for_routing": True,
+            "global_true_organ_hard_vs_calibration_best_random_by_organ": comparisons[
+                "true_organ_hard_vs_calibration_best_random_by_organ"
+            ],
+            "by_organ": direct_random_controls_by_organ,
         },
         "per_sample_metrics_csv": str(metrics_path.resolve()),
     }

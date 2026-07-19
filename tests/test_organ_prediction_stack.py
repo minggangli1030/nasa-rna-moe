@@ -213,6 +213,21 @@ def test_cache_and_evaluator_run_end_to_end_without_target_visible_router(tmp_pa
         "mse_improvement_mean"
     ] > 0.0
     assert "random_soft_oracle_vs_random_fixed" in report["comparisons"]
+    direct_name = "true_organ_hard_vs_calibration_best_random_by_organ"
+    assert direct_name in report["comparisons"]
+    direct = report["exploratory_random_controls"]
+    assert direct["gating"] is False
+    assert direct["selection_split"] == "calibration"
+    assert direct["uses_test_targets_for_selection"] is False
+    assert direct["uses_test_organ_for_routing"] is True
+    assert set(direct["by_organ"]) == set(organ_names)
+    for organ in organ_names:
+        detail = direct["by_organ"][organ]
+        assert detail["calibration_selected_random_expert"] in organ_names
+        assert set(detail["matching_organ_vs_each_random"]) == set(organ_names)
+        assert detail["matching_organ_vs_calibration_selected_random"]["primary"][
+            "mse_improvement_mean"
+        ] > 0.0
     assert "primary_balanced_organ_study_macro" in report["conditions"]["pooled"]
     assert "secondary_natural_sample_mean" in report["conditions"]["pooled"]
     assert (tmp_path / "evaluation" / "report.json").is_file()
@@ -259,6 +274,7 @@ def _seed_report(seed: int) -> dict:
         "true_organ_hard_vs_pooled", "soft_oracle_vs_organ_fixed",
         "organ_fixed_vs_random_fixed", "blind_hard_vs_pooled",
         "blind_hard_vs_organ_fixed", "blind_soft_vs_organ_fixed",
+        "true_organ_hard_vs_calibration_best_random_by_organ",
     )
     comparison = lambda name: {"name": name, "primary": _primary()}  # noqa: E731
     pooled = comparison("pooled_vs_gene_mean")
@@ -280,7 +296,14 @@ def _seed_report(seed: int) -> dict:
                 "prediction_input": "log1p_tpm", "cache_targets": "log1p_tpm",
                 "cache_predictions": "log1p_tpm",
             },
-            "content_sha256": {"genes": "genes"},
+            "content_sha256": {
+                field: field
+                for field in (
+                    "sample_ids", "organs", "series_group_id", "split",
+                    "train_eligible", "random_shard", "genes", "expression",
+                    "mask_idx",
+                )
+            },
         },
         "comparisons": {name: comparison(name) for name in names},
         "backbone_checks": {
@@ -290,12 +313,30 @@ def _seed_report(seed: int) -> dict:
                 for organ in ("brain", "liver", "lung")
             },
         },
+        "exploratory_random_controls": {
+            "gating": False,
+            "by_organ": {
+                organ: {
+                    "calibration_selected_random_expert": "random_0",
+                    "matching_organ_vs_calibration_selected_random": comparison(
+                        f"expert_{organ}_vs_random_random_0"
+                    ),
+                }
+                for organ in ("brain", "liver", "lung")
+            },
+        },
     }
 
 
 def test_decider_emits_green_named_amber_branches_and_red():
     reports = [_seed_report(seed) for seed in (17, 42, 101)]
-    assert decide(copy.deepcopy(reports))["status"] == "green"
+    green = decide(copy.deepcopy(reports))
+    assert green["status"] == "green"
+    assert green["non_gating_diagnostics"]["available"] is True
+    assert green["non_gating_diagnostics"]["gating"] is False
+    assert set(green["non_gating_diagnostics"]["by_organ"]) == {
+        "brain", "liver", "lung"
+    }
 
     router_failure = copy.deepcopy(reports)
     for report in router_failure:
