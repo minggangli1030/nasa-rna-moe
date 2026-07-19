@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-18 22:29 PDT / 2026-07-19 05:29 UTC
+**Last updated:** 2026-07-18 22:35 PDT / 2026-07-19 05:35 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -209,11 +209,15 @@ expert, validation every 150 updates, and 2,000 bootstrap replicates. Provenance
 are under `results/stage1_organ_k5_parallel_seed44/` on `moe-reboot2`; live output is
 `/dev/shm/stage1_organ_k5_train_seed44_v1`. The central coordinator PID 325868 is
 SIGSTOP-paused while its seed-43 child remains active on the A100, preventing an
-automatic duplicate seed-44 launch. After both seeds finish, copy seed 44 to central
-persistent storage, expose it at the runner's expected output path, and SIGCONT the
-coordinator so it validates all reports and makes the single frozen three-seed
-decision. Do not shelve or reboot `moe-reboot2` before that copy completes because its
-seed-44 data and output are RAM-backed.
+automatic duplicate seed-44 launch. A caffeinated local watcher (PID 16534) runs
+`runs/collect_parallel_seed44.sh` and records state under
+`backups/stage1_organ_k5_seed44_parallel/`. When seed 44 completes, it streams the
+RAM-backed output to a temporary directory on central persistent storage, verifies
+SHA256 for every file, atomically installs the expected seed-44 result directory, and
+SIGCONT-resumes the coordinator. The coordinator will then validate all reports and
+make the single frozen three-seed decision. Do not shelve or reboot `moe-reboot2`
+before the watcher reports `COMPLETE` because its seed-44 data and output are
+RAM-backed.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
