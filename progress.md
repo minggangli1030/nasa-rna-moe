@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-18 22:35 PDT / 2026-07-19 05:35 UTC
+**Last updated:** 2026-07-20 11:50 PDT / 2026-07-20 18:50 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -33,9 +33,13 @@ the run as a definitive biological claim.
 ## Current Objective
 
 The core Stage 0 interspecies work, including the final globally shuffled pooled
-control, is complete and validated. The first full K=5 Stage 1 human-organ
-single-seed behavior run is also complete. The immediate objective is to preserve
-its mixed gate interpretation while running the now-frozen two-seed replication:
+control, is complete and validated. The full K=5 Stage 1 human-organ three-seed
+replication is also complete. Its frozen result is amber `organ_is_wrong_axis`: the
+routed system is strong and stable, but organ partitioning fails the preregistered
+fixed-average control and does not establish the intended biological-specialization
+claim.
+
+Key completed checkpoints:
 
 1. **Complete — shuffled 20k pooled control:** training finished at epoch 15 with
    best validation loss `0.296133697` and checkpoint SHA256
@@ -207,17 +211,43 @@ tmux session `stage1_organ_k5_seed44_20260719` launched at 2026-07-19 05:27:48 U
 with training seed 44, protocol seed 314159, mask seed 271828, 1,500 updates per
 expert, validation every 150 updates, and 2,000 bootstrap replicates. Provenance/logs
 are under `results/stage1_organ_k5_parallel_seed44/` on `moe-reboot2`; live output is
-`/dev/shm/stage1_organ_k5_train_seed44_v1`. The central coordinator PID 325868 is
-SIGSTOP-paused while its seed-43 child remains active on the A100, preventing an
-automatic duplicate seed-44 launch. A caffeinated local watcher (PID 16534) runs
-`runs/collect_parallel_seed44.sh` and records state under
-`backups/stage1_organ_k5_seed44_parallel/`. When seed 44 completes, it streams the
-RAM-backed output to a temporary directory on central persistent storage, verifies
-SHA256 for every file, atomically installs the expected seed-44 result directory, and
-SIGCONT-resumes the coordinator. The coordinator will then validate all reports and
-make the single frozen three-seed decision. Do not shelve or reboot `moe-reboot2`
-before the watcher reports `COMPLETE` because its seed-44 data and output are
-RAM-backed.
+`/dev/shm/stage1_organ_k5_train_seed44_v1`. The central coordinator PID 325868 was
+SIGSTOP-paused while its seed-43 child remained active on the A100, preventing an
+automatic duplicate seed-44 launch. A caffeinated local watcher (PID 16534) was
+launched from `runs/collect_parallel_seed44.sh`; its premature exit and the verified
+manual recovery are recorded below.
+
+Final replication checkpoint: seed 43 completed at 2026-07-20 16:08:34 UTC and
+seed 44 completed at 16:26:50 UTC; both mechanical-health reports pass with no
+issues. The local persistence watcher had exited before observing completion, so
+the intact seed-44 RAM output was recovered directly VM-to-VM. All 107 entries
+(`16,628,819,434` bytes) were content-checksum verified against the RAM source,
+atomically installed on central persistent storage, and the coordinator resumed.
+The frozen decision completed with exit code 0 at 2026-07-20 18:48:05 UTC in
+`results/stage1_organ_k5_replication/three_seed_decision.json`.
+
+The formal result is `status=amber_axis`, `branch=organ_is_wrong_axis`. Technical
+validity, all cohort/content fingerprints, backbone health, three-seed stability,
+blind hard/soft routing, blind recovery, and soft-oracle headroom pass. True-organ
+hard routing reduces MSE versus pooled by 14.28% on average (per seed 14.21%,
+15.89%, 12.75%), but its combined residual-Pearson interval crosses zero, so the
+full known-organ ceiling gate fails. More decisively, organ-fixed is reproducibly
+worse than random-fixed by 0.914% mean relative MSE (per seed -0.862%, -0.846%,
+-1.033%); the absolute-MSE interval is entirely negative
+`[-0.011724, -0.004617]`. This is a stable directional failure, not a seed-42
+anomaly.
+
+The routed signal remains strong: blind hard reduces MSE versus pooled by 16.97%
+mean (16.95%, 18.53%, 15.42% by seed), with positive combined MSE and
+residual-Pearson intervals, and recovers 118.77% of the true-organ gain. Soft-oracle
+headroom versus organ-fixed is 41.08%. The explicitly non-gating direct diagnostic
+is also exceptionally stable: matching organ experts beat the calibration-selected
+best random expert by 33.02% mean MSE, with positive intervals globally and for all
+five organs. Thus the result supports an averaging-geometry explanation—narrow organ
+experts are useful when routed but poor ingredients for one global fixed average—yet
+cannot rescue the preregistered organ-versus-random gate. The frozen authorization
+is at most a bounded shared-trunk label-free feasibility pilot, not full Stage 2
+expansion or a biological organ-specialization claim.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
