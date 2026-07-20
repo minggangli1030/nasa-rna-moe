@@ -31,6 +31,26 @@ from train_manifest import (  # noqa: E402
     summarize_exposures,
     validate_expression_metadata,
 )
+from train_single import ExpressionPerformer  # noqa: E402
+
+
+def test_expression_performer_encode_decode_matches_forward():
+    torch.manual_seed(7)
+    model = ExpressionPerformer(
+        num_genes=6,
+        hidden_dim=8,
+        n_heads=2,
+        n_layers=1,
+        ffn_dim=16,
+        gradient_checkpointing=False,
+    )
+    model.eval()
+    values = torch.randn(3, 6)
+    torch.manual_seed(11)
+    direct = model(values)
+    torch.manual_seed(11)
+    factored = model.decode(model.encode(values))
+    torch.testing.assert_close(direct, factored)
 
 
 def test_validation_weights_prevent_brain_and_large_studies_from_dominating():

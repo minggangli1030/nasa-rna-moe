@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "frozen_at_utc": "2026-07-20T19:00:00Z",
+  "purpose": "Test whether a target-hidden learned routing axis is a better specialization factor than organ labels and balanced random partitions.",
+  "authorization_source": {
+    "stage1_status": "amber_axis",
+    "stage1_branch": "organ_is_wrong_axis",
+    "scope": "bounded shared-trunk label-free feasibility pilot"
+  },
+  "data": {
+    "expression_parquet": "results/stage1_organ_k5_train_20260717T165507Z/expression/expression.parquet",
+    "expression_sha256": "148776bc2d5bbe4a969103de7abab932b7467c804934fc697366ae2c209c0821",
+    "manifest_parquet": "results/stage1_organ_k5_train_20260717T165507Z/expression/manifest.parquet",
+    "manifest_sha256": "bc4e8e4e36ab0e869fd885197842dc797edad5a08b8093beb21185dbeda7f9cc",
+    "development_splits": [
+      "train",
+      "calibration"
+    ],
+    "sealed_split": "test"
+  },
+  "frozen_trunk": {
+    "checkpoint": "results/stage1_organ_k5_train_20260717T165507Z/models/pooled/best_model.pt",
+    "sha256": "080a8a36d2090c3a823cd3995d758d1205b0ad02c1c38c06e6763c5a7ebfd789",
+    "training_seed": 42,
+    "update": 7350,
+    "parameters_updated": false
+  },
+  "matched_modes": [
+    "organ_supervised",
+    "balanced_random",
+    "label_free"
+  ],
+  "label_free_exclusions": [
+    "organ",
+    "study or series group",
+    "platform",
+    "disease",
+    "sex",
+    "age",
+    "treatment",
+    "all other phenotype labels"
+  ],
+  "posthoc_nonselecting_probes": [
+    "organ adjusted mutual information",
+    "connected-study adjusted mutual information and route dominance",
+    "organ-label evidence source adjusted mutual information",
+    "single-cell contamination probability eta-squared"
+  ],
+  "training_seeds": [
+    17,
+    42,
+    101
+  ],
+  "architecture": {
+    "num_experts": 5,
+    "adapter_dim": 64,
+    "router_hidden_dim": 128,
+    "trunk_frozen": true,
+    "router_input": "mean pooled frozen-trunk hidden states at observed genes only",
+    "expert_form": "small per-gene residual MLP added to the pooled reconstruction",
+    "active_dispatch_evaluation": "top1"
+  },
+  "optimization": {
+    "max_updates": 1500,
+    "validation_interval": 150,
+    "batch_size": 8,
+    "validation_batch_size": 8,
+    "sampling": "equal organ, then equal connected study, then sample",
+    "fixed_mixture_objective": "organ-balanced, connected-study-balanced calibration MSE",
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "router_temperature": 0.7,
+    "load_balance_weight": 0.05,
+    "entropy_weight": 0.01,
+    "router_supervision_weight_for_controls": 0.1,
+    "mask_ratio": 0.3,
+    "mask_token": -10.0,
+    "mixed_precision": true,
+    "primary_mask_seed": 271828,
+    "repeated_mask_seeds": [
+      271828,
+      271829,
+      271830
+    ]
+  },
+  "screening": {
+    "selection_split": "calibration",
+    "test_access_before_pass": false,
+    "comparisons": [
+      "label_free top1 versus pooled trunk",
+      "label_free top1 versus perfect organ-partition dispatch",
+      "label_free top1 versus assigned balanced-random partition dispatch",
+      "label_free top1 versus balanced-random fixed mixture"
+    ],
+    "minimum_relative_mse_gain": 0.03,
+    "positive_study_clustered_interval_required": true,
+    "same_positive_sign_across_seeds_required": true,
+    "maximum_seed_sd_fraction_of_mean": 0.5,
+    "minimum_seed_aligned_ami": 0.5,
+    "minimum_repeated_mask_ami": 0.5,
+    "minimum_effective_experts": 3.0,
+    "minimum_route_fraction": 0.02,
+    "maximum_single_study_fraction_within_route": 0.5
+  },
+  "decision": {
+    "screen_pass": "freeze the learned route definition and evaluate once on the untouched test split",
+    "screen_fail": "do not access test; revise or stop using calibration evidence only",
+    "interpretation_guardrail": "post-hoc organ/study/metadata probes describe the learned representation but cannot select or rescue it"
+  },
+  "worker_allocation": {
+    "moe-reboot": [
+      "organ_supervised:17",
+      "organ_supervised:42",
+      "organ_supervised:101",
+      "label_free:17",
+      "label_free:42"
+    ],
+    "moe-reboot2": [
+      "balanced_random:17",
+      "balanced_random:42",
+      "balanced_random:101",
+      "label_free:101"
+    ]
+  }
+}

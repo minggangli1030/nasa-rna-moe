@@ -141,7 +141,8 @@ class ExpressionPerformer(nn.Module):
 		)
 		self.output_map = nn.Linear(hidden_dim, 1)
 
-	def forward(self, x):
+	def encode(self, x):
+		"""Return per-gene hidden states before the reconstruction head."""
 		_, g = x.shape
 		device = x.device
 		gene_ids = torch.arange(g, device=device)
@@ -154,7 +155,14 @@ class ExpressionPerformer(nn.Module):
 				h = torch.utils.checkpoint.checkpoint(layer.full_forward, h, rfs, use_reentrant=False)
 			else:
 				h = layer.full_forward(h, rfs)
-		return self.output_map(h).squeeze(-1)
+		return h
+
+	def decode(self, hidden):
+		"""Map per-gene hidden states to reconstructed expression values."""
+		return self.output_map(hidden).squeeze(-1)
+
+	def forward(self, x):
+		return self.decode(self.encode(x))
 
 
 class SingleParquetStreamingMLMDataset(Dataset):

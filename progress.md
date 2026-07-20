@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-20 11:50 PDT / 2026-07-20 18:50 UTC
+**Last updated:** 2026-07-20 12:42 PDT / 2026-07-20 19:42 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -92,7 +92,7 @@ Key completed checkpoints:
 8. **Engineering complete:** the exact extractor, deterministic manifest trainer,
    balanced random controls, prediction cache, five-class blind router/evaluator,
    decision script, and fail-fast launcher are implemented and synthetic-tested
-   end to end. The local suite is 89/89 passing.
+   end to end. The local suite is 98/98 passing.
 9. **Next data:** manually validate and expand organ labels before treating the
    single-seed specialist run as definitive biological evidence. The bottleneck
    is label/QC coverage and independent studies, not total ARCHS4 profile count.
@@ -248,6 +248,51 @@ experts are useful when routed but poor ingredients for one global fixed average
 cannot rescue the preregistered organ-versus-random gate. The frozen authorization
 is at most a bounded shared-trunk label-free feasibility pilot, not full Stage 2
 expansion or a biological organ-specialization claim.
+
+### Stage 2 latent-axis discovery pilot (frozen 2026-07-20)
+
+The next experiment pivots from assuming that organ identity is the correct
+specialization axis to asking whether a label-free router can discover a more useful,
+replicable partition. The bounded pilot is frozen in
+`artifacts/stage2_latent_axis_pilot/protocol.json`. It uses the exact Stage 1
+train/calibration cohort and the frozen seed-42 pooled trunk; the Stage 1 test split
+remains sealed unless the calibration-only screen passes. Only small residual expert
+adapters and the router are trainable.
+
+The matched design has three modes at seeds 17, 42, and 101: supervised organ
+partitioning as a known-label anchor, balanced-random partitioning as the null, and
+label-free routing as the candidate discovery axis. Every run has K=5 experts,
+adapter dimension 64, router hidden dimension 128, 1,500 updates, the same masking and
+training exposure, and three repeated calibration masks. The label-free mode receives
+no organ, study, platform, disease, sex, age, or treatment labels. Its learned routes
+are later probed against those metadata only for interpretation and confound checks.
+
+The primary screen asks whether label-free hard routing beats (1) the frozen pooled
+trunk, (2) perfect-dispatch organ adapters, and (3) a calibration-optimized fixed
+mixture and assigned-partition dispatch from matched random adapters. Passing
+requires at least 3% relative MSE
+improvement, positive study-clustered intervals and all-seed direction, acceptable
+seed variance, seed/mask route AMI at least 0.5, effective K at least 3, no route below
+2%, and no route with more than 50% of its samples from one study. A pass authorizes
+one frozen test confirmation; failure keeps the test sealed and distinguishes route
+collapse/instability, technical-confound capture, organ recovery, or no useful latent
+axis. This is a discovery screen, not yet a claim that any route is biological.
+
+Implementation adds `core/train_latent_moe.py`,
+`evaluation/evaluate_latent_axis_pilot.py`, and fail-fast worker/aggregation launchers.
+The frozen pooled checkpoint, expression table, and manifest hashes are pinned in the
+protocol. Local focused tests, Python/shell syntax checks, and `git diff --check` pass.
+A two-update real-data smoke on `moe-reboot` confirmed the exact frozen inputs,
+15,448-gene model, 1,815 training/842 calibration samples, frozen trunk, and 347,018
+trainable adapter/router parameters. The first pass exposed an SLSQP iteration-limit
+failure in the fixed-mixture diagnostic; before any full run, it was replaced by a
+deterministic exact simplex-face solver and covered by collinearity and sample-weight
+tests. The repaired smoke completed end to end in 309 seconds of model/evaluation time
+after data loading, writing the adapter, route, metric, hash, and completion artifacts.
+Its one-route collapse after only two updates is expected and is mechanical-only; the
+full screen has explicit utilization/stability gates. The nine full runs are allocated
+across the two A100 VMs: organ seeds plus two label-free seeds on `moe-reboot`, and
+random seeds plus the third label-free seed on `moe-reboot2`.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
@@ -1243,7 +1288,8 @@ The current experiment exists to replace, not refine, those numbers.
 
 ## Validated Artifacts
 
-- Current local suite: 87/87 passing, including label-recovery normalization/tiering,
+- Current local suite: 98/98 passing, including latent-axis training/evaluation,
+  label-recovery normalization/tiering,
   exact extraction, deterministic
   manifest training, balanced random controls, prediction-cache/mask identity,
   target-hidden multiclass routing, decision branches, smoke-launcher guards,
