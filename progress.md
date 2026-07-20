@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-20 12:42 PDT / 2026-07-20 19:42 UTC
+**Last updated:** 2026-07-20 12:48 PDT / 2026-07-20 19:48 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -294,6 +294,17 @@ full screen has explicit utilization/stability gates. The nine full runs are all
 across the two A100 VMs: organ seeds plus two label-free seeds on `moe-reboot`, and
 random seeds plus the third label-free seed on `moe-reboot2`.
 
+Launch checkpoint: commit `4bd3fea` is pushed to `origin/main`; both VMs have
+checksum-identical trainer, evaluator, worker, and protocol files, and both frozen
+input preflights passed. The exact seed-42 pooled checkpoint was transferred directly
+to `moe-reboot2` RAM and verified at SHA256
+`080a8a36d2090c3a823cd3995d758d1205b0ad02c1c38c06e6763c5a7ebfd789`.
+Persistent tmux session `stage2_latent_axis_pilot_20260720` launched on both A100s at
+2026-07-20 19:47:47 UTC. Central began `organ_supervised:17`; the second VM began
+`balanced_random:17`. Worker status and logs are under
+`results/stage2_latent_axis_pilot/` and
+`results/stage2_latent_axis_pilot_worker_20260720.log` on each VM.
+
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
 The full ARCHS4 human `meta/samples` (441,356 rows) was exported read-only to
@@ -404,8 +415,15 @@ serve as the primary interspecies-routing benchmark.
 
 ## Current Runtime Status
 
-- `moe-reboot` is the only active VM. `moe-reboot2` and
-  `moe-reboot-partial` are shelved and are not referenced by current work.
+- `moe-reboot` and `moe-reboot2` are active and running the frozen nine-run Stage 2
+  latent-axis pilot in parallel tmux sessions named
+  `stage2_latent_axis_pilot_20260720`. `moe-reboot-partial` remains shelved.
+- Current allocation is five sequential runs on central and four on the second VM.
+  The calibration-only evaluator runs after all nine outputs are colocated; the Stage 1
+  test split remains sealed unless the screen passes.
+
+### Archived July 16 runtime notes
+
 - The corrected pooled control is running in remote tmux session
   `mixed20k_shuffled_20260715`. It uses the same 16,000 train / 3,200
   validation rows and V3 architecture, but `data_mode=preload` makes the
