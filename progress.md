@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-21 09:45 PDT / 2026-07-21 16:45 UTC
+**Last updated:** 2026-07-21 12:38 PDT / 2026-07-21 19:38 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -642,6 +642,48 @@ No effect estimate has yet been inspected. Based on the smoke initialization plu
 five-bank evaluation time and the 1,500-update training budget, the provisional
 critical-path ETA is about 11:15-11:45 PDT (18:15-18:45 UTC); replace this estimate
 after the first full seed supplies an observed throughput.
+
+Completion checkpoint: all three packed runs and locked score caches completed
+without error. Seed 42 finished training/cache at 17:33:01/17:46:09 UTC; central
+seeds 17 and 101 both required about 43 minutes of bank training, the central
+worker finished at 18:20:41 UTC, and its caches finished at 18:33:37/18:46:41 UTC.
+The 26 seed-42 bank/cache files were transferred to persistent central storage and
+verified byte-identical before evaluation. The frozen evaluator preflight passed,
+then Track A and Track B completed in the required order at 19:23:42 UTC.
+
+Track A is technically valid but returns `decision_branch=pooled_fail`, a narrow
+preregistered magnitude failure rather than a directional or random-control
+reversal. All provenance, alignment, exposure, matched-bank, and router-freeze
+checks pass. Blind hard organ routing reduces equal-organ/equal-study test MSE by
+3.357% versus pooled (`0.704988 -> 0.681319` mean; per-seed gains 3.189%, 3.499%,
+3.384%), with absolute-MSE CI `[0.016458, 0.032434]`, positive residual-Pearson
+CI, 89.94% router balanced accuracy, and 126.1% recovery of the true-organ gain.
+True-organ dispatch is positive and exceptionally seed-stable but improves over
+pooled by only 2.662% (per seed 2.616%, 2.704%, 2.665%; absolute-MSE CI
+`[0.006700, 0.029913]`), below the frozen 3% gate. It also beats every
+study-preserving assigned-random K5 control with positive intervals, but the
+least-favorable mean relative gain is 2.626%, again below the frozen 3% gate.
+Calibration hard-oracle headroom is 4.210% and passes. Thus blind routing,
+headroom, recovery, stability, and directional organ-over-random evidence all
+pass; only the prespecified 3% true-dispatch magnitude gates fail. The legacy
+global organ-fixed comparison remains slightly negative and non-gating, consistent
+with averaging geometry rather than random specialists outperforming correctly
+dispatched organ specialists. This is still an internal locked replication, not
+independent confirmation; a new external lockbox is required.
+
+Track B remained calibration-only and nominates **K=4** by the frozen one-standard-
+error rule, while K=5 has the numerically best MSE. K=4 deploys brain, skin,
+skeletal-muscle, and liver specialists with pooled fallback for adipose; it improves
+blind MSE by 2.721% versus pooled and at least 2.686% versus the matched random
+families, passing the Holm-adjusted pooled (`p=0.009995`) and random
+(`p=0.027986`) comparisons. K=5 improves by 2.841% versus pooled and at least
+2.807% versus random and also passes; K=4 is selected only because it is the
+smallest eligible model within one standard error of K=5. K=1/2 fail both adjusted
+control families and K=3 fails the adjusted random family. This nomination is a
+deployment/coverage result using the already-trained K5 bank, not proof that four
+separately trained experts are globally optimal. It requires frozen K4-specific,
+budget-matched retraining and a new untouched confirmation before changing the
+final architecture.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
