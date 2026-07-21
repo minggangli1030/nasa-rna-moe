@@ -335,6 +335,76 @@ normalizes future string serialization, tests the completed-run format, and safe
 loads these self-generated artifacts; it is pushed and deployed. This engineering fix
 did not alter any model output, threshold, comparison, or test-access decision.
 
+### Stage 2 competitive utility-axis follow-up (frozen 2026-07-20)
+
+The `screen_fail` was reviewed from the router, expert, checkpoint, data, and objective
+levels before authorizing another run. The decisive diagnostic is not merely the flat
+top-1 result: the target-aware hard expert oracle improved over the pooled trunk by only
+0.047-0.108% across the three label-free seeds. Inspection of every saved validation
+checkpoint found a maximum oracle gain below 0.158%, still far below the 3% screen.
+Thus neither a different checkpoint nor a better selector can recover useful behavior
+from the completed expert set. Routes were stable, but their effective K collapsed and
+their association with study exceeded their association with organ. The proximal
+failure is functional expert redundancy around a stable technical/data-geometry
+partition.
+
+The training objective supplies a concrete mechanism. Label-free training minimized
+MSE only after taking a soft probability-weighted average of all five expert outputs.
+Consequently every expert received a scaled version of the same blended residual;
+load-balance and entropy terms shaped traffic but did not require different expert
+functions. The original competitive-mixture literature predicts this cooperative
+solution. A second audit also narrows an earlier protocol statement: organ and study
+were not router inputs, targets, or expert labels, but they did control the
+organ-then-study-balanced training sampler in all modes. This sampling use likely did
+not create the negligible oracle—it controlled exposure—but future descriptions must
+not claim that those metadata were absent from the entire optimization procedure.
+
+This does not overturn the positive organ anchor. The shared-trunk supervised-organ
+condition specialized under the same adapter capacity, and the full Stage 1 routed
+organ experts remain strongly better than pooled and directly matched random experts.
+The failed organ-fixed versus random-fixed gate remains frozen, but it measures global
+ungated averaging geometry rather than the conditional-dispatch behavior for which the
+organ experts are useful. The five-organ plan therefore remains the main biological
+anchor; this follow-up asks whether a task-error state should replace it or augment it
+hierarchically.
+
+The revised calibration-only protocol is frozen in
+`artifacts/stage2_utility_axis_pilot/protocol.json`. It separates the questions that the
+failed joint model attempted to solve simultaneously:
+
+1. Deterministically reserve 10% of checkpoint genes as an axis-probe panel and 30% as
+   the disjoint primary score panel. Both panels are masked while fingerprints are
+   computed; only probe truth enters axis construction, so calibration score targets
+   cannot determine their own dispatch label.
+2. On training studies only, construct signed probe-residual and exact output-head
+   gradient fingerprints, apply train-fitted standardization/PCA, and fit capacity-
+   balanced K=2/K=3 partitions. Apply frozen train centroids to calibration without
+   refitting. `head_gradient_k2` is the sole primary; the other three candidates are
+   exploratory and cannot open the sealed test without a new confirmation.
+3. Hard-train independent residual expert banks with no router, blended-output loss,
+   entropy loss, or balance loss. Use a fixed final update and exposure-matched budgets:
+   600 updates for K=2, 900 for K=3, and 1,500 for a newly matched organ-K5 anchor.
+   Matched random K=2/K=3 banks use the identical architecture and budget; realized
+   natural-schedule exposure may deviate by no more than 5% from 2,400 per expert.
+4. Pack all seven independent banks into one frozen-trunk pass per expert seed. Banks
+   have separate parameters, optimizers, schedules, and stop updates; the shared
+   natural sample schedule uses neither organ nor study. This reduces 21 redundant
+   standalone jobs to three seed jobs without coupling bank gradients.
+5. Before any router is trained, require candidate dispatch to beat pooled by at least
+   3%, beat matched random with a positive study-clustered interval, and show at least
+   3% hard-oracle headroom over a study-cross-fitted fixed mixture. Also require all-seed
+   direction, acceptable seed variance, stable train clustering, effective utilization,
+   at least five studies per partition, and no study dominance. Beating organ-K5 by 3%
+   is a separate replacement gate; otherwise a passing factor can only motivate an
+   `organ -> state` augmentation.
+
+The decision is deliberately terminal. A primary pass authorizes only a separately
+frozen confirmation, not automatic test access. An exploratory winner must be confirmed
+again. If no candidate has hard-dispatch/oracle headroom, stop discrete label-free MoE
+for the current random-gene reconstruction objective and retain organ routing or move
+to continuous conditional adapters. More seeds, longer training, a larger router, or
+balance-loss tuning are not authorized substitutes for absent expert complementarity.
+
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
 The full ARCHS4 human `meta/samples` (441,356 rows) was exported read-only to

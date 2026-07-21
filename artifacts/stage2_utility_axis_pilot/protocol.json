@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "frozen_at_utc": "2026-07-21T04:03:49Z",
+  "purpose": "Determine whether train-fitted task-error partitions create useful frozen-trunk residual experts before attempting another blind router.",
+  "authorization_source": {
+    "prior_stage2_status": "screen_fail",
+    "prior_stage2_result_sha256": "56dc2ef8c02367a5fae7085df9cd2c1f31a52211e6c495520f59750d21438677",
+    "scope": "one calibration-only competitive utility-axis follow-up",
+    "guardrail": "the prior result remains frozen; this protocol cannot retroactively rescue or relabel it"
+  },
+  "data": {
+    "expression_parquet": "results/stage1_organ_k5_train_20260717T165507Z/expression/expression.parquet",
+    "expression_sha256": "148776bc2d5bbe4a969103de7abab932b7467c804934fc697366ae2c209c0821",
+    "manifest_parquet": "results/stage1_organ_k5_train_20260717T165507Z/expression/manifest.parquet",
+    "manifest_sha256": "bc4e8e4e36ab0e869fd885197842dc797edad5a08b8093beb21185dbeda7f9cc",
+    "axis_fit_split": "train",
+    "score_split": "calibration",
+    "sealed_split": "test",
+    "test_access_before_pass": false
+  },
+  "frozen_trunk": {
+    "checkpoint": "results/stage1_organ_k5_train_20260717T165507Z/models/pooled/best_model.pt",
+    "sha256": "080a8a36d2090c3a823cd3995d758d1205b0ad02c1c38c06e6763c5a7ebfd789",
+    "training_seed": 42,
+    "update": 7350,
+    "parameters_updated": false
+  },
+  "gene_firewall": {
+    "axis_seed": 314159,
+    "probe_fraction": 0.1,
+    "score_fraction": 0.3,
+    "context_fraction": 0.6,
+    "construction": "one deterministic global partition of the checkpoint gene order",
+    "axis_forward_mask": "mask the complete probe and score panels",
+    "axis_targets": "probe truth only",
+    "primary_score_targets": "score truth only",
+    "require_probe_score_disjoint": true
+  },
+  "candidate_family": {
+    "primary": "head_gradient_k2",
+    "secondary_exploratory": [
+      "head_gradient_k3",
+      "residual_pca_k2",
+      "residual_pca_k3"
+    ],
+    "controls": [
+      "random_k2",
+      "random_k3",
+      "organ_k5"
+    ],
+    "multiplicity_guardrail": "only the named primary may directly justify a separately frozen confirmation; a secondary winner requires a new confirmation and cannot open the sealed test"
+  },
+  "axis_discovery": {
+    "metadata_features": [],
+    "design_metadata_only": [
+      "connected-study split integrity",
+      "post-hoc study dominance",
+      "post-hoc organ association"
+    ],
+    "head_gradient": "exact per-sample gradient of probe MSE with respect to a zero-initialized shared linear residual head",
+    "residual_pca": "signed probe reconstruction residuals",
+    "train_only_transform": "per-feature standardization, PCA-32, row L2 normalization",
+    "clustering": "three train-only KMeans initializations followed by exact capacity-balanced assignment; choose the AMI medoid",
+    "calibration_projection": "nearest frozen train centroid without calibration refitting",
+    "k_values": [
+      2,
+      3
+    ],
+    "minimum_pairwise_restart_ami": 0.5
+  },
+  "expert_training": {
+    "architecture": "frozen pooled trunk plus independent dimension-64 residual expert adapters",
+    "router": "absent",
+    "dispatch": "fixed hard partition label",
+    "loss": "individual assigned-expert masked reconstruction MSE; never blended-output MSE",
+    "checkpoint_policy": "predetermined final update; no calibration checkpoint selection",
+    "training_seeds": [
+      17,
+      42,
+      101
+    ],
+    "batch_size": 8,
+    "validation_batch_size": 8,
+    "mask_ratio": 0.3,
+    "adapter_dim": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "target_sample_exposures_per_expert": 2400,
+    "update_budget_by_k": {
+      "2": 600,
+      "3": 900,
+      "5": 1500
+    },
+    "packed_execution": "all seven independent banks share frozen trunk activations and one deterministic natural sample schedule; each bank has independent parameters, optimizer, scheduler, and stop update",
+    "sampling_metadata": "organ and study do not affect the training schedule; they are used only for split integrity and balanced evaluation"
+  },
+  "evaluation": {
+    "primary_estimand": "equal-organ, equal-connected-study calibration masked MSE",
+    "crossfit_fixed_mixture": "five folds kept intact by connected study and balanced by organ",
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 8675309,
+    "comparisons_per_candidate": [
+      "fixed candidate dispatch versus pooled trunk",
+      "fixed candidate dispatch versus matched random partition at the same K",
+      "hard per-sample oracle versus study-cross-fitted fixed mixture",
+      "fixed candidate dispatch versus newly hard-trained organ-K5 anchor on the exact same score genes"
+    ]
+  },
+  "gates": {
+    "minimum_candidate_gain_vs_pooled": 0.03,
+    "candidate_vs_random_requires_positive_clustered_interval": true,
+    "minimum_oracle_gain_vs_crossfit_fixed": 0.03,
+    "same_positive_sign_across_seeds": true,
+    "maximum_seed_sd_fraction_of_mean": 0.5,
+    "minimum_effective_expert_fraction": 0.8,
+    "minimum_partition_fraction": 0.1,
+    "maximum_realized_exposure_fractional_deviation": 0.05,
+    "minimum_connected_studies_per_partition": 5,
+    "maximum_single_study_fraction_within_partition": 0.5,
+    "minimum_replacement_gain_vs_organ": 0.03
+  },
+  "decision": {
+    "primary_replacement_candidate": "primary clears all core gates and beats organ-K5 by at least 3%; freeze a separate confirmation protocol before any test access",
+    "primary_augmentation_candidate": "primary clears pooled, random, complementarity, utilization, stability, and confound gates but does not beat organ; retain organ and test only an organ-to-state extension later",
+    "secondary_candidate": "a secondary clears the gates; freeze and run a new confirmation because this family was exploratory",
+    "technical_partition": "performance or utilization appears only in a study-dominated partition; stop biological interpretation and repair cohort/QC",
+    "no_discrete_headroom": "no candidate clears the core gates; stop discrete label-free MoE for the current random-gene reconstruction objective",
+    "test_policy": "this pilot never automatically authorizes or accesses the sealed Stage 1 test"
+  },
+  "runtime_plan": {
+    "packed_seed_jobs": 3,
+    "primary_host_seeds": [
+      17,
+      101
+    ],
+    "parallel_host_seeds": [
+      42
+    ],
+    "expected_wall_hours_after_discovery": "3-4.5"
+  }
+}
