@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-21 07:43 PDT / 2026-07-21 14:43 UTC
+**Last updated:** 2026-07-21 09:45 PDT / 2026-07-21 16:45 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -612,6 +612,36 @@ provenance binding. The repaired focused suite (54 tests) and complete 158-test
 repository suite pass. Deployment,
 real-data smoke, and the two-VM full launch are the next checkpoint and must record the
 final code commit and artifact hashes here before effects are interpreted.
+
+Launch checkpoint: implementation commit `53ec6c4` is pushed to `origin/main` and
+was archive-deployed to `/home/exouser/nasa-rna-moe-53ec6c4` on both VMs. The
+protocol was frozen at 2026-07-21 14:43:41 UTC with SHA256
+`bf469479199a6a6c77b1137b5734235a9da2ca29110e6770125e99e65c69d4a9`.
+Preparation completed at 16:24:20 UTC and the byte-identical frozen inputs were
+verified on both hosts: partition manifest
+`43f1ca70c6c0aa8033c9f826b6f24be5b7db9e45ec3943ff784ba7b5bcbdcedd`,
+partition report `70aab83817b17b06bb4ca50685216f476bb0ed8e2be84b028e133b76b32a39a5`,
+sealed assignments `947523c047aecba40c80ccd8d3363a46419c2f5a041e3926cdf6e85a8afc38b5`,
+sealed report `8ae90f24960a2fd673d6fb4825a23acdf61d9afdf8a5aae726a6f38f9c609595`,
+router artifact `92f28dd9b58e7f9e1fd12fa5b87b7ae7f41aff14c9a61c827f9f0b2bdd45e160`,
+and router report `edb3ce457896789f225554025f55ad430bbea621f669de9dee0d7b2f6a81aed1`.
+Two independent real-data smokes completed at 16:43:26/16:43:34 UTC: seeds 17
+and 42 each finished all five banks at two updates, wrote five complete artifact
+sets, remained `mechanical_only=true`, and did not access test data.
+
+The full two-VM run launched at 2026-07-21 16:45:00 UTC after both worker
+preflights passed. Central tmux session `organ_k_17101_53ec6c4` trains seeds 17
+then 101 under
+`/media/volume/moe-reboot/results/stage1_organ_k_confirmation_53ec6c4`; VM2
+session `organ_k_42_53ec6c4` trains seed 42 under
+`/dev/shm/stage1_organ_k_confirmation_53ec6c4`. Each pipeline automatically
+creates its single locked-test score cache only after its bank training completes.
+Runtime provenance records the full commit
+`53ec6c483783eede3b0e92a08e0382853cbc4ed7` and `test_accessed=false` at launch.
+No effect estimate has yet been inspected. Based on the smoke initialization plus
+five-bank evaluation time and the 1,500-update training budget, the provisional
+critical-path ETA is about 11:15-11:45 PDT (18:15-18:45 UTC); replace this estimate
+after the first full seed supplies an observed throughput.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
