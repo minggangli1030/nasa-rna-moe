@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-20 12:48 PDT / 2026-07-20 19:48 UTC
+**Last updated:** 2026-07-20 20:18 PDT / 2026-07-21 03:18 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -305,6 +305,36 @@ Persistent tmux session `stage2_latent_axis_pilot_20260720` launched on both A10
 `results/stage2_latent_axis_pilot/` and
 `results/stage2_latent_axis_pilot_worker_20260720.log` on each VM.
 
+Final calibration checkpoint: all nine runs completed without training errors. The
+four second-VM outputs were checksum-verified after transfer to central, and the
+frozen three-seed evaluator completed with `status=screen_fail`. The versioned result
+is `artifacts/stage2_latent_axis_pilot/calibration_decision.json` (SHA256
+`56dc2ef8c02367a5fae7085df9cd2c1f31a52211e6c495520f59750d21438677`).
+The Stage 1 test split was not accessed and must remain sealed.
+
+Label-free hard routing produced only +0.0067% mean relative MSE reduction versus the
+pooled trunk (seed results +0.0199%, -0.0026%, +0.0030%), with mixed signs and a
+study-clustered interval crossing zero. It was 5.54% worse than perfect organ dispatch
+on average, and was statistically indistinguishable from both assigned random
+dispatch (+0.0071%) and the optimized random fixed mixture (+0.0054%). Thus it misses
+the preregistered 3% practical-effect threshold by roughly three orders of magnitude.
+
+The routes were reproducible but not useful: minimum seed AMI was 0.567 and minimum
+repeated-mask AMI was 0.813, so the stability gate passed. Utilization failed: effective
+K was 2.29-2.98, two seeds left at least one route completely unused, and the third had
+a minimum route fraction of only 0.36%, all below the K>=3/minimum-2% requirements.
+The study-confound gate also failed: one study supplied 66.7% and 67.2% of a route in
+seeds 17 and 101. Study AMI was 0.308-0.325, versus organ AMI 0.182-0.242. The cautious
+interpretation is a stable, partially study-associated partition with no reconstruction
+value—not discovery of a superior biological specialization axis.
+
+Aggregation initially exposed a metadata serialization mismatch: pandas string
+columns had been stored as trusted NumPy object arrays while the evaluator required
+non-object arrays. Numeric predictions and routes were intact. Commit `1db590c`
+normalizes future string serialization, tests the completed-run format, and safely
+loads these self-generated artifacts; it is pushed and deployed. This engineering fix
+did not alter any model output, threshold, comparison, or test-access decision.
+
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
 The full ARCHS4 human `meta/samples` (441,356 rows) was exported read-only to
@@ -415,12 +445,11 @@ serve as the primary interspecies-routing benchmark.
 
 ## Current Runtime Status
 
-- `moe-reboot` and `moe-reboot2` are active and running the frozen nine-run Stage 2
-  latent-axis pilot in parallel tmux sessions named
-  `stage2_latent_axis_pilot_20260720`. `moe-reboot-partial` remains shelved.
-- Current allocation is five sequential runs on central and four on the second VM.
-  The calibration-only evaluator runs after all nine outputs are colocated; the Stage 1
-  test split remains sealed unless the screen passes.
+- The frozen nine-run Stage 2 latent-axis pilot and calibration-only aggregation are
+  complete. Both A100s are idle. The formal result is `screen_fail`; the Stage 1 test
+  split remains sealed and no test confirmation is authorized.
+- `moe-reboot2` contains the original four small run outputs in addition to their
+  checksum-verified central copies. `moe-reboot-partial` remains shelved.
 
 ### Archived July 16 runtime notes
 
