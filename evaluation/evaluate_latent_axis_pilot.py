@@ -30,7 +30,10 @@ def _load_run(path: Path) -> dict[str, Any]:
     mode = metadata.get("mode")
     if mode not in MODES:
         raise ValueError(f"unexpected mode {mode!r}: {path}")
-    with np.load(path / "routes_validation.npz") as archive:
+    # Runs produced before string-dtype normalization contain trusted, locally
+    # generated pandas object arrays for metadata strings. Numeric prediction
+    # and routing arrays retain ordinary NumPy dtypes.
+    with np.load(path / "routes_validation.npz", allow_pickle=True) as archive:
         arrays = {name: archive[name].copy() for name in archive.files}
     return {"path": str(path), "metadata": metadata, "arrays": arrays}
 
@@ -115,7 +118,7 @@ def _route_stability(runs: dict[int, dict[str, Any]]) -> dict[str, Any]:
         path = Path(run["path"])
         primary = run["arrays"]["routes"]
         for repeated in sorted(path.glob("routes_validation_mask*.npz")):
-            with np.load(repeated) as archive:
+            with np.load(repeated, allow_pickle=True) as archive:
                 repeated_routes = archive["routes"].copy()
             mask_pairs.append({
                 "training_seed": seed,

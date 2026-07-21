@@ -463,7 +463,9 @@ def run_training(args: argparse.Namespace) -> dict[str, Any]:
     if missing_probe_columns:
         raise ValueError(f"manifest is missing post-hoc probe columns {missing_probe_columns}")
     validation_probe_arrays = {
-        "label_evidence": selection.validation["label_evidence"].astype(str).to_numpy(),
+        "label_evidence": np.asarray(
+            selection.validation["label_evidence"].astype(str), dtype=str
+        ),
         "single_cell_probability": selection.validation[
             "single_cell_probability"
         ].astype(float).to_numpy(),
@@ -673,8 +675,8 @@ def run_training(args: argparse.Namespace) -> dict[str, Any]:
     np.savez_compressed(
         output_dir / "routes_validation.npz",
         sample_ids=np.asarray(validation_ids, dtype=str),
-        groups=selection.validation[args.group_column].astype(str).to_numpy(),
-        organs=selection.validation[args.organ_column].astype(str).to_numpy(),
+        groups=np.asarray(selection.validation[args.group_column].astype(str), dtype=str),
+        organs=np.asarray(selection.validation[args.organ_column].astype(str), dtype=str),
         **validation_probe_arrays,
         **arrays,
     )
@@ -716,8 +718,12 @@ def run_training(args: argparse.Namespace) -> dict[str, Any]:
         np.savez_compressed(
             repeated_path,
             sample_ids=np.asarray(validation_ids, dtype=str),
-            groups=selection.validation[args.group_column].astype(str).to_numpy(),
-            organs=selection.validation[args.organ_column].astype(str).to_numpy(),
+            groups=np.asarray(
+                selection.validation[args.group_column].astype(str), dtype=str
+            ),
+            organs=np.asarray(
+                selection.validation[args.organ_column].astype(str), dtype=str
+            ),
             **validation_probe_arrays,
             **repeated_arrays,
         )

@@ -41,8 +41,9 @@ def _write_run(root: Path, mode: str, seed: int, label_free_mse: float = 0.70) -
     }))
     (path / "COMPLETE").touch()
     sample_ids = np.asarray([f"s{index}" for index in range(10)])
-    groups = np.asarray([f"g{index}" for index in range(10)])
-    organs = np.asarray(["brain"] * 5 + ["skin"] * 5)
+    # Match the object-string dtype emitted by pandas in the completed pilot.
+    groups = np.asarray([f"g{index}" for index in range(10)], dtype=object)
+    organs = np.asarray(["brain"] * 5 + ["skin"] * 5, dtype=object)
     routes = np.asarray([0, 0, 1, 1, 2, 2, 3, 3, 4, 4])
     if seed == 42:
         routes = (routes + 1) % 5
@@ -54,7 +55,7 @@ def _write_run(root: Path, mode: str, seed: int, label_free_mse: float = 0.70) -
         sample_ids=sample_ids,
         groups=groups,
         organs=organs,
-        label_evidence=np.asarray(["tissue"] * 5 + ["source"] * 5),
+        label_evidence=np.asarray(["tissue"] * 5 + ["source"] * 5, dtype=object),
         single_cell_probability=np.linspace(0.01, 0.10, 10),
         routes=routes,
         probabilities=np.eye(5, dtype=np.float32)[routes],
@@ -70,7 +71,7 @@ def _write_run(root: Path, mode: str, seed: int, label_free_mse: float = 0.70) -
         sample_ids=sample_ids,
         groups=groups,
         organs=organs,
-        label_evidence=np.asarray(["tissue"] * 5 + ["source"] * 5),
+        label_evidence=np.asarray(["tissue"] * 5 + ["source"] * 5, dtype=object),
         single_cell_probability=np.linspace(0.01, 0.10, 10),
         routes=routes,
         probabilities=np.eye(5, dtype=np.float32)[routes],
