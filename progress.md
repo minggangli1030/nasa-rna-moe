@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-21 05:27 PDT / 2026-07-21 12:27 UTC
+**Last updated:** 2026-07-21 07:43 PDT / 2026-07-21 14:43 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -521,6 +521,97 @@ true-organ dispatch retained as the ceiling. Cross-fit fixed averaging should be
 secondary rather than the sole specialization estimand. Do not tune another discrete
 gradient/residual split or open the sealed test under this failed utility-axis
 protocol; a continuous factor-conditioned adapter is a later exploratory option.
+
+### Locked organ-K confirmation and deployed-K search (frozen 2026-07-21)
+
+The next experiment is now frozen in
+`artifacts/stage1_organ_k_confirmation/protocol.json`. It follows from two findings
+that must remain separate: (1) the old organ-fixed-versus-random-fixed failure is real
+for a single global average and is not being erased; (2) the newer hard-dispatch organ
+anchor is the only tested partition with practical, seed-stable conditional headroom.
+The confirmation therefore tests the conditional architecture directly instead of
+using global fixed averaging as a veto on specialization.
+
+There is no genuinely untouched same-five-organ cohort in the current recovered-label
+snapshot. Every eligible single-organ connected study is already assigned to the
+existing train/calibration/test manifest; the remaining rows either share a used
+connected group or are multi-organ. The existing 1,018-sample test is study-disjoint,
+but its outcomes were inspected in earlier Stage 1 work. Consequently Track A is
+truthfully labeled a **locked internal replication** (`independent_confirmation=false`),
+not a final biological confirmation. A new external cohort/lockbox remains mandatory
+before claiming that organ identity is the biological specialization axis.
+
+Track A trains five banks together at seeds 17, 42, and 101: five organ adapters,
+the exact already-frozen row-random shards retained as a non-gating diagnostic, and
+three new preregistered random K5 partitions (partition seeds 17/42/101) that keep each
+connected study inside one expert while balancing total and per-organ sample counts.
+The group-random controls fix an audit finding: the legacy assignment split 202 of 225
+balanced-training studies across random experts, so training-seed replication alone
+could not test random-partition variability or match study coverage. All banks use the
+frozen pooled trunk, independent dimension-64 residual adapters, a common natural
+sample schedule, 2,400 target exposures per expert, and the predetermined 1,500th
+update. Before any
+test scoring, a StandardScaler plus balanced multinomial logistic router is fitted on
+calibration expression with every one of the 4,634 score genes replaced by the mask
+token. The router parameters, train/calibration assignments, and separate sealed test
+assignment metadata are serialized and hash-pinned first.
+
+The primary Track-A estimand is blind hard organ routing versus pooled on the
+equal-organ/equal-study test MSE. Gates also require true-organ hard routing to beat
+pooled and **each** study-preserving assigned random-K5 control by at least 3%, and
+true-organ routing to beat the calibration-selected best random expert per organ in
+each partition with a positive clustered interval, at least 3% calibration hard-oracle
+headroom over a study-cross-fitted fixed mixture,
+at least 80% recovery of the true-organ gain by the blind router, consistent signs,
+seed SD no more than half the mean effect, positive pooled-comparison residual-Pearson
+intervals, and exposure deviation no greater than 5%. The decision distinguishes a
+full internal pass, a router bottleneck, generic random-capacity failure, absence of
+useful specialization, and a technical failure. Blind soft routing and the old global
+fixed-average contrast are reported but non-gating.
+
+Track B addresses the separate point that K=5 is not assumed final. In this immediate
+search, K means the number of the same five known organs that receive a deployed
+specialist; all five organs remain in the calibration estimand and unselected organs
+fall back to pooled. It evaluates all 31 nonempty organ subsets, not only one arbitrary
+availability-ordered path. For each K and held connected-study fold, the best subset is
+chosen using strict four-fold inner-OOF blind MSE from the other four outer folds and
+then scored by an outer-fit router on the held fold. Every fold is required to contain
+all five organs. K=1..5 reuses the same
+K5-trained organ/random banks, so it tests deployment and coverage, not a separately
+retrained K-specific architecture. One common five-class router is fit per fold;
+smaller subsets deterministically collapse undeployed-organ probability mass into an
+`other` pooled-fallback class rather than fitting a different-capacity router. For each
+of the three study-preserving random partitions, the matched null receives the same
+exhaustive `C(5,K)` outer-fold subset-selection budget plus pooled fallback. Paired
+study-level sign-flip tests replace a less defensible uncentered-bootstrap p-value;
+Holm correction covers five pooled comparisons and all 15 K-by-random-partition
+comparisons. Among candidates passing every corrected control, the smallest K within
+one standard error of the best outer-fold mean is nominated; a full-calibration subset
+is named only for a future frozen run. Any nomination is development-only and requires
+K-specific retraining plus a new untouched confirmation.
+It therefore cannot identify the globally optimal MoE expert count or partition
+granularity. That broader hyperparameter question requires separately trained,
+budget-matched K-specific candidates with an explicit rule for merging or subdividing
+organ populations, followed by a new untouched lockbox.
+
+Heart/colon K>5 expansion is not silently folded into this run: the current expression
+table contains only the five frozen organs. Valid K6/K7 work requires manual label
+precision review, rebuilt connected-group splits and expression extraction, a common
+expanded development population, matched random K6/K7 controls, and a new lockbox.
+
+Implementation is complete for the partition/seal builder, target-hidden cross-fit and
+deployable router, paired packed-bank trainer, strict locked-test prediction cache,
+Track-A decision evaluator, calibration-only K search, and fail-fast orchestration.
+The implementation directly records evaluator/code hashes and the internal-versus-
+independent evidence label in result artifacts. A prelaunch adversarial audit caught
+and repaired the study-randomization, missing-organ fold, one-path K-search, diagnostic,
+and terminal-provenance gaps before GPU use. A second prelaunch audit then caught
+and repaired an unfair first-K random comparator, outer-fold information reuse during
+subset selection, stale-protocol test-cache access, and missing cache/checkpoint
+provenance binding. The repaired focused suite (54 tests) and complete 158-test
+repository suite pass. Deployment,
+real-data smoke, and the two-VM full launch are the next checkpoint and must record the
+final code commit and artifact hashes here before effects are interpreted.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 

@@ -293,8 +293,12 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
     top_metadata = {
         "schema_version": 1,
         "status": "running",
-        "research_stage": "stage2_competitive_followup",
-        "experiment": "packed_hard_fixed_partition_expert_banks",
+        "research_stage": getattr(
+            args, "research_stage", "stage2_competitive_followup"
+        ),
+        "experiment": getattr(
+            args, "experiment", "packed_hard_fixed_partition_expert_banks"
+        ),
         "training_seed": int(args.seed),
         "test_accessed": False,
         "mechanical_only": bool(args.smoke_only),
@@ -416,8 +420,12 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
         bank_metadata = {
             "schema_version": 1,
             "status": "complete",
-            "research_stage": "stage2_competitive_followup",
-            "experiment": "hard_fixed_partition_residual_experts",
+            "research_stage": getattr(
+                args, "research_stage", "stage2_competitive_followup"
+            ),
+            "experiment": getattr(
+                args, "bank_experiment", "hard_fixed_partition_residual_experts"
+            ),
             "axis": axis,
             "training_seed": int(args.seed),
             "test_accessed": False,
@@ -462,6 +470,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--axis-definitions", required=True)
     parser.add_argument("--axis", action="append")
     parser.add_argument("--output-dir", required=True)
+    parser.add_argument("--research-stage", default="stage2_competitive_followup")
+    parser.add_argument(
+        "--experiment", default="packed_hard_fixed_partition_expert_banks"
+    )
+    parser.add_argument(
+        "--bank-experiment", default="hard_fixed_partition_residual_experts"
+    )
     parser.add_argument("--seed", type=int, required=True)
     parser.add_argument("--train-split", default="train")
     parser.add_argument("--validation-split", default="calibration")

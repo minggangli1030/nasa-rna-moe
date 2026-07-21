@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "frozen_at_utc": "2026-07-21T14:43:41Z",
+  "purpose": "Test organ-conditioned K=5 residual experts against three study-preserving K-matched random partitions, retain the legacy row-random partition as a diagnostic, then perform a firewalled nested development-only K=1..5 specialist-count search over all organ subsets.",
+  "authorization": {
+    "requested_by_user": true,
+    "source_commit_at_freeze": "b96ad9a296b95d7a29c2fa50cae7751b62ddb3e2",
+    "prior_utility_axis_decision_sha256": "05923e678014a39f3fd465fb021391eb722868721ea0cf9886e5caa8ea02c51b",
+    "prior_utility_axis_status": "screen_fail",
+    "scope": "one locked internal K5 architecture replication plus one calibration-only K search",
+    "guardrail": "neither track changes or rescues any prior frozen Stage 1 or Stage 2 decision"
+  },
+  "evidence_label": {
+    "internal_locked_replication": true,
+    "independent_confirmation": false,
+    "reason": "the study-disjoint test rows were already inspected in earlier Stage 1 analyses, and the current recovered-label snapshot contains no unused single-organ connected study groups for these five organs",
+    "external_confirmation_required": true
+  },
+  "data": {
+    "expression_parquet": "results/stage1_organ_k5_train_20260717T165507Z/expression/expression.parquet",
+    "expression_sha256": "148776bc2d5bbe4a969103de7abab932b7467c804934fc697366ae2c209c0821",
+    "manifest_parquet": "results/stage1_organ_k5_train_20260717T165507Z/expression/manifest.parquet",
+    "manifest_sha256": "bc4e8e4e36ab0e869fd885197842dc797edad5a08b8093beb21185dbeda7f9cc",
+    "source_protocol_manifest_sha256": "9b95d89dba1813e83b15f37f13593aee8253ed83fc50a19d9e963b4f4083753a",
+    "balanced_train_sample_ids_sha256": "f1e8beed1ce901acfd365c1b8a5ebc339ab6bfaad9b32db117368af3e8912797",
+    "random_shard_assignment_sha256": "e0834724988bdcc8e5fa16bec50a7bd9e04d148bf3d504f365aa59f91be01bb9",
+    "row_counts": {
+      "train_all": 3157,
+      "train_balanced": 1815,
+      "calibration": 842,
+      "test": 1018
+    },
+    "split_integrity": "connected series groups are disjoint across train, calibration, and test",
+    "primary_weighting": "equal organ mass, then equal connected-study mass within organ"
+  },
+  "frozen_trunk": {
+    "checkpoint": "results/stage1_organ_k5_train_20260717T165507Z/models/pooled/best_model.pt",
+    "sha256": "080a8a36d2090c3a823cd3995d758d1205b0ad02c1c38c06e6763c5a7ebfd789",
+    "update": 7350,
+    "parameters_updated": false
+  },
+  "score_firewall": {
+    "axis_definitions": "results/stage2_utility_axis_pilot_f8ab3cd/axis/axis_definitions.npz",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "partition_report_sha256": "62f4b19e0fd111d99f265f8b1bd7beba9b5af7edf8bf35ffdce2ce98d0e33b16",
+    "score_gene_indices_sha256": "87ab09ccf16bac5da76bf89de4e16628f62d63986ce0f5cf17a2ba92884b544e",
+    "score_genes": 4634,
+    "router_rule": "replace every score-gene value with the checkpoint mask token before fitting or applying a router"
+  },
+  "partitions": {
+    "organ_k5": [
+      "adipose",
+      "brain",
+      "liver",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "random_k5": [
+      "random_0",
+      "random_1",
+      "random_2",
+      "random_3",
+      "random_4"
+    ],
+    "legacy_random_assignment_policy": "consume the already frozen row-random random_shard column exactly as a non-gating replication diagnostic",
+    "gating_random_group_k5": {
+      "axes": [
+        "random_group_k5_p17",
+        "random_group_k5_p42",
+        "random_group_k5_p101"
+      ],
+      "partition_seeds": [
+        17,
+        42,
+        101
+      ],
+      "assignment": "within each source split, assign each entire connected study to one of five shards by outcome-free deterministic bin packing that balances total and per-organ sample counts",
+      "gate_rule": "the organ comparison must pass against every preregistered partition; do not select a favorable random partition"
+    },
+    "trainer_artifact_splits": [
+      "train",
+      "calibration"
+    ],
+    "sealed_test_assignments": "a separate hash-pinned artifact unavailable to training and K-search code"
+  },
+  "expert_training": {
+    "architecture": "frozen pooled trunk plus independent dimension-64 residual adapters",
+    "banks": [
+      "organ_k5",
+      "random_k5",
+      "random_group_k5_p17",
+      "random_group_k5_p42",
+      "random_group_k5_p101"
+    ],
+    "training_seeds": [
+      17,
+      42,
+      101
+    ],
+    "router_present": false,
+    "dispatch_loss": "individual assigned-expert masked reconstruction MSE",
+    "checkpoint_policy": "predetermined final update; no calibration checkpoint selection",
+    "sampling": "one shared deterministic natural sample schedule for both banks",
+    "batch_size": 8,
+    "validation_batch_size": 8,
+    "mask_ratio": 0.3,
+    "adapter_dim": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "target_exposures_per_expert": 2400,
+    "final_update": 1500,
+    "maximum_exposure_fractional_deviation": 0.05
+  },
+  "router": {
+    "features": "target-masked log1p expression",
+    "model": "StandardScaler plus balanced multinomial LogisticRegression",
+    "C": 1.0,
+    "solver": "lbfgs",
+    "max_iter": 2000,
+    "random_seed": 271828,
+    "test_router_fit": "fit once on the complete calibration split, serialize and hash parameters before test inference",
+    "k_search_router_fit": "one common five-organ router per fold; every deployed subset is a deterministic probability collapse with undeployed-organ mass mapped to other",
+    "k_search_nested_firewall": "for each outer fold, subset selection uses four-fold inner-OOF router predictions trained only within the other four outer folds; outer-held scoring uses a router fit on those four folds"
+  },
+  "track_a_k5_internal_replication": {
+    "immutable": true,
+    "selection_split": "calibration",
+    "score_split": "previously inspected study-disjoint test",
+    "primary_estimand": "blind hard organ routing versus pooled on equal-organ/equal-study test MSE",
+    "conditions": [
+      "pooled",
+      "true_organ_hard",
+      "blind_organ_hard",
+      "assigned_study_preserving_random_k5_hard_for_each_partition",
+      "calibration_selected_study_preserving_random_by_organ_for_each_partition",
+      "organ_hard_oracle"
+    ],
+    "gates": {
+      "minimum_blind_gain_vs_pooled": 0.03,
+      "minimum_true_organ_gain_vs_pooled": 0.03,
+      "minimum_true_organ_gain_vs_each_assigned_study_preserving_random_k5": 0.03,
+      "true_organ_vs_each_calibration_selected_random_requires_positive_clustered_interval": true,
+      "minimum_calibration_oracle_gain_vs_crossfit_fixed": 0.03,
+      "minimum_blind_recovery_of_true_gain": 0.8,
+      "same_positive_sign_across_seeds": true,
+      "maximum_seed_sd_fraction_of_mean": 0.5,
+      "pooled_comparisons_require_positive_residual_pearson_interval": true,
+      "maximum_exposure_fractional_deviation": 0.05
+    },
+    "non_gating": [
+      "legacy_row_random_assigned_and_fixed_controls",
+      "organ_fixed_vs_each_study_preserving_random_fixed",
+      "blind soft routing",
+      "router accuracy and confusion matrix",
+      "natural sample-weighted estimates"
+    ],
+    "decision": {
+      "pass": "internal hard-adapter K5 replication succeeds; acquire a genuinely untouched external K5 confirmation before a biological claim",
+      "true_pass_blind_fail": "conditional specialization exists but the observed-input router is the bottleneck",
+      "random_control_fail": "organ identity did not beat every study-preserving generic K5 partition; generic adapter capacity or partition variability may explain the gain",
+      "pooled_fail": "do not scale the organ MoE",
+      "technical_fail": "repair without interpreting model effects"
+    }
+  },
+  "track_b_development_k_search": {
+    "test_access_allowed": false,
+    "definition_of_k": "number of the five known organs receiving a specialist; every unselected organ uses pooled fallback",
+    "scope_limit": "this run does not estimate the globally optimal MoE expert count, retrain K-specific banks, merge organs into K latent groups, or test K greater than five",
+    "specialist_order": [
+      "brain",
+      "skin",
+      "skeletal_muscle",
+      "adipose",
+      "liver"
+    ],
+    "subset_family": "all 31 nonempty subsets of the five specialists",
+    "router_policy": "common_k5_probability_collapse",
+    "strict_outer_inner_router": true,
+    "outer_selection": "for each K and each of five connected-study outer folds, select the best K-organ subset using only strict inner-OOF blind MSE from the other four outer folds, then score that fixed subset with the outer-fit router on the held fold",
+    "final_subset_nomination": "after nested performance estimation, nominate the lowest full-calibration out-of-fold-MSE subset at the selected K for a new experiment only",
+    "ordering_counts": {
+      "brain": 832,
+      "skin": 720,
+      "skeletal_muscle": 709,
+      "adipose": 533,
+      "liver": 363
+    },
+    "training_reuse": "all K candidates reuse the same independently trained K5 organ and random expert banks; K changes deployed specialists and pooled fallback coverage, not the training partition or per-expert exposure",
+    "candidate_k": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "population": "all five calibration organs for every K",
+    "fallback": "pooled prediction for an unselected organ or router other class",
+    "matched_random_control": "for each of three frozen study-preserving random K5 partitions and each outer fold, select the best of all C(5,K) random-shard subsets using only the outer-fit rows, apply pooled fallback outside that subset, and score the fixed subset on the held fold; the organ candidate must beat every partition",
+    "matched_random_subset_family": "all C(5,K) subsets independently within each preregistered partition and outer fold",
+    "primary_metric": "full-five-organ coverage-adjusted cross-fit blind MSE",
+    "inference": "paired connected-study sign-flip tests with clustered bootstrap effect intervals",
+    "multiplicity": "Holm correction across five K-vs-pooled tests and separately across all fifteen K-by-study-preserving-random-partition tests",
+    "selection_rule": "among candidates with corrected positive evidence versus pooled and random, nominate the smallest K within one standard error of the best outer-fold mean",
+    "interpretation": "nested development nomination of deployed specialist count and subset only, not a K-specific retraining result; any nomination including K=5 requires a separately frozen retraining and untouched confirmation, and no K-search result can alter immutable Track A"
+  },
+  "future_total_k_expansion": {
+    "not_authorized_in_this_run": true,
+    "next_candidates": [
+      "K6-heart",
+      "K6-colon",
+      "K7-heart-plus-colon"
+    ],
+    "requirements": [
+      "at least 50 manually reviewed labels per added organ at at least 95% precision",
+      "rebuilt connected-group splits",
+      "heart and colon expression extraction",
+      "a common seven-organ development population",
+      "matched random K6/K7 controls",
+      "a new lockbox"
+    ]
+  },
+  "firewall": {
+    "run_track_a_before_inspecting_track_b": true,
+    "track_b_code_must_reject_test": true,
+    "track_b_cannot_modify_track_a": true,
+    "track_a_cannot_select_k": true,
+    "automatic_external_test_authorization": false
+  }
+}

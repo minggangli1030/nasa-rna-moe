@@ -211,6 +211,15 @@ def evaluate_fixed_partition(
     target_masked = np.concatenate(target_masked_rows).astype(np.float64)
     uniform_prediction = expert_masked.mean(axis=1)
     uniform_mse = np.square(uniform_prediction - target_masked).mean(axis=1)
+    full_fixed_weights = simplex_least_squares_weights(
+        expert_masked,
+        target_masked,
+        sample_weights=sample_weights,
+    )
+    full_fixed_prediction = np.einsum(
+        "k,nkm->nm", full_fixed_weights, expert_masked
+    )
+    full_fixed_mse = np.square(full_fixed_prediction - target_masked).mean(axis=1)
     crossfit_mse, fold_weights, fold_ids = _crossfit_fixed_blend(
         expert_masked,
         target_masked,
@@ -226,6 +235,7 @@ def evaluate_fixed_partition(
         "oracle_mse": np.concatenate(oracle_rows).astype(np.float64),
         "expert_mse": np.concatenate(expert_error_rows).astype(np.float64),
         "uniform_fixed_mse": uniform_mse.astype(np.float64),
+        "full_calibration_fixed_mse": full_fixed_mse.astype(np.float64),
         "crossfit_fixed_mse": crossfit_mse.astype(np.float64),
         "true_labels": np.asarray(labels, dtype=np.int64),
         "crossfit_fold": fold_ids.astype(np.int64),
@@ -249,6 +259,7 @@ def evaluate_fixed_partition(
     metrics["effective_experts"] = float(1.0 / np.square(fractions).sum())
     metrics["minimum_partition_fraction"] = float(fractions.min())
     metrics["crossfit_fixed_weights"] = fold_weights
+    metrics["full_calibration_fixed_weights"] = full_fixed_weights.tolist()
 
     pairwise = []
     residual = expert_masked - target_masked[:, None, :]
