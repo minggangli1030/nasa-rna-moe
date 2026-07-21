@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-20 20:18 PDT / 2026-07-21 03:18 UTC
+**Last updated:** 2026-07-20 23:24 PDT / 2026-07-21 06:24 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -92,7 +92,7 @@ Key completed checkpoints:
 8. **Engineering complete:** the exact extractor, deterministic manifest trainer,
    balanced random controls, prediction cache, five-class blind router/evaluator,
    decision script, and fail-fast launcher are implemented and synthetic-tested
-   end to end. The local suite is 98/98 passing.
+   end to end. All 105 current local test functions pass.
 9. **Next data:** manually validate and expand organ labels before treating the
    single-seed specialist run as definitive biological evidence. The bottleneck
    is label/QC coverage and independent studies, not total ARCHS4 profile count.
@@ -335,7 +335,7 @@ normalizes future string serialization, tests the completed-run format, and safe
 loads these self-generated artifacts; it is pushed and deployed. This engineering fix
 did not alter any model output, threshold, comparison, or test-access decision.
 
-### Stage 2 competitive utility-axis follow-up (frozen 2026-07-20)
+### Stage 2 competitive utility-axis follow-up (frozen 2026-07-20 PDT / 2026-07-21 UTC)
 
 The `screen_fail` was reviewed from the router, expert, checkpoint, data, and objective
 levels before authorizing another run. The decisive diagnostic is not merely the flat
@@ -345,16 +345,17 @@ checkpoint found a maximum oracle gain below 0.158%, still far below the 3% scre
 Thus neither a different checkpoint nor a better selector can recover useful behavior
 from the completed expert set. Routes were stable, but their effective K collapsed and
 their association with study exceeded their association with organ. The proximal
-failure is functional expert redundancy around a stable technical/data-geometry
-partition.
+failure is functional expert redundancy despite stable, partly study-associated
+routing.
 
 The training objective supplies a concrete mechanism. Label-free training minimized
 MSE only after taking a soft probability-weighted average of all five expert outputs.
 Consequently every expert received a scaled version of the same blended residual;
 load-balance and entropy terms shaped traffic but did not require different expert
-functions. The original competitive-mixture literature predicts this cooperative
-solution. A second audit also narrows an earlier protocol statement: organ and study
-were not router inputs, targets, or expert labels, but they did control the
+functions. This is consistent with the cooperative-solution mechanism described in
+the competitive-mixture literature, but the completed run cannot establish that
+mechanism causally. A second audit also narrows an earlier protocol statement: organ
+and study were not router inputs, targets, or expert labels, but they did control the
 organ-then-study-balanced training sampler in all modes. This sampling use likely did
 not create the negligible oracle—it controlled exposure—but future descriptions must
 not claim that those metadata were absent from the entire optimization procedure.
@@ -369,8 +370,13 @@ anchor; this follow-up asks whether a task-error state should replace it or augm
 hierarchically.
 
 The revised calibration-only protocol is frozen in
-`artifacts/stage2_utility_axis_pilot/protocol.json`. It separates the questions that the
-failed joint model attempted to solve simultaneously:
+`artifacts/stage2_utility_axis_pilot/protocol.json`. The candidate axes are
+metadata-label-free with respect to organ and study, but they are target-aware: their
+assignments consume truth from a disjoint probe-gene panel. They are diagnostic
+dispatch labels rather than deployable blind routes. A pass would establish expert
+headroom on separately hidden score genes, not yet demonstrate that a router can infer
+the assignment. The protocol separates the questions that the failed joint model
+attempted to solve simultaneously:
 
 1. Deterministically reserve 10% of checkpoint genes as an axis-probe panel and 30% as
    the disjoint primary score panel. Both panels are masked while fingerprints are
@@ -382,14 +388,17 @@ failed joint model attempted to solve simultaneously:
    refitting. `head_gradient_k2` is the sole primary; the other three candidates are
    exploratory and cannot open the sealed test without a new confirmation.
 3. Hard-train independent residual expert banks with no router, blended-output loss,
-   entropy loss, or balance loss. Use a fixed final update and exposure-matched budgets:
+   entropy loss, or balance loss. Use a fixed final update and target-matched exposure
+   budgets (with realized per-expert exposure constrained within 5%):
    600 updates for K=2, 900 for K=3, and 1,500 for a newly matched organ-K5 anchor.
    Matched random K=2/K=3 banks use the identical architecture and budget; realized
    natural-schedule exposure may deviate by no more than 5% from 2,400 per expert.
 4. Pack all seven independent banks into one frozen-trunk pass per expert seed. Banks
    have separate parameters, optimizers, schedules, and stop updates; the shared
    natural sample schedule uses neither organ nor study. This reduces 21 redundant
-   standalone jobs to three seed jobs without coupling bank gradients.
+   standalone jobs to three seed jobs. The banks share a schedule and AMP scaler but
+   have no shared trainable parameters or direct gradient cross-talk under finite
+   losses.
 5. Before any router is trained, require candidate dispatch to beat pooled by at least
    3%, beat matched random with a positive study-clustered interval, and show at least
    3% hard-oracle headroom over a study-cross-fitted fixed mixture. Also require all-seed
@@ -398,12 +407,68 @@ failed joint model attempted to solve simultaneously:
    is a separate replacement gate; otherwise a passing factor can only motivate an
    `organ -> state` augmentation.
 
-The decision is deliberately terminal. A primary pass authorizes only a separately
-frozen confirmation, not automatic test access. An exploratory winner must be confirmed
-again. If no candidate has hard-dispatch/oracle headroom, stop discrete label-free MoE
-for the current random-gene reconstruction objective and retain organ routing or move
-to continuous conditional adapters. More seeds, longer training, a larger router, or
-balance-loss tuning are not authorized substitutes for absent expert complementarity.
+The decision is deliberately terminal for this bounded residual/gradient K=2/K=3
+branch under the current frozen-trunk random-gene objective. A primary pass authorizes
+only a separately frozen confirmation, not automatic test access. An exploratory
+winner must be confirmed again. If no candidate has hard-dispatch/oracle headroom,
+stop discrete label-free MoE for the current random-gene reconstruction objective and
+retain organ routing or move to continuous conditional adapters. More seeds, longer
+training, a larger router, or balance-loss tuning are not authorized substitutes for
+absent expert complementarity.
+
+#### Implementation and live launch checkpoint (2026-07-20 PDT / 2026-07-21 UTC)
+
+- Code commit `f8ab3cdc9527e3c5002e225a3e181a1599cc1d13` is clean, pushed to
+  `origin/main`, and deployed to the isolated directory
+  `/home/exouser/nasa-rna-moe-f8ab3cd` on both VMs. The full local suite passed
+  (105 test functions), including exact analytic-gradient versus autograd checks,
+  target-panel separation, balanced deterministic partitions, hard-dispatch gradient
+  isolation, the packed integration smoke, and evaluator decision branches. Protocol
+  SHA256 is `308f15c212cd07d87674f0617db2be00ffbcde2f9778ddb792adacab610b18bd`;
+  deployment archive SHA256 is
+  `0f8a55ed3b63174878ab5cc8f987351b0b724d2cf796d6f1dff5b0ae419e1e36`.
+- Target-hidden axis discovery ran on `moe-reboot` from 04:29:57 to 04:42:32 UTC
+  (12 minutes 35 seconds) over 1,815 training and 842 calibration samples, 15,448
+  genes, and no test rows. The realized firewall is 1,544 probe / 4,634 score /
+  9,270 context genes. `head_gradient_k2` remains the sole primary: its minimum
+  KMeans-restart AMI is 0.9938; calibration effective K is 1.992, minimum partition
+  fraction 0.469, coverage 35-36 connected studies per partition, and maximum
+  one-study fraction 0.101. `head_gradient_k3` is also structurally healthy
+  (minimum restart AMI 1.0; calibration effective K 2.464 and minimum fraction
+  0.114). Both residual-PCA candidates already fail the frozen restart-stability gate
+  (minimum AMI about 0.189); they remain in the run as explicitly exploratory negative
+  evidence and cannot qualify by performance alone. Restart AMI establishes optimizer
+  stability on this training cohort, not biological replication or freedom from batch
+  confounding.
+- Discovery artifacts are complete with `test_accessed=false` and were copied through
+  a local staging directory to `moe-reboot2`; hashes match on both hosts:
+  `partition_manifest.parquet` = `e07faa42fbc899a4338b2ac603b9abee9991cf97a163f13c2a49ade6ee1fd8c7`,
+  `partition_report.json` = `62f4b19e0fd111d99f265f8b1bd7beba9b5af7edf8bf35ffdce2ce98d0e33b16`,
+  and `axis_definitions.npz` = `1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb`.
+  The two extraction-report file hashes differ only because they record host-specific
+  paths and H5 modification times; removing `*_path` and `*_mtime_ns` fields makes the
+  JSON identical (normalized SHA256
+  `e764e9fdd23fb9edfe30bc42dff3dfbfc7494bed6ca1fdcbae92f8e6637050bb`), while
+  the expression, manifest, gene-order, and checkpoint content hashes match exactly.
+- The separate real-data smoke ran at
+  `results/stage2_utility_axis_pilot_f8ab3cd/smoke` from 04:59:11 to 05:22:13 UTC
+  (1,078.5 seconds). All seven banks completed two updates, full calibration scoring,
+  cross-fit fixed-mixture evaluation, and artifact serialization with finite numeric
+  outputs, per-bank and top-level `COMPLETE` markers, `mechanical_only=true`, and
+  `test_accessed=false`. Its effect sizes are not research evidence and will not enter
+  the final evaluator.
+- The full three-seed run launched at 05:40:19 UTC (22:40:19 PDT). Session
+  `utility_axis_packed_central_f8ab3cd` runs seeds 17 then 101 into the persistent
+  central path `results/stage2_utility_axis_pilot_f8ab3cd/packed`; session
+  `utility_axis_packed_seed42_f8ab3cd` runs seed 42 on `moe-reboot2` into
+  `/home/exouser/stage2_utility_axis_pilot_f8ab3cd/packed`. Both provenance files pin
+  the full code commit and `test_accessed=false`. By 06:21 UTC, seeds 17 and 42 had
+  completed all 1,500 scheduled updates with finite logged losses and were in
+  calibration evaluation, using about 13.3 GB GPU memory. Seed 101 starts automatically
+  after seed 17 completes. Measured completion estimate is 07:35-07:55 UTC
+  (00:35-00:55 PDT), after which seed 42 must be checksum-copied to the central host
+  before the frozen 21-bank evaluator runs. The Stage 1 test split remains sealed;
+  this pilot cannot directly authorize test access.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
@@ -515,9 +580,11 @@ serve as the primary interspecies-routing benchmark.
 
 ## Current Runtime Status
 
-- The frozen nine-run Stage 2 latent-axis pilot and calibration-only aggregation are
-  complete. Both A100s are idle. The formal result is `screen_fail`; the Stage 1 test
-  split remains sealed and no test confirmation is authorized.
+- The frozen nine-run Stage 2 latent-axis pilot remains a formal `screen_fail`. Its
+  bounded competitive utility-axis follow-up is now live on both A100s under commit
+  `f8ab3cdc9527e3c5002e225a3e181a1599cc1d13`: seeds 17/101 on `moe-reboot` and
+  seed 42 on `moe-reboot2`. The Stage 1 test split remains sealed and no test
+  confirmation is authorized.
 - `moe-reboot2` contains the original four small run outputs in addition to their
   checksum-verified central copies. `moe-reboot-partial` remains shelved.
 
@@ -1405,7 +1472,9 @@ The current experiment exists to replace, not refine, those numbers.
 
 ## Validated Artifacts
 
-- Current local suite: 98/98 passing, including latent-axis training/evaluation,
+- Current local suite: all 105 test functions pass, including utility-axis discovery,
+  fixed hard-partition training/evaluation, packed-bank integration, utility-axis
+  decision branches, latent-axis training/evaluation,
   label-recovery normalization/tiering,
   exact extraction, deterministic
   manifest training, balanced random controls, prediction-cache/mask identity,
