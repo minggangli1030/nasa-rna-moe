@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-20 23:24 PDT / 2026-07-21 06:24 UTC
+**Last updated:** 2026-07-21 05:27 PDT / 2026-07-21 12:27 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -416,7 +416,7 @@ retain organ routing or move to continuous conditional adapters. More seeds, lon
 training, a larger router, or balance-loss tuning are not authorized substitutes for
 absent expert complementarity.
 
-#### Implementation and live launch checkpoint (2026-07-20 PDT / 2026-07-21 UTC)
+#### Implementation, launch, and completion checkpoint (2026-07-20/21 PDT)
 
 - Code commit `f8ab3cdc9527e3c5002e225a3e181a1599cc1d13` is clean, pushed to
   `origin/main`, and deployed to the isolated directory
@@ -457,18 +457,70 @@ absent expert complementarity.
   outputs, per-bank and top-level `COMPLETE` markers, `mechanical_only=true`, and
   `test_accessed=false`. Its effect sizes are not research evidence and will not enter
   the final evaluator.
-- The full three-seed run launched at 05:40:19 UTC (22:40:19 PDT). Session
-  `utility_axis_packed_central_f8ab3cd` runs seeds 17 then 101 into the persistent
-  central path `results/stage2_utility_axis_pilot_f8ab3cd/packed`; session
-  `utility_axis_packed_seed42_f8ab3cd` runs seed 42 on `moe-reboot2` into
-  `/home/exouser/stage2_utility_axis_pilot_f8ab3cd/packed`. Both provenance files pin
-  the full code commit and `test_accessed=false`. By 06:21 UTC, seeds 17 and 42 had
-  completed all 1,500 scheduled updates with finite logged losses and were in
-  calibration evaluation, using about 13.3 GB GPU memory. Seed 101 starts automatically
-  after seed 17 completes. Measured completion estimate is 07:35-07:55 UTC
-  (00:35-00:55 PDT), after which seed 42 must be checksum-copied to the central host
-  before the frozen 21-bank evaluator runs. The Stage 1 test split remains sealed;
-  this pilot cannot directly authorize test access.
+- The full three-seed run launched at 05:40:19 UTC (22:40:19 PDT). Seed 42 completed
+  on `moe-reboot2` at 06:32:38 UTC; seeds 17 and 101 completed sequentially on
+  `moe-reboot` at 07:25:17 UTC. Each packed seed took 2,843-2,850 seconds. All 21
+  non-smoke banks reached their frozen 600/900/1,500-update budgets, have finite
+  outputs and `COMPLETE` markers, and retain `mechanical_only=false` and
+  `test_accessed=false`. The worst realized per-expert exposure deviation was 0.92%,
+  well below the frozen 5% limit. Seed 42's 31-file, 4.2 MB directory was copied
+  through local staging into persistent central storage; the source, staging, and
+  destination file-manifest SHA256 is
+  `84991fa7040c2fb466ee5cc14ffb350ef291309fc7789c90cbce21d04baa0369`.
+
+#### Competitive utility-axis result (completed 2026-07-21)
+
+The exact frozen evaluator completed at 12:23:07 UTC with formal status
+`screen_fail`, decision branch `stop_discrete_utility_axis`, and authorized next step
+`do not access test; stop this discrete label-free utility-axis branch`. No secondary
+candidate passed, `test_accessed=false`, and `test_access_authorized=false`. Decision
+SHA256 is `05923e678014a39f3fd465fb021391eb722868721ea0cf9886e5caa8ea02c51b`.
+The deployed and local evaluator SHA256 values match
+(`6561aa73f65cfc54a4047f37869c29865a258e350bd54c3893af778f8224aee4`), as do the
+wrapper hashes
+(`3fde08868f67e2f297d6c7f776f61d86728f1276cf858cba0eebdead94e468c8`).
+Minor auditability gap: the decision JSON does not itself embed those code hashes or
+machine-compare CLI thresholds with the protocol; the pinned wrapper was manually
+verified to supply the frozen values. This does not change the decision, but future
+evaluators should write that provenance directly.
+
+- The sole primary, `head_gradient_k2`, passes every structural gate but fails every
+  utility gate. Its true dispatch improves over pooled by only 0.0411% on average
+  (study-clustered absolute-MSE interval crosses zero), improves over matched random
+  by only 0.0140% with one negative seed, and has only 0.1848% oracle headroom over
+  the cross-fit fixed mixture. The oracle seed-SD/mean ratio is also 0.608, over the
+  0.5 limit. Thus the axis is reproducible geometry, not a useful specialization
+  boundary; no better router can recover a counterfactual ceiling this small.
+- `head_gradient_k3` is similarly stable but weak: 0.0672% over pooled and 0.3648%
+  oracle headroom. Residual-PCA K=2 reaches 0.367% over pooled and 1.016% oracle
+  headroom but fails restart stability and its random-control interval. Residual-PCA
+  K=3 is the strongest alternative: 1.453% over pooled, 1.428% over matched random
+  with a positive interval, and 2.091% oracle headroom. It still misses both 3%
+  practical gates, has minimum restart AMI 0.189, and is 2.094% worse than organ-K5.
+  This is consistent with a diffuse or continuous residual factor, not a robust
+  discrete replacement axis.
+- The newly hard-trained organ-K5 anchor is the only tested configuration that clears
+  the practical conditional-specialization magnitudes: true-organ dispatch improves
+  over pooled by 3.436%, 3.785%, and 3.198% across seeds (mean 3.473%), while its
+  oracle improves over study-cross-fitted fixed averaging by 4.239% on average. The
+  shared frozen trunk, adapter capacity, hard individual loss, and packed execution
+  can therefore produce complementary experts; the bottleneck is localized to these
+  proposed task-error partitions rather than router mechanics, blended-loss mechanics,
+  seed anomaly, or a general inability of the adapters to specialize.
+
+This strengthens but does not retroactively rescue the five-organ claim. The old
+preregistered organ-fixed versus random-fixed failure remains a failure, and this
+screen's organ K=5 versus task-error K=2/K=3 contrast is not a pure axis-only match:
+K=5 has more total adapters and updates, though per-expert exposure is matched. The
+justified conclusion is narrower: organ is the only tested partition with practical,
+seed-consistent conditional dispatch and oracle headroom; neither task-error family
+can replace it. The next experiment should be a separately preregistered five-organ
+confirmation on untouched, study-disjoint data, with an observed-input blind organ
+router compared against pooled and a K=5/budget-matched random-routing control, and
+true-organ dispatch retained as the ceiling. Cross-fit fixed averaging should be
+secondary rather than the sole specialization estimand. Do not tune another discrete
+gradient/residual split or open the sealed test under this failed utility-axis
+protocol; a continuous factor-conditioned adapter is a later exploratory option.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
@@ -580,11 +632,12 @@ serve as the primary interspecies-routing benchmark.
 
 ## Current Runtime Status
 
-- The frozen nine-run Stage 2 latent-axis pilot remains a formal `screen_fail`. Its
-  bounded competitive utility-axis follow-up is now live on both A100s under commit
-  `f8ab3cdc9527e3c5002e225a3e181a1599cc1d13`: seeds 17/101 on `moe-reboot` and
-  seed 42 on `moe-reboot2`. The Stage 1 test split remains sealed and no test
-  confirmation is authorized.
+- The bounded competitive utility-axis follow-up is complete under commit
+  `f8ab3cdc9527e3c5002e225a3e181a1599cc1d13`. Its formal result is
+  `screen_fail` / `stop_discrete_utility_axis`; all three seeded outputs and the
+  decision are on `moe-reboot` at
+  `results/stage2_utility_axis_pilot_f8ab3cd/`. Both A100s are idle.
+  The Stage 1 test split remains sealed and no test confirmation is authorized.
 - `moe-reboot2` contains the original four small run outputs in addition to their
   checksum-verified central copies. `moe-reboot-partial` remains shelved.
 
