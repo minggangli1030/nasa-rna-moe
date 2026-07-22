@@ -1782,5 +1782,14 @@ sensitivity; `k4_efficient` covers EPE-only support; `k5_retained` is a conserva
 default when K4 is not noninferior; and `no_supported_split` requires all three
 organ candidates to fail. No branch is a biological confirmation.
 
-Implementation commit and VM launch hashes will be appended here after the exact
-archive is deployed and the all-12-bank mechanical smoke completes.
+Implementation commit `191192e` (workflow-resume fix `baa1acf`) is pushed to
+`origin/main`; the exact production tree plus wrapper fix is deployed at
+`/home/exouser/nasa-rna-moe-191192e` on `moe-reboot`. The frozen protocol hash is
+`77dd4d780b2412b043f6f9c01778b043ca1b747fbf79836d82fbce7da791b079`.
+Preparation completed with train/calibration counts 1,815/842 and partition
+manifest hash `09c45edc5dd6389020495f8fd4718995cd82ee7828197a96c0fa44ef46e98bf2`.
+The all-12-axis two-update smoke completed at 05:43 UTC with `mechanical_only=true`,
+no test access, and exact shared K5/K4-EPE brain/liver/skeletal-muscle/skin expert
+state hashes. Full seed 17/42/101 training is now running in tmux session
+`organ_k45_baa1acf`; calibration evaluation follows automatically after all banks
+complete. No effect estimate has been inspected.
