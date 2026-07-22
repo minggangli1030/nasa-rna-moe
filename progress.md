@@ -1864,3 +1864,17 @@ relative checksum-manifest SHA256 is
 The refrozen protocol and workflow forbid the combined container at runtime, bind the
 full clean Git commit, serialize every ordered draw and per-draw mask seed, cross-check
 all exposure/schedule hashes, and write the terminal completion marker last.
+
+The repaired implementation passed three independent launch audits and the focused
+integrated test suite, then was committed and pushed as
+`e8c0383fd1833f180f26af56f09e83a5b3f676d9`. A complete Git bundle was checksum-verified
+and cloned on `moe-reboot` into the new clean detached checkout
+`/home/exouser/nasa-rna-moe-e8c0383`; the older dirty VM checkout was left untouched.
+The production workflow is running in tmux session `stage1_k4_final_e8c0383` with
+persistent result root
+`/media/volume/moe-reboot/results/stage1_k4_final_refit_e8c0383`. Preflight,
+development-only preparation, and the all-five-bank two-update smoke passed; the smoke
+wrote `SMOKE_COMPLETE` at 2026-07-22T20:27:59Z with finite losses and no test or
+external access. Full seed 17 started at 2026-07-22T20:28:02Z. Seeds 42 and 101, the
+target-hidden router refit, portable candidate freeze, and full checksum validation
+follow automatically. This final fit emits no internal efficacy comparison.

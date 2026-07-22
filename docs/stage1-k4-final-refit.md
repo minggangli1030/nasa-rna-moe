@@ -1,7 +1,7 @@
 # Stage 1 K4 final refit: decision history and confirmation design
 
-Status: **development nomination complete; final-refit implementation frozen and
-launch pending; external confirmation not yet started.**
+Status: **development nomination complete; final refit running on `moe-reboot`
+after a passed real-data smoke; external confirmation not yet started.**
 
 This document records why the project arrived at a four-specialist model, what the
 completed experiments do and do not establish, and the contract for fitting one final
@@ -13,7 +13,7 @@ reuse of the old internal test, selection on an external lockbox, or a biologica
 | Stage | Data role | Purpose | Current status | Permitted conclusion |
 |---|---|---|---|---|
 | Development nomination | Frozen train plus calibration | Compare K5, genuine K4 equal-per-expert (K4-EPE), and a higher-exposure K4 sensitivity; nominate one candidate | Complete | K4-EPE is the development candidate |
-| Final fitting | Train plus calibration only; old test excluded | Refit exactly one nominated K4 architecture and its matched controls, and freeze one deployable router | Implementation frozen; launch pending | Produces frozen weights and router; adds no confirmation evidence |
+| Final fitting | Train plus calibration only; old test excluded | Refit exactly one nominated K4 architecture and its matched controls, and freeze one deployable router | Running from exact commit `e8c0383`; preflight and smoke passed | Produces frozen weights and router; adds no confirmation evidence |
 | External confirmation | A new, untouched, study-disjoint lockbox | Test the already-frozen K4 model once against pooled and matched controls | Blocked pending external data and a separately frozen protocol | May confirm or fail the K4 Stage 1 claim |
 
 The completed K4/K5 experiment is adaptive to the same calibration cohort that
@@ -431,6 +431,25 @@ The final-refit pipeline must fail closed if it sees:
 The old test may remain preserved for reproducibility of historical reports. It may not
 be used for smoke testing, hyperparameter checks, router fitting, checkpoint selection,
 threshold revision, or a K4-versus-K5 rescue analysis.
+
+## Final-refit launch record
+
+The audited implementation was committed and pushed as
+`e8c0383fd1833f180f26af56f09e83a5b3f676d9`. It was transferred as a complete Git
+bundle and cloned into a new clean detached checkout at
+`/home/exouser/nasa-rna-moe-e8c0383`; the VM's older modified checkout was not used or
+changed. The persistent result root is
+`/media/volume/moe-reboot/results/stage1_k4_final_refit_e8c0383`, and the workflow runs
+inside tmux session `stage1_k4_final_e8c0383`.
+
+VM preflight and preparation passed. The real-data seed-17 smoke completed at
+2026-07-22 20:27:59 UTC for all five banks after exactly two updates per bank. Its
+contract check verified finite tensors, final-checkpoint round trips, the full frozen
+axis order, `mechanical_only=true`, `internal_efficacy_scoring=false`, and both
+`test_accessed=false` and `external_data_accessed=false`. The full 1,500-update refit
+then started with seed 17 at 20:28:02 UTC; seeds 42 and 101, router refit, portable
+candidate freeze, and a full checksum pass follow automatically. No efficacy estimate
+is produced or inspected by this workflow.
 
 ## Future external-lockbox firewall
 
