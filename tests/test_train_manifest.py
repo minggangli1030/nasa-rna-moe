@@ -244,6 +244,44 @@ def test_organ_balanced_sampler_is_immune_to_brain_imbalance_and_group_aware():
         assert max(totals) - min(totals) <= 1
 
 
+def test_organ_sample_balanced_sampler_equalizes_organs_and_covers_rows():
+    frame = pd.DataFrame({
+        "sample_id": [f"brain-{index}" for index in range(7)]
+        + [f"skin-{index}" for index in range(3)],
+        "organ": ["brain"] * 7 + ["skin"] * 3,
+        "series_group_id": ["brain-large"] * 7 + ["skin-small"] * 3,
+    })
+    sampler = DeterministicBudgetBatchSampler(
+        frame["sample_id"].tolist(),
+        batch_size=2,
+        max_updates=14,
+        seed=31,
+        sampling_mode="organ_sample_balanced",
+        organs=frame["organ"].tolist(),
+        group_ids=frame["series_group_id"].tolist(),
+    )
+    repeated = DeterministicBudgetBatchSampler(
+        frame["sample_id"].tolist(),
+        batch_size=2,
+        max_updates=14,
+        seed=31,
+        sampling_mode="organ_sample_balanced",
+        organs=frame["organ"].tolist(),
+        group_ids=frame["series_group_id"].tolist(),
+    )
+    exposures = build_exposure_frame(frame, sampler)
+    assert sampler.flat_indices == repeated.flat_indices
+    assert exposures.groupby("organ")["exposure_count"].sum().to_dict() == {
+        "brain": 14,
+        "skin": 14,
+    }
+    assert exposures["exposure_count"].min() >= 1
+    brain_counts = exposures.loc[
+        exposures["organ"].eq("brain"), "exposure_count"
+    ].tolist()
+    assert max(brain_counts) - min(brain_counts) <= 1
+
+
 def test_expression_loader_preserves_requested_rows_and_gene_order():
     with tempfile.TemporaryDirectory() as directory:
         path = Path(directory) / "expression.parquet"

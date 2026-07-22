@@ -13,6 +13,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import time
 from pathlib import Path
 from types import SimpleNamespace
@@ -35,15 +36,18 @@ from train_fixed_partition_moe import (
 )
 from train_latent_moe import ResidualExpert, _masked_row_mse, load_frozen_trunk
 from train_manifest import (
+    SAMPLING_MODES,
     DeterministicBudgetBatchSampler,
     DeterministicMaskedExpressionDataset,
     balanced_validation_weights,
+    build_exposure_frame,
     seed_data_worker,
     seed_everything,
     sha256_file,
     sha256_json,
     sha256_lines,
     stable_seed,
+    summarize_exposures,
 )
 
 
@@ -236,6 +240,16 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
     seed_everything(args.seed, deterministic=True)
     device = _resolve_device(args.device)
     allow_fallback_label = bool(getattr(args, "allow_fallback_label", False))
+    final_refit = bool(getattr(args, "final_refit", False))
+    sampling_mode = str(getattr(args, "sampling_mode", "natural"))
+    code_commit = str(getattr(args, "code_commit", "unknown"))
+    if final_refit and re.fullmatch(r"[0-9a-f]{40}", code_commit) is None:
+        raise ValueError("final refit requires the full 40-character Git commit")
+    if final_refit and bool(getattr(args, "require_calibration_coverage", False)):
+        raise ValueError(
+            "final refit merges calibration into fitting and cannot request "
+            "calibration coverage evaluation"
+        )
     trunk, checkpoint_config, checkpoint = load_frozen_trunk(args.pooled_checkpoint, device)
     load_args = SimpleNamespace(**vars(args))
     load_args.axis = axes[0]
@@ -257,8 +271,11 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
         allow_fallback_label=allow_fallback_label,
     )
     train_count = len(selection.train)
-    labels_train = {name: values[:train_count] for name, values in labels_all.items()}
+    source_train_labels = {
+        name: values[:train_count] for name, values in labels_all.items()
+    }
     labels_validation = {name: values[train_count:] for name, values in labels_all.items()}
+    labels_train = labels_all if final_refit else source_train_labels
     axis_k = {
         name: int(len(np.unique(labels_train[name][labels_train[name] >= 0])))
         for name in axes
@@ -266,13 +283,16 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
     for axis in axes:
         expected = np.arange(axis_k[axis])
         train_active = np.unique(labels_train[axis][labels_train[axis] >= 0])
-        validation_active = np.unique(
-            labels_validation[axis][labels_validation[axis] >= 0]
-        )
         if not np.array_equal(train_active, expected):
             raise ValueError(f"axis {axis!r} training labels do not cover 0..K-1")
-        if bool(getattr(args, "require_calibration_coverage", False)) and not np.array_equal(validation_active, expected):
-            raise ValueError(f"axis {axis!r} calibration labels do not cover 0..K-1")
+        if bool(getattr(args, "require_calibration_coverage", False)):
+            validation_active = np.unique(
+                labels_validation[axis][labels_validation[axis] >= 0]
+            )
+            if not np.array_equal(validation_active, expected):
+                raise ValueError(
+                    f"axis {axis!r} calibration labels do not cover 0..K-1"
+                )
     update_overrides = _parse_axis_int_overrides(
         getattr(args, "axis_update_budget", None),
         axes,
@@ -311,28 +331,40 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
 
     train_ids = selection.train[args.sample_id_column].astype(str).tolist()
     validation_ids = selection.validation[args.sample_id_column].astype(str).tolist()
+    if final_refit:
+        training_frame = pd.concat(
+            [selection.train, selection.validation], ignore_index=True
+        )
+        training_expression = np.concatenate(
+            [train_expression, validation_expression], axis=0
+        )
+    else:
+        training_frame = selection.train
+        training_expression = train_expression
+    fitting_ids = training_frame[args.sample_id_column].astype(str).tolist()
+    mask_phase = (
+        "packed_final_refit_banks"
+        if final_refit
+        else "packed_fixed_partition_banks"
+    )
     train_dataset = DeterministicMaskedExpressionDataset(
-        train_expression,
-        train_ids,
+        training_expression,
+        fitting_ids,
         normalization="log1p_tpm",
         mask_ratio=args.mask_ratio,
         mask_token=args.mask_token,
         seed=args.seed,
-        phase="packed_fixed_partition_banks",
+        phase=mask_phase,
         fixed_masks=False,
     )
-    validation_dataset = FixedGeneMaskDataset(
-        validation_expression,
-        validation_ids,
-        mask_indices=score_indices,
-        mask_token=args.mask_token,
-    )
     sampler = DeterministicBudgetBatchSampler(
-        train_ids,
+        fitting_ids,
         batch_size=args.batch_size,
         max_updates=max_updates,
         seed=stable_seed(args.seed, "packed_fixed_partition_sampler"),
-        sampling_mode="natural",
+        sampling_mode=sampling_mode,
+        organs=training_frame[args.organ_column].astype(str).tolist(),
+        group_ids=training_frame[args.group_column].astype(str).tolist(),
     )
     generator = torch.Generator().manual_seed(
         stable_seed(args.seed, "packed_fixed_partition_loader") % (2**63 - 1)
@@ -344,19 +376,38 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
         worker_init_fn=seed_data_worker,
         generator=generator,
     )
-    validation_loader = DataLoader(
-        validation_dataset,
-        batch_size=args.validation_batch_size,
-        shuffle=False,
-        num_workers=args.num_workers,
-        worker_init_fn=seed_data_worker,
-        generator=generator,
-    )
-    validation_weights = balanced_validation_weights(
-        selection.validation,
+    validation_loader = None
+    validation_weights = None
+    if not final_refit:
+        validation_dataset = FixedGeneMaskDataset(
+            validation_expression,
+            validation_ids,
+            mask_indices=score_indices,
+            mask_token=args.mask_token,
+        )
+        validation_loader = DataLoader(
+            validation_dataset,
+            batch_size=args.validation_batch_size,
+            shuffle=False,
+            num_workers=args.num_workers,
+            worker_init_fn=seed_data_worker,
+            generator=generator,
+        )
+        validation_weights = balanced_validation_weights(
+            selection.validation,
+            organ_column=args.organ_column,
+            group_column=args.group_column,
+        )
+    exposure_frame = build_exposure_frame(
+        training_frame,
+        sampler,
+        sample_id_column=args.sample_id_column,
         organ_column=args.organ_column,
         group_column=args.group_column,
     )
+    exposure_summary = summarize_exposures(exposure_frame)
+    if final_refit and not args.smoke_only and exposure_summary["zero_exposure_samples"]:
+        raise ValueError("final refit schedule leaves one or more fitting rows unexposed")
     model = PackedExpertBanks(
         trunk,
         axis_k,
@@ -424,18 +475,77 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
                 "scheduled expert exposures exceed the frozen deviation limit: "
                 f"{failed_exposures}"
             )
+    exposure_path = output_dir / "fit_exposures.parquet"
+    temporary_exposure_path = exposure_path.with_suffix(".parquet.tmp")
+    exposure_frame.to_parquet(temporary_exposure_path, index=False)
+    os.replace(temporary_exposure_path, exposure_path)
+    flat_indices = np.asarray(sampler.flat_indices, dtype=np.int64)
+    draw_numbers = np.arange(len(flat_indices), dtype=np.int64)
+    fitting_ids_array = np.asarray(fitting_ids, dtype=str)
+    schedule_frame = pd.DataFrame({
+        "draw_number": draw_numbers,
+        "update": draw_numbers // int(args.batch_size) + 1,
+        "batch_position": draw_numbers % int(args.batch_size),
+        "sample_index": flat_indices,
+        "sample_id": fitting_ids_array[flat_indices],
+        "organ": training_frame[args.organ_column].astype(str).to_numpy()[flat_indices],
+        "series_group_id": training_frame[args.group_column]
+        .astype(str)
+        .to_numpy()[flat_indices],
+    })
+    schedule_frame["mask_seed_u64_hex"] = [
+        f"{stable_seed(args.seed, 'mask', mask_phase, sample_id, int(draw)):016x}"
+        for draw, sample_id in zip(
+            schedule_frame["draw_number"], schedule_frame["sample_id"]
+        )
+    ]
+    schedule_path = output_dir / "fit_schedule.parquet"
+    temporary_schedule_path = schedule_path.with_suffix(".parquet.tmp")
+    schedule_frame.to_parquet(temporary_schedule_path, index=False)
+    os.replace(temporary_schedule_path, schedule_path)
+    exposure_report = {
+        "schema_version": 1,
+        "status": "complete",
+        "final_refit": final_refit,
+        "sampling_mode": sampling_mode,
+        "mask_phase": mask_phase,
+        "ordered_schedule_rows": int(len(schedule_frame)),
+        "training_seed": int(args.seed),
+        "code_commit": code_commit,
+        "test_accessed": False,
+        "external_data_accessed": False,
+        "internal_efficacy_scoring": False if final_refit else True,
+        "summary": exposure_summary,
+        "axis_exposure_counts": exposure_counts,
+        "axis_exposure_fractional_deviations": exposure_deviations,
+        "fallback_draw_counts": fallback_draw_counts,
+        "all_fit_rows_exposed": exposure_summary["zero_exposure_samples"] == 0,
+        "artifacts": {
+            "fit_exposures_sha256": sha256_file(exposure_path),
+            "fit_schedule_sha256": sha256_file(schedule_path),
+            "ordered_schedule_rows": int(len(schedule_frame)),
+        },
+    }
+    _atomic_json(output_dir / "fit_exposure_report.json", exposure_report)
     common_hashes = {
         "protocol_sha256": sha256_file(args.protocol),
         "pooled_checkpoint_sha256": sha256_file(args.pooled_checkpoint),
         "expression_sha256": sha256_file(args.expression_parquet),
+        "expression_metadata_sha256": sha256_file(args.expression_metadata),
         "manifest_sha256": sha256_file(args.manifest),
         "partition_manifest_sha256": sha256_file(args.partition_manifest),
         "partition_report_sha256": sha256_file(args.partition_report),
         "axis_definitions_sha256": sha256_file(args.axis_definitions),
         "train_sample_ids_sha256": sha256_lines(train_ids),
         "calibration_sample_ids_sha256": sha256_lines(validation_ids),
+        "fitting_sample_ids_sha256": sha256_lines(fitting_ids),
         "gene_order_sha256": sha256_lines(expression_info.gene_columns),
         "score_gene_indices_sha256": sha256_lines([str(value) for value in score_indices]),
+        "fit_exposures_sha256": sha256_file(exposure_path),
+        "fit_schedule_sha256": sha256_file(schedule_path),
+        "fit_exposure_report_sha256": sha256_file(
+            output_dir / "fit_exposure_report.json"
+        ),
     }
     if common_hashes["partition_manifest_sha256"] != partition_report["hashes"]["partition_manifest_sha256"]:
         raise ValueError("partition manifest is not pinned by partition report")
@@ -454,12 +564,25 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
         "validation_batch_size": args.validation_batch_size,
         "adapter_dim": args.adapter_dim,
         "mask_ratio": args.mask_ratio,
+        "mask_token": args.mask_token,
+        "normalization": "log1p_tpm",
         "score_gene_count": int(len(score_indices)),
         "learning_rate": args.learning_rate,
         "weight_decay": args.weight_decay,
-        "sampling": "one shared deterministic natural schedule; no organ/study sampling labels",
+        "optimizer": "AdamW",
+        "sampling_mode": sampling_mode,
+        "mask_phase": mask_phase,
+        "ordered_schedule_rows": int(len(schedule_frame)),
+        "sampling": (
+            "one shared deterministic organ-then-sample balanced schedule"
+            if sampling_mode == "organ_sample_balanced"
+            else f"one shared deterministic {sampling_mode} schedule"
+        ),
         "loss_normalization": "sum active-row losses divided by common full batch size",
         "checkpoint_policy": "predetermined_final_update_per_bank",
+        "scheduler": "CosineAnnealingLR",
+        "final_refit": final_refit,
+        "calibration_evaluation_performed": not final_refit,
         "router_present": False,
         "use_amp": use_amp,
     }
@@ -473,16 +596,26 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
             args, "experiment", "packed_hard_fixed_partition_expert_banks"
         ),
         "training_seed": int(args.seed),
+        "code_commit": code_commit,
         "test_accessed": False,
+        "external_data_accessed": False,
         "mechanical_only": bool(args.smoke_only),
+        "internal_efficacy_scoring": False if final_refit else True,
+        "fitting_roles": (
+            [str(args.train_split), str(args.validation_split)]
+            if final_refit
+            else [str(args.train_split)]
+        ),
         "config": top_config,
         "counts": {
             "train": len(train_ids),
             "calibration": len(validation_ids),
+            "fit": len(fitting_ids),
             "genes": len(expression_info.gene_columns),
             "score_genes": len(score_indices),
         },
         "exposure_counts": exposure_counts,
+        "fit_exposure_summary": exposure_summary,
         "pooled_checkpoint_update": checkpoint.get("update"),
         "hashes": dict(common_hashes),
     }
@@ -514,6 +647,10 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
                 )
                 losses[axis] = per_row.sum() / args.batch_size
             total_loss = torch.stack(list(losses.values())).sum()
+        if not all(bool(torch.isfinite(value).item()) for value in losses.values()):
+            raise FloatingPointError(f"non-finite bank loss at update {update}")
+        if not bool(torch.isfinite(total_loss).item()):
+            raise FloatingPointError(f"non-finite total loss at update {update}")
         scaler.scale(total_loss).backward()
         for axis in active:
             scaler.step(optimizers[axis])
@@ -541,27 +678,31 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
     for axis in axes:
         bank_dir = output_dir / "banks" / axis
         bank_dir.mkdir(parents=True, exist_ok=False)
-        view = _BankEvaluationView(model, axis).to(device)
-        metrics, arrays = evaluate_fixed_partition(
-            view,
-            validation_loader,
-            labels=labels_validation[axis],
-            groups=groups,
-            organs=organs,
-            sample_weights=validation_weights,
-            device=device,
-            crossfit_seed=stable_seed(args.crossfit_seed, axis) % (2**32 - 1),
-            crossfit_folds=args.crossfit_folds,
-            fallback_label=(-1 if allow_fallback_label else None),
-        )
-        np.savez_compressed(
-            bank_dir / "calibration_scores.npz",
-            sample_ids=np.asarray(validation_ids, dtype=str),
-            groups=np.asarray(groups, dtype=str),
-            organs=np.asarray(organs, dtype=str),
-            sample_weights=validation_weights.astype(np.float64),
-            **arrays,
-        )
+        metrics = None
+        if not final_refit:
+            if validation_loader is None or validation_weights is None:
+                raise AssertionError("calibration evaluator was not initialized")
+            view = _BankEvaluationView(model, axis).to(device)
+            metrics, arrays = evaluate_fixed_partition(
+                view,
+                validation_loader,
+                labels=labels_validation[axis],
+                groups=groups,
+                organs=organs,
+                sample_weights=validation_weights,
+                device=device,
+                crossfit_seed=stable_seed(args.crossfit_seed, axis) % (2**32 - 1),
+                crossfit_folds=args.crossfit_folds,
+                fallback_label=(-1 if allow_fallback_label else None),
+            )
+            np.savez_compressed(
+                bank_dir / "calibration_scores.npz",
+                sample_ids=np.asarray(validation_ids, dtype=str),
+                groups=np.asarray(groups, dtype=str),
+                organs=np.asarray(organs, dtype=str),
+                sample_weights=validation_weights.astype(np.float64),
+                **arrays,
+            )
         expert_state = {
             f"experts.{index}.{name}": value.detach().cpu()
             for index, expert in enumerate(model.banks[axis])
@@ -571,6 +712,11 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
             _tensor_state_sha256(dict(expert.state_dict()))
             for expert in model.banks[axis]
         ]
+        if not all(
+            bool(torch.isfinite(value).all().item())
+            for value in expert_state.values()
+        ):
+            raise FloatingPointError(f"axis {axis!r} contains non-finite final weights")
         bank_config = {
             "axis": axis,
             "num_experts": axis_k[axis],
@@ -587,11 +733,17 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
             "expert_initialization_keys": axis_expert_keys.get(axis),
             "batch_size": args.batch_size,
             "mask_ratio": args.mask_ratio,
+            "mask_token": args.mask_token,
+            "normalization": "log1p_tpm",
             "score_gene_count": int(len(score_indices)),
             "checkpoint_policy": "predetermined_final_update",
+            "scheduler": "CosineAnnealingLR",
             "packed_shared_trunk": True,
+            "final_refit": final_refit,
+            "calibration_evaluation_performed": not final_refit,
             "loss_normalization": "sum active-row losses divided by common full batch size",
         }
+        checkpoint_path = bank_dir / "final_experts.pt"
         torch.save(
             {
                 "schema_version": 1,
@@ -602,8 +754,23 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
                 "expert_state_dict": expert_state,
                 "pooled_checkpoint_sha256": common_hashes["pooled_checkpoint_sha256"],
             },
-            bank_dir / "final_experts.pt",
+            checkpoint_path,
         )
+        roundtrip = torch.load(
+            checkpoint_path, map_location="cpu", weights_only=False
+        )
+        roundtrip_state = roundtrip.get("expert_state_dict")
+        if not isinstance(roundtrip_state, dict):
+            raise RuntimeError(f"axis {axis!r} checkpoint round-trip lacks expert state")
+        if not all(
+            isinstance(value, torch.Tensor) and bool(torch.isfinite(value).all().item())
+            for value in roundtrip_state.values()
+        ):
+            raise FloatingPointError(
+                f"axis {axis!r} checkpoint round-trip contains non-finite weights"
+            )
+        if _tensor_state_sha256(roundtrip_state) != _tensor_state_sha256(expert_state):
+            raise RuntimeError(f"axis {axis!r} checkpoint round-trip changed expert state")
         bank_metadata = {
             "schema_version": 1,
             "status": "complete",
@@ -615,27 +782,37 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
             ),
             "axis": axis,
             "training_seed": int(args.seed),
+            "code_commit": code_commit,
             "test_accessed": False,
+            "external_data_accessed": False,
             "mechanical_only": bool(args.smoke_only),
+            "internal_efficacy_scoring": False if final_refit else True,
             "config": bank_config,
             "hashes": {
                 **common_hashes,
                 "resolved_config_sha256": sha256_json(bank_config),
             },
-            "calibration_metrics": metrics,
             "artifacts": {
-                "final_experts_sha256": sha256_file(bank_dir / "final_experts.pt"),
-                "calibration_scores_sha256": sha256_file(bank_dir / "calibration_scores.npz"),
+                "final_experts_sha256": sha256_file(checkpoint_path),
                 "expert_state_sha256": expert_state_hashes,
+                "all_final_tensors_finite": True,
+                "checkpoint_roundtrip_verified": True,
             },
         }
+        if metrics is not None:
+            bank_metadata["calibration_metrics"] = metrics
+            bank_metadata["artifacts"]["calibration_scores_sha256"] = sha256_file(
+                bank_dir / "calibration_scores.npz"
+            )
         _atomic_json(bank_dir / "run_metadata.json", bank_metadata)
         (bank_dir / "COMPLETE").touch()
-        bank_results[axis] = {
+        result = {
             "final_update": budgets[axis],
-            "calibration_metrics": metrics,
             "path": str(bank_dir),
         }
+        if metrics is not None:
+            result["calibration_metrics"] = metrics
+        bank_results[axis] = result
     top_metadata.update({
         "status": "complete",
         "elapsed_seconds": float(time.time() - start_time),
@@ -682,6 +859,17 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Require every active expert label to occur in calibration; K45 contract only.",
     )
+    parser.add_argument(
+        "--final-refit",
+        action="store_true",
+        help=(
+            "Merge the selected train and calibration rows for fixed-protocol fitting "
+            "and emit no internal efficacy scores."
+        ),
+    )
+    parser.add_argument(
+        "--sampling-mode", choices=SAMPLING_MODES, default="natural"
+    )
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--research-stage", default="stage2_competitive_followup")
     parser.add_argument(
@@ -691,6 +879,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--bank-experiment", default="hard_fixed_partition_residual_experts"
     )
     parser.add_argument("--seed", type=int, required=True)
+    parser.add_argument("--code-commit", default="unknown")
     parser.add_argument("--train-split", default="train")
     parser.add_argument("--validation-split", default="calibration")
     parser.add_argument("--train-filter-column", default="balanced_train")

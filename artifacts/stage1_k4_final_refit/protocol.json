@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "protocol_name": "stage1_k4_final_refit_for_external_confirmation",
+  "frozen_at_utc": "2026-07-22T20:13:21Z",
+  "authorization": {
+    "requested_by_user": true,
+    "request": "start actual training after the completed K4/K5 development comparison"
+  },
+  "evidence_label": {
+    "label": "final_refit_for_external_confirmation",
+    "development_only": true,
+    "internally_confirmatory": false,
+    "internal_efficacy_scoring": false,
+    "interpretation": "This run freezes a deployment candidate. It does not create a new performance estimate."
+  },
+  "prior_evidence": {
+    "k45_protocol_sha256": "77dd4d780b2412b043f6f9c01778b043ca1b747fbf79836d82fbce7da791b079",
+    "k45_evaluation_report_sha256": "4733d3eaab205d7421577d43460bf3b15a9a98803cdcaf8b040526c859049d1b",
+    "k45_scores_sha256": "70ecb74de141a89fc885ef457c3cfda42dcde12596cdfa551037953cad77ae8b",
+    "decision_branch": "k4_robust",
+    "selected_candidate": "k4_epe",
+    "completed_result": {
+      "blind_relative_mse_reduction_vs_pooled": 0.03339,
+      "true_dispatch_relative_mse_reduction_vs_pooled": 0.03983,
+      "minimum_true_dispatch_relative_mse_reduction_vs_assigned_random": 0.03945,
+      "k4_relative_mse_penalty_vs_k5": 0.00184,
+      "k4_simultaneous_one_sided_upper_97_5": 0.00299,
+      "noninferiority_margin": 0.01,
+      "all_technical_support_and_exposure_gates_passed": true
+    },
+    "claim_limit": "The completed result selected K4-EPE in development only; it did not independently confirm organ specialization."
+  },
+  "data": {
+    "fitting_pool": "balanced_train_plus_calibration",
+    "expected_train_samples": 1815,
+    "expected_calibration_samples": 842,
+    "expected_fit_samples": 2657,
+    "expected_organs": [
+      "adipose",
+      "brain",
+      "liver",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "source_k45_partition_manifest_sha256": "09c45edc5dd6389020495f8fd4718995cd82ee7828197a96c0fa44ef46e98bf2",
+    "source_k45_partition_report_sha256": "ec9cfd0855d01776ad7b92f68fa82c6286b0cd23ef88557807764dae21f16ed1",
+    "historical_combined_expression_parquet_sha256": "148776bc2d5bbe4a969103de7abab932b7467c804934fc697366ae2c209c0821",
+    "historical_combined_manifest_sha256": "bc4e8e4e36ab0e869fd885197842dc797edad5a08b8093beb21185dbeda7f9cc",
+    "development_expression_parquet_sha256": "74ee6438a32bf62c0227af4a3e73f853697b95e8bea80d844cabd67f261c7df0",
+    "development_expression_metadata_sha256": "5537ff8964415e547962be20ae0dec34171863dffe926fed7b8f6a83ad2a4415",
+    "development_extracted_manifest_sha256": "3544f37112de62d67f8f844042e61e4029c01df178ab4412ff26d887c3711a58",
+    "development_fit_manifest_sha256": "c6173aa4c7d5e8d62923a046c521a45a6e734f5f83017003b68f4afeb06261ba",
+    "development_firewall_report_sha256": "d26edcbc9cdee9c809c0a56e999bc7ebd7a6b473855cd3741df2d6c9d77cca36",
+    "development_data_full_sha256s_sha256": "5bcd0c2973aecd7ac1ab119cddf37fd35b674b7a1c4f68b366449260c10c1ee2",
+    "development_gene_list_sha256": "3332cb312000e426a866d669b3ba9b6206da50d70094fb5f9d30ef168e860dff",
+    "development_data_source": "direct extraction from ARCHS4 H5 using only the frozen K45 train+calibration manifest; the historical combined train/calibration/test Parquet is forbidden at runtime",
+    "pooled_checkpoint_sha256": "080a8a36d2090c3a823cd3995d758d1205b0ad02c1c38c06e6763c5a7ebfd789",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "gene_count": 15448,
+    "score_gene_count": 4634,
+    "normalization": "log1p_tpm",
+    "mask_token": -10.0,
+    "old_internal_test": {
+      "status": "previously_inspected_historical",
+      "included_in_refit": false,
+      "eligible_as_future_evidence": false
+    }
+  },
+  "partitions": {
+    "axes": [
+      "organ_k4_final",
+      "random_group_k4_final_p17",
+      "random_group_k4_final_p42",
+      "random_group_k4_final_p101",
+      "pooled_adapter"
+    ],
+    "active_organs": [
+      "brain",
+      "liver",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "organ_label_order": [
+      "brain",
+      "liver",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "fallback": {
+      "organ": "adipose",
+      "label": -1,
+      "dispatch": "pooled"
+    },
+    "random_partition_seeds": [17, 42, 101],
+    "random_assignment_policy": "Reuse the exact K45 K4-EPE connected-study-atomic train and calibration assignments; merge without repartitioning or relabeling.",
+    "pooled_adapter_label": 0
+  },
+  "training": {
+    "training_seeds": [17, 42, 101],
+    "pooled_trunk": "frozen checkpoint at update 7350",
+    "architecture": "frozen pooled ExpressionPerformer trunk plus dimension-64 residual adapters",
+    "candidate": "four hard-dispatched adapters for brain, liver, skeletal muscle, and skin; adipose uses pooled fallback",
+    "random_controls": "three four-adapter connected-study-preserving random banks",
+    "pooled_residual_control": "one dimension-64 residual adapter applied to every row with no router or fallback",
+    "adapter_dim": 64,
+    "batch_size": 8,
+    "scheduled_updates": 1500,
+    "total_schedule_draws": 12000,
+    "active_exposures_per_organ_expert": 2400,
+    "active_exposures_for_pooled_adapter": 12000,
+    "sampling": "deterministic organ-then-sample balanced cycle over the complete 2,657-row fitting pool; the identical sample/mask stream is shared by every bank within a seed and its ordered 12,000-draw ledger plus per-draw mask seeds are serialized",
+    "require_every_fit_row_exposed": true,
+    "maximum_exposure_fractional_deviation": 0.05,
+    "mask_ratio": 0.3,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "scheduler": "cosine annealing over exactly 1500 updates",
+    "checkpoint_policy": "predetermined final update only",
+    "initialization": "scratch residual adapters with stable semantic keys per training seed; never warm-start from K45 adapters",
+    "router_present_during_adapter_training": false,
+    "forbidden": [
+      "early stopping",
+      "best-loss checkpoint selection",
+      "best-seed selection",
+      "seed weight averaging",
+      "development efficacy scoring",
+      "K5 or K4-total retraining",
+      "pooled-trunk updates"
+    ]
+  },
+  "random_control_mapping": {
+    "source": "completed K45 held-out calibration expert_mse arrays before final refitting",
+    "aggregation": "average MSE across training seeds per sample, average samples within connected study, then equal-weight studies within active organ",
+    "selection": "argmin expert within each random partition and organ; exact ties choose the lowest expert index",
+    "fallback": "adipose maps to pooled",
+    "external_blind_use": "final router predicted organ then frozen random mapping then corresponding final-refit random expert"
+  },
+  "router": {
+    "fit_rows": "all 2657 final-fitting rows",
+    "classes": [
+      "adipose",
+      "brain",
+      "liver",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "pipeline": ["StandardScaler", "LogisticRegression"],
+    "C": 1.0,
+    "solver": "lbfgs",
+    "class_weight": "balanced",
+    "max_iter": 2000,
+    "seed": 271828,
+    "sample_weight": "equal connected-study mass within class",
+    "target_hiding": "replace all 4634 score genes with mask token before scaler fit and every prediction",
+    "deployment": "predicted adipose uses pooled; each other predicted class uses its same-named organ adapter",
+    "selection_or_tuning_metric": null
+  },
+  "future_external_confirmation": {
+    "candidate_family": "K4-EPE only",
+    "minimum_connected_studies_per_organ": 5,
+    "preferred_connected_studies_per_organ": 8,
+    "required_independence": "no accession, publication, BioProject, biosample, donor, sample, or near-duplicate overlap with any prior train, calibration, or test row",
+    "primary_aggregation": "mean seed-level loss per sample, equal connected-study mass within organ, then equal organ mass",
+    "forbidden_external_comparisons": ["K5", "K4-total"],
+    "one_time_access": true,
+    "acceptance_gates": {
+      "blind_k4_vs_pooled": "point gain >=3%, clustered CI above zero, residual-Pearson CI above zero",
+      "true_k4_vs_pooled": "point gain >=3% and clustered CI above zero",
+      "true_k4_vs_each_assigned_random": "point gain >=3%, clustered CI above zero, Holm-adjusted p<=0.05",
+      "blind_k4_vs_each_mapped_random": "point gain >0, clustered CI above zero, Holm-adjusted p<=0.05",
+      "blind_k4_vs_pooled_adapter": "clustered CI above zero",
+      "router_recovery": ">=80% of true-dispatch gain",
+      "seed_stability": "positive blind and true effects for every seed; seed SD <=0.5 times mean",
+      "active_organ_safety": "nonnegative true-dispatch point effect for each active organ"
+    },
+    "decision_branches": [
+      "full_external_pass",
+      "router_bottleneck",
+      "generic_capacity_or_partition_fail",
+      "no_external_gain",
+      "inconclusive",
+      "technical_fail"
+    ]
+  },
+  "firewall": {
+    "test_access_allowed": false,
+    "test_cache_allowed": false,
+    "internal_efficacy_scoring_allowed": false,
+    "external_access_allowed_during_refit": false,
+    "automatic_external_test_authorization": false,
+    "freeze_candidate_bundle_before_external_access": true,
+    "no_protocol_change_after_external_effect_inspection": true
+  }
+}

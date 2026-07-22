@@ -47,7 +47,7 @@ from train_single import ExpressionPerformer  # noqa: E402
 
 
 ROLES = ("pooled", "organ", "random")
-SAMPLING_MODES = ("natural", "organ_balanced")
+SAMPLING_MODES = ("natural", "organ_balanced", "organ_sample_balanced")
 
 
 def sha256_file(path: str | Path) -> str:
@@ -520,9 +520,11 @@ class DeterministicBudgetBatchSampler(Sampler[list[tuple[int, int]]]):
         self.sampling_mode = sampling_mode
         self.organs = None if organs is None else tuple(str(value) for value in organs)
         self.group_ids = None if group_ids is None else tuple(str(value) for value in group_ids)
-        if sampling_mode == "organ_balanced":
+        if sampling_mode in {"organ_balanced", "organ_sample_balanced"}:
             if self.organs is None or self.group_ids is None:
-                raise ValueError("organ_balanced sampling requires organ and group labels")
+                raise ValueError(
+                    f"{sampling_mode} sampling requires organ and group labels"
+                )
             if len(self.organs) != len(self.sample_ids) or len(self.group_ids) != len(self.sample_ids):
                 raise ValueError("organ/group labels must align with sample IDs")
         self.flat_indices = tuple(self._build_indices())
@@ -548,6 +550,21 @@ class DeterministicBudgetBatchSampler(Sampler[list[tuple[int, int]]]):
             return result[:total_draws]
 
         assert self.organs is not None and self.group_ids is not None
+        if self.sampling_mode == "organ_sample_balanced":
+            organ_to_indices: dict[str, list[int]] = {}
+            for index, organ in enumerate(self.organs):
+                organ_to_indices.setdefault(organ, []).append(index)
+            organ_cycle = _ShuffledCycle(sorted(organ_to_indices), rng)
+            sample_cycles = {
+                organ: _ShuffledCycle(indices, rng)
+                for organ, indices in organ_to_indices.items()
+            }
+            result = []
+            for _ in range(total_draws):
+                organ = organ_cycle.next()
+                result.append(int(sample_cycles[organ].next()))
+            return result
+
         organ_to_groups: dict[str, dict[str, list[int]]] = {}
         for index, (organ, group) in enumerate(zip(self.organs, self.group_ids)):
             organ_to_groups.setdefault(organ, {}).setdefault(group, []).append(index)

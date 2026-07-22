@@ -1793,3 +1793,74 @@ no test access, and exact shared K5/K4-EPE brain/liver/skeletal-muscle/skin expe
 state hashes. Full seed 17/42/101 training is now running in tmux session
 `organ_k45_baa1acf`; calibration evaluation follows automatically after all banks
 complete. No effect estimate has been inspected.
+
+### Genuine K4/K5 retraining result (completed 2026-07-22)
+
+The development-only K45 workflow completed cleanly at 09:27:44 UTC under
+`/media/volume/moe-reboot/results/stage1_organ_k45_retraining_191192e`. All three
+training seeds, all 12 banks per seed, preparation, smoke, calibration evaluation, and
+technical gates completed with no test access. The frozen branch is `k4_robust`; the
+single candidate for final fitting is `k4_epe` (brain, liver, skeletal muscle, and skin
+adapters with adipose pooled fallback).
+
+K4-EPE achieved 3.339% blind gain versus pooled, 3.983% true-dispatch gain versus
+pooled, and at least 3.945% true-dispatch gain versus every assigned random K4 control.
+Its relative-MSE penalty versus K5 was only 0.184%, with simultaneous one-sided 97.5%
+upper bound 0.299% against the frozen 1% noninferiority margin. Both K4 arms and K5
+passed their development gates, so K4-EPE was chosen for its lower active exposure and
+one fewer deployed expert, not because it had the numerically lowest MSE. This is a
+development nomination, not independent confirmation and not a repair or erasure of
+the earlier organ-fixed-averaging failure.
+
+The evidence report SHA256 is
+`4733d3eaab205d7421577d43460bf3b15a9a98803cdcaf8b040526c859049d1b`; decision-score
+SHA256 is `70ecb74de141a89fc885ef457c3cfda42dcde12596cdfa551037953cad77ae8b`.
+The exact 229-file, 44 MB result has a portable checksum manifest SHA256
+`f287a6a83f39708f595cd59cbeec9abb3e82fff69ac49390d568644a6c58c27b`, verified both
+on `moe-reboot` and in `backups/stage1_organ_k45_retraining_191192e/` on the Mac.
+
+### Stage 1 K4 final-refit checkpoint (2026-07-22)
+
+The complete decision history, failed controls, K-search interpretation, selected
+parameters, hash ledger, final-fitting contract, and future external decision tree are
+recorded in `docs/stage1-k4-final-refit.md`. The machine-readable refit protocol is
+`artifacts/stage1_k4_final_refit/protocol.json` (SHA256
+`718f4a876ba641e53aaff3ad75db8c70c727db0a086477b13c17487672cbb85b`).
+
+The final fitting pool is exactly the frozen 1,815 balanced training rows plus 842
+calibration rows (2,657 total). The previously inspected internal test remains excluded.
+The pooled trunk stays frozen. For seeds 17/42/101, the refit trains from-scratch
+dimension-64 adapters for one K4 organ bank, the exact three K45 study-atomic random K4
+assignments, and one single-adapter pooled-residual control. All banks share a
+deterministic 12,000-draw organ-then-sample balanced stream, batch size 8, 1,500 fixed
+updates, LR 0.001, weight decay 0.01, 30% masks, cosine scheduling, and final-update-only
+checkpointing. No calibration efficacy artifact, early stopping, best seed, or best
+checkpoint is permitted. A five-class target-hidden router is refit on all 2,657 rows;
+random deployment mappings are frozen beforehand from the completed held-out K45
+calibration caches.
+
+The real metadata preflight reproduced all 2,657 rows and exact frozen random labels.
+For every training seed the proposed schedule covers every fitting row, gives exactly
+2,400 draws to each organ role, and keeps each random expert within the frozen 5%
+exposure bound (worst observed 3.83%). The final partition manifest is deterministic
+with VM-runtime SHA256 `c6173aa4c7d5e8d62923a046c521a45a6e734f5f83017003b68f4afeb06261ba`.
+The implementation includes fail-closed manifest/mapping/router/candidate freezers,
+exposure ledgers, a metric-free final-refit trainer mode, a two-update real-data smoke,
+and persistent-VM orchestration. External confirmation remains a later one-time run on
+new study-disjoint data; K5 and K4-total may not be reopened on that lockbox.
+
+A final adversarial audit then caught that the earlier loader still opened the
+historical combined manifest/expression container before selecting the 2,657 fitting
+rows. No test row reached training, but this did not justify the stronger physical
+firewall claim. Launch was paused. A new 160 MB development-only expression artifact
+was extracted directly from ARCHS4 H5 using only the frozen K45 train+calibration
+manifest and verified on `moe-reboot` at
+`/media/volume/moe-reboot/results/stage1_k4_final_refit_development_data_v1`.
+Its expression SHA256 is
+`74ee6438a32bf62c0227af4a3e73f853697b95e8bea80d844cabd67f261c7df0`, firewall-report
+SHA256 is `d26edcbc9cdee9c809c0a56e999bc7ebd7a6b473855cd3741df2d6c9d77cca36`, and verified
+relative checksum-manifest SHA256 is
+`5bcd0c2973aecd7ac1ab119cddf37fd35b674b7a1c4f68b366449260c10c1ee2`.
+The refrozen protocol and workflow forbid the combined container at runtime, bind the
+full clean Git commit, serialize every ordered draw and per-draw mask seed, cross-check
+all exposure/schedule hashes, and write the terminal completion marker last.
