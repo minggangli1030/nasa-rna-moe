@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "frozen_at_utc": "2026-07-22T05:18:00Z",
+  "purpose": "Development-only retraining of genuine four-specialist and five-specialist organ banks under two frozen budget views, with matched connected-study-preserving random controls and target-hidden cross-fit routing.",
+  "authorization": {
+    "requested_by_user": true,
+    "source_commit_at_freeze": "9f94357f5fe19d07e605e2710d18ecb504fdafb7",
+    "scope": "one calibration-only K4-versus-K5 retraining comparison; no test access and no external confirmation authorization"
+  },
+  "evidence_label": {
+    "development_only": true,
+    "adaptive_to_prior_calibration_selection": true,
+    "independent_confirmation": false,
+    "reason": "K4 was selected with the same calibration cohort and the existing study-disjoint test was already inspected",
+    "external_confirmation_required": true
+  },
+  "prior_evidence": {
+    "track_b_report": "results/stage1_organ_k_confirmation_53ec6c4/track_b_k_search/report.json",
+    "track_b_report_sha256": "bf890073fdf055e79f0ef86a0351ae6ef43992d9b069a68d36a0bb528aa818bc",
+    "track_b_scores_sha256": "a1b71eaa53c95316c8be8e46dfe054a75c2582ec52307c98c03d19124e5e938e",
+    "frozen_selection": {
+      "k4_subset_id": 23,
+      "k4_specialists": [
+        "brain",
+        "skin",
+        "skeletal_muscle",
+        "liver"
+      ],
+      "pooled_fallback_organs": [
+        "adipose"
+      ],
+      "k5_was_numerically_best": true,
+      "k4_was_selected_by_one_standard_error": true
+    },
+    "guardrail": "the subset is frozen before retraining; no subset or organ may be reselected in this run"
+  },
+  "data": {
+    "expression_parquet": "results/stage1_organ_k5_train_20260717T165507Z/expression/expression.parquet",
+    "expression_sha256": "148776bc2d5bbe4a969103de7abab932b7467c804934fc697366ae2c209c0821",
+    "manifest_parquet": "results/stage1_organ_k5_train_20260717T165507Z/expression/manifest.parquet",
+    "manifest_sha256": "bc4e8e4e36ab0e869fd885197842dc797edad5a08b8093beb21185dbeda7f9cc",
+    "source_train_cal_partitions": "results/stage1_organ_k_confirmation_53ec6c4/partitions/train_cal_partitions.parquet",
+    "source_train_cal_partitions_sha256": "43f1ca70c6c0aa8033c9f826b6f24be5b7db9e45ec3943ff784ba7b5bcbdcedd",
+    "source_partition_report": "results/stage1_organ_k_confirmation_53ec6c4/partitions/partition_report.json",
+    "source_partition_report_sha256": "70aab83817b17b06bb4ca50685216f476bb0ed8e2be84b028e133b76b32a39a5",
+    "allowed_splits": [
+      "train",
+      "calibration"
+    ],
+    "forbidden_split": "test",
+    "primary_weighting": "equal organ mass, then equal connected-study mass within organ"
+  },
+  "frozen_trunk": {
+    "checkpoint": "results/stage1_organ_k5_train_20260717T165507Z/models/pooled/best_model.pt",
+    "sha256": "080a8a36d2090c3a823cd3995d758d1205b0ad02c1c38c06e6763c5a7ebfd789",
+    "update": 7350,
+    "parameters_updated": false
+  },
+  "score_firewall": {
+    "axis_definitions": "results/stage2_utility_axis_pilot_f8ab3cd/axis/axis_definitions.npz",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "score_gene_indices_sha256": "87ab09ccf16bac5da76bf89de4e16628f62d63986ce0f5cf17a2ba92884b544e",
+    "score_genes": 4634,
+    "router_artifact": "results/stage1_organ_k_confirmation_53ec6c4/router/organ_k_router.npz",
+    "router_artifact_sha256": "92f28dd9b58e7f9e1fd12fa5b87b7ae7f41aff14c9a61c827f9f0b2bdd45e160",
+    "router_report_sha256": "edb3ce457896789f225554025f55ad430bbea621f669de9dee0d7b2f6a81aed1",
+    "router_rule": "reuse the frozen connected-study cross-fit five-class organ router; all 4634 score genes were replaced by the mask token before every fit and prediction",
+    "k4_rule": "collapse predicted adipose to pooled fallback; never refit or select a K-specific router"
+  },
+  "partitions": {
+    "organ_k5_label_names": [
+      "adipose",
+      "brain",
+      "liver",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "organ_k4_label_names": [
+      "brain",
+      "liver",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "fallback_label": -1,
+    "k4_random_partition_seeds": [
+      17,
+      42,
+      101
+    ],
+    "k4_random_population": "the same four active-organ rows used by organ K4; adipose is pooled fallback",
+    "k4_random_assignment": "within train and calibration separately, assign each entire connected study to one of four shards by deterministic outcome-free bin packing balancing total and per-organ sample counts",
+    "k5_random_assignment": "reuse the three previously frozen connected-study-preserving K5 axes exactly",
+    "gate_rule": "every organ candidate must pass against all three matched random partitions; no favorable partition selection"
+  },
+  "training": {
+    "training_seeds": [
+      17,
+      42,
+      101
+    ],
+    "architecture": "frozen pooled trunk plus independent dimension-64 residual adapters",
+    "router_present_during_training": false,
+    "dispatch_loss": "assigned-expert masked reconstruction MSE; fallback rows contribute exactly zero adapter loss divided by the common batch size",
+    "sampling": "one deterministic natural full-five-organ schedule shared by all banks within a seed",
+    "shared_semantic_initialization": "the four common organ experts use identical initialization keys across K5 and K4; K4 budget arms share initialization keys",
+    "checkpoint_policy": "predetermined final update only; no calibration checkpoint selection",
+    "batch_size": 8,
+    "validation_batch_size": 8,
+    "mask_ratio": 0.3,
+    "adapter_dim": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "maximum_exposure_fractional_deviation": 0.05,
+    "arms": {
+      "k5_equal_per_expert_anchor": {
+        "k": 5,
+        "target_active_exposures_per_expert": 2400,
+        "scheduled_updates": 1500,
+        "target_total_active_exposures": 12000
+      },
+      "k4_equal_per_expert": {
+        "k": 4,
+        "target_active_exposures_per_expert": 2400,
+        "scheduled_updates": 1500,
+        "target_total_active_exposures": 9600,
+        "interpretation": "paired ablation and efficiency view; independent shared experts should match their K5 counterparts"
+      },
+      "k4_equal_active_exposure_total": {
+        "k": 4,
+        "target_active_exposures_per_expert": 3000,
+        "scheduled_updates": 1875,
+        "target_total_active_exposures": 12000,
+        "interpretation": "compute-reallocation sensitivity; equalizes active adapter exposures, not literal end-to-end wall-clock FLOPs"
+      }
+    }
+  },
+  "evaluation": {
+    "split": "calibration",
+    "development_only": true,
+    "primary_estimand": "connected-study cross-fit blind hard routing versus pooled on equal-organ/equal-study MSE",
+    "specialization_estimand": "true-organ with pooled fallback versus each assigned connected-study-preserving random control",
+    "diagnostics": [
+      "oracle headroom",
+      "fixed averaging",
+      "natural-frequency MSE",
+      "per-organ effects",
+      "exposure and shared-expert equality audits"
+    ],
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 616161,
+    "same_positive_sign_across_seeds": true,
+    "maximum_seed_sd_fraction_of_mean": 0.5,
+    "minimum_blind_gain_vs_pooled": 0.03,
+    "minimum_true_gain_vs_pooled": 0.03,
+    "minimum_true_gain_vs_each_assigned_random": 0.03,
+    "maximum_exposure_fractional_deviation": 0.05,
+    "multiplicity": "Holm correction across the three arm-versus-pooled tests and separately across the nine arm-by-random-partition tests",
+    "k4_noninferiority_margin_relative_mse": 0.01,
+    "noninferiority_family": "two one-sided K4-versus-K5 comparisons controlled at family alpha 0.05 using 97.5th-percentile paired clustered-bootstrap upper bounds",
+    "selection_rule": {
+      "k4_robust": "both K4 arms pass specialization gates and both are noninferior to K5; nominate the equal-per-expert K4 artifact as the lower-active-exposure candidate",
+      "k4_budget_dependent": "the equal-active-total K4 arm passes specialization gates and is noninferior, while equal-per-expert K4 is not",
+      "k4_efficient": "the equal-per-expert K4 arm passes specialization gates and is noninferior while equal-active-total K4 is not",
+      "k5_retained": "K5 passes specialization gates and equal-active-total K4 fails its gates or its noninferiority bound",
+      "no_supported_split": "none of K5, equal-per-expert K4, or equal-active-total K4 passes the unchanged specialization gates",
+      "inconclusive": "all other patterns; default to no architecture change"
+    }
+  },
+  "firewall": {
+    "test_access_allowed": false,
+    "sealed_test_assignment_allowed": false,
+    "test_cache_allowed": false,
+    "prior_track_a_report_loaded_for_selection": false,
+    "automatic_external_test_authorization": false,
+    "freeze_exactly_one_candidate_before_future_external_access": true
+  }
+}

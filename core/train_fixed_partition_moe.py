@@ -166,6 +166,7 @@ def evaluate_fixed_partition(
     device: torch.device,
     crossfit_seed: int,
     crossfit_folds: int,
+    fallback_label: int | None = None,
 ) -> tuple[dict[str, Any], dict[str, np.ndarray]]:
     model.eval()
     pooled_rows: list[np.ndarray] = []
@@ -185,7 +186,21 @@ def evaluate_fixed_partition(
                 labels[offset : offset + len(masked)], device=device
             )
             row = torch.arange(len(masked), device=device)
-            true_prediction = expert_predictions[row, batch_labels]
+            if fallback_label is None:
+                if torch.any(batch_labels < 0):
+                    raise ValueError("validation labels contain an unconfigured fallback")
+                true_prediction = expert_predictions[row, batch_labels]
+            else:
+                if fallback_label != -1:
+                    raise ValueError("only fallback label -1 is supported")
+                if torch.any(batch_labels < -1):
+                    raise ValueError("validation labels contain a value below fallback -1")
+                true_prediction = base.clone()
+                active = batch_labels >= 0
+                active_rows = row[active]
+                true_prediction[active] = expert_predictions[
+                    active_rows, batch_labels[active]
+                ]
             errors = torch.stack(
                 [
                     _masked_row_mse(expert_predictions[:, index], truth, mask)
@@ -253,7 +268,11 @@ def evaluate_fixed_partition(
     metrics["oracle_relative_mse_reduction_vs_crossfit_fixed"] = (
         metrics["crossfit_fixed_mse"] - metrics["oracle_mse"]
     ) / metrics["crossfit_fixed_mse"]
-    counts = np.bincount(labels, minlength=model.num_experts).astype(np.float64)
+    active_labels = np.asarray(labels, dtype=np.int64)
+    active_labels = active_labels[active_labels >= 0]
+    if not len(active_labels):
+        raise ValueError("validation contains no active expert labels")
+    counts = np.bincount(active_labels, minlength=model.num_experts).astype(np.float64)
     fractions = counts / counts.sum()
     metrics["partition_utilization"] = fractions.tolist()
     metrics["effective_experts"] = float(1.0 / np.square(fractions).sum())
@@ -338,7 +357,15 @@ def _load_inputs(args: argparse.Namespace, checkpoint_config: dict[str, Any]):
         raise ValueError("fixed partition contains missing labels")
     labels = np.asarray(raw_labels, dtype=np.int64)
     unique = np.unique(labels)
-    if not np.array_equal(unique, np.arange(len(unique))):
+    if bool(getattr(args, "allow_fallback_label", False)):
+        if np.any(unique < -1):
+            raise ValueError("fixed partition contains a label below fallback -1")
+        active = unique[unique >= 0]
+        if not len(active) or not np.array_equal(active, np.arange(len(active))):
+            raise ValueError(
+                f"fixed partition active labels must be contiguous from zero: {unique}"
+            )
+    elif not np.array_equal(unique, np.arange(len(unique))):
         raise ValueError(f"fixed partition labels must be contiguous from zero: {unique}")
     with np.load(definitions_path, allow_pickle=False) as archive:
         score_indices = archive["score_gene_indices"].astype(np.int64)

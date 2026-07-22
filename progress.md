@@ -1758,3 +1758,29 @@ persistent storage, so completed training hours are already recoverable:
   `GIT_BACKUP_PUSHED`.
 - The completed Stage 0 code, reports, and interpretation are pushed to
   `origin/main`.
+
+### Genuine K4/K5 retraining launch checkpoint (2026-07-22)
+
+The next adaptive-development run is frozen in
+`artifacts/stage1_organ_k45_retraining/protocol.json`. It retrains the nominated
+four-organ subset (brain, liver, skeletal muscle, skin; adipose pooled fallback)
+against K5 under two prespecified views: equal per-expert active exposure (2,400
+specialist rows/expert, 1,500 shared-schedule updates) and an equal active-adapter
+exposure sensitivity (3,000 rows/expert, 1,875 updates). The latter is an
+active-exposure/adapter-compute proxy, not equal end-to-end FLOPs. Three new
+connected-study-atomic random K4 families and three reused K5 random families are
+trained on the same train/calibration rows. K4/K5 shared organ adapters use exact
+semantic initialization keys, and full-run exposure deviation is fail-fast capped at
+5%.
+
+The result remains development-only and cannot repair the earlier organ-fixed
+averaging failure or authorize external test access. The evaluator keeps the frozen
+3% point-estimate gates with positive clustered evidence, Holm families, paired K4
+noninferiority bounds, and explicit adaptive branches: `k4_robust` nominates the
+lower-exposure K4-EPE artifact; `k4_budget_dependent` nominates only the active-total
+sensitivity; `k4_efficient` covers EPE-only support; `k5_retained` is a conservative
+default when K4 is not noninferior; and `no_supported_split` requires all three
+organ candidates to fail. No branch is a biological confirmation.
+
+Implementation commit and VM launch hashes will be appended here after the exact
+archive is deployed and the all-12-bank mechanical smoke completes.

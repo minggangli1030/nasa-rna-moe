@@ -10,6 +10,7 @@ gradient while avoiding 21 redundant trunk-training jobs.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import time
@@ -65,6 +66,7 @@ class PackedExpertBanks(nn.Module):
         *,
         adapter_dim: int,
         seed: int,
+        axis_expert_keys: dict[str, list[str]] | None = None,
     ):
         super().__init__()
         self.trunk = trunk
@@ -72,13 +74,27 @@ class PackedExpertBanks(nn.Module):
         hidden_dim = int(trunk.gene_embedding.embedding_dim)
         banks: dict[str, nn.ModuleList] = {}
         for axis in sorted(axis_k):
-            bank_seed = stable_seed(seed, "fixed_expert_bank", axis) % (2**63 - 1)
-            with torch.random.fork_rng(devices=[], enabled=True):
-                torch.manual_seed(bank_seed)
-                banks[axis] = nn.ModuleList(
-                    ResidualExpert(hidden_dim, adapter_dim)
-                    for _ in range(axis_k[axis])
-                )
+            expert_keys = None if axis_expert_keys is None else axis_expert_keys.get(axis)
+            if expert_keys is None:
+                bank_seed = stable_seed(seed, "fixed_expert_bank", axis) % (2**63 - 1)
+                with torch.random.fork_rng(devices=[], enabled=True):
+                    torch.manual_seed(bank_seed)
+                    banks[axis] = nn.ModuleList(
+                        ResidualExpert(hidden_dim, adapter_dim)
+                        for _ in range(axis_k[axis])
+                    )
+                continue
+            if len(expert_keys) != axis_k[axis] or len(set(expert_keys)) != len(expert_keys):
+                raise ValueError(f"axis {axis!r} expert initialization keys are invalid")
+            experts = nn.ModuleList()
+            for expert_key in expert_keys:
+                expert_seed = stable_seed(
+                    seed, "fixed_semantic_expert", str(expert_key)
+                ) % (2**63 - 1)
+                with torch.random.fork_rng(devices=[], enabled=True):
+                    torch.manual_seed(expert_seed)
+                    experts.append(ResidualExpert(hidden_dim, adapter_dim))
+            banks[axis] = experts
         self.banks = nn.ModuleDict(banks)
 
     def train(self, mode: bool = True):
@@ -120,7 +136,12 @@ class _BankEvaluationView(nn.Module):
         return predictions, logits, base
 
 
-def _validate_axes(partitions: pd.DataFrame, axes: list[str]) -> dict[str, np.ndarray]:
+def _validate_axes(
+    partitions: pd.DataFrame,
+    axes: list[str],
+    *,
+    allow_fallback_label: bool = False,
+) -> dict[str, np.ndarray]:
     output: dict[str, np.ndarray] = {}
     for axis in axes:
         if axis not in partitions:
@@ -130,10 +151,78 @@ def _validate_axes(partitions: pd.DataFrame, axes: list[str]) -> dict[str, np.nd
             raise ValueError(f"axis {axis!r} contains missing labels")
         labels = np.asarray(raw, dtype=np.int64)
         unique = np.unique(labels)
-        if not np.array_equal(unique, np.arange(len(unique))):
+        if allow_fallback_label:
+            if np.any(unique < -1):
+                raise ValueError(f"axis {axis!r} contains a label below fallback -1")
+            active = unique[unique >= 0]
+            if not len(active) or not np.array_equal(active, np.arange(len(active))):
+                raise ValueError(
+                    f"axis {axis!r} active labels are not contiguous: {unique}"
+                )
+        elif not np.array_equal(unique, np.arange(len(unique))):
             raise ValueError(f"axis {axis!r} labels are not contiguous: {unique}")
         output[axis] = labels
     return output
+
+
+def _parse_axis_int_overrides(
+    values: list[str] | None,
+    axes: list[str],
+    *,
+    option_name: str,
+) -> dict[str, int]:
+    output: dict[str, int] = {}
+    for raw in values or []:
+        if "=" not in raw:
+            raise ValueError(f"{option_name} must use AXIS=INTEGER")
+        axis, value = raw.split("=", 1)
+        if axis not in axes:
+            raise ValueError(f"{option_name} names unknown axis {axis!r}")
+        if axis in output:
+            raise ValueError(f"{option_name} repeats axis {axis!r}")
+        try:
+            parsed = int(value)
+        except ValueError as error:
+            raise ValueError(f"{option_name} has noninteger value {raw!r}") from error
+        if parsed <= 0:
+            raise ValueError(f"{option_name} values must be positive")
+        output[axis] = parsed
+    return output
+
+
+def _parse_axis_expert_keys(
+    values: list[str] | None,
+    axis_k: dict[str, int],
+) -> dict[str, list[str]]:
+    output: dict[str, list[str]] = {}
+    for raw in values or []:
+        if "=" not in raw:
+            raise ValueError("axis-expert-key must use AXIS=KEY0,KEY1,...")
+        axis, joined = raw.split("=", 1)
+        if axis not in axis_k:
+            raise ValueError(f"axis-expert-key names unknown axis {axis!r}")
+        if axis in output:
+            raise ValueError(f"axis-expert-key repeats axis {axis!r}")
+        keys = [value.strip() for value in joined.split(",")]
+        if (
+            len(keys) != axis_k[axis]
+            or any(not value for value in keys)
+            or len(set(keys)) != len(keys)
+        ):
+            raise ValueError(f"axis-expert-key count/values are invalid for {axis!r}")
+        output[axis] = keys
+    return output
+
+
+def _tensor_state_sha256(state: dict[str, torch.Tensor]) -> str:
+    digest = hashlib.sha256()
+    for name in sorted(state):
+        value = state[name].detach().cpu().contiguous()
+        digest.update(name.encode("utf-8"))
+        digest.update(str(value.dtype).encode("utf-8"))
+        digest.update(np.asarray(value.shape, dtype=np.int64).tobytes())
+        digest.update(value.numpy().tobytes())
+    return digest.hexdigest()
 
 
 def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
@@ -146,9 +235,11 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
         raise FileExistsError(f"output directory is not empty: {output_dir}")
     seed_everything(args.seed, deterministic=True)
     device = _resolve_device(args.device)
+    allow_fallback_label = bool(getattr(args, "allow_fallback_label", False))
     trunk, checkpoint_config, checkpoint = load_frozen_trunk(args.pooled_checkpoint, device)
     load_args = SimpleNamespace(**vars(args))
     load_args.axis = axes[0]
+    load_args.allow_fallback_label = allow_fallback_label
     (
         selection,
         train_expression,
@@ -160,17 +251,55 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
         partition_report,
     ) = _load_inputs(load_args, checkpoint_config)
     partitions = pd.read_parquet(args.partition_manifest)
-    labels_all = _validate_axes(partitions, axes)
+    labels_all = _validate_axes(
+        partitions,
+        axes,
+        allow_fallback_label=allow_fallback_label,
+    )
     train_count = len(selection.train)
     labels_train = {name: values[:train_count] for name, values in labels_all.items()}
     labels_validation = {name: values[train_count:] for name, values in labels_all.items()}
-    axis_k = {name: int(len(np.unique(labels_train[name]))) for name in axes}
+    axis_k = {
+        name: int(len(np.unique(labels_train[name][labels_train[name] >= 0])))
+        for name in axes
+    }
+    for axis in axes:
+        expected = np.arange(axis_k[axis])
+        train_active = np.unique(labels_train[axis][labels_train[axis] >= 0])
+        validation_active = np.unique(
+            labels_validation[axis][labels_validation[axis] >= 0]
+        )
+        if not np.array_equal(train_active, expected):
+            raise ValueError(f"axis {axis!r} training labels do not cover 0..K-1")
+        if bool(getattr(args, "require_calibration_coverage", False)) and not np.array_equal(validation_active, expected):
+            raise ValueError(f"axis {axis!r} calibration labels do not cover 0..K-1")
+    update_overrides = _parse_axis_int_overrides(
+        getattr(args, "axis_update_budget", None),
+        axes,
+        option_name="axis-update-budget",
+    )
+    target_overrides = _parse_axis_int_overrides(
+        getattr(args, "axis_target_exposures", None),
+        axes,
+        option_name="axis-target-exposures",
+    )
+    axis_expert_keys = _parse_axis_expert_keys(
+        getattr(args, "axis_expert_key", None), axis_k
+    )
     budgets: dict[str, int] = {}
     for axis, k in axis_k.items():
         draws = args.exposures_per_expert * k
         if draws % args.batch_size:
             raise ValueError("per-bank exposure budget must divide by batch size")
-        budgets[axis] = draws // args.batch_size
+        budgets[axis] = update_overrides.get(axis, draws // args.batch_size)
+        if np.any(labels_train[axis] < 0) and axis not in update_overrides:
+            raise ValueError(
+                f"fallback axis {axis!r} requires an explicit axis-update-budget"
+            )
+    target_exposures = {
+        axis: target_overrides.get(axis, int(args.exposures_per_expert))
+        for axis in axes
+    }
     if args.max_updates is None:
         max_updates = max(budgets.values())
     else:
@@ -233,6 +362,7 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
         axis_k,
         adapter_dim=args.adapter_dim,
         seed=args.seed,
+        axis_expert_keys=axis_expert_keys,
     ).to(device)
     optimizers = {
         axis: AdamW(
@@ -248,15 +378,52 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
     }
     use_amp = bool(args.use_amp and device.type == "cuda")
     scaler = torch.amp.GradScaler("cuda", enabled=use_amp)
-    exposure_counts = {
-        axis: np.bincount(
-            labels_train[axis][
-                np.asarray(sampler.flat_indices[: budgets[axis] * args.batch_size])
-            ],
-            minlength=axis_k[axis],
+    exposure_counts: dict[str, list[int]] = {}
+    exposure_deviations: dict[str, float] = {}
+    fallback_draw_counts: dict[str, int] = {}
+    for axis in axes:
+        scheduled_indices = np.asarray(
+            sampler.flat_indices[: budgets[axis] * args.batch_size], dtype=np.int64
+        )
+        scheduled_labels = labels_train[axis][scheduled_indices]
+        active_labels = scheduled_labels[scheduled_labels >= 0]
+        exposure_counts[axis] = np.bincount(
+            active_labels, minlength=axis_k[axis]
         ).tolist()
-        for axis in axes
-    }
+        exposure_deviations[axis] = float(
+            np.max(
+                np.abs(
+                    np.asarray(exposure_counts[axis], dtype=np.float64)
+                    - target_exposures[axis]
+                )
+                / target_exposures[axis]
+            )
+        )
+        fallback_draw_counts[axis] = int(np.sum(scheduled_labels < 0))
+        for update in range(budgets[axis]):
+            batch_indices = np.asarray(
+                [int(item[0]) for item in sampler.batches[update]], dtype=np.int64
+            )
+            if not np.any(labels_train[axis][batch_indices] >= 0):
+                raise ValueError(
+                    f"axis {axis!r} has an all-fallback scheduled batch at update {update + 1}"
+                )
+    maximum_exposure_deviation = float(
+        getattr(args, "maximum_exposure_fractional_deviation", 0.05)
+    )
+    if not 0 <= maximum_exposure_deviation < 1:
+        raise ValueError("maximum exposure fractional deviation must lie in [0, 1)")
+    if not args.smoke_only:
+        failed_exposures = {
+            axis: value
+            for axis, value in exposure_deviations.items()
+            if value > maximum_exposure_deviation
+        }
+        if failed_exposures:
+            raise ValueError(
+                "scheduled expert exposures exceed the frozen deviation limit: "
+                f"{failed_exposures}"
+            )
     common_hashes = {
         "protocol_sha256": sha256_file(args.protocol),
         "pooled_checkpoint_sha256": sha256_file(args.pooled_checkpoint),
@@ -277,7 +444,12 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
         "axis_k": axis_k,
         "bank_update_budgets": budgets,
         "max_updates": max_updates,
-        "exposures_per_expert_target": args.exposures_per_expert,
+        "target_exposures_per_expert": target_exposures,
+        "fallback_label": -1 if allow_fallback_label else None,
+        "fallback_draw_counts": fallback_draw_counts,
+        "exposure_fractional_deviations": exposure_deviations,
+        "maximum_exposure_fractional_deviation": maximum_exposure_deviation,
+        "axis_expert_keys": axis_expert_keys,
         "batch_size": args.batch_size,
         "validation_batch_size": args.validation_batch_size,
         "adapter_dim": args.adapter_dim,
@@ -286,6 +458,7 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
         "learning_rate": args.learning_rate,
         "weight_decay": args.weight_decay,
         "sampling": "one shared deterministic natural schedule; no organ/study sampling labels",
+        "loss_normalization": "sum active-row losses divided by common full batch size",
         "checkpoint_policy": "predetermined_final_update_per_bank",
         "router_present": False,
         "use_amp": use_amp,
@@ -334,10 +507,12 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
             for axis in active:
                 predictions = model.bank_predictions(axis, hidden, base)
                 labels = torch.as_tensor(labels_train[axis][batch_indices], device=device)
-                row = torch.arange(len(labels), device=device)
-                losses[axis] = _masked_row_mse(
-                    predictions[row, labels], truth, mask
-                ).mean()
+                valid = labels >= 0
+                row = torch.arange(len(labels), device=device)[valid]
+                per_row = _masked_row_mse(
+                    predictions[row, labels[valid]], truth[valid], mask[valid]
+                )
+                losses[axis] = per_row.sum() / args.batch_size
             total_loss = torch.stack(list(losses.values())).sum()
         scaler.scale(total_loss).backward()
         for axis in active:
@@ -377,6 +552,7 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
             device=device,
             crossfit_seed=stable_seed(args.crossfit_seed, axis) % (2**32 - 1),
             crossfit_folds=args.crossfit_folds,
+            fallback_label=(-1 if allow_fallback_label else None),
         )
         np.savez_compressed(
             bank_dir / "calibration_scores.npz",
@@ -391,19 +567,30 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
             for index, expert in enumerate(model.banks[axis])
             for name, value in expert.state_dict().items()
         }
+        expert_state_hashes = [
+            _tensor_state_sha256(dict(expert.state_dict()))
+            for expert in model.banks[axis]
+        ]
         bank_config = {
             "axis": axis,
             "num_experts": axis_k[axis],
             "adapter_dim": args.adapter_dim,
             "router_trainable": False,
             "final_update": budgets[axis],
-            "exposures_per_expert_target": args.exposures_per_expert,
+            "exposures_per_expert_target": target_exposures[axis],
             "realized_exposure_counts": exposure_counts[axis],
+            "maximum_realized_exposure_fractional_deviation": exposure_deviations[
+                axis
+            ],
+            "fallback_label": -1 if np.any(labels_train[axis] < 0) else None,
+            "fallback_draw_count": fallback_draw_counts[axis],
+            "expert_initialization_keys": axis_expert_keys.get(axis),
             "batch_size": args.batch_size,
             "mask_ratio": args.mask_ratio,
             "score_gene_count": int(len(score_indices)),
             "checkpoint_policy": "predetermined_final_update",
             "packed_shared_trunk": True,
+            "loss_normalization": "sum active-row losses divided by common full batch size",
         }
         torch.save(
             {
@@ -439,6 +626,7 @@ def run_packed_training(args: argparse.Namespace) -> dict[str, Any]:
             "artifacts": {
                 "final_experts_sha256": sha256_file(bank_dir / "final_experts.pt"),
                 "calibration_scores_sha256": sha256_file(bank_dir / "calibration_scores.npz"),
+                "expert_state_sha256": expert_state_hashes,
             },
         }
         _atomic_json(bank_dir / "run_metadata.json", bank_metadata)
@@ -469,6 +657,31 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--partition-report", required=True)
     parser.add_argument("--axis-definitions", required=True)
     parser.add_argument("--axis", action="append")
+    parser.add_argument(
+        "--axis-update-budget",
+        action="append",
+        help="Per-axis scheduled updates as AXIS=INTEGER; required for fallback axes.",
+    )
+    parser.add_argument(
+        "--axis-target-exposures",
+        action="append",
+        help="Per-axis active exposure target as AXIS=INTEGER.",
+    )
+    parser.add_argument(
+        "--axis-expert-key",
+        action="append",
+        help="Semantic initialization keys as AXIS=KEY0,KEY1,...",
+    )
+    parser.add_argument(
+        "--allow-fallback-label",
+        action="store_true",
+        help="Permit label -1, which receives pooled fallback and zero adapter loss.",
+    )
+    parser.add_argument(
+        "--require-calibration-coverage",
+        action="store_true",
+        help="Require every active expert label to occur in calibration; K45 contract only.",
+    )
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--research-stage", default="stage2_competitive_followup")
     parser.add_argument(
@@ -486,6 +699,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--group-column", default="series_group_id")
     parser.add_argument("--adapter-dim", type=int, default=64)
     parser.add_argument("--exposures-per-expert", type=int, default=2400)
+    parser.add_argument(
+        "--maximum-exposure-fractional-deviation", type=float, default=0.05
+    )
     parser.add_argument("--max-updates", type=int)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--validation-batch-size", type=int, default=8)
