@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-21 12:38 PDT / 2026-07-21 19:38 UTC
+**Last updated:** 2026-07-21 21:13 PDT / 2026-07-22 04:13 UTC
 
 This is the compact handoff document for the current experiment. Older detailed
 logs remain recoverable in Git history through commit `10a5e0e`; obsolete
@@ -684,6 +684,31 @@ deployment/coverage result using the already-trained K5 bank, not proof that fou
 separately trained experts are globally optimal. It requires frozen K4-specific,
 budget-matched retraining and a new untouched confirmation before changing the
 final architecture.
+
+VM2 shelf-safety checkpoint (2026-07-22 04:13 UTC): `moe-reboot2` has no tmux
+sessions, no running GPU workload, and zero GPU memory in use. Its unique seed-42
+packed bank and 438 MiB locked-test cache had already been copied into the complete
+1.3 GiB persistent central result at
+`/media/volume/moe-reboot/results/stage1_organ_k_confirmation_53ec6c4`; all 26
+seed-42 files were reverified byte-identical against the RAM source. The VM2-only
+worker log, cache log/status, launch provenance, extraction report, and transfer
+manifest were additionally preserved under the central result's
+`vm2_seed42_runtime/` directory and their eight hashes match the source. The older
+16 GiB seed-44 run is also present on central persistent storage at
+`/media/volume/moe-reboot/results/stage1_organ_k5_train_seed44_v1`; its original
+manual recovery was content-checksum verified before installation, as recorded in
+the final replication checkpoint above.
+
+A complete independent local backup of the confirmation result now exists at
+`backups/stage1_organ_k_confirmation_53ec6c4/` (git-ignored). Its 118-file manifest
+is `FULL_SHA256SUMS`, manifest SHA256
+`da95d011993b89077284120b712f859e89797702e2c791028d225f5de81758c5`, and a local
+`sha256sum -c` check passed for every file, including all trained adapters, all
+three raw score caches, frozen partitions/router, Track A/B reports, and VM2
+runtime records. The VM is therefore data-safe to shelf. No configured OpenStack
+client or cloud credentials are available in the local environment, so shelving
+itself must be performed through the cloud dashboard/control plane; do not mistake
+an in-guest shutdown for a billable-resource shelf operation.
 
 ### Label-recovery result (2026-07-16, automated pass — precision review pending)
 
