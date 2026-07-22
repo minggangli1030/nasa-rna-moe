@@ -7,7 +7,9 @@ EXPERIMENT_ROOT="${EXPERIMENT_ROOT:?set EXPERIMENT_ROOT to persistent storage}"
 CODE_COMMIT="${CODE_COMMIT:-$(git rev-parse HEAD 2>/dev/null || echo archive)}"
 PYTHON_BIN="${PYTHON_BIN:-/home/exouser/moe-env/bin/python3}"
 export EXPERIMENT_ROOT CODE_COMMIT PYTHON_BIN
-bash runs/prepare_organ_k45_retraining.sh
+if [[ ! -e "$EXPERIMENT_ROOT/PREPARE_COMPLETE" ]]; then
+  OUTPUT_ROOT="$EXPERIMENT_ROOT" bash runs/prepare_organ_k45_retraining.sh
+fi
 SMOKE_ROOT="$EXPERIMENT_ROOT/smoke"
 RUN_SEEDS=17 OUTPUT_ROOT="$SMOKE_ROOT" MAX_UPDATES_OVERRIDE=2 SMOKE_ONLY=1 \
   bash runs/run_organ_k45_retraining_worker.sh
