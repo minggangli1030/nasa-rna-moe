@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-22 22:13 PDT / 2026-07-23 05:13 UTC
+**Updated:** 2026-07-22 22:32 PDT / 2026-07-23 05:32 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -144,6 +144,23 @@ skeletal muscle 4, and skin 10; the remaining viable groups are priority B and r
 manual review. This confirms that broad feasibility remains, while also showing why
 study-level curation—not automatic label recovery—is the current bottleneck.
 
+The production workbook completed from isolated code commit
+`f307108a5d3e9325b014d9171aa6522ebc6751bc` at 2026-07-23 05:24:34 UTC:
+
+- VM result:
+  `/media/volume/moe-reboot/results/stage1_k4_external_curation_f307108`
+- local verified backup:
+  `backups/stage1_k4_external_curation_f307108/`
+- workbook SHA256:
+  `965b4a2f40f28d94a1de7317fbaa4c97ae4014426195b287c125e92dc5c7b5e0`
+- sample-triage SHA256:
+  `b2645444af6ceb65df5d4b927057934ee9c4c37c3ab6912a978cf1a0568d7085`
+
+Every checksum passes remotely and locally. The next metadata-only step selects the
+first 20 non-excluded connected groups per organ in workbook order and pins their
+public NCBI GEO series SOFT records (title, summary, design, PubMed, BioProject, and
+sample count). It forbids supplementary/SRA downloads and cannot accept a study.
+
 Quick verification commands:
 
 ```bash
@@ -157,9 +174,10 @@ ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182
    far above the preferred eight-series bar.
 2. **Automated eligibility failed:** preserve round 1 as the rule-development audit;
    do not treat its broad candidate pool as confirmation data.
-3. **Current gate — study-level curation:** generate the metadata-only workbook, then
-   review enough A and B groups to retain at least eight verified independent studies
-   per organ. Verify GEO/publication, BioProject, Biosample, donor, assay, organism,
+3. **Current gate — study-level curation:** the metadata-only workbook is complete.
+   Pin GEO series metadata for 20 candidate groups per organ, then review enough A and
+   B groups to retain at least eight verified independent studies per organ. Verify
+   GEO/publication, BioProject, Biosample, donor, assay, organism,
    disease/perturbation, connected-group, and near-duplicate links.
 4. **Freeze before expression:** freeze exact ordered sample IDs, organ labels, group
    IDs, gene mapping, random-control assignments, mask, power analysis, checkpoint and

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "geo_series_metadata_review_only_not_external_lockbox",
+  "source_curation": {
+    "code_commit": "f307108a5d3e9325b014d9171aa6522ebc6751bc",
+    "workbook_sha256": "965b4a2f40f28d94a1de7317fbaa4c97ae4014426195b287c125e92dc5c7b5e0"
+  },
+  "selection": {
+    "connected_groups_per_organ": 20,
+    "preserve_curation_workbook_priority_order": true,
+    "exclude_automated_excluded_only_groups": true,
+    "automated_priority_is_not_acceptance": true
+  },
+  "source": {
+    "name": "NCBI GEO series SOFT self record",
+    "url_template": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={accession}&targ=self&form=text&view=full",
+    "minimum_request_delay_seconds": 0.4
+  },
+  "firewall": {
+    "series_metadata_only": true,
+    "supplementary_file_download_forbidden": true,
+    "sra_download_forbidden": true,
+    "expression_values_forbidden": true,
+    "efficacy_scoring_forbidden": true,
+    "output_is_not_a_frozen_lockbox": true
+  }
+}

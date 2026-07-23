@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-22 22:13 PDT / 2026-07-23 05:13 UTC
+**Last updated:** 2026-07-22 22:32 PDT / 2026-07-23 05:32 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -58,6 +58,20 @@ connected groups and yields strict all-sample priority-A group counts of 2 adipo
 8 brain, 12 liver, 4 skeletal muscle, and 10 skin; priority-B groups remain available
 for manual curation. The next action is to deploy this workbook generator and manually
 verify at least eight independent studies per organ before freezing any sample IDs.
+
+The production curation workbook then completed at 2026-07-23 05:24:34 UTC from
+isolated commit `f307108a5d3e9325b014d9171aa6522ebc6751bc`. The result is stored at
+`/media/volume/moe-reboot/results/stage1_k4_external_curation_f307108` and in the
+verified local backup `backups/stage1_k4_external_curation_f307108/`. The workbook
+SHA256 is
+`965b4a2f40f28d94a1de7317fbaa4c97ae4014426195b287c125e92dc5c7b5e0`;
+every manifest entry passes at both locations.
+
+The next implementation pins public GEO series-level SOFT metadata for the first
+20 non-excluded connected groups per organ. It records title, summary, overall design,
+PubMed, BioProject, sample count, and conservative context flags while explicitly
+forbidding supplementary files, SRA downloads, expression values, model scoring, and
+automated study acceptance. Its focused test suite passes 27/27.
 
 ## Historical chronology — not the current handoff
 
