@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-22 23:12 PDT / 2026-07-23 06:12 UTC
+**Updated:** 2026-07-22 23:30 PDT / 2026-07-23 06:30 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -21,9 +21,12 @@ Read this file first. It is the compact operational and scientific handoff. Use
   nominal high-confidence labels still included cell models, non-bulk assays,
   diseased/tumor tissue, nonhuman samples, and active interventions. No cohort has
   been frozen.
-- The expanded GEO review and provisional exact-sample resolver are complete. They
-  provide 40 pending study decisions and 599 pending sample decisions; they are not
-  an accepted cohort and have not opened expression.
+- The conservative v3 resolver and donor/power audit are complete. They provide 40
+  pending study decisions and 574 pending sample decisions; they are not an accepted
+  cohort and have not opened expression.
+- The audit passed the structural gate for drafting the final evaluator protocol, but
+  not the manual-metadata, lockbox-freeze, or expression-access gates. Most donor keys
+  remain title proxies rather than verified donor identities.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis and K4-EPE is the frozen development candidate. It is
@@ -185,9 +188,9 @@ per organ. The review caught a likely cross-series donor reuse between adipose
 resolution. This is evidence that GEO connected components alone do not establish
 donor independence.
 
-The exact metadata-only resolver completed at 2026-07-23 05:59:48 UTC. It binds the
-source hashes, requires post-v11 samples, rejects classifier-ineligible matches, and
-leaves all study, sample, donor, and near-duplicate decisions pending. It resolved:
+The current conservative v3 metadata-only resolver binds the source hashes, requires
+post-v11 samples, rejects classifier-ineligible matches, and leaves all study,
+sample, donor, and near-duplicate decisions pending. It resolved:
 
 | Organ | Provisional studies | Provisional selector matches |
 | --- | ---: | ---: |
@@ -195,9 +198,9 @@ leaves all study, sample, donor, and near-duplicate decisions pending. It resolv
 | brain | 8 | 126 |
 | liver | 8 | 47 |
 | skeletal muscle | 8 | 263 |
-| skin | 8 | 102 |
+| skin | 8 | 77 |
 
-These 599 rows are a review workload, not the final analysis size. Ambiguous cases
+These 574 rows are a review workload, not the final analysis size. Ambiguous cases
 such as technical/biological replicates, tissue regions, graft donors, and skin
 compartments are explicitly marked unresolved.
 
@@ -267,6 +270,57 @@ Every v2 checksum passes centrally and locally. All 224 repository tests pass. T
 v2 report still states `manual_decisions_complete=false`; this is a better review
 sheet, not a cohort freeze.
 
+### Conservative v3 donor and power gate
+
+Before protocol drafting, the v3 amendment narrows two skin groups without changing
+the eight-groups-per-organ target:
+
+- `GSE235570` retains healthy-control epidermis only, avoiding an
+  epidermis/dermis compartment mixture; and
+- `GSE297863` retains one deterministic healthy sample until its `rep` labels can be
+  resolved as biological or technical.
+
+The production workflow rebuilt the exact v3 sheet and verified these hashes:
+
+- amendment SHA256:
+  `de2d9e63588d777498fc736ef6da30f860fa14859f7c83bbbf44a7d3c441990a`
+- provisional sample-review SHA256:
+  `ab8a5751abbf680bb34e2e96cc8fe40e93016c06c9ecaaa37e7c273724d39418`
+- provisional study-review SHA256:
+  `3b0d5d3c1036d6084f02f47ab7582793782fefaa6ceff89b8e2ddb3ae88b6e41`
+- donor/power protocol SHA256:
+  `d1afa13e634d0a750a5d659c9bd49f96a49aacd17dd3aff264dcff7b116caa14`
+
+The primary unit is the connected-study group: 40 total, eight per organ. Sample rows
+are not treated as independent power units. Primary weighting is equal study within
+organ and then equal organ, with at least 10,000 paired connected-study bootstrap
+draws required after the outcomes are opened.
+
+The audit derived 574 unique within-study keys and found no explicit identifier reused
+across connected-study groups. This is only a partial donor check: 19 rows expose an
+explicit identifier in the pinned metadata, while the remaining groups use unique
+titles as proxies. A title proxy is not verified donor identity, so manual decisions
+remain incomplete.
+
+The exact one-sided sign-test design sensitivity at alpha 0.025 requires 27 of 40
+studies to favor K4. Power is 21.1% if the true positive-study probability is 0.60,
+44.1% at 0.65, 70.3% at 0.70, 89.7% at 0.75, and 98.1% at 0.80. This evaluates only
+the cluster-count design; it is not relative-MSE power.
+
+- implementation commit:
+  `8d26e847419462152781c992fa5b9848846c4864`
+- VM result:
+  `/media/volume/moe-reboot/results/stage1_k4_external_donor_power_audit_8d26e84`
+- local verified backup:
+  `backups/stage1_k4_external_donor_power_audit_8d26e84/`
+- full checksum-manifest SHA256:
+  `77eb82e393b886200aa959e0292057066bac4ce146624c61b90b42af5655df97`
+- donor/power report SHA256:
+  `919bca4a210b40ff5ae7257217d11bb5073aa815479dac65df3e89992cf15640`
+
+The exact gate is `ready_for_protocol_drafting_not_lockbox`.
+`ready_for_lockbox_freeze=false` and `ready_for_expression_access=false`.
+
 Quick verification commands:
 
 ```bash
@@ -280,17 +334,17 @@ ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182
    far above the preferred eight-series bar.
 2. **Automated eligibility failed:** preserve round 1 as the rule-development audit;
    do not treat its broad candidate pool as confirmation data.
-3. **Current gate — exact sample/donor review:** verify every provisional study and
-   selected sample against GEO/publication/BioProject/Biosample evidence. Resolve
-   donor IDs, biological versus technical replicates, regions/compartments, and
-   cross-study near duplicates. Replace failures from the unused reviewed reserves;
-   do not inspect expression.
-4. **Preregister before freezing:** compute cluster-aware effective sample size and
-   power from the accepted metadata, then freeze exact ordered sample IDs, organ
-   labels, group IDs, gene mapping, random-control assignments, mask, power analysis,
-   checkpoint and router hashes, evaluator code, and mutually exclusive decision
-   branches.
-5. **One-time confirmation:** only then request expression, build the score cache once,
+3. **Structural donor/power gate passed:** 40 study clusters remain and no exposed
+   explicit identifier crosses groups. Most donor identities are still title proxies,
+   so this does not accept the cohort.
+4. **Current gate — draft protocol and finish metadata signoff:** freeze evaluator
+   semantics, candidate/checkpoint/router ledger, random-control dispatch, mask,
+   cluster estimator, and mutually exclusive decision branches. In parallel, verify
+   every pending study/sample/donor decision and replace failures from reserves.
+5. **Freeze only after both pass:** hash exact ordered sample IDs, organ labels,
+   connected-group IDs, gene mapping, the accepted donor ledger, and the complete
+   evaluator implementation. Do not inspect expression.
+6. **One-time confirmation:** only then request expression, build the score cache once,
    and evaluate blind K4, true dispatch, pooled, pooled-residual, and all matched random
    controls. K5 and K4-total are not rescue candidates on that lockbox.
 
@@ -314,6 +368,8 @@ ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182
 4. `artifacts/stage1_k4_external_scout/protocol.json` — metadata-scout machine contract.
 5. `artifacts/stage1_k4_external_scout/sample_review_shortlist.json` — provisional,
    metadata-only sample selectors; not a frozen cohort.
-6. `artifacts/stage1_k4_external_scout/sample_review_amendment_v2.json` — explicit
-   rejection and one-for-one liver reserve amendment.
-7. `progress.md` — append-only historical chronology and older experiment detail.
+6. `artifacts/stage1_k4_external_scout/sample_review_amendment_v3.json` —
+   conservative liver replacement and skin selector narrowing.
+7. `artifacts/stage1_k4_external_scout/donor_power_audit_protocol.json` —
+   metadata-only analysis-unit and design-sensitivity contract.
+8. `progress.md` — append-only historical chronology and older experiment detail.

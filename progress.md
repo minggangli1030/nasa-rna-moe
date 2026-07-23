@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-22 23:12 PDT / 2026-07-23 06:12 UTC
+**Last updated:** 2026-07-22 23:30 PDT / 2026-07-23 06:30 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,47 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-22 — conservative v3 donor/power audit completed
+
+The v2 sheet was narrowed before any expression access. Skin `GSE235570` now retains
+only healthy-control epidermis, avoiding an epidermis/dermis compartment mixture.
+Skin `GSE297863` now retains one deterministic healthy sample because its `rep`
+labels do not establish biological versus technical replication. Together with the
+previous liver replacement, the v3 resolver produces 574 pending rows: 61 adipose,
+126 brain, 47 liver, 263 skeletal muscle, and 77 skin. It preserves exactly eight
+connected-study groups per organ.
+
+The metadata-only audit is frozen in
+`artifacts/stage1_k4_external_scout/donor_power_audit_protocol.json`. Its primary
+analysis unit is the connected-study group, not a sample row or provisional donor
+proxy. Weighting is equal study within organ followed by equal organ, and final
+uncertainty must use at least 10,000 paired connected-study bootstrap draws. The
+exact one-sided sign-test design calculation requires at least 27 of 40 studies to
+favor K4 at alpha 0.025. Its sensitivity is 21.1%, 44.1%, 70.3%, 89.7%, and 98.1%
+when the true probability that a study favors K4 is respectively 0.60, 0.65, 0.70,
+0.75, and 0.80. This is a design diagnostic, not outcome-scale power.
+
+Commit `8d26e847419462152781c992fa5b9848846c4864` is pushed and was deployed from
+clean checkout `/home/exouser/nasa-rna-moe-8d26e84`. Production completed at
+2026-07-23 06:27:30 UTC under
+`/media/volume/moe-reboot/results/stage1_k4_external_donor_power_audit_8d26e84`.
+All checksums pass there and in
+`backups/stage1_k4_external_donor_power_audit_8d26e84/`. The portable
+`FULL_SHA256SUMS` SHA256 is
+`77eb82e393b886200aa959e0292057066bac4ce146624c61b90b42af5655df97`;
+the donor/power report SHA256 is
+`919bca4a210b40ff5ae7257217d11bb5073aa815479dac65df3e89992cf15640`.
+
+The audit found no explicit identifier shared across connected-study groups and no
+duplicate derived key within a group. However, only 19 sample rows expose an explicit
+identifier in the pinned metadata; the other groups use unique-title proxies, which
+are explicitly not verified donor identities. Therefore the exact status is
+`ready_for_protocol_drafting_not_lockbox`: manual decisions are incomplete,
+expression remains sealed, and neither lockbox freeze nor expression access is
+authorized. All 227 repository tests pass. The next action is to draft the
+evaluator/checkpoint/control contract, then complete final metadata signoff and hash
+the accepted cohort before any expression request.
 
 ## 2026-07-22 — expanded GEO review and provisional exact sample sheet completed
 
