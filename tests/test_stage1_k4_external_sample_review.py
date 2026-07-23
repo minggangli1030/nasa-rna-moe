@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "evaluation"))
 
 from build_stage1_k4_external_sample_review import (
     TARGET_ORGANS,
+    apply_shortlist_amendment,
     build_sample_review,
     resolve_selector,
 )
@@ -44,6 +45,30 @@ def test_resolve_selector_supports_regex_and_explicit_ids():
         "sample_ids": ["GSM2", "GSM1"],
     })
     assert explicit["sample_id"].tolist() == ["GSM2", "GSM1"]
+
+
+def test_shortlist_amendment_replaces_exactly_one_group_in_place():
+    shortlist = {
+        "entries": [
+            {"organ": "brain", "series_group_id": "GSE1"},
+            {"organ": "liver", "series_group_id": "GSE2"},
+        ]
+    }
+    amended = apply_shortlist_amendment(shortlist, {
+        "metadata_only": True,
+        "expression_values_read": False,
+        "external_lockbox_frozen": False,
+        "source_shortlist_sha256": "a" * 64,
+        "replacements": [{
+            "remove": {"organ": "liver", "series_group_id": "GSE2"},
+            "add": {"organ": "liver", "series_group_id": "GSE3"},
+        }],
+    })
+    assert amended["entries"] == [
+        {"organ": "brain", "series_group_id": "GSE1"},
+        {"organ": "liver", "series_group_id": "GSE3"},
+    ]
+    assert shortlist["entries"][1]["series_group_id"] == "GSE2"
 
 
 def _write_fixture(tmp_path: Path):

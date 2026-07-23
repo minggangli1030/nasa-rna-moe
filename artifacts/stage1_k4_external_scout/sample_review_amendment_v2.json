@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "provisional_sample_review_amendment_not_external_lockbox",
+  "metadata_only": true,
+  "expression_values_read": false,
+  "efficacy_scoring_performed": false,
+  "external_lockbox_frozen": false,
+  "source_shortlist_sha256": "e7569661edbccc7d0ad075a184851b969c019b12067c19a1458012d7aa1de3f8",
+  "replacements": [
+    {
+      "remove": {
+        "organ": "liver",
+        "series_group_id": "GSE304242",
+        "decision": "reject",
+        "reason": "Official GEO design centers on hepatic cell-model comparisons; the three liver-RNA samples lack defensible donor and health semantics for the strict reference cohort."
+      },
+      "add": {
+        "organ": "liver",
+        "series_group_id": "GSE284901",
+        "review_rationale": "ENCODE4 unreplicated bulk total-RNA sample from adult right-lobe liver; explicit BioSample and donor ID. Hypertension is recorded as a non-hepatic comorbidity, so this remains a transparent reserve rather than a nominally healthy control.",
+        "donor_resolution_status": "single_explicit_encode_donor_and_biosample",
+        "selector": {
+          "mode": "explicit_sample_ids",
+          "sample_ids": ["GSM8693930"]
+        }
+      }
+    }
+  ],
+  "next_gate": "Resolve the amended shortlist to exact pending rows and retain the rejected study in the audit trail."
+}

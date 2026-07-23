@@ -111,6 +111,42 @@ def _validated_json(path: Path, expected_hash: str, label: str) -> dict:
     return value
 
 
+def apply_shortlist_amendment(shortlist: dict, amendment: dict) -> dict:
+    """Apply an auditable one-for-one study replacement to a provisional shortlist."""
+    if amendment.get("metadata_only") is not True:
+        raise ValueError("shortlist amendment is not metadata-only")
+    if amendment.get("expression_values_read") is not False:
+        raise ValueError("shortlist amendment does not seal expression")
+    if amendment.get("external_lockbox_frozen") is not False:
+        raise ValueError("shortlist amendment must not claim a frozen lockbox")
+    if amendment.get("source_shortlist_sha256") is None:
+        raise ValueError("shortlist amendment lacks source hash")
+    replacements = amendment.get("replacements")
+    if not isinstance(replacements, list) or not replacements:
+        raise ValueError("shortlist amendment requires replacements")
+    amended = {**shortlist, "entries": list(shortlist.get("entries", []))}
+    for replacement in replacements:
+        remove = replacement.get("remove")
+        add = replacement.get("add")
+        if not isinstance(remove, dict) or not isinstance(add, dict):
+            raise TypeError("shortlist replacement requires remove/add objects")
+        key = (remove.get("organ"), remove.get("series_group_id"))
+        positions = [
+            index
+            for index, entry in enumerate(amended["entries"])
+            if (entry.get("organ"), entry.get("series_group_id")) == key
+        ]
+        if len(positions) != 1:
+            raise ValueError(
+                f"shortlist amendment expected one removal target {key}, "
+                f"found {len(positions)}"
+            )
+        if add.get("organ") != key[0]:
+            raise ValueError("shortlist replacement cannot change organ")
+        amended["entries"][positions[0]] = add
+    return amended
+
+
 def build_sample_review(args: argparse.Namespace) -> dict:
     if re.fullmatch(r"[0-9a-f]{40}", args.code_commit) is None:
         raise ValueError("sample review requires a full code commit")
@@ -132,15 +168,44 @@ def build_sample_review(args: argparse.Namespace) -> dict:
         raise ValueError("shortlist must not claim a frozen external lockbox")
     if shortlist.get("study_status") != "provisional_manual_review":
         raise ValueError("shortlist study status is not provisional manual review")
+    amendment_hash = None
+    amendment_path_value = getattr(args, "shortlist_amendment", None)
+    if amendment_path_value:
+        amendment_path = Path(amendment_path_value)
+        amendment = _validated_json(
+            amendment_path,
+            args.expected_shortlist_amendment_sha256,
+            "shortlist amendment",
+        )
+        if amendment.get("source_shortlist_sha256") != sha256(shortlist_path):
+            raise ValueError("shortlist amendment binds a different source shortlist")
+        shortlist = apply_shortlist_amendment(shortlist, amendment)
+        amendment_hash = sha256(amendment_path)
 
     triage = pd.read_parquet(triage_path)
     geo = pd.read_csv(geo_path, keep_default_na=False)
+    supplemental_geo_hash = None
+    supplemental_geo_value = getattr(args, "supplemental_geo_study_review", None)
+    if supplemental_geo_value:
+        supplemental_geo_path = Path(supplemental_geo_value)
+        if (
+            sha256(supplemental_geo_path)
+            != args.expected_supplemental_geo_review_sha256
+        ):
+            raise ValueError("supplemental GEO study-review hash mismatch")
+        supplemental = pd.read_csv(
+            supplemental_geo_path, keep_default_na=False
+        )
+        geo = pd.concat([geo, supplemental], ignore_index=True)
+        supplemental_geo_hash = sha256(supplemental_geo_path)
     missing_triage = sorted(REQUIRED_TRIAGE_COLUMNS - set(triage.columns))
     missing_geo = sorted(REQUIRED_GEO_COLUMNS - set(geo.columns))
     if missing_triage:
         raise KeyError(f"sample triage is missing fields: {missing_triage}")
     if missing_geo:
         raise KeyError(f"GEO study review is missing fields: {missing_geo}")
+    if geo.duplicated(["organ", "series_group_id"]).any():
+        raise ValueError("combined GEO study reviews repeat an organ/group row")
     if triage["sample_id"].duplicated().any():
         raise ValueError("sample triage contains duplicate sample IDs")
 
@@ -322,6 +387,12 @@ def build_sample_review(args: argparse.Namespace) -> dict:
             "requesting expression."
         ),
     }
+    if amendment_hash is not None:
+        report["hashes"]["shortlist_amendment_sha256"] = amendment_hash
+    if supplemental_geo_hash is not None:
+        report["hashes"][
+            "supplemental_geo_study_review_sha256"
+        ] = supplemental_geo_hash
     report_path = output_dir / "sample_review_report.json"
     temporary = output_dir / "sample_review_report.json.tmp"
     temporary.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
@@ -337,6 +408,10 @@ def main() -> None:
     parser.add_argument("--expected-geo-review-sha256", required=True)
     parser.add_argument("--shortlist", required=True)
     parser.add_argument("--expected-shortlist-sha256", required=True)
+    parser.add_argument("--shortlist-amendment")
+    parser.add_argument("--expected-shortlist-amendment-sha256")
+    parser.add_argument("--supplemental-geo-study-review")
+    parser.add_argument("--expected-supplemental-geo-review-sha256")
     parser.add_argument("--code-commit", required=True)
     parser.add_argument("--output-dir", required=True)
     args = parser.parse_args()
