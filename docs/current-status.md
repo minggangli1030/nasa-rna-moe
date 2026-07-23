@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-22 20:03 PDT / 2026-07-23 03:03 UTC
+**Updated:** 2026-07-22 21:44 PDT / 2026-07-23 04:44 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -15,7 +15,8 @@ Read this file first. It is the compact operational and scientific handoff. Use
   independently backed up. It produced no internal efficacy comparison.
 - External confirmation has **not** started. No external expression value has been
   opened or scored.
-- A metadata-only external-cohort feasibility scout is running on `moe-reboot`.
+- The metadata-only external-cohort feasibility scout completed successfully and
+  found ample candidate study coverage for every target organ.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis and K4-EPE is the frozen development candidate. It is
@@ -57,7 +58,7 @@ Completion markers include `FINAL_REFIT_COMPLETE`, `ROUTER_FROZEN`,
 `FINAL_CANDIDATE_FROZEN`, and `READY_FOR_VERIFIED_BACKUP`. The portable-candidate
 validator and the full 184-file checksum manifest pass centrally and on the Mac.
 
-## Active metadata-only external scout
+## Completed metadata-only external scout
 
 Purpose: determine whether an untouched, multisource, post-v11 cohort can cover all
 five organs before any expression access.
@@ -92,31 +93,49 @@ Historical firewall hashes:
 - v11 accession/series mapping SHA256:
   `ffce20e908770672571d3e75755cb00643c330da8899424255b6a245e9936523`
 
-The output is a candidate metadata pool plus 50 deterministic manual-review rows per
-organ. It is explicitly **not** a frozen external lockbox and computes no model score.
+The scout completed at 2026-07-23 03:53:11 UTC. All checksum entries pass on the VM
+and in the local verified backup at
+`backups/stage1_k4_external_scout_182207b/`.
 
-Quick status commands:
+It found 13,845 candidate samples across 457 connected series groups:
+
+| Organ | Candidate samples | Series groups | Post-cutoff samples | Post-cutoff series |
+| --- | ---: | ---: | ---: | ---: |
+| adipose | 1,577 | 55 | 1,047 | 44 |
+| brain | 2,537 | 102 | 2,225 | 82 |
+| liver | 2,631 | 100 | 2,154 | 78 |
+| skeletal muscle | 2,981 | 65 | 2,488 | 50 |
+| skin | 4,119 | 144 | 3,296 | 115 |
+
+Every organ clears both the minimum five-series and preferred eight-series feasibility
+thresholds after the v11 sample-and-series firewall. The largest connected group is
+only 6.98%–13.19% of each organ pool, so no organ is provisionally dominated by one
+study. The output includes exactly 50 deterministic manual-review rows per organ
+(250 total). It is explicitly **not** a frozen external lockbox and computes no model
+score.
+
+Scout report SHA256:
+`68ea1bdabb57c63ecea5d8636873e628db606c59b76bd75a94462b216a737786`.
+
+Quick verification commands:
 
 ```bash
 ssh moe-reboot 'cat /media/volume/moe-reboot/results/stage1_k4_external_scout_182207b/SCOUT_STATUS'
-ssh moe-reboot 'tail -5 /media/volume/moe-reboot/results/stage1_k4_external_scout_182207b/current_export.log'
-ssh moe-reboot 'tmux list-sessions'
+ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182207b && sha256sum -c FULL_SHA256SUMS'
 ```
 
 ## Next decision tree
 
-1. **Technical scout failure:** repair and rerun the identical metadata-only protocol.
-   There is no external effect to interpret.
-2. **Insufficient study coverage:** add a separately pinned metadata source such as
-   recount3 or a curated resource. Do not lower the five-study minimum or inspect
-   expression to select samples.
-3. **Feasible coverage:** require at least five, preferably eight, temporally new
-   connected studies per organ. Manually review labels and audit publication,
-   BioProject, Biosample, donor, accession, connected-group, and near-duplicate links.
-4. **Freeze before expression:** freeze exact ordered sample IDs, organ labels, group
+1. **Feasibility passed:** every organ has 44–115 temporally new connected series,
+   far above the preferred eight-series bar.
+2. **Current gate — manual metadata review:** review the deterministic 50-row sheet
+   per organ and audit publication, BioProject, Biosample, donor, accession,
+   connected-group, disease/perturbation, and near-duplicate links. Repair label rules
+   from metadata only if needed, then rerun the same scout without expression access.
+3. **Freeze before expression:** freeze exact ordered sample IDs, organ labels, group
    IDs, gene mapping, random-control assignments, mask, power analysis, checkpoint and
    router hashes, evaluator code, and mutually exclusive decision branches.
-5. **One-time confirmation:** only then request expression, build the score cache once,
+4. **One-time confirmation:** only then request expression, build the score cache once,
    and evaluate blind K4, true dispatch, pooled, pooled-residual, and all matched random
    controls. K5 and K4-total are not rescue candidates on that lockbox.
 
@@ -139,4 +158,3 @@ ssh moe-reboot 'tmux list-sessions'
 3. `artifacts/stage1_k4_final_refit/protocol.json` — final-refit machine contract.
 4. `artifacts/stage1_k4_external_scout/protocol.json` — metadata-scout machine contract.
 5. `progress.md` — append-only historical chronology and older experiment detail.
-

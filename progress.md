@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-22 20:03 PDT / 2026-07-23 03:03 UTC
+**Last updated:** 2026-07-22 21:44 PDT / 2026-07-23 04:44 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,28 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-22 — external metadata scout completed
+
+The pinned metadata-only scout at code commit
+`182207bbc85c30df80f17cd45784d5c87f8a52a7` completed successfully on
+`moe-reboot` at 2026-07-23 03:53:11 UTC. It did not read expression values, compute
+efficacy scores, or freeze an external lockbox.
+
+After excluding every ARCHS4 v11 accession and every current sample sharing any
+v11 GEO-series token, the scout found 13,845 candidate samples in 457 connected
+series groups. All five organs passed both the minimum five-series and preferred
+eight-series feasibility thresholds. Temporally new sample/series counts were:
+adipose 1,047/44, brain 2,225/82, liver 2,154/78, skeletal muscle 2,488/50, and
+skin 3,296/115. The deterministic review sheet contains 50 rows per organ.
+
+The complete 53 MiB result is preserved both at
+`/media/volume/moe-reboot/results/stage1_k4_external_scout_182207b` and
+`backups/stage1_k4_external_scout_182207b/`; every entry in `FULL_SHA256SUMS`
+passes at both locations. The current gate is manual metadata label/leakage review,
+followed by freezing exact sample IDs and the full evaluation contract before any
+expression request. These counts establish feasibility only, not evidence that K4 or
+organ specialization works externally.
 
 ## Historical chronology — not the current handoff
 
