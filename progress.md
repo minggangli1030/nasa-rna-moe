@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-22 23:30 PDT / 2026-07-23 06:30 UTC
+**Last updated:** 2026-07-23 10:22 PDT / 2026-07-23 17:22 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,26 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-23 — pause checkpoint awaiting PI dataset recommendation
+
+The development search, genuine K4/K5 retraining, final train+calibration-only K4
+refit, external feasibility scout, conservative v3 sample sheet, and donor/power
+structural audit are complete and backed up. No training or scoring job is currently
+required. The frozen candidate remains K4-EPE with brain, liver, skeletal-muscle, and
+skin specialists, pooled adipose fallback, seeds 17/42/101, the frozen target-hidden
+router, three matched random K4 controls, and the pooled-residual control. K5 and the
+higher-exposure K4 sensitivity are not external rescue candidates.
+
+A PI recommendation for a cleaner independent human bulk multi-organ dataset is
+pending. The arrival of a dataset will not trigger immediate scoring. The complete
+intake-to-validation sequence is preserved in
+`docs/external-validation-intake-plan.md`: metadata and provenance first, historical
+overlap audit, evidence-role assignment, exact cohort and evaluator freeze,
+synthetic/development-only smoke, then one checksum-bound external extraction and
+evaluation. A single clean consortium can serve as donor-controlled validation but
+does not by itself establish the multisource generalization targeted by the current
+40-study design.
 
 ## 2026-07-22 — conservative v3 donor/power audit completed
 

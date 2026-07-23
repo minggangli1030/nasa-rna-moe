@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-22 23:30 PDT / 2026-07-23 06:30 UTC
+**Updated:** 2026-07-23 10:22 PDT / 2026-07-23 17:22 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -27,6 +27,10 @@ Read this file first. It is the compact operational and scientific handoff. Use
 - The audit passed the structural gate for drafting the final evaluator protocol, but
   not the manual-metadata, lockbox-freeze, or expression-access gates. Most donor keys
   remain title proxies rather than verified donor identities.
+- A PI recommendation for a cleaner independent dataset is pending. Dataset arrival
+  does not authorize immediate scoring: follow
+  `docs/external-validation-intake-plan.md` through metadata intake, evidence-role
+  assignment, cohort/evaluator freeze, and a nonexternal smoke before expression.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis and K4-EPE is the frozen development candidate. It is
@@ -364,12 +368,14 @@ ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182
 1. `docs/current-status.md` — current state, paths, hashes, next action.
 2. `docs/stage1-k4-final-refit.md` — scientific reasoning, completed evidence, frozen
    external estimands and branches.
-3. `artifacts/stage1_k4_final_refit/protocol.json` — final-refit machine contract.
-4. `artifacts/stage1_k4_external_scout/protocol.json` — metadata-scout machine contract.
-5. `artifacts/stage1_k4_external_scout/sample_review_shortlist.json` — provisional,
+3. `docs/external-validation-intake-plan.md` — dataset-arrival gates and the
+   one-time validation procedure.
+4. `artifacts/stage1_k4_final_refit/protocol.json` — final-refit machine contract.
+5. `artifacts/stage1_k4_external_scout/protocol.json` — metadata-scout machine contract.
+6. `artifacts/stage1_k4_external_scout/sample_review_shortlist.json` — provisional,
    metadata-only sample selectors; not a frozen cohort.
-6. `artifacts/stage1_k4_external_scout/sample_review_amendment_v3.json` —
+7. `artifacts/stage1_k4_external_scout/sample_review_amendment_v3.json` —
    conservative liver replacement and skin selector narrowing.
-7. `artifacts/stage1_k4_external_scout/donor_power_audit_protocol.json` —
+8. `artifacts/stage1_k4_external_scout/donor_power_audit_protocol.json` —
    metadata-only analysis-unit and design-sensitivity contract.
-8. `progress.md` — append-only historical chronology and older experiment detail.
+9. `progress.md` — append-only historical chronology and older experiment detail.
