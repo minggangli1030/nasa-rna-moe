@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "targeted_geo_reserve_metadata_review_not_external_lockbox",
+  "metadata_only": true,
+  "expression_values_read": false,
+  "efficacy_scoring_performed": false,
+  "external_lockbox_frozen": false,
+  "entries": [
+    {
+      "organ": "liver",
+      "series_group_id": "GSE284901",
+      "reason": "Independent unreplicated adult right-lobe liver tissue reserve considered after rejecting donor-ambiguous GSE304242."
+    }
+  ],
+  "firewall": {
+    "series_metadata_only": true,
+    "supplementary_file_download_forbidden": true,
+    "sra_download_forbidden": true,
+    "expression_values_forbidden": true,
+    "efficacy_scoring_forbidden": true,
+    "output_is_not_a_frozen_lockbox": true
+  }
+}

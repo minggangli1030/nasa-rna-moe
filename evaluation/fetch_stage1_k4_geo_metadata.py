@@ -131,6 +131,38 @@ def select_review_groups(workbook: pd.DataFrame, per_organ: int) -> pd.DataFrame
     return pd.concat(parts, ignore_index=True)
 
 
+def select_explicit_review_groups(
+    workbook: pd.DataFrame, requested: list[dict]
+) -> pd.DataFrame:
+    """Select exact, ordered organ/group pairs for a targeted reserve review."""
+    if not requested:
+        raise ValueError("explicit GEO review list is empty")
+    parts = []
+    seen = set()
+    for entry in requested:
+        if not isinstance(entry, dict):
+            raise TypeError("explicit GEO review entries must be objects")
+        organ = entry.get("organ")
+        group_id = entry.get("series_group_id")
+        if organ not in TARGET_ORGANS:
+            raise ValueError(f"unsupported explicit-review organ: {organ!r}")
+        key = (organ, group_id)
+        if key in seen:
+            raise ValueError(f"duplicate explicit-review pair: {key}")
+        seen.add(key)
+        match = workbook[
+            (workbook["organ"] == organ)
+            & (workbook["series_group_id"] == group_id)
+            & (workbook["automated_priority"] != "excluded_only")
+        ]
+        if len(match) != 1:
+            raise ValueError(
+                f"expected one non-excluded workbook row for {key}, found {len(match)}"
+            )
+        parts.append(match)
+    return pd.concat(parts, ignore_index=True)
+
+
 def fetch_soft(accession: str, timeout: int) -> bytes:
     request = urllib.request.Request(
         GEO_URL.format(accession=accession),
@@ -150,7 +182,32 @@ def build_geo_review(args: argparse.Namespace) -> dict:
     if sha256(workbook_path) != args.expected_workbook_sha256:
         raise ValueError("curation workbook hash mismatch")
     workbook = pd.read_csv(workbook_path)
-    selected = select_review_groups(workbook, args.per_organ)
+    explicit_groups_path = getattr(args, "explicit_groups", None)
+    if explicit_groups_path:
+        explicit_path = Path(explicit_groups_path)
+        if sha256(explicit_path) != args.expected_explicit_groups_sha256:
+            raise ValueError("explicit GEO review-list hash mismatch")
+        explicit = json.loads(explicit_path.read_text())
+        if explicit.get("metadata_only") is not True:
+            raise ValueError("explicit GEO review list is not metadata-only")
+        if explicit.get("expression_values_read") is not False:
+            raise ValueError("explicit GEO review list does not seal expression")
+        selected = select_explicit_review_groups(
+            workbook, explicit.get("entries", [])
+        )
+        selection_mode = "explicit_ordered_organ_group_pairs"
+        selected_groups_per_organ = {
+            organ: int(count)
+            for organ, count in selected.groupby("organ").size().items()
+        }
+        explicit_hash = sha256(explicit_path)
+    else:
+        selected = select_review_groups(workbook, args.per_organ)
+        selection_mode = "workbook_priority_head_per_organ"
+        selected_groups_per_organ = {
+            organ: args.per_organ for organ in TARGET_ORGANS
+        }
+        explicit_hash = None
     accessions = sorted({
         token
         for value in selected["series_tokens"]
@@ -231,7 +288,8 @@ def build_geo_review(args: argparse.Namespace) -> dict:
         "efficacy_scoring_performed": False,
         "external_lockbox_frozen": False,
         "automated_decisions_are_final": False,
-        "selected_groups_per_organ": args.per_organ,
+        "selection_mode": selection_mode,
+        "selected_groups_per_organ": selected_groups_per_organ,
         "selected_organ_group_rows": int(len(selected)),
         "fetched_geo_series": int(len(accessions)),
         "hashes": {
@@ -245,6 +303,8 @@ def build_geo_review(args: argparse.Namespace) -> dict:
             "constructing any exact sample manifest."
         ),
     }
+    if explicit_hash is not None:
+        report["hashes"]["explicit_groups_sha256"] = explicit_hash
     report_path = output_dir / "geo_review_report.json"
     temporary = output_dir / "geo_review_report.json.tmp"
     temporary.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
@@ -259,6 +319,8 @@ def main() -> None:
     parser.add_argument("--code-commit", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--per-organ", type=int, default=20)
+    parser.add_argument("--explicit-groups")
+    parser.add_argument("--expected-explicit-groups-sha256")
     parser.add_argument("--request-delay-seconds", type=float, default=0.4)
     parser.add_argument("--timeout-seconds", type=int, default=60)
     args = parser.parse_args()

@@ -2,12 +2,17 @@ import sys
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "evaluation"))
 
-from fetch_stage1_k4_geo_metadata import parse_series_soft, select_review_groups
+from fetch_stage1_k4_geo_metadata import (
+    parse_series_soft,
+    select_explicit_review_groups,
+    select_review_groups,
+)
 
 
 def test_parse_series_soft_extracts_only_metadata():
@@ -47,3 +52,28 @@ def test_select_review_groups_preserves_priority_order():
     assert len(selected) == 10
     assert "excluded_only" not in set(selected["automated_priority"])
     assert selected.groupby("organ").size().eq(2).all()
+
+
+def test_select_explicit_review_groups_is_exact_and_ordered():
+    workbook = pd.DataFrame([
+        {"organ": "liver", "series_group_id": "GSE1", "automated_priority": "B"},
+        {"organ": "liver", "series_group_id": "GSE2", "automated_priority": "A"},
+        {"organ": "brain", "series_group_id": "GSE3", "automated_priority": "A"},
+        {
+            "organ": "skin",
+            "series_group_id": "GSE4",
+            "automated_priority": "excluded_only",
+        },
+    ])
+    selected = select_explicit_review_groups(workbook, [
+        {"organ": "brain", "series_group_id": "GSE3"},
+        {"organ": "liver", "series_group_id": "GSE1"},
+    ])
+    assert list(zip(selected["organ"], selected["series_group_id"])) == [
+        ("brain", "GSE3"),
+        ("liver", "GSE1"),
+    ]
+    with pytest.raises(ValueError, match="non-excluded"):
+        select_explicit_review_groups(workbook, [
+            {"organ": "skin", "series_group_id": "GSE4"},
+        ])
