@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-22 23:00 PDT / 2026-07-23 06:00 UTC
+**Updated:** 2026-07-22 23:12 PDT / 2026-07-23 06:12 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -22,7 +22,7 @@ Read this file first. It is the compact operational and scientific handoff. Use
   diseased/tumor tissue, nonhuman samples, and active interventions. No cohort has
   been frozen.
 - The expanded GEO review and provisional exact-sample resolver are complete. They
-  provide 40 pending study decisions and 601 pending sample decisions; they are not
+  provide 40 pending study decisions and 599 pending sample decisions; they are not
   an accepted cohort and have not opened expression.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
@@ -193,13 +193,16 @@ leaves all study, sample, donor, and near-duplicate decisions pending. It resolv
 | --- | ---: | ---: |
 | adipose | 8 | 61 |
 | brain | 8 | 126 |
-| liver | 8 | 49 |
+| liver | 8 | 47 |
 | skeletal muscle | 8 | 263 |
 | skin | 8 | 102 |
 
-These 601 rows are a review workload, not the final analysis size. Ambiguous cases
+These 599 rows are a review workload, not the final analysis size. Ambiguous cases
 such as technical/biological replicates, tissue regions, graft donors, and skin
 compartments are explicitly marked unresolved.
+
+The initial 601-row v1 result remains preserved for audit at the paths below, but it
+is no longer the current review sheet:
 
 - implementation commit:
   `8e6d95b66d4ee26e2b226ee6ddab839e712b9e24`
@@ -219,6 +222,50 @@ compartments are explicitly marked unresolved.
 All checksum entries pass on the VM and Mac. The report states
 `expression_values_read=false`, `efficacy_scoring_performed=false`, and
 `external_lockbox_frozen=false`.
+
+### Liver reserve amendment
+
+Publication/series review rejected provisional liver group `GSE304242`: its official
+design centers on hepatic cell-model comparisons, while the three liver-RNA samples
+do not provide defensible donor or health semantics for this strict cohort. The
+rejection is preserved rather than silently relabeling those samples.
+
+A targeted metadata-only reserve fetch pinned `GSE284901`, an ENCODE4 unreplicated
+bulk total-RNA sample from the right lobe of one adult liver. ARCHS4 metadata gives
+BioSample `SAMN45079858` and donor `ENCDO757VPQ`; hypertension is explicitly retained
+as a non-hepatic comorbidity rather than calling this a nominally healthy donor.
+
+- reserve-fetch implementation commit:
+  `119ed2d0f12f391d28c20a0dd9ed54a5f1c4b573`
+- reserve VM result:
+  `/media/volume/moe-reboot/results/stage1_k4_geo_reserve_review_119ed2d`
+- reserve local verified backup:
+  `backups/stage1_k4_geo_reserve_review_119ed2d/`
+- reserve selected-study SHA256:
+  `9afb4067935f5602241f0d4355c8a052f72475d655607c981fbbb4ec6702cf84`
+
+The amended v2 resolver replaces the three ambiguous `GSE304242` rows with exact
+sample `GSM8693930`, reducing liver from 49 to 47 pending rows and the total from
+601 to 599 without changing the eight-groups-per-organ review target.
+
+- v2 implementation commit:
+  `8734e5e1486713850ab71cb386b51cc785fbfef7`
+- amendment SHA256:
+  `6cd1451da17e2d5877de6617e22e31ff3e1c6e97877cb8890407038a828c75a8`
+- v2 VM result:
+  `/media/volume/moe-reboot/results/stage1_k4_external_sample_review_v2_8734e5e`
+- v2 local verified backup:
+  `backups/stage1_k4_external_sample_review_v2_8734e5e/`
+- v2 full checksum-manifest SHA256:
+  `a3f5a58122fd58acc5f0c9ba2a56898de8e1bad53f44d8b7b9669ee15765ddcc`
+- v2 provisional sample-review SHA256:
+  `54d58c415568d73a8d962bb1b0e47eb75bd02393ad7a5f9ea1da839fff8594fd`
+- v2 provisional study-review SHA256:
+  `b4b133386a3b487a87739829932df4ea76d534fca5c41865c5f9a79897dd2bae`
+
+Every v2 checksum passes centrally and locally. All 224 repository tests pass. The
+v2 report still states `manual_decisions_complete=false`; this is a better review
+sheet, not a cohort freeze.
 
 Quick verification commands:
 
@@ -267,4 +314,6 @@ ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182
 4. `artifacts/stage1_k4_external_scout/protocol.json` — metadata-scout machine contract.
 5. `artifacts/stage1_k4_external_scout/sample_review_shortlist.json` — provisional,
    metadata-only sample selectors; not a frozen cohort.
-6. `progress.md` — append-only historical chronology and older experiment detail.
+6. `artifacts/stage1_k4_external_scout/sample_review_amendment_v2.json` — explicit
+   rejection and one-for-one liver reserve amendment.
+7. `progress.md` — append-only historical chronology and older experiment detail.

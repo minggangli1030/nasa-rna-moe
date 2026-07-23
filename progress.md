@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-22 23:00 PDT / 2026-07-23 06:00 UTC
+**Last updated:** 2026-07-22 23:12 PDT / 2026-07-23 06:12 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -53,6 +53,28 @@ study-review SHA256 is
 The current gate is manual exact-sample/donor/near-duplicate resolution, followed by
 cluster-aware power calculation and preregistration. Expression remains sealed and
 the external lockbox remains unfrozen.
+
+The next donor audit rejected liver `GSE304242` because the official study design
+centers on hepatic cell models and its three liver-RNA rows lack defensible donor and
+health semantics. A targeted metadata-only reserve review was committed as
+`119ed2d0f12f391d28c20a0dd9ed54a5f1c4b573` and completed at 06:08:10 UTC,
+pinning ENCODE4 `GSE284901`. Its single bulk adult right-lobe liver sample has exact
+BioSample `SAMN45079858` and donor `ENCDO757VPQ`; recorded hypertension is retained
+as a non-hepatic comorbidity. The reserve result is checksum-verified at
+`/media/volume/moe-reboot/results/stage1_k4_geo_reserve_review_119ed2d` and
+`backups/stage1_k4_geo_reserve_review_119ed2d/`.
+
+The auditable amendment leaves the original 601-row sheet intact and resolves a v2
+sheet from commit `8734e5e1486713850ab71cb386b51cc785fbfef7`. Production completed
+at 06:11:57 UTC under
+`/media/volume/moe-reboot/results/stage1_k4_external_sample_review_v2_8734e5e`.
+It contains 599 pending rows: 61 adipose, 126 brain, 47 liver, 263 skeletal muscle,
+and 102 skin. The verified local copy is
+`backups/stage1_k4_external_sample_review_v2_8734e5e/`; full checksum-manifest
+SHA256 is
+`a3f5a58122fd58acc5f0c9ba2a56898de8e1bad53f44d8b7b9669ee15765ddcc`.
+All 224 tests pass. Expression and efficacy remain untouched, and every manual
+decision remains pending unless explicitly recorded in the amendment.
 
 ## 2026-07-22 — external metadata scout completed
 
