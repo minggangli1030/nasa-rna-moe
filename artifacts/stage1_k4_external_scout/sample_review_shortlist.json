@@ -1,0 +1,423 @@
+{
+  "schema_version": 1,
+  "status": "metadata_sample_review_shortlist_not_external_lockbox",
+  "study_status": "provisional_manual_review",
+  "metadata_only": true,
+  "expression_values_read": false,
+  "efficacy_scoring_performed": false,
+  "external_lockbox_frozen": false,
+  "automated_decisions_are_final": false,
+  "provisional_groups_per_organ": 8,
+  "selection_principles": [
+    "Only samples submitted after the ARCHS4 v11 creation date may resolve.",
+    "Selectors isolate nominally healthy, control, untreated, or baseline bulk tissue.",
+    "A connected GEO group is not proof of donor independence across publications.",
+    "Every selector match remains pending manual sample, donor, and near-duplicate review.",
+    "GSE287627 is omitted because its donor metadata overlaps GSE306796."
+  ],
+  "entries": [
+    {
+      "organ": "adipose",
+      "series_group_id": "GSE306796",
+      "review_rationale": "Healthy subcutaneous adipose study; use one abdominal depot per nominal donor and exclude BMI at or above 30.",
+      "donor_resolution_status": "provisional_one_abdominal_sample_per_title_encoded_donor",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AAbd_\\d+\\Z",
+        "metadata_exclude_any_regex": ["\\bbmi:\\s*(?:3\\d|[4-9]\\d)(?:\\.\\d+)?\\b"]
+      }
+    },
+    {
+      "organ": "adipose",
+      "series_group_id": "GSE294614",
+      "review_rationale": "High-fat overfeeding study; retain only normal-BMI baseline adipose before intervention.",
+      "donor_resolution_status": "provisional_one_baseline_sample_per_title_encoded_subject",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "ADPBL",
+        "metadata_include_all_regex": ["\\bbmi:\\s*normal\\b"]
+      }
+    },
+    {
+      "organ": "adipose",
+      "series_group_id": "GSE217007",
+      "review_rationale": "Visceral adipose comparison; retain the three normal-weight non-hypertensive controls.",
+      "donor_resolution_status": "provisional_titles_are_distinct_control_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AC[1-3]\\Z",
+        "metadata_include_all_regex": ["normal weight individuals \\(non hypertension\\)"]
+      }
+    },
+    {
+      "organ": "adipose",
+      "series_group_id": "GSE239671|GSE239673",
+      "review_rationale": "Metabolically healthy paired brown/white adipose study; use one white-adipose sample per donor.",
+      "donor_resolution_status": "provisional_one_white_adipose_sample_per_title_encoded_donor",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AHuman WAT, patient \\d+\\Z",
+        "metadata_include_all_regex": ["metabolically healthy donor"]
+      }
+    },
+    {
+      "organ": "adipose",
+      "series_group_id": "GSE231656",
+      "review_rationale": "Paired subcutaneous/visceral adipose study; retain one subcutaneous sample per title-encoded donor.",
+      "donor_resolution_status": "provisional_one_subcutaneous_sample_per_title_encoded_donor",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\Asubcutaneoua adipose tissue"
+      }
+    },
+    {
+      "organ": "adipose",
+      "series_group_id": "GSE286454",
+      "review_rationale": "Greater-omentum adipose obesity comparison; retain the samples explicitly titled normal.",
+      "donor_resolution_status": "provisional_titles_are_distinct_normal_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\Anormal[1-5]\\Z"
+      }
+    },
+    {
+      "organ": "adipose",
+      "series_group_id": "GSE218965",
+      "review_rationale": "Cushing study with matched healthy controls; retain only VAT control samples.",
+      "donor_resolution_status": "provisional_titles_are_distinct_matched_controls",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AVAT_Control_\\d+\\Z",
+        "metadata_include_all_regex": ["\\bdisease:\\s*Healthy\\b"]
+      }
+    },
+    {
+      "organ": "adipose",
+      "series_group_id": "GSE253305",
+      "review_rationale": "Lean/obese adipose study; retain the twenty lean RT cohort samples as an independent replacement for duplicate GSE287627.",
+      "donor_resolution_status": "provisional_rt_titles_are_distinct_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\ART-\\d+\\Z"
+      }
+    },
+    {
+      "organ": "brain",
+      "series_group_id": "GSE199258",
+      "review_rationale": "Postmortem cerebellum study; retain samples explicitly titled control.",
+      "donor_resolution_status": "provisional_titles_encode_distinct_donors",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "control"
+      }
+    },
+    {
+      "organ": "brain",
+      "series_group_id": "GSE262948",
+      "review_rationale": "Healthy adult brain study with two regions per donor; retain BA38 only to obtain one sample per donor.",
+      "donor_resolution_status": "provisional_one_ba38_region_per_title_encoded_donor",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\bBA38\\b"
+      }
+    },
+    {
+      "organ": "brain",
+      "series_group_id": "GSE194368",
+      "review_rationale": "Amygdala disease study; retain only unaffected controls.",
+      "donor_resolution_status": "provisional_titles_are_distinct_unaffected_subjects",
+      "selector": {
+        "mode": "regex",
+        "metadata_include_all_regex": ["\\bdisease state:\\s*Unaffected\\b"]
+      }
+    },
+    {
+      "organ": "brain",
+      "series_group_id": "GSE275676",
+      "review_rationale": "Sex-stratified brain study; retain input samples explicitly titled ctrl.",
+      "donor_resolution_status": "provisional_titles_are_distinct_control_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "_ctrl_"
+      }
+    },
+    {
+      "organ": "brain",
+      "series_group_id": "GSE221178|GSE221179",
+      "review_rationale": "Hippocampus disease study; retain only total-RNA control samples.",
+      "donor_resolution_status": "provisional_titles_are_distinct_control_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AControl sample \\d+, hippocampus \\(total RNA\\)\\Z"
+      }
+    },
+    {
+      "organ": "brain",
+      "series_group_id": "GSE214334",
+      "review_rationale": "Multiple-sclerosis brain study; retain only CTL normal-appearing white-matter samples.",
+      "donor_resolution_status": "provisional_titles_are_distinct_control_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\ACTL_NAWM_"
+      }
+    },
+    {
+      "organ": "brain",
+      "series_group_id": "GSE297212",
+      "review_rationale": "Amygdala comparison; retain only age-matched samples explicitly titled Control.",
+      "donor_resolution_status": "provisional_titles_encode_distinct_control_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "_Control "
+      }
+    },
+    {
+      "organ": "brain",
+      "series_group_id": "GSE205450",
+      "review_rationale": "Large neurodegeneration study with caudate and putamen per donor; retain control caudate only.",
+      "donor_resolution_status": "provisional_one_caudate_region_per_title_encoded_control_donor",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "_CTRL_CAU\\Z"
+      }
+    },
+    {
+      "organ": "liver",
+      "series_group_id": "GSE199888",
+      "review_rationale": "Retain the five liver samples with titles denoting normal tissue.",
+      "donor_resolution_status": "provisional_titles_are_distinct_normal_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AHB\\d+N\\Z"
+      }
+    },
+    {
+      "organ": "liver",
+      "series_group_id": "GSE251942",
+      "review_rationale": "Retain all samples explicitly titled normal liver tissue.",
+      "donor_resolution_status": "provisional_titles_are_distinct_normal_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "Normal liver tissue"
+      }
+    },
+    {
+      "organ": "liver",
+      "series_group_id": "GSE304242",
+      "review_rationale": "Small wild-type human liver series; carry all three samples forward while replicate semantics remain unresolved.",
+      "donor_resolution_status": "unresolved_biological_vs_technical_replicates",
+      "selector": {
+        "mode": "all_post_cutoff"
+      }
+    },
+    {
+      "organ": "liver",
+      "series_group_id": "GSE263786",
+      "review_rationale": "Normal/disease regional liver study; retain one predeclared region from each of three normal donors.",
+      "donor_resolution_status": "provisional_one_region_per_title_encoded_normal_donor",
+      "selector": {
+        "mode": "explicit_sample_ids",
+        "sample_ids": ["GSM8198626", "GSM8198635", "GSM8198644"]
+      }
+    },
+    {
+      "organ": "liver",
+      "series_group_id": "GSE277232",
+      "review_rationale": "Chronic-liver-disease comparison; retain samples explicitly titled Normal.",
+      "donor_resolution_status": "provisional_titles_are_distinct_normal_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\ANormal[1-6]\\Z"
+      }
+    },
+    {
+      "organ": "liver",
+      "series_group_id": "GSE274114",
+      "review_rationale": "Liver disease series with altruistic donor controls; retain only CTRL samples.",
+      "donor_resolution_status": "provisional_sample_ids_are_distinct_control_donors",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\ACTRL[1-9]\\Z"
+      }
+    },
+    {
+      "organ": "liver",
+      "series_group_id": "GSE230397",
+      "review_rationale": "Chronic-HBV study; retain the nine healthy-control liver samples.",
+      "donor_resolution_status": "provisional_titles_are_distinct_healthy_controls",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AHC[1-9]\\Z",
+        "metadata_include_all_regex": ["\\bdisease state:\\s*HC\\b"]
+      }
+    },
+    {
+      "organ": "liver",
+      "series_group_id": "GSE204919",
+      "review_rationale": "Transplant-graft series; retain only samples explicitly titled normal, pending donor-context review.",
+      "donor_resolution_status": "unresolved_normal_graft_donor_independence",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\Asample(?:19|2[0-8])_normal\\Z"
+      }
+    },
+    {
+      "organ": "skeletal_muscle",
+      "series_group_id": "GSE303107",
+      "review_rationale": "Healthy female vastus-lateralis age series; carry all post-cutoff bulk samples to donor review.",
+      "donor_resolution_status": "provisional_titles_encode_distinct_healthy_subjects",
+      "selector": {
+        "mode": "all_post_cutoff"
+      }
+    },
+    {
+      "organ": "skeletal_muscle",
+      "series_group_id": "GSE274907",
+      "review_rationale": "Healthy adult skeletal-muscle cohort; carry all post-cutoff bulk samples to donor review.",
+      "donor_resolution_status": "provisional_titles_encode_distinct_healthy_subjects",
+      "selector": {
+        "mode": "all_post_cutoff"
+      }
+    },
+    {
+      "organ": "skeletal_muscle",
+      "series_group_id": "GSE249921",
+      "review_rationale": "Exercise time-course; retain one resting baseline sample per title-encoded subject.",
+      "donor_resolution_status": "provisional_one_rest_sample_per_title_encoded_subject",
+      "selector": {
+        "mode": "regex",
+        "metadata_include_all_regex": ["\\btraining time_point:\\s*rest\\b"]
+      }
+    },
+    {
+      "organ": "skeletal_muscle",
+      "series_group_id": "GSE262824",
+      "review_rationale": "Heart-failure comparison; retain samples explicitly titled control.",
+      "donor_resolution_status": "provisional_titles_are_distinct_control_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\bcontrol\\b"
+      }
+    },
+    {
+      "organ": "skeletal_muscle",
+      "series_group_id": "GSE287118",
+      "review_rationale": "PAD/CKD comparison; retain only gastrocnemius samples marked disease-state Control.",
+      "donor_resolution_status": "provisional_titles_are_distinct_control_subjects",
+      "selector": {
+        "mode": "regex",
+        "metadata_include_all_regex": ["\\bdisease state:\\s*Control\\b"]
+      }
+    },
+    {
+      "organ": "skeletal_muscle",
+      "series_group_id": "GSE226151",
+      "review_rationale": "Sarcopenia study; retain only healthy-aged samples.",
+      "donor_resolution_status": "provisional_titles_are_distinct_healthy_subjects",
+      "selector": {
+        "mode": "regex",
+        "metadata_include_all_regex": ["\\bdisease state:\\s*healthy aged\\b"]
+      }
+    },
+    {
+      "organ": "skeletal_muscle",
+      "series_group_id": "GSE271607",
+      "review_rationale": "Disuse intervention; retain vastus-lateralis samples before disuse.",
+      "donor_resolution_status": "provisional_one_pre_intervention_sample_per_subject",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AVas_before_\\d+\\Z"
+      }
+    },
+    {
+      "organ": "skeletal_muscle",
+      "series_group_id": "GSE211204",
+      "review_rationale": "Bed-rest study; retain one baseline skeletal-muscle sample per subject.",
+      "donor_resolution_status": "provisional_one_baseline_sample_per_title_encoded_subject",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\bbaseline\\b"
+      }
+    },
+    {
+      "organ": "skin",
+      "series_group_id": "GSE267066",
+      "review_rationale": "Healthy normal-skin biopsy cohort; carry all bulk samples to donor review.",
+      "donor_resolution_status": "provisional_titles_encode_distinct_healthy_subjects",
+      "selector": {
+        "mode": "all_post_cutoff"
+      }
+    },
+    {
+      "organ": "skin",
+      "series_group_id": "GSE268958",
+      "review_rationale": "Healthy volunteer normal-skin cohort; carry all NRML samples to donor review.",
+      "donor_resolution_status": "provisional_subjectids_are_distinct_healthy_subjects",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "skin \\(NRML\\)"
+      }
+    },
+    {
+      "organ": "skin",
+      "series_group_id": "GSE202851|GSE202861",
+      "review_rationale": "Connected series contains one bulk normal-skin sample.",
+      "donor_resolution_status": "single_sample",
+      "selector": {
+        "mode": "explicit_sample_ids",
+        "sample_ids": ["GSM6134540"]
+      }
+    },
+    {
+      "organ": "skin",
+      "series_group_id": "GSE235570",
+      "review_rationale": "Treatment-response study; retain only untreated control epidermis/dermis samples.",
+      "donor_resolution_status": "unresolved_control_donor_and_compartment_mapping",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "_control"
+      }
+    },
+    {
+      "organ": "skin",
+      "series_group_id": "GSE279422",
+      "review_rationale": "Dupilumab/placebo study; retain only healthy samples explicitly titled control.",
+      "donor_resolution_status": "provisional_titles_are_distinct_healthy_controls",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AC\\d+, control\\Z"
+      }
+    },
+    {
+      "organ": "skin",
+      "series_group_id": "GSE264314",
+      "review_rationale": "Healthy-skin intervention; retain placebo baseline T1 samples only.",
+      "donor_resolution_status": "provisional_one_baseline_sample_per_title_encoded_subject",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\Askin_Placebo_T1_\\d+\\Z"
+      }
+    },
+    {
+      "organ": "skin",
+      "series_group_id": "GSE297863",
+      "review_rationale": "Drug-rash comparison; retain samples explicitly titled Healthy_Skin.",
+      "donor_resolution_status": "unresolved_rep_label_biological_vs_technical_semantics",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AHealthy_Skin, rep\\d+\\Z"
+      }
+    },
+    {
+      "organ": "skin",
+      "series_group_id": "GSE205748",
+      "review_rationale": "Psoriatic-arthritis comparison; retain only healthy-control skin biopsies.",
+      "donor_resolution_status": "provisional_titles_are_distinct_healthy_controls",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AHealthy control skin"
+      }
+    }
+  ],
+  "next_gate": "Resolve the selectors to exact sample IDs, then manually verify donor independence and near duplicates before any lockbox freeze or expression request."
+}
