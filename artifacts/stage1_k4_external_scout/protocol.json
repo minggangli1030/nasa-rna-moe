@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "metadata_scout_only_not_external_lockbox",
+  "purpose": "Identify a prospective, post-v11, multisource five-organ cohort before any expression access.",
+  "source": {
+    "name": "ARCHS4 human gene-level v2.latest",
+    "url": "https://s3.k8s.maayanlab.cloud/archs4/files/human_gene_v2.latest.h5",
+    "content_length": 62257385524,
+    "etag": "\"86ec41d970158f18d065bb9f89248ce5-928\"",
+    "last_modified": "Tue, 07 Jul 2026 08:43:19 GMT",
+    "observed_expression_shape_metadata_only": [67186, 1098771]
+  },
+  "historical_firewall": {
+    "snapshot": "ARCHS4 human v11",
+    "creation_date": "2021-11-13",
+    "n_samples": 441356,
+    "geo_accession_sha256": "784035aa00284f2a8c0c500a391f88d9c6986621c22dd7f622a06284d731eba0",
+    "geo_accession_series_mapping_sha256": "ffce20e908770672571d3e75755cb00643c330da8899424255b6a245e9936523",
+    "exclude_any_matching_sample": true,
+    "exclude_any_series_token_seen_in_v11": true
+  },
+  "target_organs": ["adipose", "brain", "liver", "skeletal_muscle", "skin"],
+  "metadata_filters": {
+    "library_strategy": "RNA-Seq",
+    "label_tier": "high_confidence",
+    "single_cell_probability_below": 0.5,
+    "exclude_tumor_disease_cell_source_primary_cell_and_ambiguous_anatomy": true,
+    "temporal_preference": "submission_date strictly after 2021-11-13",
+    "minimum_connected_series_per_organ": 5,
+    "preferred_connected_series_per_organ": 8,
+    "manual_review_rows_per_organ": 50
+  },
+  "firewall": {
+    "metadata_access_only": true,
+    "expression_values_must_not_be_read": true,
+    "efficacy_scoring_forbidden": true,
+    "output_is_not_a_frozen_lockbox": true,
+    "freeze_exact_sample_ids_only_after_manual_and_cross-database_overlap_audit": true
+  }
+}

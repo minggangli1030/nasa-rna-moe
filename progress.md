@@ -1888,3 +1888,26 @@ candidate validator passes against code commit
 `e8c0383fd1833f180f26af56f09e83a5b3f676d9`. Candidate-manifest SHA256 is
 `c941504037d885b74a1555d97109ff31ada9a60545b52e8c244fdccafe3ad9ee`; router-report
 SHA256 is `2f5600eabe7a9c48af0f55b86beeea9a0fe6a629e5863fe5aea2257b36e16a15`.
+
+### Post-refit external metadata scout (2026-07-22)
+
+The next operation is intentionally metadata-only, not external evaluation. The pinned
+scouting protocol is `artifacts/stage1_k4_external_scout/protocol.json` (SHA256
+`1ab183ba9d31851a2f605d51d29eb9a282b7581b63a56e6eacdd9693276dc1c4`). It binds the
+current ARCHS4 human gene-level object by URL, 62,257,385,524-byte length, multipart
+ETag, and 2026-07-07 Last-Modified value. Remote HDF5 inspection observed 1,098,771
+human samples and 67,186 genes, versus 441,356 samples in the development-era v11
+snapshot created 2021-11-13.
+
+The scout reads only HDF5 metadata through HTTP range requests. Before label recovery it
+excludes every v11 accession and any row sharing any v11 GEO-series token. The v11
+accession-order SHA256 is
+`784035aa00284f2a8c0c500a391f88d9c6986621c22dd7f622a06284d731eba0`; the independently
+matched accession/series mapping SHA256 is
+`ffce20e908770672571d3e75755cb00643c330da8899424255b6a245e9936523`. Remaining bulk
+RNA-seq metadata is conservatively classified for adipose, brain, liver, skeletal
+muscle, and skin. The output will report whether each organ has at least five, preferably
+eight, temporally new connected studies and will produce 50 deterministic review rows
+per organ. It is not a frozen lockbox and performs no expression access or efficacy
+scoring. Exact IDs may be frozen only after manual label review and publication,
+BioProject, donor, connected-group, and near-duplicate audits.

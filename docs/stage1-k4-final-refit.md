@@ -467,6 +467,15 @@ External confirmation requires a new protocol frozen after final fitting and bef
 first lockbox feature or target is inspected. No external lockbox is currently present
 in the repository or on the central persistent VM.
 
+A separate metadata-only scout is now frozen in
+`artifacts/stage1_k4_external_scout/protocol.json`. It targets the current ARCHS4 human
+gene-level object through HTTP byte ranges, reads only `meta/info` and `meta/samples`,
+and excludes every accession and every GEO-series token present in the 2021 ARCHS4 v11
+snapshot before organ-label recovery. Its output is explicitly not a lockbox: it only
+establishes multisource feasibility and produces a deterministic manual-review sheet.
+No expression value may be requested until the labels, publication/BioProject/donor
+links, historical overlaps, and exact sample IDs have been audited and frozen.
+
 ### Required external artifact contract
 
 Before access, freeze and hash:
