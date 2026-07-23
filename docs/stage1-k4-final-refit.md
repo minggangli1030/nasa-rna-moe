@@ -1,7 +1,7 @@
 # Stage 1 K4 final refit: decision history and confirmation design
 
-Status: **development nomination complete; final refit running on `moe-reboot`
-after a passed real-data smoke; external confirmation not yet started.**
+Status: **development nomination and final refit complete; portable K4 candidate
+frozen and independently backed up; external confirmation not yet started.**
 
 This document records why the project arrived at a four-specialist model, what the
 completed experiments do and do not establish, and the contract for fitting one final
@@ -13,7 +13,7 @@ reuse of the old internal test, selection on an external lockbox, or a biologica
 | Stage | Data role | Purpose | Current status | Permitted conclusion |
 |---|---|---|---|---|
 | Development nomination | Frozen train plus calibration | Compare K5, genuine K4 equal-per-expert (K4-EPE), and a higher-exposure K4 sensitivity; nominate one candidate | Complete | K4-EPE is the development candidate |
-| Final fitting | Train plus calibration only; old test excluded | Refit exactly one nominated K4 architecture and its matched controls, and freeze one deployable router | Running from exact commit `e8c0383`; preflight and smoke passed | Produces frozen weights and router; adds no confirmation evidence |
+| Final fitting | Train plus calibration only; old test excluded | Refit exactly one nominated K4 architecture and its matched controls, and freeze one deployable router | Complete from exact commit `e8c0383`; candidate and checksums frozen | Produces frozen weights and router; adds no confirmation evidence |
 | External confirmation | A new, untouched, study-disjoint lockbox | Test the already-frozen K4 model once against pooled and matched controls | Blocked pending external data and a separately frozen protocol | May confirm or fail the K4 Stage 1 claim |
 
 The completed K4/K5 experiment is adaptive to the same calibration cohort that
@@ -439,7 +439,7 @@ The audited implementation was committed and pushed as
 bundle and cloned into a new clean detached checkout at
 `/home/exouser/nasa-rna-moe-e8c0383`; the VM's older modified checkout was not used or
 changed. The persistent result root is
-`/media/volume/moe-reboot/results/stage1_k4_final_refit_e8c0383`, and the workflow runs
+`/media/volume/moe-reboot/results/stage1_k4_final_refit_e8c0383`; the workflow ran
 inside tmux session `stage1_k4_final_e8c0383`.
 
 VM preflight and preparation passed. The real-data seed-17 smoke completed at
@@ -447,9 +447,19 @@ VM preflight and preparation passed. The real-data seed-17 smoke completed at
 contract check verified finite tensors, final-checkpoint round trips, the full frozen
 axis order, `mechanical_only=true`, `internal_efficacy_scoring=false`, and both
 `test_accessed=false` and `external_data_accessed=false`. The full 1,500-update refit
-then started with seed 17 at 20:28:02 UTC; seeds 42 and 101, router refit, portable
-candidate freeze, and a full checksum pass follow automatically. No efficacy estimate
-is produced or inspected by this workflow.
+then started with seed 17 at 20:28:02 UTC and completed all three frozen seeds, the
+target-hidden router refit, portable candidate freeze, and terminal checksum validation
+at 2026-07-22 22:16:41 UTC. No efficacy estimate was produced or inspected by this
+workflow.
+
+The completed 333 MB, 184-file result was copied to
+`backups/stage1_k4_final_refit_e8c0383/`. The relative checksum manifest validates both
+centrally and on the Mac and has SHA256
+`db17084f813abd19dd11297570a2befc48aa9c7d93f9755216780c3418f0aca0`. The portable
+candidate validator also passes independently. Its candidate-manifest SHA256 is
+`c941504037d885b74a1555d97109ff31ada9a60545b52e8c244fdccafe3ad9ee`, and the frozen
+router-report SHA256 is
+`2f5600eabe7a9c48af0f55b86beeea9a0fe6a629e5863fe5aea2257b36e16a15`.
 
 ## Future external-lockbox firewall
 

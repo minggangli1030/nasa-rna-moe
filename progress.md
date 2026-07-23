@@ -1870,11 +1870,21 @@ integrated test suite, then was committed and pushed as
 `e8c0383fd1833f180f26af56f09e83a5b3f676d9`. A complete Git bundle was checksum-verified
 and cloned on `moe-reboot` into the new clean detached checkout
 `/home/exouser/nasa-rna-moe-e8c0383`; the older dirty VM checkout was left untouched.
-The production workflow is running in tmux session `stage1_k4_final_e8c0383` with
-persistent result root
+The production workflow ran in tmux session `stage1_k4_final_e8c0383` with persistent
+result root
 `/media/volume/moe-reboot/results/stage1_k4_final_refit_e8c0383`. Preflight,
 development-only preparation, and the all-five-bank two-update smoke passed; the smoke
 wrote `SMOKE_COMPLETE` at 2026-07-22T20:27:59Z with finite losses and no test or
-external access. Full seed 17 started at 2026-07-22T20:28:02Z. Seeds 42 and 101, the
-target-hidden router refit, portable candidate freeze, and full checksum validation
-follow automatically. This final fit emits no internal efficacy comparison.
+external access. Full seed 17 started at 2026-07-22T20:28:02Z. All three 1,500-update
+seeds, the target-hidden router refit, portable candidate freeze, and full checksum
+validation completed at 2026-07-22T22:16:41Z. This final fit emitted no internal
+efficacy comparison.
+
+The complete 333 MB, 184-file result was copied to
+`backups/stage1_k4_final_refit_e8c0383/`. Its relative `FULL_SHA256SUMS` validates both
+on persistent `moe-reboot` storage and independently on the Mac; that manifest's SHA256
+is `db17084f813abd19dd11297570a2befc48aa9c7d93f9755216780c3418f0aca0`. The portable
+candidate validator passes against code commit
+`e8c0383fd1833f180f26af56f09e83a5b3f676d9`. Candidate-manifest SHA256 is
+`c941504037d885b74a1555d97109ff31ada9a60545b52e8c244fdccafe3ad9ee`; router-report
+SHA256 is `2f5600eabe7a9c48af0f55b86beeea9a0fe6a629e5863fe5aea2257b36e16a15`.
