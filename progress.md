@@ -1,10 +1,16 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-21 21:13 PDT / 2026-07-22 04:13 UTC
+**Last updated:** 2026-07-22 20:03 PDT / 2026-07-23 03:03 UTC
 
-This is the compact handoff document for the current experiment. Older detailed
-logs remain recoverable in Git history through commit `10a5e0e`; obsolete
-evaluation numbers are intentionally not repeated as current evidence.
+> **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
+> current candidate, live workflow, hashes, safeguards, and next decision. This file is
+> now the append-only chronological record; its older “Current Objective” sections are
+> preserved for audit history and must not be mistaken for the current project state.
+
+Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
+obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## Historical chronology — not the current handoff
 
 **Vocabulary:** `Stage` is the research phase: **Stage 0** is inherited
 human/mouse/mixed completion, **Stage 1** is the original organ-specialization
