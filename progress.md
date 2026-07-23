@@ -1911,3 +1911,12 @@ eight, temporally new connected studies and will produce 50 deterministic review
 per organ. It is not a frozen lockbox and performs no expression access or efficacy
 scoring. Exact IDs may be frozen only after manual label review and publication,
 BioProject, donor, connected-group, and near-duplicate audits.
+
+The tested scout was committed and pushed as
+`182207bbc85c30df80f17cd45784d5c87f8a52a7`, deployed from a clean detached checkout at
+`/home/exouser/nasa-rna-moe-182207b`, and launched in tmux session
+`stage1_k4_ext_scout_182207b`. Its persistent result root is
+`/media/volume/moe-reboot/results/stage1_k4_external_scout_182207b`. The historical v11
+metadata export completed, and the pinned current-object metadata range scan began at
+2026-07-23T02:47:54Z. The scan logs ordered progress by 20,000-row chunks and remains
+explicitly nonconfirmatory and expression-sealed.
