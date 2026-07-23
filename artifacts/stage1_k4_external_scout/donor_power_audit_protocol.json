@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "status": "metadata_only_donor_and_power_readiness_not_external_lockbox",
+  "metadata_only": true,
+  "expression_values_read": false,
+  "efficacy_scoring_performed": false,
+  "external_lockbox_frozen": false,
+  "source_contract": {
+    "sample_review_amendment_v3_sha256": "de2d9e63588d777498fc736ef6da30f860fa14859f7c83bbbf44a7d3c441990a",
+    "expected_sample_rows": 574,
+    "expected_study_rows": 40,
+    "expected_groups_per_organ": 8,
+    "expected_provisional_sample_review_sha256": "ab8a5751abbf680bb34e2e96cc8fe40e93016c06c9ecaaa37e7c273724d39418",
+    "expected_provisional_study_review_sha256": "3b0d5d3c1036d6084f02f47ab7582793782fefaa6ceff89b8e2ddb3ae88b6e41"
+  },
+  "donor_key_contract": {
+    "default_strategy": "whole_title_unique_proxy",
+    "default_basis": "one_selected_sample_per_unique_title_proxy",
+    "explicit_characteristic_overrides": [
+      {
+        "organ": "liver",
+        "series_group_id": "GSE284901",
+        "regex": "(?i)donor_id:\\s*(?P<donor>ENCDO[0-9A-Z]+)",
+        "basis": "explicit_encode_donor_id"
+      },
+      {
+        "organ": "skin",
+        "series_group_id": "GSE268958",
+        "regex": "(?i)subjectid:\\s*(?P<donor>[0-9-]+)",
+        "basis": "explicit_subjectid"
+      }
+    ],
+    "conservative_single_sample_groups": [
+      {
+        "organ": "liver",
+        "series_group_id": "GSE284901",
+        "reason": "Unreplicated ENCODE donor."
+      },
+      {
+        "organ": "skin",
+        "series_group_id": "GSE202851|GSE202861",
+        "reason": "Connected group exposes one normal-skin sample."
+      },
+      {
+        "organ": "skin",
+        "series_group_id": "GSE297863",
+        "reason": "Replicate semantics unresolved; one deterministic healthy sample retained."
+      }
+    ],
+    "require_unique_derived_key_within_group": true,
+    "cross_group_explicit_identifier_fields": [
+      "donor_id",
+      "subjectid",
+      "biosample encode accession"
+    ],
+    "title_proxy_is_not_verified_donor_identity": true
+  },
+  "analysis_unit_contract": {
+    "primary_unit": "connected_study_group",
+    "primary_weighting": "equal_study_weight_within_organ_then_equal_organ_weight",
+    "sample_rows_are_not_independent_power_units": true,
+    "donor_keys_are_for_duplicate_control_not_primary_weighting": true,
+    "primary_cluster_count": 40,
+    "clusters_per_organ": 8,
+    "per_organ_results": "exploratory_only",
+    "uncertainty": "paired_connected_study_cluster_bootstrap",
+    "minimum_bootstrap_draws": 10000
+  },
+  "power_sensitivity_contract": {
+    "purpose": "design sensitivity only; no external outcomes or variance are read",
+    "one_sided_alpha": 0.025,
+    "positive_study_probability_grid": [0.6, 0.65, 0.7, 0.75, 0.8],
+    "exact_sign_test_clusters": 40,
+    "warning": "This sign-test grid is not a substitute for outcome-scale power. Final relative-MSE precision must be evaluated only after the cohort and evaluator are frozen."
+  },
+  "readiness_rules": {
+    "minimum_groups_per_organ": 8,
+    "minimum_total_study_groups": 40,
+    "require_no_cross_group_explicit_identifier_overlap": true,
+    "require_no_duplicate_derived_donor_keys_within_group": true,
+    "ready_for_protocol_drafting_does_not_authorize_expression": true
+  },
+  "next_gate": "Use the audit to draft and hash the exact evaluator, random-control assignments, study-macro estimator, checkpoint/router ledger, and decision tree; then perform a final metadata signoff before any expression request."
+}

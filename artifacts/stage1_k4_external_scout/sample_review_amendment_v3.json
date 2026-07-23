@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "status": "conservative_provisional_sample_review_amendment_not_external_lockbox",
+  "metadata_only": true,
+  "expression_values_read": false,
+  "efficacy_scoring_performed": false,
+  "external_lockbox_frozen": false,
+  "source_shortlist_sha256": "e7569661edbccc7d0ad075a184851b969c019b12067c19a1458012d7aa1de3f8",
+  "replacements": [
+    {
+      "remove": {
+        "organ": "liver",
+        "series_group_id": "GSE304242",
+        "decision": "reject",
+        "reason": "Official GEO design centers on hepatic cell-model comparisons; the three liver-RNA samples lack defensible donor and health semantics for the strict reference cohort."
+      },
+      "add": {
+        "organ": "liver",
+        "series_group_id": "GSE284901",
+        "review_rationale": "ENCODE4 unreplicated bulk total-RNA sample from adult right-lobe liver; explicit BioSample and donor ID. Hypertension is recorded as a non-hepatic comorbidity, so this remains a transparent reserve rather than a nominally healthy control.",
+        "donor_resolution_status": "single_explicit_encode_donor_and_biosample",
+        "selector": {
+          "mode": "explicit_sample_ids",
+          "sample_ids": ["GSM8693930"]
+        }
+      }
+    },
+    {
+      "remove": {
+        "organ": "skin",
+        "series_group_id": "GSE235570",
+        "decision": "narrow",
+        "reason": "Mixing epidermis and dermis creates a compartment confound and donor pairing is not exposed in ARCHS4 metadata."
+      },
+      "add": {
+        "organ": "skin",
+        "series_group_id": "GSE235570",
+        "review_rationale": "Age- and sex-matched healthy controls from the PRP study; conservatively retain only control epidermis and exclude dermis to avoid a compartment mixture.",
+        "donor_resolution_status": "provisional_unique_title_ids_control_epidermis_only",
+        "selector": {
+          "mode": "regex",
+          "title_include_regex": "_control.*epidermis\\Z"
+        }
+      }
+    },
+    {
+      "remove": {
+        "organ": "skin",
+        "series_group_id": "GSE297863",
+        "decision": "narrow",
+        "reason": "The healthy-skin rep labels do not prove whether replicates are biological or technical."
+      },
+      "add": {
+        "organ": "skin",
+        "series_group_id": "GSE297863",
+        "review_rationale": "Healthy-skin control series; retain one deterministic sample until BioSample-level evidence resolves the rep labels.",
+        "donor_resolution_status": "single_sample_conservative_for_unresolved_rep_semantics",
+        "selector": {
+          "mode": "explicit_sample_ids",
+          "sample_ids": ["GSM9001270"]
+        }
+      }
+    }
+  ],
+  "next_gate": "Resolve the conservative selectors, derive auditable donor keys, and assess study-cluster power without expression."
+}
