@@ -10,7 +10,7 @@ CODE_COMMIT="${CODE_COMMIT:?set CODE_COMMIT to the deployed 40-character Git com
 EXPERIMENT_ROOT="${EXPERIMENT_ROOT:?set a new persistent GEO-review result root}"
 SOURCE_ROOT="${SOURCE_ROOT:-/media/volume/moe-reboot/results/stage1_k4_external_curation_f307108}"
 PROTOCOL="${PROTOCOL:-artifacts/stage1_k4_external_scout/geo_review_protocol.json}"
-EXPECTED_PROTOCOL_SHA256=49881dd7ba65396bcb2929a3765f3eaef9692b87445bdf79e2f9444b76892a03
+EXPECTED_PROTOCOL_SHA256=947b1701aeb9c97b685c2a0f753346a3bb4a7aac79bcb3f5eeb533ffb191dfa9
 EXPECTED_WORKBOOK_SHA256=965b4a2f40f28d94a1de7317fbaa4c97ae4014426195b287c125e92dc5c7b5e0
 
 [[ "$CODE_COMMIT" =~ ^[0-9a-f]{40}$ ]] || {
@@ -65,7 +65,7 @@ printf 'RUNNING phase=fetch_series_metadata %s\n' "$(date -u '+%Y-%m-%dT%H:%M:%S
   --workbook "$WORKBOOK" \
   --expected-workbook-sha256 "$EXPECTED_WORKBOOK_SHA256" \
   --code-commit "$CODE_COMMIT" \
-  --per-organ 20 \
+  --per-organ 40 \
   --request-delay-seconds 0.4 \
   --output-dir "$EXPERIMENT_ROOT/geo_review" \
   > "$EXPERIMENT_ROOT/geo_review.log" 2>&1

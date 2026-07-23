@@ -157,7 +157,7 @@ The production workbook completed from isolated code commit
   `b2645444af6ceb65df5d4b927057934ee9c4c37c3ab6912a978cf1a0568d7085`
 
 Every checksum passes remotely and locally. The next metadata-only step selects the
-first 20 non-excluded connected groups per organ in workbook order and pins their
+first 40 non-excluded connected groups per organ in workbook order and pins their
 public NCBI GEO series SOFT records (title, summary, design, PubMed, BioProject, and
 sample count). It forbids supplementary/SRA downloads and cannot accept a study.
 
@@ -175,7 +175,7 @@ ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182
 2. **Automated eligibility failed:** preserve round 1 as the rule-development audit;
    do not treat its broad candidate pool as confirmation data.
 3. **Current gate — study-level curation:** the metadata-only workbook is complete.
-   Pin GEO series metadata for 20 candidate groups per organ, then review enough A and
+   Pin GEO series metadata for 40 candidate groups per organ, then review enough A and
    B groups to retain at least eight verified independent studies per organ. Verify
    GEO/publication, BioProject, Biosample, donor, assay, organism,
    disease/perturbation, connected-group, and near-duplicate links.

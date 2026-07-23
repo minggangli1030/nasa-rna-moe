@@ -68,7 +68,7 @@ SHA256 is
 every manifest entry passes at both locations.
 
 The next implementation pins public GEO series-level SOFT metadata for the first
-20 non-excluded connected groups per organ. It records title, summary, overall design,
+40 non-excluded connected groups per organ. It records title, summary, overall design,
 PubMed, BioProject, sample count, and conservative context flags while explicitly
 forbidding supplementary files, SRA downloads, expression values, model scoring, and
 automated study acceptance. Its focused test suite passes 27/27.
