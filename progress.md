@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-22 22:32 PDT / 2026-07-23 05:32 UTC
+**Last updated:** 2026-07-22 23:00 PDT / 2026-07-23 06:00 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,50 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-22 — expanded GEO review and provisional exact sample sheet completed
+
+The public GEO series-metadata review was expanded to 40 non-excluded connected
+groups per organ. Commit `a89e2e988e8e8e5467a56d16a85a5f173dd3dff6`
+produced 200 organ/group review rows and 226 pinned series records at
+`/media/volume/moe-reboot/results/stage1_k4_geo_review_a89e2e9`; the verified Mac
+copy is `backups/stage1_k4_geo_review_a89e2e9/`. The selected-study review SHA256
+is `19373eafa0e5d1fdf1127033a669c79232616adbe1d28fd26b6bd01c274cfc3b`.
+Only series title, summary, design, PubMed, BioProject, and sample count were read.
+No supplementary file, SRA object, expression value, or efficacy score was accessed.
+
+Manual reading yielded eight provisional groups per organ with explicit healthy,
+control, untreated, or baseline sample selectors. A likely donor reuse between
+adipose `GSE306796` and `GSE287627` was caught from matching donor metadata;
+`GSE287627` was omitted and replaced. This demonstrates that connected GEO-series
+grouping is necessary but not sufficient for cross-publication donor independence.
+
+The selector resolver in commit
+`8e6d95b66d4ee26e2b226ee6ddab839e712b9e24` is pushed and deployed from clean
+checkout `/home/exouser/nasa-rna-moe-8e6d95b`. Its production run completed at
+2026-07-23 05:59:48 UTC under
+`/media/volume/moe-reboot/results/stage1_k4_external_sample_review_8e6d95b`.
+It binds the source metadata hashes, requires post-v11 samples, rejects
+classifier-ineligible matches, and leaves every manual decision pending.
+
+The resulting review sheet contains 40 study rows and 601 exact sample rows:
+61 adipose, 126 brain, 49 liver, 263 skeletal muscle, and 102 skin. These are
+selector matches for review, not accepted sample counts. Unresolved replicate,
+regional, compartment, and graft-donor cases are labeled in the study sheet.
+The result reports no repeated PubMed or BioProject identifier among the 40
+provisional groups, but that does not complete the donor/near-duplicate audit.
+
+Both the VM result and
+`backups/stage1_k4_external_sample_review_8e6d95b/` pass every checksum entry.
+The full checksum-manifest SHA256 is
+`da0ff1b8e5ae5e4d49e3699e176d88037467bfde41627d2fedfd549960feaca3`;
+sample-review SHA256 is
+`4b5dead31111c8ae80c3d079d6ee73db4da45e6a61d7cc1a4233ae9fb4dcd3e8`;
+study-review SHA256 is
+`9c6712ccc9772de39388dd846f446db2391eb809695924854739ccc5f5605fb5`.
+The current gate is manual exact-sample/donor/near-duplicate resolution, followed by
+cluster-aware power calculation and preregistration. Expression remains sealed and
+the external lockbox remains unfrozen.
 
 ## 2026-07-22 — external metadata scout completed
 

@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-22 22:32 PDT / 2026-07-23 05:32 UTC
+**Updated:** 2026-07-22 23:00 PDT / 2026-07-23 06:00 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -21,6 +21,9 @@ Read this file first. It is the compact operational and scientific handoff. Use
   nominal high-confidence labels still included cell models, non-bulk assays,
   diseased/tumor tissue, nonhuman samples, and active interventions. No cohort has
   been frozen.
+- The expanded GEO review and provisional exact-sample resolver are complete. They
+  provide 40 pending study decisions and 601 pending sample decisions; they are not
+  an accepted cohort and have not opened expression.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis and K4-EPE is the frozen development candidate. It is
@@ -156,10 +159,66 @@ The production workbook completed from isolated code commit
 - sample-triage SHA256:
   `b2645444af6ceb65df5d4b927057934ee9c4c37c3ab6912a978cf1a0568d7085`
 
-Every checksum passes remotely and locally. The next metadata-only step selects the
-first 40 non-excluded connected groups per organ in workbook order and pins their
-public NCBI GEO series SOFT records (title, summary, design, PubMed, BioProject, and
-sample count). It forbids supplementary/SRA downloads and cannot accept a study.
+Every checksum passes remotely and locally.
+
+### Expanded GEO and exact-sample review
+
+The GEO series-level review was expanded to the first 40 non-excluded connected
+groups per organ: 200 organ/group rows and 226 pinned GEO series records. It reads
+only public series title, summary, design, PubMed, BioProject, and sample count; it
+does not request supplementary files, SRA objects, or expression.
+
+- implementation commit:
+  `a89e2e988e8e8e5467a56d16a85a5f173dd3dff6`
+- VM result:
+  `/media/volume/moe-reboot/results/stage1_k4_geo_review_a89e2e9`
+- local verified backup:
+  `backups/stage1_k4_geo_review_a89e2e9/`
+- selected-study review SHA256:
+  `19373eafa0e5d1fdf1127033a669c79232616adbe1d28fd26b6bd01c274cfc3b`
+- GEO-series metadata SHA256:
+  `9abf44b3a5f0d4511fd9636d2707a300f1206f7efa579a75a49f2c8ffa824edb`
+
+Manual reading of the pinned designs produced a provisional eight-group shortlist
+per organ. The review caught a likely cross-series donor reuse between adipose
+`GSE306796` and `GSE287627`; the latter was removed and replaced before sample
+resolution. This is evidence that GEO connected components alone do not establish
+donor independence.
+
+The exact metadata-only resolver completed at 2026-07-23 05:59:48 UTC. It binds the
+source hashes, requires post-v11 samples, rejects classifier-ineligible matches, and
+leaves all study, sample, donor, and near-duplicate decisions pending. It resolved:
+
+| Organ | Provisional studies | Provisional selector matches |
+| --- | ---: | ---: |
+| adipose | 8 | 61 |
+| brain | 8 | 126 |
+| liver | 8 | 49 |
+| skeletal muscle | 8 | 263 |
+| skin | 8 | 102 |
+
+These 601 rows are a review workload, not the final analysis size. Ambiguous cases
+such as technical/biological replicates, tissue regions, graft donors, and skin
+compartments are explicitly marked unresolved.
+
+- implementation commit:
+  `8e6d95b66d4ee26e2b226ee6ddab839e712b9e24`
+- shortlist SHA256:
+  `e7569661edbccc7d0ad075a184851b969c019b12067c19a1458012d7aa1de3f8`
+- VM result:
+  `/media/volume/moe-reboot/results/stage1_k4_external_sample_review_8e6d95b`
+- local verified backup:
+  `backups/stage1_k4_external_sample_review_8e6d95b/`
+- full checksum-manifest SHA256:
+  `da0ff1b8e5ae5e4d49e3699e176d88037467bfde41627d2fedfd549960feaca3`
+- provisional sample-review SHA256:
+  `4b5dead31111c8ae80c3d079d6ee73db4da45e6a61d7cc1a4233ae9fb4dcd3e8`
+- provisional study-review SHA256:
+  `9c6712ccc9772de39388dd846f446db2391eb809695924854739ccc5f5605fb5`
+
+All checksum entries pass on the VM and Mac. The report states
+`expression_values_read=false`, `efficacy_scoring_performed=false`, and
+`external_lockbox_frozen=false`.
 
 Quick verification commands:
 
@@ -174,14 +233,16 @@ ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182
    far above the preferred eight-series bar.
 2. **Automated eligibility failed:** preserve round 1 as the rule-development audit;
    do not treat its broad candidate pool as confirmation data.
-3. **Current gate — study-level curation:** the metadata-only workbook is complete.
-   Pin GEO series metadata for 40 candidate groups per organ, then review enough A and
-   B groups to retain at least eight verified independent studies per organ. Verify
-   GEO/publication, BioProject, Biosample, donor, assay, organism,
-   disease/perturbation, connected-group, and near-duplicate links.
-4. **Freeze before expression:** freeze exact ordered sample IDs, organ labels, group
-   IDs, gene mapping, random-control assignments, mask, power analysis, checkpoint and
-   router hashes, evaluator code, and mutually exclusive decision branches.
+3. **Current gate — exact sample/donor review:** verify every provisional study and
+   selected sample against GEO/publication/BioProject/Biosample evidence. Resolve
+   donor IDs, biological versus technical replicates, regions/compartments, and
+   cross-study near duplicates. Replace failures from the unused reviewed reserves;
+   do not inspect expression.
+4. **Preregister before freezing:** compute cluster-aware effective sample size and
+   power from the accepted metadata, then freeze exact ordered sample IDs, organ
+   labels, group IDs, gene mapping, random-control assignments, mask, power analysis,
+   checkpoint and router hashes, evaluator code, and mutually exclusive decision
+   branches.
 5. **One-time confirmation:** only then request expression, build the score cache once,
    and evaluate blind K4, true dispatch, pooled, pooled-residual, and all matched random
    controls. K5 and K4-total are not rescue candidates on that lockbox.
@@ -204,4 +265,6 @@ ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182
    external estimands and branches.
 3. `artifacts/stage1_k4_final_refit/protocol.json` — final-refit machine contract.
 4. `artifacts/stage1_k4_external_scout/protocol.json` — metadata-scout machine contract.
-5. `progress.md` — append-only historical chronology and older experiment detail.
+5. `artifacts/stage1_k4_external_scout/sample_review_shortlist.json` — provisional,
+   metadata-only sample selectors; not a frozen cohort.
+6. `progress.md` — append-only historical chronology and older experiment detail.
