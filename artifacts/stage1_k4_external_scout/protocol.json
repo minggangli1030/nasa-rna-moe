@@ -28,7 +28,9 @@
     "temporal_preference": "submission_date strictly after 2021-11-13",
     "minimum_connected_series_per_organ": 5,
     "preferred_connected_series_per_organ": 8,
-    "manual_review_rows_per_organ": 50
+    "manual_review_rows_per_organ": 50,
+    "automated_labels_are_triage_only": true,
+    "exact_cohort_requires_manual_study_and_sample_curation": true
   },
   "firewall": {
     "metadata_access_only": true,

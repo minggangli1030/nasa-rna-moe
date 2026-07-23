@@ -41,8 +41,16 @@ DEFAULT_MIN_SERIES = 30
 
 
 def _norm(text: str) -> str:
-    """Lowercase and collapse whitespace for whole-word matching."""
-    return re.sub(r"\s+", " ", str(text).replace("\t", " ")).strip().lower()
+    """Normalize metadata separators before whole-word matching.
+
+    ARCHS4 titles frequently encode tokens such as ``Human_GBM_RNA`` or
+    ``snRNA-seq_human`` with underscores.  Python treats underscores as word
+    characters, so leaving them intact defeats the word boundaries used by the
+    exclusion vocabulary.
+    """
+    text = str(text).replace("\t", " ")
+    text = re.sub(r"[_/]+", " ", text)
+    return re.sub(r"\s+", " ", text).strip().lower()
 
 
 def _word_regex(terms) -> re.Pattern:
@@ -69,15 +77,25 @@ def load_ontology(path: str | Path) -> dict:
         "adjacent_patterns": adjacent_patterns,
         "tumor": _word_regex(data.get("tumor_terms", [])) if data.get("tumor_terms") else None,
         "disease": _word_regex(data.get("disease_terms", [])) if data.get("disease_terms") else None,
-        "cell_source": _word_regex([re.escape(t) for t in data.get("cell_source_terms", [])]) if data.get("cell_source_terms") else None,
+        # Cell-source terms intentionally support regex fragments just like the
+        # disease/tumor lists (for example ``HEK[- ]?293``).
+        "cell_source": _word_regex(data.get("cell_source_terms", [])) if data.get("cell_source_terms") else None,
         "primary_cell": _word_regex([re.escape(t) for t in data.get("primary_cell_terms", [])]) if data.get("primary_cell_terms") else None,
+        "assay_mismatch": _word_regex(data.get("assay_mismatch_terms", [])) if data.get("assay_mismatch_terms") else None,
+        "nonhuman": _word_regex(data.get("nonhuman_terms", [])) if data.get("nonhuman_terms") else None,
     }
 
 
 def parse_characteristics(raw: str) -> dict:
-    """Split ARCHS4 ``characteristics_ch1`` into a lowercase key -> value dict."""
+    """Split ARCHS4 ``characteristics_ch1`` into a lowercase key -> value dict.
+
+    Both tab-separated and comma-separated key/value encodings occur in ARCHS4.
+    A comma is treated as a separator only when followed by another plausible
+    metadata key, so commas inside ordinary prose remain part of the value.
+    """
     fields: dict[str, str] = {}
-    for token in str(raw).split("\t"):
+    splitter = r"(?:\t|,(?=\s*[A-Za-z][A-Za-z0-9 _./()%+-]{0,60}:))"
+    for token in re.split(splitter, str(raw)):
         if ":" not in token:
             continue
         key, value = token.split(":", 1)
@@ -124,6 +142,12 @@ def classify_row(
             or any(k in kv for k in CELL_KEYS)
         ),
         "primary_cell": bool(ontology["primary_cell"] and ontology["primary_cell"].search(combined)),
+        "assay_mismatch": bool(
+            ontology["assay_mismatch"] and ontology["assay_mismatch"].search(combined)
+        ),
+        "nonhuman": bool(
+            ontology["nonhuman"] and ontology["nonhuman"].search(combined)
+        ),
         "single_cell": bool(
             single_cell_probability is not None
             and not (isinstance(single_cell_probability, float) and np.isnan(single_cell_probability))
@@ -167,7 +191,15 @@ def classify_row(
             reasons.append("cross_field_conflict")
         if evidence == "title_only":
             reasons.append("weak_title_only_evidence")
-        for name in ("cell_source", "single_cell", "tumor", "primary_cell", "disease"):
+        for name in (
+            "cell_source",
+            "single_cell",
+            "assay_mismatch",
+            "nonhuman",
+            "tumor",
+            "primary_cell",
+            "disease",
+        ):
             if flags[name]:
                 reasons.append(name if name != "disease" else "disease_nontumor")
         if adjacent_hits:
@@ -189,6 +221,8 @@ def classify_row(
         "flag_disease": flags["disease"],
         "flag_cell_source": flags["cell_source"],
         "flag_primary_cell": flags["primary_cell"],
+        "flag_assay_mismatch": flags["assay_mismatch"],
+        "flag_nonhuman": flags["nonhuman"],
         "flag_single_cell": flags["single_cell"],
         "review_reason": reasons[0] if reasons else "",
         "all_reasons": ";".join(reasons),
@@ -255,7 +289,8 @@ def recover(args) -> dict:
         "geo_accession", "series_id", "organ", "review_reason", "all_reasons",
         "evidence", "all_matched_organs", "tissue_value", "adjacent_organs",
         "flag_tumor", "flag_disease", "flag_cell_source", "flag_primary_cell",
-        "flag_single_cell", "source_name_ch1", "title", "characteristics_ch1",
+        "flag_assay_mismatch", "flag_nonhuman", "flag_single_cell",
+        "source_name_ch1", "title", "characteristics_ch1",
     ]
     if sheet_parts:
         sheet = pd.concat(sheet_parts).sort_values(["organ_key", "review_reason", "geo_accession"])

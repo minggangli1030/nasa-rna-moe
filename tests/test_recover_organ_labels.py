@@ -41,6 +41,18 @@ def test_parse_characteristics_first_key_wins_and_skips_bad_tokens():
     assert "no_colon_here" not in kv
 
 
+def test_parse_characteristics_splits_archs4_comma_encoding():
+    kv = rol.parse_characteristics(
+        "tissue: liver,disease state: normal,age: 55,description: left, lateral"
+    )
+    assert kv == {
+        "tissue": "liver",
+        "disease state": "normal",
+        "age": "55",
+        "description": "left, lateral",
+    }
+
+
 def test_characteristics_tissue_is_high_confidence(ontology):
     r = classify(ontology, source="patient 12", characteristics="tissue: liver\tage: 40")
     assert r["organ"] == "liver"
@@ -119,6 +131,39 @@ def test_disease_nontumor_routes_to_ambiguous(ontology):
     assert r["flag_tumor"] is False
     assert r["tier"] == "ambiguous"
     assert "disease_nontumor" in r["all_reasons"]
+
+
+@pytest.mark.parametrize(
+    ("source", "title", "characteristics", "expected_flag"),
+    [
+        ("brain", "Human_GBM_RNA", "tissue: brain", "flag_tumor"),
+        (
+            "adipose-derived mesenchymal stem cells",
+            "control",
+            "tissue: adipose-derived mesenchymal stem cells",
+            "flag_cell_source",
+        ),
+        ("liver", "snRNA-seq_human_healthy_rep1", "tissue: liver", "flag_assay_mismatch"),
+        ("liver", "mice wt rep1", "tissue: liver,strain: C57/BL", "flag_nonhuman"),
+        (
+            "skin",
+            "control",
+            "tissue: skin,disease: thyroid-associated ophthalmopathy",
+            "flag_disease",
+        ),
+    ],
+)
+def test_round1_review_failure_modes_are_excluded(
+    ontology, source, title, characteristics, expected_flag
+):
+    result = classify(
+        ontology,
+        source=source,
+        title=title,
+        characteristics=characteristics,
+    )
+    assert result[expected_flag] is True
+    assert result["tier"] == "ambiguous"
 
 
 def test_recover_end_to_end(tmp_path, ontology):

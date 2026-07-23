@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-22 21:44 PDT / 2026-07-23 04:44 UTC
+**Updated:** 2026-07-22 22:13 PDT / 2026-07-23 05:13 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -17,6 +17,10 @@ Read this file first. It is the compact operational and scientific handoff. Use
   opened or scored.
 - The metadata-only external-cohort feasibility scout completed successfully and
   found ample candidate study coverage for every target organ.
+- The first 250-row metadata review **failed the automated eligibility gate**:
+  nominal high-confidence labels still included cell models, non-bulk assays,
+  diseased/tumor tissue, nonhuman samples, and active interventions. No cohort has
+  been frozen.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis and K4-EPE is the frozen development candidate. It is
@@ -117,6 +121,29 @@ score.
 Scout report SHA256:
 `68ea1bdabb57c63ecea5d8636873e628db606c59b76bd75a94462b216a737786`.
 
+### Round-1 review outcome and repair
+
+Manual inspection showed that the generic organ-label classifier is not precise enough
+to select an external cohort. Representative failures included adipose-derived stem
+cells, HepG2/stellate/immune cells, Ribo-seq and single-nucleus/spatial assays, mouse
+liver, tumor-adjacent tissue, and disease or treatment cohorts whose abbreviations
+escaped the original vocabulary. After expanding the parser and exclusion vocabulary,
+110 of the 250 nominally eligible round-1 rows are now conservatively downgraded:
+adipose 20/50, brain 24/50, liver 30/50, skeletal muscle 9/50, and skin 27/50.
+These are triage counts, not an efficacy result or a final precision estimate.
+
+The repair therefore does not try to prove that another regex list is a curator.
+`evaluation/build_stage1_k4_external_curation.py` builds a connected-study workbook
+with positive healthy/control markers, conservative exclusion/context flags, GEO
+links, and explicit blank review fields. Automated A/B/excluded values only prioritize
+manual work and can never accept a study or freeze a sample.
+
+Full-pool preflight produced 466 organ-by-connected-study rows (457 unique connected
+groups). Strict all-sample priority-A counts are adipose 2, brain 8, liver 12,
+skeletal muscle 4, and skin 10; the remaining viable groups are priority B and require
+manual review. This confirms that broad feasibility remains, while also showing why
+study-level curation—not automatic label recovery—is the current bottleneck.
+
 Quick verification commands:
 
 ```bash
@@ -128,14 +155,16 @@ ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182
 
 1. **Feasibility passed:** every organ has 44–115 temporally new connected series,
    far above the preferred eight-series bar.
-2. **Current gate — manual metadata review:** review the deterministic 50-row sheet
-   per organ and audit publication, BioProject, Biosample, donor, accession,
-   connected-group, disease/perturbation, and near-duplicate links. Repair label rules
-   from metadata only if needed, then rerun the same scout without expression access.
-3. **Freeze before expression:** freeze exact ordered sample IDs, organ labels, group
+2. **Automated eligibility failed:** preserve round 1 as the rule-development audit;
+   do not treat its broad candidate pool as confirmation data.
+3. **Current gate — study-level curation:** generate the metadata-only workbook, then
+   review enough A and B groups to retain at least eight verified independent studies
+   per organ. Verify GEO/publication, BioProject, Biosample, donor, assay, organism,
+   disease/perturbation, connected-group, and near-duplicate links.
+4. **Freeze before expression:** freeze exact ordered sample IDs, organ labels, group
    IDs, gene mapping, random-control assignments, mask, power analysis, checkpoint and
    router hashes, evaluator code, and mutually exclusive decision branches.
-4. **One-time confirmation:** only then request expression, build the score cache once,
+5. **One-time confirmation:** only then request expression, build the score cache once,
    and evaluate blind K4, true dispatch, pooled, pooled-residual, and all matched random
    controls. K5 and K4-total are not rescue candidates on that lockbox.
 

@@ -71,10 +71,21 @@ def _strictly_after(values: pd.Series, cutoff: str) -> pd.Series:
     return dates > threshold
 
 
-def _manual_review_sheet(candidates: pd.DataFrame, per_organ: int) -> pd.DataFrame:
+def _manual_review_sheet(
+    candidates: pd.DataFrame,
+    per_organ: int,
+    excluded_series_tokens: set[str] | None = None,
+) -> pd.DataFrame:
+    excluded_series_tokens = excluded_series_tokens or set()
+    series_is_held_out = candidates["series_id"].map(
+        lambda value: not bool(_series_tokens(value) & excluded_series_tokens)
+    )
     parts = []
     for organ in TARGET_ORGANS:
-        subset = candidates[candidates["organ"] == organ].sort_values(
+        subset = candidates[
+            (candidates["organ"] == organ)
+            & series_is_held_out
+        ].sort_values(
             ["series_group_id", "sample_id"]
         )
         if subset.empty:
@@ -129,6 +140,32 @@ def build_scout(args: argparse.Namespace) -> dict:
 
     ontology = load_ontology(args.ontology)
     ontology_hash = hashlib.sha256(Path(args.ontology).read_bytes()).hexdigest()
+    prior_review_path_value = getattr(args, "prior_review", None)
+    expected_prior_review_sha256 = getattr(
+        args, "expected_prior_review_sha256", None
+    )
+    prior_review_path = (
+        Path(prior_review_path_value) if prior_review_path_value else None
+    )
+    prior_review_sha256 = None
+    excluded_review_series_tokens: set[str] = set()
+    if prior_review_path is not None:
+        if not expected_prior_review_sha256:
+            raise ValueError("prior review requires its expected SHA256")
+        prior_review_sha256 = hashlib.sha256(prior_review_path.read_bytes()).hexdigest()
+        if prior_review_sha256 != expected_prior_review_sha256:
+            raise ValueError("prior manual-review sheet hash mismatch")
+        prior_review = pd.read_csv(prior_review_path)
+        required_prior_columns = {
+            "organ", "sample_id", "series_id", "series_group_id"
+        }
+        missing_prior = sorted(required_prior_columns - set(prior_review.columns))
+        if missing_prior:
+            raise KeyError(
+                f"prior manual-review sheet is missing fields: {missing_prior}"
+            )
+        for value in prior_review["series_id"].astype(str):
+            excluded_review_series_tokens.update(_series_tokens(value))
     parquet = pq.ParquetFile(current_path)
     missing = sorted(set(CURRENT_COLUMNS) - set(parquet.schema.names))
     if missing:
@@ -237,7 +274,22 @@ def build_scout(args: argparse.Namespace) -> dict:
             ),
         })
     summary = pd.DataFrame(summary_rows)
-    review = _manual_review_sheet(candidates, args.manual_review_per_organ)
+    review = _manual_review_sheet(
+        candidates,
+        args.manual_review_per_organ,
+        excluded_review_series_tokens,
+    )
+    review_counts = review.groupby("organ").size().to_dict()
+    incomplete_review_organs = [
+        organ
+        for organ in TARGET_ORGANS
+        if review_counts.get(organ, 0) != args.manual_review_per_organ
+    ]
+    if prior_review_path is not None and incomplete_review_organs:
+        raise ValueError(
+            "manual-review sheet lacks the requested held-out rows for: "
+            + ", ".join(incomplete_review_organs)
+        )
 
     output_dir = Path(args.output_dir)
     if output_dir.exists():
@@ -272,6 +324,15 @@ def build_scout(args: argparse.Namespace) -> dict:
         "temporal_cutoff": args.temporal_cutoff,
         "exclusions": exclusions,
         "organ_summary": summary.to_dict("records"),
+        "manual_review": {
+            "round": 2 if prior_review_path is not None else 1,
+            "rows_per_organ": int(args.manual_review_per_organ),
+            "excluded_prior_series_tokens": int(
+                len(excluded_review_series_tokens)
+            ),
+            "prior_review_sha256": prior_review_sha256,
+            "held_out_from_prior_review": bool(prior_review_path is not None),
+        },
         "hashes": {
             "protocol_sha256": hashlib.sha256(protocol_path.read_bytes()).hexdigest(),
             "current_metadata_parquet_sha256": hashlib.sha256(
@@ -313,6 +374,14 @@ def main() -> None:
     parser.add_argument("--single-cell-threshold", type=float, default=0.5)
     parser.add_argument("--temporal-cutoff", default="2021-11-13")
     parser.add_argument("--manual-review-per-organ", type=int, default=50)
+    parser.add_argument(
+        "--prior-review",
+        help=(
+            "Optional prior manual-review CSV. Its connected series groups are "
+            "excluded from the new review sheet, not from the candidate pool."
+        ),
+    )
+    parser.add_argument("--expected-prior-review-sha256")
     args = parser.parse_args()
     report = build_scout(args)
     print(json.dumps(report, indent=2, sort_keys=True))

@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-22 21:44 PDT / 2026-07-23 04:44 UTC
+**Last updated:** 2026-07-22 22:13 PDT / 2026-07-23 05:13 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -31,6 +31,33 @@ passes at both locations. The current gate is manual metadata label/leakage revi
 followed by freezing exact sample IDs and the full evaluation contract before any
 expression request. These counts establish feasibility only, not evidence that K4 or
 organ specialization works externally.
+
+### Manual gate audit: broad feasibility passed, automated eligibility failed
+
+Inspection of all 250 deterministic review rows found that the nominal
+`high_confidence` tier was still admitting cell models, cellular fractions,
+single-cell/single-nucleus/spatial and Ribo-seq assays, nonhuman records, diseased or
+tumor-adjacent tissue, and treated samples hidden behind uncontrolled abbreviations.
+Examples included adipose-derived mesenchymal stem cells, HepG2 and hepatic stellate
+cells, mouse liver, Human_GBM_RNA, MAIT cells, Visium, and ribosome-protected RNA.
+This is a metadata-selection failure; no expression or model score was accessed.
+
+The parser now handles ARCHS4's comma-separated key/value representation and
+underscore-delimited titles, and the ontology has conservative cell-source,
+assay-mismatch, nonhuman, tumor, and disease exclusions. Focused classifier/scout/
+curation tests pass 25/25. With the revised rules, 110/250 round-1 rows are
+conservatively downgraded (20 adipose, 24 brain, 30 liver, 9 skeletal muscle, and
+27 skin).
+
+Because a growing blacklist cannot establish cohort validity, the workflow has been
+changed from automatic acceptance to connected-study triage. The new metadata-only
+curation workbook exposes positive reference markers, exclusion and context flags,
+cross-organ connected groups, GEO links, and explicit manual review fields. Its
+automated priorities are never final. A full-pool preflight retains 457 unique
+connected groups and yields strict all-sample priority-A group counts of 2 adipose,
+8 brain, 12 liver, 4 skeletal muscle, and 10 skin; priority-B groups remain available
+for manual curation. The next action is to deploy this workbook generator and manually
+verify at least eight independent studies per organ before freezing any sample IDs.
 
 ## Historical chronology — not the current handoff
 

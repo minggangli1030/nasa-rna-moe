@@ -10,7 +10,12 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "evaluation"))
 
-from build_stage1_k4_external_scout import build_scout, sha256_lines, sha256_pairs
+from build_stage1_k4_external_scout import (
+    _manual_review_sheet,
+    build_scout,
+    sha256_lines,
+    sha256_pairs,
+)
 
 
 def test_external_scout_excludes_historical_samples_and_series(tmp_path):
@@ -74,3 +79,40 @@ def test_external_scout_excludes_historical_samples_and_series(tmp_path):
     assert report["exclusions"]["historical_series"] == 1
     assert report["expression_values_read"] is False
     assert report["external_lockbox_frozen"] is False
+
+
+def test_review_round_two_excludes_prior_connected_series():
+    candidates = pd.DataFrame({
+        "organ": ["brain"] * 4 + ["liver"] * 4,
+        "series_group_id": [
+            "GSE1", "GSE2", "GSE3", "GSE4",
+            "GSE5", "GSE6", "GSE7", "GSE8",
+        ],
+        "series_id": [
+            "GSE1", "GSE2", "GSE3", "GSE4",
+            "GSE5", "GSE6", "GSE7", "GSE8",
+        ],
+        "sample_id": [f"GSM{i}" for i in range(1, 9)],
+    })
+    review = _manual_review_sheet(
+        candidates,
+        per_organ=2,
+        excluded_series_tokens={"GSE1", "GSE5"},
+    )
+    assert review.groupby("organ").size().to_dict() == {"brain": 2, "liver": 2}
+    assert set(review["series_group_id"]).isdisjoint({"GSE1", "GSE5"})
+
+
+def test_review_exclusion_survives_connected_group_shrinkage():
+    candidates = pd.DataFrame({
+        "organ": ["brain", "brain"],
+        "series_group_id": ["GSE2|GSE3", "GSE4"],
+        "series_id": ["GSE2 GSE3", "GSE4"],
+        "sample_id": ["GSM2", "GSM4"],
+    })
+    review = _manual_review_sheet(
+        candidates,
+        per_organ=5,
+        excluded_series_tokens={"GSE1", "GSE2"},
+    )
+    assert review["sample_id"].tolist() == ["GSM4"]

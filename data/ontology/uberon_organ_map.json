@@ -90,25 +90,65 @@
     "tumou?r", "tumou?rs", "cancer", "cancers", "cancerous", "carcinoma",
     "adenocarcinoma", "sarcoma", "melanoma", "leukemia", "leukaemia", "lymphoma",
     "metastatic", "metastasis", "metastases", "neoplasm", "neoplastic",
-    "glioblastoma", "glioma", "GBM", "HCC", "malignant", "oncogenic"
+    "glioblastoma", "glioma", "GBM", "LGG", "HCC", "ICC", "cSCC", "BCC",
+    "FLC", "CRC", "ependymoma", "hepatoblastoma", "metastase", "metastases",
+    "medulloblastoma", "hepatocarcinoma", "cholangiocarcinoma",
+    "hepatocellular adenoma", "IDH1 mutation", "craniopharyngioma", "ACP",
+    "paracancerous", "adjacent normal", "normal liver adjacent", "tag: margin",
+    "recurrence", "malignant", "oncogenic"
   ],
   "disease_terms": [
     "fibrosis", "fibrotic", "cirrhosis", "cirrhotic", "steatosis", "NASH", "NAFLD",
     "inflammation", "inflamed", "colitis", "crohn", "ulcerative", "psoriasis",
     "dermatitis", "asthma", "COPD", "emphysema", "infarction", "ischemi",
     "diabetic", "hepatitis", "nephropathy", "atrophy", "lesion", "diseased",
-    "atherosclero"
+    "atherosclero", "obese", "obesity", "prediabet", "diabetes", "T2D", "DM1",
+    "thyroid-associated ophthalmopathy", "ophthalmopathy", "TAO", "HFpEF",
+    "Cushing", "ROHHAD", "HIV", "epilepsy", "Alzheimer", "Parkinson",
+    "multiple system atrophy", "MSA", "stroke", "ZIKV", "microcephaly",
+    "astrovirus", "vasculitis", "cavernous malformation", "sarcopenia", "frail",
+    "FSHD", "DMD", "BMD", "Becker", "heart failure", "polyarteritis nodosa",
+    "Budd-Chiari", "MASLD", "MASH", "MAFLD", "AIH", "PBC", "HBV", "HCV",
+    "COVID", "infection", "infected", "cholestasis", "allograft", "transplant",
+    "explant", "perfusion", "rejection", "steatotic", "end stage",
+    "keloid", "scar", "scleroderma", "SSc", "eczema", "lupus", "sarcoidosis",
+    "condyloma", "wound", "ulcer", "epidermolysis bullosa", "RDEB",
+    "pustulosis", "alopecia", "dermatomyositis", "psoriatic", "sporiasis",
+    "ASD", "sepsis", "suicide", "major depression", "TLE", "lichen planus",
+    "irAE", "hidradenitis", "leishmanial", "GvHD", "Grover", "VEXAS",
+    "morphea", "actinic keratosis", "mycosis fungoides", "CPUO", "ichthyosis",
+    "Langerhans cell histiocytosis"
   ],
   "cell_source_terms": [
     "cell line", "cell-line", "cell_line", "cell culture", "cultured", "in vitro",
-    "organoid", "organoids", "xenograft", "iPSC", "induced pluripotent",
-    "embryonic stem", "ESC", "HeLa", "HEK[- ]?293", "MCF[- ]?7", "A549", "K562",
-    "Jurkat", "U[- ]?87", "HSAEpC", "immortalized", "immortalised", "spheroid"
+    "organoid", "organoids", "xenograft", "iPSCs?", "induced pluripotent",
+    "embryonic stem", "hESCs?", "ESC", "HeLa", "HepG2", "HEK[- ]?293",
+    "MCF[- ]?7", "A549", "K562",
+    "Jurkat", "U[- ]?87", "HSAEpC", "immortalized", "immortalised", "spheroid",
+    "stem cells?", "stromal cells?", "mesenchymal", "AD[- ]?MSCs?", "ADSC",
+    "MSC", "HBMEC", "HSMC", "mast cells?", "progenitor cells?",
+    "pericytes?", "microglia", "stellate cells?", "hepatocytes?", "myotubes?",
+    "fibroblasts?", "keratinocytes?", "melanocytes?", "MAIT cells?",
+    "T cells?", "neurons?", "non-neuron", "oligodendrocytes?", "astrocytes?",
+    "mononuclear phagocytes?", "CD45\\+", "FACS", "cell block",
+    "cell suspension", "emigrating cells?", "reconstituted human epidermis",
+    "differentiation stage", "differentiation day", "hepatic differentiation",
+    "undifferentiated", "whole blood", "tissue: blood"
   ],
   "primary_cell_terms": [
     "primary cells", "primary cell", "isolated cells", "sorted cells",
     "FACS-sorted", "purified cells", "dissociated cells", "single-cell suspension",
     "fibroblasts", "hepatocytes", "keratinocytes", "myotubes", "PBMC",
     "endothelial cells", "epithelial cells", "cell type"
+  ],
+  "assay_mismatch_terms": [
+    "scRNA[- ]?seq", "snRNA[- ]?seq", "single[- ]cell", "single[- ]nucleus",
+    "spatial", "Visium", "DropSeq", "simulated reads", "10x genomics",
+    "10xspatial", "nuclei", "nucleus",
+    "Ribo[- ]?Seq", "ribosome-protected", "HTO", "cell hashing", "Evercode",
+    "cytoplasm fraction", "fraction: cytoplasm"
+  ],
+  "nonhuman_terms": [
+    "mouse", "mice", "murine", "rat", "NOD SCID", "C57(?:/| )BL"
   ]
 }
