@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-23 21:02 PDT / 2026-07-24 04:02 UTC
+**Last updated:** 2026-07-23 21:32 PDT / 2026-07-24 04:32 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,45 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-24 — GTEx-to-ARCHS4 reversal authorized and implementation started
+
+The completed ARCHS4-to-GTEx `full_external_pass` remains frozen evidence. The next
+Stage 1 extension reverses the direction: train a new organ-specialized family on
+cleaner donor-controlled GTEx, then evaluate once on staged, study-disjoint ARCHS4
+human cohorts. GTEx becomes development data for the new candidate and cannot
+externally validate it.
+
+The scientific and operational draft is
+`docs/gtex-to-archs4-training-plan.md`; the machine-readable draft is
+`artifacts/stage1_gtex_to_archs4/protocol_draft.json`. The primary family must be
+strictly GTEx-only, including its pooled trunk. A secondary practical sensitivity
+may reuse the existing ARCHS4 trunk and refit GTEx adapters, but it must be labeled
+ARCHS4-pretrained rather than a clean train/test reversal.
+
+An expression-blind inventory over the existing audited UBERON map provisionally
+selects K=8 using at least 250 exact-header GTEx donors and at least 500
+post-historical-firewall current-ARCHS4 high-confidence samples from 30 connected
+studies. The resulting organs are adipose, brain, colon, heart, liver, lung,
+skeletal muscle, and skin. GTEx contributes 261–842 donors per selected organ;
+the post-firewall ARCHS4 metadata contributes 601–2,291 samples across 34–77
+connected studies. These are automated metadata candidates, not a frozen ARCHS4
+lockbox. Kidney fails GTEx donor depth, placenta is absent from adult GTEx, and
+breast lacks the required independent ARCHS4 studies.
+
+The first implementation component,
+`evaluation/build_gtex_to_archs4_training_manifest.py`, creates global
+donor-disjoint GTEx train/calibration splits and three donor-atomic, organ-balanced
+random K controls without accepting expression. Its eight regression tests pass,
+including deterministic row-order invariance, complete organ/shard coverage, donor
+atomicity, and fail-closed protocol/hash/firewall checks.
+
+The planned ARCHS4 evaluation is a human-first ladder: core intact bulk tissue,
+non-diseased versus disease, tumor stress, and a separately supported
+spaceflight/space-analog stratum. Nested fine-tuning doses may use only frozen
+ARCHS4 development studies; the lockbox is never a fine-tuning source. Mouse is an
+optional ortholog-mapped sensitivity and may not be mixed into the primary human
+estimand.
 
 ## 2026-07-23 — GTEx V11 frozen external validation passed
 

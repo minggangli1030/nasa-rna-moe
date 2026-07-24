@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "protocol_name": "stage1_gtex_to_archs4_clean_to_heterogeneous_transfer",
+  "status": "draft_pending_reproducible_inventory_and_source_hashes",
+  "authorized_by_user": true,
+  "authorization": "Plan and implement GTEx organ-expert training, mechanical smoke tests, full training, staged ARCHS4 testing, and prospective ARCHS4 fine-tuning experiments.",
+  "relationship_to_prior_result": {
+    "completed_direction": "ARCHS4-trained frozen K4 evaluated once on GTEx V11",
+    "completed_decision": "full_external_pass",
+    "completed_result_summary": "artifacts/stage1_k4_gtex_evaluation/result_summary.json",
+    "preservation_rule": "The completed result remains unchanged. GTEx becomes development data only for candidates trained under this new protocol."
+  },
+  "primary_question": "Can donor-controlled organ supervision learned from GTEx improve masked reconstruction on heterogeneous, study-disjoint ARCHS4 human bulk RNA-seq?",
+  "organ_selection": {
+    "status": "provisional_metadata_only",
+    "ordered_candidate_organs": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "k": 8,
+    "ontology_scope": "existing audited UBERON organ map",
+    "minimum_gtex_header_present_donors": 250,
+    "minimum_post_firewall_archs4_samples": 500,
+    "minimum_post_firewall_archs4_connected_studies": 30,
+    "outcome_independent": true,
+    "change_allowed_before_freeze": "only a reproducible metadata, anatomy-review, overlap, or feasibility gate failure",
+    "change_forbidden_after_freeze": "any expression value, loss, prediction, effect, or model comparison"
+  },
+  "preliminary_inventory": {
+    "metadata_only": true,
+    "expression_values_read_for_selection": false,
+    "organs": {
+      "adipose": {
+        "gtex_samples": 1293,
+        "gtex_donors": 817,
+        "post_firewall_archs4_samples": 626,
+        "post_firewall_archs4_connected_studies": 34
+      },
+      "brain": {
+        "gtex_samples": 3030,
+        "gtex_donors": 385,
+        "post_firewall_archs4_samples": 1393,
+        "post_firewall_archs4_connected_studies": 57
+      },
+      "colon": {
+        "gtex_samples": 890,
+        "gtex_donors": 619,
+        "post_firewall_archs4_samples": 774,
+        "post_firewall_archs4_connected_studies": 48
+      },
+      "heart": {
+        "gtex_samples": 909,
+        "gtex_donors": 571,
+        "post_firewall_archs4_samples": 601,
+        "post_firewall_archs4_connected_studies": 46
+      },
+      "liver": {
+        "gtex_samples": 261,
+        "gtex_donors": 261,
+        "post_firewall_archs4_samples": 1072,
+        "post_firewall_archs4_connected_studies": 44
+      },
+      "lung": {
+        "gtex_samples": 601,
+        "gtex_donors": 601,
+        "post_firewall_archs4_samples": 1007,
+        "post_firewall_archs4_connected_studies": 50
+      },
+      "skeletal_muscle": {
+        "gtex_samples": 814,
+        "gtex_donors": 814,
+        "post_firewall_archs4_samples": 2277,
+        "post_firewall_archs4_connected_studies": 48
+      },
+      "skin": {
+        "gtex_samples": 1397,
+        "gtex_donors": 842,
+        "post_firewall_archs4_samples": 2291,
+        "post_firewall_archs4_connected_studies": 77
+      }
+    },
+    "excluded_near_threshold_examples": {
+      "kidney": "111 eligible GTEx donors, below 250",
+      "placenta": "not present in adult GTEx",
+      "breast": "18 post-firewall ARCHS4 connected studies, below 30"
+    },
+    "caution": "ARCHS4 counts are automated metadata candidates and require manual review before lockbox freeze."
+  },
+  "gtex_development": {
+    "release": "Adult GTEx V11",
+    "allowed_description": "nominally non-diseased adult human postmortem or organ-donor tissue",
+    "forbidden_description": "uniformly healthy living donors",
+    "required_analyte_type": "RNA:Total RNA",
+    "required_expression_batch_type": "TruSeq.v1",
+    "exclude_historical_entex_donors_globally": [
+      "GTEX-1LVAN",
+      "GTEX-1K2DA",
+      "GTEX-1LGRB",
+      "GTEX-1JKYN"
+    ],
+    "split_unit": "global donor across every organ and tissue site",
+    "split_algorithm": "SHA256 rank of split seed NUL donor ID",
+    "split_seed": 20260724,
+    "train_fraction": 0.8,
+    "calibration_fraction": 0.2,
+    "minimum_donors_per_organ_per_split": 20,
+    "random_partition_seeds": [
+      17,
+      42,
+      101
+    ],
+    "random_partition_rule": "donor-atomic deterministic greedy balancing of organ sample vectors across K shards"
+  },
+  "strict_model_family": {
+    "name": "gtex_only_k8",
+    "archs4_derived_weights_allowed": false,
+    "pooled_trunk": "ExpressionPerformer trained from random initialization on GTEx train donors",
+    "experts": "eight residual adapters trained on the frozen GTEx-only pooled trunk",
+    "random_controls": "three matched donor-atomic random K8 adapter banks",
+    "pooled_adapter_control": true,
+    "router": "target-hidden blind eight-class GTEx organ router",
+    "training_seeds": [
+      17,
+      42,
+      101
+    ],
+    "gene_count": 15448,
+    "normalization": "TPM then exactly one log1p transform",
+    "mask_ratio": 0.3,
+    "mask_token": -10.0
+  },
+  "transfer_sensitivity": {
+    "name": "archs4_pretrained_gtex_adapted",
+    "role": "secondary pragmatic transfer analysis",
+    "claim_limit": "not a strict GTEx-to-ARCHS4 reversal because the trunk contains ARCHS4 pretraining"
+  },
+  "archs4_stages": [
+    "human core intact bulk tissue",
+    "non-diseased versus disease",
+    "tumor versus non-tumor",
+    "spaceflight or space-analog versus matched ground or terrestrial control",
+    "nested ARCHS4 development-only fine-tuning exposure doses",
+    "optional separate ortholog-mapped mouse sensitivity"
+  ],
+  "fine_tuning": {
+    "lockbox_exposure_allowed": false,
+    "development_studies_must_be_frozen_first": true,
+    "nested_exposure_order_must_be_frozen_first": true,
+    "candidate_hashes_required_before_lockbox": true,
+    "required_baselines": [
+      "GTEx-only zero-exposure candidate",
+      "ARCHS4-only candidate",
+      "pooled model",
+      "organ K8",
+      "three random K8 controls"
+    ]
+  },
+  "smoke_gate": {
+    "mechanical_only": true,
+    "may_select_scientific_configuration": false,
+    "required_paths": [
+      "GTEx donor split",
+      "pooled trunk",
+      "organ bank",
+      "random banks",
+      "pooled adapter",
+      "target-hidden router",
+      "checkpoint round trip",
+      "score-cache schema"
+    ],
+    "archs4_expression_access_allowed": false
+  },
+  "firewalls": {
+    "gtex_is_external_evidence_for_new_candidate": false,
+    "archs4_lockbox_expression_access_before_candidate_freeze": false,
+    "archs4_lockbox_fine_tuning": false,
+    "mouse_mixed_into_primary_human_estimand": false,
+    "post_effect_organ_selection": false,
+    "post_effect_stratum_rescue": false,
+    "best_seed_selection": false
+  },
+  "remaining_before_protocol_freeze": [
+    "commit a reproducible GTEx/ARCHS4 organ-inventory report",
+    "freeze the expanded GTEx exact-header cohort and source hashes",
+    "freeze pooled architecture and update-budget selection limits",
+    "freeze target-hidden gene panel handling for the expanded cohort",
+    "freeze the ARCHS4 metadata-review and staged lockbox construction protocol",
+    "pass the synthetic mechanical smoke"
+  ]
+}

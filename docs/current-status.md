@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-23 21:02 PDT / 2026-07-24 04:02 UTC
+**Updated:** 2026-07-23 21:32 PDT / 2026-07-24 04:32 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -44,6 +44,17 @@ Read this file first. It is the compact operational and scientific handoff. Use
   cross-study confirmation. The 40-study ARCHS4 design remains the planned
   independent confirmation and may not be altered to rescue or amplify the GTEx
   result.
+- A prospective clean-to-heterogeneous extension is now authorized: train a new
+  GTEx-only pooled/organ/random/router family and evaluate frozen candidates on
+  staged, study-disjoint ARCHS4 cohorts. This preserves the completed result while
+  making GTEx development data for the new candidate.
+- The preliminary metadata-only intersection selects eight candidate organs:
+  adipose, brain, colon, heart, liver, lung, skeletal muscle, and skin. The exact
+  inventory and source hashes must be frozen before full training.
+- The plan and protocol draft are
+  `docs/gtex-to-archs4-training-plan.md` and
+  `artifacts/stage1_gtex_to_archs4/protocol_draft.json`. The donor-disjoint,
+  donor-atomic manifest builder is implemented and its eight focused tests pass.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis, K4-EPE is the frozen candidate, and its conditional
