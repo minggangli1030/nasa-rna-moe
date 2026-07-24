@@ -78,6 +78,9 @@ def freeze_header(args: argparse.Namespace) -> dict:
     counts = Path(args.counts_gct)
     source = protocol["source"]["counts_object"]
     verified = _verify_counts_object(counts, source)
+    expected_cohort_hash = protocol["source"].get("provisional_cohort_sha256")
+    if expected_cohort_hash and sha256_file(args.provisional_cohort) != expected_cohort_hash:
+        raise ValueError("provisional GTEx cohort differs from frozen protocol")
     cohort = pd.read_csv(args.provisional_cohort, keep_default_na=False)
     required = {"sample_id", "donor_id", "organ", "tissue_site"}
     missing = sorted(required - set(cohort.columns))
@@ -160,9 +163,19 @@ def extract(args: argparse.Namespace) -> dict:
     if header_report["counts_object_sha256"] != sha256_file(counts):
         raise ValueError("counts object differs from frozen header source")
     genes = [line.strip() for line in Path(args.genes).read_text().splitlines()]
+    expected_artifacts = protocol["model"].get("candidate_artifact_sha256", {})
+    if expected_artifacts.get("canonical_genes") and (
+        sha256_file(args.genes) != expected_artifacts["canonical_genes"]
+    ):
+        raise ValueError("canonical gene list differs from frozen protocol")
     if not genes or len(set(genes)) != len(genes):
         raise ValueError("canonical gene list is empty or duplicated")
     lengths = pd.read_csv(args.exon_lengths)
+    if protocol["expression"].get("exon_lengths_sha256") and (
+        sha256_file(args.exon_lengths)
+        != protocol["expression"]["exon_lengths_sha256"]
+    ):
+        raise ValueError("exon-length table differs from frozen protocol")
     if list(lengths.columns) != ["gene_symbol", "exon_length"]:
         raise ValueError("exon-length table columns changed")
     if lengths["gene_symbol"].duplicated().any():
@@ -237,6 +250,10 @@ def extract(args: argparse.Namespace) -> dict:
     with np.load(args.axis_definitions, allow_pickle=False) as definitions:
         score_indices = np.asarray(definitions["score_gene_indices"], dtype=np.int64)
         definition_genes = definitions["gene_names"].astype(str).tolist()
+    if expected_artifacts.get("axis_definitions") and (
+        sha256_file(args.axis_definitions) != expected_artifacts["axis_definitions"]
+    ):
+        raise ValueError("axis definitions differ from frozen protocol")
     if definition_genes != genes:
         raise ValueError("axis definitions and canonical gene list differ")
     missing_score = sorted(set(np.asarray(genes)[score_indices]) & set(missing_canonical))

@@ -63,6 +63,13 @@ def load_frozen_protocol(path: str | Path, expected_sha256: str | None = None) -
         raise ValueError("GTEx protocol organ order changed")
     if tuple(protocol.get("model", {}).get("training_seeds", ())) != SEEDS:
         raise ValueError("GTEx protocol training seeds changed")
+    source_hashes = protocol.get("implementation", {}).get("source_sha256", {})
+    if source_hashes:
+        root = Path(__file__).resolve().parents[1]
+        for relative, expected in source_hashes.items():
+            source = root / relative
+            if not source.is_file() or sha256_file(source) != expected:
+                raise ValueError(f"GTEx implementation source hash mismatch: {relative}")
     return protocol
 
 
