@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-23 21:32 PDT / 2026-07-24 04:32 UTC
+**Last updated:** 2026-07-23 22:05 PDT / 2026-07-24 05:05 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -18,29 +18,44 @@ cleaner donor-controlled GTEx, then evaluate once on staged, study-disjoint ARCH
 human cohorts. GTEx becomes development data for the new candidate and cannot
 externally validate it.
 
-The scientific and operational draft is
-`docs/gtex-to-archs4-training-plan.md`; the machine-readable draft is
-`artifacts/stage1_gtex_to_archs4/protocol_draft.json`. The primary family must be
+The scientific and operational plan is
+`docs/gtex-to-archs4-training-plan.md`; the frozen GTEx-development contract is
+`artifacts/stage1_gtex_to_archs4/protocol.json`. The primary family must be
 strictly GTEx-only, including its pooled trunk. A secondary practical sensitivity
 may reuse the existing ARCHS4 trunk and refit GTEx adapters, but it must be labeled
 ARCHS4-pretrained rather than a clean train/test reversal.
 
-An expression-blind inventory over the existing audited UBERON map provisionally
-selects K=8 using at least 250 exact-header GTEx donors and at least 500
+An expression-blind inventory over the existing audited UBERON map froze K=8 using
+at least 250 exact-header GTEx donors and at least 500
 post-historical-firewall current-ARCHS4 high-confidence samples from 30 connected
 studies. The resulting organs are adipose, brain, colon, heart, liver, lung,
 skeletal muscle, and skin. GTEx contributes 261–842 donors per selected organ;
 the post-firewall ARCHS4 metadata contributes 601–2,291 samples across 34–77
 connected studies. These are automated metadata candidates, not a frozen ARCHS4
 lockbox. Kidney fails GTEx donor depth, placenta is absent from adult GTEx, and
-breast lacks the required independent ARCHS4 studies.
+breast lacks the required independent ARCHS4 studies. The exact selected GTEx cohort
+contains 9,195 matrix-header-present samples from 938 donors. Cohort SHA256 is
+`12aa4b408ebcfdf9c0a372e4c2ca689ad95f39bf4f993f550f5cdb9b76c849fd`;
+the reproducible inventory SHA256 is
+`2a6f272716fc1acf391be47a1bbf60654857209813da40ab28feb729d1278d9e`.
 
-The first implementation component,
+The implementation now includes
 `evaluation/build_gtex_to_archs4_training_manifest.py`, creates global
 donor-disjoint GTEx train/calibration splits and three donor-atomic, organ-balanced
-random K controls without accepting expression. Its eight regression tests pass,
+random K controls without accepting expression. The separate
+`evaluation/extract_gtex_to_archs4_training_expression.py` binds the exact counts,
+cohort, GENCODE mappings, exon lengths, canonical genes, and target-hidden axis
+definitions, and emits unlogged canonical-universe TPM. The focused extraction,
+cohort, inventory, and manifest suite passes 22 tests,
 including deterministic row-order invariance, complete organ/shard coverage, donor
 atomicity, and fail-closed protocol/hash/firewall checks.
+
+The one allowed strict architecture is now frozen before GTEx expression fitting:
+the established 15,448-gene, 768-hidden, four-layer, eight-head ExpressionPerformer
+trained from random initialization for 7,350 fixed updates, followed by dimension-64
+organ/random/pooled-control adapters for 1,500 fixed updates. Calibration may select
+a checkpoint within the fixed pooled run but cannot change K, architecture, or
+budget. Seeds are 17, 42, and 101; best-seed selection is forbidden.
 
 The planned ARCHS4 evaluation is a human-first ladder: core intact bulk tissue,
 non-diseased versus disease, tumor stress, and a separately supported

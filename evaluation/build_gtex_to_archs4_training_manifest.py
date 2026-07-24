@@ -225,6 +225,10 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         raise ValueError("protocol does not close the ARCHS4 lockbox")
     if re.fullmatch(r"[0-9a-f]{40}", args.code_commit) is None:
         raise ValueError("manifest build requires a full Git commit")
+    axis_definitions_path = Path(args.axis_definitions)
+    expected_axis_hash = protocol["expression_contract"]["axis_definitions_sha256"]
+    if sha256_file(axis_definitions_path) != expected_axis_hash:
+        raise ValueError("axis definitions differ from frozen protocol")
 
     cohort_path = Path(args.sealed_cohort)
     expected_cohort_hash = protocol["gtex_development"]["sealed_cohort_sha256"]
@@ -311,7 +315,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     frame = (
         frame.assign(_split_order=split_order)
         .sort_values(
-            ["_split_order", "organ", "donor_id", "sample_id"],
+            ["_split_order", "sample_id"],
             kind="mergesort",
         )
         .drop(columns="_split_order")
@@ -340,6 +344,8 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         "protocol_sha256": sha256_file(protocol_path),
         "sealed_cohort_sha256": sha256_file(cohort_path),
         "manifest_sha256": sha256_file(manifest_path),
+        "partition_manifest_sha256": sha256_file(manifest_path),
+        "axis_definitions_sha256": sha256_file(axis_definitions_path),
         "sample_order_sha256": sha256_lines(output["sample_id"]),
         "train_donor_ids_sha256": sha256_lines(
             sorted(output.loc[output["split"].eq("train"), "donor_id"].unique())
@@ -366,6 +372,8 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     report = {
         "schema_version": 1,
         "status": "complete",
+        "test_accessed": False,
+        "external_data_accessed": False,
         "code_commit": args.code_commit,
         "metadata_only": True,
         "expression_values_read": False,
@@ -392,6 +400,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sealed-cohort", required=True)
+    parser.add_argument("--axis-definitions", required=True)
     parser.add_argument("--protocol", required=True)
     parser.add_argument("--expected-protocol-sha256", required=True)
     parser.add_argument("--code-commit", required=True)

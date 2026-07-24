@@ -1,0 +1,16 @@
+organ,gtex_samples,gtex_donors,post_firewall_archs4_samples,post_firewall_archs4_connected_studies,passes_gtex_donors,passes_archs4_samples,passes_archs4_studies,selected
+adipose,1293,817,626,34,True,True,True,True
+brain,3030,385,1393,57,True,True,True,True
+colon,890,619,774,48,True,True,True,True
+heart,909,571,601,46,True,True,True,True
+liver,261,261,1072,44,True,True,True,True
+lung,601,601,1007,50,True,True,True,True
+skeletal_muscle,814,814,2277,48,True,True,True,True
+skin,1397,842,2291,77,True,True,True,True
+breast,510,510,541,18,True,True,False,False
+kidney,115,111,1059,34,False,True,True,False
+ovary,192,192,78,14,False,False,False,False
+pancreas,358,358,213,20,True,False,False,False
+placenta,0,0,1399,36,False,True,True,False
+prostate,280,280,487,11,True,False,False,False
+testis,412,412,9,2,True,False,False,False

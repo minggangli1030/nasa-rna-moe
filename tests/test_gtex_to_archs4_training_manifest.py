@@ -70,6 +70,7 @@ def _protocol(cohort_path: Path, *, status: str = REQUIRED_STATUS) -> dict:
         "firewalls": {
             "archs4_lockbox_expression_access_before_candidate_freeze": False
         },
+        "expression_contract": {"axis_definitions_sha256": ""},
     }
 
 
@@ -77,13 +78,29 @@ def _fixture(tmp_path: Path, *, frame: pd.DataFrame | None = None) -> dict[str, 
     cohort_path = tmp_path / "sealed_cohort.parquet"
     (frame if frame is not None else _cohort()).to_parquet(cohort_path, index=False)
     protocol_path = tmp_path / "protocol.json"
-    _write_json(protocol_path, _protocol(cohort_path))
-    return {"cohort": cohort_path, "protocol": protocol_path}
+    axis_path = tmp_path / "axis_definitions.npz"
+    np.savez_compressed(
+        axis_path,
+        gene_names=np.asarray(["G1"]),
+        score_gene_indices=np.asarray([0], dtype=np.int64),
+        probe_gene_indices=np.asarray([], dtype=np.int64),
+    )
+    protocol = _protocol(cohort_path)
+    protocol["expression_contract"]["axis_definitions_sha256"] = sha256_file(
+        axis_path
+    )
+    _write_json(protocol_path, protocol)
+    return {
+        "cohort": cohort_path,
+        "protocol": protocol_path,
+        "axis_definitions": axis_path,
+    }
 
 
 def _args(fixture: dict[str, Path], output: Path) -> SimpleNamespace:
     return SimpleNamespace(
         sealed_cohort=str(fixture["cohort"]),
+        axis_definitions=str(fixture["axis_definitions"]),
         protocol=str(fixture["protocol"]),
         expected_protocol_sha256=sha256_file(fixture["protocol"]),
         code_commit="a" * 40,

@@ -1,7 +1,9 @@
 {
   "schema_version": 1,
   "protocol_name": "stage1_gtex_to_archs4_clean_to_heterogeneous_transfer",
-  "status": "draft_pending_reproducible_inventory_and_source_hashes",
+  "status": "frozen_gtex_to_archs4_development_contract",
+  "frozen_at_utc": "2026-07-24T05:00:00Z",
+  "phase_authorized": "GTEx expression extraction, donor-disjoint manifest construction, mechanical smoke, and GTEx-only candidate fitting; ARCHS4 expression remains sealed",
   "authorized_by_user": true,
   "authorization": "Plan and implement GTEx organ-expert training, mechanical smoke tests, full training, staged ARCHS4 testing, and prospective ARCHS4 fine-tuning experiments.",
   "relationship_to_prior_result": {
@@ -12,8 +14,8 @@
   },
   "primary_question": "Can donor-controlled organ supervision learned from GTEx improve masked reconstruction on heterogeneous, study-disjoint ARCHS4 human bulk RNA-seq?",
   "organ_selection": {
-    "status": "provisional_metadata_only",
-    "ordered_candidate_organs": [
+    "status": "frozen_metadata_only",
+    "ordered_organs": [
       "adipose",
       "brain",
       "colon",
@@ -29,6 +31,8 @@
     "minimum_post_firewall_archs4_samples": 500,
     "minimum_post_firewall_archs4_connected_studies": 30,
     "outcome_independent": true,
+    "selection_artifact": "artifacts/stage1_gtex_to_archs4/organ_inventory.csv",
+    "selection_artifact_sha256": "2a6f272716fc1acf391be47a1bbf60654857209813da40ab28feb729d1278d9e",
     "change_allowed_before_freeze": "only a reproducible metadata, anatomy-review, overlap, or feasibility gate failure",
     "change_forbidden_after_freeze": "any expression value, loss, prediction, effect, or model comparison"
   },
@@ -98,6 +102,11 @@
     "ontology_sha256": "42d31a298b81b14de3603c4259a68c1f142c2ff81c8b0ed45398dfb3a1e1b688",
     "label_recovery_source_sha256": "c68e8c383f843058bf26cc9985201b24e0fd9582c7d6d698749e112956016d9c",
     "temporal_cutoff": "2021-11-13",
+    "historical_accession_sha256": "784035aa00284f2a8c0c500a391f88d9c6986621c22dd7f622a06284d731eba0",
+    "recovered_labels_sha256": "eab95b80bda89d7798152eb93ed0944148c7fa872a13564c7927c9ce8fe9fbc5",
+    "recovery_report_sha256": "765929f235b731a347f6e27f14111b2cae4126cbf500423e08d18f2deff83410",
+    "organ_inventory_sha256": "2a6f272716fc1acf391be47a1bbf60654857209813da40ab28feb729d1278d9e",
+    "remote_inventory_report_sha256": "94cae93d1141dcdd33ca19ccbffb818391ff912330d2cabe03a7aa6dbe1d23df",
     "historical_firewall": "exclude every historical accession and every current row sharing any GEO series token with the historical v11 catalog"
   },
   "gtex_development": {
@@ -105,6 +114,14 @@
     "sample_attributes_sha256": "98c246b3855edf62cb050982a7ca50f3069d010624baea47ef84a9465900ca4b",
     "counts_object_sha256": "8b254fc3f58f2e749986887b42c1d65523986728e6eadd95924d907692351242",
     "counts_object_size": 1008045909,
+    "sealed_cohort_sha256": "12aa4b408ebcfdf9c0a372e4c2ca689ad95f39bf4f993f550f5cdb9b76c849fd",
+    "sealed_cohort_report_sha256": "29c9dce126fc0c58b4d4eb522dcd745acf9b966ff18dbc34d195adaf5c76c779",
+    "sealed_samples": 9195,
+    "sealed_donors": 938,
+    "sealed_sample_ids_sha256": "dbc9393b2b465529f58f3e1fea167761113e000c10cd17f3b1276373cf62728b",
+    "matrix_header_sample_ids_sha256": "254d8babdb704feb6f4e24ce98a8d53c97b3e7e730f9764b48dfc9d2c44dc80e",
+    "matrix_gene_rows": 74628,
+    "matrix_sample_columns": 19616,
     "allowed_description": "nominally non-diseased adult human postmortem or organ-donor tissue",
     "forbidden_description": "uniformly healthy living donors",
     "required_analyte_type": "RNA:Total RNA",
@@ -307,6 +324,41 @@
     "random_controls": "three matched donor-atomic random K8 adapter banks",
     "pooled_adapter_control": true,
     "router": "target-hidden blind eight-class GTEx organ router",
+    "architecture": {
+      "hidden_dim": 768,
+      "ffn_dim": 3072,
+      "num_heads": 8,
+      "num_layers": 4,
+      "ree_base": 100.0,
+      "feature_type": "sqr",
+      "compute_type": "iter",
+      "gradient_checkpointing": true
+    },
+    "pooled_training": {
+      "max_updates": 7350,
+      "batch_size": 8,
+      "validation_batch_size": 8,
+      "validation_interval": 50,
+      "learning_rate": 0.0002,
+      "weight_decay": 0.01,
+      "sampling_mode": "organ_balanced",
+      "optimizer": "AdamW",
+      "scheduler": "CosineAnnealingLR",
+      "checkpoint_policy": "minimum frozen-mask calibration MSE within the fixed 7350-update run; no capacity or budget search"
+    },
+    "adapter_training": {
+      "adapter_dim": 64,
+      "max_updates": 1500,
+      "batch_size": 8,
+      "validation_batch_size": 8,
+      "learning_rate": 0.001,
+      "weight_decay": 0.01,
+      "sampling_mode": "organ_sample_balanced",
+      "optimizer": "AdamW",
+      "scheduler": "CosineAnnealingLR",
+      "checkpoint_policy": "predetermined final update",
+      "matched_budget_rule": "organ, every random partition, and pooled-adapter controls receive the same scheduled update budget"
+    },
     "training_seeds": [
       17,
       42,
@@ -316,6 +368,57 @@
     "normalization": "TPM then exactly one log1p transform",
     "mask_ratio": 0.3,
     "mask_token": -10.0
+  },
+  "expression_contract": {
+    "input": "RNASeQC raw gene read counts in GCT 1.2",
+    "canonical_genes_sha256": "3332cb312000e426a866d669b3ba9b6206da50d70094fb5f9d30ef168e860dff",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "exon_lengths_sha256": "c272e5b8e23698bfb009fad019268897dd173f333dc437b7dd97d28894108609",
+    "gencode_gtf_sha256": {
+      "v47": "df11938c66d2b39f8ebbdb5f1720919321f9cf9d58f02b019753f6a24ca3db24",
+      "v49": "d6e6fe0515c95b2a8cd36a853c1989cee9115c736c60237c56ae92b9daaaf7c4"
+    },
+    "gene_mapping": "Strip the version suffix from GCT Name stable Ensembl gene IDs and map uniquely through the official GENCODE V49 gene record; use exact GCT Description only when the stable ID has no V49 record; aggregate all source rows reaching the same candidate symbol.",
+    "expected_structurally_absent_canonical_genes": [
+      "ABHD16B",
+      "CIDEB",
+      "DND1",
+      "EVA1B",
+      "FAM187A",
+      "FKBP2",
+      "GDF1",
+      "ICAM4",
+      "LRRC24",
+      "MIURF",
+      "MSMP",
+      "NPB",
+      "OVCA2",
+      "PGAM2",
+      "PTPRCAP",
+      "SERINC4",
+      "SFT2D3",
+      "SMIM10L3",
+      "SMIM46",
+      "TREX1",
+      "TSSK2",
+      "ZNF593"
+    ],
+    "externally_unavailable_score_genes": [
+      "ABHD16B",
+      "CIDEB",
+      "FAM187A",
+      "FKBP2",
+      "LRRC24",
+      "MSMP",
+      "PTPRCAP",
+      "SERINC4",
+      "TREX1",
+      "ZNF593"
+    ],
+    "missing_non_score_genes": "zero_fill",
+    "minimum_nonzero_length_mapped_genes": 14000,
+    "normalization": "aggregate mapped counts, divide by frozen exon length in kilobases, form TPM over the 15448 canonical genes, and apply log1p exactly once in model code",
+    "score_panel_rule": "Mask all 4634 original target-hidden score genes; retain zero-filled unavailable rows as masked model inputs and exclude the exact ten unavailable rows from external target metrics."
   },
   "transfer_sensitivity": {
     "name": "archs4_pretrained_gtex_adapted",
@@ -367,12 +470,18 @@
     "post_effect_stratum_rescue": false,
     "best_seed_selection": false
   },
-  "remaining_before_protocol_freeze": [
-    "commit a reproducible GTEx/ARCHS4 organ-inventory report",
-    "freeze the expanded GTEx exact-header cohort and source hashes",
-    "freeze pooled architecture and update-budget selection limits",
-    "freeze target-hidden gene panel handling for the expanded cohort",
-    "freeze the ARCHS4 metadata-review and staged lockbox construction protocol",
-    "pass the synthetic mechanical smoke"
+  "implementation_ledger": {
+    "cohort_builder_commit": "f23e981",
+    "inventory_audit_commit": "656ef70",
+    "source_protocol_draft_sha256": "c2f248c7b5e3ab3455bae28528cac02e794a0b53a431d6fdb9bfc865cf2c45c0",
+    "expression_values_read_during_organ_selection": false,
+    "archs4_expression_accessed": false
+  },
+  "remaining_before_archs4_lockbox_access": [
+    "pass the synthetic and tiny real-data mechanical smoke",
+    "complete GTEx-only pooled, organ, random, pooled-adapter, and router fitting",
+    "freeze candidate hashes and evaluator",
+    "complete manual ARCHS4 study/sample review",
+    "freeze ARCHS4 development/lockbox studies, strata, exposure doses, and decision gates"
   ]
 }

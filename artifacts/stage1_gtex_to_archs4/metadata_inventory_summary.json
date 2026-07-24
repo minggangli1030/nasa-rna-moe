@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "metadata_only": true,
+  "expression_values_read": false,
+  "archs4_expression_accessed": false,
+  "efficacy_scoring_performed": false,
+  "selected_organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "gtex": {
+    "samples": 9195,
+    "donors": 938,
+    "cohort_sha256": "12aa4b408ebcfdf9c0a372e4c2ca689ad95f39bf4f993f550f5cdb9b76c849fd",
+    "cohort_report_sha256": "29c9dce126fc0c58b4d4eb522dcd745acf9b966ff18dbc34d195adaf5c76c779",
+    "sample_ids_sha256": "dbc9393b2b465529f58f3e1fea167761113e000c10cd17f3b1276373cf62728b",
+    "matrix_header_sample_ids_sha256": "254d8babdb704feb6f4e24ce98a8d53c97b3e7e730f9764b48dfc9d2c44dc80e"
+  },
+  "archs4_metadata_firewall": {
+    "temporal_cutoff": "2021-11-13",
+    "historical_accessions": 441356,
+    "historical_series_tokens": 16797,
+    "post_firewall_high_confidence_samples": 13827,
+    "post_firewall_connected_studies": 520
+  },
+  "hashes": {
+    "organ_inventory_sha256": "2a6f272716fc1acf391be47a1bbf60654857209813da40ab28feb729d1278d9e",
+    "remote_inventory_report_sha256": "94cae93d1141dcdd33ca19ccbffb818391ff912330d2cabe03a7aa6dbe1d23df",
+    "current_archs4_metadata_sha256": "54d39e3e1b8ae5670a52c5f8b349dd82790566949ddd42facd2c21698bbf9a59",
+    "historical_archs4_metadata_sha256": "fdb139e3406300e66a88f72da6c70e16a9f1cbeffbbfd434f2d1c4fd63d82f08",
+    "recovered_labels_sha256": "eab95b80bda89d7798152eb93ed0944148c7fa872a13564c7927c9ce8fe9fbc5",
+    "ontology_sha256": "42d31a298b81b14de3603c4259a68c1f142c2ff81c8b0ed45398dfb3a1e1b688"
+  },
+  "next_gate": "GTEx extraction and mechanical training smoke; ARCHS4 expression remains sealed."
+}
