@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-23 22:05 PDT / 2026-07-24 05:05 UTC
+**Updated:** 2026-07-23 22:15 PDT / 2026-07-24 05:15 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -59,6 +59,13 @@ Read this file first. It is the compact operational and scientific handoff. Use
 - The K8 GTEx extractor and donor-disjoint, donor-atomic manifest builder are
   implemented. The focused extraction, cohort, inventory, and manifest suite passes
   22 tests. ARCHS4 expression remains sealed.
+- The exact manifest is complete: 7,369 samples/750 donors in training and 1,826
+  samples/188 donors in calibration, with zero donor crossover. A metric-free K8
+  router refit and a coverage-complete real-data smoke fixture are implemented; the
+  expanded focused suite passes 26 tests.
+- Full K8 GTEx TPM extraction is running persistently from clean detached commit
+  `529c0c3a8d651b935b5e8e5f23d916de196749fa` under
+  `/media/volume/moe-reboot/results/stage1_gtex_to_archs4_529c0c3`.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis, K4-EPE is the frozen candidate, and its conditional

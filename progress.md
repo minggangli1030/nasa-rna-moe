@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-23 22:05 PDT / 2026-07-24 05:05 UTC
+**Last updated:** 2026-07-23 22:15 PDT / 2026-07-24 05:15 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -63,6 +63,24 @@ spaceflight/space-analog stratum. Nested fine-tuning doses may use only frozen
 ARCHS4 development studies; the lockbox is never a fine-tuning source. Mouse is an
 optional ortholog-mapped sensitivity and may not be mixed into the primary human
 estimand.
+
+The frozen donor split has now been materialized without reading expression:
+7,369 samples from 750 donors are training rows and 1,826 samples from 188 donors
+are calibration rows, with zero donor crossover. All eight organs retain at least
+48 calibration donors. Three donor-atomic random K8 assignments are complete and
+balanced across organ, sample, and donor loads.
+
+Clean detached commit `529c0c3a8d651b935b5e8e5f23d916de196749fa` is deployed at
+`/media/volume/moe-reboot/worktrees/gtex-train-529c0c3`. Its manifest was reproduced
+on the GPU host and the checksum-bound K8 count-to-TPM extraction is running in
+tmux session `gtex_k8_extract_529c0c3` under
+`/media/volume/moe-reboot/results/stage1_gtex_to_archs4_529c0c3`. The operation reads
+only GTEx development expression; ARCHS4 expression remains sealed.
+
+A coverage-complete real-GTEx smoke-fixture builder, a metric-free generic K8 router
+refit, and the pooled/banks/router smoke workflow are implemented. Smoke artifacts
+are explicitly `mechanical_only`; no smoke loss may select K, capacity, update
+budget, or a seed. The expanded focused suite passes 26 tests.
 
 ## 2026-07-23 — GTEx V11 frozen external validation passed
 
