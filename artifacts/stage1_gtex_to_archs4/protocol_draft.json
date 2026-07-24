@@ -92,6 +92,14 @@
     },
     "caution": "ARCHS4 counts are automated metadata candidates and require manual review before lockbox freeze."
   },
+  "archs4_inventory_sources": {
+    "current_human_metadata_sha256": "54d39e3e1b8ae5670a52c5f8b349dd82790566949ddd42facd2c21698bbf9a59",
+    "historical_v11_metadata_sha256": "fdb139e3406300e66a88f72da6c70e16a9f1cbeffbbfd434f2d1c4fd63d82f08",
+    "ontology_sha256": "42d31a298b81b14de3603c4259a68c1f142c2ff81c8b0ed45398dfb3a1e1b688",
+    "label_recovery_source_sha256": "c68e8c383f843058bf26cc9985201b24e0fd9582c7d6d698749e112956016d9c",
+    "temporal_cutoff": "2021-11-13",
+    "historical_firewall": "exclude every historical accession and every current row sharing any GEO series token with the historical v11 catalog"
+  },
   "gtex_development": {
     "release": "Adult GTEx V11",
     "sample_attributes_sha256": "98c246b3855edf62cb050982a7ca50f3069d010624baea47ef84a9465900ca4b",
@@ -182,6 +190,112 @@
       "sites": [
         "Skin - Not Sun Exposed (Suprapubic)",
         "Skin - Sun Exposed (Lower leg)"
+      ]
+    }
+  },
+  "gtex_inventory_tissue_mapping": {
+    "adipose": {
+      "broad_tissue": "Adipose Tissue",
+      "sites": [
+        "Adipose - Subcutaneous",
+        "Adipose - Visceral (Omentum)"
+      ]
+    },
+    "brain": {
+      "broad_tissue": "Brain",
+      "sites": [
+        "Brain - Amygdala",
+        "Brain - Anterior cingulate cortex (BA24)",
+        "Brain - Caudate (basal ganglia)",
+        "Brain - Cerebellar Hemisphere",
+        "Brain - Cerebellum",
+        "Brain - Cortex",
+        "Brain - Frontal Cortex (BA9)",
+        "Brain - Hippocampus",
+        "Brain - Hypothalamus",
+        "Brain - Nucleus accumbens (basal ganglia)",
+        "Brain - Putamen (basal ganglia)",
+        "Brain - Substantia nigra"
+      ]
+    },
+    "breast": {
+      "broad_tissue": "Breast",
+      "sites": [
+        "Breast - Mammary Tissue"
+      ]
+    },
+    "colon": {
+      "broad_tissue": "Colon",
+      "sites": [
+        "Colon - Sigmoid",
+        "Colon - Transverse"
+      ]
+    },
+    "heart": {
+      "broad_tissue": "Heart",
+      "sites": [
+        "Heart - Atrial Appendage",
+        "Heart - Left Ventricle"
+      ]
+    },
+    "kidney": {
+      "broad_tissue": "Kidney",
+      "sites": [
+        "Kidney - Cortex",
+        "Kidney - Medulla"
+      ]
+    },
+    "liver": {
+      "broad_tissue": "Liver",
+      "sites": [
+        "Liver"
+      ]
+    },
+    "lung": {
+      "broad_tissue": "Lung",
+      "sites": [
+        "Lung"
+      ]
+    },
+    "ovary": {
+      "broad_tissue": "Ovary",
+      "sites": [
+        "Ovary"
+      ]
+    },
+    "pancreas": {
+      "broad_tissue": "Pancreas",
+      "sites": [
+        "Pancreas"
+      ]
+    },
+    "placenta": {
+      "broad_tissue": "Placenta",
+      "sites": []
+    },
+    "prostate": {
+      "broad_tissue": "Prostate",
+      "sites": [
+        "Prostate"
+      ]
+    },
+    "skeletal_muscle": {
+      "broad_tissue": "Muscle",
+      "sites": [
+        "Muscle - Skeletal"
+      ]
+    },
+    "skin": {
+      "broad_tissue": "Skin",
+      "sites": [
+        "Skin - Not Sun Exposed (Suprapubic)",
+        "Skin - Sun Exposed (Lower leg)"
+      ]
+    },
+    "testis": {
+      "broad_tissue": "Testis",
+      "sites": [
+        "Testis"
       ]
     }
   },

@@ -67,7 +67,10 @@ def _read_header(path: Path) -> tuple[int, int, list[str]]:
 
 
 def _site_lookup(
-    organs: tuple[str, ...], mapping: dict[str, Any]
+    organs: tuple[str, ...],
+    mapping: dict[str, Any],
+    *,
+    allow_empty_sites: bool = False,
 ) -> tuple[dict[str, str], dict[str, str]]:
     if tuple(mapping) != organs:
         raise ValueError("GTEx tissue mapping order differs from organ order")
@@ -77,7 +80,11 @@ def _site_lookup(
         spec = mapping[organ]
         broad = str(spec["broad_tissue"])
         sites = [str(value) for value in spec["sites"]]
-        if not broad or not sites or len(set(sites)) != len(sites):
+        if (
+            not broad
+            or (not sites and not allow_empty_sites)
+            or len(set(sites)) != len(sites)
+        ):
             raise ValueError(f"invalid GTEx tissue mapping for {organ}")
         expected_broad[organ] = broad
         for site in sites:
@@ -134,6 +141,55 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     site_to_organ, expected_broad = _site_lookup(
         organs, protocol["gtex_tissue_mapping"]
     )
+    inventory_mapping = protocol.get(
+        "gtex_inventory_tissue_mapping", protocol["gtex_tissue_mapping"]
+    )
+    inventory_organs = tuple(inventory_mapping)
+    inventory_site_to_organ, inventory_expected_broad = _site_lookup(
+        inventory_organs,
+        inventory_mapping,
+        allow_empty_sites=True,
+    )
+    inventory = attributes[
+        attributes["SAMPID"].isin(header_index)
+        & attributes["SAMPID"].str.startswith("GTEX-")
+        & attributes["ANALYTE_TYPE"].eq(development["required_analyte_type"])
+        & attributes["SMGEBTCHT"].eq(
+            development["required_expression_batch_type"]
+        )
+        & attributes["SMTSD"].isin(inventory_site_to_organ)
+    ].copy()
+    inventory["organ"] = inventory["SMTSD"].map(inventory_site_to_organ)
+    inventory_mismatch = inventory[
+        inventory.apply(
+            lambda row: row["SMTS"]
+            != inventory_expected_broad[str(row["organ"])],
+            axis=1,
+        )
+    ]
+    if not inventory_mismatch.empty:
+        raise ValueError("GTEx inventory tissue has an unexpected broad tissue")
+    inventory_donors = []
+    for sample_id in inventory["SAMPID"].astype(str):
+        match = SAMPLE_RE.fullmatch(sample_id)
+        if match is None:
+            raise ValueError(f"unexpected GTEx inventory sample ID: {sample_id}")
+        inventory_donors.append(match.group("donor"))
+    inventory["donor_id"] = inventory_donors
+    excluded_donors = set(
+        str(value) for value in development["exclude_historical_entex_donors_globally"]
+    )
+    inventory = inventory.loc[
+        ~inventory["donor_id"].isin(excluded_donors)
+    ].copy()
+    inventory_counts = {}
+    for organ in inventory_organs:
+        subset = inventory[inventory["organ"].eq(organ)]
+        inventory_counts[organ] = {
+            "samples": int(len(subset)),
+            "donors": int(subset["donor_id"].nunique()),
+        }
+
     selected = attributes[
         attributes["SAMPID"].isin(header_index)
         & attributes["SAMPID"].str.startswith("GTEX-")
@@ -161,9 +217,6 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             raise ValueError(f"unexpected GTEx sample ID: {sample_id}")
         donors.append(match.group("donor"))
     selected["donor_id"] = donors
-    excluded_donors = set(
-        str(value) for value in development["exclude_historical_entex_donors_globally"]
-    )
     overlap_mask = selected["donor_id"].isin(excluded_donors)
     observed_overlap = set(selected.loc[overlap_mask, "donor_id"])
     missing_overlap = sorted(excluded_donors - observed_overlap)
@@ -244,6 +297,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         "donors": int(cohort["donor_id"].nunique()),
         "organ_order": list(organs),
         "by_organ": counts,
+        "inventory_by_organ": inventory_counts,
         "excluded_historical_entex_donors": sorted(excluded_donors),
         "gct_dimensions": {
             "gene_rows": int(gene_rows),
