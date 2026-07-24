@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-23 10:22 PDT / 2026-07-23 17:22 UTC
+**Last updated:** 2026-07-23 21:02 PDT / 2026-07-24 04:02 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,65 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-23 — GTEx V11 frozen external validation passed
+
+The mentor-directed GTEx analysis is complete. It was executed once from clean
+detached implementation commit `6cc8095431bf422926496a6c1dfea3b6cdeb9eb3`
+under the checksum-frozen protocol
+`artifacts/stage1_k4_gtex_evaluation/protocol.json` (SHA256
+`295a38f70ded3059ccce4a4308978921ace76d00ee72608b84042483c141115c`).
+No external target was used for fitting, checkpoint selection, cohort rescue, or
+protocol changes after scoring.
+
+The exact GTEx V11 RNASeQC header reduced the metadata-provisional 7,845 rows to
+6,795 official `RNASEQ` samples from 930 donors after the historical four-donor
+EN-TEx exclusion. The sealed counts are adipose 1,293/817 samples/donors, brain
+3,030/385, liver 261/261, skeletal muscle 814/814, and skin 1,397/842. The
+sealed-cohort SHA256 is
+`a0b070354a15b89cf174079326283b6492bb189995fdbc82be550dce5afd0246`.
+GENCODE stable-ID reconciliation recovered renamed symbols across the development
+and GTEx releases. Ten structurally unavailable frozen targets were excluded from
+metrics, leaving 4,624 scored genes while all original 4,634 targets remained
+masked for both router and models.
+
+The primary equal-organ, donor-balanced estimand averaged the three prespecified
+training seeds within sample, tissue sites within donor and organ, donors within
+organ, then the five organs equally. Paired global-donor bootstrap uncertainty used
+10,000 draws and preserved cross-organ donor correlation. Results:
+
+| Condition | MSE | Reduction vs pooled | 95% CI |
+| --- | ---: | ---: | ---: |
+| pooled | 0.955366 | — | — |
+| true K4 | 0.923828 | 3.301% | 3.262%–3.341% |
+| target-hidden blind K4 | 0.925205 | 3.157% | 3.113%–3.202% |
+
+Both primary one-sided bootstrap p-values are `0.00009999`. Blind routing also
+improved residual Pearson by `0.009614` (95% CI `0.009220`–`0.010003`), achieved
+98.03% organ accuracy, and recovered 95.63% of the true-routing gain. All three
+training seeds were positive. True-K4 organ effects were nonnegative for every
+active specialist: brain 1.84%, liver 4.34%, skeletal muscle 4.78%, and skin 5.56%.
+Every frozen gate passed, including true and blind comparisons against all matched
+random controls, the pooled residual-adapter control, seed stability, router
+recovery, and active-organ safety. The prespecified decision is
+`full_external_pass`.
+
+The evaluation remains secondary donor-controlled domain-shift evidence. GTEx is
+one harmonized STAR/RNASeQC consortium collected postmortem or from organ donors;
+it is not multisource cross-study confirmation and not evidence from clinically
+healthy living donors. The 40-study ARCHS4 design remains the independent
+multisource confirmation path and must not be retrofitted to rescue or amplify this
+result.
+
+Canonical tracked summary:
+`artifacts/stage1_k4_gtex_evaluation/result_summary.json`. Raw reports and the
+compact score cache are checksum-verified locally at
+`backups/stage1_k4_gtex_v11_6cc8095/` and remain centrally at
+`/media/volume/moe-reboot/results/stage1_k4_gtex_v11_b9a15f2`.
+Evaluation-report SHA256:
+`c90adfee81aa31241502d69bfdf1e92d41d66574e5f9a1c5bdd2b9877d1e38c6`.
+Score-cache SHA256:
+`d5c82fab815fca50487c520aa32faccf5660d972a23c18f571d828f18d8395b0`.
 
 ## 2026-07-23 — pause checkpoint awaiting PI dataset recommendation
 

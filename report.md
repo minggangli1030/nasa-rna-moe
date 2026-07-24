@@ -1,6 +1,6 @@
 # Bridge-RNA Project Report: Corrected Interspecies MoE Evaluation
 
-**Updated:** 2026-07-16 12:50 PDT / 2026-07-16 19:50 UTC
+**Updated:** 2026-07-23 21:02 PDT / 2026-07-24 04:02 UTC
 
 **Vocabulary:** `Stage` identifies the research phase: Stage 0 is inherited
 human/mouse/mixed completion, Stage 1 is the original organ-specialization work,
@@ -15,11 +15,24 @@ SLiMPerformer (`ExpressionPerformer`) and asks whether human-, mouse-, and
 mixed-trained experts contain enough complementary signal for mixture routing to
 beat a pooled model or a fixed ensemble.
 
-The 20k human/mouse scale-up, corrected paired 5k-versus-20k evaluation, and
-expression-only blind species gate are complete. Stage 0 shows a large adaptive
-routing ceiling over a fixed ensemble. Its final fair-general-model control—a
-globally shuffled pooled human/mouse retrain—is still active, so the practical
-claim versus one strong generalist remains conditional on that frozen evaluation.
+The 20k human/mouse scale-up and corrected Stage 0 evaluations are complete. Stage 1
+subsequently nominated and froze K4-EPE: brain, liver, skeletal-muscle, and skin
+specialists with pooled adipose fallback and a target-hidden router.
+
+The prespecified GTEx V11 secondary donor-controlled validation is now complete.
+Across 6,795 samples from 930 donors, true K4 reduced donor-balanced equal-organ MSE
+by 3.301% versus pooled (95% CI 3.262%–3.341%), while target-hidden blind K4 reduced
+it by 3.157% (95% CI 3.113%–3.202%). Router accuracy was 98.03% and recovered 95.63%
+of the true-routing gain. All matched-random, pooled-adapter, seed-stability,
+active-organ-safety, residual-correlation, and router-recovery gates passed; the
+prespecified decision is `full_external_pass`.
+
+This validates the conditional K4 advantage under a large processing and collection
+shift from ARCHS4 Kallisto to one GTEx STAR/RNASeQC consortium. It does not establish
+multisource cross-study generalization or performance in clinically healthy living
+donors; the frozen 40-study ARCHS4 path remains necessary for that broader claim.
+Exact provenance and results are recorded in
+`artifacts/stage1_k4_gtex_evaluation/result_summary.json`.
 
 ## Historical Work, Condensed
 

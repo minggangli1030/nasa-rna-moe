@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "decision": "full_external_pass",
+  "all_gates_pass": true,
+  "evidence_role": "secondary_donor_controlled_validation",
+  "completed_utc": "2026-07-24T03:59:41Z",
+  "implementation_commit": "6cc8095431bf422926496a6c1dfea3b6cdeb9eb3",
+  "protocol_sha256": "295a38f70ded3059ccce4a4308978921ace76d00ee72608b84042483c141115c",
+  "candidate_manifest_sha256": "c941504037d885b74a1555d97109ff31ada9a60545b52e8c244fdccafe3ad9ee",
+  "source": {
+    "release": "GTEx V11",
+    "processing": "STAR/RNASeQC",
+    "expression_object_sha256": "8b254fc3f58f2e749986887b42c1d65523986728e6eadd95924d907692351242"
+  },
+  "cohort": {
+    "samples": 6795,
+    "donors": 930,
+    "sealed_cohort_sha256": "a0b070354a15b89cf174079326283b6492bb189995fdbc82be550dce5afd0246",
+    "organ_counts": {
+      "adipose": {
+        "samples": 1293,
+        "donors": 817
+      },
+      "brain": {
+        "samples": 3030,
+        "donors": 385
+      },
+      "liver": {
+        "samples": 261,
+        "donors": 261
+      },
+      "skeletal_muscle": {
+        "samples": 814,
+        "donors": 814
+      },
+      "skin": {
+        "samples": 1397,
+        "donors": 842
+      }
+    }
+  },
+  "scoring": {
+    "original_target_hidden_genes": 4634,
+    "externally_scored_genes": 4624,
+    "model_fitting": false,
+    "checkpoint_selection": false,
+    "external_targets_used_for_fit": false,
+    "full_predictions_serialized": false,
+    "expression_sha256": "d5a367fddc7a3d10b2fb3955b4b2a53d58c8016060a6f8feb19d0d39e439f1d8",
+    "score_cache_sha256": "d5c82fab815fca50487c520aa32faccf5660d972a23c18f571d828f18d8395b0",
+    "score_report_sha256": "5f42ebd627eb12cf7f755c7d479e46d0aaea0ff85634bfa46536f7810227ce29"
+  },
+  "estimand": {
+    "primary_metric": "donor-balanced, equal-organ mean squared error in log1p TPM space",
+    "aggregation": "average seeds within sample, samples/sites within donor and organ, donors within organ, then five organs equally",
+    "bootstrap": "10000 paired global-donor resamples preserving cross-organ donor correlation"
+  },
+  "primary_results": {
+    "pooled_mse": 0.9553662516057548,
+    "true_k4_mse": 0.9238277941422822,
+    "true_k4_relative_reduction": 0.03301190240963985,
+    "true_k4_relative_ci95": [
+      0.03261734978889497,
+      0.03340889245726886
+    ],
+    "true_k4_one_sided_p": 0.00009999000099990002,
+    "blind_k4_mse": 0.9252051790481424,
+    "blind_k4_relative_reduction": 0.03157016746919678,
+    "blind_k4_relative_ci95": [
+      0.031127530229526003,
+      0.03201558823411893
+    ],
+    "blind_k4_one_sided_p": 0.00009999000099990002,
+    "blind_residual_correlation_gain": 0.00961444376244823,
+    "blind_residual_correlation_gain_ci95": [
+      0.009220484380804275,
+      0.010002858182706199
+    ],
+    "router_accuracy": 0.9802796173657101,
+    "router_gain_recovery_fraction": 0.9563268144152132
+  },
+  "active_organ_true_k4_relative_reduction": {
+    "brain": 0.01838463079101461,
+    "liver": 0.04341214332317113,
+    "skeletal_muscle": 0.047759895692881894,
+    "skin": 0.055603264768847256
+  },
+  "gates": {
+    "true_vs_pooled": true,
+    "blind_vs_pooled": true,
+    "true_vs_all_assigned_random": true,
+    "blind_vs_all_mapped_random": true,
+    "blind_vs_pooled_adapter": true,
+    "router_recovery": true,
+    "seed_stability": true,
+    "active_organ_safety": true
+  },
+  "artifacts": {
+    "evaluation_report_sha256": "c90adfee81aa31241502d69bfdf1e92d41d66574e5f9a1c5bdd2b9877d1e38c6",
+    "remote_result_root": "/media/volume/moe-reboot/results/stage1_k4_gtex_v11_b9a15f2",
+    "local_backup": "backups/stage1_k4_gtex_v11_6cc8095"
+  },
+  "claim_limit": "GTEx V11 evaluates nominally non-diseased adult human tissue under one harmonized STAR/RNASeQC consortium pipeline and a postmortem or organ-donor collection regime. It is external donor-controlled domain-shift evidence, not multisource cross-study confirmation and not evidence from clinically healthy living donors."
+}
