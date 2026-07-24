@@ -2,7 +2,7 @@
   "schema_version": 1,
   "status": "frozen",
   "protocol_name": "stage1_k4_gtex_v11_secondary_external_validation",
-  "frozen_at_utc": "2026-07-24T02:37:16Z",
+  "frozen_at_utc": "2026-07-24T02:52:51Z",
   "authorization": {
     "requested_by_user": true,
     "request": "Sure, once GTEx data is all set for testing, let's run the current trained frozen model on it to see",
@@ -12,13 +12,13 @@
   "evidence_role": "secondary_donor_controlled_validation",
   "claim_limit": "GTEx V11 evaluates nominally non-diseased adult human tissue under one harmonized STAR/RNASeQC consortium pipeline and a postmortem or organ-donor collection regime. It is external donor-controlled domain-shift evidence, not multisource cross-study confirmation and not evidence from clinically healthy living donors.",
   "implementation": {
-    "implementation_commit": "a9b6ff46bf3bb568fd57966e9b5a4f158eb44460",
+    "implementation_commit": "bd6d5c004fb3498ce49809bb2151a46e56f168ae",
     "no_protocol_change_after_expression_effect_inspection": true,
     "source_sha256": {
       "evaluation/audit_stage1_k4_gtex_overlap.py": "17e624dbd6569cd5936f298805c6ce8377bea630b0181d5c2a6fbef43dc0029e",
       "evaluation/stage1_k4_gtex_common.py": "015ab5ce261083a7583158dfdfcb99335daa05876c7e0c78246c18a39eddfef4",
       "evaluation/extract_stage1_k4_gtex.py": "466c1b381ef4254712a9c4acc934568ec7874cebdaa51bb54f3eae9fb07c8ea7",
-      "evaluation/cache_stage1_k4_gtex_scores.py": "3c30aa5d244b0bc4813f6050056b98811519e9e40a86dee2a8ce42f3fc705b76",
+      "evaluation/cache_stage1_k4_gtex_scores.py": "299054b091a1d01d9507b87084f688d6db50dca0277d08c86d867cca6a2070e0",
       "evaluation/evaluate_stage1_k4_gtex.py": "d5b31a90ad16615819a93529fe8ab51957c4bc25d470ce3b01978290a4888565",
       "tests/test_stage1_k4_gtex_evaluation.py": "fdcbdbe1a4a11846ea219d8ee1e76a4cf48f55978d786e7f3784ec87f3e330da"
     },
