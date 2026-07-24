@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-23 22:15 PDT / 2026-07-24 05:15 UTC
+**Last updated:** 2026-07-23 22:26 PDT / 2026-07-24 05:26 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -81,6 +81,15 @@ A coverage-complete real-GTEx smoke-fixture builder, a metric-free generic K8 ro
 refit, and the pooled/banks/router smoke workflow are implemented. Smoke artifacts
 are explicitly `mechanical_only`; no smoke loss may select K, capacity, update
 budget, or a seed. The expanded focused suite passes 26 tests.
+
+The first real-data smoke exposed a loader scaling defect before any model metric was
+produced: schema validation performed repeated name lookups over all 15,448 columns
+and expression loading converted every column separately. On the 235-row smoke
+fixture, the corrected one-pass schema validation plus vectorized Arrow/pandas
+conversion loads the exact requested matrix in 0.29 seconds and preserves requested
+sample order, gene order, float32 values, finiteness checks, and C-contiguous layout.
+The slow attempt is retained as a mechanical audit artifact and is not scientific
+evidence.
 
 ## 2026-07-23 — GTEx V11 frozen external validation passed
 

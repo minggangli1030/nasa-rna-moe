@@ -10,7 +10,6 @@ pooled, organ-specialist, and matched-random-shard runs.
 from __future__ import annotations
 
 import argparse
-import bisect
 import hashlib
 import json
 import os
@@ -342,8 +341,12 @@ def inspect_expression_parquet(
         raise ValueError("expression parquet has no gene columns")
     if len(set(gene_columns)) != len(gene_columns):
         raise ValueError("expression parquet contains duplicate gene columns")
-    for column in gene_columns:
-        field_type = parquet.schema_arrow.field(column).type
+    gene_set = set(gene_columns)
+    for field in parquet.schema_arrow:
+        if field.name not in gene_set:
+            continue
+        column = field.name
+        field_type = field.type
         if not (pa.types.is_integer(field_type) or pa.types.is_floating(field_type)):
             raise ValueError(f"gene column {column!r} is not numeric ({field_type})")
 
@@ -382,23 +385,38 @@ def load_expression_rows(
     for row_group in range(parquet.metadata.num_row_groups):
         starts.append(starts[-1] + parquet.metadata.row_group(row_group).num_rows)
     requested_rows = [row_for_id[sample_id] for sample_id in wanted]
-    output = np.empty((len(wanted), len(info.gene_columns)), dtype=np.float32)
-    grouped: dict[int, list[tuple[int, int]]] = {}
-    for output_row, global_row in enumerate(requested_rows):
-        row_group = bisect.bisect_right(starts, global_row) - 1
-        grouped.setdefault(row_group, []).append((output_row, global_row - starts[row_group]))
-
-    for row_group, requests in grouped.items():
-        table = parquet.read_row_group(row_group, columns=list(info.gene_columns))
-        local_rows = pa.array([local for _, local in requests], type=pa.int64())
-        selected = table.take(local_rows)
-        columns = [
-            selected.column(index).combine_chunks().to_numpy(zero_copy_only=False)
-            for index in range(selected.num_columns)
-        ]
-        values = np.column_stack(columns).astype(np.float32, copy=False)
-        for local_index, (output_row, _) in enumerate(requests):
-            output[output_row] = values[local_index]
+    if not wanted:
+        return np.empty((0, len(info.gene_columns)), dtype=np.float32), info
+    boundaries = np.asarray(starts, dtype=np.int64)
+    row_groups = sorted(
+        {
+            int(np.searchsorted(boundaries, global_row, side="right") - 1)
+            for global_row in requested_rows
+        }
+    )
+    # Reading each of ~15k columns separately for every selected row group is
+    # pathologically slow. Arrow can decode the selected row groups in parallel,
+    # and pandas consolidates the homogeneous gene columns in native code.
+    table = parquet.read_row_groups(
+        row_groups,
+        columns=[sample_id_column, *info.gene_columns],
+        use_threads=True,
+    )
+    loaded_ids = [
+        str(value)
+        for value in table.column(sample_id_column).combine_chunks().to_pylist()
+    ]
+    loaded_row = {sample_id: index for index, sample_id in enumerate(loaded_ids)}
+    missing_loaded = [sample_id for sample_id in wanted if sample_id not in loaded_row]
+    if missing_loaded:
+        raise RuntimeError(
+            "selected parquet row groups did not contain requested sample IDs: "
+            f"{missing_loaded[:3]}"
+        )
+    gene_frame = table.select(list(info.gene_columns)).to_pandas()
+    all_values = gene_frame.to_numpy(dtype=np.float32, copy=False)
+    order = np.asarray([loaded_row[sample_id] for sample_id in wanted], dtype=np.int64)
+    output = np.ascontiguousarray(all_values[order], dtype=np.float32)
     if not np.isfinite(output).all():
         raise ValueError("selected expression matrix contains NaN or infinite values")
     return output, info

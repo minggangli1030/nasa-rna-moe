@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-23 22:15 PDT / 2026-07-24 05:15 UTC
+**Updated:** 2026-07-23 22:26 PDT / 2026-07-24 05:26 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -66,6 +66,9 @@ Read this file first. It is the compact operational and scientific handoff. Use
 - Full K8 GTEx TPM extraction is running persistently from clean detached commit
   `529c0c3a8d651b935b5e8e5f23d916de196749fa` under
   `/media/volume/moe-reboot/results/stage1_gtex_to_archs4_529c0c3`.
+- The first real-data smoke caught and corrected a wide-parquet loader scaling bug
+  before any model metric was produced. The corrected loader reduced the 235×15,448
+  fixture load from minutes to 0.29 seconds while preserving exact values/order.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis, K4-EPE is the frozen candidate, and its conditional
