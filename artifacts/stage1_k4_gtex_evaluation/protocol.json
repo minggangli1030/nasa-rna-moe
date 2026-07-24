@@ -2,7 +2,7 @@
   "schema_version": 1,
   "status": "frozen",
   "protocol_name": "stage1_k4_gtex_v11_secondary_external_validation",
-  "frozen_at_utc": "2026-07-24T03:03:59Z",
+  "frozen_at_utc": "2026-07-24T03:18:51Z",
   "authorization": {
     "requested_by_user": true,
     "request": "Sure, once GTEx data is all set for testing, let's run the current trained frozen model on it to see",
@@ -12,15 +12,15 @@
   "evidence_role": "secondary_donor_controlled_validation",
   "claim_limit": "GTEx V11 evaluates nominally non-diseased adult human tissue under one harmonized STAR/RNASeQC consortium pipeline and a postmortem or organ-donor collection regime. It is external donor-controlled domain-shift evidence, not multisource cross-study confirmation and not evidence from clinically healthy living donors.",
   "implementation": {
-    "implementation_commit": "82dd71eec2c852c917bbeca9b16e36bc443bd7c6",
+    "implementation_commit": "0df44c770d71d04c4aaa1ae4c929fa5afde25740",
     "no_protocol_change_after_expression_effect_inspection": true,
     "source_sha256": {
       "evaluation/audit_stage1_k4_gtex_overlap.py": "17e624dbd6569cd5936f298805c6ce8377bea630b0181d5c2a6fbef43dc0029e",
       "evaluation/stage1_k4_gtex_common.py": "015ab5ce261083a7583158dfdfcb99335daa05876c7e0c78246c18a39eddfef4",
-      "evaluation/extract_stage1_k4_gtex.py": "d75b58f5484c739b24aeba6c3dc6d583d8a06a3703e84a626693da203168d95f",
-      "evaluation/cache_stage1_k4_gtex_scores.py": "299054b091a1d01d9507b87084f688d6db50dca0277d08c86d867cca6a2070e0",
+      "evaluation/extract_stage1_k4_gtex.py": "683c6a1aad9ef8fbadf029fbeb2d66e44cb02cf70d36edcb31eca7820db28efe",
+      "evaluation/cache_stage1_k4_gtex_scores.py": "918a0291847d10f8bd2298b68335be8e195e8df354e9f23a7115df0c66a7b7ba",
       "evaluation/evaluate_stage1_k4_gtex.py": "d5b31a90ad16615819a93529fe8ab51957c4bc25d470ce3b01978290a4888565",
-      "tests/test_stage1_k4_gtex_evaluation.py": "150b813f06865fa58f85bde2a21bddfdb4f0909b7c88e353233d543a61415d83"
+      "tests/test_stage1_k4_gtex_evaluation.py": "222f9ef1a8f1255e24e6107f8e05c111c37e3090d5950066f59df83fe73dc669"
     },
     "test_result": {
       "command": "pytest -q tests/test_stage1_k4_gtex_evaluation.py tests/test_stage1_k4_gtex_intake.py tests/test_stage1_k4_final_candidate.py",
@@ -140,9 +140,53 @@
   "expression": {
     "input": "RNASeQC raw gene read counts in GCT 1.2",
     "gene_symbol_field": "Description",
-    "gene_mapping": "Match the exact GCT Description symbol to the frozen GENCODE v49 exon-length symbol table and the 15,448-symbol candidate list.",
-    "duplicate_symbols": "Sum counts for repeated exact gene symbols before QC or normalization.",
-    "missing_score_genes": "technical_fail",
+    "gene_mapping": "Strip the version suffix from GCT Name stable Ensembl gene IDs and map uniquely through the official GENCODE V49 gene record to its V49 symbol; use exact GCT Description only when the stable ID has no V49 record. Aggregate all source rows reaching the same candidate symbol.",
+    "gencode_gtf_sha256": {
+      "v47": "df11938c66d2b39f8ebbdb5f1720919321f9cf9d58f02b019753f6a24ca3db24",
+      "v49": "d6e6fe0515c95b2a8cd36a853c1989cee9115c736c60237c56ae92b9daaaf7c4"
+    },
+    "gencode_gtf_urls": {
+      "v47": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_47/gencode.v47.annotation.gtf.gz",
+      "v49": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_49/gencode.v49.annotation.gtf.gz"
+    },
+    "duplicate_symbols": "Sum counts for all source rows deterministically mapped to the same V49 candidate symbol before QC or normalization.",
+    "expected_structurally_absent_canonical_genes": [
+      "ABHD16B",
+      "CIDEB",
+      "DND1",
+      "EVA1B",
+      "FAM187A",
+      "FKBP2",
+      "GDF1",
+      "ICAM4",
+      "LRRC24",
+      "MIURF",
+      "MSMP",
+      "NPB",
+      "OVCA2",
+      "PGAM2",
+      "PTPRCAP",
+      "SERINC4",
+      "SFT2D3",
+      "SMIM10L3",
+      "SMIM46",
+      "TREX1",
+      "TSSK2",
+      "ZNF593"
+    ],
+    "externally_unavailable_score_genes": [
+      "ABHD16B",
+      "CIDEB",
+      "FAM187A",
+      "FKBP2",
+      "LRRC24",
+      "MSMP",
+      "PTPRCAP",
+      "SERINC4",
+      "TREX1",
+      "ZNF593"
+    ],
+    "missing_score_genes": "The exact ten structurally absent RNASeQC rows are zero-filled as model inputs, remain masked with the complete original 4,634-gene target panel, and are excluded from every target metric. Any different absent score-gene set is a technical failure.",
     "missing_non_score_genes": "zero_fill",
     "minimum_nonzero_length_mapped_genes": 14000,
     "qc_universe": "All unique GCT Description symbols present in the frozen GENCODE v49 exon-length table, after duplicate-symbol aggregation and before canonical reindexing.",
@@ -154,6 +198,30 @@
       "scale canonical rates to one million"
     ],
     "log_transform": "No log transform in extraction; the frozen scorer applies log1p exactly once.",
+    "technical_retry_ledger": {
+      "attempt_1": {
+        "expression_values_streamed": true,
+        "normalization_completed": false,
+        "model_loaded": false,
+        "predictions_produced": false,
+        "effects_inspected": false,
+        "stop_reason": "Exact-symbol mapping left six renamed and ten structurally absent score genes unresolved."
+      },
+      "header_and_gene_metadata_audit": {
+        "model_effects_used": false,
+        "stable_id_renamed_score_genes_recovered": [
+          "ARLN",
+          "BACC1",
+          "CIMIP6",
+          "MALL",
+          "OR5BS1",
+          "VMA12"
+        ],
+        "structurally_absent_score_genes": 10,
+        "externally_scored_genes": 4624
+      },
+      "allowed_retry": "One deterministic extraction retry is allowed solely with the checksum-bound stable-ID mapping and exact frozen unavailable-gene set above; there remains exactly one model-scoring access."
+    },
     "pipeline_shift": "GTEx STAR/RNASeQC versus ARCHS4 Kallisto is an intended robustness dimension and is not described as preprocessing equivalence."
   },
   "estimand": {
@@ -179,9 +247,9 @@
     "tissue_site_results": "diagnostic only and unavailable for selection or rescue"
   },
   "metrics": {
-    "primary": "mean squared error over the 4,634 frozen target-hidden score genes in log1p TPM space",
+    "primary": "mean squared error over the 4,624 externally available members of the 4,634-gene frozen target-hidden score panel in log1p TPM space",
     "secondary": "per-sample Pearson correlation between predicted and observed residuals from the development-refit-only organ-specific mean log1p score-gene baseline",
-    "router": "frozen target-hidden five-class organ router; predicted adipose dispatches pooled"
+    "router": "frozen target-hidden five-class organ router; all original 4,634 target genes are masked, including the ten unavailable rows; predicted adipose dispatches pooled"
   },
   "controls": {
     "pooled": "frozen pooled trunk",
