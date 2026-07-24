@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "protocol_name": "stage1_k4_gtex_v11_metadata_only_intake",
+  "frozen_at_utc": "2026-07-24T02:06:53Z",
+  "dataset_recommendation": {
+    "source": "project mentor",
+    "recommendation": "Use GTEx for healthy human bulk RNA-seq validation across the target tissues; preserve TCGA for disease analysis and ARCHS4 for cross-pipeline robustness."
+  },
+  "evidence_role": "secondary_donor_controlled_validation",
+  "role_rationale": "GTEx covers all five target organs with explicit donor IDs and a single harmonized consortium pipeline. It can test donor-level external domain shift but cannot by itself establish multisource cross-study generalization.",
+  "metadata_only": true,
+  "expression_values_read": false,
+  "expression_file_downloaded": false,
+  "external_lockbox_frozen": false,
+  "ready_for_expression_access": false,
+  "source_contract": {
+    "release": {
+      "project": "Adult GTEx",
+      "analysis_release": "V11",
+      "release_note": "V11 updates V10 to GENCODE 47 and contains no new samples or donors compared with V10.",
+      "portal": "https://gtexportal.org/home/downloads/adult-gtex/overview",
+      "api_catalog": "https://gtexportal.org/api/v2/dataset/openAccessFilesMetadata?project_id=adult-gtex",
+      "dbgap_accession_family": "phs000424"
+    },
+    "metadata_files": {
+      "sample_attributes": {
+        "display_name": "GTEx_Analysis_v11_Annotations_SampleAttributesDS.txt",
+        "url": "https://storage.googleapis.com/adult-gtex/annotations/v11/metadata-files/GTEx_Analysis_v11_Annotations_SampleAttributesDS.txt",
+        "file_size": 38497961,
+        "sha256": "98c246b3855edf62cb050982a7ca50f3069d010624baea47ef84a9465900ca4b"
+      },
+      "sample_dictionary": {
+        "display_name": "GTEx_Analysis_v11_Annotations_SampleAttributesDD.xlsx",
+        "url": "https://storage.googleapis.com/adult-gtex/annotations/v11/metadata-files/GTEx_Analysis_v11_Annotations_SampleAttributesDD.xlsx",
+        "file_size": 38941,
+        "sha256": "6bf26310791dc53cdff57e99fb1d143a003a02ac6931bff699d3f676f02ce647"
+      },
+      "subject_phenotypes": {
+        "display_name": "GTEx_Analysis_v11_Annotations_SubjectPhenotypesDS.txt",
+        "url": "https://storage.googleapis.com/adult-gtex/annotations/v11/metadata-files/GTEx_Analysis_v11_Annotations_SubjectPhenotypesDS.txt",
+        "file_size": 20292,
+        "sha256": "2313caeaaf3718ac8aead8c6b9eab92b3f613509cfe1a6f7b6286310a7200e73"
+      },
+      "subject_dictionary": {
+        "display_name": "GTEx_Analysis_v11_Annotations_SubjectPhenotypesDD.xlsx",
+        "url": "https://storage.googleapis.com/adult-gtex/annotations/v11/metadata-files/GTEx_Analysis_v11_Annotations_SubjectPhenotypesDD.xlsx",
+        "file_size": 36119,
+        "sha256": "a7e699597f22e9c58791534db2f1519b7b78120231bd52aa1084c1b93abea2e0"
+      }
+    },
+    "expression_object_catalog_binding": {
+      "display_name": "GTEx_Analysis_2026-05-19_v11_RNASeQCv2.4.3_gene_reads.gct.gz",
+      "description": "Gene Expression Read Counts from RNASeQCv2.4.3 with LCM samples excluded.",
+      "url": "https://storage.googleapis.com/adult-gtex/bulk-gex/v11/rna-seq/GTEx_Analysis_2026-05-19_v11_RNASeQCv2.4.3_gene_reads.gct.gz",
+      "file_size": 1008045909,
+      "last_modified": "Tue, 26 May 2026 14:43:23 GMT",
+      "gcs_generation": "1779806603142722",
+      "etag": "-CMLM5aKY15QDEAE=",
+      "downloaded": false,
+      "values_read": false,
+      "why_counts_not_portal_tpm": "The frozen model contract creates TPM from counts using the exact canonical gene universe and frozen exon-length table, then applies log1p once in the scorer. Portal TPM would use a different denominator and length contract."
+    }
+  },
+  "sample_selection_contract": {
+    "required_sample_id_prefix": "GTEX-",
+    "required_analyte_type": "RNA:Total RNA",
+    "required_expression_batch_type": "TruSeq.v1",
+    "exclude_lcm_pilot": true,
+    "tissue_site_to_organ": {
+      "adipose": [
+        "Adipose - Subcutaneous",
+        "Adipose - Visceral (Omentum)"
+      ],
+      "brain": [
+        "Brain - Amygdala",
+        "Brain - Anterior cingulate cortex (BA24)",
+        "Brain - Caudate (basal ganglia)",
+        "Brain - Cerebellar Hemisphere",
+        "Brain - Cerebellum",
+        "Brain - Cortex",
+        "Brain - Frontal Cortex (BA9)",
+        "Brain - Hippocampus",
+        "Brain - Hypothalamus",
+        "Brain - Nucleus accumbens (basal ganglia)",
+        "Brain - Putamen (basal ganglia)",
+        "Brain - Substantia nigra"
+      ],
+      "liver": [
+        "Liver"
+      ],
+      "skeletal_muscle": [
+        "Muscle - Skeletal"
+      ],
+      "skin": [
+        "Skin - Not Sun Exposed (Suprapubic)",
+        "Skin - Sun Exposed (Lower leg)"
+      ]
+    },
+    "explicit_anatomy_exclusions": {
+      "Brain - Spinal cord (cervical c-1)": "adjacent nervous-system tissue, not UBERON brain",
+      "Cells - Cultured fibroblasts": "cell culture, not intact skin",
+      "Liver - Hepatocyte": "cell-enriched LCM material",
+      "Liver - Mixed Cell": "cell-enriched LCM material",
+      "Liver - Portal Tract": "LCM compartment",
+      "all BMS-prefixed rows": "LCM pilot identifiers absent from the selected main bulk object"
+    },
+    "matrix_membership_rule": "At the later freeze gate, intersect this metadata cohort with the exact sample-ID header of the pinned LCM-excluded counts object. Any mismatch is a technical hold and cannot be resolved using observed model effects."
+  },
+  "historical_overlap_contract": {
+    "historical_manifest": "artifacts/stage1_organ_k5/organ_pilot_manifest.csv",
+    "historical_manifest_sha256": "25c62b071720117721a24930945fbd4c8c7cdc4a2a81ae003a920e9402441d5b",
+    "expected_gtex_derived_rows": 9,
+    "expected_series_group_ids": [
+      "GSE88121",
+      "GSE88318",
+      "GSE88393",
+      "GSE88398",
+      "GSE88424",
+      "GSE88458",
+      "GSE88592",
+      "GSE88677"
+    ],
+    "encode_to_gtex_donor_crosswalk": {
+      "ENCDO271OUW": "GTEX-1LVAN",
+      "ENCDO451RUA": "GTEX-1K2DA",
+      "ENCDO793LXB": "GTEX-1LGRB",
+      "ENCDO845WKR": "GTEX-1JKYN"
+    },
+    "crosswalk_sources": {
+      "ENCDO271OUW": "https://www.encodeproject.org/human-donors/ENCDO271OUW/",
+      "ENCDO451RUA": "https://www.encodeproject.org/human-donors/ENCDO451RUA/",
+      "ENCDO793LXB": "https://www.encodeproject.org/human-donors/ENCDO793LXB/",
+      "ENCDO845WKR": "https://www.encodeproject.org/human-donors/ENCDO845WKR/"
+    },
+    "exclusion_policy": "Exclude each overlapping donor globally from every target organ, even when the historical aliquot came from only one organ."
+  },
+  "expected_metadata_counts": {
+    "before_overlap_exclusion": {
+      "samples": 7867,
+      "donors": 977,
+      "by_organ": {
+        "adipose": {
+          "samples": 1480,
+          "donors": 882
+        },
+        "brain": {
+          "samples": 3509,
+          "donors": 405
+        },
+        "liver": {
+          "samples": 305,
+          "donors": 285
+        },
+        "skeletal_muscle": {
+          "samples": 966,
+          "donors": 896
+        },
+        "skin": {
+          "samples": 1607,
+          "donors": 912
+        }
+      }
+    },
+    "after_overlap_exclusion": {
+      "samples": 7845,
+      "donors": 973,
+      "by_organ": {
+        "adipose": {
+          "samples": 1472,
+          "donors": 878
+        },
+        "brain": {
+          "samples": 3509,
+          "donors": 405
+        },
+        "liver": {
+          "samples": 304,
+          "donors": 284
+        },
+        "skeletal_muscle": {
+          "samples": 961,
+          "donors": 892
+        },
+        "skin": {
+          "samples": 1599,
+          "donors": 908
+        }
+      }
+    }
+  },
+  "aggregation_contract": {
+    "primary_unit": "donor within organ",
+    "steps": [
+      "average the three frozen training-seed losses within each sample",
+      "average all retained tissue sites or biological samples within donor and organ",
+      "give equal donor mass within organ",
+      "give equal mass to all five organs"
+    ],
+    "uncertainty_cluster": "donor",
+    "paired_bootstrap_draws_minimum": 10000,
+    "tissue_site_diagnostics": "report site-specific effects without using them to select or rescue the primary result",
+    "rationale": "GTEx has repeated organs and tissue sites per donor; sample-level weighting would overrepresent donors with more collected sites."
+  },
+  "health_interpretation": {
+    "allowed_description": "adult human postmortem or organ-donor tissue from GTEx non-diseased tissue sites",
+    "forbidden_description": "clinically healthy living donors",
+    "postmortem_policy": "included prospectively as part of the GTEx secondary domain-shift estimand",
+    "incidental_pathology_policy": "retain the public pathology notes and use the official GTEx bulk matrix/QC inclusion prospectively; do not select samples based on model effects",
+    "claim_limit": "GTEx tests nominally non-diseased tissue under a harmonized consortium pipeline and postmortem collection regime."
+  },
+  "expression_contract_status": {
+    "status": "draft_required_before_access",
+    "proposed_input": "pinned V11 RNASeQC gene read-count GCT with LCM samples excluded",
+    "frozen_model_space": "15,448 ordered canonical genes; TPM created once with the frozen GENCODE v49 exon-length table; log1p applied once by the scorer",
+    "required_gene_mapping_audit": "strip Ensembl version suffixes, bind GENCODE v47 identifiers/symbols, aggregate repeated canonical symbols before TPM, and freeze missing/duplicate-gene handling",
+    "pipeline_shift": "GTEx STAR/RNASeQC versus ARCHS4 Kallisto is an intended robustness dimension, not a preprocessing equivalence claim"
+  },
+  "remaining_gates": [
+    "implement and test the GTEx count-to-canonical-TPM extractor without external expression",
+    "freeze exact matrix-header membership and the inclusion/exclusion ledger",
+    "complete the full ARCHS4-pretraining donor/near-duplicate overlap audit",
+    "freeze the donor-clustered evaluator and secondary decision interpretation",
+    "pass synthetic and historical-data smoke tests",
+    "only then authorize one-time expression download and scoring"
+  ]
+}
