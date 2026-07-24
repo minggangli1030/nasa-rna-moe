@@ -13,6 +13,7 @@ import base64
 import gzip
 import json
 import os
+import re
 import shutil
 from pathlib import Path
 
@@ -28,6 +29,9 @@ from stage1_k4_gtex_common import (
     sha256_file,
     sha256_lines,
 )
+
+GENE_ID_RE = re.compile(r'gene_id "([^"]+)"')
+GENE_NAME_RE = re.compile(r'gene_name "([^"]+)"')
 
 
 def _verify_counts_object(path: Path, source: dict) -> dict[str, str]:
@@ -71,6 +75,32 @@ def _read_gct_header(path: Path) -> tuple[int, int, list[str]]:
     if len(sample_ids) != sample_count or len(set(sample_ids)) != sample_count:
         raise ValueError("GCT sample header count or uniqueness mismatch")
     return gene_rows, sample_count, sample_ids
+
+
+def _read_gencode_gene_map(path: Path) -> dict[str, str]:
+    mapping: dict[str, str] = {}
+    with gzip.open(path, "rt") as handle:
+        for line in handle:
+            if line.startswith("#"):
+                continue
+            fields = line.rstrip("\n").split("\t", 8)
+            if len(fields) != 9 or fields[2] != "gene":
+                continue
+            gene_id = GENE_ID_RE.search(fields[8])
+            gene_name = GENE_NAME_RE.search(fields[8])
+            if gene_id is None or gene_name is None:
+                raise ValueError("GENCODE gene record lacks gene_id or gene_name")
+            stable_id = gene_id.group(1).split(".", 1)[0]
+            symbol = gene_name.group(1)
+            previous = mapping.get(stable_id)
+            if previous is not None and previous != symbol:
+                raise ValueError(
+                    f"GENCODE stable ID maps to conflicting symbols: {stable_id}"
+                )
+            mapping[stable_id] = symbol
+    if not mapping:
+        raise ValueError("GENCODE GTF contains no gene mappings")
+    return mapping
 
 
 def freeze_header(args: argparse.Namespace) -> dict:
@@ -241,6 +271,15 @@ def extract(args: argparse.Namespace) -> dict:
     length_index = {
         gene: index for index, gene in enumerate(lengths["gene_symbol"].astype(str))
     }
+    gencode_v47_path = Path(args.gencode_v47_gtf)
+    gencode_v49_path = Path(args.gencode_v49_gtf)
+    gencode_contract = protocol["expression"]["gencode_gtf_sha256"]
+    if sha256_file(gencode_v47_path) != gencode_contract["v47"]:
+        raise ValueError("GENCODE V47 GTF differs from frozen protocol")
+    if sha256_file(gencode_v49_path) != gencode_contract["v49"]:
+        raise ValueError("GENCODE V49 GTF differs from frozen protocol")
+    v47_symbols = _read_gencode_gene_map(gencode_v47_path)
+    v49_symbols = _read_gencode_gene_map(gencode_v49_path)
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=False)
     scratch = output_dir / ".scratch"
@@ -261,6 +300,9 @@ def extract(args: argparse.Namespace) -> dict:
     qc_positive[:] = 0
     seen_symbols: dict[str, int] = {}
     observed_canonical: set[str] = set()
+    canonical_source_rows: dict[str, int] = {}
+    stable_id_renames: dict[str, tuple[str, str]] = {}
+    v47_description_mismatches = 0
 
     expected_rows, matrix_samples, header_ids = _read_gct_header(counts)
     if matrix_samples != int(header_report["matrix_sample_columns"]):
@@ -276,17 +318,35 @@ def extract(args: argparse.Namespace) -> dict:
             fields = line.rstrip("\n").split("\t")
             if len(fields) < 2:
                 raise ValueError("malformed GCT data row")
+            gene_id = fields[0].strip()
             symbol = fields[1].strip()
+            stable_id = gene_id.split(".", 1)[0]
+            v47_symbol = v47_symbols.get(stable_id)
+            v49_symbol = v49_symbols.get(stable_id)
+            if v47_symbol is not None and v47_symbol != symbol:
+                v47_description_mismatches += 1
+            mapped_symbol = v49_symbol if v49_symbol is not None else symbol
+            if mapped_symbol != symbol:
+                stable_id_renames[stable_id] = (symbol, mapped_symbol)
             values = _parse_selected_counts(
                 fields, selected_columns, expected_fields=expected_fields
             )
             seen_symbols[symbol] = seen_symbols.get(symbol, 0) + 1
-            if symbol in length_index:
-                row = length_index[symbol]
+            qc_symbol = (
+                mapped_symbol if mapped_symbol in length_index else symbol
+            )
+            if qc_symbol in length_index:
+                row = length_index[qc_symbol]
                 qc_positive[row] |= (values > 0).astype(np.uint8)
-            if symbol in gene_index:
-                canonical_counts[gene_index[symbol]] += values
-                observed_canonical.add(symbol)
+            target_symbol = (
+                mapped_symbol if mapped_symbol in gene_index else symbol
+            )
+            if target_symbol in gene_index:
+                canonical_counts[gene_index[target_symbol]] += values
+                observed_canonical.add(target_symbol)
+                canonical_source_rows[target_symbol] = (
+                    canonical_source_rows.get(target_symbol, 0) + 1
+                )
             rows_read += 1
     if rows_read != expected_rows:
         raise ValueError(f"GCT gene-row count mismatch: {rows_read} != {expected_rows}")
@@ -369,6 +429,8 @@ def extract(args: argparse.Namespace) -> dict:
         "canonical_genes_sha256": sha256_file(args.genes),
         "axis_definitions_sha256": sha256_file(args.axis_definitions),
         "exon_lengths_sha256": sha256_file(args.exon_lengths),
+        "gencode_v47_gtf_sha256": sha256_file(gencode_v47_path),
+        "gencode_v49_gtf_sha256": sha256_file(gencode_v49_path),
         "expression_sha256": sha256_file(expression_path),
         "gene_order_sha256": sha256_lines(genes),
         "sample_order_sha256": sha256_lines(cohort["sample_id"]),
@@ -379,6 +441,19 @@ def extract(args: argparse.Namespace) -> dict:
         "gct_rows": rows_read,
         "unique_gct_symbols": len(seen_symbols),
         "duplicate_symbol_count": int(sum(value > 1 for value in seen_symbols.values())),
+        "canonical_targets_with_multiple_source_rows": int(
+            sum(value > 1 for value in canonical_source_rows.values())
+        ),
+        "stable_id_symbol_renames": len(stable_id_renames),
+        "stable_id_symbol_rename_examples": [
+            {
+                "stable_id": stable_id,
+                "v47_or_gct_symbol": values[0],
+                "v49_symbol": values[1],
+            }
+            for stable_id, values in sorted(stable_id_renames.items())[:50]
+        ],
+        "v47_description_mismatches": v47_description_mismatches,
         "missing_canonical_genes": missing_canonical,
         "missing_score_genes": missing_score,
         "minimum_nonzero_length_mapped_genes": minimum,
@@ -415,6 +490,8 @@ def build_parser() -> argparse.ArgumentParser:
     extraction.add_argument("--genes", required=True)
     extraction.add_argument("--axis-definitions", required=True)
     extraction.add_argument("--exon-lengths", required=True)
+    extraction.add_argument("--gencode-v47-gtf", required=True)
+    extraction.add_argument("--gencode-v49-gtf", required=True)
     extraction.add_argument("--output-dir", required=True)
     extraction.add_argument("--row-group-size", type=int, default=16)
     return parser

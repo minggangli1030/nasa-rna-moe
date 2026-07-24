@@ -52,6 +52,7 @@ def _protocol(counts: Path) -> dict:
         "expression": {
             "minimum_nonzero_length_mapped_genes": 2,
             "missing_non_score_genes": "zero_fill",
+            "gencode_gtf_sha256": {"v47": "", "v49": ""},
         },
         "controls": {"assigned_random_algorithm": "fixture"},
     }
@@ -92,7 +93,7 @@ def test_header_freeze_and_duplicate_symbol_tpm_extraction(tmp_path):
     with gzip.open(counts, "wt") as handle:
         handle.write("#1.2\n4\t5\n")
         handle.write("Name\tDescription\t" + "\t".join(samples) + "\n")
-        handle.write("ENSG1\tA\t10\t0\t1\t1\t1\n")
+        handle.write("ENSG1.1\tOLD_A\t10\t0\t1\t1\t1\n")
         handle.write("ENSG2\tA\t5\t5\t1\t1\t1\n")
         handle.write("ENSG3\tB\t5\t5\t1\t1\t1\n")
         handle.write("ENSG4\tC\t0\t10\t1\t1\t1\n")
@@ -114,8 +115,36 @@ def test_header_freeze_and_duplicate_symbol_tpm_extraction(tmp_path):
             "SMAFRZE": [*(["RNASEQ"] * len(samples)), "EXCLUDE"],
         }
     ).to_csv(attributes, sep="\t", index=False)
+    v47 = tmp_path / "v47.gtf.gz"
+    v49 = tmp_path / "v49.gtf.gz"
+    with gzip.open(v47, "wt") as handle:
+        for stable_id, symbol in (
+            ("ENSG1", "OLD_A"),
+            ("ENSG2", "A"),
+            ("ENSG3", "B"),
+            ("ENSG4", "C"),
+        ):
+            handle.write(
+                f'chr1\ttest\tgene\t1\t2\t.\t+\t.\t'
+                f'gene_id "{stable_id}.1"; gene_name "{symbol}";\n'
+            )
+    with gzip.open(v49, "wt") as handle:
+        for stable_id, symbol in (
+            ("ENSG1", "A"),
+            ("ENSG2", "A"),
+            ("ENSG3", "B"),
+            ("ENSG4", "C"),
+        ):
+            handle.write(
+                f'chr1\ttest\tgene\t1\t2\t.\t+\t.\t'
+                f'gene_id "{stable_id}.2"; gene_name "{symbol}";\n'
+            )
     protocol = json.loads(protocol_path.read_text())
     protocol["source"]["sample_attributes_sha256"] = sha256_file(attributes)
+    protocol["expression"]["gencode_gtf_sha256"] = {
+        "v47": sha256_file(v47),
+        "v49": sha256_file(v49),
+    }
     protocol_path.write_text(json.dumps(protocol, sort_keys=True))
     header_dir = tmp_path / "header"
     freeze_header(
@@ -150,6 +179,8 @@ def test_header_freeze_and_duplicate_symbol_tpm_extraction(tmp_path):
             genes=str(genes),
             axis_definitions=str(axes),
             exon_lengths=str(lengths),
+            gencode_v47_gtf=str(v47),
+            gencode_v49_gtf=str(v49),
             output_dir=str(output),
             row_group_size=2,
         )
@@ -161,7 +192,9 @@ def test_header_freeze_and_duplicate_symbol_tpm_extraction(tmp_path):
         np.asarray([15.0, 2.5, 0.0]) / 17.5 * 1_000_000,
         rtol=2e-7,
     )
-    assert report["duplicate_symbol_count"] == 1
+    assert report["duplicate_symbol_count"] == 0
+    assert report["canonical_targets_with_multiple_source_rows"] == 1
+    assert report["stable_id_symbol_renames"] == 1
     assert report["missing_score_genes"] == []
     assert report["log_transform_applied"] is False
     header_report = json.loads((header_dir / "header_report.json").read_text())
