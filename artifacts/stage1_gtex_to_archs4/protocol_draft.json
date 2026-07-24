@@ -94,6 +94,9 @@
   },
   "gtex_development": {
     "release": "Adult GTEx V11",
+    "sample_attributes_sha256": "98c246b3855edf62cb050982a7ca50f3069d010624baea47ef84a9465900ca4b",
+    "counts_object_sha256": "8b254fc3f58f2e749986887b42c1d65523986728e6eadd95924d907692351242",
+    "counts_object_size": 1008045909,
     "allowed_description": "nominally non-diseased adult human postmortem or organ-donor tissue",
     "forbidden_description": "uniformly healthy living donors",
     "required_analyte_type": "RNA:Total RNA",
@@ -116,6 +119,71 @@
       101
     ],
     "random_partition_rule": "donor-atomic deterministic greedy balancing of organ sample vectors across K shards"
+  },
+  "gtex_tissue_mapping": {
+    "adipose": {
+      "broad_tissue": "Adipose Tissue",
+      "sites": [
+        "Adipose - Subcutaneous",
+        "Adipose - Visceral (Omentum)"
+      ]
+    },
+    "brain": {
+      "broad_tissue": "Brain",
+      "sites": [
+        "Brain - Amygdala",
+        "Brain - Anterior cingulate cortex (BA24)",
+        "Brain - Caudate (basal ganglia)",
+        "Brain - Cerebellar Hemisphere",
+        "Brain - Cerebellum",
+        "Brain - Cortex",
+        "Brain - Frontal Cortex (BA9)",
+        "Brain - Hippocampus",
+        "Brain - Hypothalamus",
+        "Brain - Nucleus accumbens (basal ganglia)",
+        "Brain - Putamen (basal ganglia)",
+        "Brain - Substantia nigra"
+      ]
+    },
+    "colon": {
+      "broad_tissue": "Colon",
+      "sites": [
+        "Colon - Sigmoid",
+        "Colon - Transverse"
+      ]
+    },
+    "heart": {
+      "broad_tissue": "Heart",
+      "sites": [
+        "Heart - Atrial Appendage",
+        "Heart - Left Ventricle"
+      ]
+    },
+    "liver": {
+      "broad_tissue": "Liver",
+      "sites": [
+        "Liver"
+      ]
+    },
+    "lung": {
+      "broad_tissue": "Lung",
+      "sites": [
+        "Lung"
+      ]
+    },
+    "skeletal_muscle": {
+      "broad_tissue": "Muscle",
+      "sites": [
+        "Muscle - Skeletal"
+      ]
+    },
+    "skin": {
+      "broad_tissue": "Skin",
+      "sites": [
+        "Skin - Not Sun Exposed (Suprapubic)",
+        "Skin - Sun Exposed (Lower leg)"
+      ]
+    }
   },
   "strict_model_family": {
     "name": "gtex_only_k8",
