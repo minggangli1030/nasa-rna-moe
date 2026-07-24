@@ -362,8 +362,18 @@ def extract(args: argparse.Namespace) -> dict:
     if definition_genes != genes:
         raise ValueError("axis definitions and canonical gene list differ")
     missing_score = sorted(set(np.asarray(genes)[score_indices]) & set(missing_canonical))
-    if missing_score:
-        raise ValueError(f"GTEx matrix lacks frozen score genes: {missing_score[:5]}")
+    expected_missing = protocol["expression"].get(
+        "expected_structurally_absent_canonical_genes"
+    )
+    if expected_missing is not None and missing_canonical != sorted(expected_missing):
+        raise ValueError("GTEx structurally absent canonical gene set changed")
+    expected_missing_score = sorted(
+        protocol["expression"].get("externally_unavailable_score_genes", [])
+    )
+    if missing_score != expected_missing_score:
+        raise ValueError(
+            "GTEx unavailable score-gene set differs from frozen protocol"
+        )
     if missing_canonical and protocol["expression"]["missing_non_score_genes"] != "zero_fill":
         raise ValueError("GTEx matrix lacks canonical genes and zero-fill is not frozen")
 
@@ -438,6 +448,7 @@ def extract(args: argparse.Namespace) -> dict:
         "donors": int(cohort["donor_id"].nunique()),
         "genes": n_genes,
         "score_genes": len(score_indices),
+        "externally_scored_genes": int(len(score_indices) - len(missing_score)),
         "gct_rows": rows_read,
         "unique_gct_symbols": len(seen_symbols),
         "duplicate_symbol_count": int(sum(value > 1 for value in seen_symbols.values())),

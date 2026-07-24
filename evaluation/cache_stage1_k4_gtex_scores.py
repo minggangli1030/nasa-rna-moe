@@ -192,7 +192,7 @@ def _development_baseline(
     candidate_root: Path,
     manifest: dict[str, Any],
     genes: list[str],
-    score_indices: np.ndarray,
+    metric_score_indices: np.ndarray,
 ) -> tuple[dict[str, np.ndarray], dict[str, Any]]:
     artifacts = manifest["artifacts"]
     expression_path = candidate_root / artifacts["development_expression"]
@@ -209,7 +209,7 @@ def _development_baseline(
         raise ValueError("development expression gene order changed")
     if np.any(expression < 0) or not np.isfinite(expression).all():
         raise ValueError("development TPM contains invalid values")
-    score = np.log1p(expression[:, score_indices]).astype(np.float32)
+    score = np.log1p(expression[:, metric_score_indices]).astype(np.float32)
     baseline: dict[str, np.ndarray] = {}
     for organ in ORGANS:
         selected = rows["organ"].astype(str).eq(organ).to_numpy()
@@ -286,10 +286,26 @@ def build_scores(args: argparse.Namespace) -> dict[str, Any]:
             raise ValueError("frozen axis gene order changed")
     if len(score_indices) != 4634:
         raise ValueError("frozen score panel size changed")
+    unavailable_score_genes = sorted(
+        extraction_report.get("missing_score_genes", [])
+    )
+    expected_unavailable = sorted(
+        protocol["expression"].get("externally_unavailable_score_genes", [])
+    )
+    if unavailable_score_genes != expected_unavailable:
+        raise ValueError("extraction unavailable score genes differ from protocol")
+    score_gene_names = np.asarray(genes, dtype=str)[score_indices]
+    metric_score_indices = score_indices[
+        ~np.isin(score_gene_names, unavailable_score_genes)
+    ]
+    if len(metric_score_indices) != int(
+        extraction_report.get("externally_scored_genes", -1)
+    ):
+        raise ValueError("external score-panel size differs from extraction report")
     router = _load_router(router_path, genes, score_indices, mask_token)
     random_mapping = json.loads(random_mapping_path.read_text())["mappings"]
     baseline, baseline_report = _development_baseline(
-        candidate_root, manifest, genes, score_indices
+        candidate_root, manifest, genes, metric_score_indices
     )
 
     banks: dict[int, dict[str, ExpertBank]] = {}
@@ -334,7 +350,7 @@ def build_scores(args: argparse.Namespace) -> dict[str, Any]:
         raise ValueError("GTEx expression columns differ from frozen gene order")
     offset = 0
     trunk.eval()
-    score_tensor = torch.as_tensor(score_indices, device=device)
+    metric_score_tensor = torch.as_tensor(metric_score_indices, device=device)
     with torch.inference_mode():
         try:
             for batch in source.iter_batches(batch_size=int(args.batch_size)):
@@ -357,24 +373,26 @@ def build_scores(args: argparse.Namespace) -> dict[str, Any]:
                     [ORGAN_TO_EXPERT.get(organ, FALLBACK_LABEL) for organ in predicted_organs],
                     dtype=np.int64,
                 )
-                target = truth[:, score_indices]
+                target = truth[:, metric_score_indices]
                 baseline_batch = np.stack(
                     [baseline[organ] for organ in expected["organ"].astype(str)]
                 )
                 tensor = torch.from_numpy(masked).to(device)
                 hidden = trunk.encode(tensor)
                 base = trunk.decode(hidden)
-                base_score = base.index_select(1, score_tensor).float().cpu().numpy()
+                base_score = base.index_select(
+                    1, metric_score_tensor
+                ).float().cpu().numpy()
                 metrics: dict[str, np.ndarray] = {}
                 _add_metrics(metrics, "pooled", base_score, target, baseline_batch)
                 for seed in SEEDS:
                     seed_banks = banks[seed]
                     organ_residual = seed_banks["organ_k4_final"](hidden).index_select(
-                        2, score_tensor
+                        2, metric_score_tensor
                     ).float().cpu().numpy()
                     pooled_residual = seed_banks["pooled_adapter"](hidden)[
                         :, 0
-                    ].index_select(1, score_tensor).float().cpu().numpy()
+                    ].index_select(1, metric_score_tensor).float().cpu().numpy()
                     _add_metrics(
                         metrics,
                         f"seed{seed}__pooled_adapter",
@@ -399,7 +417,7 @@ def build_scores(args: argparse.Namespace) -> dict[str, Any]:
                     for partition in PARTITION_SEEDS:
                         axis = f"random_group_k4_final_p{partition}"
                         random_residual = seed_banks[axis](hidden).index_select(
-                            2, score_tensor
+                            2, metric_score_tensor
                         ).float().cpu().numpy()
                         assigned = expected[
                             f"p{partition}_assigned_expert"
@@ -460,7 +478,9 @@ def build_scores(args: argparse.Namespace) -> dict[str, Any]:
         "donors": int(metadata["donor_id"].nunique()),
         "training_seeds": list(SEEDS),
         "partition_seeds": list(PARTITION_SEEDS),
-        "score_genes": len(score_indices),
+        "score_genes": len(metric_score_indices),
+        "original_target_hidden_score_genes": len(score_indices),
+        "externally_unavailable_score_genes": unavailable_score_genes,
         "baseline": baseline_report,
         "target_hiding": {
             "score_genes_replaced_by_mask_token": True,
