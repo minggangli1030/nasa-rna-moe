@@ -1,7 +1,7 @@
 # Stage 1 external dataset intake and one-time validation plan
 
-Status: **awaiting a PI-recommended dataset; K4 candidate frozen; no external
-expression access authorized.**
+Status: **mentor recommendation received; GTEx V11 metadata intake complete; K4
+candidate frozen; no external expression access authorized.**
 
 This is the operational handoff for the interval between receiving a candidate
 external dataset and running the one-time Stage 1 confirmation. It preserves the
@@ -122,6 +122,28 @@ If a PI-recommended dataset is donor-controlled but single-source, preserve the
 current 40-study GEO design as the planned multisource confirmation or robustness
 cohort. Do not merge the two opportunistically after viewing effects.
 
+## Frozen dataset roles after mentor response
+
+- **GTEx V11:** `secondary_donor_controlled_validation`. Use the official
+  LCM-excluded bulk RNA-seq release across all five organs, excluding the four
+  historical EN-TEx donors globally. Primary aggregation is donor-first within organ.
+- **Current ARCHS4/GEO shortlist:** retain as the planned
+  `primary_multistudy_confirmation` if manual curation and independence gates pass.
+  Its cross-study unit remains the connected study, not the sample.
+- **A separately frozen ARCHS4 analysis:** may later test robustness to an aggregate
+  processing pipeline, but it cannot reuse development samples or silently replace
+  the current study-disjoint design.
+- **TCGA:** disease-domain follow-up only. It is not a normal-tissue substitute and
+  cannot rescue a failed healthy/non-diseased validation.
+
+The GTEx V11 metadata intake is bound by
+`artifacts/stage1_k4_gtex_intake/protocol.json` (SHA256
+`35ddc3506561f2427613af8acebb5facc9efd7bc88bb6a0afe3fd15a5c6beed6`).
+It provisionally retains 7,845 samples from 973 donors after excluding
+`GTEX-1JKYN`, `GTEX-1K2DA`, `GTEX-1LGRB`, and `GTEX-1LVAN`. This is not yet the
+exact expression cohort: matrix-header membership, the full pretraining-overlap
+audit, extractor/evaluator freeze, and nonexternal smoke are still required.
+
 ## Gate 3: exact cohort and expression contract
 
 Before opening values, freeze and hash:
@@ -155,6 +177,18 @@ Primary aggregation:
 3. average samples within each connected study;
 4. give equal study mass within each organ; and
 5. give equal mass to all five organs.
+
+For GTEx secondary validation, replace connected-study aggregation with the frozen
+donor-controlled hierarchy:
+
+1. average seeds within sample;
+2. average repeated samples and tissue sites within donor and organ;
+3. give equal donor mass within organ; and
+4. give equal mass to all five organs.
+
+Bootstrap and uncertainty clustering are by donor for GTEx. Site-specific GTEx
+effects are diagnostics only and cannot select or rescue the primary donor-balanced
+result.
 
 Primary and supporting comparisons:
 
@@ -225,7 +259,7 @@ external cohort.
 
 ## Dataset-arrival checklist
 
-When the PI responds:
+For any later dataset arrival:
 
 1. record the dataset name and do not download/open expression yet;
 2. obtain its metadata manifest, data dictionary, source/version, and publications;

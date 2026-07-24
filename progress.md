@@ -2116,3 +2116,51 @@ The tested scout was committed and pushed as
 metadata export completed, and the pinned current-object metadata range scan began at
 2026-07-23T02:47:54Z. The scan logs ordered progress by 20,000-row chunks and remains
 explicitly nonconfirmatory and expression-sealed.
+
+### Mentor-directed GTEx V11 metadata intake (2026-07-23)
+
+The mentor recommended GTEx as the healthy/non-diseased human bulk RNA-seq validation
+resource, ARCHS4 as a cross-processing-pipeline robustness analysis, and TCGA only as
+a disease-domain secondary analysis. GTEx is therefore frozen prospectively as
+`secondary_donor_controlled_validation`; the existing 40-study ARCHS4 design remains
+the planned multisource confirmation and the two datasets may not be merged after
+effects are visible.
+
+The official GTEx catalog now exposes V11. V11 adds no donors or samples relative to
+V10, updates annotation to GENCODE 47, and provides an LCM-excluded RNASeQC bulk-count
+object. Four open-access metadata/data-dictionary files were downloaded and pinned;
+no expression object was downloaded or opened. The intake selects exact
+`RNA:Total RNA` / `TruSeq.v1` target-tissue rows and excludes spinal cord, cultured
+fibroblasts, liver LCM compartments, BMS/LCM rows, and other assay batches.
+
+The historical Stage 1 manifest contains nine GTEx-derived ENCODE rows. Public ENCODE
+aliases resolve their four donors as:
+
+- `ENCDO271OUW` → `GTEX-1LVAN`
+- `ENCDO451RUA` → `GTEX-1K2DA`
+- `ENCDO793LXB` → `GTEX-1LGRB`
+- `ENCDO845WKR` → `GTEX-1JKYN`
+
+All four donors are excluded globally, removing 22 samples. The remaining provisional
+pool contains 7,845 samples from 973 donors: adipose 1,472/878 samples/donors, brain
+3,509/405, liver 304/284, skeletal muscle 961/892, and skin 1,599/908. The frozen
+secondary estimator averages seeds within sample, samples/sites within donor and
+organ, donors within organ, and then organs equally.
+
+The metadata-only builder and firewall tests were committed as
+`c6133358355429dc1b8f3e3d9c1a534cf365011c`; all 13 external-intake regression tests
+pass. Protocol SHA256 is
+`35ddc3506561f2427613af8acebb5facc9efd7bc88bb6a0afe3fd15a5c6beed6`.
+The verified local result is `backups/stage1_k4_gtex_intake_c613335/`, with
+checksum-manifest SHA256
+`1eaf59d6caf84babdd0cb765551b85ded2e9b2f20f789c9cf908dd57b8ee0582`,
+intake-report SHA256
+`c966576ba84c47c9c42627b1c4e7094c7d5a3acb5b83d521e90204d5f5b194e2`,
+and provisional-cohort SHA256
+`a88aa72acf4d40702b1b0ad3d13c4767308aa6ebf5e93bbb1440651696b04308`.
+
+The result explicitly states `expression_file_downloaded=false`,
+`expression_values_read=false`, `external_lockbox_frozen=false`, and
+`ready_for_expression_access=false`. Next gates are a synthetic/historical-data-tested
+V11-count-to-canonical-TPM extractor, donor-clustered evaluator, exact matrix-header
+membership freeze, and a full ARCHS4-pretraining donor/near-duplicate overlap audit.

@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-23 10:22 PDT / 2026-07-23 17:22 UTC
+**Updated:** 2026-07-23 19:13 PDT / 2026-07-24 02:13 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -27,10 +27,16 @@ Read this file first. It is the compact operational and scientific handoff. Use
 - The audit passed the structural gate for drafting the final evaluator protocol, but
   not the manual-metadata, lockbox-freeze, or expression-access gates. Most donor keys
   remain title proxies rather than verified donor identities.
-- A PI recommendation for a cleaner independent dataset is pending. Dataset arrival
-  does not authorize immediate scoring: follow
-  `docs/external-validation-intake-plan.md` through metadata intake, evidence-role
-  assignment, cohort/evaluator freeze, and a nonexternal smoke before expression.
+- The mentor recommended GTEx for healthy-tissue validation, ARCHS4 for a
+  cross-processing robustness analysis, and TCGA only as a secondary disease-domain
+  analysis.
+- GTEx V11 metadata-only intake is complete. It assigns GTEx the
+  `secondary_donor_controlled_validation` role and provisionally retains 7,845
+  target-tissue samples from 973 donors after globally excluding four historical
+  EN-TEx donors. No GTEx expression file has been downloaded or opened.
+- GTEx is ready for evaluator/extractor drafting, not cohort freeze or expression
+  access. The 40-study ARCHS4 design remains the planned multisource confirmation;
+  GTEx and ARCHS4 may not be merged opportunistically after effects are visible.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis and K4-EPE is the frozen development candidate. It is
@@ -325,6 +331,67 @@ the cluster-count design; it is not relative-MSE power.
 The exact gate is `ready_for_protocol_drafting_not_lockbox`.
 `ready_for_lockbox_freeze=false` and `ready_for_expression_access=false`.
 
+## GTEx V11 metadata-only intake
+
+The mentor-recommended GTEx resource is assigned to
+`secondary_donor_controlled_validation`: it covers all five organs with explicit
+donor IDs and a harmonized consortium pipeline, but one consortium cannot establish
+the multisource cross-study generalization targeted by the 40-study ARCHS4 design.
+The official GTEx catalog now exposes V11, which contains no new donors or samples
+relative to V10 but updates annotation to GENCODE 47.
+
+The pinned intake selects only `RNA:Total RNA` / `TruSeq.v1` rows for intact target
+tissues. It excludes spinal cord, cultured fibroblasts, the liver LCM compartments,
+the BMS/LCM pilot, and non-bulk expression batches. The official LCM-excluded V11
+RNASeQC gene-read object is catalog-bound by URL, size, GCS generation, Last-Modified,
+and ETag, but it has not been downloaded.
+
+Historical Stage 1 metadata contains nine GTEx-derived ENCODE rows from four EN-TEx
+donors. The public ENCODE aliases resolve them exactly:
+
+| ENCODE donor | GTEx donor |
+| --- | --- |
+| `ENCDO271OUW` | `GTEX-1LVAN` |
+| `ENCDO451RUA` | `GTEX-1K2DA` |
+| `ENCDO793LXB` | `GTEX-1LGRB` |
+| `ENCDO845WKR` | `GTEX-1JKYN` |
+
+All four donors are excluded globally from every GTEx organ, removing 22 samples.
+The remaining metadata-only pool is:
+
+| Organ | Provisional samples | Donors |
+| --- | ---: | ---: |
+| adipose | 1,472 | 878 |
+| brain | 3,509 | 405 |
+| liver | 304 | 284 |
+| skeletal muscle | 961 | 892 |
+| skin | 1,599 | 908 |
+
+The GTEx estimator is donor-first: average seeds within sample, samples/sites within
+donor and organ, donors within organ, and then the five organs equally. This prevents
+donors with multiple brain regions, skin sites, or adipose depots from receiving extra
+mass. The cohort is described as adult human postmortem or organ-donor tissue from
+GTEx non-diseased tissue sites, not as clinically healthy living donors.
+
+- implementation commit:
+  `c6133358355429dc1b8f3e3d9c1a534cf365011c`
+- protocol SHA256:
+  `35ddc3506561f2427613af8acebb5facc9efd7bc88bb6a0afe3fd15a5c6beed6`
+- local verified result:
+  `backups/stage1_k4_gtex_intake_c613335/`
+- full checksum-manifest SHA256:
+  `1eaf59d6caf84babdd0cb765551b85ded2e9b2f20f789c9cf908dd57b8ee0582`
+- intake-report SHA256:
+  `c966576ba84c47c9c42627b1c4e7094c7d5a3acb5b83d521e90204d5f5b194e2`
+- provisional-cohort SHA256:
+  `a88aa72acf4d40702b1b0ad3d13c4767308aa6ebf5e93bbb1440651696b04308`
+
+The report states `expression_file_downloaded=false`,
+`expression_values_read=false`, `ready_for_lockbox_freeze=false`, and
+`ready_for_expression_access=false`. Remaining work is to implement and smoke-test
+the V11-count-to-canonical-TPM extractor and donor-clustered evaluator, complete the
+full backbone-overlap/near-duplicate audit, and freeze exact matrix-header membership.
+
 Quick verification commands:
 
 ```bash
@@ -341,14 +408,17 @@ ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182
 3. **Structural donor/power gate passed:** 40 study clusters remain and no exposed
    explicit identifier crosses groups. Most donor identities are still title proxies,
    so this does not accept the cohort.
-4. **Current gate — draft protocol and finish metadata signoff:** freeze evaluator
-   semantics, candidate/checkpoint/router ledger, random-control dispatch, mask,
-   cluster estimator, and mutually exclusive decision branches. In parallel, verify
-   every pending study/sample/donor decision and replace failures from reserves.
-5. **Freeze only after both pass:** hash exact ordered sample IDs, organ labels,
+4. **GTEx secondary intake passed metadata-only:** keep the 7,845-row pool provisional;
+   draft and smoke its count-to-canonical-TPM extractor and donor-clustered evaluator,
+   then finish the full pretraining-overlap audit before matrix-header access.
+5. **Current multisource gate — draft protocol and finish metadata signoff:** freeze
+   evaluator semantics, candidate/checkpoint/router ledger, random-control dispatch,
+   mask, cluster estimator, and mutually exclusive decision branches. In parallel,
+   verify every pending study/sample/donor decision and replace failures from reserves.
+6. **Freeze only after both pass:** hash exact ordered sample IDs, organ labels,
    connected-group IDs, gene mapping, the accepted donor ledger, and the complete
    evaluator implementation. Do not inspect expression.
-6. **One-time confirmation:** only then request expression, build the score cache once,
+7. **One-time confirmation:** only then request expression, build the score cache once,
    and evaluate blind K4, true dispatch, pooled, pooled-residual, and all matched random
    controls. K5 and K4-total are not rescue candidates on that lockbox.
 
@@ -378,4 +448,6 @@ ssh moe-reboot 'cd /media/volume/moe-reboot/results/stage1_k4_external_scout_182
    conservative liver replacement and skin selector narrowing.
 8. `artifacts/stage1_k4_external_scout/donor_power_audit_protocol.json` —
    metadata-only analysis-unit and design-sensitivity contract.
-9. `progress.md` — append-only historical chronology and older experiment detail.
+9. `artifacts/stage1_k4_gtex_intake/protocol.json` — pinned GTEx V11 metadata,
+   donor-overlap exclusions, tissue mapping, and donor-balanced secondary estimand.
+10. `progress.md` — append-only historical chronology and older experiment detail.
