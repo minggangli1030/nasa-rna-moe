@@ -95,16 +95,51 @@ def freeze_header(args: argparse.Namespace) -> dict:
     header_set = set(header_ids)
     cohort_set = set(cohort["sample_id"].astype(str))
     absent = sorted(cohort_set - header_set)
-    if absent:
-        raise ValueError(f"selected GTEx samples absent from matrix: {absent[:5]}")
-    sealed = cohort.sort_values("sample_id").reset_index(drop=True)
+    attributes_path = Path(args.sample_attributes)
+    expected_attributes_hash = protocol["source"]["sample_attributes_sha256"]
+    if sha256_file(attributes_path) != expected_attributes_hash:
+        raise ValueError("GTEx sample attributes differ from frozen protocol")
+    attributes = pd.read_csv(
+        attributes_path,
+        sep="\t",
+        dtype=str,
+        keep_default_na=False,
+        low_memory=False,
+    )
+    if not {"SAMPID", "SMAFRZE"}.issubset(attributes.columns):
+        raise ValueError("GTEx sample attributes lack SAMPID or SMAFRZE")
+    if attributes["SAMPID"].duplicated().any():
+        raise ValueError("GTEx sample attributes repeat SAMPID")
+    flags = attributes.set_index("SAMPID")["SMAFRZE"]
+    missing_flags = sorted(cohort_set - set(flags.index.astype(str)))
+    if missing_flags:
+        raise ValueError(f"cohort samples lack GTEx inclusion flags: {missing_flags[:5]}")
+    present = sorted(cohort_set & header_set)
+    bad_present = [sample for sample in present if flags[sample] != "RNASEQ"]
+    bad_absent = [sample for sample in absent if flags[sample] != "EXCLUDE"]
+    if bad_present:
+        raise ValueError(
+            f"header-present samples are not marked RNASEQ: {bad_present[:5]}"
+        )
+    if bad_absent:
+        raise ValueError(
+            f"header-absent samples are not officially EXCLUDE: {bad_absent[:5]}"
+        )
+    sealed = cohort[cohort["sample_id"].isin(header_set)].copy()
+    sealed = sealed.sort_values("sample_id").reset_index(drop=True)
     sealed["matrix_column_index"] = [
         header_ids.index(sample_id) for sample_id in sealed["sample_id"].astype(str)
     ]
+    exclusions = cohort[~cohort["sample_id"].isin(header_set)].copy()
+    exclusions = exclusions.sort_values("sample_id").reset_index(drop=True)
+    exclusions["official_matrix_flag"] = exclusions["sample_id"].map(flags)
+    exclusions["matrix_membership_decision"] = "exclude_official_SMAFRZE_EXCLUDE"
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=False)
     sealed_path = output_dir / "sealed_cohort.parquet"
+    exclusions_path = output_dir / "matrix_membership_exclusions.parquet"
     sealed.to_parquet(sealed_path, index=False)
+    exclusions.to_parquet(exclusions_path, index=False)
     report = {
         "schema_version": 1,
         "status": "header_frozen",
@@ -112,14 +147,24 @@ def freeze_header(args: argparse.Namespace) -> dict:
         "counts_object_sha256": verified["sha256"],
         "protocol_sha256": sha256_file(args.protocol),
         "provisional_cohort_sha256": sha256_file(args.provisional_cohort),
+        "sample_attributes_sha256": sha256_file(attributes_path),
         "sealed_cohort_sha256": sha256_file(sealed_path),
+        "matrix_membership_exclusions_sha256": sha256_file(exclusions_path),
         "matrix_gene_rows": gene_rows,
         "matrix_sample_columns": matrix_samples,
+        "provisional_samples": len(cohort),
         "selected_samples": len(sealed),
         "selected_donors": int(sealed["donor_id"].nunique()),
         "selected_sample_ids_sha256": sha256_lines(sealed["sample_id"]),
         "matrix_header_sample_ids_sha256": sha256_lines(header_ids),
-        "matrix_membership_exclusions": [],
+        "matrix_membership_exclusions": {
+            "samples": len(exclusions),
+            "official_flag": "SMAFRZE=EXCLUDE",
+            "by_organ": {
+                str(key): int(value)
+                for key, value in exclusions["organ"].value_counts().sort_index().items()
+            },
+        },
     }
     atomic_json(output_dir / "header_report.json", report)
     (output_dir / "HEADER_FROZEN").write_text("expression values not read\n")
@@ -360,6 +405,7 @@ def build_parser() -> argparse.ArgumentParser:
     header.add_argument("--expected-protocol-sha256", required=True)
     header.add_argument("--counts-gct", required=True)
     header.add_argument("--provisional-cohort", required=True)
+    header.add_argument("--sample-attributes", required=True)
     header.add_argument("--output-dir", required=True)
     extraction = subparsers.add_parser("extract")
     extraction.add_argument("--protocol", required=True)

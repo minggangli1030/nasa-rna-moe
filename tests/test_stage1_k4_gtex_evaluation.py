@@ -40,7 +40,8 @@ def _protocol(counts: Path) -> dict:
             "counts_object": {
                 "file_size": counts.stat().st_size,
                 "sha256": sha256_file(counts),
-            }
+            },
+            "sample_attributes_sha256": "",
         },
         "model": {
             "training_seeds": [17, 42, 101],
@@ -101,10 +102,21 @@ def test_header_freeze_and_duplicate_symbol_tpm_extraction(tmp_path):
             (samples[0], "GTEX-A", "brain", "Brain - Cortex"),
             (samples[1], "GTEX-B", "liver", "Liver"),
             *[(sample, donor, organ, organ) for sample, donor, organ in extra],
+            ("GTEX-X-0001-SM-E", "GTEX-X", "brain", "Brain - Cortex"),
         ],
         columns=["sample_id", "donor_id", "organ", "tissue_site"],
     )
     cohort.to_csv(cohort_path, index=False)
+    attributes = tmp_path / "attributes.txt"
+    pd.DataFrame(
+        {
+            "SAMPID": [*samples, "GTEX-X-0001-SM-E"],
+            "SMAFRZE": [*(["RNASEQ"] * len(samples)), "EXCLUDE"],
+        }
+    ).to_csv(attributes, sep="\t", index=False)
+    protocol = json.loads(protocol_path.read_text())
+    protocol["source"]["sample_attributes_sha256"] = sha256_file(attributes)
+    protocol_path.write_text(json.dumps(protocol, sort_keys=True))
     header_dir = tmp_path / "header"
     freeze_header(
         Namespace(
@@ -112,6 +124,7 @@ def test_header_freeze_and_duplicate_symbol_tpm_extraction(tmp_path):
             expected_protocol_sha256=sha256_file(protocol_path),
             counts_gct=str(counts),
             provisional_cohort=str(cohort_path),
+            sample_attributes=str(attributes),
             output_dir=str(header_dir),
         )
     )
@@ -151,6 +164,8 @@ def test_header_freeze_and_duplicate_symbol_tpm_extraction(tmp_path):
     assert report["duplicate_symbol_count"] == 1
     assert report["missing_score_genes"] == []
     assert report["log_transform_applied"] is False
+    header_report = json.loads((header_dir / "header_report.json").read_text())
+    assert header_report["matrix_membership_exclusions"]["samples"] == 1
 
 
 def test_random_assignments_are_donor_organ_atomic_and_balanced():
