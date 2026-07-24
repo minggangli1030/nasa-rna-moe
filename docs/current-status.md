@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-23 22:26 PDT / 2026-07-24 05:26 UTC
+**Updated:** 2026-07-23 22:31 PDT / 2026-07-24 05:31 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -63,12 +63,18 @@ Read this file first. It is the compact operational and scientific handoff. Use
   samples/188 donors in calibration, with zero donor crossover. A metric-free K8
   router refit and a coverage-complete real-data smoke fixture are implemented; the
   expanded focused suite passes 26 tests.
-- Full K8 GTEx TPM extraction is running persistently from clean detached commit
+- Full K8 GTEx TPM extraction completed from clean detached commit
   `529c0c3a8d651b935b5e8e5f23d916de196749fa` under
-  `/media/volume/moe-reboot/results/stage1_gtex_to_archs4_529c0c3`.
+  `/media/volume/moe-reboot/results/stage1_gtex_to_archs4_529c0c3`. It contains
+  9,195 samples, 938 donors, and 15,448 genes; expression SHA256 is
+  `ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550`.
 - The first real-data smoke caught and corrected a wide-parquet loader scaling bug
   before any model metric was produced. The corrected loader reduced the 235×15,448
   fixture load from minutes to 0.29 seconds while preserving exact values/order.
+- The corrected pooled/K8/random/pooled-adapter/router real-data smoke passed from
+  clean commit `98e2cbab7e94f101feb33e83cff0712834c38ee3`. Full three-seed
+  GTEx-only training is now running in tmux session `gtex_k8_train_98e2cba` at
+  `/media/volume/moe-reboot/results/stage1_gtex_to_archs4_training_98e2cba`.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis, K4-EPE is the frozen candidate, and its conditional

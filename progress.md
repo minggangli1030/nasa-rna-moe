@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-23 22:26 PDT / 2026-07-24 05:26 UTC
+**Last updated:** 2026-07-23 22:31 PDT / 2026-07-24 05:31 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -90,6 +90,28 @@ conversion loads the exact requested matrix in 0.29 seconds and preserves reques
 sample order, gene order, float32 values, finiteness checks, and C-contiguous layout.
 The slow attempt is retained as a mechanical audit artifact and is not scientific
 evidence.
+
+The full K8 GTEx extraction then completed with 9,195 samples, 938 donors, 15,448
+canonical genes, 4,634 target-hidden score genes, and exactly the frozen 22 absent
+canonical / 10 absent score genes. Every sample exceeded the 14,000-gene expression
+QC floor; the observed nonzero length-mapped range was 22,040–51,653. Expression
+SHA256 is
+`ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550`.
+
+The corrected real-data smoke passed end to end from clean commit
+`98e2cbab7e94f101feb33e83cff0712834c38ee3`: pooled checkpoint creation and
+round trip, one true-organ K8 bank, all three donor-atomic random K8 banks, the pooled
+residual control, finite final adapter tensors, and the eight-class target-hidden
+router. Router fitting generated no accuracy or reconstruction metric. All
+two-update bank scores remain mechanical-only and cannot influence the frozen
+configuration.
+
+The full strict three-seed campaign launched at 2026-07-24T05:29:12Z in tmux session
+`gtex_k8_train_98e2cba`. It is running under
+`/media/volume/moe-reboot/results/stage1_gtex_to_archs4_training_98e2cba`, starting
+with the seed-17 GTEx-only pooled trunk. Each seed uses the frozen 7,350 pooled
+updates followed by one packed 1,500-update organ/random/control adapter pass.
+ARCHS4 expression remains sealed.
 
 ## 2026-07-23 — GTEx V11 frozen external validation passed
 
