@@ -254,6 +254,15 @@ def build_scores(args: argparse.Namespace) -> dict[str, Any]:
         or extraction_report.get("expression_sha256") != sha256_file(expression_path)
     ):
         raise ValueError("GTEx extraction report is invalid")
+    smoke_only = extraction_report.get("smoke_only") is True
+    if smoke_only:
+        if extraction_report.get("external_expression_accessed") is not False:
+            raise ValueError("smoke extraction does not seal external expression access")
+    elif (
+        extraction_report.get("one_time_external_extraction") is not True
+        or extraction_report.get("expression_values_read") is not True
+    ):
+        raise ValueError("production GTEx extraction lacks one-time access assertions")
     header_dir = Path(args.header_dir)
     sealed_path = header_dir / "sealed_cohort.parquet"
     cohort = pd.read_parquet(sealed_path).sort_values("sample_id").reset_index(drop=True)
@@ -435,7 +444,8 @@ def build_scores(args: argparse.Namespace) -> dict[str, Any]:
     report = {
         "schema_version": 1,
         "status": "complete",
-        "one_time_external_scoring": True,
+        "smoke_only": smoke_only,
+        "one_time_external_scoring": not smoke_only,
         "model_fitting": False,
         "checkpoint_selection": False,
         "full_predictions_serialized": False,
