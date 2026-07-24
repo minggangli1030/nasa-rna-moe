@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "status": "frozen",
+  "protocol_name": "stage1_k4_gtex_v11_secondary_external_validation",
+  "frozen_at_utc": "2026-07-24T02:37:16Z",
+  "authorization": {
+    "requested_by_user": true,
+    "request": "Sure, once GTEx data is all set for testing, let's run the current trained frozen model on it to see",
+    "interpretation": "Expression download, header freezing, one-time extraction, frozen scoring, and prespecified evaluation are authorized only after this protocol and implementation are committed and pass non-GTEx tests."
+  },
+  "one_time_expression_access": true,
+  "evidence_role": "secondary_donor_controlled_validation",
+  "claim_limit": "GTEx V11 evaluates nominally non-diseased adult human tissue under one harmonized STAR/RNASeQC consortium pipeline and a postmortem or organ-donor collection regime. It is external donor-controlled domain-shift evidence, not multisource cross-study confirmation and not evidence from clinically healthy living donors.",
+  "implementation": {
+    "implementation_commit": "a9b6ff46bf3bb568fd57966e9b5a4f158eb44460",
+    "no_protocol_change_after_expression_effect_inspection": true,
+    "source_sha256": {
+      "evaluation/audit_stage1_k4_gtex_overlap.py": "17e624dbd6569cd5936f298805c6ce8377bea630b0181d5c2a6fbef43dc0029e",
+      "evaluation/stage1_k4_gtex_common.py": "015ab5ce261083a7583158dfdfcb99335daa05876c7e0c78246c18a39eddfef4",
+      "evaluation/extract_stage1_k4_gtex.py": "466c1b381ef4254712a9c4acc934568ec7874cebdaa51bb54f3eae9fb07c8ea7",
+      "evaluation/cache_stage1_k4_gtex_scores.py": "3c30aa5d244b0bc4813f6050056b98811519e9e40a86dee2a8ce42f3fc705b76",
+      "evaluation/evaluate_stage1_k4_gtex.py": "d5b31a90ad16615819a93529fe8ab51957c4bc25d470ce3b01978290a4888565",
+      "tests/test_stage1_k4_gtex_evaluation.py": "fdcbdbe1a4a11846ea219d8ee1e76a4cf48f55978d786e7f3784ec87f3e330da"
+    },
+    "test_result": {
+      "command": "pytest -q tests/test_stage1_k4_gtex_evaluation.py tests/test_stage1_k4_gtex_intake.py tests/test_stage1_k4_final_candidate.py",
+      "passed": 9,
+      "failed": 0
+    },
+    "whole_suite_note": "The repository-wide pytest collection remains blocked by the pre-existing ModuleNotFoundError for preprocessing in tests/test_extract_manifest_expression.py; all GTEx, intake, and frozen-candidate tests pass."
+  },
+  "source": {
+    "release": "Adult GTEx V11, GENCODE 47",
+    "counts_object": {
+      "name": "GTEx_Analysis_2026-05-19_v11_RNASeQCv2.4.3_gene_reads.gct.gz",
+      "description": "Gene read counts from RNASeQCv2.4.3 with LCM samples excluded",
+      "generation_pinned_url": "https://storage.googleapis.com/download/storage/v1/b/adult-gtex/o/bulk-gex%2Fv11%2Frna-seq%2FGTEx_Analysis_2026-05-19_v11_RNASeQCv2.4.3_gene_reads.gct.gz?generation=1779806603142722&alt=media",
+      "catalog_url": "https://storage.googleapis.com/adult-gtex/bulk-gex/v11/rna-seq/GTEx_Analysis_2026-05-19_v11_RNASeQCv2.4.3_gene_reads.gct.gz",
+      "file_size": 1008045909,
+      "gcs_generation": "1779806603142722",
+      "gcs_metageneration": "1",
+      "gcs_component_count": 21,
+      "crc32c_base64": "qVR/sA==",
+      "etag": "CMLM5aKY15QDEAE=",
+      "created_utc": "2026-05-26T14:43:23.148Z",
+      "verification": "Exact size and prebound GCS CRC32C are required before any GCT header or value is accepted; SHA256 is computed locally and propagated after download."
+    },
+    "intake_protocol_sha256": "35ddc3506561f2427613af8acebb5facc9efd7bc88bb6a0afe3fd15a5c6beed6",
+    "intake_report_sha256": "c966576ba84c47c9c42627b1c4e7094c7d5a3acb5b83d521e90204d5f5b194e2",
+    "provisional_cohort_sha256": "a88aa72acf4d40702b1b0ad3d13c4767308aa6ebf5e93bbb1440651696b04308",
+    "provisional_samples": 7845,
+    "provisional_donors": 973,
+    "historical_overlap_report_sha256": "71e9c0ea318861002aec529d956f4c0f01c6fa57a6389471c54ef3fbb705309c",
+    "complete_historical_archs4_metadata_sha256": "fdb139e3406300e66a88f72da6c70e16a9f1cbeffbbfd434f2d1c4fd63d82f08",
+    "historical_overlap_result": {
+      "historical_rows_scanned": 441356,
+      "gtex_related_rows": 50,
+      "encode_donors": [
+        "ENCDO271OUW",
+        "ENCDO451RUA",
+        "ENCDO793LXB",
+        "ENCDO845WKR"
+      ],
+      "globally_excluded_gtex_donors": [
+        "GTEX-1JKYN",
+        "GTEX-1K2DA",
+        "GTEX-1LGRB",
+        "GTEX-1LVAN"
+      ],
+      "conclusion": "The global four-donor exclusion seals GTEx/EN-TEx overlap across the complete historical ARCHS4 v11 catalog, not only the Stage-1 subset."
+    }
+  },
+  "model": {
+    "candidate_manifest_sha256": "c941504037d885b74a1555d97109ff31ada9a60545b52e8c244fdccafe3ad9ee",
+    "candidate_code_commit": "e8c0383fd1833f180f26af56f09e83a5b3f676d9",
+    "candidate": "K4-EPE final refit",
+    "training_seeds": [
+      17,
+      42,
+      101
+    ],
+    "active_organ_expert_order": [
+      "brain",
+      "liver",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "fallback": "adipose uses the frozen pooled trunk",
+    "candidate_artifact_sha256": {
+      "canonical_genes": "3332cb312000e426a866d669b3ba9b6206da50d70094fb5f9d30ef168e860dff",
+      "axis_definitions": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+      "router": "10ecef514ee2a7ec3e875d584227230949edf16b192495e4c2bb3e82bd3c4906",
+      "random_control_mappings": "454bad6b2da16232ce5c8e02f6cd4224f2bc57b7ef699f1c17aa76ab910d458e",
+      "pooled_trunk": "080a8a36d2090c3a823cd3995d758d1205b0ad02c1c38c06e6763c5a7ebfd789"
+    },
+    "gene_count": 15448,
+    "score_gene_count": 4634,
+    "mask_token": -10.0,
+    "model_fitting_or_selection_on_gtex": false
+  },
+  "header_freeze": {
+    "read_scope": "Only GCT version, dimensions, and sample-ID header before the cohort artifact is sealed.",
+    "membership_rule": "Every one of the 7,845 provisional sample IDs must occur exactly once in the pinned counts object. Any absence or duplication is a technical failure; effect-informed replacement or rescue is forbidden.",
+    "order": "Lexicographic sample_id order inherited from the provisional cohort after exact header membership validation."
+  },
+  "expression": {
+    "input": "RNASeQC raw gene read counts in GCT 1.2",
+    "gene_symbol_field": "Description",
+    "gene_mapping": "Match the exact GCT Description symbol to the frozen GENCODE v49 exon-length symbol table and the 15,448-symbol candidate list.",
+    "duplicate_symbols": "Sum counts for repeated exact gene symbols before QC or normalization.",
+    "missing_score_genes": "technical_fail",
+    "missing_non_score_genes": "zero_fill",
+    "minimum_nonzero_length_mapped_genes": 14000,
+    "qc_universe": "All unique GCT Description symbols present in the frozen GENCODE v49 exon-length table, after duplicate-symbol aggregation and before canonical reindexing.",
+    "exon_lengths_sha256": "c272e5b8e23698bfb009fad019268897dd173f333dc437b7dd97d28894108609",
+    "normalization": [
+      "aggregate duplicate exact symbols",
+      "divide each canonical gene count by frozen exon length in kilobases",
+      "sum rates over the 15,448 canonical genes only",
+      "scale canonical rates to one million"
+    ],
+    "log_transform": "No log transform in extraction; the frozen scorer applies log1p exactly once.",
+    "pipeline_shift": "GTEx STAR/RNASeQC versus ARCHS4 Kallisto is an intended robustness dimension and is not described as preprocessing equivalence."
+  },
+  "estimand": {
+    "organ_order": [
+      "adipose",
+      "brain",
+      "liver",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "primary_unit": "donor within organ",
+    "aggregation_order": [
+      "average the three prespecified model-seed metrics within sample",
+      "average all retained samples or tissue sites within donor and organ",
+      "give equal donor mass within organ",
+      "give equal mass to all five organs"
+    ],
+    "uncertainty": "Paired global-donor bootstrap; sampling donors globally preserves cross-organ donor correlation, and the vanishingly rare draw missing an organ is rejected.",
+    "bootstrap_draws": 10000,
+    "bootstrap_base_seed": 314159,
+    "confidence_interval": "two-sided percentile 95%",
+    "one_sided_p": "(1 + number of bootstrap improvements <= 0) / (B + 1)",
+    "tissue_site_results": "diagnostic only and unavailable for selection or rescue"
+  },
+  "metrics": {
+    "primary": "mean squared error over the 4,634 frozen target-hidden score genes in log1p TPM space",
+    "secondary": "per-sample Pearson correlation between predicted and observed residuals from the development-refit-only organ-specific mean log1p score-gene baseline",
+    "router": "frozen target-hidden five-class organ router; predicted adipose dispatches pooled"
+  },
+  "controls": {
+    "pooled": "frozen pooled trunk",
+    "pooled_adapter": "frozen one-adapter residual-capacity control for each training seed",
+    "partition_seeds": [
+      17,
+      42,
+      101
+    ],
+    "assigned_random_algorithm": "For each partition seed and organ, hash-rank unique donor IDs by SHA256 of partition_seed NUL organ NUL donor_id, break exact hash ties by donor_id, then assign rank modulo four; every sample in a donor-organ unit shares the label and expert donor counts differ by at most one.",
+    "mapped_random": "Apply the frozen organ router, then the development-only organ-to-expert mapping stored for that random partition; predicted adipose dispatches pooled.",
+    "multiple_testing": "Holm adjustment separately across the three assigned-random comparisons and the three mapped-random comparisons."
+  },
+  "acceptance_gates": {
+    "blind_k4_vs_pooled": "relative MSE reduction >= 3%, donor-bootstrap absolute-improvement CI lower bound > 0, and residual-Pearson gain CI lower bound > 0",
+    "true_k4_vs_pooled": "relative MSE reduction >= 3% and donor-bootstrap absolute-improvement CI lower bound > 0",
+    "true_k4_vs_each_assigned_random": "relative MSE reduction >= 3%, absolute-improvement CI lower bound > 0, and Holm-adjusted one-sided p <= 0.05 for all three partitions",
+    "blind_k4_vs_each_mapped_random": "relative MSE reduction > 0, absolute-improvement CI lower bound > 0, and Holm-adjusted one-sided p <= 0.05 for all three partitions",
+    "blind_k4_vs_pooled_adapter": "absolute-improvement CI lower bound > 0",
+    "router_recovery": "blind absolute MSE improvement divided by true-dispatch absolute MSE improvement >= 0.80",
+    "seed_stability": "true and blind relative MSE reductions are positive for every training seed and each across-seed sample SD is <= 0.5 times its mean",
+    "active_organ_safety": "true-dispatch point MSE effect versus pooled is nonnegative separately in brain, liver, skeletal muscle, and skin"
+  },
+  "decision_precedence": [
+    "technical_fail if provenance, checksum, alignment, membership, gene coverage, QC, completeness, or finite-value checks fail",
+    "no_external_gain if the true-K4-versus-pooled gate fails",
+    "generic_capacity_or_partition_fail if any random-control or pooled-adapter gate fails",
+    "router_bottleneck if blind-versus-pooled or router-recovery fails after true dispatch and controls pass",
+    "full_external_pass if every acceptance gate passes",
+    "inconclusive otherwise"
+  ],
+  "retention": {
+    "allowed": "sealed cohort metadata, canonical TPM extraction, compact per-sample MSE and residual-Pearson metrics, reports, hashes, and logs",
+    "score_cache": "compact metrics only",
+    "forbidden": "serialization of full GTEx target or prediction vectors by the scorer",
+    "no_post_access_tuning": true
+  }
+}
