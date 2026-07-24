@@ -1,0 +1,17 @@
+{
+  "conclusion": "All historical GTEx-related records resolve to the four frozen EN-TEx donors excluded globally from the GTEx cohort.",
+  "encode_donor_ids": [
+    "ENCDO271OUW",
+    "ENCDO451RUA",
+    "ENCDO793LXB",
+    "ENCDO845WKR"
+  ],
+  "expression_values_read": false,
+  "gtex_related_geo_accessions_sha256": "2d16dbe3be4694130706edebaac7bb41edf7bea9cd21c1317ad6f78f7887be89",
+  "gtex_related_rows": 50,
+  "historical_metadata_sha256": "fdb139e3406300e66a88f72da6c70e16a9f1cbeffbbfd434f2d1c4fd63d82f08",
+  "historical_rows": 441356,
+  "schema_version": 1,
+  "scope": "complete historical ARCHS4 v11 sample metadata, not a Stage-1 subset",
+  "status": "complete"
+}
