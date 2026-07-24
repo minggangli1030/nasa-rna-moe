@@ -2,7 +2,7 @@
   "schema_version": 1,
   "status": "frozen",
   "protocol_name": "stage1_k4_gtex_v11_secondary_external_validation",
-  "frozen_at_utc": "2026-07-24T02:52:51Z",
+  "frozen_at_utc": "2026-07-24T03:03:59Z",
   "authorization": {
     "requested_by_user": true,
     "request": "Sure, once GTEx data is all set for testing, let's run the current trained frozen model on it to see",
@@ -12,15 +12,15 @@
   "evidence_role": "secondary_donor_controlled_validation",
   "claim_limit": "GTEx V11 evaluates nominally non-diseased adult human tissue under one harmonized STAR/RNASeQC consortium pipeline and a postmortem or organ-donor collection regime. It is external donor-controlled domain-shift evidence, not multisource cross-study confirmation and not evidence from clinically healthy living donors.",
   "implementation": {
-    "implementation_commit": "bd6d5c004fb3498ce49809bb2151a46e56f168ae",
+    "implementation_commit": "82dd71eec2c852c917bbeca9b16e36bc443bd7c6",
     "no_protocol_change_after_expression_effect_inspection": true,
     "source_sha256": {
       "evaluation/audit_stage1_k4_gtex_overlap.py": "17e624dbd6569cd5936f298805c6ce8377bea630b0181d5c2a6fbef43dc0029e",
       "evaluation/stage1_k4_gtex_common.py": "015ab5ce261083a7583158dfdfcb99335daa05876c7e0c78246c18a39eddfef4",
-      "evaluation/extract_stage1_k4_gtex.py": "466c1b381ef4254712a9c4acc934568ec7874cebdaa51bb54f3eae9fb07c8ea7",
+      "evaluation/extract_stage1_k4_gtex.py": "d75b58f5484c739b24aeba6c3dc6d583d8a06a3703e84a626693da203168d95f",
       "evaluation/cache_stage1_k4_gtex_scores.py": "299054b091a1d01d9507b87084f688d6db50dca0277d08c86d867cca6a2070e0",
       "evaluation/evaluate_stage1_k4_gtex.py": "d5b31a90ad16615819a93529fe8ab51957c4bc25d470ce3b01978290a4888565",
-      "tests/test_stage1_k4_gtex_evaluation.py": "fdcbdbe1a4a11846ea219d8ee1e76a4cf48f55978d786e7f3784ec87f3e330da"
+      "tests/test_stage1_k4_gtex_evaluation.py": "150b813f06865fa58f85bde2a21bddfdb4f0909b7c88e353233d543a61415d83"
     },
     "test_result": {
       "command": "pytest -q tests/test_stage1_k4_gtex_evaluation.py tests/test_stage1_k4_gtex_intake.py tests/test_stage1_k4_final_candidate.py",
@@ -37,6 +37,7 @@
       "generation_pinned_url": "https://storage.googleapis.com/download/storage/v1/b/adult-gtex/o/bulk-gex%2Fv11%2Frna-seq%2FGTEx_Analysis_2026-05-19_v11_RNASeQCv2.4.3_gene_reads.gct.gz?generation=1779806603142722&alt=media",
       "catalog_url": "https://storage.googleapis.com/adult-gtex/bulk-gex/v11/rna-seq/GTEx_Analysis_2026-05-19_v11_RNASeQCv2.4.3_gene_reads.gct.gz",
       "file_size": 1008045909,
+      "sha256": "8b254fc3f58f2e749986887b42c1d65523986728e6eadd95924d907692351242",
       "gcs_generation": "1779806603142722",
       "gcs_metageneration": "1",
       "gcs_component_count": 21,
@@ -46,6 +47,7 @@
       "verification": "Exact size and prebound GCS CRC32C are required before any GCT header or value is accepted; SHA256 is computed locally and propagated after download."
     },
     "intake_protocol_sha256": "35ddc3506561f2427613af8acebb5facc9efd7bc88bb6a0afe3fd15a5c6beed6",
+    "sample_attributes_sha256": "98c246b3855edf62cb050982a7ca50f3069d010624baea47ef84a9465900ca4b",
     "intake_report_sha256": "c966576ba84c47c9c42627b1c4e7094c7d5a3acb5b83d521e90204d5f5b194e2",
     "provisional_cohort_sha256": "a88aa72acf4d40702b1b0ad3d13c4767308aa6ebf5e93bbb1440651696b04308",
     "provisional_samples": 7845,
@@ -100,7 +102,39 @@
   },
   "header_freeze": {
     "read_scope": "Only GCT version, dimensions, and sample-ID header before the cohort artifact is sealed.",
-    "membership_rule": "Every one of the 7,845 provisional sample IDs must occur exactly once in the pinned counts object. Any absence or duplication is a technical failure; effect-informed replacement or rescue is forbidden.",
+    "membership_rule": "Intersect the 7,845 metadata-selected rows with the exact pinned GCT header, requiring every header-present row to have the official GTEx SMAFRZE=RNASEQ flag and every header-absent row to have SMAFRZE=EXCLUDE. Any exception, missing flag, or duplicate ID is a technical failure; effect-informed replacement or rescue is forbidden.",
+    "header_only_resolution_before_values": {
+      "expression_values_read": false,
+      "gct_dimensions": {
+        "gene_rows": 74628,
+        "sample_columns": 19616
+      },
+      "official_flag_separation": "All 6,795 header-present provisional rows are SMAFRZE=RNASEQ and all 1,050 absent provisional rows are SMAFRZE=EXCLUDE.",
+      "sealed_samples": 6795,
+      "sealed_donors": 930,
+      "by_organ": {
+        "adipose": {
+          "samples": 1293,
+          "donors": 817
+        },
+        "brain": {
+          "samples": 3030,
+          "donors": 385
+        },
+        "liver": {
+          "samples": 261,
+          "donors": 261
+        },
+        "skeletal_muscle": {
+          "samples": 814,
+          "donors": 814
+        },
+        "skin": {
+          "samples": 1397,
+          "donors": 842
+        }
+      }
+    },
     "order": "Lexicographic sample_id order inherited from the provisional cohort after exact header membership validation."
   },
   "expression": {
