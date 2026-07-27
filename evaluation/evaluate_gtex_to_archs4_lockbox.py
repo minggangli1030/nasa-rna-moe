@@ -124,7 +124,10 @@ def _load_seed_cache(path: Path, seed: int) -> dict[str, Any]:
             "sample_ids",
             "groups",
             "organs",
+            "score_gene_indices",
             "target_masked",
+            "router_probabilities",
+            "router_hard_labels",
             "metadata_json",
             *{f"prediction__{name}" for name in CONDITIONS},
         }

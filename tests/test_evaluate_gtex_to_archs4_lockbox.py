@@ -11,7 +11,7 @@ from evaluation.cache_gtex_to_archs4_lockbox_scores import (
     CONDITIONS,
     sha256_array,
 )
-from evaluation.evaluate_gtex_to_archs4_lockbox import evaluate
+from evaluation.evaluate_gtex_to_archs4_lockbox import _load_seed_cache, evaluate
 from evaluation.freeze_gtex_to_archs4_candidates import ORGANS, SEEDS
 
 
@@ -46,7 +46,14 @@ def test_evaluator_aggregates_every_seed_and_study(tmp_path: Path) -> None:
             "sample_ids": sample_ids,
             "groups": groups,
             "organs": organs,
+            "score_gene_indices": np.arange(4, dtype=np.int64),
             "target_masked": target,
+            "router_probabilities": np.full(
+                (len(organs), len(ORGANS)),
+                1.0 / len(ORGANS),
+                dtype=np.float32,
+            ),
+            "router_hard_labels": np.zeros(len(organs), dtype=np.int64),
         }
         for condition in CONDITIONS:
             error = 0.5 if condition == "pooled" else 0.25
@@ -100,4 +107,47 @@ def test_evaluator_aggregates_every_seed_and_study(tmp_path: Path) -> None:
             "mean_mse_improvement_vs_pooled_across_all_seeds"
         ]
         > 0
+    )
+
+
+def test_seed_cache_validates_ancillary_router_arrays(tmp_path: Path) -> None:
+    arrays = {
+        "sample_ids": np.asarray(["S1"]),
+        "groups": np.asarray(["G1"]),
+        "organs": np.asarray(["liver"]),
+        "score_gene_indices": np.asarray([1, 2], dtype=np.int64),
+        "target_masked": np.ones((1, 2), dtype=np.float32),
+        "router_probabilities": np.full((1, 8), 0.125, dtype=np.float32),
+        "router_hard_labels": np.asarray([4], dtype=np.int64),
+        **{
+            f"prediction__{condition}": np.ones((1, 2), dtype=np.float32)
+            for condition in CONDITIONS
+        },
+    }
+    metadata = {
+        "status": "complete",
+        "seed": 17,
+        "best_seed_selection_performed": False,
+        "conditions": list(CONDITIONS),
+        "content_sha256": {
+            name: sha256_array(value) for name, value in arrays.items()
+        },
+    }
+    path = tmp_path / "seed17.npz"
+    np.savez(
+        path,
+        **arrays,
+        metadata_json=np.asarray(json.dumps(metadata, sort_keys=True)),
+    )
+
+    loaded = _load_seed_cache(path, 17)
+
+    assert np.array_equal(
+        loaded["router_hard_labels"], arrays["router_hard_labels"]
+    )
+    assert np.array_equal(
+        loaded["router_probabilities"], arrays["router_probabilities"]
+    )
+    assert np.array_equal(
+        loaded["score_gene_indices"], arrays["score_gene_indices"]
     )
