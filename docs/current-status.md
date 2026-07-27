@@ -4,7 +4,8 @@
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
-`progress.md` only when older chronology or exact intermediate results are needed.
+`docs/stage-1-end-result.md` for the final Stage 1 synthesis. Use `progress.md` only
+when older chronology or exact intermediate results are needed.
 
 ## Current state
 

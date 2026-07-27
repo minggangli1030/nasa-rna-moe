@@ -149,3 +149,27 @@ A successful Stage 2 would support:
 It would not by itself establish a causal biological mechanism, a new organ taxonomy,
 spaceflight benefit, or clinical utility. Those require separate interventions and
 task-specific evaluation.
+
+## Adjacent novel directions
+
+These remain secondary to the approved mechanism/transfer sequence. They are ranked by
+their current combination of novelty, feasibility, and dependence on existing
+evidence.
+
+| Priority | Direction | Novel question | Entry condition |
+| ---: | --- | --- | --- |
+| 1 | Directed transfer and interference | Can frozen expert differences predict which organ’s training signal helps or harms another organ? | approved primary Stage 2 |
+| 2 | Pathway-resolved expert mechanisms | Do independently trained organ adapters converge on reproducible pathway-specific residual corrections? | seed-stable Phase 1 signatures |
+| 3 | Hierarchical organ → state MoE | After choosing an organ expert, is there useful within-organ disease, stress, sex, age, or donor-state specialization? | organ effect preserved; anti-confound design |
+| 4 | OOD-aware fallback routing | Can router uncertainty identify mislabeled, low-quality, mixed, or out-of-taxonomy samples and safely fall back to pooled? | frozen uncertainty rule and untouched OOD cohort |
+| 5 | Compositional expert reuse | Can sparse combinations of organ experts model mixed tissues or shared physiological programs better than a flat K8? | parameter/compute-matched controls |
+| 6 | Platform-invariant organ routing | Can adversarial or invariant training retain organ gain while suppressing study/platform predictability? | separate development studies and confound audit |
+| 7 | Minimal gene-panel routing | What is the smallest observed-gene panel that preserves organ routing and reconstruction benefit? | target-hiding and acquisition-cost protocol |
+| 8 | Disease/perturbation transfer | Do organ experts predict which disease or perturbation responses transfer across tissues? | curated perturbation metadata and untouched task |
+| 9 | Spaceflight adaptation | Does organ-aware pretraining improve a separately frozen spaceflight task under severe data scarcity? | task-specific protocol; no reconstruction-to-outcome leap |
+| 10 | Parameter-efficient expert systems | Can shared low-rank or compositional adapters preserve the 3–4% gain with less storage and active compute? | same-data, same-update systems benchmark |
+
+The strongest near-term novelty is not another clustering visualization. It is the
+held-out predictive link between expert mechanism and directed transfer. Hierarchical
+or label-free discovery becomes compelling only if it adds utility beyond the
+replicated organ route and survives study/platform confounding.
