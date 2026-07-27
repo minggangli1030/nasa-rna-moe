@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-23 22:31 PDT / 2026-07-24 05:31 UTC
+**Updated:** 2026-07-26 22:59 PDT / 2026-07-27 05:59 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -72,9 +72,24 @@ Read this file first. It is the compact operational and scientific handoff. Use
   before any model metric was produced. The corrected loader reduced the 235×15,448
   fixture load from minutes to 0.29 seconds while preserving exact values/order.
 - The corrected pooled/K8/random/pooled-adapter/router real-data smoke passed from
-  clean commit `98e2cbab7e94f101feb33e83cff0712834c38ee3`. Full three-seed
-  GTEx-only training is now running in tmux session `gtex_k8_train_98e2cba` at
+  clean commit `98e2cbab7e94f101feb33e83cff0712834c38ee3`.
+- Full three-seed GTEx-only training completed at 2026-07-27T05:38:49Z under
   `/media/volume/moe-reboot/results/stage1_gtex_to_archs4_training_98e2cba`.
+  Every pooled trunk completed 7,350 updates; every seed completed the organ K8,
+  three random K8, and pooled-adapter banks; and the metric-free target-hidden
+  router completed without ARCHS4 or test access.
+- The remote `FULL_SHA256SUMS` passes, and the complete 1.8 GB bundle is independently
+  checksum-verified at
+  `backups/stage1_gtex_to_archs4_training_98e2cba/`. The checksum-manifest SHA256 is
+  `009920173cff2c0eaa9d880c8bc1fbe4ffbe61a9ffc9df5ba8c6795cf90dcc7b`.
+  All 261 repository tests pass when pytest capture is disabled; the default capture
+  mode trips a macOS sandbox/Arrow stderr-descriptor issue in one otherwise-passing
+  metadata test.
+- ARCHS4 expression and efficacy remain sealed. The next safe work is to freeze the
+  all-seed candidate ledger and evaluator. Test evaluation remains blocked by the
+  already-recorded critical scientific gate: the exact ARCHS4 study/sample/donor
+  review, development/lockbox split, strata, fine-tuning exposure doses, and decision
+  gates are not yet frozen.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis, K4-EPE is the frozen candidate, and its conditional

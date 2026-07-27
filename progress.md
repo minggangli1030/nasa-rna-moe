@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-23 22:31 PDT / 2026-07-24 05:31 UTC
+**Last updated:** 2026-07-26 22:59 PDT / 2026-07-27 05:59 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -112,6 +112,18 @@ The full strict three-seed campaign launched at 2026-07-24T05:29:12Z in tmux ses
 with the seed-17 GTEx-only pooled trunk. Each seed uses the frozen 7,350 pooled
 updates followed by one packed 1,500-update organ/random/control adapter pass.
 ARCHS4 expression remains sealed.
+
+The recovered campaign completed at 2026-07-27T05:38:49Z. Seeds 17, 42, and 101
+each completed the 7,350-update pooled trunk and the full packed organ K8, three
+random K8, and pooled-adapter bank family; the metric-free target-hidden router also
+completed. The complete remote checksum manifest passes. The 1.8 GB result was copied
+to `backups/stage1_gtex_to_archs4_training_98e2cba/` and independently verified;
+its `FULL_SHA256SUMS` SHA256 is
+`009920173cff2c0eaa9d880c8bc1fbe4ffbe61a9ffc9df5ba8c6795cf90dcc7b`.
+All 261 repository tests pass with pytest capture disabled. ARCHS4 expression was not
+accessed. Candidate/evaluator freezing may proceed, but the one-time ARCHS4 test
+remains blocked until manual study/sample/donor signoff and the exact lockbox,
+strata, fine-tuning doses, and decision gates are frozen.
 
 ## 2026-07-23 — GTEx V11 frozen external validation passed
 
