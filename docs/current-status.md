@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 13:48 PDT / 2026-07-27 20:48 UTC
+**Updated:** 2026-07-27 13:51 PDT / 2026-07-27 20:51 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -238,20 +238,32 @@ the causal effect of adding donor-organ training data. The controlled transfer
 experiment remains separate.
 
 The deterministic transfer-schedule compiler is implemented and focused tests pass.
-The corrected source-paired implementation is commit `b3c5af8`: it matches not only
-source counts but each organ's deterministic donor/sample sequence and
-source-local mask index across arms. The exact GTEx development manifest SHA256 is
+The final schedule implementation at commit `d3eb358` matches each organ's
+deterministic donor/sample sequence and source-local mask index across arms and
+enforces the frozen source ratio within every six-sample batch. The exact GTEx
+development manifest SHA256 is
 `d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6`.
 The compiled substitution design at
-`/media/volume/moe-reboot/results/stage2_directed_transfer_b3c5af8/substitution_schedules`
+`/media/volume/moe-reboot/results/stage2_directed_transfer_d3eb358/substitution_schedules`
 contains 60 arms and 90,000 draws: 8 recipient-only arms, 28 unordered organ pairs
 (56 directed evaluation effects), and 24 donor-atomic random-auxiliary controls.
 The training-schedule SHA256 is
-`e6637a43f73acb9cb3a4fde52a383af163eac980ad2ad52fca1a96486d88daf8`;
+`6390071cdc463a12e2bbf533b931235c17c6a40d75aacc61dbbd881b8c46ed20`;
 the arm-definition SHA256 is
-`8c7a4c227d647531dfecfb156ca822881b92bcdf9b469c2805ba819587082cce`.
-No model has been fit. The next gate is connecting the schedule contract to the K1
-trainer/evaluator and passing a real-data mechanical smoke before GPU training.
+`b4cae61170614a83bc9fc2a7222a0f824557985bba8130c91750cddc963c8774`.
+
+The schedule-bound K1 trainer is implemented at commit `00e37e3`; the combined
+focused Stage 2 suite passes 12 tests. A real-data mechanical GPU smoke completed
+two arms and two batches per arm in 161 seconds, including frozen-trunk loading,
+identical semantic initialization, scheduled masks, checkpoint publication, and
+calibration score-cache publication. Those two-batch outputs are mechanical only and
+must not be interpreted as efficacy. The next gates are the aggregate evaluator,
+prospective additive-edge freeze, and a full all-three-seed launcher.
+
+This first transfer matrix is donor-disjoint GTEx development evidence, not
+study-disjoint confirmation: GTEx does not provide independent contributing studies.
+Any final “held-out studies” claim requires a new untouched multisource lockbox after
+the development protocol and predictions are frozen.
 
 ## Thursday presentation readiness plan
 

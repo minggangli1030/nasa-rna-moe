@@ -54,7 +54,8 @@ the organ experts as the primary scientific object.
 
 > Determine whether reproducible functional differences among frozen organ experts
 > explain their conditional reconstruction gains and predict directed cross-organ
-> transfer or interference on held-out studies.
+> transfer or interference on donor-disjoint development data and, ultimately, a new
+> untouched study-disjoint cohort.
 
 Three linked questions implement that objective:
 
@@ -167,14 +168,22 @@ recipient exposure or total gradient mass.
 Implementation checkpoint: the deterministic compiler
 `evaluation/build_stage2_directed_transfer_schedules.py` now enforces these exact
 source quotas and donor-atomic random-shard membership without loading expression or
-efficacy results. Commit `b3c5af8` additionally pairs each source's deterministic
-donor/sample sequence and source-local mask index across comparison arms. Its focused
-tests pass. The exact 60-arm/90,000-draw substitution schedule is frozen from GTEx
+efficacy results. Commit `d3eb358` pairs each source's deterministic donor/sample
+sequence and source-local mask index across comparison arms and enforces the source
+ratio within every six-sample update. The exact 60-arm/90,000-draw substitution
+schedule is frozen from GTEx
 manifest SHA256 `d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6`;
 schedule SHA256 is
-`e6637a43f73acb9cb3a4fde52a383af163eac980ad2ad52fca1a96486d88daf8`.
-Real GPU training remains gated on connecting this contract to the K1
-trainer/evaluator and passing a real-data mechanical smoke.
+`6390071cdc463a12e2bbf533b931235c17c6a40d75aacc61dbbd881b8c46ed20`.
+The schedule-bound K1 trainer at `00e37e3` passes the combined focused suite, and its
+two-arm/two-batch real-data GPU smoke completed successfully. Full training remains
+gated on the aggregate evaluator, prospective additive-edge freeze, and strict
+all-three-seed launcher.
+
+The full transfer matrix is a GTEx donor-disjoint development analysis. It can
+measure controlled transfer and freeze predictions, but GTEx cannot establish
+multisource study robustness. A final Stage 2 confirmation must use a genuinely new
+untouched study-disjoint cohort.
 
 ### Phase 3 — frozen correspondence test
 

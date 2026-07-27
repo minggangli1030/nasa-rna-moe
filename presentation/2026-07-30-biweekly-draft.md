@@ -183,6 +183,11 @@ in multisource ARCHS4, while random and pooled-adapter controls remain neutral.
 3. Test whether expert similarity and router preferences predict those held-out
    transfer relationships.
 
+Development will first use donor-disjoint GTEx calibration data. The stronger claim
+that these predictions generalize across held-out studies requires a newly frozen
+multisource cohort; the completed QC-amended ARCHS4 cohort cannot be recycled as a
+pristine Stage 2 lockbox.
+
 Label-free routing is optional and secondary. It was originally included to add
 novelty by linking a co-routing map to the transfer map, but the completed de novo
 label-free pilots failed their utility/confound gates. Stage 2 therefore remains

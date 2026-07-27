@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 13:48 PDT / 2026-07-27 20:48 UTC
+**Last updated:** 2026-07-27 13:51 PDT / 2026-07-27 20:51 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -55,16 +55,33 @@ donor-atomic random-auxiliary arms. The compiler supports additive named-donor,
 random-auxiliary, and A2250 self controls, but fails closed unless additive edges are
 prospectively supplied.
 
-A fairness audit tightened the compiler before any model fit: equal counts were not
-enough if recipient A used different examples or masks in different arms. Commit
-`b3c5af8` therefore pairs each source at the donor/sample-sequence level and records a
-source-local draw number for paired masking. The exact remote GTEx manifest
-(`d37023f…d2e6`) compiled successfully into 60 arms and 90,000 draws. Schedule
-SHA256 is `e6637a43f73acb9cb3a4fde52a383af163eac980ad2ad52fca1a96486d88daf8`;
+A fairness audit tightened the compiler before efficacy fitting: equal counts were
+not enough if recipient A used different examples, masks, or per-update source
+composition in different arms. Commit `d3eb358` pairs each source at the
+donor/sample-sequence and source-local-mask level and uses batch size six so every
+substitution update is exactly 3+3 and every additive update is exactly 4+2. The
+exact remote GTEx manifest (`d37023f…d2e6`) compiled successfully into 60 arms and
+90,000 draws. Schedule SHA256 is
+`6390071cdc463a12e2bbf533b931235c17c6a40d75aacc61dbbd881b8c46ed20`;
 arm-definition SHA256 is
-`8c7a4c227d647531dfecfb156ca822881b92bcdf9b469c2805ba819587082cce`.
-No Stage 2 model has been fit and the GPU remains idle while the schedule-aware K1
-trainer/evaluator is implemented and mechanically tested.
+`b4cae61170614a83bc9fc2a7222a0f824557985bba8130c91750cddc963c8774`.
+
+The schedule-aware K1 trainer is implemented at commit `00e37e3`. It verifies the
+schedule, definition, report, manifest, expression, checkpoint, and gene-order
+hashes; requires seeds 17/42/101; freezes the trunk; recreates the same semantic K1
+initialization for every arm within seed; and publishes per-arm calibration score
+caches. The combined focused Stage 2 suite passes 12 tests.
+
+A two-arm/two-batch real-data GPU smoke completed successfully in 161 seconds under
+`/media/volume/moe-reboot/results/stage2_directed_transfer_smoke_00e37e3`.
+It exercised real 15,448-gene expression loading, the frozen seed-17 trunk, scheduled
+training, checkpoint publication, and score-cache publication. The smoke is
+mechanical only and its two-update scores are not efficacy evidence.
+
+The current transfer matrix is a donor-disjoint GTEx development experiment. Because
+GTEx is one harmonized source rather than a collection of independent contributing
+studies, the final held-out-study claim still requires a new untouched multisource
+lockbox after the transfer predictions and decision rules are frozen.
 
 ## 2026-07-27 — Stage 2 execution began with frozen-expert cross-dispatch
 
