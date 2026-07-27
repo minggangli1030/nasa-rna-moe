@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 12:59 PDT / 2026-07-27 19:59 UTC
+**Last updated:** 2026-07-27 13:05 PDT / 2026-07-27 20:05 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,30 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — Thursday presentation readiness activated
+
+The preliminary GTEx-to-ARCHS4 result is complete three days before the
+Thursday-morning readiness deadline. The active task has therefore moved from model
+execution to presentation production. The bounded eight-slide content and speaking
+draft is `presentation/2026-07-30-biweekly-draft.md`.
+
+The delivery plan is:
+
+1. Sunday: freeze the result narrative and claim boundary — complete.
+2. Monday: build the actual HTML deck and primary-result visuals.
+3. Tuesday: cross-check every displayed number against the frozen evaluation JSON
+   and perform visual overflow/readability QA.
+4. Wednesday: finalize speaking notes, likely questions, and rehearsal timing.
+5. Thursday by 08:00 PDT: publish a concise readiness summary and verified
+   presentation package for the afternoon talk.
+
+Automation `thursday-archs4-presentation-readiness` is active every two hours from
+08:00 through 22:00 PDT until Thursday morning. It advances safe local drafting and
+QA, keeps this file and `docs/current-status.md` synchronized, and pauses only for a
+critical scientific-validity issue or a story choice that materially requires the
+user. It must preserve the post-access QC-amended evidence label and may not turn
+diagnostic organ/study heterogeneity into post-hoc selection.
 
 ## 2026-07-27 — Post-access QC-amended ARCHS4 evaluation completed
 

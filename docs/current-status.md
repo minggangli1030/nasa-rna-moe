@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 12:59 PDT / 2026-07-27 19:59 UTC
+**Updated:** 2026-07-27 13:05 PDT / 2026-07-27 20:05 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -141,6 +141,12 @@ Read this file first. It is the compact operational and scientific handoff. Use
 - Nothing is currently running locally or on the GPU VM. The amended evaluation is
   complete; a new untouched lockbox remains the appropriate future route to a
   pristine preregistered confirmation.
+- The preliminary result is already available ahead of the Thursday-morning
+  deadline. Presentation preparation is now the active operational task. The
+  content draft is `presentation/2026-07-30-biweekly-draft.md`; an automated
+  readiness check runs every two hours from 08:00 through 22:00 PDT and ends
+  Thursday morning after the rendered deck, claim audit, and speaking notes are
+  verified.
 
 The strongest defensible conclusion is now: organ identity is the strongest tested
 conditional specialization axis; target-hidden conditional routing has replicated
@@ -176,6 +182,26 @@ The report SHA256 is
 `b4a77268c642709b2ae33a0a4d95f38bb9029734f5ffffd0ba1d3f9be1fc15cb`;
 the compact score-cache report SHA256 is
 `8a7d3d7c78791ff29cd1fc96d2b277e437d18f15bb715de9ebd1b216936aef99`.
+
+## Thursday presentation readiness plan
+
+Decision rule: the completed amended evaluation is the only new efficacy result to
+enter the deck. No additional ARCHS4 analysis may tune the story or promote the
+result to pristine confirmation. Organ-level heterogeneity may be described only as
+diagnostic context; it cannot be used to select organs, seeds, or conditions.
+
+| Deadline | Required state | Status |
+| --- | --- | --- |
+| Sunday | preliminary result, bounded claim, content outline | complete |
+| Monday | complete HTML slide draft and primary-result figures | next |
+| Tuesday | numeric cross-check against frozen JSON and visual QA | pending |
+| Wednesday | final speaking notes, likely questions, rehearsal pass | pending |
+| Thursday 08:00 PDT | presentation-ready package and readiness summary | pending |
+
+The deck must always show the 821-sample/63-study amended cohort, all three retained
+seeds, the neutral pooled-adapter/random controls, and the post-access QC-amended
+label. It must not claim universal per-organ improvement, verified ARCHS4 donor
+identity, downstream spaceflight benefit, or clinical validity.
 
 ## GTEx V11 external-validation result
 
