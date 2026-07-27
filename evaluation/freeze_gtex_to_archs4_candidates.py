@@ -141,6 +141,9 @@ def freeze_candidates(args: argparse.Namespace) -> dict:
             checkpoint = _verified_artifact(
                 root, entries, f"{base}/final_experts.pt"
             )
+            calibration_scores = _verified_artifact(
+                root, entries, f"{base}/calibration_scores.npz"
+            )
             metadata_artifact = _verified_artifact(
                 root, entries, f"{base}/run_metadata.json"
             )
@@ -165,6 +168,7 @@ def freeze_candidates(args: argparse.Namespace) -> dict:
                 raise ValueError("organ K8 expert order differs from frozen organ order")
             banks[axis] = {
                 "checkpoint": checkpoint,
+                "calibration_scores": calibration_scores,
                 "metadata": metadata_artifact,
                 "expert_order": metadata.get("config", {}).get(
                     "expert_initialization_keys"

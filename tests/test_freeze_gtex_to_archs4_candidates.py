@@ -47,6 +47,10 @@ def _fixture(tmp_path: Path) -> tuple[Path, argparse.Namespace]:
         for axis in AXES:
             checkpoint = root / f"seed{seed}/banks/banks/{axis}/final_experts.pt"
             checkpoint_hash = _write(checkpoint, f"{seed}-{axis}")
+            _write(
+                root / f"seed{seed}/banks/banks/{axis}/calibration_scores.npz",
+                f"calibration-{seed}-{axis}",
+            )
             config = {"axis": axis, "final_update": 1500}
             if axis == "organ_k8":
                 config["expert_initialization_keys"] = [
