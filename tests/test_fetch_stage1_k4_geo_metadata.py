@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "evaluation"))
 
 from fetch_stage1_k4_geo_metadata import (
+    fetch_soft,
     parse_series_soft,
     select_explicit_review_groups,
     select_review_groups,
@@ -35,6 +36,23 @@ def test_parse_series_soft_extracts_only_metadata():
     assert parsed["bioproject_ids"] == "PRJNA123"
     assert parsed["n_geo_samples"] == 2
     assert "supplementary" not in parsed
+
+
+def test_curl_transport_keeps_verified_series_payload(monkeypatch):
+    class Completed:
+        stdout = b"^SERIES = GSE123\n!Series_geo_accession = GSE123\n"
+
+    def fake_run(command, **kwargs):
+        assert command[0] == "curl"
+        assert "--fail" in command
+        assert kwargs["check"] is True
+        return Completed()
+
+    monkeypatch.setattr(
+        "fetch_stage1_k4_geo_metadata.subprocess.run",
+        fake_run,
+    )
+    assert fetch_soft("GSE123", 60, "curl").startswith(b"^SERIES = ")
 
 
 def test_select_review_groups_preserves_priority_order():

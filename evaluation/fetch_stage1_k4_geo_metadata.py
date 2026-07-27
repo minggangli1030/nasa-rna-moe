@@ -13,6 +13,7 @@ import hashlib
 import json
 import os
 import re
+import subprocess
 import time
 import urllib.request
 from pathlib import Path
@@ -169,13 +170,35 @@ def select_explicit_review_groups(
     return pd.concat(parts, ignore_index=True)
 
 
-def fetch_soft(accession: str, timeout: int) -> bytes:
-    request = urllib.request.Request(
-        GEO_URL.format(accession=accession),
-        headers={"User-Agent": "nasa-rna-moe-metadata-review/1.0"},
-    )
-    with urllib.request.urlopen(request, timeout=timeout) as response:
-        payload = response.read()
+def fetch_soft(accession: str, timeout: int, transport: str = "urllib") -> bytes:
+    url = GEO_URL.format(accession=accession)
+    if transport == "curl":
+        completed = subprocess.run(
+            [
+                "curl",
+                "--fail",
+                "--silent",
+                "--show-error",
+                "--location",
+                "--max-time",
+                str(timeout),
+                "--user-agent",
+                "nasa-rna-moe-metadata-review/1.0",
+                url,
+            ],
+            check=True,
+            capture_output=True,
+        )
+        payload = completed.stdout
+    elif transport == "urllib":
+        request = urllib.request.Request(
+            url,
+            headers={"User-Agent": "nasa-rna-moe-metadata-review/1.0"},
+        )
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            payload = response.read()
+    else:
+        raise ValueError(f"unsupported GEO metadata transport: {transport}")
     if not payload.startswith(b"^SERIES = "):
         raise ValueError(f"unexpected GEO response for {accession}")
     return payload
@@ -242,7 +265,11 @@ def build_geo_review(args: argparse.Namespace) -> dict:
     for index, accession in enumerate(accessions):
         if index:
             time.sleep(args.request_delay_seconds)
-        payload = fetch_soft(accession, args.timeout_seconds)
+        payload = fetch_soft(
+            accession,
+            args.timeout_seconds,
+            getattr(args, "transport", "urllib"),
+        )
         soft_path = soft_dir / f"{accession}.soft"
         soft_path.write_bytes(payload)
         parsed = parse_series_soft(payload.decode("utf-8"), accession)
@@ -346,6 +373,12 @@ def main() -> None:
     parser.add_argument("--expected-explicit-groups-sha256")
     parser.add_argument("--request-delay-seconds", type=float, default=0.4)
     parser.add_argument("--timeout-seconds", type=int, default=60)
+    parser.add_argument(
+        "--transport",
+        choices=("urllib", "curl"),
+        default="urllib",
+        help="Verified HTTPS transport; curl is useful with managed system CAs.",
+    )
     args = parser.parse_args()
     print(json.dumps(build_geo_review(args), indent=2, sort_keys=True))
 
