@@ -54,6 +54,31 @@ def test_select_review_groups_preserves_priority_order():
     assert selected.groupby("organ").size().eq(2).all()
 
 
+def test_select_review_groups_supports_frozen_k8_family():
+    organs = (
+        "adipose",
+        "brain",
+        "colon",
+        "heart",
+        "liver",
+        "lung",
+        "skeletal_muscle",
+        "skin",
+    )
+    workbook = pd.DataFrame(
+        [
+            {
+                "organ": organ,
+                "series_group_id": f"{organ}-a",
+                "automated_priority": "A",
+            }
+            for organ in organs
+        ]
+    )
+    selected = select_review_groups(workbook, 1, organs)
+    assert selected["organ"].tolist() == list(organs)
+
+
 def test_select_explicit_review_groups_is_exact_and_ordered():
     workbook = pd.DataFrame([
         {"organ": "liver", "series_group_id": "GSE1", "automated_priority": "B"},

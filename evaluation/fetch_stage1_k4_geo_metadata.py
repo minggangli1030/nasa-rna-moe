@@ -118,10 +118,14 @@ def parse_series_soft(text: str, expected_accession: str) -> dict:
     }
 
 
-def select_review_groups(workbook: pd.DataFrame, per_organ: int) -> pd.DataFrame:
+def select_review_groups(
+    workbook: pd.DataFrame,
+    per_organ: int,
+    target_organs: tuple[str, ...] = TARGET_ORGANS,
+) -> pd.DataFrame:
     usable = workbook[workbook["automated_priority"] != "excluded_only"].copy()
     parts = []
-    for organ in TARGET_ORGANS:
+    for organ in target_organs:
         subset = usable[usable["organ"] == organ].head(per_organ)
         if len(subset) != per_organ:
             raise ValueError(
@@ -132,7 +136,9 @@ def select_review_groups(workbook: pd.DataFrame, per_organ: int) -> pd.DataFrame
 
 
 def select_explicit_review_groups(
-    workbook: pd.DataFrame, requested: list[dict]
+    workbook: pd.DataFrame,
+    requested: list[dict],
+    target_organs: tuple[str, ...] = TARGET_ORGANS,
 ) -> pd.DataFrame:
     """Select exact, ordered organ/group pairs for a targeted reserve review."""
     if not requested:
@@ -144,7 +150,7 @@ def select_explicit_review_groups(
             raise TypeError("explicit GEO review entries must be objects")
         organ = entry.get("organ")
         group_id = entry.get("series_group_id")
-        if organ not in TARGET_ORGANS:
+        if organ not in target_organs:
             raise ValueError(f"unsupported explicit-review organ: {organ!r}")
         key = (organ, group_id)
         if key in seen:
@@ -182,6 +188,18 @@ def build_geo_review(args: argparse.Namespace) -> dict:
     if sha256(workbook_path) != args.expected_workbook_sha256:
         raise ValueError("curation workbook hash mismatch")
     workbook = pd.read_csv(workbook_path)
+    raw_target_organs = getattr(args, "target_organs", None)
+    target_organs = (
+        tuple(value.strip() for value in raw_target_organs.split(",") if value.strip())
+        if raw_target_organs
+        else TARGET_ORGANS
+    )
+    if (
+        not target_organs
+        or len(set(target_organs)) != len(target_organs)
+        or not set(target_organs).issubset(set(workbook["organ"]))
+    ):
+        raise ValueError("target-organ family is empty, duplicated, or absent")
     explicit_groups_path = getattr(args, "explicit_groups", None)
     if explicit_groups_path:
         explicit_path = Path(explicit_groups_path)
@@ -193,7 +211,7 @@ def build_geo_review(args: argparse.Namespace) -> dict:
         if explicit.get("expression_values_read") is not False:
             raise ValueError("explicit GEO review list does not seal expression")
         selected = select_explicit_review_groups(
-            workbook, explicit.get("entries", [])
+            workbook, explicit.get("entries", []), target_organs
         )
         selection_mode = "explicit_ordered_organ_group_pairs"
         selected_groups_per_organ = {
@@ -202,10 +220,10 @@ def build_geo_review(args: argparse.Namespace) -> dict:
         }
         explicit_hash = sha256(explicit_path)
     else:
-        selected = select_review_groups(workbook, args.per_organ)
+        selected = select_review_groups(workbook, args.per_organ, target_organs)
         selection_mode = "workbook_priority_head_per_organ"
         selected_groups_per_organ = {
-            organ: args.per_organ for organ in TARGET_ORGANS
+            organ: args.per_organ for organ in target_organs
         }
         explicit_hash = None
     accessions = sorted({
@@ -289,6 +307,7 @@ def build_geo_review(args: argparse.Namespace) -> dict:
         "external_lockbox_frozen": False,
         "automated_decisions_are_final": False,
         "selection_mode": selection_mode,
+        "target_organs": list(target_organs),
         "selected_groups_per_organ": selected_groups_per_organ,
         "selected_organ_group_rows": int(len(selected)),
         "fetched_geo_series": int(len(accessions)),
@@ -319,6 +338,10 @@ def main() -> None:
     parser.add_argument("--code-commit", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--per-organ", type=int, default=20)
+    parser.add_argument(
+        "--target-organs",
+        help="Comma-separated ordered organ family; defaults to the historical K4 set.",
+    )
     parser.add_argument("--explicit-groups")
     parser.add_argument("--expected-explicit-groups-sha256")
     parser.add_argument("--request-delay-seconds", type=float, default=0.4)
