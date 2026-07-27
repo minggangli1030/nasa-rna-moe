@@ -227,7 +227,14 @@ def build_donor_power_audit(args: argparse.Namespace) -> dict:
     if set(studies["manual_study_decision"]) != {"pending"}:
         raise ValueError("source study decisions are not uniformly pending")
 
-    group_counts = studies.groupby("organ").size().reindex(TARGET_ORGANS, fill_value=0)
+    target_organs = tuple(
+        source_contract.get("target_organs", TARGET_ORGANS)
+    )
+    if set(samples["organ"]) != set(target_organs):
+        raise ValueError("sample review does not cover exactly the target organs")
+    if set(studies["organ"]) != set(target_organs):
+        raise ValueError("study review does not cover exactly the target organs")
+    group_counts = studies.groupby("organ").size().reindex(target_organs, fill_value=0)
     expected_per_organ = source_contract["expected_groups_per_organ"]
     if not group_counts.eq(expected_per_organ).all():
         raise ValueError(f"unexpected study groups per organ: {group_counts.to_dict()}")
@@ -363,8 +370,9 @@ def build_donor_power_audit(args: argparse.Namespace) -> dict:
         "sample_rows": int(len(audited)),
         "study_groups": int(len(studies)),
         "study_groups_per_organ": {
-            organ: int(group_counts[organ]) for organ in TARGET_ORGANS
+            organ: int(group_counts[organ]) for organ in target_organs
         },
+        "target_organs": list(target_organs),
         "derived_donor_keys": int(audited["derived_donor_key"].nunique()),
         "explicit_identifier_rows": int(len(explicit_rows)),
         "cross_group_explicit_identifier_overlaps": overlaps,

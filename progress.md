@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-26 22:59 PDT / 2026-07-27 05:59 UTC
+**Last updated:** 2026-07-26 23:28 PDT / 2026-07-27 06:28 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -124,6 +124,31 @@ All 261 repository tests pass with pytest capture disabled. ARCHS4 expression wa
 accessed. Candidate/evaluator freezing may proceed, but the one-time ARCHS4 test
 remains blocked until manual study/sample/donor signoff and the exact lockbox,
 strata, fine-tuning doses, and decision gates are frozen.
+
+The immediate post-training lockbox audit then closed the missing-K8-coverage gap.
+The pinned post-v11, historical-accession/series-disjoint metadata universe contains
+10,041 samples from 391 unique connected studies across all eight trained organs.
+Official GEO Series metadata for 160 top-ranked organ/group rows proved that
+automatic priority-A acceptance is unsafe: nominal positives include cell models,
+active interventions, tumors, and disease studies. No supplementary expression or
+efficacy value was accessed.
+
+The existing five-organ shortlist was conservatively extended to colon, heart, and
+lung. Exact fail-closed selectors now resolve 64 connected study groups and 827
+samples, eight groups per organ. The K8 donor/power audit found no duplicate selected
+sample IDs, no duplicate derived donor keys within a group, and no explicit
+cross-group donor/BioSample identifier reuse. It is structurally
+`ready_for_protocol_drafting_not_lockbox`; all source decisions remain pending and
+ARCHS4 expression remains sealed. With 64 study clusters, the one-sided exact sign
+diagnostic at alpha 0.025 requires 41 positive studies and has null tail 0.01638.
+
+This work changes the blocker precisely: the test is no longer waiting for colon,
+heart, or lung study coverage. It is waiting for the all-seed candidate hash ledger,
+the exact ARCHS4 extraction/scoring implementation, development-versus-lockbox roles,
+frozen strata and any development-only exposure doses, the decision tree, and final
+metadata signoff. No production ARCHS4 lockbox evaluator or launcher exists yet, so
+opening expression now would be an unpreregistered test rather than the planned
+one-time confirmation.
 
 ## 2026-07-23 — GTEx V11 frozen external validation passed
 

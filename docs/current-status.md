@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-26 22:59 PDT / 2026-07-27 05:59 UTC
+**Updated:** 2026-07-26 23:28 PDT / 2026-07-27 06:28 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -85,11 +85,29 @@ Read this file first. It is the compact operational and scientific handoff. Use
   All 261 repository tests pass when pytest capture is disabled; the default capture
   mode trips a macOS sandbox/Arrow stderr-descriptor issue in one otherwise-passing
   metadata test.
-- ARCHS4 expression and efficacy remain sealed. The next safe work is to freeze the
-  all-seed candidate ledger and evaluator. Test evaluation remains blocked by the
-  already-recorded critical scientific gate: the exact ARCHS4 study/sample/donor
-  review, development/lockbox split, strata, fine-tuning exposure doses, and decision
-  gates are not yet frozen.
+- The current post-v11 K8 metadata universe is pinned at 10,041 samples from 391
+  unique connected study groups. Official GEO Series metadata was fetched for 160
+  top-ranked organ/group rows without accessing supplementary expression files.
+  This confirmed that automated priority labels are unsafe: nominal clean candidates
+  include cell models, interventions, tumors, and disease-context controls.
+- A conservative K8 shortlist now resolves exactly 64 connected study groups and 827
+  sample accessions: eight groups for each of adipose, brain, colon, heart, liver,
+  lung, skeletal muscle, and skin. Selectors retain only explicit healthy/control,
+  untreated/baseline, or transparently labeled disease-context control tissue and
+  remove the known duplicate VUHD073 lung library.
+- The metadata-only K8 donor/power audit passes every structural readiness check:
+  no repeated sample IDs, no duplicate derived within-group donor keys, no explicit
+  cross-group donor/BioSample identifier reuse, and all 64 study clusters present.
+  The exact one-sided sign diagnostic rejects at 41 positive studies of 64
+  (`alpha=0.025`, achieved null tail 0.01638). Most donor identities are still
+  documented title proxies, not verified donor IDs.
+- ARCHS4 expression and efficacy remain sealed. The missing-organ blocker is closed,
+  but the lockbox is deliberately not yet declared frozen. The remaining critical
+  blockers are the all-seed candidate hash ledger, exact ARCHS4 extractor/evaluator,
+  development-versus-lockbox roles, frozen strata and optional exposure doses,
+  decision tree, and explicit final metadata signoff. There is currently no
+  production ARCHS4 lockbox evaluator/launcher, so running a test now would bypass
+  the frozen protocol rather than execute it.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis, K4-EPE is the frozen candidate, and its conditional

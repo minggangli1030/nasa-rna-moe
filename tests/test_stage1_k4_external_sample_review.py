@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT / "evaluation"))
 from build_stage1_k4_external_sample_review import (
     TARGET_ORGANS,
     apply_shortlist_amendment,
+    apply_shortlist_extension,
     build_sample_review,
     resolve_selector,
 )
@@ -69,6 +70,29 @@ def test_shortlist_amendment_replaces_exactly_one_group_in_place():
         {"organ": "liver", "series_group_id": "GSE3"},
     ]
     assert shortlist["entries"][1]["series_group_id"] == "GSE2"
+
+
+def test_shortlist_extension_adds_exactly_new_organs():
+    shortlist = {
+        "entries": [
+            {"organ": "brain", "series_group_id": "GSE1"},
+            {"organ": "liver", "series_group_id": "GSE2"},
+        ]
+    }
+    extended = apply_shortlist_extension(shortlist, {
+        "metadata_only": True,
+        "expression_values_read": False,
+        "external_lockbox_frozen": False,
+        "source_shortlist_sha256": "a" * 64,
+        "target_organs": ["brain", "colon", "liver"],
+        "entries": [{"organ": "colon", "series_group_id": "GSE3"}],
+    })
+    assert extended["target_organs"] == ["brain", "colon", "liver"]
+    assert [entry["organ"] for entry in extended["entries"]] == [
+        "brain",
+        "liver",
+        "colon",
+    ]
 
 
 def _write_fixture(tmp_path: Path):

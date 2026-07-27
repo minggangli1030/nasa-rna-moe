@@ -147,6 +147,46 @@ def apply_shortlist_amendment(shortlist: dict, amendment: dict) -> dict:
     return amended
 
 
+def apply_shortlist_extension(shortlist: dict, extension: dict) -> dict:
+    """Append new-organ entries while preserving an auditable source binding."""
+    if extension.get("metadata_only") is not True:
+        raise ValueError("shortlist extension is not metadata-only")
+    if extension.get("expression_values_read") is not False:
+        raise ValueError("shortlist extension does not seal expression")
+    if extension.get("external_lockbox_frozen") is not False:
+        raise ValueError("shortlist extension must not claim a frozen lockbox")
+    if extension.get("source_shortlist_sha256") is None:
+        raise ValueError("shortlist extension lacks source shortlist hash")
+    target_organs = extension.get("target_organs")
+    entries = extension.get("entries")
+    if (
+        not isinstance(target_organs, list)
+        or not target_organs
+        or len(target_organs) != len(set(target_organs))
+    ):
+        raise ValueError("shortlist extension requires unique target_organs")
+    if not isinstance(entries, list) or not entries:
+        raise ValueError("shortlist extension requires entries")
+    existing_entries = list(shortlist.get("entries", []))
+    existing_organs = {entry.get("organ") for entry in existing_entries}
+    extension_organs = {entry.get("organ") for entry in entries}
+    if not existing_organs < set(target_organs):
+        raise ValueError("shortlist extension must strictly extend existing organs")
+    if extension_organs != set(target_organs) - existing_organs:
+        raise ValueError("shortlist extension entries do not cover exactly new organs")
+    return {
+        **shortlist,
+        "target_organs": target_organs,
+        "entries": existing_entries + entries,
+    }
+
+
+def _as_list(value: object) -> list:
+    if value is None:
+        return []
+    return value if isinstance(value, list) else [value]
+
+
 def build_sample_review(args: argparse.Namespace) -> dict:
     if re.fullmatch(r"[0-9a-f]{40}", args.code_commit) is None:
         raise ValueError("sample review requires a full code commit")
@@ -181,31 +221,65 @@ def build_sample_review(args: argparse.Namespace) -> dict:
             raise ValueError("shortlist amendment binds a different source shortlist")
         shortlist = apply_shortlist_amendment(shortlist, amendment)
         amendment_hash = sha256(amendment_path)
+    extension_hash = None
+    extension_path_value = getattr(args, "shortlist_extension", None)
+    if extension_path_value:
+        extension_path = Path(extension_path_value)
+        extension = _validated_json(
+            extension_path,
+            args.expected_shortlist_extension_sha256,
+            "shortlist extension",
+        )
+        if extension.get("source_shortlist_sha256") != sha256(shortlist_path):
+            raise ValueError("shortlist extension binds a different source shortlist")
+        if amendment_hash is not None and extension.get(
+            "source_amendment_sha256"
+        ) != amendment_hash:
+            raise ValueError("shortlist extension binds a different amendment")
+        shortlist = apply_shortlist_extension(shortlist, extension)
+        extension_hash = sha256(extension_path)
 
     triage = pd.read_parquet(triage_path)
     geo = pd.read_csv(geo_path, keep_default_na=False)
-    supplemental_geo_hash = None
-    supplemental_geo_value = getattr(args, "supplemental_geo_study_review", None)
-    if supplemental_geo_value:
+    supplemental_geo_hashes = []
+    supplemental_geo_values = _as_list(
+        getattr(args, "supplemental_geo_study_review", None)
+    )
+    supplemental_geo_expected = _as_list(
+        getattr(args, "expected_supplemental_geo_review_sha256", None)
+    )
+    if len(supplemental_geo_values) != len(supplemental_geo_expected):
+        raise ValueError("supplemental GEO review paths and hashes differ in length")
+    for supplemental_geo_value, expected_hash in zip(
+        supplemental_geo_values, supplemental_geo_expected
+    ):
         supplemental_geo_path = Path(supplemental_geo_value)
-        if (
-            sha256(supplemental_geo_path)
-            != args.expected_supplemental_geo_review_sha256
-        ):
+        if sha256(supplemental_geo_path) != expected_hash:
             raise ValueError("supplemental GEO study-review hash mismatch")
         supplemental = pd.read_csv(
             supplemental_geo_path, keep_default_na=False
         )
         geo = pd.concat([geo, supplemental], ignore_index=True)
-        supplemental_geo_hash = sha256(supplemental_geo_path)
+        supplemental_geo_hashes.append(sha256(supplemental_geo_path))
     missing_triage = sorted(REQUIRED_TRIAGE_COLUMNS - set(triage.columns))
     missing_geo = sorted(REQUIRED_GEO_COLUMNS - set(geo.columns))
     if missing_triage:
         raise KeyError(f"sample triage is missing fields: {missing_triage}")
     if missing_geo:
         raise KeyError(f"GEO study review is missing fields: {missing_geo}")
-    if geo.duplicated(["organ", "series_group_id"]).any():
-        raise ValueError("combined GEO study reviews repeat an organ/group row")
+    duplicated_geo = geo.duplicated(["organ", "series_group_id"], keep=False)
+    if duplicated_geo.any():
+        for _, group in geo[duplicated_geo].groupby(
+            ["organ", "series_group_id"], sort=False
+        ):
+            if any(
+                group[column].nunique(dropna=False) != 1
+                for column in REQUIRED_GEO_COLUMNS
+            ):
+                raise ValueError(
+                    "combined GEO study reviews conflict for an organ/group row"
+                )
+        geo = geo.drop_duplicates(["organ", "series_group_id"], keep="first")
     if triage["sample_id"].duplicated().any():
         raise ValueError("sample triage contains duplicate sample IDs")
 
@@ -213,6 +287,7 @@ def build_sample_review(args: argparse.Namespace) -> dict:
     if not isinstance(entries, list):
         raise TypeError("shortlist entries must be a list")
     expected_per_organ = int(shortlist.get("provisional_groups_per_organ", 0))
+    target_organs = tuple(shortlist.get("target_organs", TARGET_ORGANS))
     entry_table = pd.DataFrame(entries)
     required_entry_fields = {
         "organ",
@@ -224,8 +299,8 @@ def build_sample_review(args: argparse.Namespace) -> dict:
     missing_entry_fields = sorted(required_entry_fields - set(entry_table.columns))
     if missing_entry_fields:
         raise KeyError(f"shortlist entries are missing fields: {missing_entry_fields}")
-    if set(entry_table["organ"]) != set(TARGET_ORGANS):
-        raise ValueError("shortlist does not cover exactly the five target organs")
+    if set(entry_table["organ"]) != set(target_organs):
+        raise ValueError("shortlist does not cover exactly the target organs")
     group_counts = entry_table.groupby("organ").size()
     if not group_counts.eq(expected_per_organ).all():
         raise ValueError(
@@ -306,7 +381,7 @@ def build_sample_review(args: argparse.Namespace) -> dict:
             resolved.loc[resolved["sample_id"].duplicated(False), "sample_id"].unique()
         )
         raise ValueError(f"shortlist resolves duplicate sample IDs: {duplicates}")
-    organ_rank = {organ: index for index, organ in enumerate(TARGET_ORGANS)}
+    organ_rank = {organ: index for index, organ in enumerate(target_organs)}
     entry_rank = {
         (entry["organ"], entry["series_group_id"]): index
         for index, entry in enumerate(entries)
@@ -353,7 +428,7 @@ def build_sample_review(args: argparse.Namespace) -> dict:
         if len(values) > 1
     }
     counts = (
-        resolved.groupby("organ").size().reindex(TARGET_ORGANS, fill_value=0)
+        resolved.groupby("organ").size().reindex(target_organs, fill_value=0)
     )
     report = {
         "schema_version": 1,
@@ -365,11 +440,12 @@ def build_sample_review(args: argparse.Namespace) -> dict:
         "external_lockbox_frozen": False,
         "automated_decisions_are_final": False,
         "manual_decisions_complete": False,
+        "target_organs": list(target_organs),
         "provisional_groups_per_organ": expected_per_organ,
         "provisional_group_rows": int(len(group_summary)),
         "provisional_sample_rows": int(len(resolved)),
         "provisional_sample_counts": {
-            organ: int(counts[organ]) for organ in TARGET_ORGANS
+            organ: int(counts[organ]) for organ in target_organs
         },
         "repeated_publication_or_bioproject_ids": repeated_identifiers,
         "hashes": {
@@ -389,10 +465,12 @@ def build_sample_review(args: argparse.Namespace) -> dict:
     }
     if amendment_hash is not None:
         report["hashes"]["shortlist_amendment_sha256"] = amendment_hash
-    if supplemental_geo_hash is not None:
+    if extension_hash is not None:
+        report["hashes"]["shortlist_extension_sha256"] = extension_hash
+    if supplemental_geo_hashes:
         report["hashes"][
             "supplemental_geo_study_review_sha256"
-        ] = supplemental_geo_hash
+        ] = supplemental_geo_hashes
     report_path = output_dir / "sample_review_report.json"
     temporary = output_dir / "sample_review_report.json.tmp"
     temporary.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
@@ -410,8 +488,12 @@ def main() -> None:
     parser.add_argument("--expected-shortlist-sha256", required=True)
     parser.add_argument("--shortlist-amendment")
     parser.add_argument("--expected-shortlist-amendment-sha256")
-    parser.add_argument("--supplemental-geo-study-review")
-    parser.add_argument("--expected-supplemental-geo-review-sha256")
+    parser.add_argument("--shortlist-extension")
+    parser.add_argument("--expected-shortlist-extension-sha256")
+    parser.add_argument("--supplemental-geo-study-review", action="append")
+    parser.add_argument(
+        "--expected-supplemental-geo-review-sha256", action="append"
+    )
     parser.add_argument("--code-commit", required=True)
     parser.add_argument("--output-dir", required=True)
     args = parser.parse_args()

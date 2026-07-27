@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "status": "k8_metadata_sample_review_extension_not_external_lockbox",
+  "metadata_only": true,
+  "expression_values_read": false,
+  "efficacy_scoring_performed": false,
+  "external_lockbox_frozen": false,
+  "source_shortlist_sha256": "e7569661edbccc7d0ad075a184851b969c019b12067c19a1458012d7aa1de3f8",
+  "source_amendment_sha256": "de2d9e63588d777498fc736ef6da30f860fa14859f7c83bbbf44a7d3c441990a",
+  "target_organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "entries": [
+    {
+      "organ": "colon",
+      "series_group_id": "GSE270661|GSE270663",
+      "review_rationale": "Healthy-control left-colon tissue from an infliximab study; retain only untreated basal samples, one title-encoded subject sample.",
+      "donor_resolution_status": "provisional_one_basal_sample_per_title_encoded_subject",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AHealthy control-\\d+, left colon, basal\\Z"
+      }
+    },
+    {
+      "organ": "colon",
+      "series_group_id": "GSE245764",
+      "review_rationale": "Whole-mucosa colon samples explicitly labeled healthy controls Hc1-Hc10.",
+      "donor_resolution_status": "provisional_titles_encode_distinct_healthy_controls",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AHc\\d+\\Z",
+        "metadata_include_all_regex": [
+          "subject status:\\s*healthy controls"
+        ]
+      }
+    },
+    {
+      "organ": "colon",
+      "series_group_id": "GSE224758",
+      "review_rationale": "Colon biopsies explicitly labeled healthy in the ulcerative-colitis comparison; replicate labels require donor-level confirmation.",
+      "donor_resolution_status": "unresolved_replicate_label_biological_vs_technical_semantics",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\Ahealthy colon biopsy, rep \\d+\\Z",
+        "metadata_include_all_regex": [
+          "\\bcondition:\\s*healthy\\b"
+        ]
+      }
+    },
+    {
+      "organ": "colon",
+      "series_group_id": "GSE334803",
+      "review_rationale": "Healthy-control colon series with unresolved replicate semantics; retain one deterministic sample until donor evidence is explicit.",
+      "donor_resolution_status": "single_sample_conservative_for_unresolved_rep_semantics",
+      "selector": {
+        "mode": "explicit_sample_ids",
+        "sample_ids": [
+          "GSM9797393"
+        ]
+      }
+    },
+    {
+      "organ": "colon",
+      "series_group_id": "GSE226739|GSE226741",
+      "review_rationale": "Normal colorectal epithelium controls from an adenoma/adenocarcinoma progression study; retain only mRNA HC samples.",
+      "donor_resolution_status": "provisional_titles_encode_distinct_normal_controls",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AmRNA HC-\\d+\\Z",
+        "metadata_include_all_regex": [
+          "Normal colorectal epithelium"
+        ]
+      }
+    },
+    {
+      "organ": "colon",
+      "series_group_id": "GSE196335",
+      "review_rationale": "Sigmoid-colon biopsies from an intermittent-fasting trial; retain only pre-intervention baseline, one title-encoded participant sample.",
+      "donor_resolution_status": "provisional_one_baseline_sample_per_title_encoded_participant",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AIF\\d+ BL\\Z",
+        "metadata_include_all_regex": [
+          "time point:\\s*Baseline"
+        ]
+      }
+    },
+    {
+      "organ": "colon",
+      "series_group_id": "GSE232110",
+      "review_rationale": "Matched colorectal adenoma study; retain only the healthy-mucosa member of each available title-encoded subject pair.",
+      "donor_resolution_status": "provisional_one_healthy_mucosa_sample_per_title_encoded_subject",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AR\\d+N - RNA-Seq human colorectal healthy mucosa\\Z"
+      }
+    },
+    {
+      "organ": "colon",
+      "series_group_id": "GSE308020",
+      "review_rationale": "Normal colon samples from a colorectal-cancer study; retain as a transparent tumor-adjacent/non-diseased context stratum, not nominal healthy volunteers.",
+      "donor_resolution_status": "provisional_titles_encode_distinct_normal_context_samples",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AColon, normal\\d+\\Z",
+        "metadata_include_all_regex": [
+          "disease state:\\s*Normal"
+        ]
+      }
+    },
+    {
+      "organ": "heart",
+      "series_group_id": "GSE212695",
+      "review_rationale": "Healthy donor hearts sampled across chambers; retain one left-ventricle sample per title-encoded donor.",
+      "donor_resolution_status": "provisional_one_left_ventricle_per_title_encoded_donor",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\A[MF]\\d+LV\\Z",
+        "metadata_include_all_regex": [
+          "health state:\\s*healthy"
+        ]
+      }
+    },
+    {
+      "organ": "heart",
+      "series_group_id": "GSE198945",
+      "review_rationale": "Left-ventricle controls from an ischemic-heart-failure study with distinct sample titles.",
+      "donor_resolution_status": "provisional_titles_are_distinct_left_ventricle_controls",
+      "selector": {
+        "mode": "regex",
+        "metadata_include_all_regex": [
+          "\\bcondition:\\s*Control\\b"
+        ]
+      }
+    },
+    {
+      "organ": "heart",
+      "series_group_id": "GSE295478",
+      "review_rationale": "Five heart-tissue samples explicitly labeled healthy with distinct RHH identifiers.",
+      "donor_resolution_status": "provisional_rhh_titles_encode_distinct_healthy_donors",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\ARHH\\d+\\Z",
+        "metadata_include_all_regex": [
+          "disease state:\\s*healthy"
+        ]
+      }
+    },
+    {
+      "organ": "heart",
+      "series_group_id": "GSE198618",
+      "review_rationale": "Normal right-ventricle controls from compensated/decompensated RV profiling.",
+      "donor_resolution_status": "provisional_titles_are_distinct_right_ventricle_controls",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AControl RV_\\d+\\Z"
+      }
+    },
+    {
+      "organ": "heart",
+      "series_group_id": "GSE240921|GSE240941",
+      "review_rationale": "Normal right-ventricle controls; retain only the RV-Control title family to avoid possible overlap with the separately named RV-Normal family.",
+      "donor_resolution_status": "provisional_rv_control_titles_are_distinct_donors",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\ARV-Control_\\d+\\Z"
+      }
+    },
+    {
+      "organ": "heart",
+      "series_group_id": "GSE191081|GSE191083",
+      "review_rationale": "Non-chagasic left-ventricular controls with distinct CTRL titles.",
+      "donor_resolution_status": "provisional_ctrl_titles_are_distinct_non_chagasic_donors",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\ACTRL\\d+ \\[RNA-Seq\\]\\Z",
+        "metadata_include_all_regex": [
+          "group:\\s*non-chagasic control"
+        ]
+      }
+    },
+    {
+      "organ": "heart",
+      "series_group_id": "GSE249925",
+      "review_rationale": "Heart-muscle controls from the hypertrophic-cardiomyopathy study; retain only samples explicitly labeled Control.",
+      "donor_resolution_status": "provisional_control_titles_are_distinct_donors",
+      "selector": {
+        "mode": "regex",
+        "metadata_include_all_regex": [
+          "\\bgroup:\\s*Control\\b"
+        ]
+      }
+    },
+    {
+      "organ": "heart",
+      "series_group_id": "GSE307214",
+      "review_rationale": "Age- and sex-stratified heart tissue in a doxorubicin study; retain untreated Control samples only.",
+      "donor_resolution_status": "provisional_control_titles_are_distinct_donors",
+      "selector": {
+        "mode": "regex",
+        "metadata_include_all_regex": [
+          "\\btreatment:\\s*Control\\b"
+        ]
+      }
+    },
+    {
+      "organ": "lung",
+      "series_group_id": "GSE227136",
+      "review_rationale": "Human lung controls from a disease-eQTL study; exclude one of the two VUHD073 libraries so each title-encoded donor contributes once.",
+      "donor_resolution_status": "provisional_one_sample_per_title_encoded_donor_with_vuhd073_deduplication",
+      "selector": {
+        "mode": "regex",
+        "metadata_include_all_regex": [
+          "(?:disease state/diagnosis|disease state):\\s*Control"
+        ],
+        "metadata_exclude_any_regex": [
+          "VUHD073-Control \\(F01494\\)"
+        ]
+      }
+    },
+    {
+      "organ": "lung",
+      "series_group_id": "GSE231692|GSE231693|GSE231694",
+      "review_rationale": "Twenty lung samples explicitly labeled normal across a connected interstitial-lung-disease SuperSeries.",
+      "donor_resolution_status": "provisional_normal_titles_encode_distinct_donors",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\ANormal_\\d+\\Z",
+        "metadata_include_all_regex": [
+          "disease state:\\s*normal"
+        ]
+      }
+    },
+    {
+      "organ": "lung",
+      "series_group_id": "GSE301982",
+      "review_rationale": "Lung controls from the PPFE atlas; control titles are retained as a transparent disease-study control stratum.",
+      "donor_resolution_status": "provisional_control_titles_are_distinct_donors",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\ALibrary\\d+: Lung, PPFE, control, other\\Z"
+      }
+    },
+    {
+      "organ": "lung",
+      "series_group_id": "GSE208076",
+      "review_rationale": "Three normal control lung samples from a COVID-19 comparison; keep FFPE preparation as an explicit technical stratum.",
+      "donor_resolution_status": "provisional_control_titles_are_distinct_donors",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AControl-\\d+\\Z",
+        "metadata_include_all_regex": [
+          "disease state:\\s*normal"
+        ]
+      }
+    },
+    {
+      "organ": "lung",
+      "series_group_id": "GSE206635",
+      "review_rationale": "Single human lung sample explicitly labeled healthy donor.",
+      "donor_resolution_status": "single_explicit_healthy_donor_sample",
+      "selector": {
+        "mode": "explicit_sample_ids",
+        "sample_ids": [
+          "GSM6259883"
+        ]
+      }
+    },
+    {
+      "organ": "lung",
+      "series_group_id": "GSE208592",
+      "review_rationale": "Human lung controls from a pulmonary-hypertension study; retain only Control_Lung titles.",
+      "donor_resolution_status": "provisional_control_lung_titles_are_distinct_donors",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AControl_Lung_\\d+\\Z"
+      }
+    },
+    {
+      "organ": "lung",
+      "series_group_id": "GSE283072",
+      "review_rationale": "Control lung samples from an acute-interstitial-pneumonia comparison.",
+      "donor_resolution_status": "provisional_control_titles_are_distinct_donors",
+      "selector": {
+        "mode": "regex",
+        "title_include_regex": "\\AControl \\d+\\Z",
+        "metadata_include_all_regex": [
+          "subject status:\\s*control"
+        ]
+      }
+    },
+    {
+      "organ": "lung",
+      "series_group_id": "GSE190620",
+      "review_rationale": "Normal lung tissue paired with congenital pulmonary airway malformation samples; retain only normal-tissue members.",
+      "donor_resolution_status": "provisional_normal_titles_encode_distinct_donors",
+      "selector": {
+        "mode": "regex",
+        "metadata_include_all_regex": [
+          "disease:\\s*normal lung tissue"
+        ]
+      }
+    }
+  ],
+  "next_gate": "Resolve exact K8 samples and finish donor, publication, and cross-study near-duplicate review before any lockbox or expression access."
+}

@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "status": "k8_metadata_only_donor_and_power_readiness_not_external_lockbox",
+  "metadata_only": true,
+  "expression_values_read": false,
+  "efficacy_scoring_performed": false,
+  "external_lockbox_frozen": false,
+  "source_contract": {
+    "sample_review_amendment_v3_sha256": "de2d9e63588d777498fc736ef6da30f860fa14859f7c83bbbf44a7d3c441990a",
+    "sample_review_extension_sha256": "1fd9e81c3d139d68560c927273f9002b098ce0fbcb8892176294a0caa76fe0a3",
+    "expected_sample_rows": 827,
+    "expected_study_rows": 64,
+    "expected_groups_per_organ": 8,
+    "target_organs": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "expected_provisional_sample_review_sha256": "077c3735338e9142de18ed2d54ca70b31a85c7026dffedf95dec94207bc9e6d6",
+    "expected_provisional_study_review_sha256": "8c99aa85bf6dc2da9ed08d8e1233d7b2ad929c2d831b29eaebbbc5fd50e49cad"
+  },
+  "donor_key_contract": {
+    "default_strategy": "whole_title_unique_proxy",
+    "default_basis": "one_selected_sample_per_unique_title_proxy",
+    "explicit_characteristic_overrides": [
+      {
+        "organ": "liver",
+        "series_group_id": "GSE284901",
+        "regex": "(?i)donor_id:\\s*(?P<donor>ENCDO[0-9A-Z]+)",
+        "basis": "explicit_encode_donor_id"
+      },
+      {
+        "organ": "skin",
+        "series_group_id": "GSE268958",
+        "regex": "(?i)subjectid:\\s*(?P<donor>[0-9-]+)",
+        "basis": "explicit_subjectid"
+      }
+    ],
+    "conservative_single_sample_groups": [
+      {
+        "organ": "colon",
+        "series_group_id": "GSE334803",
+        "reason": "Replicate semantics unresolved; one deterministic healthy-control sample retained."
+      },
+      {
+        "organ": "liver",
+        "series_group_id": "GSE284901",
+        "reason": "Unreplicated ENCODE donor."
+      },
+      {
+        "organ": "lung",
+        "series_group_id": "GSE206635",
+        "reason": "Connected group exposes one healthy-donor lung sample."
+      },
+      {
+        "organ": "skin",
+        "series_group_id": "GSE202851|GSE202861",
+        "reason": "Connected group exposes one normal-skin sample."
+      },
+      {
+        "organ": "skin",
+        "series_group_id": "GSE297863",
+        "reason": "Replicate semantics unresolved; one deterministic healthy sample retained."
+      }
+    ],
+    "require_unique_derived_key_within_group": true,
+    "cross_group_explicit_identifier_fields": [
+      "donor_id",
+      "subjectid",
+      "biosample encode accession"
+    ],
+    "title_proxy_is_not_verified_donor_identity": true
+  },
+  "analysis_unit_contract": {
+    "primary_unit": "connected_study_group",
+    "primary_weighting": "equal_study_weight_within_organ_then_equal_organ_weight",
+    "sample_rows_are_not_independent_power_units": true,
+    "donor_keys_are_for_duplicate_control_not_primary_weighting": true,
+    "primary_cluster_count": 64,
+    "clusters_per_organ": 8,
+    "per_organ_results": "exploratory_only",
+    "uncertainty": "paired_connected_study_cluster_bootstrap",
+    "minimum_bootstrap_draws": 10000
+  },
+  "power_sensitivity_contract": {
+    "purpose": "design sensitivity only; no external outcomes or variance are read",
+    "one_sided_alpha": 0.025,
+    "positive_study_probability_grid": [
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8
+    ],
+    "exact_sign_test_clusters": 64,
+    "warning": "This sign-test grid is not a substitute for outcome-scale power. Final relative-MSE precision must be evaluated only after the cohort and evaluator are frozen."
+  },
+  "readiness_rules": {
+    "minimum_groups_per_organ": 8,
+    "minimum_total_study_groups": 64,
+    "require_no_cross_group_explicit_identifier_overlap": true,
+    "require_no_duplicate_derived_donor_keys_within_group": true,
+    "ready_for_protocol_drafting_does_not_authorize_expression": true
+  },
+  "next_gate": "Freeze candidate hashes, exact evaluator, development/lockbox roles, strata, exposure doses, and final decision tree; then issue an explicit metadata signoff before any ARCHS4 expression request."
+}
