@@ -9,7 +9,7 @@
     "pooled_adapter"
   ],
   "best_seed_selection_allowed": false,
-  "code_commit": "52596ba69b1656610710402831808496eddb077b",
+  "code_commit": "d3fce6437299985b11f77828ae9119392751e8aa",
   "fine_tuning_exposure": "zero",
   "next_gate": "Bind this ledger hash into the exact ARCHS4 lockbox membership, extractor, scorer, evaluator, and one-time launcher.",
   "organs": [
@@ -39,6 +39,11 @@
     {
       "banks": {
         "organ_k8": {
+          "calibration_scores": {
+            "path": "seed17/banks/banks/organ_k8/calibration_scores.npz",
+            "sha256": "7720934c2e0f8ca7fea9821f61a95e392920a7a76976cb56a92b305c5e5e8890",
+            "size_bytes": 149557
+          },
           "checkpoint": {
             "path": "seed17/banks/banks/organ_k8/final_experts.pt",
             "sha256": "0375df2669c7cb38a6cf31d45f26b73dd991abedfc28fe13c39f0ec3ee0e3138",
@@ -62,6 +67,11 @@
           }
         },
         "pooled_adapter": {
+          "calibration_scores": {
+            "path": "seed17/banks/banks/pooled_adapter/calibration_scores.npz",
+            "sha256": "5fe7344805f63a8c1827d92189dcc9831aca173904f7649e61f77fae01cfa117",
+            "size_bytes": 97124
+          },
           "checkpoint": {
             "path": "seed17/banks/banks/pooled_adapter/final_experts.pt",
             "sha256": "a96ddcea01950e827d3264ac5f31870ba9ecd34544c440a605aafaefd34a0954",
@@ -76,6 +86,11 @@
           }
         },
         "random_k8_p101": {
+          "calibration_scores": {
+            "path": "seed17/banks/banks/random_k8_p101/calibration_scores.npz",
+            "sha256": "d203138f323ccc74690fc607aa1bfa6a7f9033e982def7946b3b57a12782d880",
+            "size_bytes": 133352
+          },
           "checkpoint": {
             "path": "seed17/banks/banks/random_k8_p101/final_experts.pt",
             "sha256": "f63dc96e98f6003984ee8ff7fc93dbacc3f2531c8bc5fc49e3817f63f816f221",
@@ -90,6 +105,11 @@
           }
         },
         "random_k8_p17": {
+          "calibration_scores": {
+            "path": "seed17/banks/banks/random_k8_p17/calibration_scores.npz",
+            "sha256": "735c465cb466419080a8f91be6fa015e19c781d6445aa73fa659bdcc4a01cd15",
+            "size_bytes": 133480
+          },
           "checkpoint": {
             "path": "seed17/banks/banks/random_k8_p17/final_experts.pt",
             "sha256": "315915cc29eb5624d29a052e0c3b5f3fe177a47f77d1f96af4937b38e398422b",
@@ -104,6 +124,11 @@
           }
         },
         "random_k8_p42": {
+          "calibration_scores": {
+            "path": "seed17/banks/banks/random_k8_p42/calibration_scores.npz",
+            "sha256": "71e959b5ffbf3c5317560fb9166ac71ad22d55fbabe79ca38ce33792b68a4cfc",
+            "size_bytes": 132529
+          },
           "checkpoint": {
             "path": "seed17/banks/banks/random_k8_p42/final_experts.pt",
             "sha256": "b06af05db699f0d8389a4b985cdee2488f2502ca99e3bed1686118041797bb7d",
@@ -135,6 +160,11 @@
     {
       "banks": {
         "organ_k8": {
+          "calibration_scores": {
+            "path": "seed42/banks/banks/organ_k8/calibration_scores.npz",
+            "sha256": "500bf6a5c45ca8e07498f2af487b7f309251e157daec59259ed7ca2ccbca0c8a",
+            "size_bytes": 149385
+          },
           "checkpoint": {
             "path": "seed42/banks/banks/organ_k8/final_experts.pt",
             "sha256": "b5bbed3e83ab2fc64d1eaaf7073d26ab901a0b0aff315041586cc13ce0cff8c9",
@@ -158,6 +188,11 @@
           }
         },
         "pooled_adapter": {
+          "calibration_scores": {
+            "path": "seed42/banks/banks/pooled_adapter/calibration_scores.npz",
+            "sha256": "5b929abd17ec39084b691df29e8640b63faaea56bbc18a7bced84ac11b28e346",
+            "size_bytes": 97194
+          },
           "checkpoint": {
             "path": "seed42/banks/banks/pooled_adapter/final_experts.pt",
             "sha256": "0ac394442b512b0671e9c8de3b04e105fa79a2544ccbca8cde4ed1b37d7ad321",
@@ -172,6 +207,11 @@
           }
         },
         "random_k8_p101": {
+          "calibration_scores": {
+            "path": "seed42/banks/banks/random_k8_p101/calibration_scores.npz",
+            "sha256": "fb5dfb790d01e0b27b91b588b107e6d11272d4a7ef1441097061fb50bb869180",
+            "size_bytes": 135601
+          },
           "checkpoint": {
             "path": "seed42/banks/banks/random_k8_p101/final_experts.pt",
             "sha256": "70bbd78f6ed363bb0de5658d0f58f80ca4da6c5788b0d1e037e8b56beb2bb4fe",
@@ -186,6 +226,11 @@
           }
         },
         "random_k8_p17": {
+          "calibration_scores": {
+            "path": "seed42/banks/banks/random_k8_p17/calibration_scores.npz",
+            "sha256": "b3a48fdccdf32a3d10e381a5190cc023e70d0b656570c0957d4bfbbaed9901b2",
+            "size_bytes": 132841
+          },
           "checkpoint": {
             "path": "seed42/banks/banks/random_k8_p17/final_experts.pt",
             "sha256": "620dd467ae54c6df54aaee8f17baca9b709d486fe686b8212612e834445189e6",
@@ -200,6 +245,11 @@
           }
         },
         "random_k8_p42": {
+          "calibration_scores": {
+            "path": "seed42/banks/banks/random_k8_p42/calibration_scores.npz",
+            "sha256": "f1a2c666cf59c43970d3df92b6f4f9921d82c41f006799d6946522dc227bba1f",
+            "size_bytes": 133310
+          },
           "checkpoint": {
             "path": "seed42/banks/banks/random_k8_p42/final_experts.pt",
             "sha256": "4c0eaaf71c801e2ddb75fc04fdcad8ede73ef6d3141e6f0deb83c19a6d78bc34",
@@ -231,6 +281,11 @@
     {
       "banks": {
         "organ_k8": {
+          "calibration_scores": {
+            "path": "seed101/banks/banks/organ_k8/calibration_scores.npz",
+            "sha256": "1b6432eff36094f18efc30b962ce2a6e48fe15f8478d08ada22308d190d9316f",
+            "size_bytes": 149818
+          },
           "checkpoint": {
             "path": "seed101/banks/banks/organ_k8/final_experts.pt",
             "sha256": "20d1fc2e300acc0e0d78eb3a11d5e4093a2950264abf0af3c704d91264512a42",
@@ -254,6 +309,11 @@
           }
         },
         "pooled_adapter": {
+          "calibration_scores": {
+            "path": "seed101/banks/banks/pooled_adapter/calibration_scores.npz",
+            "sha256": "191921245a942e5d3cd9c0baadd5de815167a6bf56f6aa14fb72c0e0ce704a5c",
+            "size_bytes": 97157
+          },
           "checkpoint": {
             "path": "seed101/banks/banks/pooled_adapter/final_experts.pt",
             "sha256": "b1cb9ab2b9105de96a72b6e0f23cba611205c73a22e2e705a268c658c09b20d2",
@@ -268,6 +328,11 @@
           }
         },
         "random_k8_p101": {
+          "calibration_scores": {
+            "path": "seed101/banks/banks/random_k8_p101/calibration_scores.npz",
+            "sha256": "de95e00ebfbed322aece6a08d245ab50dbcb991263dac711ccbee61ce341865d",
+            "size_bytes": 134559
+          },
           "checkpoint": {
             "path": "seed101/banks/banks/random_k8_p101/final_experts.pt",
             "sha256": "b5d24f0c723f11722190d5e92a3368638c25e8b818834e8dabbb4d7887562896",
@@ -282,6 +347,11 @@
           }
         },
         "random_k8_p17": {
+          "calibration_scores": {
+            "path": "seed101/banks/banks/random_k8_p17/calibration_scores.npz",
+            "sha256": "d21966ff6de4c1cd4eff46ad57778d4cc24084d814e7fbccefd9f78d05f9d968",
+            "size_bytes": 135526
+          },
           "checkpoint": {
             "path": "seed101/banks/banks/random_k8_p17/final_experts.pt",
             "sha256": "d91c55e4184f0ea9772721a6c87ba0dbcf122f68172916496bf89e4bd5b82402",
@@ -296,6 +366,11 @@
           }
         },
         "random_k8_p42": {
+          "calibration_scores": {
+            "path": "seed101/banks/banks/random_k8_p42/calibration_scores.npz",
+            "sha256": "0ecc257d6a49f9e155a95f4d9addc0596983f8c3e32f308f61614acd8c7a3c01",
+            "size_bytes": 135732
+          },
           "checkpoint": {
             "path": "seed101/banks/banks/random_k8_p42/final_experts.pt",
             "sha256": "13c65804753e9c5b392a23fa27372a2141fa4e77eacce2478051fe7abb11b2c7",

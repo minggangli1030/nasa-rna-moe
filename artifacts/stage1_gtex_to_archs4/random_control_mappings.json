@@ -1,0 +1,1296 @@
+{
+  "archs4_efficacy_scored": false,
+  "archs4_expression_accessed": false,
+  "candidate_ledger_sha256": "fa6ff2a0c8200ed4348dd9213fbb2a640158b480628fd9929b7558d83b909351",
+  "mappings": {
+    "101": {
+      "random_k8_p101": {
+        "by_organ": {
+          "adipose": {
+            "calibration_groups": 159,
+            "calibration_samples": 257,
+            "calibration_study_macro_mse": [
+              0.2923048737476457,
+              0.29230192800362903,
+              0.2923307078158331,
+              0.2923444040916251,
+              0.2922990442072071,
+              0.29233315929114445,
+              0.2923498507003365,
+              0.2922825145552743
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "brain": {
+            "calibration_groups": 74,
+            "calibration_samples": 608,
+            "calibration_study_macro_mse": [
+              0.7309273732071859,
+              0.7309285416342671,
+              0.730920497033591,
+              0.7309183921468816,
+              0.7309282081674653,
+              0.7309196019886693,
+              0.7309183668806497,
+              0.7309350896512661
+            ],
+            "selected_random_expert": "random_6",
+            "selected_random_expert_index": 6
+          },
+          "colon": {
+            "calibration_groups": 132,
+            "calibration_samples": 186,
+            "calibration_study_macro_mse": [
+              0.3950061294617075,
+              0.39500394170031405,
+              0.39503351948929555,
+              0.3950477259402925,
+              0.39500123657511943,
+              0.39503376140738977,
+              0.39505334277496196,
+              0.39498057430892286
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "heart": {
+            "calibration_groups": 108,
+            "calibration_samples": 178,
+            "calibration_study_macro_mse": [
+              0.3305306163512998,
+              0.3305230166901041,
+              0.330606656011056,
+              0.3306485820147726,
+              0.3304702927944837,
+              0.3306130900703095,
+              0.33066550421494023,
+              0.3304601664896364
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "liver": {
+            "calibration_groups": 48,
+            "calibration_samples": 48,
+            "calibration_study_macro_mse": [
+              0.57393581358095,
+              0.5739262532442809,
+              0.5740004765490689,
+              0.574036515628298,
+              0.5739179818580548,
+              0.5740088932216166,
+              0.5740488761415083,
+              0.5738774836063386
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "lung": {
+            "calibration_groups": 118,
+            "calibration_samples": 118,
+            "calibration_study_macro_mse": [
+              0.2862573290022753,
+              0.2862557287691002,
+              0.2862811807101052,
+              0.2862945255839219,
+              0.2862514829484081,
+              0.2862836631425355,
+              0.28629667652865565,
+              0.28623569819886807
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "skeletal_muscle": {
+            "calibration_groups": 159,
+            "calibration_samples": 159,
+            "calibration_study_macro_mse": [
+              0.2792119677149275,
+              0.2791944498535972,
+              0.27936369817961687,
+              0.2794444698770091,
+              0.2791696932143386,
+              0.27938227767839374,
+              0.27947032920219617,
+              0.27907700733568686
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "skin": {
+            "calibration_groups": 166,
+            "calibration_samples": 272,
+            "calibration_study_macro_mse": [
+              0.48067736122981614,
+              0.4806731797485466,
+              0.4807267638753696,
+              0.48075296550271024,
+              0.48066445790141465,
+              0.48072804815797926,
+              0.4807545620813427,
+              0.4806337545076049
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          }
+        },
+        "calibration_scores": {
+          "path": "seed101/banks/banks/random_k8_p101/calibration_scores.npz",
+          "sha256": "de95e00ebfbed322aece6a08d245ab50dbcb991263dac711ccbee61ce341865d",
+          "size_bytes": 134559
+        },
+        "selection_split": "gtex_calibration",
+        "uses_archs4": false,
+        "uses_test_targets": false
+      },
+      "random_k8_p17": {
+        "by_organ": {
+          "adipose": {
+            "calibration_groups": 159,
+            "calibration_samples": 257,
+            "calibration_study_macro_mse": [
+              0.29232359546347986,
+              0.29230701229857203,
+              0.2923485730897706,
+              0.29228520004441905,
+              0.29231029631769134,
+              0.29230822964846714,
+              0.2923274134408753,
+              0.29232388430234024
+            ],
+            "selected_random_expert": "random_3",
+            "selected_random_expert_index": 3
+          },
+          "brain": {
+            "calibration_groups": 74,
+            "calibration_samples": 608,
+            "calibration_study_macro_mse": [
+              0.7309188000500135,
+              0.7309253306227569,
+              0.7309184239889825,
+              0.7309333917031899,
+              0.7309541330437399,
+              0.7309259550258976,
+              0.7309258491637998,
+              0.730921842459165
+            ],
+            "selected_random_expert": "random_2",
+            "selected_random_expert_index": 2
+          },
+          "colon": {
+            "calibration_groups": 132,
+            "calibration_samples": 186,
+            "calibration_study_macro_mse": [
+              0.39502502311811305,
+              0.39500811030015803,
+              0.3950527822881034,
+              0.39498173953457316,
+              0.39500623106053384,
+              0.3950102613730864,
+              0.39503066659425246,
+              0.3950245075605132
+            ],
+            "selected_random_expert": "random_3",
+            "selected_random_expert_index": 3
+          },
+          "heart": {
+            "calibration_groups": 108,
+            "calibration_samples": 178,
+            "calibration_study_macro_mse": [
+              0.33057805681946095,
+              0.3305374606753941,
+              0.330665044831457,
+              0.33046962348399334,
+              0.33035165299144054,
+              0.3305390491667721,
+              0.33060894264943075,
+              0.330587406884189
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "liver": {
+            "calibration_groups": 48,
+            "calibration_samples": 48,
+            "calibration_study_macro_mse": [
+              0.5739801768213512,
+              0.5739453571538131,
+              0.5740487383057675,
+              0.5738860505322616,
+              0.5738520920276642,
+              0.5739439204335214,
+              0.5740113873034716,
+              0.5739841951678197
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "lung": {
+            "calibration_groups": 118,
+            "calibration_samples": 118,
+            "calibration_study_macro_mse": [
+              0.2862749265159589,
+              0.2862588808698169,
+              0.2862943128003912,
+              0.28623689938399743,
+              0.28626670056985587,
+              0.28626066168486064,
+              0.2862732662992963,
+              0.2862742880390861
+            ],
+            "selected_random_expert": "random_3",
+            "selected_random_expert_index": 3
+          },
+          "skeletal_muscle": {
+            "calibration_groups": 159,
+            "calibration_samples": 159,
+            "calibration_study_macro_mse": [
+              0.27930967931477535,
+              0.27923296082694576,
+              0.27947497424089685,
+              0.2790939929725239,
+              0.278677946647758,
+              0.2792323759329394,
+              0.2793875719016453,
+              0.279325489446802
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "skin": {
+            "calibration_groups": 166,
+            "calibration_samples": 272,
+            "calibration_study_macro_mse": [
+              0.4807126918830067,
+              0.480682831841061,
+              0.4807593633072922,
+              0.4806367073612041,
+              0.4806669368801347,
+              0.4806839092129685,
+              0.4807220701891256,
+              0.48071204987635097
+            ],
+            "selected_random_expert": "random_3",
+            "selected_random_expert_index": 3
+          }
+        },
+        "calibration_scores": {
+          "path": "seed101/banks/banks/random_k8_p17/calibration_scores.npz",
+          "sha256": "d21966ff6de4c1cd4eff46ad57778d4cc24084d814e7fbccefd9f78d05f9d968",
+          "size_bytes": 135526
+        },
+        "selection_split": "gtex_calibration",
+        "uses_archs4": false,
+        "uses_test_targets": false
+      },
+      "random_k8_p42": {
+        "by_organ": {
+          "adipose": {
+            "calibration_groups": 159,
+            "calibration_samples": 257,
+            "calibration_study_macro_mse": [
+              0.29227973998717544,
+              0.29230795561705003,
+              0.29229555771035964,
+              0.2923166848391107,
+              0.29230537284282776,
+              0.29235840673154256,
+              0.29230966269032765,
+              0.29238808834515284
+            ],
+            "selected_random_expert": "random_0",
+            "selected_random_expert_index": 0
+          },
+          "brain": {
+            "calibration_groups": 74,
+            "calibration_samples": 608,
+            "calibration_study_macro_mse": [
+              0.7309352233850617,
+              0.7309220535443616,
+              0.7309335863094726,
+              0.7309240789321467,
+              0.7309256200406778,
+              0.7309224636522738,
+              0.7309267716654809,
+              0.7309152861161906
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "colon": {
+            "calibration_groups": 132,
+            "calibration_samples": 186,
+            "calibration_study_macro_mse": [
+              0.39498584480448207,
+              0.3950069098535812,
+              0.3949957698809379,
+              0.3950189104811712,
+              0.39500685250668816,
+              0.39505779619018233,
+              0.395004017560771,
+              0.3950923044573177
+            ],
+            "selected_random_expert": "random_0",
+            "selected_random_expert_index": 0
+          },
+          "heart": {
+            "calibration_groups": 108,
+            "calibration_samples": 178,
+            "calibration_study_macro_mse": [
+              0.33042211561567253,
+              0.33050605551236206,
+              0.33050037071936655,
+              0.330563953353299,
+              0.33052318005098236,
+              0.3306898761678625,
+              0.33053096052673125,
+              0.33076988353773396
+            ],
+            "selected_random_expert": "random_0",
+            "selected_random_expert_index": 0
+          },
+          "liver": {
+            "calibration_groups": 48,
+            "calibration_samples": 48,
+            "calibration_study_macro_mse": [
+              0.5738613599290451,
+              0.5739418106774486,
+              0.5739082228392363,
+              0.573965825761358,
+              0.5739304677893717,
+              0.5740759900460642,
+              0.5739493140329915,
+              0.5741409479329984
+            ],
+            "selected_random_expert": "random_0",
+            "selected_random_expert_index": 0
+          },
+          "lung": {
+            "calibration_groups": 118,
+            "calibration_samples": 118,
+            "calibration_study_macro_mse": [
+              0.28622987626467705,
+              0.2862593726081363,
+              0.28624674778873627,
+              0.2862681862661394,
+              0.286256436321695,
+              0.28630639688443327,
+              0.28626163076546224,
+              0.2863364726052446
+            ],
+            "selected_random_expert": "random_0",
+            "selected_random_expert_index": 0
+          },
+          "skeletal_muscle": {
+            "calibration_groups": 159,
+            "calibration_samples": 159,
+            "calibration_study_macro_mse": [
+              0.27900758198222275,
+              0.27919377414685376,
+              0.2791506657435459,
+              0.27928441003808435,
+              0.2791997676937835,
+              0.27951384471647395,
+              0.2792245185225265,
+              0.27967205774859066
+            ],
+            "selected_random_expert": "random_0",
+            "selected_random_expert_index": 0
+          },
+          "skin": {
+            "calibration_groups": 166,
+            "calibration_samples": 272,
+            "calibration_study_macro_mse": [
+              0.4806295095617513,
+              0.48067858249667184,
+              0.4806546435119158,
+              0.48070006234100066,
+              0.4806767419339663,
+              0.4807766161589738,
+              0.48068552527082975,
+              0.4808306617729635
+            ],
+            "selected_random_expert": "random_0",
+            "selected_random_expert_index": 0
+          }
+        },
+        "calibration_scores": {
+          "path": "seed101/banks/banks/random_k8_p42/calibration_scores.npz",
+          "sha256": "0ecc257d6a49f9e155a95f4d9addc0596983f8c3e32f308f61614acd8c7a3c01",
+          "size_bytes": 135732
+        },
+        "selection_split": "gtex_calibration",
+        "uses_archs4": false,
+        "uses_test_targets": false
+      }
+    },
+    "17": {
+      "random_k8_p101": {
+        "by_organ": {
+          "adipose": {
+            "calibration_groups": 159,
+            "calibration_samples": 257,
+            "calibration_study_macro_mse": [
+              0.30308522377748914,
+              0.30308346970463695,
+              0.3030846389772007,
+              0.30308924039017476,
+              0.3030835901322605,
+              0.30308585670196786,
+              0.30308700334163585,
+              0.3030956641027013
+            ],
+            "selected_random_expert": "random_1",
+            "selected_random_expert_index": 1
+          },
+          "brain": {
+            "calibration_groups": 74,
+            "calibration_samples": 608,
+            "calibration_study_macro_mse": [
+              0.7895840493765525,
+              0.7895832837896312,
+              0.7895815963887132,
+              0.7895929583036512,
+              0.789583925115827,
+              0.7895715949007144,
+              0.7895858111468378,
+              0.7895906237316922
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          },
+          "colon": {
+            "calibration_groups": 132,
+            "calibration_samples": 186,
+            "calibration_study_macro_mse": [
+              0.39698190857289417,
+              0.39699312767973455,
+              0.3969814895906232,
+              0.3969662962763599,
+              0.39699037130357645,
+              0.3969982679594647,
+              0.39697355127921613,
+              0.3969554289272338
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "heart": {
+            "calibration_groups": 108,
+            "calibration_samples": 178,
+            "calibration_study_macro_mse": [
+              0.3301391562239991,
+              0.3301512425834382,
+              0.33014149929362313,
+              0.33012152732246447,
+              0.330148308503407,
+              0.33014987050383177,
+              0.33013126550725214,
+              0.3301119504979363
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "liver": {
+            "calibration_groups": 48,
+            "calibration_samples": 48,
+            "calibration_study_macro_mse": [
+              0.5912216193974017,
+              0.591246960684657,
+              0.5912267193198203,
+              0.591185779000322,
+              0.5912405432512362,
+              0.5912276928623518,
+              0.591204104324182,
+              0.5911568018297355
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "lung": {
+            "calibration_groups": 118,
+            "calibration_samples": 118,
+            "calibration_study_macro_mse": [
+              0.2954560326317609,
+              0.29548170720621686,
+              0.2954569735516934,
+              0.29541961886620116,
+              0.29547566718469226,
+              0.2954905086149601,
+              0.2954382326895907,
+              0.29539134631217523
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "skeletal_muscle": {
+            "calibration_groups": 159,
+            "calibration_samples": 159,
+            "calibration_study_macro_mse": [
+              0.30591739489222475,
+              0.30596299938060956,
+              0.30593850177788884,
+              0.3058453110403985,
+              0.30595032945743894,
+              0.3059161848054742,
+              0.3058859982393073,
+              0.305799440861498
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "skin": {
+            "calibration_groups": 166,
+            "calibration_samples": 272,
+            "calibration_study_macro_mse": [
+              0.5027339175702578,
+              0.5027613377714732,
+              0.5027338812150152,
+              0.5026965055120998,
+              0.5027550585478185,
+              0.5027680739042271,
+              0.5027153732546842,
+              0.5026648681027344
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          }
+        },
+        "calibration_scores": {
+          "path": "seed17/banks/banks/random_k8_p101/calibration_scores.npz",
+          "sha256": "d203138f323ccc74690fc607aa1bfa6a7f9033e982def7946b3b57a12782d880",
+          "size_bytes": 133352
+        },
+        "selection_split": "gtex_calibration",
+        "uses_archs4": false,
+        "uses_test_targets": false
+      },
+      "random_k8_p17": {
+        "by_organ": {
+          "adipose": {
+            "calibration_groups": 159,
+            "calibration_samples": 257,
+            "calibration_study_macro_mse": [
+              0.3030849552285747,
+              0.30309301877171735,
+              0.30308864935763974,
+              0.30309688112458344,
+              0.30308398402899317,
+              0.30308353905595325,
+              0.3030880989987146,
+              0.3030889389462441
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          },
+          "brain": {
+            "calibration_groups": 74,
+            "calibration_samples": 608,
+            "calibration_study_macro_mse": [
+              0.7895819032255518,
+              0.7895868859834425,
+              0.7895888872119623,
+              0.7896242808850612,
+              0.789581728079505,
+              0.789583664474157,
+              0.789586593315725,
+              0.7895849724203989
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "colon": {
+            "calibration_groups": 132,
+            "calibration_samples": 186,
+            "calibration_study_macro_mse": [
+              0.3969878869300539,
+              0.3969644967353705,
+              0.3969648114095131,
+              0.3969467734974442,
+              0.3969800393238212,
+              0.39699300937354565,
+              0.39696992408822884,
+              0.3969699532696695
+            ],
+            "selected_random_expert": "random_3",
+            "selected_random_expert_index": 3
+          },
+          "heart": {
+            "calibration_groups": 108,
+            "calibration_samples": 178,
+            "calibration_study_macro_mse": [
+              0.33014608326333533,
+              0.33012122157271256,
+              0.33011746406555176,
+              0.3301097284312601,
+              0.3301334928859163,
+              0.3301507784398618,
+              0.33012674052130286,
+              0.3301366308910979
+            ],
+            "selected_random_expert": "random_3",
+            "selected_random_expert_index": 3
+          },
+          "liver": {
+            "calibration_groups": 48,
+            "calibration_samples": 48,
+            "calibration_study_macro_mse": [
+              0.5912356618791819,
+              0.5911745391786098,
+              0.5911929520467918,
+              0.59120137616992,
+              0.5912178084254265,
+              0.5912443846464157,
+              0.5911923634509247,
+              0.5912044315288465
+            ],
+            "selected_random_expert": "random_1",
+            "selected_random_expert_index": 1
+          },
+          "lung": {
+            "calibration_groups": 118,
+            "calibration_samples": 118,
+            "calibration_study_macro_mse": [
+              0.2954697353860077,
+              0.29540988222017117,
+              0.2954195922209045,
+              0.29538388158810336,
+              0.2954579017172424,
+              0.2954804296210659,
+              0.2954266336509736,
+              0.2954247020563835
+            ],
+            "selected_random_expert": "random_3",
+            "selected_random_expert_index": 3
+          },
+          "skeletal_muscle": {
+            "calibration_groups": 159,
+            "calibration_samples": 159,
+            "calibration_study_macro_mse": [
+              0.30594396235058147,
+              0.3058339606665965,
+              0.30585560942970735,
+              0.30587065210507347,
+              0.3059122113499252,
+              0.3059570531612672,
+              0.30586467214725305,
+              0.3058868250194586
+            ],
+            "selected_random_expert": "random_1",
+            "selected_random_expert_index": 1
+          },
+          "skin": {
+            "calibration_groups": 166,
+            "calibration_samples": 272,
+            "calibration_study_macro_mse": [
+              0.5027476924370571,
+              0.502685125333717,
+              0.5026937987969582,
+              0.502642864473613,
+              0.5027218718665192,
+              0.5027606225157358,
+              0.5027035529534502,
+              0.5027069524828209
+            ],
+            "selected_random_expert": "random_3",
+            "selected_random_expert_index": 3
+          }
+        },
+        "calibration_scores": {
+          "path": "seed17/banks/banks/random_k8_p17/calibration_scores.npz",
+          "sha256": "735c465cb466419080a8f91be6fa015e19c781d6445aa73fa659bdcc4a01cd15",
+          "size_bytes": 133480
+        },
+        "selection_split": "gtex_calibration",
+        "uses_archs4": false,
+        "uses_test_targets": false
+      },
+      "random_k8_p42": {
+        "by_organ": {
+          "adipose": {
+            "calibration_groups": 159,
+            "calibration_samples": 257,
+            "calibration_study_macro_mse": [
+              0.30308396383276526,
+              0.30309065764055315,
+              0.30308377035196477,
+              0.30308560408511254,
+              0.30309077820875363,
+              0.30308305762661325,
+              0.3030852981427181,
+              0.30308853923899576
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          },
+          "brain": {
+            "calibration_groups": 74,
+            "calibration_samples": 608,
+            "calibration_study_macro_mse": [
+              0.7895848203673601,
+              0.7895886822393595,
+              0.7895840440036699,
+              0.7895850811155103,
+              0.7895881935088331,
+              0.7895824320689888,
+              0.7895845452593281,
+              0.7895843291405509
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          },
+          "colon": {
+            "calibration_groups": 132,
+            "calibration_samples": 186,
+            "calibration_study_macro_mse": [
+              0.396987884728746,
+              0.39696428394227323,
+              0.39698837872481707,
+              0.3969800822211035,
+              0.39696379011553345,
+              0.39699147777123883,
+              0.3969791937393673,
+              0.39697007609136176
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "heart": {
+            "calibration_groups": 108,
+            "calibration_samples": 178,
+            "calibration_study_macro_mse": [
+              0.33014512572575494,
+              0.33012119218431135,
+              0.33014634941463117,
+              0.3301374833616945,
+              0.3301209216868436,
+              0.3301503027754801,
+              0.3301388437135352,
+              0.33012903916339076
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "liver": {
+            "calibration_groups": 48,
+            "calibration_samples": 48,
+            "calibration_study_macro_mse": [
+              0.5912341984609764,
+              0.591180693358183,
+              0.5912363901734351,
+              0.5912179642667373,
+              0.5911800209432841,
+              0.5912441294640304,
+              0.5912153205523889,
+              0.5911980271339418
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "lung": {
+            "calibration_groups": 118,
+            "calibration_samples": 118,
+            "calibration_study_macro_mse": [
+              0.2954690511954032,
+              0.2954136842893342,
+              0.2954714641732686,
+              0.295453438819465,
+              0.29541301499989087,
+              0.2954783221170054,
+              0.29545061025073965,
+              0.2954322272690676
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "skeletal_muscle": {
+            "calibration_groups": 159,
+            "calibration_samples": 159,
+            "calibration_study_macro_mse": [
+              0.3059392714837812,
+              0.30584249809478065,
+              0.30594295375752,
+              0.30591167200286434,
+              0.30584238347767284,
+              0.30596044987627546,
+              0.30591510836058444,
+              0.30587754487616464
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "skin": {
+            "calibration_groups": 166,
+            "calibration_samples": 272,
+            "calibration_study_macro_mse": [
+              0.5027482444083835,
+              0.5026898842798658,
+              0.502750661358776,
+              0.5027306566396391,
+              0.5026888440710953,
+              0.5027582293533417,
+              0.5027296564665187,
+              0.5027082832642349
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          }
+        },
+        "calibration_scores": {
+          "path": "seed17/banks/banks/random_k8_p42/calibration_scores.npz",
+          "sha256": "71e959b5ffbf3c5317560fb9166ac71ad22d55fbabe79ca38ce33792b68a4cfc",
+          "size_bytes": 132529
+        },
+        "selection_split": "gtex_calibration",
+        "uses_archs4": false,
+        "uses_test_targets": false
+      }
+    },
+    "42": {
+      "random_k8_p101": {
+        "by_organ": {
+          "adipose": {
+            "calibration_groups": 159,
+            "calibration_samples": 257,
+            "calibration_study_macro_mse": [
+              0.2965050858427894,
+              0.296497643603094,
+              0.29650191278577603,
+              0.29652267211825595,
+              0.2965134764617344,
+              0.2964960183456259,
+              0.2965307259615862,
+              0.2964922427287642
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "brain": {
+            "calibration_groups": 74,
+            "calibration_samples": 608,
+            "calibration_study_macro_mse": [
+              0.7165644773136353,
+              0.7165513512806695,
+              0.7165590780635382,
+              0.7165650987050891,
+              0.7165762487137148,
+              0.7165486210439298,
+              0.7166060723489445,
+              0.7165321358803366
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "colon": {
+            "calibration_groups": 132,
+            "calibration_samples": 186,
+            "calibration_study_macro_mse": [
+              0.39890618893233215,
+              0.3988901329311458,
+              0.39890350074027525,
+              0.398957457336964,
+              0.398926630898407,
+              0.3988858040873752,
+              0.3989663417592193,
+              0.39885099474905117
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "heart": {
+            "calibration_groups": 108,
+            "calibration_samples": 178,
+            "calibration_study_macro_mse": [
+              0.33722581976541766,
+              0.33720176073688046,
+              0.33722259462983517,
+              0.33727259244079943,
+              0.3372584747633448,
+              0.3371956756821385,
+              0.33729937651918995,
+              0.33716097694856145
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "liver": {
+            "calibration_groups": 48,
+            "calibration_samples": 48,
+            "calibration_study_macro_mse": [
+              0.5914019259313743,
+              0.5913455802947284,
+              0.5913931926091512,
+              0.5915047191083433,
+              0.5914738246550164,
+              0.5913297478109597,
+              0.5915796340753636,
+              0.5912787013997632
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "lung": {
+            "calibration_groups": 118,
+            "calibration_samples": 118,
+            "calibration_study_macro_mse": [
+              0.2814009429539663,
+              0.28138049856080827,
+              0.28139815037533383,
+              0.2814605715921368,
+              0.28142788677902536,
+              0.2813723510352232,
+              0.2814811704269911,
+              0.28135436937465497
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "skeletal_muscle": {
+            "calibration_groups": 159,
+            "calibration_samples": 159,
+            "calibration_study_macro_mse": [
+              0.2719381196693804,
+              0.27189045169818327,
+              0.27193926855828027,
+              0.27203389233763114,
+              0.27201580045358187,
+              0.2718760467737726,
+              0.2720814437236426,
+              0.27182298327017135
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "skin": {
+            "calibration_groups": 166,
+            "calibration_samples": 272,
+            "calibration_study_macro_mse": [
+              0.49200582001582693,
+              0.4919704575854611,
+              0.4920002681663238,
+              0.4920872809836664,
+              0.4920497940606381,
+              0.49195837040981616,
+              0.49212691089115945,
+              0.49192825624023584
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          }
+        },
+        "calibration_scores": {
+          "path": "seed42/banks/banks/random_k8_p101/calibration_scores.npz",
+          "sha256": "fb5dfb790d01e0b27b91b588b107e6d11272d4a7ef1441097061fb50bb869180",
+          "size_bytes": 135601
+        },
+        "selection_split": "gtex_calibration",
+        "uses_archs4": false,
+        "uses_test_targets": false
+      },
+      "random_k8_p17": {
+        "by_organ": {
+          "adipose": {
+            "calibration_groups": 159,
+            "calibration_samples": 257,
+            "calibration_study_macro_mse": [
+              0.29650832572073305,
+              0.2965026582187077,
+              0.29651111617403214,
+              0.29650314545856327,
+              0.2965143180493289,
+              0.29649642583146785,
+              0.2965061150069507,
+              0.29650363447906086
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          },
+          "brain": {
+            "calibration_groups": 74,
+            "calibration_samples": 608,
+            "calibration_study_macro_mse": [
+              0.7165731400235551,
+              0.716562304524724,
+              0.7165731092680956,
+              0.7165615213832602,
+              0.7165786055041155,
+              0.7165519392350824,
+              0.7165657540445712,
+              0.7165621007548753
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          },
+          "colon": {
+            "calibration_groups": 132,
+            "calibration_samples": 186,
+            "calibration_study_macro_mse": [
+              0.39892115297191066,
+              0.3989035886232601,
+              0.3989229048178955,
+              0.39890323031806585,
+              0.3989291034751769,
+              0.3988862822791844,
+              0.3989107375117865,
+              0.3989094961434603
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          },
+          "heart": {
+            "calibration_groups": 108,
+            "calibration_samples": 178,
+            "calibration_study_macro_mse": [
+              0.33723597628650837,
+              0.337221880753835,
+              0.337247414238475,
+              0.3372231887446509,
+              0.3372624953863797,
+              0.33719953804932257,
+              0.33723507373145334,
+              0.3372268211096525
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          },
+          "liver": {
+            "calibration_groups": 48,
+            "calibration_samples": 48,
+            "calibration_study_macro_mse": [
+              0.5913971265157064,
+              0.5913786130646864,
+              0.5914480624099572,
+              0.5913829418520132,
+              0.5914836811522645,
+              0.5913266632705928,
+              0.5914214632163446,
+              0.5913983484109243
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          },
+          "lung": {
+            "calibration_groups": 118,
+            "calibration_samples": 118,
+            "calibration_study_macro_mse": [
+              0.28141460264638307,
+              0.2813948973760766,
+              0.28142087388846815,
+              0.28139679853693916,
+              0.2814307784882641,
+              0.28137274894673925,
+              0.28140693347332824,
+              0.281398151006739
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          },
+          "skeletal_muscle": {
+            "calibration_groups": 159,
+            "calibration_samples": 159,
+            "calibration_study_macro_mse": [
+              0.27193586500185846,
+              0.2719092117915363,
+              0.2719917409824875,
+              0.27192314803225437,
+              0.27202570766397993,
+              0.2718631432116407,
+              0.27196643356257266,
+              0.2719413534087955
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          },
+          "skin": {
+            "calibration_groups": 166,
+            "calibration_samples": 272,
+            "calibration_study_macro_mse": [
+              0.49202660417341326,
+              0.49199538597141407,
+              0.4920364120099918,
+              0.4919998871095209,
+              0.4920555622462767,
+              0.49195885110691373,
+              0.49201591285955476,
+              0.4919989484261318
+            ],
+            "selected_random_expert": "random_5",
+            "selected_random_expert_index": 5
+          }
+        },
+        "calibration_scores": {
+          "path": "seed42/banks/banks/random_k8_p17/calibration_scores.npz",
+          "sha256": "b3a48fdccdf32a3d10e381a5190cc023e70d0b656570c0957d4bfbbaed9901b2",
+          "size_bytes": 132841
+        },
+        "selection_split": "gtex_calibration",
+        "uses_archs4": false,
+        "uses_test_targets": false
+      },
+      "random_k8_p42": {
+        "by_organ": {
+          "adipose": {
+            "calibration_groups": 159,
+            "calibration_samples": 257,
+            "calibration_study_macro_mse": [
+              0.29651161231709733,
+              0.29650630820659724,
+              0.2965049844399188,
+              0.29650141992284074,
+              0.296498234729347,
+              0.29650626448715267,
+              0.296516608470266,
+              0.29652396781639484
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "brain": {
+            "calibration_groups": 74,
+            "calibration_samples": 608,
+            "calibration_study_macro_mse": [
+              0.7165749019363812,
+              0.7165659046132329,
+              0.7165655104011712,
+              0.7165554206002124,
+              0.7165347945471034,
+              0.7165658932751785,
+              0.716581956457788,
+              0.716525137461052
+            ],
+            "selected_random_expert": "random_7",
+            "selected_random_expert_index": 7
+          },
+          "colon": {
+            "calibration_groups": 132,
+            "calibration_samples": 186,
+            "calibration_study_macro_mse": [
+              0.3989233266787999,
+              0.39890327056248986,
+              0.39890855347568344,
+              0.39889841340482235,
+              0.3988891317311562,
+              0.3989126164691918,
+              0.3989317154116703,
+              0.3989433691921559
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "heart": {
+            "calibration_groups": 108,
+            "calibration_samples": 178,
+            "calibration_study_macro_mse": [
+              0.3372515980844144,
+              0.3372295416063732,
+              0.3372231617707897,
+              0.33721490287118483,
+              0.33719401440962593,
+              0.3372312708309403,
+              0.33726627572819035,
+              0.33727308135065764
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "liver": {
+            "calibration_groups": 48,
+            "calibration_samples": 48,
+            "calibration_study_macro_mse": [
+              0.5914625792453687,
+              0.5914078044394652,
+              0.5914119395116966,
+              0.591345780218641,
+              0.5912959116200605,
+              0.591418386126558,
+              0.5914963589360318,
+              0.59147628583014
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "lung": {
+            "calibration_groups": 118,
+            "calibration_samples": 118,
+            "calibration_study_macro_mse": [
+              0.28142427981404927,
+              0.28140266290155497,
+              0.28140566157082386,
+              0.28138676348884223,
+              0.28137818610264087,
+              0.28140594140957964,
+              0.2814359496963226,
+              0.2814582929772846
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "skeletal_muscle": {
+            "calibration_groups": 159,
+            "calibration_samples": 159,
+            "calibration_study_macro_mse": [
+              0.2720033366162822,
+              0.27194853342554104,
+              0.2719461301212791,
+              0.27188060427986604,
+              0.27184485367634015,
+              0.27195574249486504,
+              0.27203508236873075,
+              0.2720124709343761
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          },
+          "skin": {
+            "calibration_groups": 166,
+            "calibration_samples": 272,
+            "calibration_study_macro_mse": [
+              0.4920428660081094,
+              0.4920119901737535,
+              0.4920150158276041,
+              0.49198073067938,
+              0.49194626249821793,
+              0.49201196082026133,
+              0.4920640776315367,
+              0.4920717448175671
+            ],
+            "selected_random_expert": "random_4",
+            "selected_random_expert_index": 4
+          }
+        },
+        "calibration_scores": {
+          "path": "seed42/banks/banks/random_k8_p42/calibration_scores.npz",
+          "sha256": "f1a2c666cf59c43970d3df92b6f4f9921d82c41f006799d6946522dc227bba1f",
+          "size_bytes": 133310
+        },
+        "selection_split": "gtex_calibration",
+        "uses_archs4": false,
+        "uses_test_targets": false
+      }
+    }
+  },
+  "organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "random_axes": [
+    "random_k8_p17",
+    "random_k8_p42",
+    "random_k8_p101"
+  ],
+  "schema_version": 1,
+  "seeds": [
+    17,
+    42,
+    101
+  ],
+  "selection_rule": "minimum GTEx-calibration equal-connected-study MSE within each organ; ties resolve to the smallest expert index",
+  "status": "frozen_gtex_calibration_random_control_mappings"
+}
