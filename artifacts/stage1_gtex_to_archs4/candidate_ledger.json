@@ -1,0 +1,339 @@
+{
+  "archs4_efficacy_scored": false,
+  "archs4_expression_accessed": false,
+  "axes": [
+    "organ_k8",
+    "random_k8_p17",
+    "random_k8_p42",
+    "random_k8_p101",
+    "pooled_adapter"
+  ],
+  "best_seed_selection_allowed": false,
+  "code_commit": "52596ba69b1656610710402831808496eddb077b",
+  "fine_tuning_exposure": "zero",
+  "next_gate": "Bind this ledger hash into the exact ARCHS4 lockbox membership, extractor, scorer, evaluator, and one-time launcher.",
+  "organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "router": {
+    "artifact": {
+      "path": "router/gtex_k8_target_hidden_router.npz",
+      "sha256": "b5a19bdee62efad108e0301f84afbbca088cfd04985f95cd37836a45b0236abe",
+      "size_bytes": 1122435
+    },
+    "report": {
+      "path": "router/router_report.json",
+      "sha256": "11cc62447194ca9328b68cb717019df93c888830b6f69a60b35b4555e9350a7d",
+      "size_bytes": 2894
+    }
+  },
+  "schema_version": 1,
+  "seed_candidates": [
+    {
+      "banks": {
+        "organ_k8": {
+          "checkpoint": {
+            "path": "seed17/banks/banks/organ_k8/final_experts.pt",
+            "sha256": "0375df2669c7cb38a6cf31d45f26b73dd991abedfc28fe13c39f0ec3ee0e3138",
+            "size_bytes": 1587918
+          },
+          "expert_order": [
+            "organ:adipose",
+            "organ:brain",
+            "organ:colon",
+            "organ:heart",
+            "organ:liver",
+            "organ:lung",
+            "organ:skeletal_muscle",
+            "organ:skin"
+          ],
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed17/banks/banks/organ_k8/run_metadata.json",
+            "sha256": "338a0719c09a18f05bf676bd80ff4cd7e96c9be75aeac2e9ad7163364cb575e5",
+            "size_bytes": 11844
+          }
+        },
+        "pooled_adapter": {
+          "checkpoint": {
+            "path": "seed17/banks/banks/pooled_adapter/final_experts.pt",
+            "sha256": "a96ddcea01950e827d3264ac5f31870ba9ecd34544c440a605aafaefd34a0954",
+            "size_bytes": 200128
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed17/banks/banks/pooled_adapter/run_metadata.json",
+            "sha256": "166f0484cb79029196f63cb164c60fb36374a98d8a6a68ae1263830e70cc6c15",
+            "size_bytes": 4387
+          }
+        },
+        "random_k8_p101": {
+          "checkpoint": {
+            "path": "seed17/banks/banks/random_k8_p101/final_experts.pt",
+            "sha256": "f63dc96e98f6003984ee8ff7fc93dbacc3f2531c8bc5fc49e3817f63f816f221",
+            "size_bytes": 1587790
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed17/banks/banks/random_k8_p101/run_metadata.json",
+            "sha256": "2cb06f2ba28b9688a5ccaafdf6505c1b62cce1581734b4c98b8677d9c9d94a6e",
+            "size_bytes": 10981
+          }
+        },
+        "random_k8_p17": {
+          "checkpoint": {
+            "path": "seed17/banks/banks/random_k8_p17/final_experts.pt",
+            "sha256": "315915cc29eb5624d29a052e0c3b5f3fe177a47f77d1f96af4937b38e398422b",
+            "size_bytes": 1587790
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed17/banks/banks/random_k8_p17/run_metadata.json",
+            "sha256": "ecb749d9491c458e2997814abc17c3792bbf6424f652157bfb7fd80ca9effb71",
+            "size_bytes": 11120
+          }
+        },
+        "random_k8_p42": {
+          "checkpoint": {
+            "path": "seed17/banks/banks/random_k8_p42/final_experts.pt",
+            "sha256": "b06af05db699f0d8389a4b985cdee2488f2502ca99e3bed1686118041797bb7d",
+            "size_bytes": 1587790
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed17/banks/banks/random_k8_p42/run_metadata.json",
+            "sha256": "0989e7e8fbd279322d5a09b300ca5f4fef21d3602dd794f02b3d0554bc84a8f1",
+            "size_bytes": 11004
+          }
+        }
+      },
+      "pooled": {
+        "checkpoint": {
+          "path": "seed17/pooled/best_model.pt",
+          "sha256": "ae5d6d1619938d8061c8b5b6e1323ed345f71f67b34e3e065cc899f587da7c74",
+          "size_bytes": 151680226
+        },
+        "metadata": {
+          "path": "seed17/pooled/run_metadata.json",
+          "sha256": "054bbdd4ea7e6f102e01cd770f9d5f05cc2074c62a40ba3c275cf337cfb0f431",
+          "size_bytes": 242759
+        }
+      },
+      "seed": 17
+    },
+    {
+      "banks": {
+        "organ_k8": {
+          "checkpoint": {
+            "path": "seed42/banks/banks/organ_k8/final_experts.pt",
+            "sha256": "b5bbed3e83ab2fc64d1eaaf7073d26ab901a0b0aff315041586cc13ce0cff8c9",
+            "size_bytes": 1587918
+          },
+          "expert_order": [
+            "organ:adipose",
+            "organ:brain",
+            "organ:colon",
+            "organ:heart",
+            "organ:liver",
+            "organ:lung",
+            "organ:skeletal_muscle",
+            "organ:skin"
+          ],
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed42/banks/banks/organ_k8/run_metadata.json",
+            "sha256": "22d8d9f69535bed2ab479f7068aedba074d36c6b4e044cc019fc246b499d2d54",
+            "size_bytes": 11702
+          }
+        },
+        "pooled_adapter": {
+          "checkpoint": {
+            "path": "seed42/banks/banks/pooled_adapter/final_experts.pt",
+            "sha256": "0ac394442b512b0671e9c8de3b04e105fa79a2544ccbca8cde4ed1b37d7ad321",
+            "size_bytes": 200128
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed42/banks/banks/pooled_adapter/run_metadata.json",
+            "sha256": "c1b3e70f0c8bff7cc48165eacd6e43ecab3088af94059fb462b1227b28de5b79",
+            "size_bytes": 4390
+          }
+        },
+        "random_k8_p101": {
+          "checkpoint": {
+            "path": "seed42/banks/banks/random_k8_p101/final_experts.pt",
+            "sha256": "70bbd78f6ed363bb0de5658d0f58f80ca4da6c5788b0d1e037e8b56beb2bb4fe",
+            "size_bytes": 1587790
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed42/banks/banks/random_k8_p101/run_metadata.json",
+            "sha256": "00a6fe41981b52fa30339d099363fbf1a7e37c4d56325de84344c6bc33b65037",
+            "size_bytes": 11005
+          }
+        },
+        "random_k8_p17": {
+          "checkpoint": {
+            "path": "seed42/banks/banks/random_k8_p17/final_experts.pt",
+            "sha256": "620dd467ae54c6df54aaee8f17baca9b709d486fe686b8212612e834445189e6",
+            "size_bytes": 1587790
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed42/banks/banks/random_k8_p17/run_metadata.json",
+            "sha256": "a1cec99397fb26616495919c4b0c9e1402f710f4ac35796eb08cf24d1d16c303",
+            "size_bytes": 11000
+          }
+        },
+        "random_k8_p42": {
+          "checkpoint": {
+            "path": "seed42/banks/banks/random_k8_p42/final_experts.pt",
+            "sha256": "4c0eaaf71c801e2ddb75fc04fdcad8ede73ef6d3141e6f0deb83c19a6d78bc34",
+            "size_bytes": 1587790
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed42/banks/banks/random_k8_p42/run_metadata.json",
+            "sha256": "c3158387238f92d76b75f1207e7325c56720dd51335999ea77290692cbe307bf",
+            "size_bytes": 10989
+          }
+        }
+      },
+      "pooled": {
+        "checkpoint": {
+          "path": "seed42/pooled/best_model.pt",
+          "sha256": "969c510fb84e5e58605d34351db6c5608ef8d64d66b282ad9bf964b77bb33ce2",
+          "size_bytes": 151680226
+        },
+        "metadata": {
+          "path": "seed42/pooled/run_metadata.json",
+          "sha256": "0dc64ea02518ef5dbdf4197ba418f5ac44b81890e55ec51ed36a517a305e5cd2",
+          "size_bytes": 242759
+        }
+      },
+      "seed": 42
+    },
+    {
+      "banks": {
+        "organ_k8": {
+          "checkpoint": {
+            "path": "seed101/banks/banks/organ_k8/final_experts.pt",
+            "sha256": "20d1fc2e300acc0e0d78eb3a11d5e4093a2950264abf0af3c704d91264512a42",
+            "size_bytes": 1587918
+          },
+          "expert_order": [
+            "organ:adipose",
+            "organ:brain",
+            "organ:colon",
+            "organ:heart",
+            "organ:liver",
+            "organ:lung",
+            "organ:skeletal_muscle",
+            "organ:skin"
+          ],
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed101/banks/banks/organ_k8/run_metadata.json",
+            "sha256": "208e98ab96c10f7dd74a87f94ff96a5aaeba5f1113d4a2dfb285e17c17a57ae1",
+            "size_bytes": 11449
+          }
+        },
+        "pooled_adapter": {
+          "checkpoint": {
+            "path": "seed101/banks/banks/pooled_adapter/final_experts.pt",
+            "sha256": "b1cb9ab2b9105de96a72b6e0f23cba611205c73a22e2e705a268c658c09b20d2",
+            "size_bytes": 200128
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed101/banks/banks/pooled_adapter/run_metadata.json",
+            "sha256": "87facd666dfb1247b1bc42493083880584827d077a5279701620123a913c64dd",
+            "size_bytes": 4392
+          }
+        },
+        "random_k8_p101": {
+          "checkpoint": {
+            "path": "seed101/banks/banks/random_k8_p101/final_experts.pt",
+            "sha256": "b5d24f0c723f11722190d5e92a3368638c25e8b818834e8dabbb4d7887562896",
+            "size_bytes": 1587790
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed101/banks/banks/random_k8_p101/run_metadata.json",
+            "sha256": "c425432d28103f144443fa867748593f0f064c1c597ea5c4b3fbd0bfa059c22e",
+            "size_bytes": 11001
+          }
+        },
+        "random_k8_p17": {
+          "checkpoint": {
+            "path": "seed101/banks/banks/random_k8_p17/final_experts.pt",
+            "sha256": "d91c55e4184f0ea9772721a6c87ba0dbcf122f68172916496bf89e4bd5b82402",
+            "size_bytes": 1587790
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed101/banks/banks/random_k8_p17/run_metadata.json",
+            "sha256": "7b9a4992cbc72a719f0e37844964f62f7be03d34e4b101354fc5d2f3f9de0fe0",
+            "size_bytes": 10997
+          }
+        },
+        "random_k8_p42": {
+          "checkpoint": {
+            "path": "seed101/banks/banks/random_k8_p42/final_experts.pt",
+            "sha256": "13c65804753e9c5b392a23fa27372a2141fa4e77eacce2478051fe7abb11b2c7",
+            "size_bytes": 1587790
+          },
+          "expert_order": null,
+          "final_update": 1500,
+          "metadata": {
+            "path": "seed101/banks/banks/random_k8_p42/run_metadata.json",
+            "sha256": "034cd18dc53ec96b2eb062db809075c9533301841f90efc2a116eb6e65b57218",
+            "size_bytes": 10999
+          }
+        }
+      },
+      "pooled": {
+        "checkpoint": {
+          "path": "seed101/pooled/best_model.pt",
+          "sha256": "3e9edacfb6b0e530f210f271af4802072a3c0154922bcf0b4b9f54e0ee612043",
+          "size_bytes": 151680226
+        },
+        "metadata": {
+          "path": "seed101/pooled/run_metadata.json",
+          "sha256": "57da7705dd08c26258d56a8aceefd2c78e58980c1d5a04e4a00d3ca27d98e24a",
+          "size_bytes": 242764
+        }
+      },
+      "seed": 101
+    }
+  ],
+  "seeds": [
+    17,
+    42,
+    101
+  ],
+  "status": "frozen_gtex_only_k8_candidate_ledger",
+  "training_checksum_manifest_sha256": "009920173cff2c0eaa9d880c8bc1fbe4ffbe61a9ffc9df5ba8c6795cf90dcc7b",
+  "training_commit": "98e2cbab7e94f101feb33e83cff0712834c38ee3",
+  "training_protocol_sha256": "1d982a469f3e1c7c907394d85f2c4b5c75558de88607680ecb1d51af06380a69",
+  "training_root_path_is_runtime_config": true,
+  "training_root_role": "verified_completed_bundle"
+}
