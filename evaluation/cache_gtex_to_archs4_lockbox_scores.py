@@ -343,8 +343,8 @@ def build_score_cache(args: argparse.Namespace) -> dict[str, Any]:
     if not np.array_equal(score_indices, verified_score_indices):
         raise ValueError("router score-gene indices changed")
     target = truth[:, score_indices].astype(np.float32)
-    organs = manifest["organ"].astype(str).to_numpy()
-    groups = manifest["series_group_id"].astype(str).to_numpy()
+    organs = manifest["organ"].to_numpy(dtype=str)
+    groups = manifest["series_group_id"].to_numpy(dtype=str)
     if set(organs) != set(ORGANS):
         raise ValueError("manifest organ labels differ from frozen order")
     organ_labels = np.asarray([ORGANS.index(value) for value in organs], dtype=np.int64)
@@ -437,7 +437,11 @@ def build_score_cache(args: argparse.Namespace) -> dict[str, Any]:
             "router_hard_labels": hard_labels,
             **{f"prediction__{name}": value for name, value in predictions.items()},
         }
-        if not all(np.isfinite(value).all() for value in arrays.values() if value.dtype.kind not in {"U", "S"}):
+        if not all(
+            np.isfinite(value).all()
+            for value in arrays.values()
+            if value.dtype.kind not in {"U", "S"}
+        ):
             raise RuntimeError(f"seed {seed} cache contains nonfinite values")
         metadata = {
             "schema_version": 1,
