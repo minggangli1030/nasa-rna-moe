@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 01:20 PDT / 2026-07-27 08:20 UTC
+**Last updated:** 2026-07-27 10:06 PDT / 2026-07-27 17:06 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,27 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — First lockbox access failed closed at sample QC
+
+The current ARCHS4 human H5 completed at exactly 62,257,385,524 bytes with SHA256
+`284855959248f249ddef5a9a5b780c72b86ef99240ed1403f08b01609778ed56`.
+The final implementation-bound lockbox protocol SHA256 is
+`dd73e11f39c02b9a5375f24e098c8118260ccac35f3a608a23e90a0eb76e9bfc`.
+Membership froze at the intended 827 accessions and 64 connected study groups.
+
+The extractor then stopped at its prespecified 14,000-nonzero-gene gate. Five liver
+samples in GSE277232 had 19, 49, 170, 240, and 304 nonzero genes; one lung sample in
+GSE227136 had 11,235. The other-sample median was represented by the all-row median
+of 31,144. The extractor published zero expression rows and no handoff, GPU scoring,
+efficacy evaluation, fine-tuning, best-seed selection, sample removal, or threshold
+relaxation occurred. Both local screen sessions exited and the GPU VM is idle.
+
+This is the required critical pause. Membership and QC cannot be changed silently
+after expression access. The compact failure artifact is
+`artifacts/stage1_gtex_to_archs4/lockbox_qc_failure.json`; the complete unpublished
+extraction audit remains under the ignored runtime directory
+`artifacts/stage1_gtex_to_archs4/lockbox_run_73f9bd1/expression/`.
 
 ## 2026-07-27 — ARCHS4 K8 lockbox implementation frozen; current H5 acquisition running
 

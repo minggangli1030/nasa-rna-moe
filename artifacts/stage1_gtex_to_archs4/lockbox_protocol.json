@@ -1,0 +1,85 @@
+{
+  "archs4_expression_accessed": false,
+  "archs4_source": {
+    "path_is_runtime_configuration": true,
+    "sha256": "284855959248f249ddef5a9a5b780c72b86ef99240ed1403f08b01609778ed56",
+    "size_bytes": 62257385524
+  },
+  "candidate_policy": {
+    "all_prespecified_seeds_required": true,
+    "best_seed_selection_allowed": false,
+    "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+    "random_control_mappings_sha256": "4386f372002dc14591d7e2a0203bf794bacf39cacc50736abc339b89a4f99496",
+    "seeds": [
+      17,
+      42,
+      101
+    ]
+  },
+  "efficacy_scoring_performed": false,
+  "evaluation": {
+    "one_sided_diagnostic": true,
+    "primary_estimand": "equal-organ equal-connected-study mean",
+    "primary_metric": "masked log1p(TPM) MSE",
+    "random_control_axes": [
+      "random_k8_p17",
+      "random_k8_p42",
+      "random_k8_p101"
+    ],
+    "router_conditions": [
+      "true_organ",
+      "blind_router_hard",
+      "blind_router_soft"
+    ],
+    "uncertainty": "paired connected-study bootstrap within organ"
+  },
+  "expression_access_gate": {
+    "all_implementation_hashes_frozen": true,
+    "automatic_run_after_preflight": true,
+    "membership_changes_after_access_allowed": false,
+    "one_time_access_only": true,
+    "pause_only_on_integrity_or_scientific_contract_failure": true
+  },
+  "fine_tuning": {
+    "archs4_exposure": "zero",
+    "post_access_checkpoint_selection_allowed": false,
+    "post_access_training_allowed": false
+  },
+  "implementation_commit": "73f9bd1d6fff097811f879766e9a68a05aebe850",
+  "implementation_hashes": {
+    "candidate_freezer_sha256": "072e8e65eceba742d6afd427ef94fe01c322ac3cde44c031077d791d3bd97995",
+    "lockbox_evaluator_sha256": "da334987d34c060a6352a1120dcd4cb80f31c3b425ff5de1c01e7c21a9c95532",
+    "lockbox_extractor_wrapper_sha256": "e50eb39c96e079c217bd7fc161967eb560a2de9d9e44fa9a61f2cfe6ba281a1d",
+    "lockbox_membership_freezer_sha256": "c45fcac2b97214c144afb309261ee1a1a18730ee2485c5010261de4a317e61f3",
+    "lockbox_score_cache_sha256": "3baa2fa98bca9fb74f3edd554e40ed02ff3d74adc71705d743d47110781ed6e4",
+    "manifest_expression_core_sha256": "c4c694584c23b1e4032472bc7de8bc5a56913e0eda2365dd78ffe8f26995fa45",
+    "one_time_launcher_sha256": "e8db96b548678f11444adbb55857df71ff4b8b2942c39c8f3e772bf4d1ba4df1",
+    "protocol_freezer_sha256": "b8553d2e47899fbdcdba30a3eabb13f8988e3b3bfed035869d5a518139a71da3",
+    "random_control_freezer_sha256": "421af1bda7d84d71ea9658fbf2add25ba42fe7d3ad0a854eeeb5f3e4f1de67a2"
+  },
+  "metadata_signoff": {
+    "decision": "accept_exact_membership_with_title_proxy_limit",
+    "limitation": "No explicit cross-study identifier overlap was found; title-derived donor keys remain a bounded proxy and are not verified identities.",
+    "primary_power_unit": "connected_study_group",
+    "silent_exclusion_or_relabeling_allowed": false,
+    "title_proxy_is_verified_donor_identity": false
+  },
+  "schema_version": 1,
+  "source_contract": {
+    "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+    "donor_audit_report_sha256": "ce970a0ff1aa8c152d65326206a2e7eef04f64c9b98afd1ed2adda028b06b08c",
+    "donor_audit_samples_sha256": "852d180a3650df747f2df609c3dc019daad2f486e29e270e942c3134ef30428e",
+    "donor_audit_studies_sha256": "76eb1fb31f73029c0f87221afd73ac6c29c2711cf6544d26098ff0df1d19daad",
+    "random_mappings_sha256": "4386f372002dc14591d7e2a0203bf794bacf39cacc50736abc339b89a4f99496",
+    "sample_review_report_sha256": "005a64e31926d4a6115495a829487536d6e521e9ae2042c9cf1a7df41bb8ac83",
+    "sample_review_sha256": "077c3735338e9142de18ed2d54ca70b31a85c7026dffedf95dec94207bc9e6d6",
+    "study_review_sha256": "8c99aa85bf6dc2da9ed08d8e1233d7b2ad929c2d831b29eaebbbc5fd50e49cad"
+  },
+  "status": "frozen_gtex_to_archs4_k8_lockbox_protocol",
+  "strata": {
+    "default": "reference_control",
+    "exploratory_by_organ": true,
+    "primary_estimator": "equal organ then equal connected study",
+    "series_group_overrides": {}
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "archs4_efficacy_scored": false,
+  "archs4_expression_access_attempted": true,
+  "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+  "failed_samples": [
+    {
+      "nonzero_genes": 49,
+      "organ": "liver",
+      "sample_id": "GSM8516762",
+      "series_group_id": "GSE277232"
+    },
+    {
+      "nonzero_genes": 19,
+      "organ": "liver",
+      "sample_id": "GSM8516763",
+      "series_group_id": "GSE277232"
+    },
+    {
+      "nonzero_genes": 240,
+      "organ": "liver",
+      "sample_id": "GSM8516764",
+      "series_group_id": "GSE277232"
+    },
+    {
+      "nonzero_genes": 170,
+      "organ": "liver",
+      "sample_id": "GSM8516765",
+      "series_group_id": "GSE277232"
+    },
+    {
+      "nonzero_genes": 304,
+      "organ": "liver",
+      "sample_id": "GSM8516767",
+      "series_group_id": "GSE277232"
+    },
+    {
+      "nonzero_genes": 11235,
+      "organ": "lung",
+      "sample_id": "GSM7103327",
+      "series_group_id": "GSE227136"
+    }
+  ],
+  "h5_sha256": "284855959248f249ddef5a9a5b780c72b86ef99240ed1403f08b01609778ed56",
+  "h5_size_bytes": 62257385524,
+  "lockbox_samples_requested": 827,
+  "lockbox_samples_published": 0,
+  "membership_changed": false,
+  "protocol_sha256": "dd73e11f39c02b9a5375f24e098c8118260ccac35f3a608a23e90a0eb76e9bfc",
+  "qc_median_nonzero_genes": 31144.0,
+  "qc_min_nonzero_genes": 14000,
+  "schema_version": 1,
+  "scoring_started": false,
+  "status": "failed_closed_at_expression_qc",
+  "timestamp_utc": "2026-07-27T13:01:08Z"
+}

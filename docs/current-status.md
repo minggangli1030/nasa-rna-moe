@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 01:20 PDT / 2026-07-27 08:20 UTC
+**Updated:** 2026-07-27 10:06 PDT / 2026-07-27 17:06 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -111,12 +111,20 @@ Read this file first. It is the compact operational and scientific handoff. Use
   the GTEx-calibration-only random-control mapping SHA256 is
   `4386f372002dc14591d7e2a0203bf794bacf39cacc50736abc339b89a4f99496`.
   Every prespecified seed is required and best-seed selection is forbidden.
-- ARCHS4 expression and efficacy remain sealed. The remaining operational blocker is
-  acquisition of the 62,257,385,524-byte current human H5: the GPU VM has only
-  33 GB free and contains only v11, so a resumable local download is active.
-  Persistent automatic continuation will hash/freeze/extract locally, transfer the
-  compact handoff, and score/evaluate on the idle GPU. It stops on any integrity or
-  scientific-contract failure.
+- The 62,257,385,524-byte current human H5 completed locally with SHA256
+  `284855959248f249ddef5a9a5b780c72b86ef99240ed1403f08b01609778ed56`.
+  The final lockbox protocol is frozen with SHA256
+  `dd73e11f39c02b9a5375f24e098c8118260ccac35f3a608a23e90a0eb76e9bfc`,
+  and exact membership froze at 827 samples from 64 connected studies.
+- The first real expression access failed closed at the prespecified 14,000-nonzero
+  QC floor. Five liver samples from GSE277232 had only 19–304 nonzero genes, and one
+  lung sample from GSE227136 had 11,235. The extractor published zero expression
+  rows; no handoff, GPU scoring, efficacy metric, training, seed selection, sample
+  removal, or threshold relaxation occurred.
+- Nothing is currently running locally or on the GPU VM. This is now a critical
+  scientific lockbox issue, not an operational wait: changing membership or the QC
+  threshold after expression access would require an explicit, documented protocol
+  decision and cannot be performed silently.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis, K4-EPE is the frozen candidate, and its conditional
