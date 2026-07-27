@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 13:51 PDT / 2026-07-27 20:51 UTC
+**Updated:** 2026-07-27 14:04 PDT / 2026-07-27 21:04 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -143,6 +143,12 @@ when older chronology or exact intermediate results are needed.
   complete; Stage 2 protocol/scheduler implementation and presentation drafting are
   active locally. A new untouched lockbox remains the appropriate future route to a
   pristine preregistered confirmation.
+- The required preliminary Stage 2 result figure is now frozen as a directed 8×8
+  recipient-organ by donor-organ heatmap. Cells show same-compute transfer
+  improvement/interference, with separate three-seed sign, donor-bootstrap, and
+  random-control annotations. Seed invariance and study universality are distinct:
+  GTEx can test the former and donor robustness, but a new untouched multisource
+  cohort is required for the latter.
 - The preliminary result is already available ahead of the Thursday-morning
   deadline. Presentation preparation is now the active operational task. The
   content draft is `presentation/2026-07-30-biweekly-draft.md`; an automated

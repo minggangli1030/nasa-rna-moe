@@ -188,6 +188,11 @@ that these predictions generalize across held-out studies requires a newly froze
 multisource cohort; the completed QC-amended ARCHS4 cohort cannot be recycled as a
 pristine Stage 2 lockbox.
 
+Planned preliminary Stage 2 figure: a directed 8×8 recipient-organ × donor-organ
+heatmap showing helpful transfer versus interference, with three-seed sign counts and
+donor-bootstrap uncertainty. Do not call the map universal merely because an edge is
+seed-consistent; independent-study universality is a later untouched-cohort test.
+
 Label-free routing is optional and secondary. It was originally included to add
 novelty by linking a co-routing map to the transfer map, but the completed de novo
 label-free pilots failed their utility/confound gates. Stage 2 therefore remains

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_directed_transfer_outcomes",
+  "frozen_at_utc": "2026-07-27T21:04:00Z",
+  "research_stage": "stage2_directed_organ_transfer_development",
+  "development_only": true,
+  "transfer_training_started_before_freeze": false,
+  "transfer_score_cache_accessed_before_freeze": false,
+  "best_seed_selection_allowed": false,
+  "source_structure": {
+    "type": "frozen_expert_utility_cosine_similarity",
+    "path": "artifacts/stage2_organ_expert_mechanism/frozen_expert_audit_9fad92a/expert_utility_cosine_similarity.csv",
+    "sha256": "0b15ae7741123e57ccce82954dff8fdc3264354f83f55a901c8fb889e74c6646",
+    "audit_report_path": "artifacts/stage2_organ_expert_mechanism/frozen_expert_audit_9fad92a/audit_report.json",
+    "audit_report_sha256": "87a210abfd4b06f3570c2a1e057d7c1f1ddb4182010c3afc25b098a36a663748",
+    "archs4_expression_accessed": false,
+    "directed_transfer_outcomes_accessed": false
+  },
+  "selection_rule": {
+    "description": "Cover every recipient organ exactly once while stratifying the frozen symmetric expert-utility cosine structure into high, middle, and low compatibility. Direction is assigned only to obtain complete recipient coverage; no transfer outcome contributed.",
+    "recipient_coverage": "all eight organs exactly once",
+    "strata": {
+      "high": "three high-similarity edges",
+      "middle": "two middle-similarity edges",
+      "low": "three low-similarity edges"
+    },
+    "selection_is_not_a_sign_claim": true,
+    "router_alignment_remains_a_prospective_predictor": true
+  },
+  "edges": [
+    {
+      "recipient": "brain",
+      "donor": "skin",
+      "stratum": "high",
+      "frozen_expert_utility_cosine_similarity": 0.7750880488
+    },
+    {
+      "recipient": "colon",
+      "donor": "skeletal_muscle",
+      "stratum": "high",
+      "frozen_expert_utility_cosine_similarity": 0.7018827516
+    },
+    {
+      "recipient": "liver",
+      "donor": "skin",
+      "stratum": "high",
+      "frozen_expert_utility_cosine_similarity": 0.7943058608
+    },
+    {
+      "recipient": "adipose",
+      "donor": "lung",
+      "stratum": "middle",
+      "frozen_expert_utility_cosine_similarity": 0.3292325769
+    },
+    {
+      "recipient": "heart",
+      "donor": "adipose",
+      "stratum": "middle",
+      "frozen_expert_utility_cosine_similarity": 0.45728507
+    },
+    {
+      "recipient": "lung",
+      "donor": "skeletal_muscle",
+      "stratum": "low",
+      "frozen_expert_utility_cosine_similarity": 0.1175247233
+    },
+    {
+      "recipient": "skeletal_muscle",
+      "donor": "lung",
+      "stratum": "low",
+      "frozen_expert_utility_cosine_similarity": 0.1175247233
+    },
+    {
+      "recipient": "skin",
+      "donor": "adipose",
+      "stratum": "low",
+      "frozen_expert_utility_cosine_similarity": 0.09984045506
+    }
+  ],
+  "additive_estimand": {
+    "named_donor": "A1500+B750",
+    "recipient_only_reference": "A1500",
+    "same_total_draws_self_control": "A2250",
+    "random_auxiliary_controls": [
+      "A1500+random_k8_p17_750",
+      "A1500+random_k8_p42_750",
+      "A1500+random_k8_p101_750"
+    ]
+  },
+  "claim_boundary": "This frozen subset can test whether pre-transfer expert structure prospectively ranks additive transfer. It cannot establish causal biological mechanism or study-level universality."
+}

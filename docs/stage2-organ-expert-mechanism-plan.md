@@ -229,6 +229,37 @@ Agreement among all three on study-disjoint data would be stronger than a descri
 cluster map. Disagreement is also useful because it reveals when visual or expression
 similarity does not translate into beneficial optimization.
 
+## Preliminary end deliverable — directed organ-transfer heatmap
+
+The primary Stage 2 development figure is a directed 8×8 organ-by-organ heatmap:
+
+- **rows:** recipient organ A whose donor-disjoint calibration performance is
+  measured;
+- **columns:** donor organ B whose training examples replace half of A under the
+  same-compute substitution estimand;
+- **cell value:** percentage change in recipient-A donor-balanced MSE for A750+B750
+  relative to A1500, with positive values denoting helpful transfer and negative
+  values denoting interference/negative transfer;
+- **diagonal:** the recipient-only reference, displayed as zero or visually masked;
+  and
+- **annotations:** mean across seeds, seed-sign count out of three, donor-bootstrap
+  interval, and an indicator for beating the matched random-auxiliary controls.
+
+A companion stability panel must keep separate questions separate:
+
+1. **Seed stability:** does the edge retain its sign in seeds 17, 42, and 101?
+2. **Donor robustness:** does a paired donor bootstrap exclude zero in
+   donor-disjoint GTEx calibration?
+3. **Edge universality:** what fraction of the 56 directed edges meet both gates, and
+   are failures concentrated in particular recipients or donors?
+4. **Study universality:** does the frozen sign generalize to independent studies in
+   a new untouched multisource cohort?
+
+Seed agreement is necessary but does not establish universality. GTEx can address
+seed and donor robustness, not study universality. The heatmap must show heterogeneous
+or uncertain cells honestly; it is not acceptable to select only favorable edges or
+describe all organ pairs as invariant unless every prespecified gate actually passes.
+
 ## Novelty and confound boundary
 
 Expert interpretation, transfer learning, and router analysis are individually

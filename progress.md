@@ -10,6 +10,23 @@
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
 
+## 2026-07-27 — Directed transfer heatmap frozen as a preliminary deliverable
+
+The preliminary Stage 2 end product will include an 8×8 directed heatmap with
+recipient organs as rows and donor-training organs as columns. Each off-diagonal cell
+reports the A750+B750 versus A1500 percentage change in donor-balanced recipient-A
+MSE: positive is helpful transfer and negative is interference. The diagonal is the
+zero/reference condition.
+
+Every cell will carry or link to three-seed sign consistency, a paired
+donor-bootstrap interval, and comparison with matched random-auxiliary controls.
+“Invariant across seeds” will require the same sign in seeds 17, 42, and 101.
+“Universal” will not be inferred from that result: GTEx can test donor robustness,
+whereas universality across independent studies requires a new untouched multisource
+cohort. The deliverable will report the fraction of all 56 directed edges passing
+each gate and retain heterogeneous, negative, or uncertain cells rather than
+post-hoc filtering them.
+
 ## 2026-07-27 — Stage 2 practical value, novelty, and two-estimand design frozen
 
 Stage 2 now has an explicit practical objective: learn which biological domains
