@@ -119,6 +119,27 @@ ARCHS4 lockbox.
 The estimand is the change in recipient-A study-balanced MSE caused by donor B.
 Positive values mean helpful transfer; negative values mean interference.
 
+Candidate packed implementation:
+
+- eight recipient-only K1 adapters;
+- 28 unordered two-organ K1 adapters, evaluated separately on each recipient to
+  produce 56 directed effects;
+- the same semantic initialization key within each training seed;
+- 1,500 active draws for every adapter;
+- pair adapters receive 750 draws from each organ, so organ B replaces half of
+  organ A's exposure rather than increasing total adapter exposure; and
+- three donor-atomic random-auxiliary controls per recipient with exactly matched
+  750-recipient/750-auxiliary exposure.
+
+The primary directed effect is recipient-A MSE for the A+B adapter versus the
+recipient-only A adapter under matched total active exposure. The random-auxiliary
+arms test whether a specific donor organ is more useful than generic heterogeneous
+auxiliary data.
+
+Implementation must not launch until the donor-atomic random scheduler proves exact
+exposure matching. Otherwise a nominal transfer effect could be confounded by unequal
+recipient exposure or total gradient mass.
+
 ### Phase 3 — frozen correspondence test
 
 - Freeze a small set of positive, neutral, and negative transfer edges without using

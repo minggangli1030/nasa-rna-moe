@@ -158,6 +158,12 @@ novelty by linking a co-routing map to the transfer map, but the completed de no
 label-free pilots failed their utility/confound gates. Stage 2 therefore remains
 centered on the replicated organ experts.
 
+Development-only execution checkpoint: on 1,826 GTEx calibration samples from 188
+held-out donors, the correctly named frozen expert ranks first for all 8 recipient
+organs after averaging the three seeds. All 56 off-diagonal expert/recipient means are
+worse than pooled. Present this only as evidence that the experts learned distinct,
+organ-aligned functions—not as the controlled transfer result.
+
 Closing line: “The result is strong enough to continue the organ-routing program,
 but the QC amendment stays visible in the evidence label and in every claim.”
 
