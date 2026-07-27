@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 13:37 PDT / 2026-07-27 20:37 UTC
+**Last updated:** 2026-07-27 13:48 PDT / 2026-07-27 20:48 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -54,6 +54,17 @@ organ-pair arms that yield all 56 directed effects at evaluation, and 24
 donor-atomic random-auxiliary arms. The compiler supports additive named-donor,
 random-auxiliary, and A2250 self controls, but fails closed unless additive edges are
 prospectively supplied.
+
+A fairness audit tightened the compiler before any model fit: equal counts were not
+enough if recipient A used different examples or masks in different arms. Commit
+`b3c5af8` therefore pairs each source at the donor/sample-sequence level and records a
+source-local draw number for paired masking. The exact remote GTEx manifest
+(`d37023f…d2e6`) compiled successfully into 60 arms and 90,000 draws. Schedule
+SHA256 is `e6637a43f73acb9cb3a4fde52a383af163eac980ad2ad52fca1a96486d88daf8`;
+arm-definition SHA256 is
+`8c7a4c227d647531dfecfb156ca822881b92bcdf9b469c2805ba819587082cce`.
+No Stage 2 model has been fit and the GPU remains idle while the schedule-aware K1
+trainer/evaluator is implemented and mechanically tested.
 
 ## 2026-07-27 — Stage 2 execution began with frozen-expert cross-dispatch
 

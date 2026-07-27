@@ -167,9 +167,14 @@ recipient exposure or total gradient mass.
 Implementation checkpoint: the deterministic compiler
 `evaluation/build_stage2_directed_transfer_schedules.py` now enforces these exact
 source quotas and donor-atomic random-shard membership without loading expression or
-efficacy results. Its focused tests pass. Real GPU training remains gated on
-hash-freezing the compiled schedule from the exact GTEx development manifest and
-connecting that schedule to the K1 trainer/evaluator.
+efficacy results. Commit `b3c5af8` additionally pairs each source's deterministic
+donor/sample sequence and source-local mask index across comparison arms. Its focused
+tests pass. The exact 60-arm/90,000-draw substitution schedule is frozen from GTEx
+manifest SHA256 `d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6`;
+schedule SHA256 is
+`e6637a43f73acb9cb3a4fde52a383af163eac980ad2ad52fca1a96486d88daf8`.
+Real GPU training remains gated on connecting this contract to the K1
+trainer/evaluator and passing a real-data mechanical smoke.
 
 ### Phase 3 — frozen correspondence test
 

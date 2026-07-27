@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 13:37 PDT / 2026-07-27 20:37 UTC
+**Updated:** 2026-07-27 13:48 PDT / 2026-07-27 20:48 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -237,14 +237,21 @@ This is strong development evidence of distinct organ-aligned expert function, n
 the causal effect of adding donor-organ training data. The controlled transfer
 experiment remains separate.
 
-The deterministic transfer-schedule compiler is now implemented in
-`evaluation/build_stage2_directed_transfer_schedules.py`. Its focused tests pass. It
-creates exact donor-auditable quotas for 8 recipient-only arms, 28 unordered organ
-pairs (56 directed evaluation effects), and 24 donor-atomic random-auxiliary controls.
-It also supports the additive confirmation arms but requires their directed edges to
-be explicitly named in advance. The next operational gate is to compile and
-hash-freeze these schedules against the exact remote GTEx development manifest, then
-connect the schedule contract to the K1 trainer/evaluator before starting GPU work.
+The deterministic transfer-schedule compiler is implemented and focused tests pass.
+The corrected source-paired implementation is commit `b3c5af8`: it matches not only
+source counts but each organ's deterministic donor/sample sequence and
+source-local mask index across arms. The exact GTEx development manifest SHA256 is
+`d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6`.
+The compiled substitution design at
+`/media/volume/moe-reboot/results/stage2_directed_transfer_b3c5af8/substitution_schedules`
+contains 60 arms and 90,000 draws: 8 recipient-only arms, 28 unordered organ pairs
+(56 directed evaluation effects), and 24 donor-atomic random-auxiliary controls.
+The training-schedule SHA256 is
+`e6637a43f73acb9cb3a4fde52a383af163eac980ad2ad52fca1a96486d88daf8`;
+the arm-definition SHA256 is
+`8c7a4c227d647531dfecfb156ca822881b92bcdf9b469c2805ba819587082cce`.
+No model has been fit. The next gate is connecting the schedule contract to the K1
+trainer/evaluator and passing a real-data mechanical smoke before GPU training.
 
 ## Thursday presentation readiness plan
 
