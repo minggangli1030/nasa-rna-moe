@@ -41,6 +41,10 @@ backups/
 results/
 slurm-*.out
 *.out
+artifacts/stage1_gtex_to_archs4/continuation.log
+artifacts/stage1_gtex_to_archs4/continuation_status.txt
+artifacts/stage1_gtex_to_archs4/*_stdout.json
+artifacts/stage1_gtex_to_archs4/lockbox_run_*/
 
 # misc
 .DS_Store
