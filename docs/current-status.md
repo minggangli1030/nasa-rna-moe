@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 13:14 PDT / 2026-07-27 20:14 UTC
+**Updated:** 2026-07-27 13:28 PDT / 2026-07-27 20:28 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -212,6 +212,17 @@ The current plan is `docs/stage2-organ-expert-mechanism-plan.md`: first audit fr
 expert residuals/pathways, then measure an equal-budget directed organ-to-organ
 transfer matrix, then test whether expert/router structure predicts held-out transfer.
 Only after those phases pass may a within-organ or label-free extension proceed.
+
+The first development-only Stage 2 audit is complete from implementation commit
+`9fad92a`. It uses only the existing GTEx calibration score caches: 1,826 samples
+from 188 held-out GTEx donors, with no ARCHS4 expression access or model fitting.
+When each frozen expert is cross-dispatched to every recipient organ, the correctly
+named expert ranks first for all eight recipient organs after averaging all three
+seeds. Every off-diagonal expert is harmful on average; 23 of 24 named
+organ-by-seed cells are positive, versus only 2 of 168 off-diagonal seed cells.
+This is strong development evidence of distinct organ-aligned expert function, not
+the causal effect of adding donor-organ training data. The controlled transfer
+experiment remains separate.
 
 ## Thursday presentation readiness plan
 

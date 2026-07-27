@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 13:14 PDT / 2026-07-27 20:14 UTC
+**Last updated:** 2026-07-27 13:28 PDT / 2026-07-27 20:28 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,38 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — Stage 2 execution began with frozen-expert cross-dispatch
+
+The dedicated final synthesis is now `docs/stage-1-end-result.md`. It records the
+cautious study language: the Stage 1 result is study-robust in aggregate under
+equal-study/equal-organ weighting, not invariant in every study. Study-specific
+label quality, sequencing/processing quality, biological context, sample size,
+gene-detection completeness, and donor-metadata quality can all produce genuine
+heterogeneity.
+
+The first executable Stage 2 audit is implemented and tested at commit `9fad92a` in
+`evaluation/audit_stage2_gtex_k8_frozen_experts.py`. It reads only the checksum-bound
+GTEx K8 calibration score caches, performs no model fitting or best-seed selection,
+and does not load the completed ARCHS4 lockbox.
+
+The completed audit contains 1,826 calibration samples from 188 held-out GTEx donors.
+The named expert ranks first among all eight experts for every recipient organ after
+averaging all three seeds. All 56 off-diagonal recipient/expert mean effects are
+negative versus pooled. Named expert dispatch is positive in 23 of 24
+organ-by-seed cells, while an off-diagonal expert is positive in only 2 of 168 cells.
+The named-expert mean effects range from 0.921% for colon to 21.718% for skin.
+
+This is strong development evidence that the experts learned distinct organ-aligned
+functions. It is not controlled transfer: applying a frozen organ-B expert to organ A
+does not estimate the effect of adding organ-B examples to a controlled
+recipient-A training run. Gene/pathway residual caching and the directed-transfer
+protocol are the next phases.
+
+Canonical result:
+`artifacts/stage2_organ_expert_mechanism/frozen_expert_audit_9fad92a/`
+(audit-report SHA256
+`87a210abfd4b06f3570c2a1e057d7c1f1ddb4182010c3afc25b098a36a663748`).
 
 ## 2026-07-27 — Stage 1 synthesis recorded; Stage 2 restored to organ experts
 

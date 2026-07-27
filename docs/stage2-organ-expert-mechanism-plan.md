@@ -72,6 +72,27 @@ graph-wide correlation from too few pairs.
 
 ## Proposed experiment sequence
 
+### Completed precursor — frozen cross-dispatch utility audit
+
+Implementation commit `9fad92a` audited the existing GTEx calibration score caches
+without model fitting or ARCHS4 access. It covers 1,826 calibration samples from 188
+held-out GTEx donors and applies every frozen expert to every recipient organ.
+
+- the correctly named expert ranks first for all eight recipient organs after
+  averaging seeds 17, 42, and 101;
+- all 56 off-diagonal recipient/expert means are worse than pooled;
+- 23 of 24 named organ-by-seed cells improve over pooled;
+- only 2 of 168 off-diagonal organ/expert/seed cells improve; and
+- named-expert mean gains range from 0.921% for colon to 21.718% for skin.
+
+This confirms that the frozen experts are functionally organ-aligned on development
+data. It is a cross-dispatch audit, not the Phase 2 transfer estimand: applying organ
+B's already-trained expert to organ A is different from measuring whether adding
+organ-B training examples changes a newly controlled recipient-A model.
+
+Canonical artifact:
+`artifacts/stage2_organ_expert_mechanism/frozen_expert_audit_9fad92a/`.
+
 ### Phase 1 — frozen-expert mechanism audit
 
 - Keep the pooled trunks, organ adapters, routers, genes, masks, and seeds frozen.

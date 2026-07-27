@@ -1,0 +1,108 @@
+{
+  "analysis": "stage2_gtex_k8_frozen_expert_cross_dispatch_audit",
+  "archs4_expression_loaded": false,
+  "best_seed_selection_performed": false,
+  "calibration_groups": 188,
+  "calibration_rows": 1826,
+  "completed_archs4_lockbox_used_for_selection": false,
+  "controlled_retraining_transfer_estimated": false,
+  "data_source": "GTEx calibration score caches",
+  "development_only": true,
+  "hashes": {
+    "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+    "input_calibration_scores_sha256": {
+      "101": "1b6432eff36094f18efc30b962ce2a6e48fe15f8478d08ada22308d190d9316f",
+      "17": "7720934c2e0f8ca7fea9821f61a95e392920a7a76976cb56a92b305c5e5e8890",
+      "42": "500bf6a5c45ca8e07498f2af487b7f309251e157daec59259ed7ca2ccbca0c8a"
+    },
+    "outputs": {
+      "expert_utility_cosine_similarity.csv": "0b15ae7741123e57ccce82954dff8fdc3264354f83f55a901c8fb889e74c6646",
+      "mean_relative_mse_improvement_percent.csv": "1fd11206e3ace6cdc5300b6965f7fd5237e835701d07c14f9303a41401cd896f",
+      "positive_seed_count.csv": "ae5c588749985fcca5328f136b458cb59dda3252138b31d40745555a24791bf1",
+      "seed_sd_relative_mse_improvement_percent.csv": "072e7772fc7fe3bc9a690a0c3aab90c43f6c0980f4c458c9f34fae7f0768b5b9"
+    }
+  },
+  "interpretation": "cross-dispatch utility of already-frozen experts; not the causal effect of adding donor-organ training data",
+  "mean_true_dispatch_relative_mse_improvement_percent": 8.604326146312205,
+  "model_fitting_performed": false,
+  "organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "recipient_summary": {
+    "adipose": {
+      "best_expert": "adipose",
+      "best_expert_relative_mse_improvement_percent": 4.0509782275985105,
+      "named_expert_positive_seed_count": 3,
+      "named_expert_rank_among_8": 1,
+      "named_expert_relative_mse_improvement_percent": 4.0509782275985105
+    },
+    "brain": {
+      "best_expert": "brain",
+      "best_expert_relative_mse_improvement_percent": 6.3617927992696535,
+      "named_expert_positive_seed_count": 3,
+      "named_expert_rank_among_8": 1,
+      "named_expert_relative_mse_improvement_percent": 6.3617927992696535
+    },
+    "colon": {
+      "best_expert": "colon",
+      "best_expert_relative_mse_improvement_percent": 0.9211398239302594,
+      "named_expert_positive_seed_count": 3,
+      "named_expert_rank_among_8": 1,
+      "named_expert_relative_mse_improvement_percent": 0.9211398239302594
+    },
+    "heart": {
+      "best_expert": "heart",
+      "best_expert_relative_mse_improvement_percent": 6.106163130346421,
+      "named_expert_positive_seed_count": 3,
+      "named_expert_rank_among_8": 1,
+      "named_expert_relative_mse_improvement_percent": 6.106163130346421
+    },
+    "liver": {
+      "best_expert": "liver",
+      "best_expert_relative_mse_improvement_percent": 9.976356798408743,
+      "named_expert_positive_seed_count": 3,
+      "named_expert_rank_among_8": 1,
+      "named_expert_relative_mse_improvement_percent": 9.976356798408743
+    },
+    "lung": {
+      "best_expert": "lung",
+      "best_expert_relative_mse_improvement_percent": 7.419061352386703,
+      "named_expert_positive_seed_count": 3,
+      "named_expert_rank_among_8": 1,
+      "named_expert_relative_mse_improvement_percent": 7.419061352386703
+    },
+    "skeletal_muscle": {
+      "best_expert": "skeletal_muscle",
+      "best_expert_relative_mse_improvement_percent": 8.70472140982343,
+      "named_expert_positive_seed_count": 2,
+      "named_expert_rank_among_8": 1,
+      "named_expert_relative_mse_improvement_percent": 8.70472140982343
+    },
+    "skin": {
+      "best_expert": "skin",
+      "best_expert_relative_mse_improvement_percent": 21.71773045582077,
+      "named_expert_positive_seed_count": 3,
+      "named_expert_rank_among_8": 1,
+      "named_expert_relative_mse_improvement_percent": 21.71773045582077
+    }
+  },
+  "schema_version": 1,
+  "seed_true_dispatch_relative_mse_improvement_percent": {
+    "101": 10.733447818974495,
+    "17": 7.269137362949849,
+    "42": 7.810393257012276
+  },
+  "seeds": [
+    17,
+    42,
+    101
+  ],
+  "status": "complete"
+}
