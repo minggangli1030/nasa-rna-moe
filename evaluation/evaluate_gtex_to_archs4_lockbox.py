@@ -186,8 +186,19 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
     shared_ids = shared_groups = shared_organs = None
     study_mse: dict[str, dict[str, dict[str, dict[str, float]]]] = {}
     study_pearson: dict[str, dict[str, dict[str, dict[str, float]]]] = {}
+    score_cache_source_protocol_sha256 = protocol.get(
+        "score_cache_source_protocol_sha256"
+    )
     for seed in SEEDS:
         descriptor = score_report["seed_reports"][str(seed)]
+        if (
+            score_cache_source_protocol_sha256 is not None
+            and descriptor.get("protocol_sha256")
+            != score_cache_source_protocol_sha256
+        ):
+            raise ValueError(
+                f"seed {seed} cache was not produced under the frozen source protocol"
+            )
         path = Path(descriptor["score_cache"])
         if sha256_file(path) != descriptor["score_cache_sha256"]:
             raise ValueError(f"seed {seed} score-cache file hash mismatch")
