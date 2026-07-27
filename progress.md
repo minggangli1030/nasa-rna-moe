@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 14:02 PDT / 2026-07-27 21:02 UTC
+**Last updated:** 2026-07-27 14:38 PDT / 2026-07-27 21:38 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,26 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — Seed 101 parallelized on verified partial A100
+
+The user unshelved `moe-reboot-partial` at new public IP `149.165.168.111`. The host
+is reachable as `moe-reboot3`; its ED25519 fingerprint was independently scanned as
+`SHA256:qDoipZ7A4BmWjuos8EttxRHWskfaUAw2TPlqkguIct0`. It provides an idle
+20 GB A100 partition and 16 GB free disk after provisioning.
+
+Exact commit `229dfa6` source and the seed-101 inputs were streamed without touching
+the active primary run. SHA256 verification passed for the 2.0 GB expression matrix,
+seed-101 pooled checkpoint, GTEx manifest, gene definitions, training schedule, and
+arm definitions. Detached session `stage2-seed101` entered GPU training at 21:37 UTC
+with 98% utilization and approximately 7.1 GB allocated.
+
+At the same time, the primary full A100 had completed 8/60 seed-17 arms in 36.5
+minutes, about 7.5 arms/hour including initial loading and calibration scoring. The
+working plan is to finish seeds 17 and 42 on the primary while seed 101 runs on the
+partial GPU, then hash-verify and transfer only the compact seed-101 outputs for the
+frozen evaluator. The estimated preliminary heatmap is now approximately
+23:00–00:00 PDT, with refinement after the partial host completes several arms.
 
 ## 2026-07-27 — Stage 2 three-seed substitution run launched
 

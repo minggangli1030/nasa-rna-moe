@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 14:02 PDT / 2026-07-27 21:02 UTC
+**Updated:** 2026-07-27 14:38 PDT / 2026-07-27 21:38 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -142,10 +142,24 @@ when older chronology or exact intermediate results are needed.
 - Stage 2 development training is active on `moe-reboot` in detached screen session
   `stage2-directed-transfer`. It launched from clean commit
   `229dfa6dc18302a798734880dc8e3eb60e506e61` at 2026-07-27 21:01 UTC and entered
-  seed 17 arm 1/60 with the A100 at 100% utilization. Result root:
+  seed 17 with the A100 at 100% utilization. At 21:38 UTC it had completed 8/60
+  arms. Result root:
   `/media/volume/moe-reboot/results/stage2_directed_transfer_229dfa6`.
   The launcher runs seeds 17, 42, and 101 sequentially, then the frozen evaluator
-  and heatmap. Initial one-VM ETA is 8–11 hours; refine after multiple full arms.
+  and heatmap.
+- Parallel acceleration is active on the unshelved host at `149.165.168.111`
+  (`moe-reboot3`) in detached session `stage2-seed101`. Its verified ED25519
+  fingerprint is
+  `SHA256:qDoipZ7A4BmWjuos8EttxRHWskfaUAw2TPlqkguIct0`. It has a 20 GB A100
+  partition and is running the exact frozen seed-101 arm set from commit `229dfa6`.
+  Expression, checkpoint, manifest, gene-definition, schedule, and arm-definition
+  SHA256 values all match the primary VM.
+- The primary will complete seeds 17 and 42 while the parallel host completes seed
+  101. The compact seed-101 result will then be hash-verified and copied to the
+  primary for an early evaluator pass; the primary launcher's later duplicate seed
+  101 may finish as an operational replication. Observed primary throughput after
+  eight arms was approximately 7.5 arms/hour. Current preliminary-heatmap ETA is
+  approximately 23:00–00:00 PDT, subject to the partial GPU's measured rate.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and
