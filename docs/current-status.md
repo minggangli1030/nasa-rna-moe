@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 14:04 PDT / 2026-07-27 21:04 UTC
+**Updated:** 2026-07-27 14:02 PDT / 2026-07-27 21:02 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -139,10 +139,13 @@ when older chronology or exact intermediate results are needed.
   soft routing was 0.875840 (3.676% lower). Every seed improved for all three K8
   conditions; each paired study bootstrap CI versus pooled excluded zero. The pooled
   adapter and all three random K8 controls were effectively neutral on average.
-- Nothing is currently training locally or on the GPU VM. The amended evaluation is
-  complete; Stage 2 protocol/scheduler implementation and presentation drafting are
-  active locally. A new untouched lockbox remains the appropriate future route to a
-  pristine preregistered confirmation.
+- Stage 2 development training is active on `moe-reboot` in detached screen session
+  `stage2-directed-transfer`. It launched from clean commit
+  `229dfa6dc18302a798734880dc8e3eb60e506e61` at 2026-07-27 21:01 UTC and entered
+  seed 17 arm 1/60 with the A100 at 100% utilization. Result root:
+  `/media/volume/moe-reboot/results/stage2_directed_transfer_229dfa6`.
+  The launcher runs seeds 17, 42, and 101 sequentially, then the frozen evaluator
+  and heatmap. Initial one-VM ETA is 8–11 hours; refine after multiple full arms.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and
@@ -263,8 +266,14 @@ focused Stage 2 suite passes 12 tests. A real-data mechanical GPU smoke complete
 two arms and two batches per arm in 161 seconds, including frozen-trunk loading,
 identical semantic initialization, scheduled masks, checkpoint publication, and
 calibration score-cache publication. Those two-batch outputs are mechanical only and
-must not be interpreted as efficacy. The next gates are the aggregate evaluator,
-prospective additive-edge freeze, and a full all-three-seed launcher.
+must not be interpreted as efficacy.
+
+The aggregate evaluator, prospective additive-edge freeze, and strict all-three-seed
+launcher are now frozen at `229dfa6`. Eight additive confirmation edges were selected
+before transfer training or score access, covering every recipient once across
+high/middle/low pre-transfer expert-similarity strata. The evaluator produces the
+56-edge effect, three-seed sign, paired donor-bootstrap, random-control, and directed
+heatmap artifacts. The launcher passed preflight and is running seed 17.
 
 This first transfer matrix is donor-disjoint GTEx development evidence, not
 study-disjoint confirmation: GTEx does not provide independent contributing studies.

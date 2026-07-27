@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 13:51 PDT / 2026-07-27 20:51 UTC
+**Last updated:** 2026-07-27 14:02 PDT / 2026-07-27 21:02 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,25 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — Stage 2 three-seed substitution run launched
+
+Commit `229dfa6dc18302a798734880dc8e3eb60e506e61` freezes the additive-edge subset,
+aggregate evaluator/heatmap contract, and strict all-three-seed launcher. The
+outcome-blind additive subset covers every recipient organ exactly once across
+high/middle/low frozen expert-utility similarity; no transfer training or score cache
+was accessed before this freeze.
+
+The detached VM session `stage2-directed-transfer` launched at 21:01 UTC under
+`/media/volume/moe-reboot/results/stage2_directed_transfer_229dfa6`. At 21:02 UTC it
+was training seed 17, arm 1/60, with the A100 at 100% utilization. The launcher will
+run seeds 17, 42, and 101 sequentially and then automatically execute the frozen
+56-edge evaluator and directed heatmap.
+
+The initial one-VM estimate is 2.5–3.5 hours per seed and 8–11 hours through the
+substitution heatmap, based on the 161-second real-data smoke and prior measured
+adapter-training throughput. This is provisional until several complete production
+arms provide an observed rate.
 
 ## 2026-07-27 — Directed transfer heatmap frozen as a preliminary deliverable
 
