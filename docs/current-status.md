@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-26 23:28 PDT / 2026-07-27 06:28 UTC
+**Updated:** 2026-07-27 01:20 PDT / 2026-07-27 08:20 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -101,13 +101,22 @@ Read this file first. It is the compact operational and scientific handoff. Use
   The exact one-sided sign diagnostic rejects at 41 positive studies of 64
   (`alpha=0.025`, achieved null tail 0.01638). Most donor identities are still
   documented title proxies, not verified donor IDs.
-- ARCHS4 expression and efficacy remain sealed. The missing-organ blocker is closed,
-  but the lockbox is deliberately not yet declared frozen. The remaining critical
-  blockers are the all-seed candidate hash ledger, exact ARCHS4 extractor/evaluator,
-  development-versus-lockbox roles, frozen strata and optional exposure doses,
-  decision tree, and explicit final metadata signoff. There is currently no
-  production ARCHS4 lockbox evaluator/launcher, so running a test now would bypass
-  the frozen protocol rather than execute it.
+- The production K8 lockbox pipeline is now implemented at
+  `73f9bd1d6fff097811f879766e9a68a05aebe850`: exact membership freeze,
+  one-time extractor, deterministic all-seed scorer, equal-organ/equal-study
+  evaluator, protocol freezer, and hash-verified two-host launcher. Its focused
+  fail-closed suite passes 11 tests.
+- The frozen candidate ledger SHA256 is
+  `1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8`;
+  the GTEx-calibration-only random-control mapping SHA256 is
+  `4386f372002dc14591d7e2a0203bf794bacf39cacc50736abc339b89a4f99496`.
+  Every prespecified seed is required and best-seed selection is forbidden.
+- ARCHS4 expression and efficacy remain sealed. The remaining operational blocker is
+  acquisition of the 62,257,385,524-byte current human H5: the GPU VM has only
+  33 GB free and contains only v11, so a resumable local download is active.
+  Persistent automatic continuation will hash/freeze/extract locally, transfer the
+  compact handoff, and score/evaluate on the idle GPU. It stops on any integrity or
+  scientific-contract failure.
 
 The strongest defensible conclusion remains: organ identity is the strongest tested
 conditional specialization axis, K4-EPE is the frozen candidate, and its conditional

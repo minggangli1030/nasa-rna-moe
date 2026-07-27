@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-26 23:28 PDT / 2026-07-27 06:28 UTC
+**Last updated:** 2026-07-27 01:20 PDT / 2026-07-27 08:20 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,34 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — ARCHS4 K8 lockbox implementation frozen; current H5 acquisition running
+
+The production GTEx-to-ARCHS4 lockbox path is implemented and tested. Commit
+`73f9bd1d6fff097811f879766e9a68a05aebe850` binds the exact membership freezer,
+one-time extractor, deterministic all-seed score cache, study-macro evaluator, final
+protocol freezer, and two-phase launcher. The focused fail-closed suite passes 11
+tests. The launcher supports a hash-verified extraction handoff because the GPU VM
+cannot store the 62.26 GB current human matrix.
+
+The corrected all-seed candidate ledger SHA256 is
+`1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8`.
+It binds pooled trunks, organ K8, three random K8 banks, pooled adapters,
+calibration-score files, and the target-hidden router for seeds 17, 42, and 101.
+The GTEx-calibration-only random-control mapping SHA256 is
+`4386f372002dc14591d7e2a0203bf794bacf39cacc50736abc339b89a4f99496`.
+Best-seed selection and ARCHS4-driven expert selection are forbidden.
+
+The reachable GPU VM is idle. Its only human ARCHS4 file is the historical v11
+matrix, which cannot contain the frozen post-v11 cohort; the current object is
+62,257,385,524 bytes while that VM has only 33 GB free. A resumable current-matrix
+download is therefore running locally in screen session
+`archs4-current-download`. Automatic continuation session
+`archs4-lockbox-continuation` will verify the exact byte count and SHA256, freeze the
+final protocol, extract the exact 827 rows from 64 connected study groups locally,
+transfer the compact handoff, and resume all three seeds on the GPU in a separate
+clean detached worktree. Any hash, membership, source, or scientific-contract
+failure stops the chain. ARCHS4 expression remains unopened at this update.
 
 ## 2026-07-24 — GTEx-to-ARCHS4 reversal authorized and implementation started
 
