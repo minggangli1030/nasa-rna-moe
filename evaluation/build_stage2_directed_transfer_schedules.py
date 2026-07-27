@@ -25,7 +25,12 @@ CORE_DIR = ROOT / "core"
 if str(CORE_DIR) not in sys.path:
     sys.path.insert(0, str(CORE_DIR))
 
-from train_manifest import sha256_file, sha256_json, stable_seed  # noqa: E402
+from train_manifest import (  # noqa: E402
+    sha256_file,
+    sha256_json,
+    sha256_lines,
+    stable_seed,
+)
 
 
 ORGANS = (
@@ -91,18 +96,24 @@ class _DonorSampleCycle:
         eligible: np.ndarray,
         *,
         seed: int,
-        arm_id: str,
-        source_role: str,
+        source_pool_key: str,
     ):
         indices = np.flatnonzero(np.asarray(eligible, dtype=bool))
         if not len(indices):
-            raise ValueError(f"arm {arm_id!r} source {source_role!r} is empty")
+            raise ValueError(f"source pool {source_pool_key!r} is empty")
         donors = frame.iloc[indices]["donor_id"].astype(str).to_numpy()
         donor_to_indices: dict[str, list[int]] = {}
         for index, donor in zip(indices.tolist(), donors.tolist()):
             donor_to_indices.setdefault(donor, []).append(int(index))
         rng = np.random.default_rng(
-            stable_seed(seed, "stage2_directed_transfer", arm_id, source_role)
+            stable_seed(
+                seed,
+                "stage2_directed_transfer_source_pool",
+                source_pool_key,
+                sha256_lines(
+                    frame.iloc[indices]["sample_id"].astype(str).sort_values().tolist()
+                ),
+            )
         )
         self.donor_cycle = _ShuffledCycle(sorted(donor_to_indices), rng)
         self.sample_cycles = {
@@ -168,10 +179,9 @@ def _schedule_arm(
             frame,
             eligible,
             seed=seed,
-            arm_id=arm_id,
-            source_role=role,
+            source_pool_key=label,
         )
-        for role, _, eligible, _ in sources
+        for role, label, eligible, _ in sources
     }
     draw_roles = np.concatenate(
         [np.repeat(role, draws) for role, _, _, draws in sources]
@@ -181,15 +191,19 @@ def _schedule_arm(
     )
     rng.shuffle(draw_roles)
     source_labels = {role: label for role, label, _, _ in sources}
+    source_draw_numbers = {role: 0 for role in source_names}
     rows: list[dict[str, Any]] = []
     for draw_number, role_value in enumerate(draw_roles.tolist()):
         role = str(role_value)
         sample_index = cycles[role].next()
         source_row = frame.iloc[sample_index]
+        source_draw_number = source_draw_numbers[role]
+        source_draw_numbers[role] += 1
         rows.append(
             {
                 "arm_id": arm_id,
                 "draw_number": draw_number,
+                "source_draw_number": source_draw_number,
                 "source_role": role,
                 "source_label": source_labels[role],
                 "sample_id": str(source_row["sample_id"]),
@@ -302,11 +316,17 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
             auxiliary = (
                 frame[axis].to_numpy(dtype=np.int64) == recipient_index
             ) & ~organ_masks[recipient]
+            auxiliary_label = f"{axis}:excluding:{recipient}"
             add_arm(
                 f"sub__{recipient}__random__{axis}",
                 [
                     ("recipient", recipient, organ_masks[recipient], per_source),
-                    ("random_auxiliary", axis, auxiliary, per_source),
+                    (
+                        "random_auxiliary",
+                        auxiliary_label,
+                        auxiliary,
+                        per_source,
+                    ),
                 ],
                 [recipient],
                 "same_total_compute_random_auxiliary",
@@ -325,11 +345,17 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
             auxiliary = (
                 frame[axis].to_numpy(dtype=np.int64) == recipient_index
             ) & ~organ_masks[recipient]
+            auxiliary_label = f"{axis}:excluding:{recipient}"
             add_arm(
                 f"add__{recipient}__random__{axis}",
                 [
                     ("recipient", recipient, organ_masks[recipient], 2 * per_source),
-                    ("random_auxiliary", axis, auxiliary, per_source),
+                    (
+                        "random_auxiliary",
+                        auxiliary_label,
+                        auxiliary,
+                        per_source,
+                    ),
                 ],
                 [recipient],
                 "same_recipient_exposure_random_auxiliary",

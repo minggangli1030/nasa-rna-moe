@@ -103,6 +103,14 @@ def test_compile_exact_substitution_and_random_control_schedules(tmp_path: Path)
     ]
     assert selected["random_k8_p17"].eq(ORGANS.index("brain")).all()
 
+    # Recipient exposure is paired at the source level, not merely equal in count.
+    brain_from_pair = pair.loc[pair["source_role"].eq("organ_1")].sort_values(
+        "source_draw_number"
+    )
+    brain_from_only = brain_only.sort_values("source_draw_number").iloc[:6]
+    assert brain_from_pair["sample_id"].tolist() == brain_from_only["sample_id"].tolist()
+    assert brain_from_pair["source_draw_number"].tolist() == list(range(6))
+
 
 def test_additive_edges_preserve_recipient_draws_and_add_controls(tmp_path: Path) -> None:
     manifest = tmp_path / "manifest.parquet"
