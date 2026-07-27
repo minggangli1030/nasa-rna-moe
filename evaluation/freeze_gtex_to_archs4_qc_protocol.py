@@ -47,9 +47,19 @@ def freeze_qc_protocol(args: argparse.Namespace) -> dict:
         "amendment_report": Path(args.amendment_report),
         "human_h5": Path(args.human_h5),
     }
+    score_cache_source_protocol = (
+        Path(args.score_cache_source_protocol)
+        if args.score_cache_source_protocol
+        else None
+    )
     for path in (*paths.values(), *IMPLEMENTATIONS.values()):
         if not path.is_file():
             raise FileNotFoundError(path)
+    if (
+        score_cache_source_protocol is not None
+        and not score_cache_source_protocol.is_file()
+    ):
+        raise FileNotFoundError(score_cache_source_protocol)
     parent = json.loads(paths["parent_protocol"].read_text())
     failure = json.loads(paths["qc_failure"].read_text())
     approval = json.loads(paths["approval"].read_text())
@@ -158,6 +168,44 @@ def freeze_qc_protocol(args: argparse.Namespace) -> dict:
             "sha256": args.human_h5_sha256,
         },
     }
+    if score_cache_source_protocol is not None:
+        cache_protocol = json.loads(score_cache_source_protocol.read_text())
+        invariant_fields = (
+            "status",
+            "evidence_label",
+            "source_contract",
+            "candidate_policy",
+            "qc_amendment",
+            "fine_tuning",
+            "evaluation",
+            "archs4_source",
+        )
+        if any(
+            cache_protocol.get(field) != protocol.get(field)
+            for field in invariant_fields
+        ):
+            raise ValueError(
+                "score-cache source protocol differs in a scientific invariant"
+            )
+        if cache_protocol.get("implementation_hashes", {}).get(
+            "lockbox_score_cache_sha256"
+        ) != protocol["implementation_hashes"]["lockbox_score_cache_sha256"]:
+            raise ValueError(
+                "score-cache implementation changed across evaluator correction"
+            )
+        protocol["score_cache_source_protocol_sha256"] = sha256_file(
+            score_cache_source_protocol
+        )
+        protocol["evaluator_correction"] = {
+            "reason": (
+                "load all hash-bound ancillary arrays before validating the "
+                "immutable score cache"
+            ),
+            "efficacy_output_existed_before_correction": False,
+            "score_cache_recomputed": False,
+            "membership_changed": False,
+            "threshold_changed": False,
+        }
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(output.suffix + ".tmp")
     temporary.write_text(json.dumps(protocol, indent=2, sort_keys=True) + "\n")
@@ -177,6 +225,7 @@ def main() -> None:
     parser.add_argument("--human-h5", required=True)
     parser.add_argument("--human-h5-sha256", required=True)
     parser.add_argument("--code-commit", required=True)
+    parser.add_argument("--score-cache-source-protocol")
     parser.add_argument("--output", required=True)
     print(json.dumps(freeze_qc_protocol(parser.parse_args()), indent=2, sort_keys=True))
 
