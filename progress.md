@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 10:06 PDT / 2026-07-27 17:06 UTC
+**Last updated:** 2026-07-27 12:59 PDT / 2026-07-27 19:59 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,51 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — Post-access QC-amended ARCHS4 evaluation completed
+
+After the efficacy-blind QC stop, the user explicitly authorized a versioned
+amendment that excluded exactly the six samples failing the unchanged
+14,000-nonzero-gene rule. No replacements were added. The frozen amended cohort
+therefore contains 821 samples from 63 connected studies while retaining all eight
+organs: seven liver studies and eight studies for every other organ. The evidence is
+labeled `post_access_qc_amended_external_evaluation`, not a pristine preregistered
+confirmation.
+
+Repeat mechanical extraction passed all 821 rows. Frozen inference then completed
+for seeds 17, 42, and 101 with no training, fine-tuning, checkpoint selection, or
+best-seed selection. The first evaluator attempt stopped before publishing metrics:
+the cache loader validated every hash-bound array but had omitted three ancillary
+router arrays from its load set, so it reported the first omitted name as a content
+hash mismatch. Independent reloads showed that the immutable cache files and their
+stored content hashes matched exactly.
+
+The fail-closed loader correction and protocol-lineage guard pass the focused suite
+and are deployed from clean code-only commit
+`6822c453637b2b3fe5c8bd50e23060bd13a9b4a6`. Corrected protocol SHA256
+`c5aaed24de62347747e815c02e0cda7793adc15c33b0b67f841c7c6896b48632`
+explicitly binds the unchanged caches to source protocol SHA256
+`8fce7b949cad0049def8bf1bb7383f871bfab34c825c8f85526acc6894042763`
+and records that no efficacy output existed before the correction.
+
+The corrected 10,000-repetition connected-study bootstrap evaluation completed:
+
+- pooled equal-organ/study MSE: 0.909261;
+- true-organ K8: 0.874738, a 3.797% reduction;
+- target-hidden hard K8: 0.876228, a 3.633% reduction;
+- target-hidden soft K8: 0.875840, a 3.676% reduction;
+- pooled-adapter control: 0.909304, effectively neutral; and
+- mean across the three random K8 axes: 0.909273, effectively neutral.
+
+Every prespecified seed improved versus pooled for true-organ, hard-router, and
+soft-router K8, and every corresponding paired-study bootstrap 95% interval excluded
+zero. No seed was selected. The evaluation-report SHA256 is
+`b4a77268c642709b2ae33a0a4d95f38bb9029734f5ffffd0ba1d3f9be1fc15cb`;
+the score-cache report SHA256 is
+`8a7d3d7c78791ff29cd1fc96d2b277e437d18f15bb715de9ebd1b216936aef99`.
+The result supports organ-conditional routing across heterogeneous external studies,
+but the post-access exclusion means a new untouched cohort is still needed for a
+pristine preregistered confirmation.
 
 ## 2026-07-27 — First lockbox access failed closed at sample QC
 

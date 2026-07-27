@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 10:06 PDT / 2026-07-27 17:06 UTC
+**Updated:** 2026-07-27 12:59 PDT / 2026-07-27 19:59 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -41,9 +41,8 @@ Read this file first. It is the compact operational and scientific handoff. Use
   `full_external_pass`.
 - This is secondary donor-controlled evidence under one harmonized GTEx
   STAR/RNASeQC pipeline and postmortem/organ-donor regime, not multisource
-  cross-study confirmation. The 40-study ARCHS4 design remains the planned
-  independent confirmation and may not be altered to rescue or amplify the GTEx
-  result.
+  cross-study confirmation. That result remains frozen and was not altered to
+  rescue or amplify the later GTEx-to-ARCHS4 extension.
 - A prospective clean-to-heterogeneous extension is now authorized: train a new
   GTEx-only pooled/organ/random/router family and evaluate frozen candidates on
   staged, study-disjoint ARCHS4 cohorts. This preserves the completed result while
@@ -82,7 +81,7 @@ Read this file first. It is the compact operational and scientific handoff. Use
   checksum-verified at
   `backups/stage1_gtex_to_archs4_training_98e2cba/`. The checksum-manifest SHA256 is
   `009920173cff2c0eaa9d880c8bc1fbe4ffbe61a9ffc9df5ba8c6795cf90dcc7b`.
-  All 261 repository tests pass when pytest capture is disabled; the default capture
+  All 281 repository tests pass when pytest capture is disabled; the default capture
   mode trips a macOS sandbox/Arrow stderr-descriptor issue in one otherwise-passing
   metadata test.
 - The current post-v11 K8 metadata universe is pinned at 10,041 samples from 391
@@ -119,19 +118,64 @@ Read this file first. It is the compact operational and scientific handoff. Use
 - The first real expression access failed closed at the prespecified 14,000-nonzero
   QC floor. Five liver samples from GSE277232 had only 19–304 nonzero genes, and one
   lung sample from GSE227136 had 11,235. The extractor published zero expression
-  rows; no handoff, GPU scoring, efficacy metric, training, seed selection, sample
-  removal, or threshold relaxation occurred.
-- Nothing is currently running locally or on the GPU VM. This is now a critical
-  scientific lockbox issue, not an operational wait: changing membership or the QC
-  threshold after expression access would require an explicit, documented protocol
-  decision and cannot be performed silently.
+  rows and no efficacy metric existed at that point.
+- The user explicitly authorized a versioned QC amendment: exclude exactly those six
+  failures, add no replacements, retain the 14,000-gene threshold, perform no
+  fine-tuning or best-seed selection, and label the result
+  `post_access_qc_amended_external_evaluation`. The amended cohort retains all eight
+  organs, 821 samples, and 63 connected studies; liver retains 42 passing samples
+  from seven studies and every other organ retains eight studies.
+- The amended extraction and all-three-seed scoring completed. The evaluator then
+  failed closed before producing metrics because its cache loader tried to validate
+  three hash-bound ancillary arrays it had not loaded. The caches independently
+  passed their hashes. A code-only correction at
+  `6822c453637b2b3fe5c8bd50e23060bd13a9b4a6` now explicitly binds the immutable
+  caches to their source protocol; no cache, membership, QC rule, checkpoint, or
+  scientific estimand changed.
+- The corrected post-access QC-amended external evaluation is complete. Across all
+  prespecified seeds, pooled MSE was 0.909261, true-organ K8 was 0.874738 (3.797%
+  lower), target-hidden hard routing was 0.876228 (3.633% lower), and target-hidden
+  soft routing was 0.875840 (3.676% lower). Every seed improved for all three K8
+  conditions; each paired study bootstrap CI versus pooled excluded zero. The pooled
+  adapter and all three random K8 controls were effectively neutral on average.
+- Nothing is currently running locally or on the GPU VM. The amended evaluation is
+  complete; a new untouched lockbox remains the appropriate future route to a
+  pristine preregistered confirmation.
 
-The strongest defensible conclusion remains: organ identity is the strongest tested
-conditional specialization axis, K4-EPE is the frozen candidate, and its conditional
-advantage has now replicated in GTEx under a substantial processing and collection
-shift. The old organ-fixed versus random-fixed failure remains valid; conditional
-routing, not unconditional averaging, is the primary MoE estimand. Multisource
-confirmation remains outstanding.
+The strongest defensible conclusion is now: organ identity is the strongest tested
+conditional specialization axis; target-hidden conditional routing has replicated
+against pooled and capacity-matched controls in GTEx and in a multisource ARCHS4
+evaluation. The ARCHS4 result is supportive cross-study evidence, but because six QC
+failures were excluded after first expression access it is explicitly not a pristine
+preregistered confirmation. A new untouched lockbox is still required for that
+stronger claim.
+
+## GTEx-to-ARCHS4 post-access QC-amended evaluation
+
+The final evaluator-correction protocol SHA256 is
+`c5aaed24de62347747e815c02e0cda7793adc15c33b0b67f841c7c6896b48632`.
+It binds the unchanged score caches created under source protocol SHA256
+`8fce7b949cad0049def8bf1bb7383f871bfab34c825c8f85526acc6894042763`.
+The primary estimand gives equal weight to organs and then connected studies within
+organ; uncertainty is a paired 10,000-repetition connected-study bootstrap within
+organ.
+
+| Condition | Equal-organ/study MSE | Reduction vs pooled |
+| --- | ---: | ---: |
+| pooled | 0.909261 | — |
+| true-organ K8 | 0.874738 | 3.797% |
+| target-hidden hard K8 | 0.876228 | 3.633% |
+| target-hidden soft K8 | 0.875840 | 3.676% |
+| pooled residual adapter | 0.909304 | -0.005% |
+| mean of three random K8 axes | 0.909273 | -0.001% |
+
+Per-seed true-organ reductions were 2.778%, 3.243%, and 5.384%; hard-router
+reductions were 2.619%, 3.067%, and 5.226%; and soft-router reductions were 2.649%,
+3.103%, and 5.289% for seeds 17, 42, and 101, respectively. No seed was selected.
+The report SHA256 is
+`b4a77268c642709b2ae33a0a4d95f38bb9029734f5ffffd0ba1d3f9be1fc15cb`;
+the compact score-cache report SHA256 is
+`8a7d3d7c78791ff29cd1fc96d2b277e437d18f15bb715de9ebd1b216936aef99`.
 
 ## GTEx V11 external-validation result
 
