@@ -1,7 +1,7 @@
 {
   "archs4_efficacy_scored": false,
   "archs4_expression_accessed": false,
-  "candidate_ledger_sha256": "fa6ff2a0c8200ed4348dd9213fbb2a640158b480628fd9929b7558d83b909351",
+  "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
   "mappings": {
     "101": {
       "random_k8_p101": {

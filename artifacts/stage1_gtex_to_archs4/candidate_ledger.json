@@ -9,7 +9,7 @@
     "pooled_adapter"
   ],
   "best_seed_selection_allowed": false,
-  "code_commit": "d3fce6437299985b11f77828ae9119392751e8aa",
+  "code_commit": "73f9bd1d6fff097811f879766e9a68a05aebe850",
   "fine_tuning_exposure": "zero",
   "next_gate": "Bind this ledger hash into the exact ARCHS4 lockbox membership, extractor, scorer, evaluator, and one-time launcher.",
   "organs": [
