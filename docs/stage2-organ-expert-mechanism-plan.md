@@ -1,0 +1,151 @@
+# Stage 2: organ-expert mechanism and directed transfer
+
+**Status:** planning after Stage 1 cross-direction replication  
+**Updated:** 2026-07-27
+
+## Decision
+
+Stage 2 remains anchored on the organ experts. Its primary objective is not to replace
+organ identity with another label-free partition. It is to determine what the
+replicated organ specialists learn differently, whether those differences predict
+helpful or harmful transfer between organs, and whether the input-only router uses the
+same functional structure.
+
+Label-free discovery is demoted to an optional secondary analysis. It may test for
+continuous or within-organ structure after the organ-expert mechanism is established,
+but it cannot replace the organ axis or control the primary Stage 2 decision.
+
+## Stage 1 premise
+
+The following statement is now supported:
+
+> Organ-specialized models improve the balanced masked-reconstruction estimand versus
+> pooled whether dispatch uses the revealed organ, a hard target-hidden router, or a
+> soft target-hidden router.
+
+In the GTEx-to-ARCHS4 evaluation, the gains were 3.797%, 3.633%, and 3.676%,
+respectively. Every condition was positive in all three prespecified seeds; the
+study-bootstrap intervals versus pooled excluded zero; random K8 and pooled-adapter
+controls were neutral. The reverse ARCHS4-to-GTEx evaluation and earlier ARCHS4
+development experiments produced similar 3–4% effects.
+
+This is routing-form, seed, setup, and training/evaluation-direction robustness.
+Because individual organ-by-seed and study-level effects are heterogeneous, it must
+not be described as improvement in every study or every organ cell.
+
+## Why label-free routing appeared in the earlier Stage 2 concept
+
+Organ-specific MoE and masked transcriptomic representation learning already have
+substantial related work. The earlier novelty plan therefore proposed linking two
+independently measured structures:
+
+1. a directed transfer map measuring whether training signal from organ B helps or
+   harms held-out organ A; and
+2. a label-free co-routing map that would ideally predict that transfer map.
+
+That was a novelty extension, not a finding that organ identity was unimportant.
+Subsequent label-free pilots did not establish a useful alternative axis: their
+reconstruction gains were near zero or below the frozen practical threshold, some
+routes collapsed, and study association exceeded organ association. Those failures
+remain valid. Stage 2 should therefore preserve the transfer question while restoring
+the organ experts as the primary scientific object.
+
+## Primary Stage 2 objective
+
+> Determine whether reproducible functional differences among frozen organ experts
+> explain their conditional reconstruction gains and predict directed cross-organ
+> transfer or interference on held-out studies.
+
+Three linked questions implement that objective:
+
+1. **Expert mechanism:** Which genes, pathways, and residual directions are changed by
+   each organ adapter relative to the shared pooled trunk?
+2. **Directed transfer:** Under an equal training budget, does adding donor-organ B
+   data improve or degrade performance on untouched recipient-organ A studies?
+3. **Router alignment:** Do hard/soft routing preferences and expert residuals agree
+   with the independently measured transfer relationships?
+
+The transfer matrix is directed: B may help A even when A does not help B. Similarity
+or co-routing is symmetric unless explicitly modeled otherwise, so the first test
+should use preregistered signs/ranks for selected edges rather than claiming a
+graph-wide correlation from too few pairs.
+
+## Proposed experiment sequence
+
+### Phase 1 — frozen-expert mechanism audit
+
+- Keep the pooled trunks, organ adapters, routers, genes, masks, and seeds frozen.
+- Use development/calibration studies only.
+- Measure expert-minus-pooled residuals, gene-level consistency across seeds, pathway
+  coherence, and concentration by organ, study, platform, and disease context.
+- Require direction stability across seeds and reject signatures dominated by a
+  single study or obvious technical covariate.
+
+This phase interprets existing experts; it does not retrain against the completed
+ARCHS4 lockbox.
+
+### Phase 2 — controlled directed-transfer matrix
+
+- Define recipient organ A and donor organ B using development studies only.
+- Hold total updates, recipient exposure, adapter capacity, initialization, and
+  masking constant.
+- Compare recipient-only training with recipient-plus-donor training under a fixed
+  budget.
+- Evaluate on recipient-A studies excluded from both fitting and model selection.
+- Include equal-size random-donor and pooled controls.
+- Repeat every selected edge for seeds 17, 42, and 101.
+
+The estimand is the change in recipient-A study-balanced MSE caused by donor B.
+Positive values mean helpful transfer; negative values mean interference.
+
+### Phase 3 — frozen correspondence test
+
+- Freeze a small set of positive, neutral, and negative transfer edges without using
+  final-test outcomes.
+- Test whether organ-expert residual similarity and router co-preference predict the
+  transfer sign/rank.
+- Compare against random partitions, sample-count similarity, study/platform
+  similarity, and baseline expression similarity.
+
+Passing requires more than an interpretable heatmap: the frozen predictor must beat
+the controls on held-out edges or studies.
+
+### Phase 4 — optional within-organ/label-free extension
+
+Only after Phases 1–3 pass:
+
+- ask whether continuous residual factors explain variation left within an organ;
+- require anti-collapse, effective-K, seed/mask stability, and study-confound gates;
+- compare against the organ router rather than treating organ identity as a nuisance;
+- keep this result secondary unless it improves held-out utility and predicts
+  transfer.
+
+Do not repeat the failed de novo label-free soft-mixture configuration as the primary
+Stage 2 experiment.
+
+## Entry and stopping rules
+
+Stage 2 implementation and development-only analysis may begin now. A final Stage 2
+lockbox may be opened only after:
+
+- the transfer estimand, selected edges, masks, seeds, and multiplicity rule are
+  frozen;
+- real-data mechanical smoke tests pass without final-test access;
+- organ-expert signatures and transfer effects are seed-stable on development data;
+- random/capacity/study-confound controls are implemented; and
+- a genuinely untouched evaluation cohort is frozen.
+
+Stop or redesign before the lockbox if transfer effects are negligible, dominated by
+one study, unstable across seeds, or indistinguishable from random donor partitions.
+
+## Claim boundary
+
+A successful Stage 2 would support:
+
+> Organ experts learn reproducibly different functional corrections, and those
+> differences predict when training information transfers helpfully or interferes
+> across organs.
+
+It would not by itself establish a causal biological mechanism, a new organ taxonomy,
+spaceflight benefit, or clinical utility. Those require separate interventions and
+task-specific evaluation.

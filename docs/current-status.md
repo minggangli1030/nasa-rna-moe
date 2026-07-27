@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 13:05 PDT / 2026-07-27 20:05 UTC
+**Updated:** 2026-07-27 13:14 PDT / 2026-07-27 20:14 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -182,6 +182,35 @@ The report SHA256 is
 `b4a77268c642709b2ae33a0a4d95f38bb9029734f5ffffd0ba1d3f9be1fc15cb`;
 the compact score-cache report SHA256 is
 `8a7d3d7c78791ff29cd1fc96d2b277e437d18f15bb715de9ebd1b216936aef99`.
+
+## Stage 1 synthesis and Stage 2 direction
+
+The Stage 1 synthesis is:
+
+> Organ-specialized models beat pooled whether dispatch uses the revealed organ, a
+> hard target-hidden route, or a soft target-hidden route.
+
+For the new reverse-direction evaluation, those gains are 3.797%, 3.633%, and
+3.676%. All three conditions are positive in every prespecified seed, their
+study-bootstrap intervals versus pooled exclude zero, and their random-K8 and
+pooled-adapter controls are neutral. Similar 3–4% effects appear in the earlier
+ARCHS4 development setup and the pristine ARCHS4-to-GTEx validation. The supported
+language is therefore **robust across routing form, seed, setup, and
+training/evaluation direction, with positive study-balanced evidence**. It is not
+invariant in every individual study or every organ-by-seed cell.
+
+Stage 2 remains centered on the organ experts. Its primary objective is to determine
+what functional corrections different organ experts learn and whether those
+differences predict directed cross-organ transfer or interference on held-out
+studies. Label-free routing entered the earlier plan as a novelty extension linking a
+co-routing map to a transfer map; it was never evidence that organ identity should be
+discarded. Because the completed label-free pilots failed their utility and
+anti-confound gates, de novo label-free discovery is now optional and secondary.
+
+The current plan is `docs/stage2-organ-expert-mechanism-plan.md`: first audit frozen
+expert residuals/pathways, then measure an equal-budget directed organ-to-organ
+transfer matrix, then test whether expert/router structure predicts held-out transfer.
+Only after those phases pass may a within-organ or label-free extension proceed.
 
 ## Thursday presentation readiness plan
 

@@ -89,6 +89,12 @@ Speaker note: The target-hidden router recovers almost all of the true-organ gai
 without using organ labels or reconstruction targets at test time. Hard routing
 activates one organ expert; soft routing is a sensitivity analysis.
 
+Central takeaway: organ specialization beats pooled whether the route is the revealed
+organ, a hard target-hidden choice, or a soft target-hidden mixture. This is robust
+across every retained seed and across the forward/reverse training-test directions;
+describe the study evidence as balanced and heterogeneous, not positive in every
+individual study.
+
 ## Slide 6 — The gain is seed-consistent and not generic adapter capacity
 
 Per-seed percentage reduction versus that seed’s pooled model:
@@ -139,14 +145,18 @@ Organ identity is the strongest tested conditional specialization axis. A
 target-hidden GTEx-trained router reproduces a roughly 3.6–3.7% study-macro MSE gain
 in multisource ARCHS4, while random and pooled-adapter controls remain neutral.
 
-**Next**
+**Stage 2: explain and test the organ experts**
 
-1. Freeze a new untouched confirmation cohort with expression-coverage eligibility
-   available independently of its evaluation targets, if feasible.
-2. Report organ/study heterogeneity and identify why colon has little average
-   headroom without tuning on the completed lockbox.
-3. Carry the frozen routing idea into the downstream spaceflight question only after
-   defining a separate task-specific protocol and controls.
+1. Characterize the frozen expert-minus-pooled residuals and pathway signatures.
+2. Measure a controlled, equal-budget directed transfer matrix: does training signal
+   from donor organ B help or interfere with untouched recipient-organ A studies?
+3. Test whether expert similarity and router preferences predict those held-out
+   transfer relationships.
+
+Label-free routing is optional and secondary. It was originally included to add
+novelty by linking a co-routing map to the transfer map, but the completed de novo
+label-free pilots failed their utility/confound gates. Stage 2 therefore remains
+centered on the replicated organ experts.
 
 Closing line: “The result is strong enough to continue the organ-routing program,
 but the QC amendment stays visible in the evidence label and in every claim.”

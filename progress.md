@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 13:05 PDT / 2026-07-27 20:05 UTC
+**Last updated:** 2026-07-27 13:14 PDT / 2026-07-27 20:14 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,30 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — Stage 1 synthesis recorded; Stage 2 restored to organ experts
+
+The user identified the central Stage 1 takeaway: the new reverse-direction
+GTEx-to-ARCHS4 gain survives revealed-organ dispatch, hard target-hidden routing, and
+soft target-hidden routing. The exact reductions are 3.797%, 3.633%, and 3.676%;
+every condition is positive in seeds 17, 42, and 101. Together with the earlier
+ARCHS4 development result and pristine ARCHS4-to-GTEx validation, the evidence is
+robust across routing form, seed, setup, and training/evaluation direction.
+
+The claim is deliberately not “invariant in every study.” The primary estimator
+balances connected studies within organ and its paired study-bootstrap intervals are
+positive, but individual study and organ-by-seed effects remain heterogeneous. The
+canonical wording is “positive study-balanced evidence across heterogeneous studies.”
+
+Stage 2 is now explicitly organ-anchored in
+`docs/stage2-organ-expert-mechanism-plan.md`. Its primary objective is to identify
+what functional corrections the frozen organ experts learn differently and test
+whether those differences predict directed cross-organ transfer or interference on
+held-out studies. The earlier label-free component was introduced to add novelty by
+linking co-routing and transfer maps; it did not replace the organ hypothesis. Since
+the completed label-free pilots failed their utility, collapse, or confound gates,
+de novo label-free routing is optional and secondary rather than the primary Stage 2
+experiment.
 
 ## 2026-07-27 — Thursday presentation readiness activated
 
