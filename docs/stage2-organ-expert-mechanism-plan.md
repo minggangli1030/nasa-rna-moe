@@ -60,8 +60,9 @@ Three linked questions implement that objective:
 
 1. **Expert mechanism:** Which genes, pathways, and residual directions are changed by
    each organ adapter relative to the shared pooled trunk?
-2. **Directed transfer:** Under an equal training budget, does adding donor-organ B
-   data improve or degrade performance on untouched recipient-organ A studies?
+2. **Directed transfer:** Under both compute-matched substitution and
+   recipient-exposure-matched addition, does donor-organ B data improve or degrade
+   performance on untouched recipient-organ A studies?
 3. **Router alignment:** Do hard/soft routing preferences and expert residuals agree
    with the independently measured transfer relationships?
 
@@ -108,18 +109,27 @@ ARCHS4 lockbox.
 ### Phase 2 — controlled directed-transfer matrix
 
 - Define recipient organ A and donor organ B using development studies only.
-- Hold total updates, recipient exposure, adapter capacity, initialization, and
-  masking constant.
-- Compare recipient-only training with recipient-plus-donor training under a fixed
-  budget.
+- Hold adapter capacity, initialization, masking, sampling units, and evaluation
+  constant.
+- Estimate two complementary effects rather than forcing total compute and recipient
+  exposure to be constant in one impossible comparison:
+  1. **Substitution / same total compute:** compare 1,500 recipient-A draws with
+     750 A + 750 B draws. This asks whether B is a better use of a limited training
+     budget than additional A exposure.
+  2. **Addition / same recipient-A exposure:** compare 1,500 A draws with
+     1,500 A + 750 B draws. This asks whether B adds information beyond preserving
+     the full recipient exposure.
 - Evaluate on recipient-A studies excluded from both fitting and model selection.
-- Include equal-size random-donor and pooled controls.
+- Include exposure-matched random-donor, self/additional-A, and pooled controls.
 - Repeat every selected edge for seeds 17, 42, and 101.
 
-The estimand is the change in recipient-A study-balanced MSE caused by donor B.
-Positive values mean helpful transfer; negative values mean interference.
+The two estimands are the changes in recipient-A study-balanced MSE caused by
+substituting B for half of A under a fixed budget and by adding B while preserving A
+exposure. Positive values mean helpful transfer; negative values mean interference.
+Reporting both prevents “more updates” and “less recipient data” from being mistaken
+for organ-specific transfer.
 
-Candidate packed implementation:
+Candidate packed implementation for the full substitution matrix:
 
 - eight recipient-only K1 adapters;
 - 28 unordered two-organ K1 adapters, evaluated separately on each recipient to
@@ -136,9 +146,30 @@ recipient-only A adapter under matched total active exposure. The random-auxilia
 arms test whether a specific donor organ is more useful than generic heterogeneous
 auxiliary data.
 
+The additive confirmation is deliberately staged to control compute. Before any
+additive result is opened, freeze a small set of candidate positive, neutral, and
+negative edges using development-only mechanism/router predictions—not the
+substitution test outcomes. For each frozen edge, compare:
+
+- A1500+B750 against A1500 alone;
+- A1500+B750 against A1500+random750; and
+- A1500+B750 against an A2250 self/additional-update control.
+
+This separates donor identity from generic heterogeneity and from the benefit of
+simply taking 750 more optimization draws. The all-56-edge substitution matrix is
+the discovery map; the prospectively frozen additive subset is the stronger
+information-addition test.
+
 Implementation must not launch until the donor-atomic random scheduler proves exact
 exposure matching. Otherwise a nominal transfer effect could be confounded by unequal
 recipient exposure or total gradient mass.
+
+Implementation checkpoint: the deterministic compiler
+`evaluation/build_stage2_directed_transfer_schedules.py` now enforces these exact
+source quotas and donor-atomic random-shard membership without loading expression or
+efficacy results. Its focused tests pass. Real GPU training remains gated on
+hash-freezing the compiled schedule from the exact GTEx development manifest and
+connecting that schedule to the K1 trainer/evaluator.
 
 ### Phase 3 — frozen correspondence test
 
@@ -151,6 +182,56 @@ recipient exposure or total gradient mass.
 
 Passing requires more than an interpretable heatmap: the frozen predictor must beat
 the controls on held-out edges or studies.
+
+## Why this experiment has practical value
+
+The immediate product is a rule for deciding which biological domains should share
+training information and which should remain separated.
+
+1. **Choose useful training data.** For a rare recipient organ, identify abundant
+   donor organs that improve held-out recipient studies instead of pooling all
+   available RNA-seq indiscriminately.
+2. **Prevent negative transfer.** Use reproducible harmful edges to motivate separate
+   adapters, gradient-conflict controls, organ-balanced curricula, or router-enforced
+   isolation.
+3. **Design a more efficient MoE.** Mutually helpful organs may share an intermediate
+   module; asymmetric pairs may support one-way initialization; interfering organs
+   should remain separate; organ families may form a hierarchy from pooled trunk to
+   family to specific organ.
+4. **Predefine adaptation sources for scarce downstream domains.** A reliable
+   ordinary-study transfer edge can nominate a source organ for a rare disease or
+   spaceflight dataset. This is a rational preregistered source-selection rule, not
+   evidence of downstream spaceflight benefit by itself.
+
+The biological value is that transfer measures a functional consequence—whether
+learning from organ B changes generalization on organ A—rather than expression
+similarity alone. The strongest evidence links three independently measured objects:
+
+- expert-minus-pooled gene and pathway signatures;
+- controlled directed transfer effects; and
+- input-only router compatibility.
+
+Agreement among all three on study-disjoint data would be stronger than a descriptive
+cluster map. Disagreement is also useful because it reveals when visual or expression
+similarity does not translate into beneficial optimization.
+
+## Novelty and confound boundary
+
+Expert interpretation, transfer learning, and router analysis are individually
+established methods. The more novel and underexplored contribution is their
+prospectively tested combination:
+
+> Use independently validated organ experts to derive mechanistic expert signatures,
+> measure a controlled directed organ-to-organ training-transfer matrix, and test
+> prospectively whether expert or router structure predicts those transfer effects on
+> held-out studies.
+
+Transfer is not automatically biological. Apparent edges may instead reflect
+sequencing platform, study composition, sample quality, disease context, organ-label
+error, unequal exposure, or generic expression similarity. The protocol therefore
+requires study-disjoint evaluation, seed replication, organ-balanced and
+donor-atomic sampling, platform/study controls, random donor controls, and both the
+same-compute and same-recipient-exposure comparisons above.
 
 ### Phase 4 — optional within-organ/label-free extension
 

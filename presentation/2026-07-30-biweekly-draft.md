@@ -3,7 +3,7 @@
 Working title: **Do organ specialists transfer from clean GTEx to heterogeneous
 ARCHS4 studies?**
 
-Target: 8 slides, 8–10 minutes. The central result is positive, but every slide and
+Target: 9 slides, 8–10 minutes. The central result is positive, but every slide and
 spoken claim must distinguish the pristine GTEx validation from the
 `post_access_qc_amended_external_evaluation` in ARCHS4.
 
@@ -137,7 +137,34 @@ organs, but colon is close to neutral and a few organ-by-seed cells are negative
 The prespecified evidence unit is the connected study, aggregated equally within
 organ.
 
-## Slide 8 — Conclusion and next experiments
+## Slide 8 — Why the transfer experiment matters
+
+**Immediate practical objective**
+
+Learn which biological domains should share training information and which should
+remain separated.
+
+- Choose useful supplementary organs for rare or undersampled recipients instead of
+  indiscriminate pooling.
+- Detect negative transfer and justify adapter isolation, balanced curricula, or
+  gradient-conflict controls.
+- Use mutual, asymmetric, or harmful transfer to design a smaller hierarchical MoE:
+  pooled trunk → organ family → organ specialist.
+- Predefine rational adaptation sources for scarce disease or spaceflight datasets,
+  without claiming downstream benefit before task-specific testing.
+
+**Why the combination is underexplored**
+
+Use independently validated organ experts to derive mechanistic signatures, measure a
+controlled directed organ-to-organ transfer matrix, and test prospectively whether
+expert or input-only router structure predicts those transfer effects on held-out
+studies.
+
+Speaker note: Each method exists individually. The contribution is the independently
+measured, prospectively tested link among expert mechanism, functional transfer, and
+router compatibility.
+
+## Slide 9 — Conclusion and next experiments
 
 **Bounded conclusion**
 
@@ -148,8 +175,11 @@ in multisource ARCHS4, while random and pooled-adapter controls remain neutral.
 **Stage 2: explain and test the organ experts**
 
 1. Characterize the frozen expert-minus-pooled residuals and pathway signatures.
-2. Measure a controlled, equal-budget directed transfer matrix: does training signal
-   from donor organ B help or interfere with untouched recipient-organ A studies?
+2. Measure a controlled directed transfer matrix on untouched recipient-organ A
+   studies using two complementary comparisons:
+   - same compute: A1500 versus A750+B750;
+   - same A exposure: A1500 versus A1500+B750, with random-auxiliary and
+     additional-A controls.
 3. Test whether expert similarity and router preferences predict those held-out
    transfer relationships.
 
@@ -166,6 +196,12 @@ organ-aligned functions—not as the controlled transfer result.
 
 Closing line: “The result is strong enough to continue the organ-routing program,
 but the QC amendment stays visible in the evidence label and in every claim.”
+
+Speaker note: Transfer is not automatically biological. Platform, study composition,
+sample quality, disease context, label errors, unequal training exposure, and generic
+expression similarity are alternative explanations. That is why the primary design
+uses study-disjoint evaluation, donor-atomic sampling, equal-budget controls, random
+donors, platform controls, and all three seeds.
 
 ## Figure checklist
 

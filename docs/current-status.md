@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 13:28 PDT / 2026-07-27 20:28 UTC
+**Updated:** 2026-07-27 13:37 PDT / 2026-07-27 20:37 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -139,8 +139,9 @@ when older chronology or exact intermediate results are needed.
   soft routing was 0.875840 (3.676% lower). Every seed improved for all three K8
   conditions; each paired study bootstrap CI versus pooled excluded zero. The pooled
   adapter and all three random K8 controls were effectively neutral on average.
-- Nothing is currently running locally or on the GPU VM. The amended evaluation is
-  complete; a new untouched lockbox remains the appropriate future route to a
+- Nothing is currently training locally or on the GPU VM. The amended evaluation is
+  complete; Stage 2 protocol/scheduler implementation and presentation drafting are
+  active locally. A new untouched lockbox remains the appropriate future route to a
   pristine preregistered confirmation.
 - The preliminary result is already available ahead of the Thursday-morning
   deadline. Presentation preparation is now the active operational task. The
@@ -209,9 +210,21 @@ discarded. Because the completed label-free pilots failed their utility and
 anti-confound gates, de novo label-free discovery is now optional and secondary.
 
 The current plan is `docs/stage2-organ-expert-mechanism-plan.md`: first audit frozen
-expert residuals/pathways, then measure an equal-budget directed organ-to-organ
-transfer matrix, then test whether expert/router structure predicts held-out transfer.
-Only after those phases pass may a within-organ or label-free extension proceed.
+expert residuals/pathways, then measure a controlled directed organ-to-organ transfer
+matrix, then test whether expert/router structure predicts held-out transfer. The
+matrix now separates two estimands: A1500 versus A750+B750 tests use of a fixed
+compute budget, while A1500 versus A1500+B750 tests added donor information at fixed
+recipient exposure. Random-auxiliary and A2250 controls distinguish organ identity
+from generic heterogeneity and extra updates. Only after those phases pass may a
+within-organ or label-free extension proceed.
+
+The practical Stage 2 objective is to learn which organs should share training
+information and which should remain isolated. This can guide data selection for
+low-resource organs, prevent negative transfer, and inform hierarchical expert
+sharing. The underexplored contribution is the prospective link among independently
+validated expert signatures, controlled directed transfer, and input-only router
+compatibility on held-out studies; none of those individual methods is claimed as new
+by itself.
 
 The first development-only Stage 2 audit is complete from implementation commit
 `9fad92a`. It uses only the existing GTEx calibration score caches: 1,826 samples
@@ -223,6 +236,15 @@ organ-by-seed cells are positive, versus only 2 of 168 off-diagonal seed cells.
 This is strong development evidence of distinct organ-aligned expert function, not
 the causal effect of adding donor-organ training data. The controlled transfer
 experiment remains separate.
+
+The deterministic transfer-schedule compiler is now implemented in
+`evaluation/build_stage2_directed_transfer_schedules.py`. Its focused tests pass. It
+creates exact donor-auditable quotas for 8 recipient-only arms, 28 unordered organ
+pairs (56 directed evaluation effects), and 24 donor-atomic random-auxiliary controls.
+It also supports the additive confirmation arms but requires their directed edges to
+be explicitly named in advance. The next operational gate is to compile and
+hash-freeze these schedules against the exact remote GTEx development manifest, then
+connect the schedule contract to the K1 trainer/evaluator before starting GPU work.
 
 ## Thursday presentation readiness plan
 

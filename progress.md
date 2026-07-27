@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 13:28 PDT / 2026-07-27 20:28 UTC
+**Last updated:** 2026-07-27 13:37 PDT / 2026-07-27 20:37 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,51 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — Stage 2 practical value, novelty, and two-estimand design frozen
+
+Stage 2 now has an explicit practical objective: learn which biological domains
+should share training information and which should remain isolated. A directed
+organ-to-organ transfer map can guide training-data selection for rare organs,
+identify negative transfer, motivate hierarchical or partially shared MoE modules,
+and preregister rational adaptation sources for scarce disease or spaceflight
+datasets. The latter remains a source-selection hypothesis, not a spaceflight
+performance claim.
+
+The scientific contribution is not that expert interpretation, transfer learning, or
+router analysis is individually new. The underexplored combination is to use
+independently validated organ experts to derive mechanistic signatures, measure a
+controlled directed training-transfer matrix, and prospectively test whether the
+expert or input-only router structure predicts those transfer effects on held-out
+studies.
+
+The transfer protocol now separates two questions:
+
+1. **Same total compute / substitution:** A1500 versus A750+B750 asks whether donor B
+   is a better use of a limited training budget than more recipient-A data.
+2. **Same recipient exposure / addition:** A1500 versus A1500+B750 asks whether B adds
+   information while preserving all A exposure.
+
+The additive arms also require A1500+random750 and A2250 self/update controls so an
+organ-specific effect cannot be attributed to generic heterogeneity or simply more
+optimization. The full 56-edge matrix is the compute-matched discovery analysis; a
+small additive confirmation set must be frozen prospectively from development-only
+expert/router predictions, not chosen after transfer outcomes are seen.
+
+Transfer is not automatically biological. Platform, study composition, sample
+quality, disease context, label error, unequal exposure, and generic expression
+similarity remain alternative explanations. Study-disjoint evaluation, donor-atomic
+sampling, random donors, seed replication, and platform/study controls are therefore
+part of the primary protocol rather than optional follow-ups.
+
+Execution has begun: `evaluation/build_stage2_directed_transfer_schedules.py` now
+compiles exact deterministic schedules without reading expression or efficacy
+results. The focused suite passes nine tests across this compiler and the frozen
+expert audit. The substitution design contains 8 recipient-only arms, 28 unordered
+organ-pair arms that yield all 56 directed effects at evaluation, and 24
+donor-atomic random-auxiliary arms. The compiler supports additive named-donor,
+random-auxiliary, and A2250 self controls, but fails closed unless additive edges are
+prospectively supplied.
 
 ## 2026-07-27 — Stage 2 execution began with frozen-expert cross-dispatch
 
