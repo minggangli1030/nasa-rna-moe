@@ -30,8 +30,30 @@ def sha256_file(path: Path) -> str:
 def launch(args: argparse.Namespace) -> dict:
     protocol_path = Path(args.protocol)
     output = Path(args.output_dir)
-    if output.exists():
+    phase = str(args.phase)
+    if phase not in {"all", "extract", "score"}:
+        raise ValueError(f"unsupported launcher phase: {phase}")
+    if phase in {"all", "extract"}:
+        required_extract_args = (
+            "sample_review",
+            "study_review",
+            "sample_review_report",
+            "donor_audit_samples",
+            "donor_audit_studies",
+            "donor_audit_report",
+            "human_h5",
+            "canonical_genes",
+            "human_exon_lengths",
+        )
+        missing = [
+            name for name in required_extract_args if not getattr(args, name, None)
+        ]
+        if missing:
+            raise ValueError(f"extract phase lacks required arguments: {missing}")
+    if phase in {"all", "extract"} and output.exists():
         raise FileExistsError(output)
+    if phase == "score" and not output.is_dir():
+        raise FileNotFoundError(output)
     if re.fullmatch(r"[0-9a-f]{40}", args.code_commit) is None:
         raise ValueError("launcher requires a full implementation commit")
     if sha256_file(protocol_path) != args.expected_protocol_sha256:
@@ -60,7 +82,8 @@ def launch(args: argparse.Namespace) -> dict:
     if changed.returncode != 0:
         raise RuntimeError("implementation files differ from the frozen commit")
 
-    output.mkdir(parents=True)
+    if phase in {"all", "extract"}:
+        output.mkdir(parents=True)
     status_path = output / "launcher_status.json"
 
     def status(stage: str, state: str) -> None:
@@ -80,43 +103,88 @@ def launch(args: argparse.Namespace) -> dict:
         )
         os.replace(temporary, status_path)
 
-    status("membership_freeze", "running")
     membership_dir = output / "membership"
-    freeze_lockbox(
-        argparse.Namespace(
-            protocol=str(protocol_path),
-            expected_protocol_sha256=args.expected_protocol_sha256,
-            candidate_ledger=args.candidate_ledger,
-            sample_review=args.sample_review,
-            study_review=args.study_review,
-            sample_review_report=args.sample_review_report,
-            donor_audit_samples=args.donor_audit_samples,
-            donor_audit_studies=args.donor_audit_studies,
-            donor_audit_report=args.donor_audit_report,
-            code_commit=args.code_commit,
-            output_dir=str(membership_dir),
-        )
-    )
-    status("expression_extraction", "running")
     expression_dir = output / "expression"
-    extract_lockbox(
-        argparse.Namespace(
-            protocol=str(protocol_path),
-            expected_protocol_sha256=args.expected_protocol_sha256,
-            freeze_report=str(membership_dir / "lockbox_freeze_report.json"),
-            lockbox_manifest=str(membership_dir / "lockbox_manifest.csv"),
-            candidate_ledger=args.candidate_ledger,
-            human_h5=args.human_h5,
-            canonical_genes=args.canonical_genes,
-            human_exon_lengths=args.human_exon_lengths,
-            output_dir=str(expression_dir),
-            code_commit=args.code_commit,
-            batch_size=args.extraction_batch_size,
-            parquet_row_group_size=args.parquet_row_group_size,
-            qc_min_nonzero=args.qc_min_nonzero,
-            compression="zstd",
+    if phase in {"all", "extract"}:
+        status("membership_freeze", "running")
+        freeze_lockbox(
+            argparse.Namespace(
+                protocol=str(protocol_path),
+                expected_protocol_sha256=args.expected_protocol_sha256,
+                candidate_ledger=args.candidate_ledger,
+                sample_review=args.sample_review,
+                study_review=args.study_review,
+                sample_review_report=args.sample_review_report,
+                donor_audit_samples=args.donor_audit_samples,
+                donor_audit_studies=args.donor_audit_studies,
+                donor_audit_report=args.donor_audit_report,
+                code_commit=args.code_commit,
+                output_dir=str(membership_dir),
+            )
         )
-    )
+        status("expression_extraction", "running")
+        extract_lockbox(
+            argparse.Namespace(
+                protocol=str(protocol_path),
+                expected_protocol_sha256=args.expected_protocol_sha256,
+                freeze_report=str(membership_dir / "lockbox_freeze_report.json"),
+                lockbox_manifest=str(membership_dir / "lockbox_manifest.csv"),
+                candidate_ledger=args.candidate_ledger,
+                human_h5=args.human_h5,
+                canonical_genes=args.canonical_genes,
+                human_exon_lengths=args.human_exon_lengths,
+                output_dir=str(expression_dir),
+                code_commit=args.code_commit,
+                batch_size=args.extraction_batch_size,
+                parquet_row_group_size=args.parquet_row_group_size,
+                qc_min_nonzero=args.qc_min_nonzero,
+                compression="zstd",
+            )
+        )
+        if phase == "extract":
+            handoff = {
+                "status": "handoff_ready",
+                "stage": "expression_extraction_complete",
+                "protocol_sha256": sha256_file(protocol_path),
+                "code_commit": args.code_commit,
+                "membership_dir": str(membership_dir.resolve()),
+                "expression_dir": str(expression_dir.resolve()),
+                "freeze_report_sha256": sha256_file(
+                    membership_dir / "lockbox_freeze_report.json"
+                ),
+                "access_report_sha256": sha256_file(
+                    expression_dir / "lockbox_access_report.json"
+                ),
+                "expression_parquet_sha256": sha256_file(
+                    expression_dir / "expression.parquet"
+                ),
+                "next_phase": "score",
+            }
+            temporary = status_path.with_suffix(".json.tmp")
+            temporary.write_text(json.dumps(handoff, indent=2, sort_keys=True) + "\n")
+            os.replace(temporary, status_path)
+            (output / "LOCKBOX_HANDOFF_READY").touch()
+            return handoff
+    else:
+        required_handoff = (
+            output / "LOCKBOX_HANDOFF_READY",
+            membership_dir / "lockbox_freeze_report.json",
+            membership_dir / "lockbox_manifest.csv",
+            expression_dir / "expression.parquet",
+            expression_dir / "extraction_report.json",
+            expression_dir / "lockbox_access_report.json",
+        )
+        for path in required_handoff:
+            if not path.is_file():
+                raise FileNotFoundError(path)
+        prior = json.loads(status_path.read_text())
+        if (
+            prior.get("status") != "handoff_ready"
+            or prior.get("protocol_sha256") != sha256_file(protocol_path)
+            or prior.get("expression_parquet_sha256")
+            != sha256_file(expression_dir / "expression.parquet")
+        ):
+            raise ValueError("transferred extraction handoff failed validation")
     status("all_seed_scoring", "running")
     scores_dir = output / "scores"
     build_score_cache(
@@ -172,18 +240,24 @@ def main() -> None:
     parser.add_argument("--expected-protocol-sha256", required=True)
     parser.add_argument("--candidate-ledger", required=True)
     parser.add_argument("--random-mappings", required=True)
-    parser.add_argument("--sample-review", required=True)
-    parser.add_argument("--study-review", required=True)
-    parser.add_argument("--sample-review-report", required=True)
-    parser.add_argument("--donor-audit-samples", required=True)
-    parser.add_argument("--donor-audit-studies", required=True)
-    parser.add_argument("--donor-audit-report", required=True)
-    parser.add_argument("--human-h5", required=True)
-    parser.add_argument("--canonical-genes", required=True)
-    parser.add_argument("--human-exon-lengths", required=True)
+    parser.add_argument("--sample-review")
+    parser.add_argument("--study-review")
+    parser.add_argument("--sample-review-report")
+    parser.add_argument("--donor-audit-samples")
+    parser.add_argument("--donor-audit-studies")
+    parser.add_argument("--donor-audit-report")
+    parser.add_argument("--human-h5")
+    parser.add_argument("--canonical-genes")
+    parser.add_argument("--human-exon-lengths")
     parser.add_argument("--training-root", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--code-commit", required=True)
+    parser.add_argument(
+        "--phase",
+        choices=("all", "extract", "score"),
+        default="all",
+        help="Use extract locally and score after copying the complete handoff.",
+    )
     parser.add_argument("--device", default="auto")
     parser.add_argument("--extraction-batch-size", type=int, default=128)
     parser.add_argument("--parquet-row-group-size", type=int, default=256)
