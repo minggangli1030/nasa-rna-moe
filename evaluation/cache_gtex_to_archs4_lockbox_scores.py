@@ -149,14 +149,24 @@ def validate_preflight(args: argparse.Namespace) -> dict[str, Any]:
     if sha256_file(paths["protocol"]) != args.expected_protocol_sha256:
         raise ValueError("protocol SHA256 mismatch")
     protocol = _load_json(paths["protocol"])
+    protocol_status = protocol.get("status")
+    amended = protocol_status == "frozen_gtex_to_archs4_k8_qc_amended_protocol"
     if (
-        protocol.get("status") != "frozen_gtex_to_archs4_k8_lockbox_protocol"
+        protocol_status
+        not in {
+            "frozen_gtex_to_archs4_k8_lockbox_protocol",
+            "frozen_gtex_to_archs4_k8_qc_amended_protocol",
+        }
         or protocol.get("expression_access_gate", {}).get(
             "all_implementation_hashes_frozen"
         )
         is not True
     ):
         raise ValueError("protocol is not a frozen implementation-bound lockbox")
+    if amended and protocol.get(
+        "evidence_label"
+    ) != "post_access_qc_amended_external_evaluation":
+        raise ValueError("QC-amended protocol lacks its required evidence label")
     expected_self = protocol.get("implementation_hashes", {}).get(
         "lockbox_score_cache_sha256"
     )
@@ -186,14 +196,26 @@ def validate_preflight(args: argparse.Namespace) -> dict[str, Any]:
         or mappings.get("archs4_expression_accessed") is not False
     ):
         raise ValueError("random controls were not frozen before ARCHS4 access")
-    if (
-        freeze.get("ready_for_expression_access") is not True
-        or freeze.get("hashes", {}).get("lockbox_manifest_sha256")
-        != sha256_file(paths["lockbox_manifest"])
-    ):
+    if amended:
+        freeze_valid = (
+            freeze.get("status") == "frozen_post_access_qc_amended_membership"
+            and freeze.get("retained_samples") == 821
+            and freeze.get("retained_study_groups") == 63
+            and freeze.get("hashes", {}).get("qc_amended_manifest_sha256")
+            == sha256_file(paths["lockbox_manifest"])
+        )
+        expected_access_status = "archs4_k8_qc_amended_expression_extracted"
+    else:
+        freeze_valid = (
+            freeze.get("ready_for_expression_access") is True
+            and freeze.get("hashes", {}).get("lockbox_manifest_sha256")
+            == sha256_file(paths["lockbox_manifest"])
+        )
+        expected_access_status = "archs4_k8_lockbox_expression_extracted_once"
+    if not freeze_valid:
         raise ValueError("membership freeze is not valid")
     if (
-        access.get("status") != "archs4_k8_lockbox_expression_extracted_once"
+        access.get("status") != expected_access_status
         or access.get("protocol_sha256") != sha256_file(paths["protocol"])
         or access.get("candidate_ledger_sha256")
         != sha256_file(paths["candidate_ledger"])
@@ -213,6 +235,7 @@ def validate_preflight(args: argparse.Namespace) -> dict[str, Any]:
         "ledger": ledger,
         "mappings": mappings,
         "access": access,
+        "amended": amended,
     }
 
 
@@ -428,6 +451,11 @@ def build_score_cache(args: argparse.Namespace) -> dict[str, Any]:
             "targets_accessed": True,
             "model_fitting_performed": False,
             "best_seed_selection_performed": False,
+            "evidence_label": (
+                "post_access_qc_amended_external_evaluation"
+                if preflight["amended"]
+                else "preregistered_lockbox_evaluation"
+            ),
             "content_sha256": {name: sha256_array(value) for name, value in arrays.items()},
         }
         arrays["metadata_json"] = np.asarray(json.dumps(metadata, sort_keys=True))
@@ -445,6 +473,11 @@ def build_score_cache(args: argparse.Namespace) -> dict[str, Any]:
         "all_prespecified_seeds_scored": True,
         "best_seed_selection_performed": False,
         "model_fitting_performed": False,
+        "evidence_label": (
+            "post_access_qc_amended_external_evaluation"
+            if preflight["amended"]
+            else "preregistered_lockbox_evaluation"
+        ),
         "conditions": list(CONDITIONS),
         "seed_reports": reports,
     }

@@ -1,0 +1,14 @@
+{
+  "add_replacements": false,
+  "allow_best_seed_selection": false,
+  "allow_tuning": false,
+  "decision": "proceed_with_versioned_qc_amended_external_evaluation",
+  "exclude_exact_qc_failures_only": true,
+  "label": "post-access QC-amended external evaluation",
+  "lower_qc_threshold": false,
+  "requested_retained_samples": 821,
+  "requested_retained_studies": 63,
+  "schema_version": 1,
+  "user_authorized": true,
+  "user_authorized_at": "2026-07-27"
+}
