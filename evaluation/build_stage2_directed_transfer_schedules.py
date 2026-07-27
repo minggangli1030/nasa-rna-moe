@@ -165,6 +165,7 @@ def _schedule_arm(
     arm_id: str,
     sources: list[tuple[str, str, np.ndarray, int]],
     seed: int,
+    batch_size: int,
     initialization_key: str,
     evaluation_recipients: list[str],
     estimand: str,
@@ -183,13 +184,38 @@ def _schedule_arm(
         )
         for role, label, eligible, _ in sources
     }
-    draw_roles = np.concatenate(
-        [np.repeat(role, draws) for role, _, _, draws in sources]
-    ).astype(object)
-    rng = np.random.default_rng(
-        stable_seed(seed, "stage2_directed_transfer", arm_id, "role_order")
-    )
-    rng.shuffle(draw_roles)
+    total_draws = int(sum(draws for _, _, _, draws in sources))
+    if batch_size <= 0 or total_draws % batch_size:
+        raise ValueError(
+            f"arm {arm_id!r} total draws do not divide by batch size {batch_size}"
+        )
+    number_batches = total_draws // batch_size
+    per_batch: dict[str, int] = {}
+    for role, _, _, draws in sources:
+        if draws % number_batches:
+            raise ValueError(
+                f"arm {arm_id!r} source {role!r} cannot be balanced in every batch"
+            )
+        per_batch[role] = draws // number_batches
+    if sum(per_batch.values()) != batch_size:
+        raise AssertionError(f"arm {arm_id!r} per-batch source quotas are invalid")
+    role_batches = []
+    for batch_number in range(number_batches):
+        batch_roles = np.concatenate(
+            [np.repeat(role, per_batch[role]) for role in source_names]
+        ).astype(object)
+        rng = np.random.default_rng(
+            stable_seed(
+                seed,
+                "stage2_directed_transfer",
+                arm_id,
+                "batch_role_order",
+                batch_number,
+            )
+        )
+        rng.shuffle(batch_roles)
+        role_batches.append(batch_roles)
+    draw_roles = np.concatenate(role_batches)
     source_labels = {role: label for role, label, _, _ in sources}
     source_draw_numbers = {role: 0 for role in source_names}
     rows: list[dict[str, Any]] = []
@@ -203,6 +229,8 @@ def _schedule_arm(
             {
                 "arm_id": arm_id,
                 "draw_number": draw_number,
+                "batch_number": draw_number // batch_size,
+                "batch_position": draw_number % batch_size,
                 "source_draw_number": source_draw_number,
                 "source_role": role,
                 "source_label": source_labels[role],
@@ -223,6 +251,9 @@ def _schedule_arm(
         "initialization_key": initialization_key,
         "evaluation_recipients": evaluation_recipients,
         "total_draws": int(len(schedule)),
+        "batch_size": batch_size,
+        "number_batches": number_batches,
+        "source_draws_per_batch": per_batch,
         "source_draws": expected,
         "source_labels": source_labels,
         "unique_samples": int(schedule["sample_id"].nunique()),
@@ -284,6 +315,7 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
             arm_id=arm_id,
             sources=sources,
             seed=seed,
+            batch_size=int(args.batch_size),
             initialization_key=initialization_key,
             evaluation_recipients=recipients,
             estimand=estimand,
@@ -385,6 +417,7 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
             "initialization_key": initialization_key,
             "schedule_seed": seed,
             "draws_per_source": per_source,
+            "batch_size": int(args.batch_size),
             "arms": definitions,
         },
     )
@@ -401,6 +434,7 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
         "random_axes": list(RANDOM_AXES),
         "schedule_seed": seed,
         "draws_per_source": per_source,
+        "batch_size": int(args.batch_size),
         "initialization_key": initialization_key,
         "additive_edges": [f"{recipient}:{donor}" for recipient, donor in additive_edges],
         "counts": {
@@ -431,6 +465,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--schedule-seed", type=int, default=20260727)
     parser.add_argument("--draws-per-source", type=int, default=750)
+    parser.add_argument("--batch-size", type=int, default=6)
     parser.add_argument(
         "--initialization-key", default="stage2_directed_transfer_shared_k1"
     )

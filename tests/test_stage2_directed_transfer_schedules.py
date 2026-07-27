@@ -48,6 +48,7 @@ def _args(manifest: Path, output: Path, **updates):
         "output_dir": str(output),
         "schedule_seed": 20260727,
         "draws_per_source": 6,
+        "batch_size": 6,
         "initialization_key": "shared-k1",
         "additive_edge": None,
     }
@@ -82,6 +83,16 @@ def test_compile_exact_substitution_and_random_control_schedules(tmp_path: Path)
         "organ_1": 6,
         "organ_2": 6,
     }
+    assert (
+        pair.groupby("batch_number")["source_role"]
+        .value_counts()
+        .unstack(fill_value=0)
+        .to_dict("index")
+        == {
+            0: {"organ_1": 3, "organ_2": 3},
+            1: {"organ_1": 3, "organ_2": 3},
+        }
+    )
     assert pair.groupby("source_role")["organ"].unique().map(list).to_dict() == {
         "organ_1": ["brain"],
         "organ_2": ["liver"],
@@ -129,6 +140,12 @@ def test_additive_edges_preserve_recipient_draws_and_add_controls(tmp_path: Path
         "recipient": 12,
         "donor": 6,
     }
+    assert set(
+        named.groupby("batch_number")["source_role"]
+        .value_counts()
+        .unstack(fill_value=0)
+        .apply(lambda row: (int(row["recipient"]), int(row["donor"])), axis=1)
+    ) == {(4, 2)}
     self_control = schedules.loc[
         schedules["arm_id"].eq("add__brain__self_control")
     ]
