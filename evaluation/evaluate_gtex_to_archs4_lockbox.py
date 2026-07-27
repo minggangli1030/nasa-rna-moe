@@ -58,8 +58,8 @@ def study_table(
     for organ in ORGANS:
         keep = organs == organ
         organ_groups = np.unique(groups[keep])
-        if len(organ_groups) != 8:
-            raise ValueError(f"{organ} does not have exactly eight study groups")
+        if not len(organ_groups):
+            raise ValueError(f"{organ} has no retained study groups")
         output[organ] = {
             str(group): float(np.nanmean(values[keep & (groups == group)]))
             for group in organ_groups
@@ -161,11 +161,21 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
     ) != sha256_file(Path(__file__).resolve()):
         raise ValueError("frozen evaluator implementation hash mismatch")
     score_report = json.loads(report_path.read_text())
+    amended = (
+        protocol.get("status")
+        == "frozen_gtex_to_archs4_k8_qc_amended_protocol"
+    )
+    expected_evidence_label = (
+        "post_access_qc_amended_external_evaluation"
+        if amended
+        else "preregistered_lockbox_evaluation"
+    )
     if (
         score_report.get("status") != "complete"
         or score_report.get("seeds") != list(SEEDS)
         or score_report.get("all_prespecified_seeds_scored") is not True
         or score_report.get("best_seed_selection_performed") is not False
+        or score_report.get("evidence_label") != expected_evidence_label
     ):
         raise ValueError("score report does not contain the complete seed family")
 
@@ -184,6 +194,22 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
         organs = cache["organs"].astype(str)
         if shared_ids is None:
             shared_ids, shared_groups, shared_organs = sample_ids, groups, organs
+            observed_group_counts = {
+                organ: int(len(np.unique(groups[organs == organ])))
+                for organ in ORGANS
+            }
+            expected_group_counts = (
+                protocol.get("qc_amendment", {}).get(
+                    "retained_study_groups_per_organ"
+                )
+                if amended
+                else {organ: 8 for organ in ORGANS}
+            )
+            if observed_group_counts != expected_group_counts:
+                raise ValueError(
+                    "score-cache study counts differ from frozen protocol: "
+                    f"{observed_group_counts}"
+                )
         elif not (
             np.array_equal(sample_ids, shared_ids)
             and np.array_equal(groups, shared_groups)
@@ -273,6 +299,7 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
     report = {
         "schema_version": 1,
         "status": "complete",
+        "evidence_label": expected_evidence_label,
         "protocol_sha256": sha256_file(protocol_path),
         "score_cache_report_sha256": sha256_file(report_path),
         "primary_estimand": "equal-organ equal-connected-study mean sample MSE",
@@ -281,6 +308,7 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
         "seed_aggregation": "arithmetic mean across every prespecified seed",
         "best_seed_selection_performed": False,
         "fine_tuning_performed": False,
+        "post_access_qc_amendment": amended,
         "seed_results": seed_results,
         "aggregate": aggregate,
         "random_control_mean_primary_mse_across_axes_and_seeds": random_mean,

@@ -78,6 +78,7 @@ def test_evaluator_aggregates_every_seed_and_study(tmp_path: Path) -> None:
                 "seeds": list(SEEDS),
                 "all_prespecified_seeds_scored": True,
                 "best_seed_selection_performed": False,
+                "evidence_label": "preregistered_lockbox_evaluation",
                 "seed_reports": seed_reports,
             }
         )

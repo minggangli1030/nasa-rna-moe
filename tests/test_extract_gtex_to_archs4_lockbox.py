@@ -113,3 +113,49 @@ def test_extractor_rejects_unfrozen_membership(tmp_path: Path) -> None:
     freeze_path.write_text(json.dumps(freeze))
     with pytest.raises(ValueError, match="not ready"):
         extract_lockbox(args)
+
+
+def test_qc_amended_extractor_preserves_post_access_label(tmp_path: Path) -> None:
+    args = _fixture(tmp_path)
+    freeze_path = Path(args.freeze_report)
+    manifest_path = Path(args.lockbox_manifest)
+    freeze_path.write_text(
+        json.dumps(
+            {
+                "status": "frozen_post_access_qc_amended_membership",
+                "retained_samples": 821,
+                "retained_study_groups": 63,
+                "replacement_samples_added": 0,
+                "efficacy_was_available_at_amendment": False,
+                "hashes": {
+                    "qc_amended_manifest_sha256": _sha(manifest_path)
+                },
+            }
+        )
+    )
+    protocol_path = Path(args.protocol)
+    protocol = json.loads(protocol_path.read_text())
+    protocol.update(
+        {
+            "status": "frozen_gtex_to_archs4_k8_qc_amended_protocol",
+            "archs4_expression_accessed_pre_amendment": True,
+            "efficacy_scoring_performed_pre_amendment": False,
+            "evidence_label": "post_access_qc_amended_external_evaluation",
+            "qc_amendment": {"excluded_samples": 6},
+            "source_contract": {
+                "amendment_report_sha256": _sha(freeze_path),
+                "candidate_ledger_sha256": _sha(Path(args.candidate_ledger)),
+            },
+            "expression_access_gate": {
+                "all_implementation_hashes_frozen": True,
+                "repeat_mechanical_extraction_authorized": True,
+                "only_exact_qc_exclusions_allowed": True,
+                "further_membership_changes_allowed": False,
+            },
+        }
+    )
+    protocol_path.write_text(json.dumps(protocol))
+    args.expected_protocol_sha256 = _sha(protocol_path)
+    result = extract_lockbox(args)
+    assert result["status"] == "archs4_k8_qc_amended_expression_extracted"
+    assert result["membership_changed_after_access"] is True
