@@ -1,6 +1,6 @@
 # July 30 presentation readiness
 
-**Updated:** 2026-07-28 13:44 PDT
+**Updated:** 2026-07-28 13:46 PDT
 
 ## Readiness decision
 
@@ -96,7 +96,8 @@ Do not claim:
 
 - [x] Incorporate the checksum-verified additive result with bounded claims.
 - [x] Perform focused visual QA of slides 8–9 at 1920×1080; figures and embedded
-  labels are legible and no decorative window frame remains.
+  labels are legible, no decorative window frame remains, and plot backgrounds
+  blend into the cream slide canvas.
 - [ ] Perform final visual QA of the other seven slides at presentation resolution.
 - [ ] Verify the plan → results → next balance at 8–10 minutes.
 - [ ] Confirm every technical comparison has a plain-language explanation.

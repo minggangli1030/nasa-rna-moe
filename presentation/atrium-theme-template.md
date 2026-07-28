@@ -185,6 +185,30 @@ rather than carrying them forward. Put evidence verification in the readiness
 checklist and detailed technical context in canonical scientific documentation, not
 in a parallel narration document.
 
+## Non-regression lessons from visual QA
+
+These are universal requirements derived from the July 30 deck review:
+
+- Measure typography in the **rendered 16:9 slide**, not only in the source CSS or
+  chart-generation code. The 14 px floor applies to visible center content after
+  layout; embedded raster labels must also be readable at the final displayed size.
+- Dense scientific figures receive priority over a wide prose column. Shorten or
+  reflow the explanation before shrinking a heatmap or chart below legibility.
+- Imported plots must visually belong to the cream slide. Remove window-like
+  borders and rounded frames, and use a transparent plot background or verified
+  blend treatment so a white rectangular canvas does not reappear. Avoid an
+  unnecessary ancestor stacking context that prevents `mix-blend-mode` from
+  integrating the figure background.
+- Reserve a clear footer lane. Captions, caveats, and callouts must not clip at the
+  viewport edge or collide with the centered progress dots.
+- Navigation is part of the template: centered dots, a visibly darker/larger active
+  dot, keyboard support, direct-dot navigation, and the explicit 180 ms transition
+  must remain together.
+- Static markup checks are not enough. Render every dense result slide at
+  **1920×1080**, inspect it visually, and confirm text fit, chart-label legibility,
+  active pagination, background integration, and absence of clipping. Repeat the
+  check in the exported delivery format.
+
 ## Slide-level checklist
 
 For every slide:
@@ -209,6 +233,10 @@ For every slide:
 12. Ask whether a visual would communicate the slide more clearly than prose.
 13. Confirm that no talking script or timed narration file was created.
 14. Check legibility at 16:9 presentation scale and in exported print/PDF output.
+15. Confirm imported plots blend into the cream canvas without a white rectangle or
+    decorative window frame.
+16. Confirm captions, caveats, and callouts do not collide with the pagination lane
+    or clip at any viewport edge.
 
 ## Scientific presentation safeguard
 

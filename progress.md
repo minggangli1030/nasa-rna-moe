@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-28 13:44 PDT / 2026-07-28 20:44 UTC
+**Last updated:** 2026-07-28 13:46 PDT / 2026-07-28 20:46 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -187,7 +187,8 @@ review:
 
 - the prior 11 px minimum in the main content region was raised to 14 px;
 - slides 8–9 now reserve roughly three quarters of a wider canvas for their result
-  figures, without the decorative arch/window frame;
+  figures, without the decorative arch/window frame or a contrasting white chart
+  canvas;
 - the heatmap and additive-effect chart were checked at 1920×1080 for embedded-label
   legibility; and
 - bottom-right page tokens were replaced by centered progress dots, with the active
