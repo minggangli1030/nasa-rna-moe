@@ -17,6 +17,24 @@ Do not invent a topic or begin composing slides until the user answers. If an
 existing dated presentation brief already supplies these facts, summarize the known
 answers and ask the user to confirm or correct them before applying the template.
 
+## Audience-first explanation
+
+Assume the audience has no background in mixture-of-experts models, RNA-seq,
+reconstruction loss, routing, or the project’s internal stage names.
+
+- Lead with the plain-language question and why it matters.
+- Define a technical term at first use, or replace it with ordinary language.
+- Explain comparisons as “one general model” versus “specialized models” before
+  introducing terms such as pooled, expert, or router.
+- Translate metrics into direction and meaning. For example: “3.7% lower prediction
+  error; lower is better.”
+- Never make the audience decode experiment shorthand such as `A1500+B750`.
+  Describe the sample allocation in words and keep shorthand only as a small
+  reproducibility label.
+- Use one conclusion per slide and write headlines as takeaways, not topic labels.
+- Keep protocol hashes, implementation commits, and debugging detail out of the main
+  slide body. Put them in the scientific documentation.
+
 ## Theme
 
 Use the **Atrium** theme throughout the complete deck.
@@ -90,6 +108,12 @@ remove it.
 
 ### Charts
 
+- Prefer a visual explanation whenever a chart, diagram, annotated comparison, or
+  small table communicates the point faster than prose.
+- Prioritize visuals for experimental design, quantitative results, comparisons,
+  trends, uncertainty, and next-step decision trees.
+- Do not add decoration merely to satisfy a visual quota. Every visual must clarify
+  a relationship, magnitude, sequence, or decision.
 - Use sage for the primary series and terracotta for the comparison or interference
   series.
 - Use soft sand for tracks, reference bands, and neutral areas.
@@ -115,7 +139,7 @@ Do not narrate implementation or failure history as “tried A, failed; tried B,
 failed; finally C worked.” If a failure changes the scientific interpretation,
 cohort, or evidence label, disclose it once in a concise sentence beside the
 relevant result. Put debugging chronology, rejected alternatives, and technical
-incident details in speaker notes, backup slides, readiness documentation, or Q&A.
+incident details in canonical scientific documentation, backup slides, or Q&A.
 
 Prefer:
 
@@ -123,6 +147,21 @@ Prefer:
 > Here is what they justify doing next.
 
 The result section should be the largest portion of a biweekly deck.
+
+## No talking scripts
+
+Do not create presenter scripts, timed narration, or slide-by-slide prose intended to
+be read aloud. The maintained presentation package consists of:
+
+- the rendered deck;
+- a concise content brief containing the slide purpose, essential facts, and visual
+  direction; and
+- a readiness checklist containing numeric and claim verification.
+
+The slides must be understandable without a script. Delete obsolete script files
+rather than carrying them forward. Put evidence verification in the readiness
+checklist and detailed technical context in canonical scientific documentation, not
+in a parallel narration document.
 
 ## Slide-level checklist
 
@@ -140,7 +179,11 @@ For every slide:
 7. Verify the 180 ms transition and reduced-motion behavior.
 8. For biweekly decks, verify that results occupy most of the presentation and that
    failure chronology is not part of the main narrative.
-9. Check legibility at 16:9 presentation scale and in exported print/PDF output.
+9. Verify that a nontechnical audience can understand every headline, metric, and
+   comparison without project-specific background.
+10. Ask whether a visual would communicate the slide more clearly than prose.
+11. Confirm that no talking script or timed narration file was created.
+12. Check legibility at 16:9 presentation scale and in exported print/PDF output.
 
 ## Scientific presentation safeguard
 

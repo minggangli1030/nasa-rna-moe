@@ -33,6 +33,8 @@ datasets/
 # models
 checkpoints/
 checkpoints_moe/
+checkpoints_performer/**/loss_plot.png
+checkpoints_performer/loss_plot.png
 *.pt
 *.pth
 

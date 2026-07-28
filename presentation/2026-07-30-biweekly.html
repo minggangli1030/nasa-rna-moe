@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Organ-specialist transfer — NASA RNA MoE — 2026-07-30</title>
+<title>When do RNA specialists help? — NASA RNA MoE — 2026-07-30</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -115,9 +115,9 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">NASA RNA MoE · Stage 1 result → Stage 2 mechanism</span>
-    <h1>Organ specialists transfer from clean GTEx to heterogeneous <em>studies</em></h1>
-    <p class="lede">A frozen, target-hidden router preserves a 3.6–3.7% study-macro reconstruction gain in ARCHS4. Next: learn which organs should share training signal—and which should remain isolated.</p>
+    <span class="eyebrow">NASA RNA mixture-of-experts · biweekly result</span>
+    <h1>Organ specialists improve prediction across independent <em>studies</em></h1>
+    <p class="lede">Models trained to specialize by organ reduced hidden-gene prediction error by 3.6–3.8% versus one general model—even when the model had to choose the specialist automatically.</p>
     <div class="meta">
       <span><b>Date</b> 2026-07-30</span><span><b>Presenter</b> Martin</span>
       <span><b>Program</b> NASA Ames</span><span><b>Status</b> Stage 2 development active</span>
@@ -127,37 +127,37 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Question and design</span>
-    <h2>Can GTEx-trained organ specialization <em>survive</em> a reverse-direction test?</h2>
+    <span class="eyebrow">The plan</span>
+    <h2>Train on one dataset, freeze the models, then test once on <em>another</em></h2>
     <div class="stats">
-      <div class="stat"><div class="n">9,195</div><div class="label">GTEx development samples</div></div>
-      <div class="stat"><div class="n">938</div><div class="label">globally disjoint GTEx donors</div></div>
-      <div class="stat"><div class="n">8</div><div class="label">frozen organ experts</div></div>
-      <div class="stat"><div class="n">3</div><div class="label">prespecified seeds; none selected</div></div>
+      <div class="stat"><div class="n">9,195</div><div class="label">training samples from GTEx</div></div>
+      <div class="stat"><div class="n">938</div><div class="label">separate people represented</div></div>
+      <div class="stat"><div class="n">8</div><div class="label">organ-specialized models</div></div>
+      <div class="stat"><div class="n">3</div><div class="label">independent repeat trainings</div></div>
     </div>
     <div class="pipeline">
-      <div class="pipe"><b>Train</b><span>GTEx pooled, K8, random, capacity control</span></div>
-      <div class="pipe"><b>Freeze</b><span>all candidates, router, cohort, estimand</span></div>
-      <div class="pipe"><b>Extract once</b><span>sealed ARCHS4 expression matrix</span></div>
-      <div class="pipe"><b>Score</b><span>no ARCHS4 tuning or model selection</span></div>
-      <div class="pipe"><b>Evaluate</b><span>equal organ, then equal study weight</span></div>
+      <div class="pipe"><b>Train</b><span>one general model and eight organ specialists</span></div>
+      <div class="pipe"><b>Lock</b><span>models, test samples, and comparison rules</span></div>
+      <div class="pipe"><b>Test once</b><span>use independent ARCHS4 studies</span></div>
+      <div class="pipe"><b>Compare</b><span>measure hidden-gene prediction error</span></div>
+      <div class="pipe"><b>Repeat</b><span>retain all three trainings; select none</span></div>
     </div>
-    <div class="callout"><p><strong>Why reverse direction?</strong> The earlier candidate learned in ARCHS4 and validated in GTEx. Here GTEx is development data, so heterogeneous ARCHS4 studies test transfer in the opposite direction.</p></div>
+    <div class="callout"><p><strong>Why this matters:</strong> success means organ specialization learned in a clean reference dataset still helps across messier studies collected elsewhere.</p></div>
   </div><span class="slide-num">02</span>
 </section>
 
 <section class="slide">
   <div class="inner">
     <span class="eyebrow">What was completed</span>
-    <h2>A frozen external evaluation ran from extraction through <em>results</em></h2>
+    <h2>The full external test ran without tuning to the <em>answers</em></h2>
     <div class="cols">
       <div class="panel">
         <span class="badge">Implemented and frozen</span>
         <h3 style="margin-top:14px">End-to-end protocol</h3>
         <ul>
-          <li>Hash-bound extraction, scoring, and study-macro evaluation.</li>
-          <li>Three prespecified seeds; pooled, routed, and capacity controls.</li>
-          <li>No ARCHS4 tuning, checkpoint selection, or best-seed selection.</li>
+          <li>Prepared the independent expression test set.</li>
+          <li>Scored the general and specialized models three times.</li>
+          <li>Compared studies fairly, regardless of study size.</li>
         </ul>
       </div>
       <div class="panel">
@@ -166,7 +166,7 @@
         <ul>
           <li>821 samples from 63 connected studies.</li>
           <li>All eight target organs retained.</li>
-          <li>Equal study weighting within equal organ weighting.</li>
+          <li>No tuning or choice of the most favorable repeat.</li>
         </ul>
       </div>
     </div>
@@ -188,33 +188,33 @@
       <div class="panel"><h3>Liver</h3><p><strong>42 samples / 7 studies</strong></p><p>Retains multi-study coverage in the final evaluation.</p></div>
       <div class="panel"><h3>Other seven organs</h3><p><strong>8 studies each</strong></p><p>Adipose, brain, colon, heart, lung, skeletal muscle, and skin all remain represented.</p></div>
     </div>
-    <p class="foot">Primary unit: connected study, aggregated equally within organ. Most ARCHS4 donor identities remain title-derived proxies, not verified identities.</p>
+    <p class="foot">Each organ contributes equally, and each study within an organ contributes equally. Individual identities are not verified in every ARCHS4 study.</p>
   </div><span class="slide-num">04</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Primary Stage 1 result</span>
-    <h2>Organ routing <em>beats</em> pooled—with or without revealed organ labels</h2>
+    <span class="eyebrow">Main result</span>
+    <h2>Specialists <em>beat</em> one general model—with or without organ labels</h2>
     <div class="cols left">
       <div>
         <div class="bars">
-          <div class="bar-row"><div class="bar-label">Pooled baseline</div><div class="bar-track"><div class="bar base" style="width:0"></div></div><div class="bar-value">0.000%</div></div>
-          <div class="bar-row"><div class="bar-label">True-organ K8</div><div class="bar-track"><div class="bar" style="width:95%"></div></div><div class="bar-value">+3.797%</div></div>
-          <div class="bar-row"><div class="bar-label">Target-hidden hard</div><div class="bar-track"><div class="bar hard" style="width:91%"></div></div><div class="bar-value">+3.633%</div></div>
-          <div class="bar-row"><div class="bar-label">Target-hidden soft</div><div class="bar-track"><div class="bar soft" style="width:92%"></div></div><div class="bar-value">+3.676%</div></div>
+          <div class="bar-row"><div class="bar-label">One general model</div><div class="bar-track"><div class="bar base" style="width:0"></div></div><div class="bar-value">0.000%</div></div>
+          <div class="bar-row"><div class="bar-label">Correct organ specialist</div><div class="bar-track"><div class="bar" style="width:95%"></div></div><div class="bar-value">+3.797%</div></div>
+          <div class="bar-row"><div class="bar-label">Automatic single choice</div><div class="bar-track"><div class="bar hard" style="width:91%"></div></div><div class="bar-value">+3.633%</div></div>
+          <div class="bar-row"><div class="bar-label">Automatic soft blend</div><div class="bar-track"><div class="bar soft" style="width:92%"></div></div><div class="bar-value">+3.676%</div></div>
         </div>
-        <p class="foot">Relative reduction in equal-organ/equal-study MSE versus each seed’s pooled model; higher is better.</p>
+        <p class="foot">Relative reduction in mean squared prediction error versus one general model; higher is better.</p>
       </div>
       <div class="panel">
         <h3>The compact takeaway</h3>
-        <p>Organ specialization improves reconstruction whether dispatch uses:</p>
+        <p>Organ specialization improves prediction whether the system uses:</p>
         <ul>
           <li>the revealed organ;</li>
-          <li>one input-only hard route; or</li>
-          <li>an input-only soft mixture.</li>
+          <li>one automatically chosen specialist; or</li>
+          <li>a weighted blend of specialists.</li>
         </ul>
-        <div class="callout"><p>The router recovers nearly all of the known-organ gain without labels or reconstruction targets at test time.</p></div>
+        <div class="callout"><p>The automatic chooser preserves nearly all of the benefit without being told the organ.</p></div>
       </div>
     </div>
   </div>
@@ -225,19 +225,19 @@
 <section class="slide">
   <div class="inner">
     <span class="eyebrow">Replication and controls</span>
-    <h2>The gain <em>survives</em> every seed; generic adapter capacity does not</h2>
+    <h2>The gain <em>appears</em> in every repeat; extra capacity alone does not help</h2>
     <div class="seed-grid">
-      <div class="seed"><div class="k">Seed 17 · true / hard / soft</div><div class="n">2.78 / 2.62 / 2.65%</div><p>All three routed conditions improve.</p></div>
-      <div class="seed"><div class="k">Seed 42 · true / hard / soft</div><div class="n">3.24 / 3.07 / 3.10%</div><p>All three routed conditions improve.</p></div>
-      <div class="seed"><div class="k">Seed 101 · true / hard / soft</div><div class="n">5.38 / 5.23 / 5.29%</div><p>All three routed conditions improve.</p></div>
+      <div class="seed"><div class="k">Repeat 1 · known / single / blend</div><div class="n">2.78 / 2.62 / 2.65%</div><p>Every specialist condition improves.</p></div>
+      <div class="seed"><div class="k">Repeat 2 · known / single / blend</div><div class="n">3.24 / 3.07 / 3.10%</div><p>Every specialist condition improves.</p></div>
+      <div class="seed"><div class="k">Repeat 3 · known / single / blend</div><div class="n">5.38 / 5.23 / 5.29%</div><p>Every specialist condition improves.</p></div>
     </div>
     <div class="cols">
-      <div class="panel"><h3>Capacity-matched pooled adapter</h3><p class="good" style="font:750 29px var(--mono);color:var(--muted)">−0.005%</p><p>Effectively neutral versus pooled.</p></div>
-      <div class="panel"><h3>Mean of three random K8 axes</h3><p class="good" style="font:750 29px var(--mono);color:var(--muted)">−0.001%</p><p>Effectively neutral versus pooled.</p></div>
+      <div class="panel"><h3>General model with equal extra capacity</h3><p class="good" style="font:750 29px var(--mono);color:var(--muted)">−0.005%</p><p>No meaningful improvement.</p></div>
+      <div class="panel"><h3>Eight randomly assigned specialists</h3><p class="good" style="font:750 29px var(--mono);color:var(--muted)">−0.001%</p><p>No meaningful improvement.</p></div>
     </div>
-    <div class="callout"><p><strong>Supported wording:</strong> robust across routing form, seed, setup, and training/evaluation direction, with positive study-balanced evidence—not invariant in every individual study or every organ-by-seed cell.</p></div>
+    <div class="callout"><p><strong>What repeats:</strong> the improvement survives different routing choices, independent trainings, and both dataset directions. It does not appear in every individual study.</p></div>
   </div>
-  <div class="footer-label">Every routed seed comparison had a paired-study bootstrap interval above zero · no seed selected</div>
+  <div class="footer-label">Every repeat had an uncertainty interval above zero · all three repeats retained</div>
   <span class="slide-num">06</span>
 </section>
 
@@ -248,9 +248,9 @@
     <div class="cols">
       <div class="panel">
         <span class="badge">Supported</span>
-        <div class="claim"><b>Transfer</b><p>GTEx-only organ supervision improves a heterogeneous ARCHS4 study-macro evaluation.</p></div>
-        <div class="claim"><b>Routing</b><p>Expression-derived hard and soft routing preserve most of the known-organ advantage.</p></div>
-        <div class="claim"><b>Specificity</b><p>Organ-aligned experts outperform pooled and capacity-matched random controls.</p></div>
+        <div class="claim"><b>Transfer</b><p>Specialization learned in GTEx still helps across independent ARCHS4 studies.</p></div>
+        <div class="claim"><b>Automatic choice</b><p>The system preserves most of the benefit without being told the organ.</p></div>
+        <div class="claim"><b>Specificity</b><p>Organ specialists beat one general model and randomly assigned specialists.</p></div>
       </div>
       <div class="panel">
         <span class="badge warn">Not established</span>
@@ -264,49 +264,49 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Stage 2 · Same-compute substitution result</span>
-    <h2>Replacing recipient data with another organ <em>hurts</em> every recipient</h2>
+    <span class="eyebrow">Stage 2 · fixed data budget</span>
+    <h2>Replacing organ-specific data with another organ <em>hurts</em> prediction</h2>
     <div class="cols left">
       <div>
         <div class="stats" style="grid-template-columns:1fr 1fr">
-          <div class="stat"><div class="n">56 / 56</div><div class="label">directed edges negative in all three seeds</div></div>
-          <div class="stat"><div class="n">−3.27%</div><div class="label">mean same-compute transfer effect</div></div>
+          <div class="stat"><div class="n">56 / 56</div><div class="label">organ-pair directions hurt in all three repeats</div></div>
+          <div class="stat"><div class="n">−3.27%</div><div class="label">average change in prediction accuracy</div></div>
         </div>
-        <div class="claim"><b>Estimand</b><p>A750+B750 versus A1500 on held-out recipient-A donors.</p></div>
-        <div class="claim"><b>Stability</b><p>All 56 donor-bootstrap intervals exclude zero; range −7.09% to −0.45%. The independent primary seed-101 lineage reproduced every scientific matrix and heatmap hash.</p></div>
-        <div class="claim"><b>Meaning</b><p>Under a fixed budget, recipient-specific data is more useful than any tested donor organ.</p></div>
-        <div class="callout"><p><strong>Not “all sharing is bad.”</strong> The prospectively frozen additive test asks whether B helps when A exposure is preserved.</p></div>
+        <div class="claim"><b>Comparison</b><p>750 target-organ samples plus 750 other-organ samples versus 1,500 target-organ samples.</p></div>
+        <div class="claim"><b>Reliability</b><p>All 56 uncertainty intervals remain below zero; effects range from −7.09% to −0.45%.</p></div>
+        <div class="claim"><b>Meaning</b><p>With a fixed data budget, keeping target-organ data is better than replacing it with another organ.</p></div>
+        <div class="callout"><p><strong>This does not mean all sharing is bad.</strong> The next test keeps all target-organ data and asks whether another organ adds useful information.</p></div>
       </div>
       <div class="matrix-wrap">
         <img class="heatmap-img" src="2026-07-30-stage2-directed-transfer-heatmap.png" alt="Directed eight-organ transfer heatmap; every off-diagonal edge is negative in all three seeds">
-        <div class="matrix-label">recipient A × donor B · cell: mean effect, positive-seed count, donor-bootstrap CI</div>
+        <div class="matrix-label">row: target organ · column: added organ · red: harmful replacement</div>
       </div>
     </div>
-    <p class="foot">Development-only GTEx can test seed stability and donor robustness. Study universality requires a new untouched multisource cohort.</p>
+    <p class="foot">This tests repeatability across people in GTEx. A new multi-study dataset is still needed to test broader universality.</p>
   </div><span class="slide-num">08</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Stage 2 · Recipient-preserving addition result</span>
-    <h2>Cross-organ signal can help <em>selectively</em>—but more recipient data still wins</h2>
+    <span class="eyebrow">Stage 2 · adding data without removing target-organ data</span>
+    <h2>Extra data from another organ can help—but the pattern is not yet <em>stable</em></h2>
     <div class="cols left">
       <div>
         <div class="stats" style="grid-template-columns:1fr 1fr">
-          <div class="stat"><div class="n">1 / 8</div><div class="label">edges positive in all 3 seeds with CI above zero</div></div>
-          <div class="stat"><div class="n">0 / 8</div><div class="label">named donors beat A2250 across all seeds</div></div>
+          <div class="stat"><div class="n">1 / 8</div><div class="label">organ pairs help reliably across all repeats</div></div>
+          <div class="stat"><div class="n">0 / 8</div><div class="label">pairs consistently beat adding more target-organ data</div></div>
         </div>
-        <div class="claim"><b>Positive</b><p>Liver ← skin: +1.96%, 3/3 positive seeds, donor-bootstrap CI +1.65% to +2.24%.</p></div>
-        <div class="claim"><b>Directional</b><p>Skeletal muscle ← lung was +0.81%; lung ← skeletal muscle was −0.38%. Neither is all-seed robust.</p></div>
-        <div class="claim"><b>Policy</b><p>Protect recipient exposure first; add another organ only under a validated directional rule.</p></div>
-        <div class="callout"><p><strong>Next:</strong> complete the frozen 3×3 trunk-by-optimization stability diagnosis. Continue raw transfer only if a reproducible rule emerges; otherwise test recipient-protected sharing and then pivot toward broader MoE representations.</p></div>
+        <div class="claim"><b>One stable pair</b><p>Adding skin data improved liver prediction by 1.96% in all three repeats.</p></div>
+        <div class="claim"><b>Direction matters</b><p>Lung may help muscle even when muscle does not help lung, but this example changes across repeats.</p></div>
+        <div class="claim"><b>Current policy</b><p>Protect target-organ data first; share across organs only after a stable rule is validated.</p></div>
+        <div class="callout"><p><strong>Next:</strong> repeat the same eight tests across three base models and three fresh training runs. Continue only if several helpful relationships reproduce; otherwise protect organ-specific learning or test broader specialist definitions.</p></div>
       </div>
       <div class="matrix-wrap">
         <img class="heatmap-img" src="2026-07-30-stage2-additive-effects.png" alt="Eight frozen directional additive-transfer effects with three-seed counts and donor-bootstrap intervals">
-        <div class="matrix-label">A1500+B750 versus A1500 · positive means donor B helps recipient A</div>
+        <div class="matrix-label">positive values mean the added organ helps the target organ</div>
       </div>
     </div>
-    <p class="foot">Development-only GTEx: seed/donor robustness is not study universality. A new untouched multisource cohort is required.</p>
+    <p class="foot">Repeatability inside GTEx is not the same as universality across independent studies.</p>
   </div><span class="slide-num">09</span>
 </section>
 

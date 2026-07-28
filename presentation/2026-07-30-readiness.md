@@ -14,8 +14,8 @@ seed-factorized diagnosis is the active next experiment.
 
 - `presentation/2026-07-30-biweekly.html`: nine-slide presentation deck with
   keyboard navigation and print CSS.
-- `presentation/2026-07-30-biweekly-draft.md`: slide-by-slide content, speaker
-  notes, limitations, and likely questions.
+- `presentation/2026-07-30-content-brief.md`: concise slide purpose, essential facts,
+  and visual direction; no talking script.
 - `presentation/2026-07-30-stage2-directed-transfer-heatmap.png`: checksum-verified
   8×8 directed same-compute substitution heatmap.
 - `presentation/2026-07-30-stage2-additive-effects.png`: compact eight-edge
@@ -94,7 +94,7 @@ Do not claim:
 
 - [x] Incorporate the checksum-verified additive result with bounded claims.
 - [ ] Perform final visual QA of all nine slides at presentation resolution.
-- [ ] Verify speaker-note timing at 8–10 minutes.
-- [ ] Recheck likely-question answers against the final deck.
+- [ ] Verify the plan → results → next balance at 8–10 minutes.
+- [ ] Confirm every technical comparison has a plain-language explanation.
 - [ ] Export or print the final delivery copy and verify the file opens.
 - [ ] Mark this checklist final and record the delivery artifact hashes.
