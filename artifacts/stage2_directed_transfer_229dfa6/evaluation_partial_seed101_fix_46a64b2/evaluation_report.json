@@ -1,0 +1,55 @@
+{
+  "best_seed_selection_allowed": false,
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 20260728,
+    "unit": "held-out GTEx donor paired across arms and seeds"
+  },
+  "development_only": true,
+  "effect_sign": "positive is helpful transfer; negative is interference",
+  "hashes": {
+    "arm_definitions_sha256": "b4cae61170614a83bc9fc2a7222a0f824557985bba8130c91750cddc963c8774",
+    "beats_random_matrix_sha256": "490d85ae0704fcbf39bf3af20b9fa7f9851a5eda3d537c81562426f77ab73a0d",
+    "donor_ci_high_sha256": "ac3a7e5f7b4a29d565db6d7e5c43e4a03ae0baba67e53ccab7856e8bbc11503d",
+    "donor_ci_low_sha256": "346595d1e8050d6ef192b0ea4d6c6fcf05a47cd43c179b719677bb54d063974e",
+    "effect_matrix_sha256": "7f3e3a9c2b039bcdf6bcb44f1710951a35c4daf6f5ec2216bd2f329c127e0846",
+    "heatmap_sha256": "ca662aa165263f1fae2a169db49162fe1d28784805887c77d275bfd722298751",
+    "per_seed_edges_sha256": "10de9e7ed2bdb2b8afc70aa6fe90d60e5c93413be426b794b41b9eb995d51b90",
+    "seed_positive_matrix_sha256": "63aed4b8b62dcfcb271ee3048e049564f3d4e5f6ba3c8c2ea8d838e637d745f2",
+    "seed_run_metadata_sha256": {
+      "101": "d6808426af9f0a4562487bd6c4c102fab54b8d4eb2e865ffb7278015797885ce",
+      "17": "b255d7680b960e3394c9cfe050d759e6f728c02b145fa94d2ca4b8fe754aaf7d",
+      "42": "4a46165e51ecbda375099ec40eca82dfdca6c4fe4fbbc63208ce85464695467f"
+    },
+    "training_schedule_sha256": "6390071cdc463a12e2bbf533b931235c17c6a40d75aacc61dbbd881b8c46ed20"
+  },
+  "held_out_unit": "GTEx donor",
+  "organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "primary_estimand": "A750+B750 versus A1500 donor-balanced recipient MSE",
+  "research_stage": "stage2_directed_organ_transfer_development",
+  "schema_version": 1,
+  "seeds": [
+    17,
+    42,
+    101
+  ],
+  "status": "complete",
+  "study_disjoint": false,
+  "summary": {
+    "all_seed_same_sign_edges": 56,
+    "directed_edges": 56,
+    "donor_ci_excludes_zero_edges": 56,
+    "negative_all_seed_and_ci_edges": 56,
+    "positive_all_seed_and_ci_edges": 0
+  },
+  "universality_boundary": "Seed-sign agreement and donor-bootstrap stability do not establish independent-study universality; a new untouched multisource cohort is required."
+}

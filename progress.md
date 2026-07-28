@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 22:02 PDT / 2026-07-28 05:02 UTC
+**Last updated:** 2026-07-28 00:10 PDT / 2026-07-28 07:10 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,53 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-28 — Stage 2 preliminary 56-edge heatmap complete
+
+Primary seed 42 completed all 60 arms at 06:15 UTC. Together with primary seed 17
+and the independently checksum-verified parallel seed 101, all 3/3 distinct
+prespecified seeds were available. The original primary launcher continued its
+separate duplicate seed-101 lineage and was healthy at 10/60 arms at 07:03 UTC with
+100% GPU utilization.
+
+The early evaluator failed closed twice before producing a matrix. The first failure
+found that the frozen producer's pandas string conversion had created NumPy object
+arrays while the evaluator prohibited pickle-compatible loading. Commit `98dcb65`
+added a hash-gated loader that requires every loaded object value to be a plain
+string. The second failure found an exact-equality check on pooled scores. An
+exhaustive audit of all 38,346 frozen comparisons measured only batch-dependent
+float32 variation: maximum absolute `2.384185791015625e-07` and maximum relative
+`2.403279996539277e-07`. Commit `46a64b2` freezes bounded
+`rtol=5e-7`, `atol=3e-7` and still fails closed on material divergence. Fifteen
+focused Stage 2 tests pass. Neither correction changed a score cache, hash, arm,
+seed, schedule, checkpoint, cohort, or scientific estimand.
+
+The corrected evaluator completed at 07:10 UTC. All **56/56** directed A750+B750
+versus A1500 substitution effects were negative in all three seeds, and all 56 paired
+donor-bootstrap intervals excluded zero. Mean effect was **−3.273%**, median
+**−3.382%**, and range **−7.086% to −0.450%**. Under fixed compute, replacing half
+of recipient exposure with any other tested organ is consistently worse than using
+recipient data. This supports protected organ specialists and warns against
+indiscriminate pooling when it displaces scarce recipient data.
+
+This does not establish that every form of sharing is harmful. The already-frozen
+additive subset preserves A1500 and asks whether B750 adds information relative to
+A1500, A1500+random750, and A2250. It remains the next discriminating experiment.
+The substitution result is donor- and seed-robust within GTEx development data; a
+new untouched multisource cohort is still required for study universality.
+
+The eight-file bundle and heatmap were independently checksum-verified locally at
+`artifacts/stage2_directed_transfer_229dfa6/evaluation_partial_seed101_fix_46a64b2`;
+the checksum-manifest SHA256 is
+`270fdeb0fcb76c4a08713b92157d6e3ca3f70ab9f38a74df3c2a2fdb8f1db41d`.
+The dedicated synthesis is `docs/stage2-directed-transfer-preliminary-result.md`.
+The July 30 deck and notes now include the actual heatmap and bounded interpretation.
+
+A detached `stage2-primary-replication-eval` watcher is armed for the original
+launcher's duplicate seed 101. It will use exact correction commit `46a64b2`, write
+to a separate primary-replication evaluation path, and preserve the partial-seed
+result. With the duplicate at 10/60 arms and about 12.7 arms/hour, its corrected
+evaluation should be available around 04:00–04:30 PDT.
 
 ## 2026-07-27 — Seed 42 at 41/60; rendered-deck scaffold created
 

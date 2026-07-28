@@ -1,0 +1,9 @@
+,adipose,brain,colon,heart,liver,lung,skeletal_muscle,skin
+adipose,0,0,3,3,1,3,3,0
+brain,1,0,1,2,2,1,1,1
+colon,3,0,0,3,1,3,3,0
+heart,2,0,3,0,0,3,3,1
+liver,1,0,1,1,0,1,0,2
+lung,3,0,3,3,2,0,3,3
+skeletal_muscle,1,0,2,3,0,1,0,1
+skin,0,1,0,3,2,3,3,0

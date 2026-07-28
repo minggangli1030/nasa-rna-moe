@@ -82,6 +82,7 @@
   .matrix-wrap{position:relative}
   .matrix-label{font:13px var(--mono);color:var(--muted);text-align:center;margin-top:8px}
   .pending{position:absolute;inset:36% 8%;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(255,255,255,.92);border:1px solid var(--teal);border-radius:5px;color:#174f49;font:700 15px var(--mono)}
+  .heatmap-img{display:block;width:100%;max-height:62vh;object-fit:contain;background:#fff;border:1px solid var(--rule);border-radius:7px}
   .foot{margin-top:13px;color:var(--muted);font:13px var(--mono)}
   .footer-label{position:absolute;left:4.5vw;bottom:16px;color:#718078;font:12px var(--mono)}
   @media(max-height:780px) and (min-width:861px){
@@ -251,28 +252,22 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Stage 2 · Controlled directed transfer</span>
-    <h2>Which organs should share training signal—and which should remain isolated?</h2>
+    <span class="eyebrow">Stage 2 · Same-compute substitution result</span>
+    <h2>Replacing recipient data with another organ hurts every recipient</h2>
     <div class="cols left">
       <div>
-        <div class="claim"><b>Same compute</b><p>A1500 versus A750+B750: is donor B a better use of a fixed training budget?</p></div>
-        <div class="claim"><b>Additive</b><p>A1500 versus A1500+B750: does B add information beyond more recipient updates?</p></div>
-        <div class="claim"><b>Controls</b><p>Random auxiliary organs, A2250, all three seeds, donor-atomic schedules, donor bootstrap.</p></div>
-        <div class="callout"><p><strong>Practical output:</strong> data-selection rules, negative-transfer safeguards, and evidence for shared, asymmetric, or isolated expert modules.</p></div>
+        <div class="stats" style="grid-template-columns:1fr 1fr">
+          <div class="stat"><div class="n">56 / 56</div><div class="label">directed edges negative in all three seeds</div></div>
+          <div class="stat"><div class="n">−3.27%</div><div class="label">mean same-compute transfer effect</div></div>
+        </div>
+        <div class="claim"><b>Estimand</b><p>A750+B750 versus A1500 on held-out recipient-A donors.</p></div>
+        <div class="claim"><b>Stability</b><p>All 56 donor-bootstrap intervals exclude zero; range −7.09% to −0.45%.</p></div>
+        <div class="claim"><b>Meaning</b><p>Under a fixed budget, recipient-specific data is more useful than any tested donor organ.</p></div>
+        <div class="callout"><p><strong>Not “all sharing is bad.”</strong> The prospectively frozen additive test asks whether B helps when A exposure is preserved.</p></div>
       </div>
       <div class="matrix-wrap">
-        <div class="matrix">
-          <div class="cell ref"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-          <div class="cell"></div><div class="cell ref"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-          <div class="cell"></div><div class="cell"></div><div class="cell ref"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell ref"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell ref"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell ref"></div><div class="cell"></div><div class="cell"></div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell ref"></div><div class="cell"></div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell ref"></div>
-        </div>
-        <div class="pending">Frozen 56-edge heatmap<br>automatically inserts after evaluation</div>
-        <div class="matrix-label">recipient organ A × donor-training organ B</div>
+        <img class="heatmap-img" src="2026-07-30-stage2-directed-transfer-heatmap.png" alt="Directed eight-organ transfer heatmap; every off-diagonal edge is negative in all three seeds">
+        <div class="matrix-label">recipient A × donor B · cell: mean effect, positive-seed count, donor-bootstrap CI</div>
       </div>
     </div>
     <p class="foot">Development-only GTEx can test seed stability and donor robustness. Study universality requires a new untouched multisource cohort.</p>
@@ -282,13 +277,13 @@
 <section class="slide">
   <div class="inner">
     <span class="eyebrow">Conclusion</span>
-    <h2>Organ signal is real, useful, and strong enough to move from performance to mechanism</h2>
+    <h2>Route by organ—and do not dilute scarce recipient data indiscriminately</h2>
     <div class="cols">
       <div class="panel"><h3>What Stage 1 gives us</h3><p>Replicated organ-specialist gains across routing forms, seeds, setups, and both train/test directions, with neutral capacity and random controls.</p></div>
-      <div class="panel"><h3>What Stage 2 asks next</h3><p>Do independently learned expert signatures predict functional organ-to-organ transfer or interference under controlled training budgets?</p></div>
+      <div class="panel"><h3>What Stage 2 adds</h3><p>Every same-compute donor substitution causes negative transfer, supporting recipient-specific exposure and isolated specialists under limited budgets.</p></div>
     </div>
-    <div class="callout"><p><strong>Program-level claim:</strong> organ identity is the strongest tested conditional specialization axis. The next model should learn when to share—and when to protect tissue-specific structure.</p></div>
-    <p class="foot">Each method exists individually. The underexplored contribution is the prospective link among independently validated expert signatures, controlled directed transfer, and input-only router compatibility.</p>
+    <div class="callout"><p><strong>Next discriminating test:</strong> the already-frozen additive edges preserve all recipient exposure, separating “donor B adds information” from “donor B replaced more valuable A data.”</p></div>
+    <p class="foot">The result is seed- and donor-robust in GTEx development data, not yet universal across independent studies. Mechanism/router correspondence and a new untouched multisource confirmation remain ahead.</p>
   </div><span class="slide-num">09</span>
 </section>
 

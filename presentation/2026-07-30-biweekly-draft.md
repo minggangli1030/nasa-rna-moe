@@ -8,10 +8,9 @@ spoken claim must distinguish the pristine GTEx validation from the
 `post_access_qc_amended_external_evaluation` in ARCHS4.
 
 Rendered-deck checkpoint: `presentation/2026-07-30-biweekly.html` now implements
-this nine-slide narrative with keyboard navigation and print CSS. Slide 8 reserves a
-bounded Stage 2 heatmap panel; replace that placeholder only with the frozen
-all-seed evaluator output and retain the GTEx development-only/study-universality
-boundary in both slide text and speaker notes.
+this nine-slide narrative with keyboard navigation and print CSS. Slide 8 contains
+the checksum-verified frozen all-seed Stage 2 heatmap. Retain the GTEx
+development-only/study-universality boundary in both slide text and speaker notes.
 
 ## Slide 1 — The question
 
@@ -143,32 +142,36 @@ organs, but colon is close to neutral and a few organ-by-seed cells are negative
 The prespecified evidence unit is the connected study, aggregated equally within
 organ.
 
-## Slide 8 — Why the transfer experiment matters
+## Slide 8 — Same-compute transfer is uniformly negative
 
-**Immediate practical objective**
+The frozen substitution experiment compares A750+B750 with A1500 on held-out
+recipient-A donors.
 
-Learn which biological domains should share training information and which should
-remain separated.
+Headline results:
 
-- Choose useful supplementary organs for rare or undersampled recipients instead of
-  indiscriminate pooling.
-- Detect negative transfer and justify adapter isolation, balanced curricula, or
-  gradient-conflict controls.
-- Use mutual, asymmetric, or harmful transfer to design a smaller hierarchical MoE:
-  pooled trunk → organ family → organ specialist.
-- Predefine rational adaptation sources for scarce disease or spaceflight datasets,
-  without claiming downstream benefit before task-specific testing.
+- all **56/56** directed organ pairs are negative in seeds 17, 42, and 101;
+- all 56 paired donor-bootstrap intervals exclude zero;
+- mean effect: **−3.273%**;
+- median effect: **−3.382%**;
+- range: **−7.086% to −0.450%**; and
+- 20/56 edges beat all three random-auxiliary controls in all three seeds, showing
+  that donor identity modulates the magnitude of interference even though no
+  substitution edge is helpful.
 
-**Why the combination is underexplored**
+Interpretation:
 
-Use independently validated organ experts to derive mechanistic signatures, measure a
-controlled directed organ-to-organ transfer matrix, and test prospectively whether
-expert or input-only router structure predicts those transfer effects on held-out
-studies.
+- Under a fixed training budget, replacing half of recipient-organ exposure with any
+  other tested organ is worse than using recipient data.
+- This directly supports organ-specific exposure and specialist isolation when
+  compute or data budget is limited.
+- It does **not** show that every form of sharing is harmful. The prospectively frozen
+  additive experiment preserves A1500 and asks whether B750 contributes information
+  beyond A exposure and additional updates.
 
-Speaker note: Each method exists individually. The contribution is the independently
-measured, prospectively tested link among expert mechanism, functional transfer, and
-router compatibility.
+Speaker note: This is donor-disjoint GTEx development evidence. “All 56 edges” refers
+to this fixed-budget substitution estimand, not independent-study universality.
+The strongest Stage 2 confirmation still requires a new untouched multisource
+cohort.
 
 ## Slide 9 — Conclusion and next experiments
 
@@ -181,12 +184,11 @@ in multisource ARCHS4, while random and pooled-adapter controls remain neutral.
 **Stage 2: explain and test the organ experts**
 
 1. Characterize the frozen expert-minus-pooled residuals and pathway signatures.
-2. Measure a controlled directed transfer matrix on untouched recipient-organ A
-   studies using two complementary comparisons:
-   - same compute: A1500 versus A750+B750;
-   - same A exposure: A1500 versus A1500+B750, with random-auxiliary and
-     additional-A controls.
-3. Test whether expert similarity and router preferences predict those held-out
+2. The same-compute A1500 versus A750+B750 matrix is complete: all 56 substitutions
+   are harmful across all three seeds and donor-bootstrap intervals.
+3. Run the already-frozen same-A-exposure comparison: A1500 versus A1500+B750, with
+   random-auxiliary and additional-A controls.
+4. Test whether expert similarity and router preferences predict those held-out
    transfer relationships.
 
 Development will first use donor-disjoint GTEx calibration data. The stronger claim
@@ -194,10 +196,11 @@ that these predictions generalize across held-out studies requires a newly froze
 multisource cohort; the completed QC-amended ARCHS4 cohort cannot be recycled as a
 pristine Stage 2 lockbox.
 
-Planned preliminary Stage 2 figure: a directed 8×8 recipient-organ × donor-organ
-heatmap showing helpful transfer versus interference, with three-seed sign counts and
-donor-bootstrap uncertainty. Do not call the map universal merely because an edge is
-seed-consistent; independent-study universality is a later untouched-cohort test.
+The preliminary Stage 2 figure is a directed 8×8 recipient-organ × donor-organ
+heatmap showing interference for all 56 off-diagonal substitutions, with three-seed
+sign counts and donor-bootstrap uncertainty. Do not call the map universal merely
+because every edge is seed-consistent; independent-study universality is a later
+untouched-cohort test.
 
 Label-free routing is optional and secondary. It was originally included to add
 novelty by linking a co-routing map to the transfer map, but the completed de novo

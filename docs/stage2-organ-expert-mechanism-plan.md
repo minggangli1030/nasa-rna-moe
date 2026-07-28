@@ -176,9 +176,18 @@ manifest SHA256 `d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e
 schedule SHA256 is
 `6390071cdc463a12e2bbf533b931235c17c6a40d75aacc61dbbd881b8c46ed20`.
 The schedule-bound K1 trainer at `00e37e3` passes the combined focused suite, and its
-two-arm/two-batch real-data GPU smoke completed successfully. Full training remains
-gated on the aggregate evaluator, prospective additive-edge freeze, and strict
-all-three-seed launcher.
+two-arm/two-batch real-data GPU smoke completed successfully. The aggregate
+evaluator, prospective additive-edge freeze, and strict all-three-seed launcher were
+then frozen at `229dfa6`; the full substitution run completed for all three distinct
+seeds. The checksum-verified preliminary result is
+`docs/stage2-directed-transfer-preliminary-result.md`.
+
+All 56 directed substitution edges are negative in all three seeds and have paired
+donor-bootstrap intervals below zero. The mean effect is −3.273% for A750+B750
+versus A1500. This means another organ is not a better use of half the recipient
+budget; it does not answer whether B adds information when A1500 exposure is
+preserved. The prospectively frozen additive subset remains the next discriminating
+experiment.
 
 The full transfer matrix is a GTEx donor-disjoint development analysis. It can
 measure controlled transfer and freeze predictions, but GTEx cannot establish

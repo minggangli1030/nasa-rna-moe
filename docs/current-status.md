@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 22:02 PDT / 2026-07-28 05:02 UTC
+**Updated:** 2026-07-28 00:10 PDT / 2026-07-28 07:10 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -142,9 +142,10 @@ when older chronology or exact intermediate results are needed.
 - Stage 2 development training is active on `moe-reboot` in detached screen session
   `stage2-directed-transfer`. It launched from clean commit
   `229dfa6dc18302a798734880dc8e3eb60e506e61` at 2026-07-27 21:01 UTC. Seed 17
-  completed all 60 arms at 01:38 UTC with `mechanical_only=false`. At 05:02 UTC,
-  seed 42 had completed 41/60 arms; the detached session and training process were
-  healthy, the A100 was at 100% utilization, and no failure signature was found.
+  completed all 60 arms at 01:38 UTC and seed 42 completed all 60 at 06:15 UTC,
+  both with `mechanical_only=false`. At 07:03 UTC, the original launcher was
+  continuing its independent operational-replication seed 101 at 10/60 arms; the
+  detached process was healthy and the A100 was at 100% utilization.
   Result root:
   `/media/volume/moe-reboot/results/stage2_directed_transfer_229dfa6`.
   The launcher runs seeds 17, 42, and 101 sequentially, then the frozen evaluator
@@ -165,14 +166,36 @@ when older chronology or exact intermediate results are needed.
   `10c2ac790b1d2d955718a7855f56cf1cd92dea9d1024334719e2466cf715f13e`.
   It is independently verified on the primary at the distinct path
   `seed101_partial`; the launcher's future `seed101` path was not touched.
-- Two of three distinct seeds are therefore complete. A detached
-  `stage2-early-evaluator` watcher is waiting only for primary seed 42, after which
-  it will run the frozen evaluator with seeds 17, 42, and `101_partial` into the
-  distinct `evaluation_partial_seed101` lineage. Observed per-host rates are
-  approximately 12.1 current-seed arms/hour on the primary and 12.9 arms/hour on
-  the parallel host. Seed 42 is projected to finish around 23:35–23:45 PDT; the
-  current early three-seed evaluator/heatmap window is approximately
-  23:40 PDT–00:20 PDT.
+- Three of three distinct seeds are complete for the preliminary result: primary
+  seeds 17 and 42 plus checksum-verified parallel `seed101_partial`. The first early
+  evaluator attempt failed before producing a matrix because the frozen producer
+  stored plain strings in NumPy object arrays. A hash-gated code-only loader
+  correction at `98dcb65` changed no input, score, or estimand.
+- The next evaluator attempt failed before producing a matrix because it required
+  bit-exact pooled scores across differently batched arms. An exhaustive audit of
+  all 38,346 frozen comparisons found only float32-scale variation: maximum absolute
+  `2.384185791015625e-07` and maximum relative
+  `2.403279996539277e-07`. The final code-only correction at
+  `46a64b2497cd9ffafd1f6ec3812752fc845d5810` uses bounded
+  `rtol=5e-7`, `atol=3e-7`; the combined Stage 2 focused suite passes 15 tests.
+- The corrected frozen evaluator completed at 07:10 UTC with all 56 directed edges.
+  Every A750+B750 substitution was worse than A1500 in all three seeds, and every
+  paired donor-bootstrap interval excluded zero. Mean effect was −3.273%, median
+  −3.382%, and range −7.086% to −0.450%. This is strong evidence that recipient
+  exposure is more valuable than substituting any other organ under fixed compute;
+  it does not show that B cannot add information when A exposure is preserved.
+- The verified eight-file result bundle is
+  `artifacts/stage2_directed_transfer_229dfa6/evaluation_partial_seed101_fix_46a64b2`;
+  checksum-manifest SHA256 is
+  `270fdeb0fcb76c4a08713b92157d6e3ca3f70ab9f38a74df3c2a2fdb8f1db41d`.
+  Full interpretation and the correction audit are
+  `docs/stage2-directed-transfer-preliminary-result.md`.
+- The original launcher is continuing its duplicate primary seed 101 for operational
+  replication. A detached `stage2-primary-replication-eval` watcher is already armed
+  to evaluate that lineage with exact correction commit `46a64b2` in a separate
+  output path after `SEED101_COMPLETE`. At the observed ~12.7 arms/hour, the
+  duplicate seed and corrected replication evaluation are expected around
+  04:00–04:30 PDT.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and
@@ -181,12 +204,12 @@ when older chronology or exact intermediate results are needed.
   cohort is required for the latter.
 - The preliminary result is already available ahead of the Thursday-morning
   deadline. Presentation preparation is now the active operational task. The
-  content draft is `presentation/2026-07-30-biweekly-draft.md`. A nine-slide
-  presentation-ready HTML scaffold is now
-  `presentation/2026-07-30-biweekly.html`; it includes the complete bounded Stage 1
-  narrative and a reserved Stage 2 heatmap panel that will be replaced after the
-  frozen evaluator completes. Its structural check passes with nine slides, nine
-  closures, navigation, and print CSS. An automated
+  content draft is `presentation/2026-07-30-biweekly-draft.md`. The nine-slide
+  presentation-ready deck is `presentation/2026-07-30-biweekly.html`; it includes
+  the complete bounded Stage 1 narrative and the checksum-verified Stage 2 heatmap,
+  with explicit substitution/addition and donor/study-universality boundaries.
+  Its structural check passes with nine slides, nine closures, navigation, and
+  print CSS. An automated
   readiness check runs every two hours from 08:00 through 22:00 PDT and ends
   Thursday morning after the rendered deck, claim audit, and speaking notes are
   verified.
