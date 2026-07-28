@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 12:53 PDT / 2026-07-28 19:53 UTC
+**Last updated:** 2026-07-28 12:55 PDT / 2026-07-28 19:55 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,24 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-28 — Representation-first Stage 2 principle recorded
+
+Stage 2 is now explicitly framed around reproducible MoE representation learning,
+not around finding a favorable organ pair. Organ remains the strongest independently
+validated specialization axis, the benchmark/control, and the unchanged object of
+the running frozen diagnosis. It is not a permanent boundary on the scientific
+program.
+
+The intended advance is to learn a reproducible rule separating helpful shared
+gradients from domain-specific interference across trunks, optimization replicates,
+donors, and eventually independent studies. The current diagnosis will be completed
+and interpreted under its frozen rules. If raw organ transfer remains disappointing
+after the one permitted recipient-protected sharing test, Stage 2 may pivot toward
+hierarchical metadata attributes, cross-cutting biological programs, or continuous
+expert-residual representations. Any such pivot must retain the organ and pooled
+baselines and pass donor/study-disjoint, seed/mask stability, anti-collapse,
+held-out-utility, and confound-control gates.
 
 ## 2026-07-28 — Seed-factorized stability diagnosis frozen
 

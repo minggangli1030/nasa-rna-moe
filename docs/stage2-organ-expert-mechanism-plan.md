@@ -5,15 +5,23 @@
 
 ## Decision
 
-Stage 2 remains anchored on the organ experts. Its primary objective is not to replace
-organ identity with another label-free partition. It is to determine what the
-replicated organ specialists learn differently, whether those differences predict
-helpful or harmful transfer between organs, and whether the input-only router uses the
-same functional structure.
+Stage 2 is representation-first and remains anchored *for the current diagnosis* on
+the independently validated organ experts. Organ is the strongest tested
+specialization axis and therefore the right controlled starting point, but it is not
+a permanent restriction on the MoE or on the scientific question.
 
-Label-free discovery is demoted to an optional secondary analysis. It may test for
-continuous or within-organ structure after the organ-expert mechanism is established,
-but it cannot replace the organ axis or control the primary Stage 2 decision.
+The immediate objective is to determine what the replicated organ specialists learn
+differently, whether those differences predict helpful or harmful transfer between
+organs, and whether the input-only router uses the same functional structure. The
+frozen seed-stability diagnosis must finish without changing its organ edges,
+protocol, or decision rules.
+
+After that diagnosis, the project may expand or pivot to hierarchical attributes,
+cross-cutting biological programs, or continuous residual representations if raw
+organ transfer is not sufficiently reproducible. Such a pivot would move away from
+organ-to-organ transfer as the primary mechanism; it would not abandon the validated
+organ experts as a benchmark and control, nor would it abandon MoE representation
+learning.
 
 ## Stage 1 premise
 
@@ -323,18 +331,34 @@ requires study-disjoint evaluation, seed replication, organ-balanced and
 donor-atomic sampling, platform/study controls, random donor controls, and both the
 same-compute and same-recipient-exposure comparisons above.
 
-### Phase 4 — optional within-organ/label-free extension
+### Phase 4 or post-diagnosis pivot — broader representation structure
 
-Only after Phases 1–3 pass:
+Broader structure is considered only after the frozen seed-stability diagnosis, not
+by modifying the experiment while it is running:
 
-- ask whether continuous residual factors explain variation left within an organ;
-- require anti-collapse, effective-K, seed/mask stability, and study-confound gates;
-- compare against the organ router rather than treating organ identity as a nuisance;
-- keep this result secondary unless it improves held-out utility and predicts
-  transfer.
+- if organ sharing is reproducibly helpful, retain organ as the anchor and test
+  hierarchical or factorized extensions;
+- if the organ map is reproducible but mostly harmful, preserve organ isolation and
+  search for narrower shared modules that can transfer without overwriting
+  recipient-specific signal; and
+- if instability remains after the single prespecified recipient-protected sharing
+  test, stop treating raw organ-to-organ transfer as the primary Stage 2 mechanism
+  and pivot to a broader representation-discovery question.
 
-Do not repeat the failed de novo label-free soft-mixture configuration as the primary
-Stage 2 experiment.
+Candidate axes include organ subregion, cell-composition or cell-state proxies, sex,
+age, disease or perturbation state, immune/stress/metabolic/mitochondrial programs,
+platform-invariant factors, and continuous expert-residual directions. An axis is
+eligible only when metadata quality, sample support, inference-time availability,
+and confound controls are adequate.
+
+Any broader representation must pass nested donor/study-disjoint development,
+seed/mask stability, anti-collapse and effective-K checks, predictive utility beyond
+organ and pooled baselines, and platform/study/disease confound audits. A new
+untouched multisource cohort is still required for external confirmation.
+
+Do not repeat the failed de novo label-free soft-mixture configuration. Learn or test
+residual structure conditioned on, or explicitly compared against, the replicated
+organ benchmark.
 
 ## Entry and stopping rules
 
@@ -382,7 +406,10 @@ evidence.
 | 9 | Spaceflight adaptation | Does organ-aware pretraining improve a separately frozen spaceflight task under severe data scarcity? | task-specific protocol; no reconstruction-to-outcome leap |
 | 10 | Parameter-efficient expert systems | Can shared low-rank or compositional adapters preserve the 3–4% gain with less storage and active compute? | same-data, same-update systems benchmark |
 
-The strongest near-term novelty is not another clustering visualization. It is the
-held-out predictive link between expert mechanism and directed transfer. Hierarchical
-or label-free discovery becomes compelling only if it adds utility beyond the
-replicated organ route and survives study/platform confounding.
+The intended advance is not to find a lucky organ pair. It is to learn a reproducible
+rule that separates helpful shared gradients from domain-specific interference across
+trunks, optimization replicates, donors, and eventually independent studies. Organ is
+the first validated test bed for that rule, not the only admissible representation.
+Hierarchical, attributed, or latent discovery becomes compelling only if it adds
+held-out utility beyond the replicated organ and pooled baselines and survives
+study/platform confounding.

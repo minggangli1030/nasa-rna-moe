@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 12:53 PDT / 2026-07-28 19:53 UTC
+**Updated:** 2026-07-28 12:55 PDT / 2026-07-28 19:55 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -273,6 +273,13 @@ when older chronology or exact intermediate results are needed.
   with at least three stable-helpful edges; a reproducible but mostly harmful map
   pivots toward negative-transfer avoidance/selective sharing; a still-unstable map
   gets one recipient-protected sharing implementation before a pivot decision.
+- Stage 2 is explicitly representation-first. Organ is the strongest independently
+  validated specialization axis and the controlled object of the running diagnosis,
+  not a permanent restriction on the MoE. No active protocol changes. After the
+  diagnosis, a disappointing organ-transfer result may trigger a prespecified
+  protected-sharing test and then a pivot toward hierarchical attributes,
+  cross-cutting biological programs, or continuous expert-residual structure under
+  donor/study-disjoint, stability, anti-collapse, and confound-control gates.
 - Exact input-bound commit
   `3a27ffabdcb6d2a4209006452958b30cf0fff520` is deployed on both GPU hosts.
   The diagnosis launched at 19:52 UTC. Primary screen

@@ -97,3 +97,17 @@ Exact input-bound commit
 Both detached sessions passed their input hashes and reached 98–100% GPU
 utilization on the first combination. The active two-hour monitor is
 `stage-2-seed-stability-diagnosis`.
+
+## Post-diagnosis scope
+
+This diagnosis decides whether raw organ-to-organ addition is reproducible enough to
+remain the primary Stage 2 mechanism. It does not bind the broader MoE project to
+organ labels alone.
+
+Organ remains the independently validated benchmark and control. If the diagnosis
+and the one permitted recipient-protected sharing test are disappointing, the
+project may pivot to hierarchical attributes, cross-cutting biological programs, or
+continuous expert-residual representations under the same donor/study-disjoint,
+seed-stability, anti-collapse, and confound-control gates. That decision will be
+made from the completed diagnosis; it must not retroactively change the running
+protocol or turn an unstable edge into a selected result.
