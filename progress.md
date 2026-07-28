@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-28 13:50 PDT / 2026-07-28 20:50 UTC
+**Last updated:** 2026-07-28 13:58 PDT / 2026-07-28 20:58 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -214,3 +214,19 @@ system now specifies:
 
 The July 30 deck was updated to this palette and type system. July 9 and July 16
 remain unchanged historical artifacts.
+
+## 2026-07-28 — Restrained color and readable-note correction
+
+The Anthropic merge was corrected so it does not flatten scientific comparisons
+into gray:
+
+- the main Stage 1 bar chart now uses neutral baseline, Atrium Sage for the known
+  specialist, Muted Blue for automatic hard routing, and Soft Sage for the blend;
+- sage and muted blue are canonical functional data accents but remain prohibited
+  as gratuitous surface decoration; and
+- every retained footnote, caveat, evidence label, and interpretive chart caption is
+  now at least 16 px. Notes are kept only when they change interpretation; otherwise
+  they should be removed.
+
+Slides 4–6 and 8–9 were rerendered at 1920×1080. The larger notes remain clear of
+content and centered pagination.

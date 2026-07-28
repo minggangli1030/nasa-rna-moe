@@ -62,11 +62,20 @@ component treatment.
 | Slate Medium | `#3d3d3a` | secondary high-legibility text and neutral data |
 | Clay | `#d97757` | single decisive accent or comparison |
 | Clay Deep | `#c6613f` | active/pressed clay and stronger negative emphasis |
+| Sage | `#7A8C6F` | primary positive or specialist data series |
+| Soft Sage | `#91A087` | secondary specialist or blended-routing series |
+| Muted Blue | `#798C91` | automatic-choice or alternate-method data series |
+| Deep Sage | `#62785B` | strongest verified positive value |
 
 Never use pure white, pure black, cool tech gray, neon, gradients, glows, or highly
 saturated decorative colors. Use flat solid surfaces. Scientific plots may retain a
 necessary diverging or categorical scale, but it must be muted, explained, and
 subordinate to the editorial palette outside the data region.
+
+The Atrium sage and muted blue are retained as **functional data accents**, not as
+decorative surface colors. A typical comparison may use neutral gray for baseline,
+Sage for a known specialist, Muted Blue for automatic hard routing, and Soft Sage
+for a blended route. Do not apply all accents merely because they are available.
 
 ### Typography
 
@@ -102,7 +111,7 @@ available, followed by the portable substitutes above for reproducible rendering
 
 | Role | Family | Size | Line height | Weight |
 | --- | --- | --- | --- | --- |
-| Caption | Anthropic Sans | 14–15 px | 1.4 | 400–600 |
+| Caption or footnote | Anthropic Serif or Sans | 16 px | 1.35–1.4 | 400–600 |
 | Compact body | Anthropic Serif | 16–18 px | 1.35–1.4 | 400 |
 | Body | Anthropic Serif | 20 px | 1.4 | 400 |
 | Subheading | Anthropic Serif or Sans | 24 px | 1.3 | 400–600 |
@@ -184,8 +193,10 @@ the composition, remove it.
   trends, uncertainty, and next-step decision trees.
 - Do not add decoration merely to satisfy a visual quota. Every visual must clarify
   a relationship, magnitude, sequence, or decision.
-- Use Slate Medium for a primary neutral series and Clay/Clay Deep for the one
-  comparison or interference series that requires attention.
+- Use neutral gray for a baseline, Sage for a primary specialist series, Muted Blue
+  for a distinct automatic method, and Soft Sage for a blend when those distinctions
+  are scientifically meaningful. Use Clay/Clay Deep for interference, warning, or
+  the single comparison that requires attention.
 - Use Oat Warm, Ivory Light, and Stone for tracks, reference bands, and neutral
   areas.
 - Use Slate Dark for axes and labels; keep Stone grid lines sparse and low-opacity.
@@ -216,6 +227,10 @@ the composition, remove it.
   --manilla: #f5e3c7;
   --clay: #d97757;
   --clay-deep: #c6613f;
+  --sage: #7A8C6F;
+  --sage-soft: #91A087;
+  --muted-blue: #798C91;
+  --sage-deep: #62785B;
 
   --font-anthropic-serif:
     "Anthropic Serif", "Source Serif 4", Georgia, Charter, serif;
@@ -225,7 +240,7 @@ the composition, remove it.
   --font-anthropic-mono:
     "Anthropic Mono", "JetBrains Mono", "SF Mono", Menlo, monospace;
 
-  --text-caption: 14px;
+  --text-caption: 16px;
   --text-body-sm: 16px;
   --text-body: 20px;
   --text-subheading: 24px;
@@ -245,6 +260,19 @@ the composition, remove it.
 These tokens describe the presentation implementation, not a web-product UI. Omit
 site-only components such as cookie banners, global navigation, or marketing CTAs
 unless the presentation itself genuinely requires an analogous function.
+
+### Footnote policy
+
+- Do not use tiny-print footnotes. Any caveat, cohort label, metric definition, or
+  evidence boundary important enough to keep must render at **16 px or larger** at
+  1920×1080.
+- Rewrite important notes into one short sentence and give them a reserved footer
+  lane or a clearly associated caption.
+- If a note is redundant, operational trivia, or unnecessary for interpreting the
+  slide, remove it instead of shrinking it.
+- Footer notes must not collide with centered pagination or sit against the viewport
+  edge. Chart captions follow the same 16 px minimum when they carry interpretive
+  meaning.
 
 ## Biweekly scientific narrative
 
@@ -338,6 +366,8 @@ For every slide:
     decorative window frame.
 16. Confirm captions, caveats, and callouts do not collide with the pagination lane
     or clip at any viewport edge.
+17. Keep every retained footnote at 16 px or larger; delete any note that does not
+    materially affect interpretation.
 
 ## Scientific presentation safeguard
 

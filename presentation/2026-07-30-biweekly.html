@@ -12,9 +12,9 @@
     --paper:#f0eee6;--panel:#faf9f5;--ink:#141413;--muted:#3d3d3a;
     --rule:#cccbc8;--cloud-medium:#b0aea5;--cloud-dark:#87867f;
     --oat-warm:#e3dacc;--manilla:#f5e3c7;
-    --teal:#87867f;--teal2:#b0aea5;--soft:#e3dacc;
-    --blue:#87867f;--gold:#d97757;--red:#c6613f;--green:#3d3d3a;
-    --sage:#87867f;--terra:#d97757;--sand:#e3dacc;
+    --teal:#7A8C6F;--teal2:#91A087;--soft:#e3dacc;
+    --blue:#798C91;--gold:#d97757;--red:#c6613f;--green:#62785B;
+    --sage:#7A8C6F;--terra:#d97757;--sand:#e3dacc;
     --mono:"Anthropic Mono","JetBrains Mono","SF Mono",Menlo,Consolas,monospace;
     --serif:"Anthropic Serif","Source Serif 4",Georgia,Charter,serif;
     --sans:"Anthropic Sans",Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
@@ -89,11 +89,11 @@
   .cell:nth-child(11n+3){background:var(--manilla,#f5e3c7)}
   .cell.ref{background:var(--cloud-medium,#b0aea5)}
   .matrix-wrap{position:relative}
-  .matrix-label{font:15px var(--sans);color:var(--muted);text-align:center;margin-top:6px}
+  .matrix-label{font:16px var(--sans);color:var(--muted);text-align:center;margin-top:6px}
   .pending{position:absolute;inset:36% 8%;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(240,238,230,.94);border:1px solid var(--terra);border-radius:24px;color:var(--ink);font:700 14px var(--sans)}
   .heatmap-img{display:block;width:100%;max-height:74vh;object-fit:contain;background:transparent;border:0;border-radius:0;mix-blend-mode:multiply}
-  .foot{margin-top:13px;color:var(--muted);font:14px var(--sans)}
-  .footer-label{position:absolute;left:3vw;bottom:14px;color:var(--muted);font:12px var(--sans);letter-spacing:.02em}
+  .foot{margin-top:13px;color:var(--muted);font:16px/1.35 var(--serif)}
+  .footer-label{position:absolute;left:3vw;bottom:14px;color:var(--muted);font:16px/1.3 var(--sans);letter-spacing:-.005em}
   .slide-dots{position:fixed;z-index:20;left:50%;bottom:14px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;padding:5px 9px;border-radius:999px;background:rgba(240,238,230,.86)}
   .slide-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(135,134,127,.42);cursor:pointer;transition:width 120ms ease,height 120ms ease,background 120ms ease}
   .slide-dot[aria-current="true"]{width:11px;height:11px;background:var(--ink)}
@@ -224,7 +224,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-label">Post-access QC-amended external evaluation · 821 samples / 63 connected studies · all 3 seeds retained</div>
+  <div class="footer-label">QC-amended ARCHS4 evaluation · 821 samples · 63 studies · all 3 seeds retained</div>
 </section>
 
 <section class="slide">
@@ -242,7 +242,7 @@
     </div>
     <div class="callout"><p><strong>What repeats:</strong> the improvement survives different routing choices, independent trainings, and both dataset directions. It does not appear in every individual study.</p></div>
   </div>
-  <div class="footer-label">Every repeat had an uncertainty interval above zero · all three repeats retained</div>
+  <div class="footer-label">All three repeats improved · every uncertainty interval stayed above zero</div>
 </section>
 
 <section class="slide">

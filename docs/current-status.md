@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 13:50 PDT / 2026-07-28 20:50 UTC
+**Updated:** 2026-07-28 13:58 PDT / 2026-07-28 20:58 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -178,12 +178,13 @@ The July 30 package is:
 All current and future decks use
 `presentation/design.md`. Its Anthropic-inspired field-journal system uses parchment
 surfaces, Anthropic Serif/Sans tokens with portable Source Serif 4/Inter fallbacks,
-and a restrained clay accent. Presentations remain audience-first, visual-first, and
+a restrained clay accent, plus Atrium sage and muted blue only where functional data
+distinctions require them. Presentations remain audience-first, visual-first, and
 script-free. Biweekly updates use plan → results → next, with results occupying most
-of the talk. The specification enforces a 14 px minimum for center content,
-frameless chart-dominant result slides, and centered progress dots with the active
-slide darkened. July 9 and July 16 rendered decks remain unchanged historical
-artifacts.
+of the talk. The specification enforces a 14 px minimum for center content, a 16 px
+minimum for retained footnotes, frameless chart-dominant result slides, and centered
+progress dots with the active slide darkened. July 9 and July 16 rendered decks
+remain unchanged historical artifacts.
 
 ## Preserved recovery assets
 
