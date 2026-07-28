@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 08:06 PDT / 2026-07-28 15:06 UTC
+**Last updated:** 2026-07-28 10:09 PDT / 2026-07-28 17:09 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,31 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-28 — Primary additive complete; checksum-status race repaired
+
+Primary additive seed 101 completed all 40 arms at 15:08:50 UTC with
+`status=complete`, `mechanical_only=false`, and
+`best_seed_selection_allowed=false`. The detached session exited normally, the A100
+is idle, all training/evaluation processes are gone, and 36 GB disk remains free.
+
+The launcher's original `FULL_SHA256SUMS` had exactly one mismatch:
+`STAGE2_ADDITIVE_STATUS`. The launcher wrote the manifest while that mutable status
+still said RUNNING, then changed it to COMPLETE. No scientific output differed.
+The continuation was repaired before transfer to verify every original entry except
+that status line, then generate a post-completion `IMMUTABLE_SHA256SUMS` excluding
+only the mutable status and old manifest. Primary seed 101 passes all 129 immutable
+entries; immutable-manifest SHA256 is
+`13ff3a1e951aaf76d0034a07c546f2193624af8037f96e3c2c89904514a5bfa1`.
+Only one corrected continuation remains after terminating the exact orphaned watcher
+PIDs.
+
+Parallel seed 17 remains complete at 40/40. At 17:08 UTC, seed 42 was healthy at
+35/40 arms with `mechanical_only=false`, 98% GPU utilization, 6.6 GB allocated, and
+no failure signature. At ~9.6 arms/hour it should finish around 10:35–10:50 PDT.
+The checksum-gated continuation should transfer, evaluate, verify, and retrieve the
+three-seed additive result around 10:45–11:10 PDT. No additive efficacy outcome has
+been accessed and there is no scientific blocker.
 
 ## 2026-07-28 — Additive seed 17 complete; seeds 42 and 101 near completion
 

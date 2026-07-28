@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 08:06 PDT / 2026-07-28 15:06 UTC
+**Updated:** 2026-07-28 10:09 PDT / 2026-07-28 17:09 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -220,25 +220,34 @@ when older chronology or exact intermediate results are needed.
   All code, expression, manifest, pooled checkpoints, gene definitions, schedules,
   and edge-freeze hashes passed before launch. Seed 17 completed all 40 arms at
   13:29 UTC with `status=complete` and `mechanical_only=false`. The launcher handed
-  off automatically to seed 42, which was healthy at 15/40 arms at 15:05 UTC with
+  off automatically to seed 42, which was healthy at 35/40 arms at 17:08 UTC with
   `mechanical_only=false`, 98% GPU utilization, and 6.6 GB allocated. The observed
-  seed-42 rate is ~9.3 arms/hour; projected completion is 10:35–11:05 PDT.
+  seed-42 rate is ~9.6 arms/hour; projected completion is 10:35–10:50 PDT.
 - The first primary additive watcher correctly refused to infer success from the
   failed top-level launcher marker. After direct verification of all 60 training arms
   and the corrected 56-edge replication evaluation, that watcher was retired and
   exact additive seed 101 launched at 11:04 UTC in detached session
   `stage2-additive-seed101`. It uses the same clean commit and frozen hashes at
-  `/media/volume/moe-reboot/results/stage2_additive_be1a6f9_seed101`. At 15:05 UTC it
-  was healthy at 39/40 arms with `mechanical_only=false`, 100% GPU utilization, and
-  6.6 GB allocated. Its observed rate is ~9.7 arms/hour and projected completion is
-  approximately 08:10–08:20 PDT.
+  `/media/volume/moe-reboot/results/stage2_additive_be1a6f9_seed101`. It completed
+  all 40 arms at 15:08:50 UTC with `status=complete`,
+  `mechanical_only=false`, and `best_seed_selection_allowed=false`; the primary GPU
+  is now idle.
+- The additive launcher generated its original `FULL_SHA256SUMS` immediately before
+  rewriting the mutable status file from RUNNING to COMPLETE, causing exactly that
+  status entry—and no scientific file—to mismatch. The continuation was repaired
+  before transfer to verify the original manifest with only the status entry
+  excluded and to generate a post-completion `IMMUTABLE_SHA256SUMS` that excludes
+  the mutable status and old manifest. Primary seed 101 passes all 129 immutable
+  entries; immutable-manifest SHA256 is
+  `13ff3a1e951aaf76d0034a07c546f2193624af8037f96e3c2c89904514a5bfa1`.
 - Detached local session `stage2-additive-continuation` is now checksum-gated on both
   training roots. After all three additive seeds finish, it will verify both remote
   checksum manifests and run-metadata contracts, transfer only the compact parallel
   seed-17/42 outputs to a distinct primary path, run the frozen three-seed additive
   evaluator, verify its output manifest, and retrieve the compact result locally.
-  The current three-seed result window is approximately 10:45–11:20 PDT; no additive
-  outcome has been accessed yet.
+  The corrected continuation is the only live local watcher; orphaned processes from
+  its restart were terminated by exact PID. The current three-seed result window is
+  approximately 10:45–11:10 PDT; no additive outcome has been accessed yet.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and
