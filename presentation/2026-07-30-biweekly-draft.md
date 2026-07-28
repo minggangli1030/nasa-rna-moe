@@ -11,6 +11,8 @@ Rendered-deck checkpoint: `presentation/2026-07-30-biweekly.html` now implements
 this nine-slide narrative with keyboard navigation and print CSS. Slide 8 contains
 the checksum-verified frozen all-seed Stage 2 heatmap. Retain the GTEx
 development-only/study-universality boundary in both slide text and speaker notes.
+Use `presentation/2026-07-30-readiness.md` as the final numeric, claim, and delivery
+checklist.
 
 ## Slide 1 — The question
 

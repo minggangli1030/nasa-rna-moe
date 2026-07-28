@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 06:06 PDT / 2026-07-28 13:06 UTC
+**Updated:** 2026-07-28 08:06 PDT / 2026-07-28 15:06 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -218,25 +218,26 @@ when older chronology or exact intermediate results are needed.
   in detached session `stage2-additive-seeds17-42`, result root
   `/home/exouser/stage2_parallel/results/stage2_additive_be1a6f9_seed17_42`.
   All code, expression, manifest, pooled checkpoints, gene definitions, schedules,
-  and edge-freeze hashes passed before launch. At 13:04 UTC seed 17 was healthy at
-  35/40 arms with `mechanical_only=false`, 98% GPU utilization, and 6.6 GB allocated.
-  Its observed rate is ~9.6 arms/hour; seed 17 should finish around 06:30–06:50 PDT
-  and sequential seed 42 around 10:40–11:20 PDT.
+  and edge-freeze hashes passed before launch. Seed 17 completed all 40 arms at
+  13:29 UTC with `status=complete` and `mechanical_only=false`. The launcher handed
+  off automatically to seed 42, which was healthy at 15/40 arms at 15:05 UTC with
+  `mechanical_only=false`, 98% GPU utilization, and 6.6 GB allocated. The observed
+  seed-42 rate is ~9.3 arms/hour; projected completion is 10:35–11:05 PDT.
 - The first primary additive watcher correctly refused to infer success from the
   failed top-level launcher marker. After direct verification of all 60 training arms
   and the corrected 56-edge replication evaluation, that watcher was retired and
   exact additive seed 101 launched at 11:04 UTC in detached session
   `stage2-additive-seed101`. It uses the same clean commit and frozen hashes at
-  `/media/volume/moe-reboot/results/stage2_additive_be1a6f9_seed101`. At 13:03 UTC it
-  was healthy at 19/40 arms with `mechanical_only=false`, 100% GPU utilization, and
-  6.6 GB allocated. Its observed rate is ~9.6 arms/hour and projected completion is
-  approximately 08:05–08:35 PDT.
+  `/media/volume/moe-reboot/results/stage2_additive_be1a6f9_seed101`. At 15:05 UTC it
+  was healthy at 39/40 arms with `mechanical_only=false`, 100% GPU utilization, and
+  6.6 GB allocated. Its observed rate is ~9.7 arms/hour and projected completion is
+  approximately 08:10–08:20 PDT.
 - Detached local session `stage2-additive-continuation` is now checksum-gated on both
   training roots. After all three additive seeds finish, it will verify both remote
   checksum manifests and run-metadata contracts, transfer only the compact parallel
   seed-17/42 outputs to a distinct primary path, run the frozen three-seed additive
   evaluator, verify its output manifest, and retrieve the compact result locally.
-  The current three-seed result window is approximately 10:45–11:30 PDT; no additive
+  The current three-seed result window is approximately 10:45–11:20 PDT; no additive
   outcome has been accessed yet.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
@@ -387,10 +388,15 @@ diagnostic context; it cannot be used to select organs, seeds, or conditions.
 | Deadline | Required state | Status |
 | --- | --- | --- |
 | Sunday | preliminary result, bounded claim, content outline | complete |
-| Monday | complete HTML slide draft and primary-result figures | next |
-| Tuesday | numeric cross-check against frozen JSON and visual QA | pending |
+| Monday | complete HTML slide draft and primary-result figures | complete |
+| Tuesday | numeric cross-check, static QA, and readiness checklist | complete |
 | Wednesday | final speaking notes, likely questions, rehearsal pass | pending |
 | Thursday 08:00 PDT | presentation-ready package and readiness summary | pending |
+
+The live readiness checklist is
+`presentation/2026-07-30-readiness.md`. The deck is already defensible from the
+frozen Stage 1 external result and completed Stage 2 substitution result; the
+additive result is a bounded update, not a prerequisite for presentation readiness.
 
 The deck must always show the 821-sample/63-study amended cohort, all three retained
 seeds, the neutral pooled-adapter/random controls, and the post-access QC-amended

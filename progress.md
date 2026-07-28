@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 06:06 PDT / 2026-07-28 13:06 UTC
+**Last updated:** 2026-07-28 08:06 PDT / 2026-07-28 15:06 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,28 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-28 — Additive seed 17 complete; seeds 42 and 101 near completion
+
+Parallel additive seed 17 completed all 40 arms at 13:29 UTC with
+`status=complete` and `mechanical_only=false`. Its launcher handed off normally to
+seed 42. At 15:05 UTC seed 42 was healthy at 15/40 arms, 98% GPU utilization,
+6.6 GB allocated, and no failure signature. Its observed rate is approximately
+9.3 arms/hour, projecting completion around 10:35–11:05 PDT.
+
+At the same checkpoint, primary additive seed 101 was healthy at 39/40 arms with
+`mechanical_only=false`, 100% GPU utilization, 6.6 GB allocated, and no failure
+signature. It should finish around 08:10–08:20 PDT. The detached continuation remains
+healthy and gated on both completed checksum manifests; the updated three-seed
+evaluation window is approximately 10:45–11:20 PDT. No additive outcome has been
+accessed.
+
+Presentation readiness advanced in parallel without touching any scientific run.
+The dedicated checklist is now `presentation/2026-07-30-readiness.md`. The existing
+nine-slide deck, speaking draft, frozen Stage 1 numbers, substitution heatmap,
+post-access QC-amended label, and study-universality boundary are all present. The
+additive result will be incorporated only as a bounded development update and is not
+a prerequisite for a defensible Thursday presentation.
 
 ## 2026-07-28 — Additive runs at 19/40 and 35/40; continuation armed
 
