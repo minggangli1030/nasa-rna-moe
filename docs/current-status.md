@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 13:11 PDT / 2026-07-28 20:11 UTC
+**Updated:** 2026-07-28 13:18 PDT / 2026-07-28 20:18 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -307,7 +307,12 @@ when older chronology or exact intermediate results are needed.
   The July 30 deck now uses the versioned Atrium presentation theme; July 9 and
   July 16 remain unchanged historical artifacts. Future decks must start from
   `presentation/atrium-theme-template.md` and confirm topic, audience, duration, and
-  intended takeaway before drafting.
+  intended takeaway before drafting. The template now requires a larger central
+  canvas with approximately 3vw outer margins, prohibits functionless corner
+  ornaments, restores the explicit 180 ms slide transition, and gives biweekly decks
+  a strict plan → results → next structure with results occupying most of the talk.
+  Failure/debug chronology belongs in notes or Q&A unless it changes the evidence
+  label or decision.
   Its structural check passes with nine slides, nine closures, exactly one italic
   terracotta word per main headline, navigation, and print CSS. An automated
   presentation-readiness heartbeat has been deleted. The two-hour stability

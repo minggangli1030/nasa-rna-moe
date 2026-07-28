@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 13:11 PDT / 2026-07-28 20:11 UTC
+**Last updated:** 2026-07-28 13:18 PDT / 2026-07-28 20:18 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,22 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-28 — Atrium layout and biweekly narrative refined
+
+The reusable presentation template and July 30 deck now use a larger central canvas:
+outer padding is reduced to approximately 3vw, the content width ceiling is expanded,
+and result figures may occupy more slide height. The functionless upper-right arch
+trio was removed; arch shapes remain only where they frame content, encode a number,
+or provide navigation.
+
+The explicit 180 ms ease-in-out slide transition from the earlier deck is restored,
+with immediate movement for reduced-motion users. The biweekly narrative rule is now
+plan → results → next, with 60–70% of the deck allocated to results. Failure and
+debugging chronology is excluded from the main story unless it materially changes
+the evidence label or scientific decision. The July 30 deck now summarizes the QC
+amendment in one sentence and devotes its main sequence to Stage 1 and Stage 2
+results, controls, bounded interpretation, and the active stability diagnosis.
 
 ## 2026-07-28 — Repository cleanup and Atrium presentation system
 

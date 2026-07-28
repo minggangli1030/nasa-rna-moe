@@ -22,10 +22,8 @@
   body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.4}
   .deck{display:flex;width:100vw;height:100vh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none}
   .deck::-webkit-scrollbar{display:none}
-  .slide{position:relative;flex:0 0 100vw;height:100vh;overflow:hidden;scroll-snap-align:start;display:flex;align-items:center;padding:52px 5vw;border-right:1px solid var(--rule)}
-  .slide::before{content:"";position:absolute;top:34px;right:7vw;width:15px;height:25px;border-radius:15px 15px 0 0;background:var(--sage);box-shadow:23px 0 var(--terra),46px 0 var(--sand);opacity:.92}
-  .slide::after{content:"";position:absolute;top:39px;right:calc(7vw + 4px);width:15px;height:25px;border:1px solid var(--terra);border-radius:15px 15px 0 0;opacity:.55}
-  .inner{position:relative;z-index:1;width:100%;max-width:1280px;margin:auto}
+  .slide{position:relative;flex:0 0 100vw;height:100vh;overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always;display:flex;align-items:center;padding:30px 3vw;border-right:1px solid var(--rule)}
+  .inner{position:relative;z-index:1;width:100%;max-width:1440px;margin:auto}
   .eyebrow{display:inline-block;margin-bottom:16px;color:var(--terra);font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.18em}
   h1,h2,h3,p{margin-top:0}
   h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--ink)}
@@ -37,7 +35,7 @@
   .lede{font-size:25px;line-height:1.4;color:var(--muted);max-width:74ch}
   ul{margin:0;padding-left:22px}
   li{font-size:20px;margin:0 0 8px}
-  .slide-num{position:absolute;z-index:2;right:4vw;bottom:18px;width:38px;height:47px;display:grid;place-items:center;padding-top:7px;border-radius:38px 38px 0 0;background:var(--sage);color:var(--paper);font:700 12px var(--sans)}
+  .slide-num{position:absolute;z-index:2;right:2.6vw;bottom:16px;width:38px;height:47px;display:grid;place-items:center;padding-top:7px;border-radius:38px 38px 0 0;background:var(--sage);color:var(--paper);font:700 12px var(--sans)}
   .slide-num::before{content:"";position:absolute;inset:4px -5px -5px 4px;border:1px solid var(--terra);border-radius:38px 38px 0 0;z-index:-1}
   .meta{display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font:14px var(--mono);margin-top:20px}
   .meta b{color:var(--ink)}
@@ -93,11 +91,11 @@
   .pending{position:absolute;inset:36% 8%;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(247,242,233,.94);border:1px solid var(--terra);border-radius:30px 30px 4px 4px;color:var(--ink);font:700 14px var(--sans)}
   .matrix-wrap{position:relative;isolation:isolate;padding:7px 0 0 7px}
   .matrix-wrap::before{content:"";position:absolute;inset:0 -7px -7px 0;border:1px solid var(--terra);border-radius:220px 220px 0 0;z-index:-1}
-  .heatmap-img{display:block;width:100%;max-height:62vh;object-fit:contain;background:transparent;border:1px solid var(--rule);border-radius:220px 220px 0 0;mix-blend-mode:multiply}
+  .heatmap-img{display:block;width:100%;max-height:70vh;object-fit:contain;background:transparent;border:1px solid var(--rule);border-radius:220px 220px 0 0;mix-blend-mode:multiply}
   .foot{margin-top:13px;color:var(--muted);font:13px var(--mono)}
-  .footer-label{position:absolute;left:5vw;bottom:16px;color:var(--muted);font:12px var(--sans);letter-spacing:.02em}
+  .footer-label{position:absolute;left:3vw;bottom:14px;color:var(--muted);font:12px var(--sans);letter-spacing:.02em}
   @media(max-height:780px) and (min-width:861px){
-    .slide{padding:28px 5vw}.eyebrow{margin-bottom:10px}h1{font-size:52px}h2{font-size:37px}
+    .slide{padding:22px 3vw}.eyebrow{margin-bottom:10px}h1{font-size:52px}h2{font-size:37px}
     p,.callout p{font-size:17px}li{font-size:17px}.stats{margin:12px 0}.stat{min-height:88px;padding:10px 12px}.stat .n{font-size:28px}
     .pipeline{margin:15px 0}.pipe{min-height:94px;padding:10px}.pipe b{font-size:16px}.pipe span{font-size:13px}
     td{font-size:15px;padding:8px 10px}.bars{gap:9px}.bar-row{grid-template-columns:205px 1fr 85px}
@@ -106,6 +104,9 @@
   @media print{
     html,body{height:auto;overflow:visible}.deck{display:block;height:auto;overflow:visible}
     .slide{width:13.333in;height:7.5in;page-break-after:always;border:0}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .deck{scroll-behavior:auto}
   }
 </style>
 </head>
@@ -147,36 +148,36 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">The lockbox worked</span>
-    <h2>First access failed <em>closed</em> on six low-coverage samples</h2>
+    <span class="eyebrow">What was completed</span>
+    <h2>A frozen external evaluation ran from extraction through <em>results</em></h2>
     <div class="cols">
       <div class="panel">
-        <span class="badge warn">Prespecified QC floor: 14,000 nonzero genes</span>
-        <h3 style="margin-top:14px">Observed failures</h3>
+        <span class="badge">Implemented and frozen</span>
+        <h3 style="margin-top:14px">End-to-end protocol</h3>
         <ul>
-          <li>Five liver samples: only 19–304 nonzero genes.</li>
-          <li>One lung sample: 11,235 nonzero genes.</li>
-          <li>Zero expression rows and zero efficacy metrics were published.</li>
+          <li>Hash-bound extraction, scoring, and study-macro evaluation.</li>
+          <li>Three prespecified seeds; pooled, routed, and capacity controls.</li>
+          <li>No ARCHS4 tuning, checkpoint selection, or best-seed selection.</li>
         </ul>
       </div>
       <div class="panel">
-        <span class="badge">Versioned amendment</span>
-        <h3 style="margin-top:14px">The bounded decision</h3>
+        <span class="badge">Final evaluation set</span>
+        <h3 style="margin-top:14px">Usable external evidence</h3>
         <ul>
-          <li>Exclude exactly the six failures.</li>
-          <li>Lower no threshold; add no replacements; drop no organ.</li>
-          <li>No fine-tuning, best-seed selection, or estimand change.</li>
+          <li>821 samples from 63 connected studies.</li>
+          <li>All eight target organs retained.</li>
+          <li>Equal study weighting within equal organ weighting.</li>
         </ul>
       </div>
     </div>
-    <div class="callout"><p><strong>Evidence label:</strong> post-access QC-amended external evaluation—not a pristine preregistered confirmation. A new untouched cohort is still required for that stronger claim.</p></div>
+    <div class="callout"><p><strong>One necessary qualification:</strong> six rows failed the unchanged coverage rule and were excluded without replacement, so the result is labeled post-access QC-amended external evaluation.</p></div>
   </div><span class="slide-num">03</span>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Amended external cohort</span>
-    <h2>All eight organs remain <em>represented</em> across heterogeneous studies</h2>
+    <span class="eyebrow">External evaluation coverage</span>
+    <h2>The test set retains all eight organs across heterogeneous <em>studies</em></h2>
     <div class="stats">
       <div class="stat"><div class="n">821</div><div class="label">passing ARCHS4 samples</div></div>
       <div class="stat"><div class="n">63</div><div class="label">connected study groups</div></div>
@@ -184,8 +185,8 @@
       <div class="stat"><div class="n">10,000</div><div class="label">paired study-bootstrap draws</div></div>
     </div>
     <div class="cols">
-      <div class="panel"><h3>Liver</h3><p><strong>42 samples / 7 studies</strong></p><p>One deficient study removed by the unchanged expression-coverage rule.</p></div>
-      <div class="panel"><h3>Other seven organs</h3><p><strong>8 studies each</strong></p><p>Adipose, brain, colon, heart, lung, skeletal muscle, and skin retain frozen coverage.</p></div>
+      <div class="panel"><h3>Liver</h3><p><strong>42 samples / 7 studies</strong></p><p>Retains multi-study coverage in the final evaluation.</p></div>
+      <div class="panel"><h3>Other seven organs</h3><p><strong>8 studies each</strong></p><p>Adipose, brain, colon, heart, lung, skeletal muscle, and skin all remain represented.</p></div>
     </div>
     <p class="foot">Primary unit: connected study, aggregated equally within organ. Most ARCHS4 donor identities remain title-derived proxies, not verified identities.</p>
   </div><span class="slide-num">04</span>
@@ -298,7 +299,7 @@
         <div class="claim"><b>Positive</b><p>Liver ← skin: +1.96%, 3/3 positive seeds, donor-bootstrap CI +1.65% to +2.24%.</p></div>
         <div class="claim"><b>Directional</b><p>Skeletal muscle ← lung was +0.81%; lung ← skeletal muscle was −0.38%. Neither is all-seed robust.</p></div>
         <div class="claim"><b>Policy</b><p>Protect recipient exposure first; add another organ only under a validated directional rule.</p></div>
-        <div class="callout"><p><strong>Next:</strong> freeze all six missing reciprocal directions, then test whether expert/pathway and router structure predicts transfer.</p></div>
+        <div class="callout"><p><strong>Next:</strong> complete the frozen 3×3 trunk-by-optimization stability diagnosis. Continue raw transfer only if a reproducible rule emerges; otherwise test recipient-protected sharing and then pivot toward broader MoE representations.</p></div>
       </div>
       <div class="matrix-wrap">
         <img class="heatmap-img" src="2026-07-30-stage2-additive-effects.png" alt="Eight frozen directional additive-transfer effects with three-seed counts and donor-bootstrap intervals">
@@ -311,13 +312,34 @@
 
 </main>
 <script>
-const deck=document.querySelector('.deck');
-document.addEventListener('keydown',e=>{
-  if(['ArrowRight','PageDown',' '].includes(e.key)) deck.scrollBy({left:innerWidth,behavior:'smooth'});
-  if(['ArrowLeft','PageUp'].includes(e.key)) deck.scrollBy({left:-innerWidth,behavior:'smooth'});
-  if(e.key==='Home') deck.scrollTo({left:0,behavior:'smooth'});
-  if(e.key==='End') deck.scrollTo({left:deck.scrollWidth,behavior:'smooth'});
-});
+(function(){
+  var deck=document.querySelector('.deck');
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var anim=null;
+  var duration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:180;
+  function current(){return Math.round(deck.scrollLeft/window.innerWidth);}
+  function go(i){
+    i=Math.max(0,Math.min(slides.length-1,i));
+    var start=deck.scrollLeft,end=i*window.innerWidth,dist=end-start;
+    if(anim)cancelAnimationFrame(anim);
+    if(duration===0||Math.abs(dist)<1){deck.scrollLeft=end;anim=null;return;}
+    var t0=null;
+    function step(ts){
+      if(t0===null)t0=ts;
+      var p=Math.min(1,(ts-t0)/duration);
+      var eased=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+      deck.scrollLeft=start+dist*eased;
+      if(p<1){anim=requestAnimationFrame(step);}else{anim=null;}
+    }
+    anim=requestAnimationFrame(step);
+  }
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(current()+1);}
+    if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(current()-1);}
+    if(e.key==='Home'){e.preventDefault();go(0);}
+    if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+  });
+})();
 </script>
 </body>
 </html>

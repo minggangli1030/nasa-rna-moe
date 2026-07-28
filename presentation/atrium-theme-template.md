@@ -53,23 +53,40 @@ The signature form has a fully rounded top and square bottom. Use it for:
 - image and chart areas;
 - portrait frames;
 - number tokens;
-- compact decorative elements; and
 - vertical bars, whose tops should read like arch windows.
 
 Behind each filled arch, place a thin terracotta outline arch offset by approximately
 4–6 pixels. The outline is an echo, not a heavy border.
 
-Use a small trio of sage, terracotta, and sand arches as a quiet recurring ornament.
-Do not let ornaments compete with the data.
+Do not place a recurring decorative arch trio in a corner. Every visible arch must
+carry a function: framing data or imagery, identifying a slide number, or encoding a
+quantity. If an ornament does not convey information or organize the composition,
+remove it.
 
 ### Lines, panels, and composition
 
 - Rules are one-pixel deep-olive lines at low opacity.
 - Compositions are asymmetric but visually balanced.
-- Preserve generous outer margins and clear negative space.
+- Use the canvas efficiently. Default slide padding should be approximately
+  `28–34px 3vw`, with central content allowed to occupy about 92–94% of the slide
+  width. Do not surround a small center block with a large unused perimeter.
+- Preserve deliberate whitespace *between* content groups, but do not confuse
+  oversized outer margins with clarity.
+- Let the primary figure or result use up to roughly 68–74% of slide height when it
+  remains legible.
 - Prefer one dominant idea, result, or graphic per slide.
 - Imagery and data frames must not have sharp top corners.
 - Avoid dense card grids, excessive borders, and dashboard-like layouts.
+
+### Slide transition
+
+- Keyboard navigation uses an explicit **180 ms** ease-in-out transition between
+  slides.
+- Keep this duration consistent across the deck; do not depend on the browser's
+  unspecified native smooth-scroll timing.
+- Respect `prefers-reduced-motion` by moving immediately when reduced motion is
+  requested.
+- Arrow keys, Page Up/Down, and Space must remain supported.
 
 ### Charts
 
@@ -83,6 +100,30 @@ Do not let ornaments compete with the data.
 - Preserve scientific uncertainty and claim boundaries; visual polish must not
   promote exploratory results into confirmed findings.
 
+## Biweekly scientific narrative
+
+Biweekly updates use a strict **plan → results → next** structure:
+
+1. **Plan/question — 10–15% of the deck.** State the scientific question, frozen
+   comparison, and what was completed.
+2. **Results — 60–70% of the deck.** Give the main quantitative findings the most
+   space. Show robustness, controls, uncertainty, and the bounded interpretation.
+3. **Next — 15–20% of the deck.** State the decision implied by the results, the
+   immediate experiment, and the criterion for continuing or pivoting.
+
+Do not narrate implementation or failure history as “tried A, failed; tried B,
+failed; finally C worked.” If a failure changes the scientific interpretation,
+cohort, or evidence label, disclose it once in a concise sentence beside the
+relevant result. Put debugging chronology, rejected alternatives, and technical
+incident details in speaker notes, backup slides, readiness documentation, or Q&A.
+
+Prefer:
+
+> Here was the plan. Here is what was completed. Here are the results and controls.
+> Here is what they justify doing next.
+
+The result section should be the largest portion of a biweekly deck.
+
 ## Slide-level checklist
 
 For every slide:
@@ -90,11 +131,16 @@ For every slide:
 1. Use the warm-cream background and Atrium type system.
 2. Give the main headline exactly one italic terracotta word.
 3. Use at most one primary visual hierarchy.
-4. Include the arch motif in a functional or quiet decorative role.
-5. Maintain generous margins and a low-density composition.
+4. Use the arch motif only when it has a framing, navigational, or quantitative
+   function.
+5. Fill the central canvas without oversized perimeter whitespace; retain breathing
+   room between content groups.
 6. Verify that no pure white, pure black, neon, saturated, or sharp-cornered imagery
    remains.
-7. Check legibility at 16:9 presentation scale and in exported print/PDF output.
+7. Verify the 180 ms transition and reduced-motion behavior.
+8. For biweekly decks, verify that results occupy most of the presentation and that
+   failure chronology is not part of the main narrative.
+9. Check legibility at 16:9 presentation scale and in exported print/PDF output.
 
 ## Scientific presentation safeguard
 

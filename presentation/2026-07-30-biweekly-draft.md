@@ -3,8 +3,11 @@
 Working title: **Do organ specialists transfer from clean GTEx to heterogeneous
 ARCHS4 studies?**
 
-Target: 9 slides, 8–10 minutes. The central result is positive, but every slide and
-spoken claim must distinguish the pristine GTEx validation from the
+Target: 9 slides, 8–10 minutes. Use a strict plan → results → next narrative:
+approximately one slide for the question, two for completed design/context, five for
+results and interpretation, and one result-led next-step close. Do not narrate
+debugging or failed attempts chronologically. The central result is positive, but
+every slide and spoken claim must distinguish the pristine GTEx validation from the
 `post_access_qc_amended_external_evaluation` in ARCHS4.
 
 Rendered-deck checkpoint: `presentation/2026-07-30-biweekly.html` now implements
@@ -46,26 +49,18 @@ Speaker note: “Freeze” did not mean stopping implementation. It meant comple
 hash-binding the extractor, scorer, evaluator, and decision rules before opening the
 test matrix.
 
-## Slide 3 — The lockbox did what it was supposed to do
+## Slide 3 — What was completed
 
-The first expression access stopped before publishing any expression rows or efficacy
-metric:
+Summarize the completed implementation and evaluation, not the debugging chronology:
 
-- five samples from one liver study had only 19–304 nonzero genes;
-- one lung sample had 11,235 nonzero genes;
-- the fixed minimum was 14,000.
+- hash-bound extraction, all-three-seed scoring, and study-macro evaluation;
+- pooled, true-organ, target-hidden router, random-K8, and pooled-adapter controls;
+- 821 final samples from 63 connected studies across all eight organs; and
+- no ARCHS4 tuning, checkpoint selection, or best-seed selection.
 
-Why metadata screening missed this:
-
-- metadata correctly established organ and study presence;
-- per-sample expression coverage is stored only in the sealed H5 matrix;
-- inspecting it earlier would itself have opened the test expression.
-
-Decision:
-
-- exclude exactly the six pre-existing QC failures;
-- lower no threshold, add no replacements, and drop no organ;
-- relabel all resulting evidence as post-access QC-amended.
+Required one-sentence qualification: six rows failed the unchanged coverage rule and
+were excluded without replacement, so the result is labeled post-access QC-amended.
+Keep the row-level failure details in Q&A/readiness notes rather than the main deck.
 
 ## Slide 4 — The amended external cohort still covers every organ
 
@@ -198,19 +193,21 @@ skeletal muscle ← lung is +0.811%, while lung ← skeletal muscle is −0.383%
 Neither is positive in all three seeds, so present this as evidence that asymmetry is
 plausible—not a universal biological law.
 
-Next, freeze all six missing reciprocal additive directions as one post-discovery
-follow-up set. Then test prospectively whether expert-minus-pooled pathway
-signatures and router preferences predict those directed effects better than
-expression similarity, sample-count, platform/study, and random controls.
+Next, complete the frozen 3×3 trunk-by-optimization stability diagnosis across the
+unchanged eight additive edges. Continue raw cross-organ addition only if a
+reproducible rule emerges. If the map is stable but mainly harmful, pivot toward
+negative-transfer avoidance/selective sharing. If optimization instability remains,
+test one recipient-protected sharing implementation and then pivot toward broader
+MoE representation axes if stability still fails.
 
 Development remains donor-disjoint GTEx evidence. Independent-study universality
 requires a genuinely new untouched multisource cohort; the completed QC-amended
 ARCHS4 cohort cannot be recycled as a pristine Stage 2 lockbox.
 
-Label-free routing is optional and secondary. It was originally included to add
-novelty by linking a co-routing map to the transfer map, but the completed de novo
-label-free pilots failed their utility/confound gates. Stage 2 therefore remains
-centered on the replicated organ experts.
+Organ is the strongest independently validated starting axis, not a permanent
+restriction. Broader hierarchical attributes, pathway programs, or continuous
+expert-residual representations become eligible only after the frozen diagnosis and
+must beat organ and pooled controls under the same stability and confound gates.
 
 Development-only execution checkpoint: on 1,826 GTEx calibration samples from 188
 held-out donors, the correctly named frozen expert ranks first for all 8 recipient
@@ -218,8 +215,9 @@ organs after averaging the three seeds. All 56 off-diagonal expert/recipient mea
 worse than pooled. Present this only as evidence that the experts learned distinct,
 organ-aligned functions—not as the controlled transfer result.
 
-Closing line: “The result is strong enough to continue the organ-routing program,
-but the QC amendment stays visible in the evidence label and in every claim.”
+Closing line: “Organ specialization is real and transferable; indiscriminate
+cross-organ training is not. The next experiment asks whether we can learn a stable
+rule for when to share and when to isolate.”
 
 Speaker note: Transfer is not automatically biological. Platform, study composition,
 sample quality, disease context, label errors, unequal training exposure, and generic
