@@ -27,10 +27,18 @@ def _write_arm(
     arm.mkdir(parents=True)
     np.savez_compressed(
         arm / "calibration_scores.npz",
-        sample_ids=np.asarray([f"sample-{organ}" for organ in recipients]),
-        donor_ids=np.asarray([f"donor-{organ}" for organ in recipients]),
-        groups=np.asarray([f"donor-{organ}" for organ in recipients]),
-        organs=np.asarray(recipients),
+        # Match the frozen real producer: pandas string conversion retains object
+        # dtype, which requires a hash-gated pickle-compatible NumPy load.
+        sample_ids=pd.Series(
+            [f"sample-{organ}" for organ in recipients]
+        ).astype(str).to_numpy(),
+        donor_ids=pd.Series(
+            [f"donor-{organ}" for organ in recipients]
+        ).astype(str).to_numpy(),
+        groups=pd.Series(
+            [f"donor-{organ}" for organ in recipients]
+        ).astype(str).to_numpy(),
+        organs=pd.Series(recipients).astype(str).to_numpy(),
         pooled_mse=np.ones(len(recipients), dtype=np.float64),
         adapter_mse=np.asarray(
             [adapter_by_organ[organ] for organ in recipients], dtype=np.float64

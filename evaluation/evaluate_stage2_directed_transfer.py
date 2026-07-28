@@ -86,7 +86,11 @@ def _load_score_cache(
         raise ValueError(f"arm {arm_id!r} is incomplete, mechanical, or misrouted")
     if sha256_file(scores_path) != metadata["hashes"]["score_cache_sha256"]:
         raise ValueError(f"arm {arm_id!r} score cache differs from metadata")
-    with np.load(scores_path, allow_pickle=False) as archive:
+    # The frozen producer used pandas ``astype(str).to_numpy()``, which emits
+    # object-backed string arrays even though every value is a plain string.
+    # These files are trusted only after the exact producer-recorded SHA256 above
+    # passes. Keep the load narrow and reject any object entry that is not a string.
+    with np.load(scores_path, allow_pickle=True) as archive:
         required = {
             "sample_ids",
             "donor_ids",
@@ -97,12 +101,26 @@ def _load_score_cache(
         }
         if set(archive.files) != required:
             raise ValueError(f"arm {arm_id!r} score cache schema is invalid")
+        strings = {}
+        for key in ("sample_ids", "donor_ids", "groups", "organs"):
+            values = archive[key]
+            if values.ndim != 1 or values.dtype.kind not in {"O", "U", "S"}:
+                raise ValueError(f"arm {arm_id!r} has invalid {key} dtype or shape")
+            if values.dtype.kind == "O":
+                items = values.tolist()
+                if not all(type(value) is str for value in items):
+                    raise ValueError(
+                        f"arm {arm_id!r} has non-string objects in {key}"
+                    )
+                strings[key] = np.asarray(items, dtype=str)
+            else:
+                strings[key] = values.astype(str)
         frame = pd.DataFrame(
             {
-                "sample_id": archive["sample_ids"].astype(str),
-                "donor_id": archive["donor_ids"].astype(str),
-                "group": archive["groups"].astype(str),
-                "organ": archive["organs"].astype(str),
+                "sample_id": strings["sample_ids"],
+                "donor_id": strings["donor_ids"],
+                "group": strings["groups"],
+                "organ": strings["organs"],
                 "pooled_mse": archive["pooled_mse"].astype(np.float64),
                 "adapter_mse": archive["adapter_mse"].astype(np.float64),
             }
