@@ -96,7 +96,9 @@ Essential values: 56/56 negative in all three repeats; mean −3.27%.
 Plain-language comparison: 750 target-organ plus 750 other-organ samples versus 1,500
 target-organ samples.
 
-Visual: directed eight-by-eight heatmap with a short plain-language interpretation.
+Visual: a large, frameless directed eight-by-eight heatmap beside a short
+plain-language interpretation. Preserve enough width for cell values, organ labels,
+and uncertainty intervals to be read without zooming.
 
 ## 9. Stage 2 additive result and next decision
 
@@ -111,4 +113,6 @@ only if several helpful pairs reproduce. Otherwise test recipient-protected shar
 then pivot toward broader biological or learned representation axes if instability
 remains.
 
-Visual: additive effect chart beside a three-branch decision path.
+Visual: a large, frameless additive-effect chart beside a compact three-branch
+decision path. Preserve enough width for the chart's embedded labels to be read
+without zooming.

@@ -24,7 +24,7 @@
   .deck::-webkit-scrollbar{display:none}
   .slide{position:relative;flex:0 0 100vw;height:100vh;overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always;display:flex;align-items:center;padding:30px 3vw;border-right:1px solid var(--rule)}
   .inner{position:relative;z-index:1;width:100%;max-width:1440px;margin:auto}
-  .eyebrow{display:inline-block;margin-bottom:16px;color:var(--terra);font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.18em}
+  .eyebrow{display:inline-block;margin-bottom:16px;color:var(--terra);font:700 14px var(--sans);text-transform:uppercase;letter-spacing:.18em}
   h1,h2,h3,p{margin-top:0}
   h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--ink)}
   h1 em,h2 em{color:var(--terra);font-style:italic;font-weight:500}
@@ -35,12 +35,12 @@
   .lede{font-size:25px;line-height:1.4;color:var(--muted);max-width:74ch}
   ul{margin:0;padding-left:22px}
   li{font-size:20px;margin:0 0 8px}
-  .slide-num{position:absolute;z-index:2;right:2.6vw;bottom:16px;width:38px;height:47px;display:grid;place-items:center;padding-top:7px;border-radius:38px 38px 0 0;background:var(--sage);color:var(--paper);font:700 12px var(--sans)}
-  .slide-num::before{content:"";position:absolute;inset:4px -5px -5px 4px;border:1px solid var(--terra);border-radius:38px 38px 0 0;z-index:-1}
-  .meta{display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font:14px var(--mono);margin-top:20px}
+  .meta{display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font:16px var(--mono);margin-top:20px}
   .meta b{color:var(--ink)}
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
   .cols.left{grid-template-columns:1.15fr .85fr}
+  .result-slide .inner{max-width:1600px}
+  .cols.result-visual{grid-template-columns:minmax(410px,.58fr) minmax(0,1.42fr);gap:30px;align-items:center}
   .panel{background:rgba(239,231,216,.68);border:1px solid var(--rule);border-radius:34px 34px 5px 5px;padding:22px 24px}
   .panel p,.panel li{font-size:18px}
   .callout{border-left:4px solid var(--terra);background:rgba(239,231,216,.72);padding:14px 18px;margin-top:16px}
@@ -49,17 +49,17 @@
   .stat{position:relative;background:rgba(239,231,216,.72);border:1px solid var(--rule);border-top:3px solid var(--sage);border-radius:52px 52px 4px 4px;padding:24px 18px 15px;min-height:116px}
   .stat::after{content:"";position:absolute;inset:5px -5px -5px 5px;border:1px solid rgba(196,112,79,.55);border-radius:52px 52px 4px 4px;z-index:-1}
   .stat .n{font:700 33px var(--sans);color:var(--ink);font-variant-numeric:tabular-nums}
-  .stat .label{font-size:15px;line-height:1.3;color:var(--muted);margin-top:7px}
+  .stat .label{font-size:17px;line-height:1.3;color:var(--muted);margin-top:7px}
   .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;margin:25px 0}
   .pipe{position:relative;background:rgba(239,231,216,.68);border:1px solid var(--rule);border-top:3px solid var(--sage);border-radius:30px 30px 3px 3px;padding:18px 15px 14px;min-height:120px}
   .pipe:not(:last-child):after{content:"→";position:absolute;right:-24px;top:42px;color:var(--terra);font-size:24px;font-weight:600}
   .pipe b{display:block;font-size:18px;margin-bottom:5px}
-  .pipe span{color:var(--muted);font-size:15px}
-  .badge{display:inline-block;padding:5px 9px;border-radius:14px 14px 2px 2px;border:1px solid var(--sage);background:var(--soft);color:var(--ink);font:700 11px var(--sans);letter-spacing:.08em;text-transform:uppercase}
+  .pipe span{color:var(--muted);font-size:16px}
+  .badge{display:inline-block;padding:5px 9px;border-radius:14px 14px 2px 2px;border:1px solid var(--sage);background:var(--soft);color:var(--ink);font:700 14px var(--sans);letter-spacing:.08em;text-transform:uppercase}
   .badge.warn{border-color:var(--terra);background:var(--sand);color:var(--terra)}
   .table-wrap{border:1px solid var(--rule);border-radius:24px 24px 4px 4px;overflow:hidden;background:var(--panel)}
   table{width:100%;border-collapse:collapse}
-  th{padding:10px 13px;border-bottom:1px solid var(--rule);text-align:left;color:var(--muted);font:12px var(--mono);text-transform:uppercase}
+  th{padding:10px 13px;border-bottom:1px solid var(--rule);text-align:left;color:var(--muted);font:14px var(--mono);text-transform:uppercase}
   td{padding:11px 13px;border-bottom:1px solid var(--rule);font-size:18px;font-variant-numeric:tabular-nums}
   tr:last-child td{border-bottom:0}
   .good{color:var(--green);font-weight:700}
@@ -74,12 +74,12 @@
   .bar-value{font:700 18px var(--sans);font-variant-numeric:tabular-nums;text-align:right}
   .seed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
   .seed{background:rgba(239,231,216,.7);border:1px solid var(--rule);border-top:3px solid var(--sage);border-radius:42px 42px 4px 4px;padding:22px 18px 16px}
-  .seed .k{color:var(--terra);font:700 11px var(--sans);letter-spacing:.08em;text-transform:uppercase}
+  .seed .k{color:var(--terra);font:700 14px var(--sans);letter-spacing:.08em;text-transform:uppercase}
   .seed .n{font:700 29px var(--sans);font-variant-numeric:tabular-nums;color:var(--ink);margin:6px 0}
   .seed p{font-size:16px;color:var(--muted);margin:0}
   .claim{display:grid;grid-template-columns:145px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule)}
   .claim:last-child{border-bottom:0}
-  .claim b{font:700 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--terra);padding-top:4px}
+  .claim b{font:700 14px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--terra);padding-top:4px}
   .claim p{font-size:19px;margin:0}
   .matrix{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;aspect-ratio:1/1;width:min(47vh,470px);margin:auto}
   .cell{background:#e7ece8;border-radius:2px}
@@ -87,23 +87,27 @@
   .cell:nth-child(11n+3){background:#edd8d4}
   .cell.ref{background:#aebbb5}
   .matrix-wrap{position:relative}
-  .matrix-label{font:13px var(--mono);color:var(--muted);text-align:center;margin-top:8px}
+  .matrix-label{font:15px var(--sans);color:var(--muted);text-align:center;margin-top:6px}
   .pending{position:absolute;inset:36% 8%;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(247,242,233,.94);border:1px solid var(--terra);border-radius:30px 30px 4px 4px;color:var(--ink);font:700 14px var(--sans)}
-  .matrix-wrap{position:relative;isolation:isolate;padding:7px 0 0 7px}
-  .matrix-wrap::before{content:"";position:absolute;inset:0 -7px -7px 0;border:1px solid var(--terra);border-radius:220px 220px 0 0;z-index:-1}
-  .heatmap-img{display:block;width:100%;max-height:70vh;object-fit:contain;background:transparent;border:1px solid var(--rule);border-radius:220px 220px 0 0;mix-blend-mode:multiply}
-  .foot{margin-top:13px;color:var(--muted);font:13px var(--mono)}
+  .heatmap-img{display:block;width:100%;max-height:74vh;object-fit:contain;background:transparent;border:0;border-radius:0;mix-blend-mode:multiply}
+  .foot{margin-top:13px;color:var(--muted);font:14px var(--sans)}
   .footer-label{position:absolute;left:3vw;bottom:14px;color:var(--muted);font:12px var(--sans);letter-spacing:.02em}
+  .slide-dots{position:fixed;z-index:20;left:50%;bottom:14px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;padding:5px 9px;border-radius:999px;background:rgba(247,242,233,.82);backdrop-filter:blur(4px)}
+  .slide-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(122,140,111,.38);cursor:pointer;transition:width 120ms ease,height 120ms ease,background 120ms ease}
+  .slide-dot[aria-current="true"]{width:11px;height:11px;background:var(--ink)}
+  .slide-dot:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
   @media(max-height:780px) and (min-width:861px){
     .slide{padding:22px 3vw}.eyebrow{margin-bottom:10px}h1{font-size:52px}h2{font-size:37px}
     p,.callout p{font-size:17px}li{font-size:17px}.stats{margin:12px 0}.stat{min-height:88px;padding:10px 12px}.stat .n{font-size:28px}
-    .pipeline{margin:15px 0}.pipe{min-height:94px;padding:10px}.pipe b{font-size:16px}.pipe span{font-size:13px}
+    .pipeline{margin:15px 0}.pipe{min-height:94px;padding:10px}.pipe b{font-size:16px}.pipe span{font-size:15px}
     td{font-size:15px;padding:8px 10px}.bars{gap:9px}.bar-row{grid-template-columns:205px 1fr 85px}
     .seed-grid{margin:12px 0}.seed{padding:11px}.seed .n{font-size:24px}.claim{padding:8px 0}.claim p{font-size:16px}
+    .cols.result-visual{grid-template-columns:minmax(380px,.62fr) minmax(0,1.38fr);gap:20px}
   }
   @media print{
     html,body{height:auto;overflow:visible}.deck{display:block;height:auto;overflow:visible}
     .slide{width:13.333in;height:7.5in;page-break-after:always;border:0}
+    .slide-dots{display:none}
   }
   @media(prefers-reduced-motion:reduce){
     .deck{scroll-behavior:auto}
@@ -122,7 +126,7 @@
       <span><b>Date</b> 2026-07-30</span><span><b>Presenter</b> Martin</span>
       <span><b>Program</b> NASA Ames</span><span><b>Status</b> Stage 2 development active</span>
     </div>
-  </div><span class="slide-num">01</span>
+  </div>
 </section>
 
 <section class="slide">
@@ -143,7 +147,7 @@
       <div class="pipe"><b>Repeat</b><span>retain all three trainings; select none</span></div>
     </div>
     <div class="callout"><p><strong>Why this matters:</strong> success means organ specialization learned in a clean reference dataset still helps across messier studies collected elsewhere.</p></div>
-  </div><span class="slide-num">02</span>
+  </div>
 </section>
 
 <section class="slide">
@@ -171,7 +175,7 @@
       </div>
     </div>
     <div class="callout"><p><strong>One necessary qualification:</strong> six rows failed the unchanged coverage rule and were excluded without replacement, so the result is labeled post-access QC-amended external evaluation.</p></div>
-  </div><span class="slide-num">03</span>
+  </div>
 </section>
 
 <section class="slide">
@@ -189,7 +193,7 @@
       <div class="panel"><h3>Other seven organs</h3><p><strong>8 studies each</strong></p><p>Adipose, brain, colon, heart, lung, skeletal muscle, and skin all remain represented.</p></div>
     </div>
     <p class="foot">Each organ contributes equally, and each study within an organ contributes equally. Individual identities are not verified in every ARCHS4 study.</p>
-  </div><span class="slide-num">04</span>
+  </div>
 </section>
 
 <section class="slide">
@@ -219,7 +223,6 @@
     </div>
   </div>
   <div class="footer-label">Post-access QC-amended external evaluation · 821 samples / 63 connected studies · all 3 seeds retained</div>
-  <span class="slide-num">05</span>
 </section>
 
 <section class="slide">
@@ -238,7 +241,6 @@
     <div class="callout"><p><strong>What repeats:</strong> the improvement survives different routing choices, independent trainings, and both dataset directions. It does not appear in every individual study.</p></div>
   </div>
   <div class="footer-label">Every repeat had an uncertainty interval above zero · all three repeats retained</div>
-  <span class="slide-num">06</span>
 </section>
 
 <section class="slide">
@@ -259,14 +261,14 @@
         <div class="claim"><b>Downstream</b><p>No spaceflight, disease, clinical, or causal-mechanism claim yet.</p></div>
       </div>
     </div>
-  </div><span class="slide-num">07</span>
+  </div>
 </section>
 
-<section class="slide">
+<section class="slide result-slide">
   <div class="inner">
     <span class="eyebrow">Stage 2 · fixed data budget</span>
     <h2>Replacing organ-specific data with another organ <em>hurts</em> prediction</h2>
-    <div class="cols left">
+    <div class="cols result-visual">
       <div>
         <div class="stats" style="grid-template-columns:1fr 1fr">
           <div class="stat"><div class="n">56 / 56</div><div class="label">organ-pair directions hurt in all three repeats</div></div>
@@ -283,14 +285,14 @@
       </div>
     </div>
     <p class="foot">This tests repeatability across people in GTEx. A new multi-study dataset is still needed to test broader universality.</p>
-  </div><span class="slide-num">08</span>
+  </div>
 </section>
 
-<section class="slide">
+<section class="slide result-slide">
   <div class="inner">
     <span class="eyebrow">Stage 2 · adding data without removing target-organ data</span>
     <h2>Extra data from another organ can help—but the pattern is not yet <em>stable</em></h2>
-    <div class="cols left">
+    <div class="cols result-visual">
       <div>
         <div class="stats" style="grid-template-columns:1fr 1fr">
           <div class="stat"><div class="n">1 / 8</div><div class="label">organ pairs help reliably across all repeats</div></div>
@@ -307,19 +309,34 @@
       </div>
     </div>
     <p class="foot">Repeatability inside GTEx is not the same as universality across independent studies.</p>
-  </div><span class="slide-num">09</span>
+  </div>
 </section>
 
 </main>
+<nav class="slide-dots" aria-label="Slide progress"></nav>
 <script>
 (function(){
   var deck=document.querySelector('.deck');
   var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dotHost=document.querySelector('.slide-dots');
+  var dots=slides.map(function(_,i){
+    var dot=document.createElement('button');
+    dot.type='button';
+    dot.className='slide-dot';
+    dot.setAttribute('aria-label','Go to slide '+(i+1));
+    dot.addEventListener('click',function(){go(i);});
+    dotHost.appendChild(dot);
+    return dot;
+  });
   var anim=null;
   var duration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:180;
   function current(){return Math.round(deck.scrollLeft/window.innerWidth);}
+  function updateDots(i){
+    dots.forEach(function(dot,j){dot.setAttribute('aria-current',j===i?'true':'false');});
+  }
   function go(i){
     i=Math.max(0,Math.min(slides.length-1,i));
+    updateDots(i);
     var start=deck.scrollLeft,end=i*window.innerWidth,dist=end-start;
     if(anim)cancelAnimationFrame(anim);
     if(duration===0||Math.abs(dist)<1){deck.scrollLeft=end;anim=null;return;}
@@ -339,6 +356,12 @@
     if(e.key==='Home'){e.preventDefault();go(0);}
     if(e.key==='End'){e.preventDefault();go(slides.length-1);}
   });
+  var dotFrame=null;
+  deck.addEventListener('scroll',function(){
+    if(dotFrame)cancelAnimationFrame(dotFrame);
+    dotFrame=requestAnimationFrame(function(){updateDots(current());dotFrame=null;});
+  },{passive:true});
+  updateDots(0);
 })();
 </script>
 </body>

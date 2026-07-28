@@ -58,6 +58,9 @@ additional color must be muted and subordinate to this palette.
 - Every main slide headline contains exactly one italic word in terracotta.
 - Body, labels, and kickers: **Work Sans**.
 - Kickers are small, uppercase, terracotta, and widely letter-spaced.
+- No center-content text may be smaller than **14 px** at the normal 16:9 browser
+  viewport. Body copy should normally be 19–22 px, chart labels at least 15 px after
+  scaling, and result numbers substantially larger.
 - Use tabular figures for quantitative values where available.
 - Keep body copy short enough to read comfortably from the back of a room.
 
@@ -68,13 +71,17 @@ serif and sans-serif fallbacks for offline viewing.
 
 The signature form has a fully rounded top and square bottom. Use it for:
 
-- image and chart areas;
+- photographs or simple illustration areas;
 - portrait frames;
 - number tokens;
 - vertical bars, whose tops should read like arch windows.
 
 Behind each filled arch, place a thin terracotta outline arch offset by approximately
 4–6 pixels. The outline is an echo, not a heavy border.
+
+Do not place dense data plots, heatmaps, or figures with embedded text inside an arch
+or window-like frame. Present those figures without decorative borders and make them
+large enough that their internal labels remain legible.
 
 Do not place a recurring decorative arch trio in a corner. Every visible arch must
 carry a function: framing data or imagery, identifying a slide number, or encoding a
@@ -106,6 +113,16 @@ remove it.
   requested.
 - Arrow keys, Page Up/Down, and Space must remain supported.
 
+### Pagination
+
+- Use one centered row of small dots at the bottom of the viewport.
+- Show one dot per slide.
+- The current slide is larger or darker in deep olive; inactive slides remain muted
+  sage/sand.
+- Do not show a bottom-right page-number token.
+- Keep the dots outside the main content region and update them during animated,
+  keyboard, and direct-dot navigation.
+
 ### Charts
 
 - Prefer a visual explanation whenever a chart, diagram, annotated comparison, or
@@ -120,6 +137,11 @@ remove it.
 - Use deep olive for axes and labels; keep grid lines low-opacity.
 - Bars have fully rounded arch-like tops.
 - Label important values directly when possible.
+- When importing a raster chart, allocate enough slide width for its embedded labels
+  to remain readable; do not shrink a chart merely to preserve a large text column.
+- Prefer a chart-dominant split of roughly 70–76% visual width on result slides,
+  and allow those slides to use a wider content canvas than text-led slides.
+- Remove decorative frames, rounded windows, and outline echoes from dense plots.
 - Do not rely on color alone: retain signs, values, intervals, or concise labels.
 - Preserve scientific uncertainty and claim boundaries; visual polish must not
   promote exploratory results into confirmed findings.
@@ -181,9 +203,12 @@ For every slide:
    failure chronology is not part of the main narrative.
 9. Verify that a nontechnical audience can understand every headline, metric, and
    comparison without project-specific background.
-10. Ask whether a visual would communicate the slide more clearly than prose.
-11. Confirm that no talking script or timed narration file was created.
-12. Check legibility at 16:9 presentation scale and in exported print/PDF output.
+10. Confirm that center-content text is at least 14 px and imported-chart labels
+    remain readable at presentation scale.
+11. Verify centered pagination dots and the active-slide state.
+12. Ask whether a visual would communicate the slide more clearly than prose.
+13. Confirm that no talking script or timed narration file was created.
+14. Check legibility at 16:9 presentation scale and in exported print/PDF output.
 
 ## Scientific presentation safeguard
 

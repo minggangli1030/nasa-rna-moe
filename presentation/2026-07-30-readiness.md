@@ -1,6 +1,6 @@
 # July 30 presentation readiness
 
-**Updated:** 2026-07-28 12:46 PDT
+**Updated:** 2026-07-28 13:44 PDT
 
 ## Readiness decision
 
@@ -26,7 +26,9 @@ seed-factorized diagnosis is the active next experiment.
 
 Static checks pass: nine slides, nine section closures, the heatmap asset exists,
 keyboard navigation and print CSS are present, and the bounded-claim text is in the
-deck.
+deck. Center-content typography now has a 14 px CSS floor, the dense result figures
+on slides 8–9 use a wide frameless layout, and centered pagination dots identify the
+current slide.
 
 ## Frozen numeric cross-check
 
@@ -93,7 +95,9 @@ Do not claim:
 ## Remaining before Thursday 08:00 PDT
 
 - [x] Incorporate the checksum-verified additive result with bounded claims.
-- [ ] Perform final visual QA of all nine slides at presentation resolution.
+- [x] Perform focused visual QA of slides 8–9 at 1920×1080; figures and embedded
+  labels are legible and no decorative window frame remains.
+- [ ] Perform final visual QA of the other seven slides at presentation resolution.
 - [ ] Verify the plan → results → next balance at 8–10 minutes.
 - [ ] Confirm every technical comparison has a plain-language explanation.
 - [ ] Export or print the final delivery copy and verify the file opens.

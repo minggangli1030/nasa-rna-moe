@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 13:25 PDT / 2026-07-28 20:25 UTC
+**Updated:** 2026-07-28 13:44 PDT / 2026-07-28 20:44 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -178,8 +178,10 @@ The July 30 package is:
 All current and future decks use
 `presentation/atrium-theme-template.md`. Presentations are audience-first,
 visual-first, and script-free. Biweekly updates use plan → results → next, with
-results occupying most of the talk. July 9 and July 16 rendered decks remain
-unchanged historical artifacts.
+results occupying most of the talk. The template now enforces a 14 px minimum for
+center content, frameless chart-dominant result slides, and centered progress dots
+with the active slide darkened. July 9 and July 16 rendered decks remain unchanged
+historical artifacts.
 
 ## Preserved recovery assets
 
