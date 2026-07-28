@@ -261,11 +261,24 @@ def _evaluate_arm(
 def run_training(args: argparse.Namespace) -> dict[str, Any]:
     if int(args.seed) not in PRESPECIFIED_SEEDS:
         raise ValueError(f"seed must be one of {PRESPECIFIED_SEEDS}")
+    trunk_seed = int(args.seed)
+    optimization_seed_raw = getattr(args, "optimization_seed", None)
+    optimization_seed = int(
+        trunk_seed if optimization_seed_raw is None else optimization_seed_raw
+    )
+    mask_seed_raw = getattr(args, "mask_seed", None)
+    mask_seed = int(
+        optimization_seed if mask_seed_raw is None else mask_seed_raw
+    )
+    loader_seed_raw = getattr(args, "loader_seed", None)
+    loader_seed = int(
+        optimization_seed if loader_seed_raw is None else loader_seed_raw
+    )
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     if any(output_dir.iterdir()):
         raise FileExistsError(f"output directory is not empty: {output_dir}")
-    seed_everything(int(args.seed), deterministic=True)
+    seed_everything(optimization_seed, deterministic=True)
     device = _resolve_device(args.device)
 
     schedules_path = Path(args.training_schedules)
@@ -327,7 +340,7 @@ def run_training(args: argparse.Namespace) -> dict[str, Any]:
         normalization="log1p_tpm",
         mask_ratio=float(args.mask_ratio),
         mask_token=float(args.mask_token),
-        seed=int(args.seed),
+        seed=mask_seed,
         phase="stage2_directed_transfer_source_paired",
         fixed_masks=False,
     )
@@ -341,7 +354,7 @@ def run_training(args: argparse.Namespace) -> dict[str, Any]:
     reference_expert = _initialize_expert(
         hidden_dim=hidden_dim,
         adapter_dim=int(args.adapter_dim),
-        training_seed=int(args.seed),
+        training_seed=optimization_seed,
         initialization_key=initialization_key,
     )
     initial_state_hash = _tensor_state_sha256(reference_expert.state_dict())
@@ -352,7 +365,11 @@ def run_training(args: argparse.Namespace) -> dict[str, Any]:
         "schema_version": 1,
         "status": "running",
         "research_stage": "stage2_directed_organ_transfer_development",
-        "training_seed": int(args.seed),
+        "training_seed": trunk_seed,
+        "trunk_seed": trunk_seed,
+        "optimization_seed": optimization_seed,
+        "mask_seed": mask_seed,
+        "loader_seed": loader_seed,
         "code_commit": str(args.code_commit),
         "development_only": True,
         "external_data_accessed": False,
@@ -391,8 +408,12 @@ def run_training(args: argparse.Namespace) -> dict[str, Any]:
             "batch_size": int(schedule_report["batch_size"]),
             "optimizer": "AdamW",
             "scheduler": "CosineAnnealingLR",
+            "use_amp": bool(args.use_amp),
             "checkpoint_policy": "predetermined_final_update_per_arm",
             "mask_pairing": "sample_id plus source-local draw number",
+            "seed_factorization": (
+                "explicit trunk, optimization/initialization, mask, and loader seeds"
+            ),
         },
         "arms": [],
     }
@@ -415,7 +436,7 @@ def run_training(args: argparse.Namespace) -> dict[str, Any]:
             max_batches=(int(args.smoke_batches) if smoke_only else None),
         )
         loader_generator = torch.Generator().manual_seed(
-            stable_seed(args.seed, "stage2_transfer_loader", arm_id) % (2**63 - 1)
+            stable_seed(loader_seed, "stage2_transfer_loader", arm_id) % (2**63 - 1)
         )
         train_loader = DataLoader(
             training_dataset,
@@ -427,7 +448,7 @@ def run_training(args: argparse.Namespace) -> dict[str, Any]:
         expert = _initialize_expert(
             hidden_dim=hidden_dim,
             adapter_dim=int(args.adapter_dim),
-            training_seed=int(args.seed),
+            training_seed=optimization_seed,
             initialization_key=initialization_key,
         ).to(device)
         if _tensor_state_sha256(expert.state_dict()) != initial_state_hash:
@@ -471,7 +492,11 @@ def run_training(args: argparse.Namespace) -> dict[str, Any]:
             {
                 "schema_version": 1,
                 "arm_id": arm_id,
-                "training_seed": int(args.seed),
+                "training_seed": trunk_seed,
+                "trunk_seed": trunk_seed,
+                "optimization_seed": optimization_seed,
+                "mask_seed": mask_seed,
+                "loader_seed": loader_seed,
                 "initialization_key": initialization_key,
                 "initial_state_sha256": initial_state_hash,
                 "final_state_sha256": _tensor_state_sha256(state),
@@ -524,7 +549,11 @@ def run_training(args: argparse.Namespace) -> dict[str, Any]:
             "status": "complete",
             "arm_id": arm_id,
             "arm_number": arm_number,
-            "training_seed": int(args.seed),
+            "training_seed": trunk_seed,
+            "trunk_seed": trunk_seed,
+            "optimization_seed": optimization_seed,
+            "mask_seed": mask_seed,
+            "loader_seed": loader_seed,
             "mechanical_only": smoke_only,
             "completed_updates": len(sampler),
             "completed_draws": len(sampler) * batch_size,
@@ -575,6 +604,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--expected-definitions-sha256", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--seed", type=int, required=True)
+    parser.add_argument("--optimization-seed", type=int)
+    parser.add_argument("--mask-seed", type=int)
+    parser.add_argument("--loader-seed", type=int)
     parser.add_argument("--code-commit", required=True)
     parser.add_argument("--train-split", default="train")
     parser.add_argument("--validation-split", default="calibration")
@@ -604,6 +636,7 @@ def main() -> None:
             {
                 "status": result["status"],
                 "training_seed": result["training_seed"],
+                "optimization_seed": result["optimization_seed"],
                 "completed_arms": result["completed_arms"],
                 "elapsed_seconds": result["elapsed_seconds"],
             },

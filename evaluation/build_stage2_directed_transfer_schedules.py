@@ -301,8 +301,19 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
         raise ValueError("initialization-key must be nonempty")
     additive_edges = _parse_edges(getattr(args, "additive_edge", None))
     additive_only = bool(getattr(args, "additive_only", False))
+    stability_diagnostic_only = bool(
+        getattr(args, "stability_diagnostic_only", False)
+    )
+    if additive_only and stability_diagnostic_only:
+        raise ValueError(
+            "additive-only and stability-diagnostic-only are mutually exclusive"
+        )
     if additive_only and not additive_edges:
         raise ValueError("additive-only schedule requires at least one additive edge")
+    if stability_diagnostic_only and not additive_edges:
+        raise ValueError(
+            "stability-diagnostic-only schedule requires at least one additive edge"
+        )
 
     schedules: list[pd.DataFrame] = []
     definitions: list[dict[str, Any]] = []
@@ -328,7 +339,7 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
 
     organ_values = frame["organ"].astype(str).to_numpy()
     organ_masks = {organ: organ_values == organ for organ in ORGANS}
-    if not additive_only:
+    if not additive_only and not stability_diagnostic_only:
         for recipient in ORGANS:
             add_arm(
                 f"sub__{recipient}__recipient_only",
@@ -369,43 +380,77 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
                 )
 
     additive_recipients = sorted({recipient for recipient, _ in additive_edges})
-    for recipient in additive_recipients:
-        add_arm(
-            f"add__{recipient}__self_control",
-            [("recipient", recipient, organ_masks[recipient], 3 * per_source)],
-            [recipient],
-            "same_total_draws_additional_recipient_control",
-        )
-        for axis in RANDOM_AXES:
-            recipient_index = ORGANS.index(recipient)
-            auxiliary = (
-                frame[axis].to_numpy(dtype=np.int64) == recipient_index
-            ) & ~organ_masks[recipient]
-            auxiliary_label = f"{axis}:excluding:{recipient}"
+    if stability_diagnostic_only:
+        if len(additive_edges) != len(additive_recipients):
+            raise ValueError(
+                "stability diagnosis requires exactly one donor per recipient"
+            )
+        for recipient in additive_recipients:
             add_arm(
-                f"add__{recipient}__random__{axis}",
+                f"diag__{recipient}__recipient_only",
+                [("recipient", recipient, organ_masks[recipient], 2 * per_source)],
+                [recipient],
+                "stability_diagnostic_recipient_only",
+            )
+            add_arm(
+                f"diag__{recipient}__self_control",
+                [("recipient", recipient, organ_masks[recipient], 3 * per_source)],
+                [recipient],
+                "stability_diagnostic_additional_recipient_control",
+            )
+        for recipient, donor in additive_edges:
+            add_arm(
+                f"diag__{recipient}__{donor}",
                 [
                     ("recipient", recipient, organ_masks[recipient], 2 * per_source),
-                    (
-                        "random_auxiliary",
-                        auxiliary_label,
-                        auxiliary,
-                        per_source,
-                    ),
+                    ("donor", donor, organ_masks[donor], per_source),
                 ],
                 [recipient],
-                "same_recipient_exposure_random_auxiliary",
+                "stability_diagnostic_named_donor",
             )
-    for recipient, donor in additive_edges:
-        add_arm(
-            f"add__{recipient}__{donor}",
-            [
-                ("recipient", recipient, organ_masks[recipient], 2 * per_source),
-                ("donor", donor, organ_masks[donor], per_source),
-            ],
-            [recipient],
-            "same_recipient_exposure_named_donor",
-        )
+    else:
+        for recipient in additive_recipients:
+            add_arm(
+                f"add__{recipient}__self_control",
+                [("recipient", recipient, organ_masks[recipient], 3 * per_source)],
+                [recipient],
+                "same_total_draws_additional_recipient_control",
+            )
+            for axis in RANDOM_AXES:
+                recipient_index = ORGANS.index(recipient)
+                auxiliary = (
+                    frame[axis].to_numpy(dtype=np.int64) == recipient_index
+                ) & ~organ_masks[recipient]
+                auxiliary_label = f"{axis}:excluding:{recipient}"
+                add_arm(
+                    f"add__{recipient}__random__{axis}",
+                    [
+                        (
+                            "recipient",
+                            recipient,
+                            organ_masks[recipient],
+                            2 * per_source,
+                        ),
+                        (
+                            "random_auxiliary",
+                            auxiliary_label,
+                            auxiliary,
+                            per_source,
+                        ),
+                    ],
+                    [recipient],
+                    "same_recipient_exposure_random_auxiliary",
+                )
+        for recipient, donor in additive_edges:
+            add_arm(
+                f"add__{recipient}__{donor}",
+                [
+                    ("recipient", recipient, organ_masks[recipient], 2 * per_source),
+                    ("donor", donor, organ_masks[donor], per_source),
+                ],
+                [recipient],
+                "same_recipient_exposure_named_donor",
+            )
 
     arm_ids = [definition["arm_id"] for definition in definitions]
     if len(arm_ids) != len(set(arm_ids)):
@@ -440,19 +485,37 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
         "draws_per_source": per_source,
         "batch_size": int(args.batch_size),
         "initialization_key": initialization_key,
-        "schedule_mode": "additive_only" if additive_only else "combined",
+        "schedule_mode": (
+            "stability_diagnostic_only"
+            if stability_diagnostic_only
+            else "additive_only"
+            if additive_only
+            else "combined"
+        ),
         "additive_edges": [f"{recipient}:{donor}" for recipient, donor in additive_edges],
         "counts": {
             "training_rows": int(len(frame)),
             "training_donors": int(frame["donor_id"].nunique()),
-            "substitution_recipient_only_arms": 0 if additive_only else len(ORGANS),
+            "substitution_recipient_only_arms": (
+                0 if additive_only or stability_diagnostic_only else len(ORGANS)
+            ),
             "substitution_pair_arms": (
-                0 if additive_only else len(ORGANS) * (len(ORGANS) - 1) // 2
+                0
+                if additive_only or stability_diagnostic_only
+                else len(ORGANS) * (len(ORGANS) - 1) // 2
             ),
             "substitution_random_control_arms": (
-                0 if additive_only else len(ORGANS) * len(RANDOM_AXES)
+                0
+                if additive_only or stability_diagnostic_only
+                else len(ORGANS) * len(RANDOM_AXES)
             ),
             "additive_named_donor_arms": len(additive_edges),
+            "stability_recipient_only_arms": (
+                len(additive_recipients) if stability_diagnostic_only else 0
+            ),
+            "stability_self_control_arms": (
+                len(additive_recipients) if stability_diagnostic_only else 0
+            ),
             "total_arms": len(definitions),
             "total_schedule_draws": int(len(schedule_frame)),
         },
@@ -492,6 +555,14 @@ def build_parser() -> argparse.ArgumentParser:
         help=(
             "Compile only the prospectively supplied additive arms and their "
             "self/random controls, omitting the already completed substitution arms."
+        ),
+    )
+    parser.add_argument(
+        "--stability-diagnostic-only",
+        action="store_true",
+        help=(
+            "Compile only paired A1500, A2250, and A1500+B750 arms for the "
+            "supplied one-donor-per-recipient edge set."
         ),
     )
     return parser

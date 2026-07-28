@@ -52,6 +52,7 @@ def _args(manifest: Path, output: Path, **updates):
         "initialization_key": "shared-k1",
         "additive_edge": None,
         "additive_only": False,
+        "stability_diagnostic_only": False,
     }
     values.update(updates)
     return argparse.Namespace(**values)
@@ -185,6 +186,45 @@ def test_additive_only_requires_frozen_edges(tmp_path: Path) -> None:
         compile_schedules(
             _args(manifest, tmp_path / "output", additive_only=True)
         )
+
+
+def test_stability_diagnostic_contains_only_paired_primary_arms(
+    tmp_path: Path,
+) -> None:
+    manifest = tmp_path / "manifest.parquet"
+    _manifest(manifest)
+    output = tmp_path / "output"
+    donor_by_recipient = {
+        recipient: ORGANS[(index + 1) % len(ORGANS)]
+        for index, recipient in enumerate(ORGANS)
+    }
+    edges = [
+        f"{recipient}:{donor_by_recipient[recipient]}" for recipient in ORGANS
+    ]
+    report = compile_schedules(
+        _args(
+            manifest,
+            output,
+            additive_edge=edges,
+            stability_diagnostic_only=True,
+        )
+    )
+    schedules = pd.read_parquet(output / "training_schedules.parquet")
+    assert report["schedule_mode"] == "stability_diagnostic_only"
+    assert report["counts"]["total_arms"] == 24
+    assert report["counts"]["stability_recipient_only_arms"] == 8
+    assert report["counts"]["stability_self_control_arms"] == 8
+    assert schedules["arm_id"].str.startswith("diag__").all()
+    brain = schedules.loc[
+        schedules["arm_id"].isin(
+            [
+                "diag__brain__recipient_only",
+                "diag__brain__self_control",
+                f"diag__brain__{donor_by_recipient['brain']}",
+            ]
+        )
+    ]
+    assert brain["arm_id"].nunique() == 3
 
 
 def test_compiler_fails_closed_on_hash_or_non_atomic_random_axis(tmp_path: Path) -> None:
