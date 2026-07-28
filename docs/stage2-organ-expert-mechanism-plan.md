@@ -208,10 +208,22 @@ can matter when recipient exposure is preserved, but more recipient exposure rem
 the best tested use of the added budget. Full result:
 `docs/stage2-additive-transfer-result.md`.
 
-The next directed-transfer step is an explicitly post-discovery reciprocal expansion:
-freeze all six missing reverse directions from the original eight-edge subset as one
-set, without choosing pairs by observed favorability. It estimates asymmetry but
-cannot retrospectively convert the first subset into a pristine prospective test.
+The preliminary additive heatmap is retained for the July 30 presentation but is not
+the Stage 2 final product. Mixed edge signs across the original three seeds cannot
+support a general helpful-transfer rule.
+
+The direct next step is therefore the seed-factorized stability diagnosis in
+`docs/stage2-seed-stability-diagnosis.md`, before the reciprocal expansion. It
+crosses all three frozen pooled trunks with three independent optimization/mask
+replicates across the unchanged eight edges. This determines whether instability is
+primarily trunk-dependent, optimization-dependent, or edge-specific. The result has
+three pre-outcome branches: continue raw transfer only if at least three edges are
+stable helpful; pivot toward negative-transfer avoidance/selective sharing if the
+map is reproducible but mostly harmful; or test one recipient-protected sharing
+implementation if optimization instability remains dominant.
+
+Only after that decision should the six missing reverse directions be run. They must
+remain one post-discovery set without choosing pairs by observed favorability.
 
 The full transfer matrix is a GTEx donor-disjoint development analysis. It can
 measure controlled transfer and freeze predictions, but GTEx cannot establish

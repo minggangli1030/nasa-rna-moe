@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_stability_outcomes",
+  "frozen_at_utc": "2026-07-28T19:45:46Z",
+  "research_stage": "stage2_seed_factorized_stability_diagnosis",
+  "development_only": true,
+  "post_discovery_diagnostic": true,
+  "diagnostic_training_started_before_freeze": false,
+  "diagnostic_outcomes_accessed_before_freeze": false,
+  "best_seed_selection_allowed": false,
+  "implementation_commit": "70f604f28d32a0319022c0140d76f9ad3a125c94",
+  "source_manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+  "schedule": {
+    "path": "artifacts/stage2_organ_expert_mechanism/seed_stability_schedules_20260729/training_schedules.parquet",
+    "sha256": "066144402245cac3114fee71a7dd8e0cfc4a6f4f74b9df405510e9b4e7b0c9a3",
+    "definitions_path": "artifacts/stage2_organ_expert_mechanism/seed_stability_schedules_20260729/arm_definitions.json",
+    "definitions_sha256": "e206e20ae46721d6d353f0179afd9f4acbc0a19cb81d9d89e8b7018d24063c9d",
+    "report_path": "artifacts/stage2_organ_expert_mechanism/seed_stability_schedules_20260729/schedule_report.json",
+    "report_sha256": "199582d518da149f237b0b1b4819e53e8c1cab0f1a8f3d8a5e474cd05874bf65",
+    "arms_per_combo": 24,
+    "draws_per_combo": 48000,
+    "recipient_only_arms": 8,
+    "named_donor_arms": 8,
+    "additional_recipient_control_arms": 8
+  },
+  "factor_design": {
+    "type": "fully_crossed_trunk_by_optimization",
+    "trunk_seeds": [
+      17,
+      42,
+      101
+    ],
+    "optimization_seeds": [
+      211,
+      223,
+      227
+    ],
+    "total_combinations": 9,
+    "adapter_initialization_seed": "optimization_seed",
+    "training_mask_seed": "optimization_seed",
+    "loader_seed": "optimization_seed",
+    "schedule_sample_order": "fixed_across_all_combinations",
+    "comparison_pairing": "all arms within a combination share trunk, initialization, masks, and loader seed",
+    "mixed_precision": false
+  },
+  "edges": [
+    {
+      "recipient": "brain",
+      "donor": "skin"
+    },
+    {
+      "recipient": "colon",
+      "donor": "skeletal_muscle"
+    },
+    {
+      "recipient": "liver",
+      "donor": "skin"
+    },
+    {
+      "recipient": "adipose",
+      "donor": "lung"
+    },
+    {
+      "recipient": "heart",
+      "donor": "adipose"
+    },
+    {
+      "recipient": "lung",
+      "donor": "skeletal_muscle"
+    },
+    {
+      "recipient": "skeletal_muscle",
+      "donor": "lung"
+    },
+    {
+      "recipient": "skin",
+      "donor": "adipose"
+    }
+  ],
+  "estimands": {
+    "named_donor": "A1500+B750 versus A1500 on held-out recipient donors",
+    "additional_recipient_control": "A1500+B750 versus A2250 on held-out recipient donors",
+    "effect_sign": "positive is helpful transfer"
+  },
+  "decision_gates": {
+    "minimum_absolute_effect_percent": 0.5,
+    "required_positive_combos": 8,
+    "required_positive_trunk_means": 3,
+    "required_positive_optimization_means": 3,
+    "factor_bootstrap_interval_must_exclude_zero": true,
+    "reproducible_map_required_stable_edges": 6,
+    "raw_addition_required_helpful_edges": 3,
+    "raw_addition_viable_branch": "At least three of eight edges are stable helpful. Proceed to larger confirmation and directed predictor testing.",
+    "reproducible_but_not_helpful_branch": "At least six of eight edges have stable signs but fewer than three are helpful. Pivot raw addition toward negative-transfer avoidance or selective-sharing architectures.",
+    "unstable_branch": "Fewer than six edges have stable signs. Treat optimization stability as the bottleneck; test one recipient-protected sharing implementation before deciding whether to pivot."
+  },
+  "bootstrap": {
+    "unit": "crossed trunk seed, optimization seed, and held-out GTEx donor",
+    "draws": 10000,
+    "seed": 20260729
+  },
+  "claim_boundary": "This post-discovery diagnosis can separate frozen-trunk dependence from optimization-seed instability on donor-disjoint GTEx development data. It cannot rescue the preliminary eight-edge result, select a best seed, establish study universality, or confirm biological mechanism."
+}

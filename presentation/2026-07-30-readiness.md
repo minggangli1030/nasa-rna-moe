@@ -1,11 +1,14 @@
 # July 30 presentation readiness
 
-**Updated:** 2026-07-28 12:07 PDT
+**Updated:** 2026-07-28 12:46 PDT
 
 ## Readiness decision
 
 The presentation is provisionally ready from the completed Stage 1 external
 evaluation and completed Stage 2 substitution and additive development results.
+The additive heatmap is explicitly preliminary and satisfactory for this week's
+progress presentation; it is not the accepted Stage 2 final product. A frozen
+seed-factorized diagnosis is the active next experiment.
 
 ## Current package
 

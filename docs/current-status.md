@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 12:07 PDT / 2026-07-28 19:07 UTC
+**Updated:** 2026-07-28 12:46 PDT / 2026-07-28 19:46 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -254,6 +254,25 @@ when older chronology or exact intermediate results are needed.
   skeletal-muscle←lung and −0.383% for lung←skeletal-muscle, though neither was
   positive in all three seeds. Full interpretation is
   `docs/stage2-additive-transfer-result.md`.
+- The additive heatmap is retained as a satisfactory preliminary July 30
+  presentation result, not as the Stage 2 final product. Mixed edge signs across
+  the original three seeds do not justify a general helpful-transfer pattern.
+- The direct next experiment is now the frozen 3×3 seed-factorization diagnosis in
+  `docs/stage2-seed-stability-diagnosis.md`. It crosses pooled-trunk seeds
+  17/42/101 with new optimization/mask/loader seeds 211/223/227 across all eight
+  unchanged edges. Each combination runs 24 paired FP32 arms: A1500,
+  A1500+B750, and A2250 for every recipient.
+- The diagnostic schedule was compiled without expression or efficacy access and is
+  frozen at SHA256
+  `066144402245cac3114fee71a7dd8e0cfc4a6f4f74b9df405510e9b4e7b0c9a3`;
+  arm-definition SHA256 is
+  `e206e20ae46721d6d353f0179afd9f4acbc0a19cb81d9d89e8b7018d24063c9d`.
+  The machine protocol SHA256 is
+  `781b03068ce08abcce552dee31feaa9e05ba06830f3503bdac7b9f9aa7380977`.
+- The diagnostic decision is frozen before outcomes: raw addition is viable only
+  with at least three stable-helpful edges; a reproducible but mostly harmful map
+  pivots toward negative-transfer avoidance/selective sharing; a still-unstable map
+  gets one recipient-protected sharing implementation before a pivot decision.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and
@@ -269,9 +288,8 @@ when older chronology or exact intermediate results are needed.
   boundaries.
   Its structural check passes with nine slides, nine closures, navigation, and
   print CSS. An automated
-  readiness check runs every two hours from 08:00 through 22:00 PDT and ends
-  Thursday morning after the rendered deck, claim audit, and speaking notes are
-  verified.
+  presentation-readiness heartbeat has been deleted. A new two-hour stability
+  diagnosis heartbeat will replace it for the active experiment.
 
 The strongest defensible conclusion is now: organ identity is the strongest tested
 conditional specialization axis; target-hidden conditional routing has replicated

@@ -1,0 +1,561 @@
+{
+  "arms": [
+    {
+      "arm_id": "diag__adipose__recipient_only",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_recipient_only",
+      "evaluation_recipients": [
+        "adipose"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 250,
+      "source_draws": {
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "adipose"
+      },
+      "total_draws": 1500,
+      "unique_donors": 658,
+      "unique_samples": 1036
+    },
+    {
+      "arm_id": "diag__adipose__self_control",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_additional_recipient_control",
+      "evaluation_recipients": [
+        "adipose"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "recipient": 2250
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "adipose"
+      },
+      "total_draws": 2250,
+      "unique_donors": 658,
+      "unique_samples": 1036
+    },
+    {
+      "arm_id": "diag__brain__recipient_only",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_recipient_only",
+      "evaluation_recipients": [
+        "brain"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 250,
+      "source_draws": {
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "brain"
+      },
+      "total_draws": 1500,
+      "unique_donors": 311,
+      "unique_samples": 1368
+    },
+    {
+      "arm_id": "diag__brain__self_control",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_additional_recipient_control",
+      "evaluation_recipients": [
+        "brain"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "recipient": 2250
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "brain"
+      },
+      "total_draws": 2250,
+      "unique_donors": 311,
+      "unique_samples": 1907
+    },
+    {
+      "arm_id": "diag__colon__recipient_only",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_recipient_only",
+      "evaluation_recipients": [
+        "colon"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 250,
+      "source_draws": {
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "colon"
+      },
+      "total_draws": 1500,
+      "unique_donors": 487,
+      "unique_samples": 704
+    },
+    {
+      "arm_id": "diag__colon__self_control",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_additional_recipient_control",
+      "evaluation_recipients": [
+        "colon"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "recipient": 2250
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "colon"
+      },
+      "total_draws": 2250,
+      "unique_donors": 487,
+      "unique_samples": 704
+    },
+    {
+      "arm_id": "diag__heart__recipient_only",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_recipient_only",
+      "evaluation_recipients": [
+        "heart"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 250,
+      "source_draws": {
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "heart"
+      },
+      "total_draws": 1500,
+      "unique_donors": 463,
+      "unique_samples": 731
+    },
+    {
+      "arm_id": "diag__heart__self_control",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_additional_recipient_control",
+      "evaluation_recipients": [
+        "heart"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "recipient": 2250
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "heart"
+      },
+      "total_draws": 2250,
+      "unique_donors": 463,
+      "unique_samples": 731
+    },
+    {
+      "arm_id": "diag__liver__recipient_only",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_recipient_only",
+      "evaluation_recipients": [
+        "liver"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 250,
+      "source_draws": {
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "liver"
+      },
+      "total_draws": 1500,
+      "unique_donors": 213,
+      "unique_samples": 213
+    },
+    {
+      "arm_id": "diag__liver__self_control",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_additional_recipient_control",
+      "evaluation_recipients": [
+        "liver"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "recipient": 2250
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "liver"
+      },
+      "total_draws": 2250,
+      "unique_donors": 213,
+      "unique_samples": 213
+    },
+    {
+      "arm_id": "diag__lung__recipient_only",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_recipient_only",
+      "evaluation_recipients": [
+        "lung"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 250,
+      "source_draws": {
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "lung"
+      },
+      "total_draws": 1500,
+      "unique_donors": 483,
+      "unique_samples": 483
+    },
+    {
+      "arm_id": "diag__lung__self_control",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_additional_recipient_control",
+      "evaluation_recipients": [
+        "lung"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "recipient": 2250
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "lung"
+      },
+      "total_draws": 2250,
+      "unique_donors": 483,
+      "unique_samples": 483
+    },
+    {
+      "arm_id": "diag__skeletal_muscle__recipient_only",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_recipient_only",
+      "evaluation_recipients": [
+        "skeletal_muscle"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 250,
+      "source_draws": {
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "skeletal_muscle"
+      },
+      "total_draws": 1500,
+      "unique_donors": 655,
+      "unique_samples": 655
+    },
+    {
+      "arm_id": "diag__skeletal_muscle__self_control",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_additional_recipient_control",
+      "evaluation_recipients": [
+        "skeletal_muscle"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "recipient": 2250
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "skeletal_muscle"
+      },
+      "total_draws": 2250,
+      "unique_donors": 655,
+      "unique_samples": 655
+    },
+    {
+      "arm_id": "diag__skin__recipient_only",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_recipient_only",
+      "evaluation_recipients": [
+        "skin"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 250,
+      "source_draws": {
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "skin"
+      },
+      "total_draws": 1500,
+      "unique_donors": 676,
+      "unique_samples": 1125
+    },
+    {
+      "arm_id": "diag__skin__self_control",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_additional_recipient_control",
+      "evaluation_recipients": [
+        "skin"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "recipient": 2250
+      },
+      "source_draws_per_batch": {
+        "recipient": 6
+      },
+      "source_labels": {
+        "recipient": "skin"
+      },
+      "total_draws": 2250,
+      "unique_donors": 676,
+      "unique_samples": 1125
+    },
+    {
+      "arm_id": "diag__brain__skin",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_named_donor",
+      "evaluation_recipients": [
+        "brain"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "donor": 750,
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "donor": 2,
+        "recipient": 4
+      },
+      "source_labels": {
+        "donor": "skin",
+        "recipient": "brain"
+      },
+      "total_draws": 2250,
+      "unique_donors": 697,
+      "unique_samples": 2097
+    },
+    {
+      "arm_id": "diag__colon__skeletal_muscle",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_named_donor",
+      "evaluation_recipients": [
+        "colon"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "donor": 750,
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "donor": 2,
+        "recipient": 4
+      },
+      "source_labels": {
+        "donor": "skeletal_muscle",
+        "recipient": "colon"
+      },
+      "total_draws": 2250,
+      "unique_donors": 706,
+      "unique_samples": 1359
+    },
+    {
+      "arm_id": "diag__liver__skin",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_named_donor",
+      "evaluation_recipients": [
+        "liver"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "donor": 750,
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "donor": 2,
+        "recipient": 4
+      },
+      "source_labels": {
+        "donor": "skin",
+        "recipient": "liver"
+      },
+      "total_draws": 2250,
+      "unique_donors": 691,
+      "unique_samples": 942
+    },
+    {
+      "arm_id": "diag__adipose__lung",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_named_donor",
+      "evaluation_recipients": [
+        "adipose"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "donor": 750,
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "donor": 2,
+        "recipient": 4
+      },
+      "source_labels": {
+        "donor": "lung",
+        "recipient": "adipose"
+      },
+      "total_draws": 2250,
+      "unique_donors": 711,
+      "unique_samples": 1519
+    },
+    {
+      "arm_id": "diag__heart__adipose",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_named_donor",
+      "evaluation_recipients": [
+        "heart"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "donor": 750,
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "donor": 2,
+        "recipient": 4
+      },
+      "source_labels": {
+        "donor": "adipose",
+        "recipient": "heart"
+      },
+      "total_draws": 2250,
+      "unique_donors": 703,
+      "unique_samples": 1443
+    },
+    {
+      "arm_id": "diag__lung__skeletal_muscle",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_named_donor",
+      "evaluation_recipients": [
+        "lung"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "donor": 750,
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "donor": 2,
+        "recipient": 4
+      },
+      "source_labels": {
+        "donor": "skeletal_muscle",
+        "recipient": "lung"
+      },
+      "total_draws": 2250,
+      "unique_donors": 712,
+      "unique_samples": 1138
+    },
+    {
+      "arm_id": "diag__skeletal_muscle__lung",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_named_donor",
+      "evaluation_recipients": [
+        "skeletal_muscle"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "donor": 750,
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "donor": 2,
+        "recipient": 4
+      },
+      "source_labels": {
+        "donor": "lung",
+        "recipient": "skeletal_muscle"
+      },
+      "total_draws": 2250,
+      "unique_donors": 712,
+      "unique_samples": 1138
+    },
+    {
+      "arm_id": "diag__skin__adipose",
+      "batch_size": 6,
+      "estimand": "stability_diagnostic_named_donor",
+      "evaluation_recipients": [
+        "skin"
+      ],
+      "initialization_key": "stage2_seed_stability_shared_k1",
+      "number_batches": 375,
+      "source_draws": {
+        "donor": 750,
+        "recipient": 1500
+      },
+      "source_draws_per_batch": {
+        "donor": 2,
+        "recipient": 4
+      },
+      "source_labels": {
+        "donor": "adipose",
+        "recipient": "skin"
+      },
+      "total_draws": 2250,
+      "unique_donors": 724,
+      "unique_samples": 1837
+    }
+  ],
+  "batch_size": 6,
+  "draws_per_source": 750,
+  "initialization_key": "stage2_seed_stability_shared_k1",
+  "schedule_seed": 20260729,
+  "schema_version": 1
+}

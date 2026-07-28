@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 12:07 PDT / 2026-07-28 19:07 UTC
+**Last updated:** 2026-07-28 12:46 PDT / 2026-07-28 19:46 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,40 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-28 — Seed-factorized stability diagnosis frozen
+
+The preliminary additive heatmap remains valid for the July 30 presentation but is
+not accepted as the Stage 2 final product. Only liver←skin was positive in all three
+original seeds; the other small mean-positive effects changed sign and cannot be
+promoted as a general organ-transfer pattern.
+
+The direct next experiment now crosses pooled-trunk seeds 17, 42, and 101 with
+independent optimization/mask/loader seeds 211, 223, and 227. Every one of the nine
+combinations runs all eight unchanged edges under the same 24-arm FP32 schedule:
+eight A1500 references, eight A1500+B750 additions, and eight A2250 controls. This
+separates trunk dependence from within-trunk optimization instability without
+selecting a best seed or a favorable edge.
+
+The focused schedule/trainer/evaluator suite passes 15 tests. Metric-free schedule
+compilation produced 24 arms and 48,000 draws per combination. Frozen hashes:
+
+- implementation: `70f604f28d32a0319022c0140d76f9ad3a125c94`;
+- schedule:
+  `066144402245cac3114fee71a7dd8e0cfc4a6f4f74b9df405510e9b4e7b0c9a3`;
+- arm definitions:
+  `e206e20ae46721d6d353f0179afd9f4acbc0a19cb81d9d89e8b7018d24063c9d`;
+- protocol:
+  `781b03068ce08abcce552dee31feaa9e05ba06830f3503bdac7b9f9aa7380977`.
+
+Decision branches were frozen before outcomes. At least three stable-helpful edges
+are required to continue raw addition. A reproducible but mostly harmful map pivots
+to negative-transfer avoidance or selective sharing. A still-unstable map receives
+one recipient-protected sharing implementation before a pivot decision.
+
+Both A100 hosts were reachable and idle before deployment. The obsolete
+presentation-readiness heartbeat was deleted; a two-hour diagnostic monitor will
+replace it after launch.
 
 ## 2026-07-28 — Stage 2 additive result complete; both GPUs idle
 
