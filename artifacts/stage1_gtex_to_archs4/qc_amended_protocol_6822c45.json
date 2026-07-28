@@ -1,0 +1,103 @@
+{
+  "archs4_expression_accessed_pre_amendment": true,
+  "archs4_source": {
+    "sha256": "284855959248f249ddef5a9a5b780c72b86ef99240ed1403f08b01609778ed56",
+    "size_bytes": 62257385524
+  },
+  "candidate_policy": {
+    "all_prespecified_seeds_required": true,
+    "best_seed_selection_allowed": false,
+    "seeds": [
+      17,
+      42,
+      101
+    ]
+  },
+  "efficacy_scoring_performed_pre_amendment": false,
+  "evaluation": {
+    "organs": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "primary_estimand": "equal-organ equal-connected-study mean",
+    "primary_metric": "masked log1p(TPM) MSE",
+    "uncertainty": "paired connected-study bootstrap within organ",
+    "unequal_study_counts_allowed_as_frozen": true
+  },
+  "evaluator_correction": {
+    "efficacy_output_existed_before_correction": false,
+    "membership_changed": false,
+    "reason": "load all hash-bound ancillary arrays before validating the immutable score cache",
+    "score_cache_recomputed": false,
+    "threshold_changed": false
+  },
+  "evidence_label": "post_access_qc_amended_external_evaluation",
+  "expression_access_gate": {
+    "all_implementation_hashes_frozen": true,
+    "further_membership_changes_allowed": false,
+    "only_exact_qc_exclusions_allowed": true,
+    "repeat_mechanical_extraction_authorized": true
+  },
+  "fine_tuning": {
+    "archs4_exposure": "zero",
+    "post_access_checkpoint_selection_allowed": false,
+    "post_access_training_allowed": false
+  },
+  "implementation_commit": "6822c453637b2b3fe5c8bd50e23060bd13a9b4a6",
+  "implementation_hashes": {
+    "lockbox_evaluator_sha256": "37f6ad6df50eb483e4a48fa8507c11401346955f66f2c569ad023ab30baeee66",
+    "lockbox_extractor_wrapper_sha256": "973cb65ff357fb58f6fcc2a4a70ceabf3d03b903e55bbbdd6b0e27bd300a4e05",
+    "lockbox_score_cache_sha256": "f734e70409d35f9d402e874548e0d8b183d024b8b32045e088c4e688b66cf867",
+    "manifest_expression_core_sha256": "c4c694584c23b1e4032472bc7de8bc5a56913e0eda2365dd78ffe8f26995fa45",
+    "one_time_launcher_sha256": "e8db96b548678f11444adbb55857df71ff4b8b2942c39c8f3e772bf4d1ba4df1",
+    "qc_membership_amender_sha256": "13b0d462f1728f881cdb45003b6eb6ae0312bc6d842ea3e1b91d78a5a60dc4ae",
+    "qc_protocol_freezer_sha256": "ea5f0a2f2280b0a97979dd2d9cdb80c7c0095f643403cfe255d2f4cbbc2f43d9"
+  },
+  "qc_amendment": {
+    "all_eight_organs_retained": true,
+    "efficacy_available_when_amended": false,
+    "excluded_sample_ids": [
+      "GSM8516762",
+      "GSM8516763",
+      "GSM8516764",
+      "GSM8516765",
+      "GSM8516767",
+      "GSM7103327"
+    ],
+    "excluded_samples": 6,
+    "replacement_samples_added": 0,
+    "replacement_studies_added": 0,
+    "retained_samples": 821,
+    "retained_study_groups": 63,
+    "retained_study_groups_per_organ": {
+      "adipose": 8,
+      "brain": 8,
+      "colon": 8,
+      "heart": 8,
+      "liver": 7,
+      "lung": 8,
+      "skeletal_muscle": 8,
+      "skin": 8
+    },
+    "threshold_changed": false,
+    "threshold_nonzero_genes": 14000
+  },
+  "schema_version": 1,
+  "score_cache_source_protocol_sha256": "8fce7b949cad0049def8bf1bb7383f871bfab34c825c8f85526acc6894042763",
+  "source_contract": {
+    "amended_manifest_sha256": "5ad0c48027fe083c689bb63d9abaa05a4dd6f6c7ddc50f317358500385578b2d",
+    "amendment_report_sha256": "c0cd091baf8609592bcdf7f57a87c75bce5b8137ea5fc20ffa10951949a108ff",
+    "approval_sha256": "04e9567fa130338f8e084a0687241be7ef9a6931b0f90581f0019f4917715f21",
+    "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+    "parent_protocol_sha256": "dd73e11f39c02b9a5375f24e098c8118260ccac35f3a608a23e90a0eb76e9bfc",
+    "qc_failure_sha256": "10d69d32d0cec285853418e3a7b7aa463fd0e0a90b87e7f13a5824e8a1d05652",
+    "random_mappings_sha256": "4386f372002dc14591d7e2a0203bf794bacf39cacc50736abc339b89a4f99496"
+  },
+  "status": "frozen_gtex_to_archs4_k8_qc_amended_protocol"
+}

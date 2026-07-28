@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 12:55 PDT / 2026-07-28 19:55 UTC
+**Last updated:** 2026-07-28 13:11 PDT / 2026-07-28 20:11 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,21 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-28 — Repository cleanup and Atrium presentation system
+
+The repository cleanup removed tracked IDE metadata and disposable Python/test
+caches, added portable ignore rules for local editor state and generated
+QC-amended lockbox bundles, and preserved the generated scientific bundles locally.
+The exact corrected QC-amended protocol at implementation commit `6822c45` is retained
+as a small tracked provenance artifact; its SHA256 is
+`c5aaed24de62347747e815c02e0cda7793adc15c33b0b67f841c7c6896b48632`.
+
+`presentation/atrium-theme-template.md` now defines the required design and workflow
+for the July 30 deck and all future presentations. It requires topic, audience,
+duration, and intended-takeaway confirmation before drafting. The July 30 HTML deck
+was restyled without changing its scientific results or claim boundaries. The July 9
+and July 16 presentation files remain unchanged.
 
 ## 2026-07-28 — Representation-first Stage 2 principle recorded
 

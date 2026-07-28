@@ -10,8 +10,10 @@ env/
 *.env
 
 # local/editor
+.idea/
 .claude/
 .vscode/
+.pytest_cache/
 
 # notebooks
 .ipynb_checkpoints/
@@ -45,6 +47,10 @@ artifacts/stage1_gtex_to_archs4/continuation.log
 artifacts/stage1_gtex_to_archs4/continuation_status.txt
 artifacts/stage1_gtex_to_archs4/*_stdout.json
 artifacts/stage1_gtex_to_archs4/lockbox_run_*/
+artifacts/stage1_gtex_to_archs4/lockbox_qc_amended_run_*/
+artifacts/stage1_gtex_to_archs4/qc_amendment_[0-9a-f]*/
+artifacts/stage1_gtex_to_archs4/qc_amended_protocol_*.json
+!artifacts/stage1_gtex_to_archs4/qc_amended_protocol_6822c45.json
 
 # misc
 .DS_Store
