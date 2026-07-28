@@ -189,6 +189,19 @@ budget; it does not answer whether B adds information when A1500 exposure is
 preserved. The prospectively frozen additive subset remains the next discriminating
 experiment.
 
+The recipient-exposure-preserving additive subset is now frozen as a separate
+additive-only schedule before any additive outcome. It contains 40 arms and 90,000
+training draws: eight A1500+B750 named-donor arms, eight A2250 self controls, and
+24 A1500+random750 controls. Schedule SHA256 is
+`fe71a83a9eb60529aef8f1c66dff5072dbc2ba1c6f508284e3568a862f35a75c`;
+arm-definition SHA256 is
+`78edd164f8c5444299da7ab5bf45cd35eed3d513f772b6a7fab11b9aef60d3fb`.
+The evaluator and explicit-seed launcher are frozen with the schedule, the outputs
+were independently regenerated to the same hashes, and 18 focused Stage 2 tests
+pass. The next result will answer whether a selected donor adds information while
+recipient exposure is preserved; it must not be conflated with the already-complete
+substitution matrix.
+
 The full transfer matrix is a GTEx donor-disjoint development analysis. It can
 measure controlled transfer and freeze predictions, but GTEx cannot establish
 multisource study robustness. A final Stage 2 confirmation must use a genuinely new

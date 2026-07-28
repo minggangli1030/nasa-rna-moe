@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 00:10 PDT / 2026-07-28 07:10 UTC
+**Last updated:** 2026-07-28 02:14 PDT / 2026-07-28 09:14 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,33 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-28 — Additive-only confirmation protocol frozen
+
+The next discriminating Stage 2 experiment is now implemented and frozen before
+accessing any additive result. It preserves all recipient exposure and compares each
+prospectively frozen A1500+B750 edge with A1500, A2250, and three
+A1500+random750 controls. It therefore separates organ-specific added information
+from generic extra optimization and generic heterogeneous data.
+
+The exact additive-only schedule contains 40 arms and 90,000 training draws across
+the eight frozen recipient←donor edges. The training-schedule SHA256 is
+`fe71a83a9eb60529aef8f1c66dff5072dbc2ba1c6f508284e3568a862f35a75c`;
+arm-definition SHA256 is
+`78edd164f8c5444299da7ab5bf45cd35eed3d513f772b6a7fab11b9aef60d3fb`;
+the pre-outcome edge-freeze SHA256 remains
+`15d5cfe19506aa7fe267a422626417ceb794ef6707481d3a15d7fdbf5a89813d`.
+An independent rebuild reproduced the schedule, definitions, and report hashes
+exactly. The fail-closed launcher requires an explicit subset of seeds, exact input
+hashes, and clean full commit; the frozen evaluator retains all three seeds, uses
+paired held-out-donor bootstrap intervals, and reports A1500, A2250, and random
+controls. The expanded focused Stage 2 suite passes 18 tests.
+
+At 09:14 UTC, the primary substitution-replication seed 101 was healthy at 37/60
+arms with 100% GPU utilization. Seeds 17 and 42 remain complete, the parallel
+seed-101 lineage remains complete and checksum-verified, and the preliminary result
+still has all 3/3 distinct seeds. The parallel A100 is idle and is the first additive
+launch target. No scientific or operational blocker is present.
 
 ## 2026-07-28 — Stage 2 preliminary 56-edge heatmap complete
 

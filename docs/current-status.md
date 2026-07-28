@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 00:10 PDT / 2026-07-28 07:10 UTC
+**Updated:** 2026-07-28 02:14 PDT / 2026-07-28 09:14 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -191,11 +191,23 @@ when older chronology or exact intermediate results are needed.
   Full interpretation and the correction audit are
   `docs/stage2-directed-transfer-preliminary-result.md`.
 - The original launcher is continuing its duplicate primary seed 101 for operational
-  replication. A detached `stage2-primary-replication-eval` watcher is already armed
-  to evaluate that lineage with exact correction commit `46a64b2` in a separate
-  output path after `SEED101_COMPLETE`. At the observed ~12.7 arms/hour, the
-  duplicate seed and corrected replication evaluation are expected around
-  04:00–04:30 PDT.
+  replication. At 09:14 UTC it had completed 37/60 arms, the detached process and
+  watcher were healthy, and the full A100 was at 100% utilization. A detached
+  `stage2-primary-replication-eval` watcher is already armed to evaluate that lineage
+  with exact correction commit `46a64b2` in a separate output path after
+  `SEED101_COMPLETE`. At the observed ~12.6 arms/hour, the duplicate seed and
+  corrected replication evaluation are expected around 04:05–04:35 PDT.
+- The recipient-exposure-preserving additive experiment is now implemented and
+  frozen before any additive outcome. It tests the eight prospectively frozen
+  recipient←donor edges using A1500+B750 against A1500, A2250, and three
+  A1500+random750 controls. The additive-only schedule contains exactly 40 arms and
+  90,000 training draws. Its training-schedule SHA256 is
+  `fe71a83a9eb60529aef8f1c66dff5072dbc2ba1c6f508284e3568a862f35a75c`;
+  arm-definition SHA256 is
+  `78edd164f8c5444299da7ab5bf45cd35eed3d513f772b6a7fab11b9aef60d3fb`.
+  Independent schedule regeneration reproduced all output hashes, and the expanded
+  focused Stage 2 suite passes 18 tests. The idle parallel A100 is the first launch
+  target; seed 101 will follow on the primary after its substitution replication.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and

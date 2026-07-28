@@ -51,6 +51,7 @@ def _args(manifest: Path, output: Path, **updates):
         "batch_size": 6,
         "initialization_key": "shared-k1",
         "additive_edge": None,
+        "additive_only": False,
     }
     values.update(updates)
     return argparse.Namespace(**values)
@@ -153,6 +154,37 @@ def test_additive_edges_preserve_recipient_draws_and_add_controls(tmp_path: Path
     assert self_control["organ"].eq("brain").all()
     assert report["counts"]["additive_named_donor_arms"] == 2
     assert report["counts"]["total_arms"] == 66
+
+
+def test_additive_only_omits_completed_substitution_arms(tmp_path: Path) -> None:
+    manifest = tmp_path / "manifest.parquet"
+    _manifest(manifest)
+    output = tmp_path / "output"
+    report = compile_schedules(
+        _args(
+            manifest,
+            output,
+            additive_edge=["brain:liver", "brain:skin"],
+            additive_only=True,
+        )
+    )
+    schedules = pd.read_parquet(output / "training_schedules.parquet")
+    assert report["schedule_mode"] == "additive_only"
+    assert report["counts"]["substitution_recipient_only_arms"] == 0
+    assert report["counts"]["substitution_pair_arms"] == 0
+    assert report["counts"]["substitution_random_control_arms"] == 0
+    assert report["counts"]["additive_named_donor_arms"] == 2
+    assert report["counts"]["total_arms"] == 6
+    assert schedules["arm_id"].str.startswith("add__").all()
+
+
+def test_additive_only_requires_frozen_edges(tmp_path: Path) -> None:
+    manifest = tmp_path / "manifest.parquet"
+    _manifest(manifest)
+    with pytest.raises(ValueError, match="requires at least one additive edge"):
+        compile_schedules(
+            _args(manifest, tmp_path / "output", additive_only=True)
+        )
 
 
 def test_compiler_fails_closed_on_hash_or_non_atomic_random_axis(tmp_path: Path) -> None:

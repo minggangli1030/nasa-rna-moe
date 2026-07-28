@@ -1,0 +1,56 @@
+{
+  "additive_edges": [
+    "brain:skin",
+    "colon:skeletal_muscle",
+    "liver:skin",
+    "adipose:lung",
+    "heart:adipose",
+    "lung:skeletal_muscle",
+    "skeletal_muscle:lung",
+    "skin:adipose"
+  ],
+  "batch_size": 6,
+  "best_seed_selection_allowed": false,
+  "counts": {
+    "additive_named_donor_arms": 8,
+    "substitution_pair_arms": 0,
+    "substitution_random_control_arms": 0,
+    "substitution_recipient_only_arms": 0,
+    "total_arms": 40,
+    "total_schedule_draws": 90000,
+    "training_donors": 750,
+    "training_rows": 7369
+  },
+  "development_only": true,
+  "draws_per_source": 750,
+  "efficacy_result_loaded": false,
+  "expression_loaded": false,
+  "hashes": {
+    "arm_definitions_content_sha256": "fcee4fe11fe1b2ab1c26f07436054cb7c152797cf4367b027862c238070b7bef",
+    "arm_definitions_sha256": "78edd164f8c5444299da7ab5bf45cd35eed3d513f772b6a7fab11b9aef60d3fb",
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "training_schedules_sha256": "fe71a83a9eb60529aef8f1c66dff5072dbc2ba1c6f508284e3568a862f35a75c"
+  },
+  "initialization_key": "stage2_directed_transfer_shared_k1",
+  "model_fit": false,
+  "organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "random_axes": [
+    "random_k8_p17",
+    "random_k8_p42",
+    "random_k8_p101"
+  ],
+  "research_stage": "stage2_directed_organ_transfer_development",
+  "schedule_mode": "additive_only",
+  "schedule_seed": 20260727,
+  "schema_version": 1,
+  "status": "complete"
+}

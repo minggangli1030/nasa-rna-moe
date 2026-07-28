@@ -300,6 +300,9 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
     if not initialization_key:
         raise ValueError("initialization-key must be nonempty")
     additive_edges = _parse_edges(getattr(args, "additive_edge", None))
+    additive_only = bool(getattr(args, "additive_only", False))
+    if additive_only and not additive_edges:
+        raise ValueError("additive-only schedule requires at least one additive edge")
 
     schedules: list[pd.DataFrame] = []
     definitions: list[dict[str, Any]] = []
@@ -325,44 +328,45 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
 
     organ_values = frame["organ"].astype(str).to_numpy()
     organ_masks = {organ: organ_values == organ for organ in ORGANS}
-    for recipient in ORGANS:
-        add_arm(
-            f"sub__{recipient}__recipient_only",
-            [("recipient", recipient, organ_masks[recipient], 2 * per_source)],
-            [recipient],
-            "same_total_compute_recipient_only",
-        )
-    for left_index, left in enumerate(ORGANS):
-        for right in ORGANS[left_index + 1 :]:
+    if not additive_only:
+        for recipient in ORGANS:
             add_arm(
-                f"sub__{left}__{right}",
-                [
-                    ("organ_1", left, organ_masks[left], per_source),
-                    ("organ_2", right, organ_masks[right], per_source),
-                ],
-                [left, right],
-                "same_total_compute_organ_pair",
-            )
-    for recipient_index, recipient in enumerate(ORGANS):
-        for axis in RANDOM_AXES:
-            auxiliary = (
-                frame[axis].to_numpy(dtype=np.int64) == recipient_index
-            ) & ~organ_masks[recipient]
-            auxiliary_label = f"{axis}:excluding:{recipient}"
-            add_arm(
-                f"sub__{recipient}__random__{axis}",
-                [
-                    ("recipient", recipient, organ_masks[recipient], per_source),
-                    (
-                        "random_auxiliary",
-                        auxiliary_label,
-                        auxiliary,
-                        per_source,
-                    ),
-                ],
+                f"sub__{recipient}__recipient_only",
+                [("recipient", recipient, organ_masks[recipient], 2 * per_source)],
                 [recipient],
-                "same_total_compute_random_auxiliary",
+                "same_total_compute_recipient_only",
             )
+        for left_index, left in enumerate(ORGANS):
+            for right in ORGANS[left_index + 1 :]:
+                add_arm(
+                    f"sub__{left}__{right}",
+                    [
+                        ("organ_1", left, organ_masks[left], per_source),
+                        ("organ_2", right, organ_masks[right], per_source),
+                    ],
+                    [left, right],
+                    "same_total_compute_organ_pair",
+                )
+        for recipient_index, recipient in enumerate(ORGANS):
+            for axis in RANDOM_AXES:
+                auxiliary = (
+                    frame[axis].to_numpy(dtype=np.int64) == recipient_index
+                ) & ~organ_masks[recipient]
+                auxiliary_label = f"{axis}:excluding:{recipient}"
+                add_arm(
+                    f"sub__{recipient}__random__{axis}",
+                    [
+                        ("recipient", recipient, organ_masks[recipient], per_source),
+                        (
+                            "random_auxiliary",
+                            auxiliary_label,
+                            auxiliary,
+                            per_source,
+                        ),
+                    ],
+                    [recipient],
+                    "same_total_compute_random_auxiliary",
+                )
 
     additive_recipients = sorted({recipient for recipient, _ in additive_edges})
     for recipient in additive_recipients:
@@ -436,13 +440,18 @@ def compile_schedules(args: argparse.Namespace) -> dict[str, Any]:
         "draws_per_source": per_source,
         "batch_size": int(args.batch_size),
         "initialization_key": initialization_key,
+        "schedule_mode": "additive_only" if additive_only else "combined",
         "additive_edges": [f"{recipient}:{donor}" for recipient, donor in additive_edges],
         "counts": {
             "training_rows": int(len(frame)),
             "training_donors": int(frame["donor_id"].nunique()),
-            "substitution_recipient_only_arms": len(ORGANS),
-            "substitution_pair_arms": len(ORGANS) * (len(ORGANS) - 1) // 2,
-            "substitution_random_control_arms": len(ORGANS) * len(RANDOM_AXES),
+            "substitution_recipient_only_arms": 0 if additive_only else len(ORGANS),
+            "substitution_pair_arms": (
+                0 if additive_only else len(ORGANS) * (len(ORGANS) - 1) // 2
+            ),
+            "substitution_random_control_arms": (
+                0 if additive_only else len(ORGANS) * len(RANDOM_AXES)
+            ),
             "additive_named_donor_arms": len(additive_edges),
             "total_arms": len(definitions),
             "total_schedule_draws": int(len(schedule_frame)),
@@ -475,6 +484,14 @@ def build_parser() -> argparse.ArgumentParser:
         help=(
             "Prospectively frozen RECIPIENT:DONOR additive edge. Omit until "
             "development-only expert/router predictions freeze the subset."
+        ),
+    )
+    parser.add_argument(
+        "--additive-only",
+        action="store_true",
+        help=(
+            "Compile only the prospectively supplied additive arms and their "
+            "self/random controls, omitting the already completed substitution arms."
         ),
     )
     return parser
