@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 20:07 PDT / 2026-07-28 03:07 UTC
+**Updated:** 2026-07-27 22:02 PDT / 2026-07-28 05:02 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -142,9 +142,9 @@ when older chronology or exact intermediate results are needed.
 - Stage 2 development training is active on `moe-reboot` in detached screen session
   `stage2-directed-transfer`. It launched from clean commit
   `229dfa6dc18302a798734880dc8e3eb60e506e61` at 2026-07-27 21:01 UTC. Seed 17
-  completed all 60 arms at 01:38 UTC with `mechanical_only=false`. At 03:02 UTC,
-  seed 42 had completed 17/60 arms; the detached session and training process were
-  healthy, the A100 was at 98% utilization, and no failure signature was found.
+  completed all 60 arms at 01:38 UTC with `mechanical_only=false`. At 05:02 UTC,
+  seed 42 had completed 41/60 arms; the detached session and training process were
+  healthy, the A100 was at 100% utilization, and no failure signature was found.
   Result root:
   `/media/volume/moe-reboot/results/stage2_directed_transfer_229dfa6`.
   The launcher runs seeds 17, 42, and 101 sequentially, then the frozen evaluator
@@ -169,9 +169,10 @@ when older chronology or exact intermediate results are needed.
   `stage2-early-evaluator` watcher is waiting only for primary seed 42, after which
   it will run the frozen evaluator with seeds 17, 42, and `101_partial` into the
   distinct `evaluation_partial_seed101` lineage. Observed per-host rates are
-  approximately 12.8 arms/hour on the primary and 12.9 arms/hour on the parallel
-  host. Seed 42 is projected to finish around 23:30 PDT; the current early
-  three-seed evaluator/heatmap window is approximately 23:30 PDT–00:15 PDT.
+  approximately 12.1 current-seed arms/hour on the primary and 12.9 arms/hour on
+  the parallel host. Seed 42 is projected to finish around 23:35–23:45 PDT; the
+  current early three-seed evaluator/heatmap window is approximately
+  23:40 PDT–00:20 PDT.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and
@@ -180,7 +181,12 @@ when older chronology or exact intermediate results are needed.
   cohort is required for the latter.
 - The preliminary result is already available ahead of the Thursday-morning
   deadline. Presentation preparation is now the active operational task. The
-  content draft is `presentation/2026-07-30-biweekly-draft.md`; an automated
+  content draft is `presentation/2026-07-30-biweekly-draft.md`. A nine-slide
+  presentation-ready HTML scaffold is now
+  `presentation/2026-07-30-biweekly.html`; it includes the complete bounded Stage 1
+  narrative and a reserved Stage 2 heatmap panel that will be replaced after the
+  frozen evaluator completes. Its structural check passes with nine slides, nine
+  closures, navigation, and print CSS. An automated
   readiness check runs every two hours from 08:00 through 22:00 PDT and ends
   Thursday morning after the rendered deck, claim audit, and speaking notes are
   verified.

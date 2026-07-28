@@ -7,6 +7,12 @@ Target: 9 slides, 8–10 minutes. The central result is positive, but every slid
 spoken claim must distinguish the pristine GTEx validation from the
 `post_access_qc_amended_external_evaluation` in ARCHS4.
 
+Rendered-deck checkpoint: `presentation/2026-07-30-biweekly.html` now implements
+this nine-slide narrative with keyboard navigation and print CSS. Slide 8 reserves a
+bounded Stage 2 heatmap panel; replace that placeholder only with the frozen
+all-seed evaluator output and retain the GTEx development-only/study-universality
+boundary in both slide text and speaker notes.
+
 ## Slide 1 — The question
 
 **Can organ specialization learned only from GTEx improve masked-expression

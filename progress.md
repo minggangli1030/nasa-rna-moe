@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 20:07 PDT / 2026-07-28 03:07 UTC
+**Last updated:** 2026-07-27 22:02 PDT / 2026-07-28 05:02 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,29 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — Seed 42 at 41/60; rendered-deck scaffold created
+
+At 05:02 UTC, the primary launcher and early-evaluator watcher were both detached
+and healthy. Seed 42 had completed 41/60 arms with `mechanical_only=false`, 100%
+GPU utilization, 36 GB free disk, and no failure signature. Parallel seed 101
+remains complete at 60/60, its checksum-manifest hash remains unchanged, and its
+GPU is idle. Two of three distinct seeds are complete.
+
+The current seed-42 rate is approximately 12.1 arms/hour; the parallel seed-101
+rate was approximately 12.9 arms/hour. Seed 42 is projected to finish around
+23:35–23:45 PDT. The already-armed watcher should start the early frozen evaluator
+immediately afterward, giving a current heatmap window of about
+23:40 PDT–00:20 PDT.
+
+Presentation work advanced without touching the live scientific run. The new
+`presentation/2026-07-30-biweekly.html` is a nine-slide presentation-ready scaffold
+covering the frozen reverse-direction design, fail-closed QC amendment, 821-sample
+external cohort, Stage 1 results and controls, bounded claim language, Stage 2
+transfer estimands, and practical value. The Stage 2 slide has an explicit reserved
+heatmap panel. Static structure checks confirm nine slides, nine closures, keyboard
+navigation, and print CSS; the real heatmap and its bounded interpretation will be
+inserted only after the evaluator completes.
 
 ## 2026-07-27 — Parallel seed 101 verified and early evaluator armed
 

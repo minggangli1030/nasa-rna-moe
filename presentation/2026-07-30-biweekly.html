@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Organ-specialist transfer — NASA RNA MoE — 2026-07-30</title>
+<style>
+  :root{
+    --paper:#f4f6f1;--panel:#fff;--ink:#15201d;--muted:#5e6c67;
+    --rule:#d6ded8;--teal:#195f57;--teal2:#3f8c80;--soft:#dcece7;
+    --blue:#497d9b;--gold:#b47922;--red:#a34d47;--green:#277447;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --serif:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;overflow:hidden}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.4}
+  .deck{display:flex;width:100vw;height:100vh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .deck::-webkit-scrollbar{display:none}
+  .slide{position:relative;flex:0 0 100vw;height:100vh;overflow:hidden;scroll-snap-align:start;display:flex;align-items:center;padding:38px 4.5vw;border-right:1px solid var(--rule)}
+  .inner{width:100%;max-width:1280px;margin:auto}
+  .eyebrow{display:inline-block;margin-bottom:14px;padding:5px 11px;border-radius:3px;background:var(--soft);color:#154b45;font:700 13px var(--mono);text-transform:uppercase;letter-spacing:.04em}
+  h1,h2,h3,p{margin-top:0}
+  h1,h2,h3{font-family:var(--serif);font-weight:600}
+  h1{font-size:60px;line-height:1.05;max-width:1100px;margin-bottom:18px}
+  h2{font-size:43px;line-height:1.1;max-width:1170px;margin-bottom:18px}
+  h3{font-size:23px;line-height:1.18;margin-bottom:8px}
+  p{font-size:20px;margin-bottom:11px}
+  .lede{font-size:25px;line-height:1.4;color:var(--muted);max-width:74ch}
+  ul{margin:0;padding-left:22px}
+  li{font-size:20px;margin:0 0 8px}
+  .slide-num{position:absolute;right:4vw;bottom:18px;color:#89958f;font:13px var(--mono)}
+  .meta{display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font:14px var(--mono);margin-top:20px}
+  .meta b{color:var(--ink)}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .cols.left{grid-template-columns:1.15fr .85fr}
+  .panel{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:18px 20px}
+  .panel p,.panel li{font-size:18px}
+  .callout{border-left:4px solid var(--teal);background:var(--soft);padding:13px 17px;margin-top:16px}
+  .callout p{margin:0;color:#164d47;font-size:19px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+  .stat{background:var(--panel);border-top:3px solid var(--teal);padding:15px 16px;min-height:106px}
+  .stat .n{font:750 33px var(--mono);color:#174f49}
+  .stat .label{font-size:15px;line-height:1.3;color:var(--muted);margin-top:7px}
+  .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;margin:25px 0}
+  .pipe{position:relative;background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--teal);padding:14px;min-height:116px}
+  .pipe:not(:last-child):after{content:"→";position:absolute;right:-24px;top:37px;color:var(--teal);font-size:26px;font-weight:700}
+  .pipe b{display:block;font-size:18px;margin-bottom:5px}
+  .pipe span{color:var(--muted);font-size:15px}
+  .badge{display:inline-block;padding:4px 8px;border-radius:3px;border:1px solid var(--teal);background:var(--soft);color:#174f49;font:700 12px var(--mono);text-transform:uppercase}
+  .badge.warn{border-color:var(--gold);background:#f6ead7;color:#76501b}
+  .table-wrap{border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--panel)}
+  table{width:100%;border-collapse:collapse}
+  th{padding:10px 13px;border-bottom:1px solid var(--rule);text-align:left;color:var(--muted);font:12px var(--mono);text-transform:uppercase}
+  td{padding:11px 13px;border-bottom:1px solid var(--rule);font-size:18px;font-variant-numeric:tabular-nums}
+  tr:last-child td{border-bottom:0}
+  .good{color:var(--green);font-weight:750}
+  .bars{display:grid;gap:13px;margin-top:18px}
+  .bar-row{display:grid;grid-template-columns:230px 1fr 95px;gap:14px;align-items:center}
+  .bar-label{font-size:18px}
+  .bar-track{height:27px;background:#e7ece8;position:relative}
+  .bar{height:100%;background:var(--teal)}
+  .bar.base{background:#9ca8a1}
+  .bar.hard{background:var(--blue)}
+  .bar.soft{background:var(--teal2)}
+  .bar-value{font:750 18px var(--mono);text-align:right}
+  .seed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+  .seed{background:var(--panel);border-top:3px solid var(--teal);padding:15px 16px}
+  .seed .k{color:var(--muted);font:12px var(--mono);text-transform:uppercase}
+  .seed .n{font:750 29px var(--mono);color:#174f49;margin:6px 0}
+  .seed p{font-size:16px;color:var(--muted);margin:0}
+  .claim{display:grid;grid-template-columns:145px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule)}
+  .claim:last-child{border-bottom:0}
+  .claim b{font:700 13px var(--mono);text-transform:uppercase;color:#174f49;padding-top:4px}
+  .claim p{font-size:19px;margin:0}
+  .matrix{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;aspect-ratio:1/1;width:min(47vh,470px);margin:auto}
+  .cell{background:#e7ece8;border-radius:2px}
+  .cell:nth-child(9n+2),.cell:nth-child(7n+4){background:#d7e9e5}
+  .cell:nth-child(11n+3){background:#edd8d4}
+  .cell.ref{background:#aebbb5}
+  .matrix-wrap{position:relative}
+  .matrix-label{font:13px var(--mono);color:var(--muted);text-align:center;margin-top:8px}
+  .pending{position:absolute;inset:36% 8%;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(255,255,255,.92);border:1px solid var(--teal);border-radius:5px;color:#174f49;font:700 15px var(--mono)}
+  .foot{margin-top:13px;color:var(--muted);font:13px var(--mono)}
+  .footer-label{position:absolute;left:4.5vw;bottom:16px;color:#718078;font:12px var(--mono)}
+  @media(max-height:780px) and (min-width:861px){
+    .slide{padding:24px 4.5vw}.eyebrow{margin-bottom:10px}h1{font-size:52px}h2{font-size:37px}
+    p,.callout p{font-size:17px}li{font-size:17px}.stats{margin:12px 0}.stat{min-height:88px;padding:10px 12px}.stat .n{font-size:28px}
+    .pipeline{margin:15px 0}.pipe{min-height:94px;padding:10px}.pipe b{font-size:16px}.pipe span{font-size:13px}
+    td{font-size:15px;padding:8px 10px}.bars{gap:9px}.bar-row{grid-template-columns:205px 1fr 85px}
+    .seed-grid{margin:12px 0}.seed{padding:11px}.seed .n{font-size:24px}.claim{padding:8px 0}.claim p{font-size:16px}
+  }
+  @media print{
+    html,body{height:auto;overflow:visible}.deck{display:block;height:auto;overflow:visible}
+    .slide{width:13.333in;height:7.5in;page-break-after:always;border:0}
+  }
+</style>
+</head>
+<body>
+<main class="deck">
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">NASA RNA MoE · Stage 1 result → Stage 2 mechanism</span>
+    <h1>Organ specialists transfer from clean GTEx to heterogeneous studies</h1>
+    <p class="lede">A frozen, target-hidden router preserves a 3.6–3.7% study-macro reconstruction gain in ARCHS4. Next: learn which organs should share training signal—and which should remain isolated.</p>
+    <div class="meta">
+      <span><b>Date</b> 2026-07-30</span><span><b>Presenter</b> Martin</span>
+      <span><b>Program</b> NASA Ames</span><span><b>Status</b> Stage 2 development active</span>
+    </div>
+  </div><span class="slide-num">01</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Question and design</span>
+    <h2>Can GTEx-trained organ specialization survive a reverse-direction test?</h2>
+    <div class="stats">
+      <div class="stat"><div class="n">9,195</div><div class="label">GTEx development samples</div></div>
+      <div class="stat"><div class="n">938</div><div class="label">globally disjoint GTEx donors</div></div>
+      <div class="stat"><div class="n">8</div><div class="label">frozen organ experts</div></div>
+      <div class="stat"><div class="n">3</div><div class="label">prespecified seeds; none selected</div></div>
+    </div>
+    <div class="pipeline">
+      <div class="pipe"><b>Train</b><span>GTEx pooled, K8, random, capacity control</span></div>
+      <div class="pipe"><b>Freeze</b><span>all candidates, router, cohort, estimand</span></div>
+      <div class="pipe"><b>Extract once</b><span>sealed ARCHS4 expression matrix</span></div>
+      <div class="pipe"><b>Score</b><span>no ARCHS4 tuning or model selection</span></div>
+      <div class="pipe"><b>Evaluate</b><span>equal organ, then equal study weight</span></div>
+    </div>
+    <div class="callout"><p><strong>Why reverse direction?</strong> The earlier candidate learned in ARCHS4 and validated in GTEx. Here GTEx is development data, so heterogeneous ARCHS4 studies test transfer in the opposite direction.</p></div>
+  </div><span class="slide-num">02</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">The lockbox worked</span>
+    <h2>First access failed closed on six low-coverage samples</h2>
+    <div class="cols">
+      <div class="panel">
+        <span class="badge warn">Prespecified QC floor: 14,000 nonzero genes</span>
+        <h3 style="margin-top:14px">Observed failures</h3>
+        <ul>
+          <li>Five liver samples: only 19–304 nonzero genes.</li>
+          <li>One lung sample: 11,235 nonzero genes.</li>
+          <li>Zero expression rows and zero efficacy metrics were published.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <span class="badge">Versioned amendment</span>
+        <h3 style="margin-top:14px">The bounded decision</h3>
+        <ul>
+          <li>Exclude exactly the six failures.</li>
+          <li>Lower no threshold; add no replacements; drop no organ.</li>
+          <li>No fine-tuning, best-seed selection, or estimand change.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout"><p><strong>Evidence label:</strong> post-access QC-amended external evaluation—not a pristine preregistered confirmation. A new untouched cohort is still required for that stronger claim.</p></div>
+  </div><span class="slide-num">03</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Amended external cohort</span>
+    <h2>All eight organs remain represented across heterogeneous studies</h2>
+    <div class="stats">
+      <div class="stat"><div class="n">821</div><div class="label">passing ARCHS4 samples</div></div>
+      <div class="stat"><div class="n">63</div><div class="label">connected study groups</div></div>
+      <div class="stat"><div class="n">8 / 8</div><div class="label">target organs retained</div></div>
+      <div class="stat"><div class="n">10,000</div><div class="label">paired study-bootstrap draws</div></div>
+    </div>
+    <div class="cols">
+      <div class="panel"><h3>Liver</h3><p><strong>42 samples / 7 studies</strong></p><p>One deficient study removed by the unchanged expression-coverage rule.</p></div>
+      <div class="panel"><h3>Other seven organs</h3><p><strong>8 studies each</strong></p><p>Adipose, brain, colon, heart, lung, skeletal muscle, and skin retain frozen coverage.</p></div>
+    </div>
+    <p class="foot">Primary unit: connected study, aggregated equally within organ. Most ARCHS4 donor identities remain title-derived proxies, not verified identities.</p>
+  </div><span class="slide-num">04</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Primary Stage 1 result</span>
+    <h2>Organ routing beats pooled—with or without revealed organ labels</h2>
+    <div class="cols left">
+      <div>
+        <div class="bars">
+          <div class="bar-row"><div class="bar-label">Pooled baseline</div><div class="bar-track"><div class="bar base" style="width:0"></div></div><div class="bar-value">0.000%</div></div>
+          <div class="bar-row"><div class="bar-label">True-organ K8</div><div class="bar-track"><div class="bar" style="width:95%"></div></div><div class="bar-value">+3.797%</div></div>
+          <div class="bar-row"><div class="bar-label">Target-hidden hard</div><div class="bar-track"><div class="bar hard" style="width:91%"></div></div><div class="bar-value">+3.633%</div></div>
+          <div class="bar-row"><div class="bar-label">Target-hidden soft</div><div class="bar-track"><div class="bar soft" style="width:92%"></div></div><div class="bar-value">+3.676%</div></div>
+        </div>
+        <p class="foot">Relative reduction in equal-organ/equal-study MSE versus each seed’s pooled model; higher is better.</p>
+      </div>
+      <div class="panel">
+        <h3>The compact takeaway</h3>
+        <p>Organ specialization improves reconstruction whether dispatch uses:</p>
+        <ul>
+          <li>the revealed organ;</li>
+          <li>one input-only hard route; or</li>
+          <li>an input-only soft mixture.</li>
+        </ul>
+        <div class="callout"><p>The router recovers nearly all of the known-organ gain without labels or reconstruction targets at test time.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-label">Post-access QC-amended external evaluation · 821 samples / 63 connected studies · all 3 seeds retained</div>
+  <span class="slide-num">05</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Replication and controls</span>
+    <h2>The gain survives every seed; generic adapter capacity does not</h2>
+    <div class="seed-grid">
+      <div class="seed"><div class="k">Seed 17 · true / hard / soft</div><div class="n">2.78 / 2.62 / 2.65%</div><p>All three routed conditions improve.</p></div>
+      <div class="seed"><div class="k">Seed 42 · true / hard / soft</div><div class="n">3.24 / 3.07 / 3.10%</div><p>All three routed conditions improve.</p></div>
+      <div class="seed"><div class="k">Seed 101 · true / hard / soft</div><div class="n">5.38 / 5.23 / 5.29%</div><p>All three routed conditions improve.</p></div>
+    </div>
+    <div class="cols">
+      <div class="panel"><h3>Capacity-matched pooled adapter</h3><p class="good" style="font:750 29px var(--mono);color:var(--muted)">−0.005%</p><p>Effectively neutral versus pooled.</p></div>
+      <div class="panel"><h3>Mean of three random K8 axes</h3><p class="good" style="font:750 29px var(--mono);color:var(--muted)">−0.001%</p><p>Effectively neutral versus pooled.</p></div>
+    </div>
+    <div class="callout"><p><strong>Supported wording:</strong> robust across routing form, seed, setup, and training/evaluation direction, with positive study-balanced evidence—not invariant in every individual study or every organ-by-seed cell.</p></div>
+  </div>
+  <div class="footer-label">Every routed seed comparison had a paired-study bootstrap interval above zero · no seed selected</div>
+  <span class="slide-num">06</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Claim boundary</span>
+    <h2>What the evidence establishes—and what it does not</h2>
+    <div class="cols">
+      <div class="panel">
+        <span class="badge">Supported</span>
+        <div class="claim"><b>Transfer</b><p>GTEx-only organ supervision improves a heterogeneous ARCHS4 study-macro evaluation.</p></div>
+        <div class="claim"><b>Routing</b><p>Expression-derived hard and soft routing preserve most of the known-organ advantage.</p></div>
+        <div class="claim"><b>Specificity</b><p>Organ-aligned experts outperform pooled and capacity-matched random controls.</p></div>
+      </div>
+      <div class="panel">
+        <span class="badge warn">Not established</span>
+        <div class="claim"><b>Pristine</b><p>The ARCHS4 confirmation is post-access QC-amended.</p></div>
+        <div class="claim"><b>Universal</b><p>Study quality and labels vary; no claim of improvement in every study or cell.</p></div>
+        <div class="claim"><b>Downstream</b><p>No spaceflight, disease, clinical, or causal-mechanism claim yet.</p></div>
+      </div>
+    </div>
+  </div><span class="slide-num">07</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Stage 2 · Controlled directed transfer</span>
+    <h2>Which organs should share training signal—and which should remain isolated?</h2>
+    <div class="cols left">
+      <div>
+        <div class="claim"><b>Same compute</b><p>A1500 versus A750+B750: is donor B a better use of a fixed training budget?</p></div>
+        <div class="claim"><b>Additive</b><p>A1500 versus A1500+B750: does B add information beyond more recipient updates?</p></div>
+        <div class="claim"><b>Controls</b><p>Random auxiliary organs, A2250, all three seeds, donor-atomic schedules, donor bootstrap.</p></div>
+        <div class="callout"><p><strong>Practical output:</strong> data-selection rules, negative-transfer safeguards, and evidence for shared, asymmetric, or isolated expert modules.</p></div>
+      </div>
+      <div class="matrix-wrap">
+        <div class="matrix">
+          <div class="cell ref"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell ref"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell ref"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell ref"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell ref"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell ref"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell ref"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell ref"></div>
+        </div>
+        <div class="pending">Frozen 56-edge heatmap<br>automatically inserts after evaluation</div>
+        <div class="matrix-label">recipient organ A × donor-training organ B</div>
+      </div>
+    </div>
+    <p class="foot">Development-only GTEx can test seed stability and donor robustness. Study universality requires a new untouched multisource cohort.</p>
+  </div><span class="slide-num">08</span>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Conclusion</span>
+    <h2>Organ signal is real, useful, and strong enough to move from performance to mechanism</h2>
+    <div class="cols">
+      <div class="panel"><h3>What Stage 1 gives us</h3><p>Replicated organ-specialist gains across routing forms, seeds, setups, and both train/test directions, with neutral capacity and random controls.</p></div>
+      <div class="panel"><h3>What Stage 2 asks next</h3><p>Do independently learned expert signatures predict functional organ-to-organ transfer or interference under controlled training budgets?</p></div>
+    </div>
+    <div class="callout"><p><strong>Program-level claim:</strong> organ identity is the strongest tested conditional specialization axis. The next model should learn when to share—and when to protect tissue-specific structure.</p></div>
+    <p class="foot">Each method exists individually. The underexplored contribution is the prospective link among independently validated expert signatures, controlled directed transfer, and input-only router compatibility.</p>
+  </div><span class="slide-num">09</span>
+</section>
+
+</main>
+<script>
+const deck=document.querySelector('.deck');
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)) deck.scrollBy({left:innerWidth,behavior:'smooth'});
+  if(['ArrowLeft','PageUp'].includes(e.key)) deck.scrollBy({left:-innerWidth,behavior:'smooth'});
+  if(e.key==='Home') deck.scrollTo({left:0,behavior:'smooth'});
+  if(e.key==='End') deck.scrollTo({left:deck.scrollWidth,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
