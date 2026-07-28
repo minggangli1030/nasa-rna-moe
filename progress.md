@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-28 13:46 PDT / 2026-07-28 20:46 UTC
+**Last updated:** 2026-07-28 13:50 PDT / 2026-07-28 20:50 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -147,7 +147,7 @@ balanced-evaluation numbers remain only in Git history.
 ## 2026-07-28 — Presentation and repository consolidation
 
 The July 30 deck and all future decks use
-[`presentation/atrium-theme-template.md`](presentation/atrium-theme-template.md).
+[`presentation/design.md`](presentation/design.md).
 The presentation workflow is now:
 
 - audience-first: assume no technical background;
@@ -182,8 +182,8 @@ Removed:
 
 ## 2026-07-28 — July 30 deck legibility pass
 
-The active July 30 deck and reusable Atrium template were tightened after visual
-review:
+The active July 30 deck and reusable presentation specification were tightened
+after visual review:
 
 - the prior 11 px minimum in the main content region was raised to 14 px;
 - slides 8–9 now reserve roughly three quarters of a wider canvas for their result
@@ -193,3 +193,24 @@ review:
   legibility; and
 - bottom-right page tokens were replaced by centered progress dots, with the active
   slide enlarged and darkened while keyboard and 180 ms slide transitions remain.
+
+## 2026-07-28 — Anthropic field-journal design merge
+
+The prior Atrium instructions were merged into a more detailed
+[`presentation/design.md`](presentation/design.md), using the supplied Anthropic
+scientific-field-journal reference as the primary visual authority. The canonical
+system now specifies:
+
+- Ivory Medium parchment, layered ivory/oat/manilla paper surfaces, Slate Dark ink,
+  Stone rules, and one restrained Clay accent;
+- Anthropic Serif/Sans/Mono family tokens with portable Source Serif 4, Inter, and
+  technical-monospace fallbacks;
+- serif editorial body copy with sans-serif reserved for navigation, labels, and
+  compact metadata;
+- flat elevation without shadows, restrained 24 px cards, and the former Atrium arch
+  only as a sparse functional project adaptation; and
+- all previously frozen audience, narrative, chart-legibility, pagination,
+  transition, and scientific-claim safeguards.
+
+The July 30 deck was updated to this palette and type system. July 9 and July 16
+remain unchanged historical artifacts.

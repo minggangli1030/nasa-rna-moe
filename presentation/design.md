@@ -1,4 +1,4 @@
-# Atrium presentation template
+# Anthropic field-journal presentation design
 
 **Applies to:** the July 30, 2026 presentation and every presentation created after
 it.
@@ -35,62 +35,111 @@ reconstruction loss, routing, or the project’s internal stage names.
 - Keep protocol hashes, implementation commits, and debugging detail out of the main
   slide body. Put them in the scientific documentation.
 
-## Theme
+## Design direction
 
-Use the **Atrium** theme throughout the complete deck.
+Use an **Anthropic-inspired scientific field journal** throughout the complete
+deck: quiet parchment surfaces, editorial serif typography, restrained sans-serif
+UI labels, flat paper-like panels, hairline rules, and one clay accent used only for
+the most consequential conclusion or action.
+
+The previous Atrium language is retained only where it strengthens this direction:
+an occasional functional arch may frame a number or simple image. Anthropic's
+editorial system is the primary authority for color, type, surfaces, density, and
+component treatment.
 
 ### Color system
 
-| Token | Hex | Use |
+| Token | Hex | Presentation use |
 | --- | --- | --- |
-| Warm cream | `#F7F2E9` | page and slide background |
-| Sage green | `#7A8C6F` | primary fills, positive/supporting data, arch motifs |
-| Terracotta | `#C4704F` | emphasis, italic headline word, kickers, comparison data |
-| Soft sand | `#EFE7D8` | panels, tracks, subtle background fields |
-| Deep olive ink | `#33392B` | all primary text and axes |
+| Slate Dark | `#141413` | primary text, headings, axes, and the only dark inversion |
+| Ivory Medium | `#f0eee6` | slide canvas and page background |
+| Ivory Light | `#faf9f5` | standard paper-card surface |
+| Oat Warm | `#e3dacc` | grouped panels and deeper paper fields |
+| Manilla | `#f5e3c7` | one featured editorial panel when hierarchy requires it |
+| Stone | `#cccbc8` | hairline borders and dividers |
+| Cloud Dark | `#87867f` | secondary labels and inactive pagination |
+| Cloud Medium | `#b0aea5` | quiet helper text that is not presentation-critical |
+| Slate Medium | `#3d3d3a` | secondary high-legibility text and neutral data |
+| Clay | `#d97757` | single decisive accent or comparison |
+| Clay Deep | `#c6613f` | active/pressed clay and stronger negative emphasis |
 
-Never use pure white, pure black, neon colors, or highly saturated accents. Any
-additional color must be muted and subordinate to this palette.
+Never use pure white, pure black, cool tech gray, neon, gradients, glows, or highly
+saturated decorative colors. Use flat solid surfaces. Scientific plots may retain a
+necessary diverging or categorical scale, but it must be muted, explained, and
+subordinate to the editorial palette outside the data region.
 
 ### Typography
 
-- Headlines: **Fraunces**.
-- Every main slide headline contains exactly one italic word in terracotta.
-- Body, labels, and kickers: **Work Sans**.
-- Kickers are small, uppercase, terracotta, and widely letter-spaced.
+- Editorial family token: **Anthropic Serif**, weight 400 by default and 600 for
+  emphasis. Use it for display headlines, body copy, card titles, and explanatory
+  paragraphs.
+- Interface family token: **Anthropic Sans**, weights 400–700. Use it only for
+  kickers, navigation, labels, badges, axes, compact metadata, and a rare declarative
+  sans headline.
+- Technical family token: **Anthropic Mono**, weight 400. Reserve it for code,
+  hashes, and reproducibility snippets; keep those out of the main slide body.
+- Portable web implementation: `"Anthropic Serif", "Source Serif 4", Georgia,
+  Charter, serif`; `"Anthropic Sans", Inter, system-ui, Arial, sans-serif`; and
+  `"Anthropic Mono", "JetBrains Mono", "SF Mono", Menlo, monospace`.
+- A main headline may contain one italic clay word when that word carries the
+  decisive conclusion. Do not scatter clay emphasis across the slide.
+- Kickers are small, uppercase Anthropic Sans in clay, with restrained wide tracking.
 - No center-content text may be smaller than **14 px** at the normal 16:9 browser
-  viewport. Body copy should normally be 19–22 px, chart labels at least 15 px after
-  scaling, and result numbers substantially larger.
+  viewport. Editorial body copy should normally be 20 px at 1.4 line-height,
+  subheadings 24 px, declarative sans headings about 61 px, serif display headings
+  about 64–68 px, chart labels at least 15 px after scaling, and result numbers
+  substantially larger.
+- Use subtle negative tracking only for compact sans text: approximately `-0.005em`
+  at 15–16 px and `-0.002em` at display sizes. Serif text keeps normal tracking.
 - Use tabular figures for quantitative values where available.
 - Keep body copy short enough to read comfortably from the back of a room.
 
-Load both fonts from Google Fonts when the output format supports web fonts. Provide
-serif and sans-serif fallbacks for offline viewing.
+Load Source Serif 4 and Inter when the output format supports web fonts. Always
+declare the Anthropic family names first so licensed/local versions are used when
+available, followed by the portable substitutes above for reproducible rendering.
 
-### Signature arch
+### Type scale
 
-The signature form has a fully rounded top and square bottom. Use it for:
+| Role | Family | Size | Line height | Weight |
+| --- | --- | --- | --- | --- |
+| Caption | Anthropic Sans | 14–15 px | 1.4 | 400–600 |
+| Compact body | Anthropic Serif | 16–18 px | 1.35–1.4 | 400 |
+| Body | Anthropic Serif | 20 px | 1.4 | 400 |
+| Subheading | Anthropic Serif or Sans | 24 px | 1.3 | 400–600 |
+| Declarative heading | Anthropic Sans | 56–61 px | 1.05–1.1 | 700 |
+| Editorial display | Anthropic Serif | 64–68 px | 1.05–1.1 | 400–600 |
+
+### Project arch adaptation
+
+The arch is a secondary project signature, not the default container. It has a
+fully rounded top and square bottom. Use it sparingly for:
 
 - photographs or simple illustration areas;
 - portrait frames;
 - number tokens;
 - vertical bars, whose tops should read like arch windows.
 
-Behind each filled arch, place a thin terracotta outline arch offset by approximately
-4–6 pixels. The outline is an echo, not a heavy border.
+If an arch is used, a thin clay outline may sit 4–6 pixels behind it as an echo.
+Never add a shadow.
 
 Do not place dense data plots, heatmaps, or figures with embedded text inside an arch
 or window-like frame. Present those figures without decorative borders and make them
 large enough that their internal labels remain legible.
 
-Do not place a recurring decorative arch trio in a corner. Every visible arch must
-carry a function: framing data or imagery, identifying a slide number, or encoding a
-quantity. If an ornament does not convey information or organize the composition,
-remove it.
+Do not place recurring decorative arches in a corner. Every visible arch must carry
+a framing or quantitative function. If it does not convey information or organize
+the composition, remove it.
 
-### Lines, panels, and composition
+### Surfaces, lines, and composition
 
-- Rules are one-pixel deep-olive lines at low opacity.
+- Canvas is Ivory Medium. Standard cards are Ivory Light; grouped panels may use Oat
+  Warm; one editorial feature may use Manilla. Slate Dark is the only full dark
+  inversion.
+- Elevation comes from surface-tone shifts and one-pixel Stone borders, never from
+  shadows.
+- Default card radius is 24 px. Badges and inline labels are unboxed with zero
+  radius. Do not use generic pill containers.
+- Rules are one-pixel Stone lines.
 - Compositions are asymmetric but visually balanced.
 - Use the canvas efficiently. Default slide padding should be approximately
   `28–34px 3vw`, with central content allowed to occupy about 92–94% of the slide
@@ -100,8 +149,12 @@ remove it.
 - Let the primary figure or result use up to roughly 68–74% of slide height when it
   remains legible.
 - Prefer one dominant idea, result, or graphic per slide.
-- Imagery and data frames must not have sharp top corners.
+- Cards may have quiet 24 px corners; filled action-like tabs use square top corners
+  with an 8 px bottom-only radius.
 - Avoid dense card grids, excessive borders, and dashboard-like layouts.
+- Do not add decorative hero imagery by default. If a scientific illustration is
+  useful, prefer a warm naturalist field-guide style over photography, product
+  screenshots, or abstract gradients.
 
 ### Slide transition
 
@@ -117,8 +170,8 @@ remove it.
 
 - Use one centered row of small dots at the bottom of the viewport.
 - Show one dot per slide.
-- The current slide is larger or darker in deep olive; inactive slides remain muted
-  sage/sand.
+- The current slide is larger and Slate Dark; inactive slides use Cloud Dark or
+  Stone.
 - Do not show a bottom-right page-number token.
 - Keep the dots outside the main content region and update them during animated,
   keyboard, and direct-dot navigation.
@@ -131,11 +184,13 @@ remove it.
   trends, uncertainty, and next-step decision trees.
 - Do not add decoration merely to satisfy a visual quota. Every visual must clarify
   a relationship, magnitude, sequence, or decision.
-- Use sage for the primary series and terracotta for the comparison or interference
-  series.
-- Use soft sand for tracks, reference bands, and neutral areas.
-- Use deep olive for axes and labels; keep grid lines low-opacity.
-- Bars have fully rounded arch-like tops.
+- Use Slate Medium for a primary neutral series and Clay/Clay Deep for the one
+  comparison or interference series that requires attention.
+- Use Oat Warm, Ivory Light, and Stone for tracks, reference bands, and neutral
+  areas.
+- Use Slate Dark for axes and labels; keep Stone grid lines sparse and low-opacity.
+- Bars may have rounded tops when the arch carries quantitative meaning; otherwise
+  use quiet 8–24 px radii.
 - Label important values directly when possible.
 - When importing a raster chart, allocate enough slide width for its embedded labels
   to remain readable; do not shrink a chart merely to preserve a large text column.
@@ -145,6 +200,51 @@ remove it.
 - Do not rely on color alone: retain signs, values, intervals, or concise labels.
 - Preserve scientific uncertainty and claim boundaries; visual polish must not
   promote exploratory results into confirmed findings.
+
+### Canonical web tokens
+
+```css
+:root {
+  --slate-dark: #141413;
+  --ivory-medium: #f0eee6;
+  --ivory-light: #faf9f5;
+  --cloud-medium: #b0aea5;
+  --cloud-dark: #87867f;
+  --stone: #cccbc8;
+  --slate-medium: #3d3d3a;
+  --oat-warm: #e3dacc;
+  --manilla: #f5e3c7;
+  --clay: #d97757;
+  --clay-deep: #c6613f;
+
+  --font-anthropic-serif:
+    "Anthropic Serif", "Source Serif 4", Georgia, Charter, serif;
+  --font-anthropic-sans:
+    "Anthropic Sans", Inter, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Arial, sans-serif;
+  --font-anthropic-mono:
+    "Anthropic Mono", "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+  --text-caption: 14px;
+  --text-body-sm: 16px;
+  --text-body: 20px;
+  --text-subheading: 24px;
+  --text-heading: 61px;
+  --text-display: 68px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-card: 24px;
+}
+```
+
+These tokens describe the presentation implementation, not a web-product UI. Omit
+site-only components such as cookie banners, global navigation, or marketing CTAs
+unless the presentation itself genuinely requires an analogous function.
 
 ## Biweekly scientific narrative
 
@@ -213,15 +313,16 @@ These are universal requirements derived from the July 30 deck review:
 
 For every slide:
 
-1. Use the warm-cream background and Atrium type system.
-2. Give the main headline exactly one italic terracotta word.
+1. Use the Ivory Medium canvas and Anthropic serif/sans type system.
+2. Use at most one italic Clay headline word, and only when it carries the decisive
+   conclusion.
 3. Use at most one primary visual hierarchy.
 4. Use the arch motif only when it has a framing, navigational, or quantitative
    function.
 5. Fill the central canvas without oversized perimeter whitespace; retain breathing
    room between content groups.
-6. Verify that no pure white, pure black, neon, saturated, or sharp-cornered imagery
-   remains.
+6. Verify that no pure white, pure black, neon, gradients, shadows, saturated
+   decoration, or unnecessary sharp-cornered imagery remains.
 7. Verify the 180 ms transition and reduced-motion behavior.
 8. For biweekly decks, verify that results occupy most of the presentation and that
    failure chronology is not part of the main narrative.

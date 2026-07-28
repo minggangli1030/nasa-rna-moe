@@ -75,7 +75,8 @@ commands, commits, schedules, and host paths belong in the relevant document und
 ## Presentation workflow
 
 All presentations beginning with the July 30, 2026 deck use
-[`presentation/atrium-theme-template.md`](presentation/atrium-theme-template.md).
+[`presentation/design.md`](presentation/design.md), the canonical
+Anthropic-inspired scientific field-journal specification.
 The workflow is audience-first, visual-first, and script-free. Historical rendered
 decks remain unchanged.
 

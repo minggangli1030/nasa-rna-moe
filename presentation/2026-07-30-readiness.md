@@ -1,6 +1,6 @@
 # July 30 presentation readiness
 
-**Updated:** 2026-07-28 13:46 PDT
+**Updated:** 2026-07-28 13:50 PDT
 
 ## Readiness decision
 
@@ -16,6 +16,8 @@ seed-factorized diagnosis is the active next experiment.
   keyboard navigation and print CSS.
 - `presentation/2026-07-30-content-brief.md`: concise slide purpose, essential facts,
   and visual direction; no talking script.
+- `presentation/design.md`: canonical Anthropic-inspired scientific field-journal
+  design, narrative, accessibility, and visual-QA specification.
 - `presentation/2026-07-30-stage2-directed-transfer-heatmap.png`: checksum-verified
   8×8 directed same-compute substitution heatmap.
 - `presentation/2026-07-30-stage2-additive-effects.png`: compact eight-edge
@@ -28,7 +30,9 @@ Static checks pass: nine slides, nine section closures, the heatmap asset exists
 keyboard navigation and print CSS are present, and the bounded-claim text is in the
 deck. Center-content typography now has a 14 px CSS floor, the dense result figures
 on slides 8–9 use a wide frameless layout, and centered pagination dots identify the
-current slide.
+current slide. The complete deck was rendered at 1920×1080 after the Anthropic
+palette and Source Serif 4/Inter implementation was applied; no slide clipping or
+chart-background regression was observed.
 
 ## Frozen numeric cross-check
 
@@ -95,10 +99,9 @@ Do not claim:
 ## Remaining before Thursday 08:00 PDT
 
 - [x] Incorporate the checksum-verified additive result with bounded claims.
-- [x] Perform focused visual QA of slides 8–9 at 1920×1080; figures and embedded
-  labels are legible, no decorative window frame remains, and plot backgrounds
-  blend into the cream slide canvas.
-- [ ] Perform final visual QA of the other seven slides at presentation resolution.
+- [x] Perform final visual QA of all nine slides at 1920×1080; figures and embedded
+  labels are legible, no decorative window frame remains, plot backgrounds blend
+  into the parchment canvas, and the new serif metrics do not clip content.
 - [ ] Verify the plan → results → next balance at 8–10 minutes.
 - [ ] Confirm every technical comparison has a plain-language explanation.
 - [ ] Export or print the final delivery copy and verify the file opens.
