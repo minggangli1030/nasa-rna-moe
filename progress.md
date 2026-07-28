@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 14:38 PDT / 2026-07-27 21:38 UTC
+**Last updated:** 2026-07-27 18:06 PDT / 2026-07-28 01:06 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,22 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — Stage 2 dual-host run at 52/60 and 43/60 arms
+
+At 2026-07-28 01:06 UTC, the primary detached run was healthy at 52/60 seed-17
+arms, with its A100 at 100% utilization and no failure signature. The verified
+parallel host was healthy at 43/60 seed-101 arms, with its A100 partition at 98%
+utilization and no failure signature. No full seed has completed yet.
+
+The cumulative observed rates are approximately 12.7 arms/hour on the primary and
+12.3 arms/hour on the parallel host. At those rates, parallel seed 101 should finish
+near 19:30 PDT, while primary seeds 17 and 42 should both be available near 23:30
+PDT. The next operational phase is to checksum and transfer the compact parallel
+seed-101 output into a distinct primary lineage, then run the frozen early evaluator
+as soon as primary seed 42 finishes. The current early heatmap window is
+approximately 23:30 PDT–00:30 PDT. Both GPUs, detached sessions, processes, hashes,
+and scientific contracts remain intact; there is no blocker.
 
 ## 2026-07-27 — Seed 101 parallelized on verified partial A100
 
