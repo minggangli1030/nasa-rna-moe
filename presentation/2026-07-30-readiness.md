@@ -1,6 +1,6 @@
 # July 30 presentation readiness
 
-**Updated:** 2026-07-28 14:04 PDT
+**Updated:** 2026-07-28 14:07 PDT
 
 ## Readiness decision
 
@@ -35,7 +35,9 @@ complete deck was rendered at 1920×1080 after the Anthropic
 palette and Source Serif 4/Inter implementation was applied; no slide clipping or
 chart-background regression was observed. A follow-up pass restored restrained
 Sage, Soft Sage, and Muted Blue data accents and raised every retained footnote or
-interpretive caption to at least 16 px.
+interpretive caption to at least 16 px. Muted Blue now marks the verified winner
+(correct organ specialist, +3.797%) through a semantic `.winner` class; the
+automatic single-choice condition uses Sage.
 
 ## Frozen numeric cross-check
 

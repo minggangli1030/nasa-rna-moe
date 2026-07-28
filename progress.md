@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-28 14:04 PDT / 2026-07-28 21:04 UTC
+**Last updated:** 2026-07-28 14:07 PDT / 2026-07-28 21:07 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -247,3 +247,12 @@ The active deck was enlarged as a complete visual system:
 All nine slides were rerendered at 1920×1080. The measured content canvases are
 1720 px and 1760 px, the minimum visible center text is 16 px, and no slide reports
 horizontal or vertical overflow.
+
+## 2026-07-28 — Semantic winner highlight
+
+The Stage 1 comparison chart now assigns Muted Blue to the verified numerical winner
+(correct organ specialist, +3.797%), Sage to automatic single choice, Soft Sage to
+the automatic blend, and neutral gray to baseline. The design specification now
+requires a semantic `.winner` class so the highlight follows the result rather than
+a hard-coded bar position. It also records the exact current canvas, typography,
+card, caption, transition, pagination, and spacing values for reuse.

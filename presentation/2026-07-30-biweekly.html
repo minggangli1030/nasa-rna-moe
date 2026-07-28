@@ -71,7 +71,8 @@
   .bar-track{height:32px;background:var(--sand);position:relative;border-bottom:1px solid var(--rule)}
   .bar{height:100%;background:var(--sage);border-radius:999px 999px 3px 3px}
   .bar.base{background:var(--cloud-medium,#b0aea5)}
-  .bar.hard{background:var(--blue)}
+  .bar.winner{background:var(--blue)}
+  .bar.hard{background:var(--sage)}
   .bar.soft{background:var(--teal2)}
   .bar-value{font:700 20px var(--sans);font-variant-numeric:tabular-nums;text-align:right}
   .seed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
@@ -206,7 +207,7 @@
       <div>
         <div class="bars">
           <div class="bar-row"><div class="bar-label">One general model</div><div class="bar-track"><div class="bar base" style="width:0"></div></div><div class="bar-value">0.000%</div></div>
-          <div class="bar-row"><div class="bar-label">Correct organ specialist</div><div class="bar-track"><div class="bar" style="width:95%"></div></div><div class="bar-value">+3.797%</div></div>
+          <div class="bar-row"><div class="bar-label">Correct organ specialist</div><div class="bar-track"><div class="bar winner" style="width:95%"></div></div><div class="bar-value">+3.797%</div></div>
           <div class="bar-row"><div class="bar-label">Automatic single choice</div><div class="bar-track"><div class="bar hard" style="width:91%"></div></div><div class="bar-value">+3.633%</div></div>
           <div class="bar-row"><div class="bar-label">Automatic soft blend</div><div class="bar-track"><div class="bar soft" style="width:92%"></div></div><div class="bar-value">+3.676%</div></div>
         </div>

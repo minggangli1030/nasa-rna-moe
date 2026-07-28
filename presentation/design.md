@@ -73,9 +73,10 @@ necessary diverging or categorical scale, but it must be muted, explained, and
 subordinate to the editorial palette outside the data region.
 
 The Atrium sage and muted blue are retained as **functional data accents**, not as
-decorative surface colors. A typical comparison may use neutral gray for baseline,
-Sage for a known specialist, Muted Blue for automatic hard routing, and Soft Sage
-for a blended route. Do not apply all accents merely because they are available.
+decorative surface colors. A typical ranked comparison may use neutral gray for the
+baseline, Muted Blue for the numerical winner, Sage for a secondary specialist or
+automatic method, and Soft Sage for a blended route. Do not apply all accents merely
+because they are available.
 
 ### Typography
 
@@ -198,10 +199,14 @@ the composition, remove it.
   trends, uncertainty, and next-step decision trees.
 - Do not add decoration merely to satisfy a visual quota. Every visual must clarify
   a relationship, magnitude, sequence, or decision.
-- Use neutral gray for a baseline, Sage for a primary specialist series, Muted Blue
-  for a distinct automatic method, and Soft Sage for a blend when those distinctions
-  are scientifically meaningful. Use Clay/Clay Deep for interference, warning, or
-  the single comparison that requires attention.
+- Use neutral gray for a baseline. In ranked bar charts, use Muted Blue to highlight
+  the numerical winner, Sage for a secondary specialist or automatic method, and
+  Soft Sage for a blend when those distinctions are scientifically meaningful. Do
+  not assign the strongest accent merely by series order. Use Clay/Clay Deep for
+  interference, warning, or the single comparison that requires attention.
+- Encode meaning with a semantic class such as `.winner`; do not hard-code “the
+  second bar is blue.” If the result changes, the highlight must follow the verified
+  winner.
 - Use Oat Warm, Ivory Light, and Stone for tracks, reference bands, and neutral
   areas.
 - Use Slate Dark for axes and labels; keep Stone grid lines sparse and low-opacity.
@@ -265,6 +270,31 @@ the composition, remove it.
 These tokens describe the presentation implementation, not a web-product UI. Omit
 site-only components such as cookie banners, global navigation, or marketing CTAs
 unless the presentation itself genuinely requires an analogous function.
+
+### Current 1920×1080 reference implementation
+
+Use these values as the starting point for future 16:9 decks. Reflow content before
+reducing them:
+
+| Element | Reference value |
+| --- | --- |
+| Slide padding | `22px 2vw` |
+| Standard content canvas | `1720px` maximum |
+| Chart-dominant result canvas | `1760px` maximum |
+| Editorial display / `h1` | `70px`, line-height `1.03` |
+| Result headline / `h2` | `50px`, line-height `1.06` |
+| Card heading / `h3` | `26px` |
+| Body copy | `22px` |
+| Compact panel copy | `20px` |
+| Kicker and compact labels | `16px` minimum |
+| Retained footnotes and captions | `17px` by default; never below `16px` |
+| Card padding | approximately `26px 28px` |
+| Result-column gap | approximately `32px` |
+| Standard/result canvas increase | `1440→1720px`; result slides may reach `1760px` |
+
+Keep centered pagination dots, the explicit 180 ms transition, reduced-motion
+support, frameless plot integration, and the semantic `.winner` data highlight as
+part of the same reference implementation.
 
 ### Footnote policy
 
