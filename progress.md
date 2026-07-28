@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 02:14 PDT / 2026-07-28 09:14 UTC
+**Last updated:** 2026-07-28 02:27 PDT / 2026-07-28 09:27 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -34,8 +34,24 @@ controls. The expanded focused Stage 2 suite passes 18 tests.
 At 09:14 UTC, the primary substitution-replication seed 101 was healthy at 37/60
 arms with 100% GPU utilization. Seeds 17 and 42 remain complete, the parallel
 seed-101 lineage remains complete and checksum-verified, and the preliminary result
-still has all 3/3 distinct seeds. The parallel A100 is idle and is the first additive
-launch target. No scientific or operational blocker is present.
+still has all 3/3 distinct seeds.
+
+Exact clean commit `be1a6f9cb5a7473d6a33f20fc848ef728918f5be` was pushed and
+deployed to both hosts. Additive seeds 17 and 42 launched sequentially on the
+parallel A100 at 09:24 UTC in detached session
+`stage2-additive-seeds17-42`. Before launch, the expression, manifest, both pooled
+checkpoints, gene definitions, schedule, definitions, edge freeze, and code commit
+all matched their expected hashes. At 09:26 UTC seed 17 was running with
+`mechanical_only=false`, 98% GPU utilization, and 7.1 GB allocated. A separate
+detached primary watcher, `stage2-additive-seed101-watcher`, is armed to start
+additive seed 101 only after the original substitution launcher completes and
+releases the GPU.
+
+Each additive seed has the same 90,000 total training draws as a substitution seed.
+Using measured substitution throughput, primary additive seed 101 should finish
+around 08:45–09:30 PDT and parallel additive seeds 17+42 around 11:30–12:30 PDT.
+The three-seed additive evaluator will follow after checksum verification and compact
+parallel-output transfer. No scientific or operational blocker is present.
 
 ## 2026-07-28 — Stage 2 preliminary 56-edge heatmap complete
 

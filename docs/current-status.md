@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 02:14 PDT / 2026-07-28 09:14 UTC
+**Updated:** 2026-07-28 02:27 PDT / 2026-07-28 09:27 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -206,8 +206,22 @@ when older chronology or exact intermediate results are needed.
   arm-definition SHA256 is
   `78edd164f8c5444299da7ab5bf45cd35eed3d513f772b6a7fab11b9aef60d3fb`.
   Independent schedule regeneration reproduced all output hashes, and the expanded
-  focused Stage 2 suite passes 18 tests. The idle parallel A100 is the first launch
-  target; seed 101 will follow on the primary after its substitution replication.
+  focused Stage 2 suite passes 18 tests. Exact clean commit
+  `be1a6f9cb5a7473d6a33f20fc848ef728918f5be` is pushed.
+- Additive seeds 17 and 42 launched sequentially on the parallel A100 at 09:24 UTC
+  in detached session `stage2-additive-seeds17-42`, result root
+  `/home/exouser/stage2_parallel/results/stage2_additive_be1a6f9_seed17_42`.
+  All code, expression, manifest, pooled checkpoints, gene definitions, schedules,
+  and edge-freeze hashes passed before launch. At 09:26 UTC seed 17 was running with
+  `mechanical_only=false`, 98% GPU utilization, and 7.1 GB allocated.
+- A detached primary watcher, `stage2-additive-seed101-watcher`, is armed. It waits
+  for the original substitution launcher and evaluator to complete and release the
+  GPU, then starts exact additive seed 101 from the same commit and hashes at
+  `/media/volume/moe-reboot/results/stage2_additive_be1a6f9_seed101`. Based on equal
+  total draws and measured substitution throughput, seed 101 is expected around
+  08:45–09:30 PDT and parallel seeds 17+42 around 11:30–12:30 PDT; the all-seed
+  additive evaluation should follow shortly after the parallel outputs are verified
+  and transferred.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and
