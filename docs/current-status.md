@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 14:10 PDT / 2026-07-28 21:10 UTC
+**Updated:** 2026-07-28 14:16 PDT / 2026-07-28 21:16 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -169,8 +169,7 @@ universality.
 The July 30 package is:
 
 - deck: `presentation/2026-07-30-biweekly.html`;
-- concise content brief: `presentation/2026-07-30-content-brief.md`;
-- numeric/claim checklist: `presentation/2026-07-30-readiness.md`;
+- canonical design: `presentation/design.md`;
 - Stage 2 heatmap:
   `presentation/2026-07-30-stage2-directed-transfer-heatmap.png`; and
 - additive chart: `presentation/2026-07-30-stage2-additive-effects.png`.
@@ -193,6 +192,10 @@ the active three-by-three stability diagnosis and the three prespecified outcome
 selective sharing if several helpful pairs repeat, negative-transfer prevention if
 signs are stable but help is rare, or one protected-sharing test followed by broader
 representation axes if the map remains unstable.
+
+The obsolete parallel content brief, readiness checklist, one-use additive-chart
+renderer, and superseded July 16 image-generation prompt were removed. Rendered
+decks and every visual asset they load remain preserved.
 
 ## Preserved recovery assets
 

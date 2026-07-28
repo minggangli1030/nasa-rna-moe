@@ -51,7 +51,7 @@ runs/            active and reproducibility launchers
 tests/           fail-closed protocol and evaluator tests
 artifacts/       small tracked protocols, manifests, reports, and figures
 docs/            canonical status and scientific result documents
-presentation/    rendered historical/current decks, content brief, and theme
+presentation/    rendered decks, required visual assets, and design specification
 data/            reference files plus large ignored local datasets
 checkpoints/     ignored local model weights
 backups/         ignored checksum-bound recovery bundles

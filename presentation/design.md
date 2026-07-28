@@ -355,14 +355,15 @@ Do not create presenter scripts, timed narration, or slide-by-slide prose intend
 be read aloud. The maintained presentation package consists of:
 
 - the rendered deck;
-- a concise content brief containing the slide purpose, essential facts, and visual
-  direction; and
-- a readiness checklist containing numeric and claim verification.
+- the visual assets loaded by that deck;
+- this canonical design specification; and
+- canonical scientific result/protocol documents outside the presentation folder.
 
 The slides must be understandable without a script. Delete obsolete script files
-rather than carrying them forward. Put evidence verification in the readiness
-checklist and detailed technical context in canonical scientific documentation, not
-in a parallel narration document.
+rather than carrying them forward. Do not create a parallel content brief or
+readiness checklist after the deck is self-contained. Put evidence verification and
+detailed technical context in canonical scientific documentation, tests, and frozen
+artifacts—not in presentation-only companion documents.
 
 ## Non-regression lessons from visual QA
 

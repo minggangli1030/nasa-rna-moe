@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-28 14:10 PDT / 2026-07-28 21:10 UTC
+**Last updated:** 2026-07-28 14:16 PDT / 2026-07-28 21:16 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -152,7 +152,8 @@ The presentation workflow is now:
 
 - audience-first: assume no technical background;
 - visual-first: use charts and diagrams when they clarify the result;
-- script-free: maintain a concise content brief rather than narration;
+- script-free: make the rendered deck self-contained rather than maintaining
+  narration;
 - plan → results → next, with results occupying most of a biweekly update.
 
 Historical rendered decks remain unchanged. Obsolete talking scripts, completed
@@ -274,3 +275,21 @@ The shared end product is a reproducible rule for which biological domains shoul
 share training information and which should remain isolated. The slide passed
 1920×1080 visual and overflow checks, and pagination now generates ten dots
 automatically.
+
+## 2026-07-28 — Presentation package consolidation
+
+The presentation package was reduced to the rendered decks, the assets those decks
+load, and the canonical design specification. Removed:
+
+- the July 30 content brief;
+- the July 30 readiness checklist;
+- the completed one-use additive-chart renderer; and
+- the superseded July 16 image-generation prompt.
+
+Two `.DS_Store` metadata files and the ignored July 15 corrected-interspecies driver
+log were also removed locally. The log's decision-relevant results are preserved in
+`docs/stage0-final-result.md`.
+
+The July 9, July 16, and July 30 decks, the historical July 16 plan image, both
+current Stage 2 result figures, and `presentation/design.md` remain. Deleted files
+remain recoverable from Git history.
