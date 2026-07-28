@@ -1,6 +1,6 @@
 # July 30 presentation readiness
 
-**Updated:** 2026-07-28 13:58 PDT
+**Updated:** 2026-07-28 14:04 PDT
 
 ## Readiness decision
 
@@ -28,9 +28,10 @@ seed-factorized diagnosis is the active next experiment.
 
 Static checks pass: nine slides, nine section closures, the heatmap asset exists,
 keyboard navigation and print CSS are present, and the bounded-claim text is in the
-deck. Center-content typography now has a 14 px CSS floor, the dense result figures
-on slides 8–9 use a wide frameless layout, and centered pagination dots identify the
-current slide. The complete deck was rendered at 1920×1080 after the Anthropic
+deck. Center-content typography now has a 16 px CSS floor, the standard content
+canvas is 1720 px at 1920×1080, the dense result figures on slides 8–9 use a wide
+frameless layout, and centered pagination dots identify the current slide. The
+complete deck was rendered at 1920×1080 after the Anthropic
 palette and Source Serif 4/Inter implementation was applied; no slide clipping or
 chart-background regression was observed. A follow-up pass restored restrained
 Sage, Soft Sage, and Muted Blue data accents and raised every retained footnote or

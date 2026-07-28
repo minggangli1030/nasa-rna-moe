@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 13:58 PDT / 2026-07-28 20:58 UTC
+**Updated:** 2026-07-28 14:04 PDT / 2026-07-28 21:04 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -181,10 +181,11 @@ surfaces, Anthropic Serif/Sans tokens with portable Source Serif 4/Inter fallbac
 a restrained clay accent, plus Atrium sage and muted blue only where functional data
 distinctions require them. Presentations remain audience-first, visual-first, and
 script-free. Biweekly updates use plan → results → next, with results occupying most
-of the talk. The specification enforces a 14 px minimum for center content, a 16 px
-minimum for retained footnotes, frameless chart-dominant result slides, and centered
-progress dots with the active slide darkened. July 9 and July 16 rendered decks
-remain unchanged historical artifacts.
+of the talk. The specification now uses a 1720 px standard content canvas at
+1920×1080—about 20% wider than the original—and enforces a 16 px minimum for center
+content and retained footnotes. Result slides remain frameless and chart-dominant;
+centered progress dots preserve the active-slide state. July 9 and July 16 rendered
+decks remain unchanged historical artifacts.
 
 ## Preserved recovery assets
 

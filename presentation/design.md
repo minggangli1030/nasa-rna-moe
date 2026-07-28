@@ -93,10 +93,10 @@ for a blended route. Do not apply all accents merely because they are available.
 - A main headline may contain one italic clay word when that word carries the
   decisive conclusion. Do not scatter clay emphasis across the slide.
 - Kickers are small, uppercase Anthropic Sans in clay, with restrained wide tracking.
-- No center-content text may be smaller than **14 px** at the normal 16:9 browser
-  viewport. Editorial body copy should normally be 20 px at 1.4 line-height,
-  subheadings 24 px, declarative sans headings about 61 px, serif display headings
-  about 64–68 px, chart labels at least 15 px after scaling, and result numbers
+- No center-content text may be smaller than **16 px** at the normal 16:9 browser
+  viewport. Editorial body copy should normally be 21–22 px at 1.35–1.4
+  line-height, subheadings 26 px, declarative sans headings about 64–68 px, serif
+  display headings about 68–72 px, chart labels at least 16 px after scaling, and result numbers
   substantially larger.
 - Use subtle negative tracking only for compact sans text: approximately `-0.005em`
   at 15–16 px and `-0.002em` at display sizes. Serif text keeps normal tracking.
@@ -112,11 +112,11 @@ available, followed by the portable substitutes above for reproducible rendering
 | Role | Family | Size | Line height | Weight |
 | --- | --- | --- | --- | --- |
 | Caption or footnote | Anthropic Serif or Sans | 16 px | 1.35–1.4 | 400–600 |
-| Compact body | Anthropic Serif | 16–18 px | 1.35–1.4 | 400 |
-| Body | Anthropic Serif | 20 px | 1.4 | 400 |
-| Subheading | Anthropic Serif or Sans | 24 px | 1.3 | 400–600 |
-| Declarative heading | Anthropic Sans | 56–61 px | 1.05–1.1 | 700 |
-| Editorial display | Anthropic Serif | 64–68 px | 1.05–1.1 | 400–600 |
+| Compact body | Anthropic Serif | 18–20 px | 1.35–1.4 | 400 |
+| Body | Anthropic Serif | 21–22 px | 1.35–1.4 | 400 |
+| Subheading | Anthropic Serif or Sans | 26 px | 1.25–1.3 | 400–600 |
+| Declarative heading | Anthropic Sans | 64–68 px | 1.03–1.08 | 700 |
+| Editorial display | Anthropic Serif | 68–72 px | 1.03–1.08 | 400–600 |
 
 ### Project arch adaptation
 
@@ -151,8 +151,13 @@ the composition, remove it.
 - Rules are one-pixel Stone lines.
 - Compositions are asymmetric but visually balanced.
 - Use the canvas efficiently. Default slide padding should be approximately
-  `28–34px 3vw`, with central content allowed to occupy about 92–94% of the slide
-  width. Do not surround a small center block with a large unused perimeter.
+  `18–24px 2vw`, with central content allowed to occupy about 96% of the slide
+  width. Relative to the original 1440 px content canvas, standard slides should
+  target approximately 1720 px at 1920×1080—about 20% more central area. Do not
+  surround a small center block with a large unused perimeter.
+- Enlarge the entire hierarchy together: typography, charts, cards, controls, and
+  spacing between related elements. A larger headline beside unchanged tiny body
+  copy does not satisfy the scale target.
 - Preserve deliberate whitespace *between* content groups, but do not confuse
   oversized outer margins with clarity.
 - Let the primary figure or result use up to roughly 68–74% of slide height when it
@@ -242,10 +247,10 @@ the composition, remove it.
 
   --text-caption: 16px;
   --text-body-sm: 16px;
-  --text-body: 20px;
-  --text-subheading: 24px;
-  --text-heading: 61px;
-  --text-display: 68px;
+  --text-body: 22px;
+  --text-subheading: 26px;
+  --text-heading: 68px;
+  --text-display: 72px;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -318,7 +323,7 @@ in a parallel narration document.
 These are universal requirements derived from the July 30 deck review:
 
 - Measure typography in the **rendered 16:9 slide**, not only in the source CSS or
-  chart-generation code. The 14 px floor applies to visible center content after
+  chart-generation code. The 16 px floor applies to visible center content after
   layout; embedded raster labels must also be readable at the final displayed size.
 - Dense scientific figures receive priority over a wide prose column. Shorten or
   reflow the explanation before shrinking a heatmap or chart below legibility.
@@ -356,7 +361,7 @@ For every slide:
    failure chronology is not part of the main narrative.
 9. Verify that a nontechnical audience can understand every headline, metric, and
    comparison without project-specific background.
-10. Confirm that center-content text is at least 14 px and imported-chart labels
+10. Confirm that center-content text is at least 16 px and imported-chart labels
     remain readable at presentation scale.
 11. Verify centered pagination dots and the active-slide state.
 12. Ask whether a visual would communicate the slide more clearly than prose.

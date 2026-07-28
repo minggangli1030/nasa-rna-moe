@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-28 13:58 PDT / 2026-07-28 20:58 UTC
+**Last updated:** 2026-07-28 14:04 PDT / 2026-07-28 21:04 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -230,3 +230,20 @@ into gray:
 
 Slides 4–6 and 8–9 were rerendered at 1920×1080. The larger notes remain clear of
 content and centered pagination.
+
+## 2026-07-28 — Twenty-percent central scale increase
+
+The active deck was enlarged as a complete visual system:
+
+- standard content width increased from 1440 px to 1720 px at 1920×1080, while
+  result slides may use up to 1760 px;
+- peripheral padding decreased from 3vw/30 px to 2vw/22 px;
+- the center-content floor increased from 14 px to 16 px;
+- headlines, body text, cards, statistics, bars, labels, gaps, and chart captions
+  were enlarged together rather than scaling headlines alone; and
+- important notes now render at 17 px in the active deck, above the universal 16 px
+  minimum.
+
+All nine slides were rerendered at 1920×1080. The measured content canvases are
+1720 px and 1760 px, the minimum visible center text is 16 px, and no slide reports
+horizontal or vertical overflow.
