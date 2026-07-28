@@ -39,6 +39,12 @@ ORGANS = (
 )
 SEEDS = (17, 42, 101)
 RANDOM_AXES = ("random_k8_p17", "random_k8_p42", "random_k8_p101")
+# Recipient-only and pair-arm score caches batch the same frozen pooled trunk
+# differently. Across all 38,346 frozen comparisons the observed maxima were
+# 2.3842e-7 absolute and 2.4033e-7 relative; these bounds admit only that
+# float32-scale variation while still failing closed on material divergence.
+POOLED_SCORE_RTOL = 5e-7
+POOLED_SCORE_ATOL = 3e-7
 
 
 def _atomic_json(path: Path, value: Any) -> None:
@@ -145,8 +151,8 @@ def _paired_donor_arrays(
     if not np.allclose(
         baseline["pooled_mse"].to_numpy(),
         candidate["pooled_mse"].to_numpy(),
-        rtol=0,
-        atol=0,
+        rtol=POOLED_SCORE_RTOL,
+        atol=POOLED_SCORE_ATOL,
     ):
         raise ValueError("frozen pooled scores differ across comparison arms")
     combined = pd.DataFrame(

@@ -12,6 +12,7 @@ from evaluation.evaluate_stage2_directed_transfer import (
     ORGANS,
     RANDOM_AXES,
     SEEDS,
+    _paired_donor_arrays,
     _pair_arm,
     evaluate,
 )
@@ -170,3 +171,27 @@ def test_evaluator_builds_directed_heatmap_matrices_and_stability(tmp_path: Path
 def test_pair_arm_is_order_invariant() -> None:
     assert _pair_arm("brain", "liver") == "sub__brain__liver"
     assert _pair_arm("liver", "brain") == "sub__brain__liver"
+
+
+def test_pooled_score_check_allows_only_float32_scale_batch_variation() -> None:
+    baseline = pd.DataFrame(
+        {
+            "sample_id": ["sample-1"],
+            "donor_id": ["donor-1"],
+            "group": ["group-1"],
+            "organ": ["brain"],
+            "pooled_mse": [1.0],
+            "adapter_mse": [0.9],
+        }
+    )
+    candidate = baseline.copy()
+    candidate["pooled_mse"] = baseline["pooled_mse"] + 2.4e-7
+    _paired_donor_arrays(baseline, candidate)
+
+    candidate["pooled_mse"] = baseline["pooled_mse"] + 1e-4
+    try:
+        _paired_donor_arrays(baseline, candidate)
+    except ValueError as error:
+        assert "frozen pooled scores differ" in str(error)
+    else:
+        raise AssertionError("material pooled-score mismatch was accepted")
