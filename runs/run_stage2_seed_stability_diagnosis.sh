@@ -19,6 +19,9 @@ PROTOCOL="${PROTOCOL:-artifacts/stage2_organ_expert_mechanism/seed_stability_pro
 AXIS_DEFINITIONS="${AXIS_DEFINITIONS:-/media/volume/moe-reboot/results/stage1_k4_final_refit_e8c0383/candidate/bundle/axis_definitions.npz}"
 
 EXPECTED_MANIFEST_SHA256=d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6
+EXPECTED_EXPRESSION_SHA256=ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550
+EXPECTED_EXPRESSION_METADATA_SHA256=111be4b987cb99f85329018fb0df951e1cafe0b8bcd385c9c31b5f944e8bb741
+EXPECTED_AXIS_DEFINITIONS_SHA256=1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb
 MANIFEST="$SOURCE_ROOT/manifest/gtex_training_manifest.parquet"
 EXPRESSION="$SOURCE_ROOT/expression/expression.parquet"
 EXPRESSION_METADATA="$SOURCE_ROOT/expression/extraction_report.json"
@@ -53,6 +56,18 @@ for path in \
 done
 [[ "$(sha256sum "$MANIFEST" | awk '{print $1}')" == "$EXPECTED_MANIFEST_SHA256" ]] || {
   echo "ERROR: GTEx manifest hash mismatch" >&2
+  exit 1
+}
+[[ "$(sha256sum "$EXPRESSION" | awk '{print $1}')" == "$EXPECTED_EXPRESSION_SHA256" ]] || {
+  echo "ERROR: GTEx expression hash mismatch" >&2
+  exit 1
+}
+[[ "$(sha256sum "$EXPRESSION_METADATA" | awk '{print $1}')" == "$EXPECTED_EXPRESSION_METADATA_SHA256" ]] || {
+  echo "ERROR: GTEx expression metadata hash mismatch" >&2
+  exit 1
+}
+[[ "$(sha256sum "$AXIS_DEFINITIONS" | awk '{print $1}')" == "$EXPECTED_AXIS_DEFINITIONS_SHA256" ]] || {
+  echo "ERROR: axis definitions hash mismatch" >&2
   exit 1
 }
 [[ "$(sha256sum "$SCHEDULES" | awk '{print $1}')" == "$EXPECTED_SCHEDULE_SHA256" ]] || {
@@ -114,6 +129,15 @@ for combo in "${COMBOS[@]}"; do
   checkpoint="$SOURCE_TRAINING_ROOT/seed$trunk_seed/pooled/best_model.pt"
   [[ -s "$checkpoint" ]] || {
     echo "ERROR: missing pooled checkpoint for trunk $trunk_seed" >&2
+    exit 1
+  }
+  case "$trunk_seed" in
+    17) expected_checkpoint=ae5d6d1619938d8061c8b5b6e1323ed345f71f67b34e3e065cc899f587da7c74 ;;
+    42) expected_checkpoint=969c510fb84e5e58605d34351db6c5608ef8d64d66b282ad9bf964b77bb33ce2 ;;
+    101) expected_checkpoint=3e9edacfb6b0e530f210f271af4802072a3c0154922bcf0b4b9f54e0ee612043 ;;
+  esac
+  [[ "$(sha256sum "$checkpoint" | awk '{print $1}')" == "$expected_checkpoint" ]] || {
+    echo "ERROR: pooled checkpoint hash mismatch for trunk $trunk_seed" >&2
     exit 1
   }
   combo_id="trunk${trunk_seed}_opt${opt_seed}"

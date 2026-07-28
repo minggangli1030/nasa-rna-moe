@@ -10,6 +10,16 @@
   "best_seed_selection_allowed": false,
   "implementation_commit": "70f604f28d32a0319022c0140d76f9ad3a125c94",
   "source_manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+  "input_hashes": {
+    "expression_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
+    "expression_metadata_sha256": "111be4b987cb99f85329018fb0df951e1cafe0b8bcd385c9c31b5f944e8bb741",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "pooled_checkpoint_sha256": {
+      "17": "ae5d6d1619938d8061c8b5b6e1323ed345f71f67b34e3e065cc899f587da7c74",
+      "42": "969c510fb84e5e58605d34351db6c5608ef8d64d66b282ad9bf964b77bb33ce2",
+      "101": "3e9edacfb6b0e530f210f271af4802072a3c0154922bcf0b4b9f54e0ee612043"
+    }
+  },
   "schedule": {
     "path": "artifacts/stage2_organ_expert_mechanism/seed_stability_schedules_20260729/training_schedules.parquet",
     "sha256": "066144402245cac3114fee71a7dd8e0cfc4a6f4f74b9df405510e9b4e7b0c9a3",

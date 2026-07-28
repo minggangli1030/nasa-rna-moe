@@ -33,7 +33,7 @@ compilation produced 24 arms and 48,000 draws per combination. Frozen hashes:
 - arm definitions:
   `e206e20ae46721d6d353f0179afd9f4acbc0a19cb81d9d89e8b7018d24063c9d`;
 - protocol:
-  `781b03068ce08abcce552dee31feaa9e05ba06830f3503bdac7b9f9aa7380977`.
+  `cb6d32c5b96bb510c58e45bb6787feef3a8b088f069a7d3efce21d48631c7262`.
 
 Decision branches were frozen before outcomes. At least three stable-helpful edges
 are required to continue raw addition. A reproducible but mostly harmful map pivots
