@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 12:46 PDT / 2026-07-28 19:46 UTC
+**Updated:** 2026-07-28 12:53 PDT / 2026-07-28 19:53 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -273,6 +273,17 @@ when older chronology or exact intermediate results are needed.
   with at least three stable-helpful edges; a reproducible but mostly harmful map
   pivots toward negative-transfer avoidance/selective sharing; a still-unstable map
   gets one recipient-protected sharing implementation before a pivot decision.
+- Exact input-bound commit
+  `3a27ffabdcb6d2a4209006452958b30cf0fff520` is deployed on both GPU hosts.
+  The diagnosis launched at 19:52 UTC. Primary screen
+  `stage2-seed-stability-primary` runs five combinations at
+  `/media/volume/moe-reboot/results/stage2_seed_stability_3a27ffa_primary`;
+  parallel screen `stage2-seed-stability-parallel` runs four at
+  `/home/exouser/stage2_parallel/results/stage2_seed_stability_3a27ffa_parallel`.
+  At 19:53 UTC both first combinations were active at 98–100% GPU utilization with
+  no failure signature. A two-hour heartbeat,
+  `stage-2-seed-stability-diagnosis`, monitors through checksum verification,
+  evaluation, decision, documentation, and notification.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and
@@ -288,8 +299,8 @@ when older chronology or exact intermediate results are needed.
   boundaries.
   Its structural check passes with nine slides, nine closures, navigation, and
   print CSS. An automated
-  presentation-readiness heartbeat has been deleted. A new two-hour stability
-  diagnosis heartbeat will replace it for the active experiment.
+  presentation-readiness heartbeat has been deleted. The two-hour stability
+  diagnosis heartbeat is now active.
 
 The strongest defensible conclusion is now: organ identity is the strongest tested
 conditional specialization axis; target-hidden conditional routing has replicated

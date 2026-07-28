@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 12:46 PDT / 2026-07-28 19:46 UTC
+**Last updated:** 2026-07-28 12:53 PDT / 2026-07-28 19:53 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -41,8 +41,22 @@ to negative-transfer avoidance or selective sharing. A still-unstable map receiv
 one recipient-protected sharing implementation before a pivot decision.
 
 Both A100 hosts were reachable and idle before deployment. The obsolete
-presentation-readiness heartbeat was deleted; a two-hour diagnostic monitor will
-replace it after launch.
+presentation-readiness heartbeat was deleted and replaced by a two-hour diagnostic
+monitor.
+
+Exact input-bound commit
+`3a27ffabdcb6d2a4209006452958b30cf0fff520` launched on both hosts at
+19:52 UTC. The primary 40 GB A100 runs five combinations in detached screen
+`stage2-seed-stability-primary`; the parallel 20 GB A100 runs four in
+`stage2-seed-stability-parallel`. At 19:53 UTC both first combinations were active
+at 98–100% utilization, using 8.45 GB, with no failure signature. A first measured
+arm rate is not yet available; the initial planning range is approximately 13–17
+hours to all nine combinations plus evaluation.
+
+The active two-hour monitor is `stage-2-seed-stability-diagnosis`. It is instructed
+to verify both immutable result roots, assemble only compact score/metadata
+handoffs, run the frozen crossed evaluator, apply only the prespecified decision
+branch, update documentation, notify the user, and delete itself after completion.
 
 ## 2026-07-28 — Stage 2 additive result complete; both GPUs idle
 

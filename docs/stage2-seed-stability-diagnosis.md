@@ -1,6 +1,6 @@
 # Stage 2 seed-stability diagnosis
 
-**Status:** protocol frozen before diagnostic outcomes
+**Status:** protocol frozen; 3×3 diagnosis running on two A100 hosts
 
 ## Why this is now the direct next step
 
@@ -83,3 +83,17 @@ updates.
 
 These are development decisions, not external-confirmation claims. A new untouched
 multisource cohort remains required for study universality.
+
+## Execution
+
+Exact input-bound commit
+`3a27ffabdcb6d2a4209006452958b30cf0fff520` launched at 2026-07-28
+19:52 UTC:
+
+- primary 40 GB A100: trunk/optimization combinations 17:211, 17:223, 42:211,
+  42:223, and 101:211;
+- parallel 20 GB A100: combinations 17:227, 42:227, 101:223, and 101:227.
+
+Both detached sessions passed their input hashes and reached 98–100% GPU
+utilization on the first combination. The active two-hour monitor is
+`stage-2-seed-stability-diagnosis`.
