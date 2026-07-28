@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 04:05 PDT / 2026-07-28 11:05 UTC
+**Last updated:** 2026-07-28 06:06 PDT / 2026-07-28 13:06 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,28 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-28 — Additive runs at 19/40 and 35/40; continuation armed
+
+At 13:03 UTC, primary additive seed 101 was healthy at 19/40 arms with
+`mechanical_only=false`, 100% GPU utilization, 6.6 GB allocated, 36 GB free disk,
+and no failure signature. Its observed rate is approximately 9.6 arms/hour,
+projecting completion around 08:05–08:35 PDT.
+
+At 13:04 UTC, parallel additive seed 17 was healthy at 35/40 arms with
+`mechanical_only=false`, 98% GPU utilization, 6.6 GB allocated, 15 GB free disk,
+and no failure signature. Its observed rate is also approximately 9.6 arms/hour.
+Seed 17 should finish around 06:30–06:50 PDT and the same detached launcher will
+then start seed 42, projecting both parallel seeds complete around
+10:40–11:20 PDT.
+
+A detached local continuation, `stage2-additive-continuation`, now waits for both
+remote `COMPLETE` markers. It is fail-closed on run metadata and the full checksum
+manifests; it will transfer only the compact parallel seed-17/42 outputs to a
+distinct primary path, invoke the frozen three-seed additive evaluator, verify the
+result manifest, and retrieve the compact bundle locally. The current result window
+is approximately 10:45–11:30 PDT. No additive outcome has been accessed and there is
+no blocker.
 
 ## 2026-07-28 — Substitution replication exact; both additive hosts active
 
