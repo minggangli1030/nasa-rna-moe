@@ -151,6 +151,8 @@ Headline results:
 
 - all **56/56** directed organ pairs are negative in seeds 17, 42, and 101;
 - all 56 paired donor-bootstrap intervals exclude zero;
+- the independently trained primary seed-101 operational replication reproduced the
+  accelerated lineage's scientific matrices and heatmap hashes exactly;
 - mean effect: **−3.273%**;
 - median effect: **−3.382%**;
 - range: **−7.086% to −0.450%**; and

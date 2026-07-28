@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 02:27 PDT / 2026-07-28 09:27 UTC
+**Updated:** 2026-07-28 04:05 PDT / 2026-07-28 11:05 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -190,13 +190,19 @@ when older chronology or exact intermediate results are needed.
   `270fdeb0fcb76c4a08713b92157d6e3ca3f70ab9f38a74df3c2a2fdb8f1db41d`.
   Full interpretation and the correction audit are
   `docs/stage2-directed-transfer-preliminary-result.md`.
-- The original launcher is continuing its duplicate primary seed 101 for operational
-  replication. At 09:14 UTC it had completed 37/60 arms, the detached process and
-  watcher were healthy, and the full A100 was at 100% utilization. A detached
-  `stage2-primary-replication-eval` watcher is already armed to evaluate that lineage
-  with exact correction commit `46a64b2` in a separate output path after
-  `SEED101_COMPLETE`. At the observed ~12.6 arms/hour, the duplicate seed and
-  corrected replication evaluation are expected around 04:05–04:35 PDT.
+- The original primary launcher completed its duplicate seed 101 at 60/60 arms with
+  `status=complete` and `mechanical_only=false`. Its bundled pre-correction evaluator
+  then exited at the already-audited object-array loader failure, so the top-level
+  `STAGE2_STATUS` says failed even though all training completed. The independently
+  armed corrected evaluator completed at 10:53 UTC from `46a64b2`.
+- The primary-seed-101 replication produced the same summary and the exact same
+  effect-matrix, per-seed-table, uncertainty, sign, random-control, and heatmap
+  hashes as the accelerated parallel-seed-101 lineage: all 56 edges remained negative
+  in all three seeds and all 56 donor-bootstrap intervals excluded zero. The
+  replication bundle is
+  `/media/volume/moe-reboot/results/stage2_directed_transfer_229dfa6/evaluation_primary_seed101_fix_46a64b2`;
+  checksum-manifest SHA256 is
+  `f53420366a235cda4272e35f27c97914d79371617db9ab687dfdc1fc25d2e1c0`.
 - The recipient-exposure-preserving additive experiment is now implemented and
   frozen before any additive outcome. It tests the eight prospectively frozen
   recipient←donor edges using A1500+B750 against A1500, A2250, and three
@@ -212,16 +218,19 @@ when older chronology or exact intermediate results are needed.
   in detached session `stage2-additive-seeds17-42`, result root
   `/home/exouser/stage2_parallel/results/stage2_additive_be1a6f9_seed17_42`.
   All code, expression, manifest, pooled checkpoints, gene definitions, schedules,
-  and edge-freeze hashes passed before launch. At 09:26 UTC seed 17 was running with
-  `mechanical_only=false`, 98% GPU utilization, and 7.1 GB allocated.
-- A detached primary watcher, `stage2-additive-seed101-watcher`, is armed. It waits
-  for the original substitution launcher and evaluator to complete and release the
-  GPU, then starts exact additive seed 101 from the same commit and hashes at
-  `/media/volume/moe-reboot/results/stage2_additive_be1a6f9_seed101`. Based on equal
-  total draws and measured substitution throughput, seed 101 is expected around
-  08:45–09:30 PDT and parallel seeds 17+42 around 11:30–12:30 PDT; the all-seed
-  additive evaluation should follow shortly after the parallel outputs are verified
-  and transferred.
+  and edge-freeze hashes passed before launch. At 11:05 UTC seed 17 was healthy at
+  15/40 arms with `mechanical_only=false`, 98% GPU utilization, and 6.6 GB allocated.
+  Its observed rate is ~9.0 arms/hour; seed 17 should finish around 06:45–07:15 PDT
+  and sequential seed 42 around 11:15–12:15 PDT.
+- The first primary additive watcher correctly refused to infer success from the
+  failed top-level launcher marker. After direct verification of all 60 training arms
+  and the corrected 56-edge replication evaluation, that watcher was retired and
+  exact additive seed 101 launched at 11:04 UTC in detached session
+  `stage2-additive-seed101`. It uses the same clean commit and frozen hashes at
+  `/media/volume/moe-reboot/results/stage2_additive_be1a6f9_seed101`; expected
+  completion is approximately 08:30–09:15 PDT. The all-seed additive evaluation
+  should follow shortly after the parallel seeds finish and their compact outputs are
+  checksum-verified and transferred.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and

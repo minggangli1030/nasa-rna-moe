@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 02:27 PDT / 2026-07-28 09:27 UTC
+**Last updated:** 2026-07-28 04:05 PDT / 2026-07-28 11:05 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,37 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-28 — Substitution replication exact; both additive hosts active
+
+The original primary launcher completed duplicate seed 101 at 60/60 arms with
+`status=complete` and `mechanical_only=false`. Its bundled evaluator was still the
+pre-correction implementation and therefore exited at the known object-array loader
+failure, leaving the top-level launcher status failed. No training arm or score was
+lost. The separately armed corrected evaluator completed at 10:53 UTC from exact
+correction commit `46a64b2`.
+
+The primary seed-101 replication reproduced the accelerated parallel-seed-101 result
+exactly. The effect matrix, per-seed table, donor intervals, seed signs,
+random-control matrix, and rendered heatmap hashes are identical; the scientific
+summary remains 56/56 negative edges in all seeds with 56/56 donor-bootstrap
+intervals below zero. The new replication bundle checksum-manifest SHA256 is
+`f53420366a235cda4272e35f27c97914d79371617db9ab687dfdc1fc25d2e1c0`.
+
+The primary GPU was idle after this corrected evaluation. The additive watcher had
+appropriately remained gated because the failed legacy launcher never created its
+top-level `COMPLETE` marker. After directly verifying all 60 training arms, the
+corrected 56-edge report, and absence of training/evaluator processes, the stale
+watcher was retired and exact additive seed 101 launched at 11:04 UTC in detached
+session `stage2-additive-seed101`.
+
+On the parallel A100, additive seed 17 was healthy at 15/40 arms at 11:05 UTC with
+98% GPU utilization and no failure signature; seed 42 follows automatically. The
+observed rate is ~9.0 additive arms/hour, projecting seed 17 completion near
+06:45–07:15 PDT and seed 42 near 11:15–12:15 PDT. Primary additive seed 101 is
+projected near 08:30–09:15 PDT. The all-seed additive evaluator follows checksum
+verification and compact transfer of parallel seeds 17 and 42. There is no
+scientific blocker.
 
 ## 2026-07-28 — Additive-only confirmation protocol frozen
 
