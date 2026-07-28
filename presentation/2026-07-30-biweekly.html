@@ -84,6 +84,13 @@
   .claim:last-child{border-bottom:0}
   .claim b{font:700 16px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--terra);padding-top:4px}
   .claim p{font-size:21px;margin:0}
+  .decision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:22px 0}
+  .decision{min-height:270px;background:rgba(250,249,245,.84);border:1px solid var(--rule);border-top:4px solid var(--sage);border-radius:24px;padding:26px 28px}
+  .decision:nth-child(2){border-top-color:var(--blue)}
+  .decision:nth-child(3){border-top-color:var(--terra)}
+  .decision .gate{display:block;margin-bottom:10px;color:var(--muted);font:700 16px var(--sans);letter-spacing:.04em;text-transform:uppercase}
+  .decision p{font-size:21px}
+  .decision .outcome{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:20px}
   .matrix{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;aspect-ratio:1/1;width:min(47vh,470px);margin:auto}
   .cell{background:var(--panel);border-radius:2px}
   .cell:nth-child(9n+2),.cell:nth-child(7n+4){background:var(--oat-warm,#e3dacc)}
@@ -304,7 +311,7 @@
         <div class="claim"><b>One stable pair</b><p>Adding skin data improved liver prediction by 1.96% in all three repeats.</p></div>
         <div class="claim"><b>Direction matters</b><p>Lung may help muscle even when muscle does not help lung, but this example changes across repeats.</p></div>
         <div class="claim"><b>Current policy</b><p>Protect target-organ data first; share across organs only after a stable rule is validated.</p></div>
-        <div class="callout"><p><strong>Next:</strong> repeat the same eight tests across three base models and three fresh training runs. Continue only if several helpful relationships reproduce; otherwise protect organ-specific learning or test broader specialist definitions.</p></div>
+        <div class="callout"><p><strong>Decision:</strong> this map is useful evidence, not yet a training policy. The frozen stability diagnosis determines whether Stage 2 continues or pivots.</p></div>
       </div>
       <div class="matrix-wrap">
         <img class="heatmap-img" src="2026-07-30-stage2-additive-effects.png" alt="Eight frozen directional additive-transfer effects with three-seed counts and donor-bootstrap intervals">
@@ -312,6 +319,35 @@
       </div>
     </div>
     <p class="foot">Repeatability inside GTEx is not the same as universality across independent studies.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Next step · prespecified decision</span>
+    <h2>Learn when specialists should <em>share</em>—and when they should stay separate</h2>
+    <p class="lede">First, repeat the same eight organ-pair tests across three independently trained base models and three fresh training runs. Then follow the result—not a favored organ pair.</p>
+    <div class="decision-grid">
+      <div class="decision">
+        <span class="gate">If several helpful pairs repeat</span>
+        <h3>Build a selective sharing rule</h3>
+        <p>Use reproducible donor organs to guide supplementary training for data-poor targets.</p>
+        <p class="outcome"><strong>Validate next:</strong> a new multi-study cohort that was not used to design the rule.</p>
+      </div>
+      <div class="decision">
+        <span class="gate">If signs repeat but help is rare</span>
+        <h3>Prevent negative transfer</h3>
+        <p>Protect organ-specific learning and share only modules or updates predicted to be compatible.</p>
+        <p class="outcome"><strong>Design next:</strong> selective adapters, gradient controls, or an organ hierarchy.</p>
+      </div>
+      <div class="decision">
+        <span class="gate">If the map changes across runs</span>
+        <h3>Broaden the representation</h3>
+        <p>Test one protected-sharing design, then examine pathways, biological states, or expert-residual structure beyond organ labels.</p>
+        <p class="outcome"><strong>Keep fixed:</strong> organ experts and the pooled model remain benchmark controls.</p>
+      </div>
+    </div>
+    <div class="callout"><p><strong>Target end product:</strong> a reproducible rule that predicts which biological domains should share training information and which should remain isolated.</p></div>
   </div>
 </section>
 

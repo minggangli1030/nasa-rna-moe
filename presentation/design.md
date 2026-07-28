@@ -333,6 +333,22 @@ Prefer:
 
 The result section should be the largest portion of a biweekly deck.
 
+### Required closing future-work slide
+
+End a research-progress deck with a dedicated **next step / future work** slide
+rather than burying the plan in a small callout on the last result slide.
+
+- State the immediate experiment in one plain-language sentence.
+- Show two or three prespecified decision branches based on possible outcomes.
+- Separate the next experiment from longer-term ambitions.
+- End with the intended scientific or practical deliverable.
+- Do not imply that every branch will be pursued; make the decision gate explicit.
+- If a new result arrives before the talk, insert a bounded result slide before this
+  closer and update the applicable branch. Do not replace the closing decision slide
+  with runtime progress or an ETA.
+- Use equally weighted flat cards with restrained semantic top rules. No branch
+  receives “winner” styling before its criterion is met.
+
 ## No talking scripts
 
 Do not create presenter scripts, timed narration, or slide-by-slide prose intended to

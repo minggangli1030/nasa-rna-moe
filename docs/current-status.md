@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 14:07 PDT / 2026-07-28 21:07 UTC
+**Updated:** 2026-07-28 14:10 PDT / 2026-07-28 21:10 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -187,6 +187,12 @@ content and retained footnotes. Result slides remain frameless and chart-dominan
 centered progress dots preserve the active-slide state. Ranked charts use semantic
 color assignment: Muted Blue follows the verified winner, rather than a fixed series
 position. July 9 and July 16 rendered decks remain unchanged historical artifacts.
+
+The July 30 deck now closes with a dedicated future-work decision slide. It states
+the active three-by-three stability diagnosis and the three prespecified outcomes:
+selective sharing if several helpful pairs repeat, negative-transfer prevention if
+signs are stable but help is rare, or one protected-sharing test followed by broader
+representation axes if the map remains unstable.
 
 ## Preserved recovery assets
 

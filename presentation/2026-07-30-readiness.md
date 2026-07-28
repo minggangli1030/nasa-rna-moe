@@ -1,6 +1,6 @@
 # July 30 presentation readiness
 
-**Updated:** 2026-07-28 14:07 PDT
+**Updated:** 2026-07-28 14:10 PDT
 
 ## Readiness decision
 
@@ -12,7 +12,7 @@ seed-factorized diagnosis is the active next experiment.
 
 ## Current package
 
-- `presentation/2026-07-30-biweekly.html`: nine-slide presentation deck with
+- `presentation/2026-07-30-biweekly.html`: ten-slide presentation deck with
   keyboard navigation and print CSS.
 - `presentation/2026-07-30-content-brief.md`: concise slide purpose, essential facts,
   and visual direction; no talking script.
@@ -26,7 +26,7 @@ seed-factorized diagnosis is the active next experiment.
 - `docs/stage2-directed-transfer-preliminary-result.md`: canonical Stage 2
   substitution interpretation and correction audit.
 
-Static checks pass: nine slides, nine section closures, the heatmap asset exists,
+Static checks pass: ten slides, ten section closures, the heatmap asset exists,
 keyboard navigation and print CSS are present, and the bounded-claim text is in the
 deck. Center-content typography now has a 16 px CSS floor, the standard content
 canvas is 1720 px at 1920×1080, the dense result figures on slides 8–9 use a wide
@@ -104,9 +104,12 @@ Do not claim:
 ## Remaining before Thursday 08:00 PDT
 
 - [x] Incorporate the checksum-verified additive result with bounded claims.
-- [x] Perform final visual QA of all nine slides at 1920×1080; figures and embedded
+- [x] Perform final visual QA of slides 1–9 at 1920×1080; figures and embedded
   labels are legible, no decorative window frame remains, plot backgrounds blend
   into the parchment canvas, and the new serif metrics do not clip content.
+- [x] Render and inspect the dedicated slide 10 future-work decision tree at
+  1920×1080; all three branches, the target end product, and ten-dot pagination fit
+  without clipping.
 - [ ] Verify the plan → results → next balance at 8–10 minutes.
 - [ ] Confirm every technical comparison has a plain-language explanation.
 - [ ] Export or print the final delivery copy and verify the file opens.

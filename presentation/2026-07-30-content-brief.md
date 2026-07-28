@@ -100,7 +100,7 @@ Visual: a large, frameless directed eight-by-eight heatmap beside a short
 plain-language interpretation. Preserve enough width for cell values, organ labels,
 and uncertainty intervals to be read without zooming.
 
-## 9. Stage 2 additive result and next decision
+## 9. Stage 2 additive result
 
 Takeaway: another organ sometimes adds information, but the helpful pattern is not
 stable enough to guide training.
@@ -108,11 +108,31 @@ stable enough to guide training.
 Essential values: one of eight pairs is positive in all three repeats; zero of eight
 beats adding more target-organ data in every repeat.
 
-Next: finish the frozen three-by-three stability diagnosis. Continue raw transfer
-only if several helpful pairs reproduce. Otherwise test recipient-protected sharing,
-then pivot toward broader biological or learned representation axes if instability
-remains.
+Decision: the preliminary map is useful evidence but not yet a training policy. The
+frozen three-by-three stability diagnosis determines whether Stage 2 continues or
+pivots.
 
 Visual: a large, frameless additive-effect chart beside a compact three-branch
-decision path. Preserve enough width for the chart's embedded labels to be read
+interpretation. Preserve enough width for the chart's embedded labels to be read
 without zooming.
+
+## 10. Next step and future-work decision
+
+Takeaway: the next objective is not to find a lucky organ pair; it is to learn a
+reproducible rule for when biological specialists should share training information
+and when they should remain isolated.
+
+Immediate experiment: complete the frozen eight-edge diagnosis across three
+independently trained base models and three fresh training runs.
+
+Prespecified branches:
+
+- several helpful pairs repeat → build a selective sharing/data-selection rule and
+  validate it on a new multi-study cohort;
+- signs repeat but helpful transfer is rare → use the map to prevent negative
+  transfer through protected or selective sharing; or
+- the map changes across runs → test one protected-sharing design, then broaden the
+  specialist representation beyond organ labels while retaining organ and pooled
+  controls.
+
+Visual: three equal decision cards ending in one shared target end product.

@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-28 14:07 PDT / 2026-07-28 21:07 UTC
+**Last updated:** 2026-07-28 14:10 PDT / 2026-07-28 21:10 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -256,3 +256,21 @@ the automatic blend, and neutral gray to baseline. The design specification now
 requires a semantic `.winner` class so the highlight follows the result rather than
 a hard-coded bar position. It also records the exact current canvas, typography,
 card, caption, transition, pagination, and spacing values for reuse.
+
+## 2026-07-28 — Dedicated future-work closer
+
+The July 30 deck now ends with a tenth slide rather than embedding the entire next
+step in the additive-result slide. The closer states the active frozen diagnosis and
+three prespecified branches:
+
+- reproducible helpful transfer → selective sharing and untouched multi-study
+  validation;
+- reproducible but mostly harmful transfer → negative-transfer prevention and
+  protected/selective sharing; or
+- optimization instability → one protected-sharing test, then broader pathway,
+  biological-state, or expert-residual representations if needed.
+
+The shared end product is a reproducible rule for which biological domains should
+share training information and which should remain isolated. The slide passed
+1920×1080 visual and overflow checks, and pagination now generates ten dots
+automatically.
