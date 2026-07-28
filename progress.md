@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-27 18:06 PDT / 2026-07-28 01:06 UTC
+**Last updated:** 2026-07-27 20:07 PDT / 2026-07-28 03:07 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,34 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-27 — Parallel seed 101 verified and early evaluator armed
+
+Primary seed 17 completed all 60 arms at 01:38 UTC with
+`mechanical_only=false`. At 03:02 UTC, the primary launcher was healthy on seed 42
+at 17/60 arms with 98% A100 utilization. Parallel seed 101 completed all 60 arms at
+02:13 UTC with `status=complete`, `mechanical_only=false`, and no failure signature;
+its detached session exited normally and the partial GPU is now idle. This makes
+2/3 distinct prespecified seeds complete.
+
+The compact parallel result contains 182 files totaling 13 MB. Every file passed a
+generated checksum manifest with SHA256
+`10c2ac790b1d2d955718a7855f56cf1cd92dea9d1024334719e2466cf715f13e`.
+The bundle was staged locally, independently reverified, transferred to the distinct
+primary path `seed101_partial`, and reverified again on the primary. The primary
+launcher's future `seed101` lineage remains untouched.
+
+A separate detached `stage2-early-evaluator` watcher is now active on the primary.
+It waits for the verified `SEED42_COMPLETE` marker, rechecks the partial seed-101
+manifest and exact scientific commit, then invokes the frozen evaluator with seeds
+17, 42, and `101_partial` into `evaluation_partial_seed101`. It will require the
+complete 56-edge report and build a distinct checksum manifest. The primary launcher
+will continue its duplicate seed 101 as an operational replication.
+
+Observed cumulative rates are approximately 12.8 arms/hour on the primary and 12.9
+arms/hour on the parallel host. Seed 42 is projected to finish around 23:30 PDT;
+the early directed heatmap should follow around 23:30 PDT–00:15 PDT. There is no
+integrity, operational, or scientific blocker.
 
 ## 2026-07-27 — Stage 2 dual-host run at 52/60 and 43/60 arms
 

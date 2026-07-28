@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-27 18:06 PDT / 2026-07-28 01:06 UTC
+**Updated:** 2026-07-27 20:07 PDT / 2026-07-28 03:07 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -141,31 +141,37 @@ when older chronology or exact intermediate results are needed.
   adapter and all three random K8 controls were effectively neutral on average.
 - Stage 2 development training is active on `moe-reboot` in detached screen session
   `stage2-directed-transfer`. It launched from clean commit
-  `229dfa6dc18302a798734880dc8e3eb60e506e61` at 2026-07-27 21:01 UTC and entered
-  seed 17 with the A100 at 100% utilization. At 2026-07-28 01:06 UTC it had
-  completed 52/60 seed-17 arms; the detached session and training process were
-  healthy, the A100 was at 100% utilization, and no failure signature was found.
+  `229dfa6dc18302a798734880dc8e3eb60e506e61` at 2026-07-27 21:01 UTC. Seed 17
+  completed all 60 arms at 01:38 UTC with `mechanical_only=false`. At 03:02 UTC,
+  seed 42 had completed 17/60 arms; the detached session and training process were
+  healthy, the A100 was at 98% utilization, and no failure signature was found.
   Result root:
   `/media/volume/moe-reboot/results/stage2_directed_transfer_229dfa6`.
   The launcher runs seeds 17, 42, and 101 sequentially, then the frozen evaluator
   and heatmap.
-- Parallel acceleration is active on the unshelved host at `149.165.168.111`
-  (`moe-reboot3`) in detached session `stage2-seed101`. Its verified ED25519
+- Parallel acceleration completed on the unshelved host at `149.165.168.111`
+  (`moe-reboot3`) from detached session `stage2-seed101`. Its verified ED25519
   fingerprint is
   `SHA256:qDoipZ7A4BmWjuos8EttxRHWskfaUAw2TPlqkguIct0`. It has a 20 GB A100
-  partition and is running the exact frozen seed-101 arm set from commit `229dfa6`.
+  partition and ran the exact frozen seed-101 arm set from commit `229dfa6`.
   Expression, checkpoint, manifest, gene-definition, schedule, and arm-definition
-  SHA256 values all match the primary VM. At 2026-07-28 01:06 UTC it had completed
-  43/60 arms; the detached session and process were healthy, GPU utilization was
-  98%, and no failure signature was found.
-- The primary will complete seeds 17 and 42 while the parallel host completes seed
-  101. The compact seed-101 result will then be hash-verified and copied to the
-  primary for an early evaluator pass; the primary launcher's later duplicate seed
-  101 may finish as an operational replication. Cumulative throughput at 01:06 UTC
-  was approximately 12.7 arms/hour on the primary and 12.3 arms/hour on the
-  parallel host. Parallel seed 101 is projected to complete near 19:30 PDT; primary
-  seeds 17 and 42 are projected to be available near 23:30 PDT. The current early
-  three-seed evaluator/heatmap window is approximately 23:30 PDT–00:30 PDT.
+  SHA256 values all match the primary VM. Seed 101 completed all 60 arms at
+  02:13 UTC with `status=complete` and `mechanical_only=false`; the session exited
+  normally and the parallel GPU is now idle.
+- The compact parallel seed-101 result has been hash-verified and copied to the
+  primary for an early evaluator pass; the primary launcher's later duplicate
+  seed 101 may finish as an operational replication. The parallel output contains 182
+  files/13 MB; every file passed the generated checksum manifest whose SHA256 is
+  `10c2ac790b1d2d955718a7855f56cf1cd92dea9d1024334719e2466cf715f13e`.
+  It is independently verified on the primary at the distinct path
+  `seed101_partial`; the launcher's future `seed101` path was not touched.
+- Two of three distinct seeds are therefore complete. A detached
+  `stage2-early-evaluator` watcher is waiting only for primary seed 42, after which
+  it will run the frozen evaluator with seeds 17, 42, and `101_partial` into the
+  distinct `evaluation_partial_seed101` lineage. Observed per-host rates are
+  approximately 12.8 arms/hour on the primary and 12.9 arms/hour on the parallel
+  host. Seed 42 is projected to finish around 23:30 PDT; the current early
+  three-seed evaluator/heatmap window is approximately 23:30 PDT–00:15 PDT.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and
