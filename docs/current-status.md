@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 10:09 PDT / 2026-07-28 17:09 UTC
+**Updated:** 2026-07-28 12:07 PDT / 2026-07-28 19:07 UTC
 
 Read this file first. It is the compact operational and scientific handoff. Use
 `docs/stage1-k4-final-refit.md` for the full Stage 1 decision history and
@@ -139,13 +139,11 @@ when older chronology or exact intermediate results are needed.
   soft routing was 0.875840 (3.676% lower). Every seed improved for all three K8
   conditions; each paired study bootstrap CI versus pooled excluded zero. The pooled
   adapter and all three random K8 controls were effectively neutral on average.
-- Stage 2 development training is active on `moe-reboot` in detached screen session
-  `stage2-directed-transfer`. It launched from clean commit
+- Stage 2 same-compute substitution training is complete. It launched from clean commit
   `229dfa6dc18302a798734880dc8e3eb60e506e61` at 2026-07-27 21:01 UTC. Seed 17
   completed all 60 arms at 01:38 UTC and seed 42 completed all 60 at 06:15 UTC,
-  both with `mechanical_only=false`. At 07:03 UTC, the original launcher was
-  continuing its independent operational-replication seed 101 at 10/60 arms; the
-  detached process was healthy and the A100 was at 100% utilization.
+  both with `mechanical_only=false`; the primary operational-replication seed 101
+  also completed all 60 arms.
   Result root:
   `/media/volume/moe-reboot/results/stage2_directed_transfer_229dfa6`.
   The launcher runs seeds 17, 42, and 101 sequentially, then the frozen evaluator
@@ -214,15 +212,14 @@ when older chronology or exact intermediate results are needed.
   Independent schedule regeneration reproduced all output hashes, and the expanded
   focused Stage 2 suite passes 18 tests. Exact clean commit
   `be1a6f9cb5a7473d6a33f20fc848ef728918f5be` is pushed.
-- Additive seeds 17 and 42 launched sequentially on the parallel A100 at 09:24 UTC
-  in detached session `stage2-additive-seeds17-42`, result root
+- Additive seeds 17 and 42 completed sequentially on the parallel A100, result root
   `/home/exouser/stage2_parallel/results/stage2_additive_be1a6f9_seed17_42`.
   All code, expression, manifest, pooled checkpoints, gene definitions, schedules,
-  and edge-freeze hashes passed before launch. Seed 17 completed all 40 arms at
-  13:29 UTC with `status=complete` and `mechanical_only=false`. The launcher handed
-  off automatically to seed 42, which was healthy at 35/40 arms at 17:08 UTC with
-  `mechanical_only=false`, 98% GPU utilization, and 6.6 GB allocated. The observed
-  seed-42 rate is ~9.6 arms/hour; projected completion is 10:35–10:50 PDT.
+  and edge-freeze hashes passed before launch. Seeds 17 and 42 each completed all
+  40 arms with `status=complete`, `mechanical_only=false`, and
+  `best_seed_selection_allowed=false`. The parallel immutable manifest passes; its
+  SHA256 is
+  `b1866cd5bf5754d833d1a3f21dc508a0d6adebbc981d08ab359b66ea0fd2638d`.
 - The first primary additive watcher correctly refused to infer success from the
   failed top-level launcher marker. After direct verification of all 60 training arms
   and the corrected 56-edge replication evaluation, that watcher was retired and
@@ -240,14 +237,23 @@ when older chronology or exact intermediate results are needed.
   the mutable status and old manifest. Primary seed 101 passes all 129 immutable
   entries; immutable-manifest SHA256 is
   `13ff3a1e951aaf76d0034a07c546f2193624af8037f96e3c2c89904514a5bfa1`.
-- Detached local session `stage2-additive-continuation` is now checksum-gated on both
-  training roots. After all three additive seeds finish, it will verify both remote
-  checksum manifests and run-metadata contracts, transfer only the compact parallel
-  seed-17/42 outputs to a distinct primary path, run the frozen three-seed additive
-  evaluator, verify its output manifest, and retrieve the compact result locally.
-  The corrected continuation is the only live local watcher; orphaned processes from
-  its restart were terminated by exact PID. The current three-seed result window is
-  approximately 10:45–11:10 PDT; no additive outcome has been accessed yet.
+- The checksum-gated continuation completed at 17:37:46 UTC. It verified both
+  immutable training bundles, transferred only the compact seed-17/42 output to a
+  distinct primary path, ran the frozen three-seed evaluator, verified the result,
+  and retrieved it locally. The final evaluation checksum-manifest SHA256 is
+  `0c005678d312ac8924e498249f215f45d33153704fc5fc646248596b32e5bf7b`.
+  Both hosts have no remaining Stage 2 screen session or process; both GPUs are idle.
+- In the additive primary estimand, five of eight mean A1500+B750 versus A1500
+  effects were positive. Only liver←skin was positive in all three seeds with its
+  donor-bootstrap interval above zero: +1.956%, 95% CI +1.647% to +2.244%. Four
+  edges beat all three random auxiliaries in all three seeds, but zero of eight
+  named donors beat the A2250 self/additional-recipient control in all three seeds.
+  The bounded policy is to protect recipient exposure first and add another organ
+  only under a validated directional rule.
+- Transfer is directional. The frozen subset's reciprocal pair was +0.811% for
+  skeletal-muscle←lung and −0.383% for lung←skeletal-muscle, though neither was
+  positive in all three seeds. Full interpretation is
+  `docs/stage2-additive-transfer-result.md`.
 - The required preliminary Stage 2 result figure is now frozen as a directed 8×8
   recipient-organ by donor-organ heatmap. Cells show same-compute transfer
   improvement/interference, with separate three-seed sign, donor-bootstrap, and
@@ -258,8 +264,9 @@ when older chronology or exact intermediate results are needed.
   deadline. Presentation preparation is now the active operational task. The
   content draft is `presentation/2026-07-30-biweekly-draft.md`. The nine-slide
   presentation-ready deck is `presentation/2026-07-30-biweekly.html`; it includes
-  the complete bounded Stage 1 narrative and the checksum-verified Stage 2 heatmap,
-  with explicit substitution/addition and donor/study-universality boundaries.
+  the complete bounded Stage 1 narrative, the checksum-verified substitution
+  heatmap, and the final additive effect panel, with explicit donor/study-universality
+  boundaries.
   Its structural check passes with nine slides, nine closures, navigation, and
   print CSS. An automated
   readiness check runs every two hours from 08:00 through 22:00 PDT and ends

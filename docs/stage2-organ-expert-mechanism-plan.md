@@ -1,7 +1,7 @@
 # Stage 2: organ-expert mechanism and directed transfer
 
-**Status:** planning after Stage 1 cross-direction replication  
-**Updated:** 2026-07-27
+**Status:** substitution and additive development results complete
+**Updated:** 2026-07-28
 
 ## Decision
 
@@ -189,18 +189,29 @@ budget; it does not answer whether B adds information when A1500 exposure is
 preserved. The prospectively frozen additive subset remains the next discriminating
 experiment.
 
-The recipient-exposure-preserving additive subset is now frozen as a separate
+The recipient-exposure-preserving additive subset was frozen as a separate
 additive-only schedule before any additive outcome. It contains 40 arms and 90,000
 training draws: eight A1500+B750 named-donor arms, eight A2250 self controls, and
 24 A1500+random750 controls. Schedule SHA256 is
 `fe71a83a9eb60529aef8f1c66dff5072dbc2ba1c6f508284e3568a862f35a75c`;
 arm-definition SHA256 is
 `78edd164f8c5444299da7ab5bf45cd35eed3d513f772b6a7fab11b9aef60d3fb`.
-The evaluator and explicit-seed launcher are frozen with the schedule, the outputs
+The evaluator and explicit-seed launcher were frozen with the schedule, the outputs
 were independently regenerated to the same hashes, and 18 focused Stage 2 tests
-pass. The next result will answer whether a selected donor adds information while
-recipient exposure is preserved; it must not be conflated with the already-complete
-substitution matrix.
+pass. All three seeds and the checksum-gated evaluation are complete.
+
+Five of eight mean A1500+B750 versus A1500 effects were positive, but only
+liver←skin was positive in all three seeds with its donor-bootstrap interval above
+zero (+1.956%, 95% CI +1.647% to +2.244%). Four named donors beat all three random
+controls in all three seeds; none beat A2250 in all three seeds. Thus donor identity
+can matter when recipient exposure is preserved, but more recipient exposure remains
+the best tested use of the added budget. Full result:
+`docs/stage2-additive-transfer-result.md`.
+
+The next directed-transfer step is an explicitly post-discovery reciprocal expansion:
+freeze all six missing reverse directions from the original eight-edge subset as one
+set, without choosing pairs by observed favorability. It estimates asymmetry but
+cannot retrospectively convert the first subset into a pristine prospective test.
 
 The full transfer matrix is a GTEx donor-disjoint development analysis. It can
 measure controlled transfer and freeze predictions, but GTEx cannot establish

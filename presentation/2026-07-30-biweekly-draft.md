@@ -177,34 +177,35 @@ to this fixed-budget substitution estimand, not independent-study universality.
 The strongest Stage 2 confirmation still requires a new untouched multisource
 cohort.
 
-## Slide 9 — Conclusion and next experiments
+## Slide 9 — Recipient-preserving addition result and next experiment
 
-**Bounded conclusion**
+The prospectively frozen eight-edge additive test compares A1500+B750 with A1500:
 
-Organ identity is the strongest tested conditional specialization axis. A
-target-hidden GTEx-trained router reproduces a roughly 3.6–3.7% study-macro MSE gain
-in multisource ARCHS4, while random and pooled-adapter controls remain neutral.
+- five of eight mean effects are positive;
+- only **liver ← skin** is positive in all three seeds with its donor-bootstrap
+  interval above zero: +1.956%, 95% CI +1.647% to +2.244%;
+- four edges beat all three random auxiliaries in all three seeds; and
+- zero of eight named donors beat A2250 in all three seeds.
 
-**Stage 2: explain and test the organ experts**
+Together with the complete substitution matrix, the bounded conclusion is:
 
-1. Characterize the frozen expert-minus-pooled residuals and pathway signatures.
-2. The same-compute A1500 versus A750+B750 matrix is complete: all 56 substitutions
-   are harmful across all three seeds and donor-bootstrap intervals.
-3. Run the already-frozen same-A-exposure comparison: A1500 versus A1500+B750, with
-   random-auxiliary and additional-A controls.
-4. Test whether expert similarity and router preferences predict those held-out
-   transfer relationships.
+> Protect recipient-organ exposure first. Another organ can add information
+> selectively, but more recipient data remains the best tested use of the added
+> training budget.
 
-Development will first use donor-disjoint GTEx calibration data. The stronger claim
-that these predictions generalize across held-out studies requires a newly frozen
-multisource cohort; the completed QC-amended ARCHS4 cohort cannot be recycled as a
-pristine Stage 2 lockbox.
+Transfer is directional. The frozen subset includes one reciprocal pair:
+skeletal muscle ← lung is +0.811%, while lung ← skeletal muscle is −0.383%.
+Neither is positive in all three seeds, so present this as evidence that asymmetry is
+plausible—not a universal biological law.
 
-The preliminary Stage 2 figure is a directed 8×8 recipient-organ × donor-organ
-heatmap showing interference for all 56 off-diagonal substitutions, with three-seed
-sign counts and donor-bootstrap uncertainty. Do not call the map universal merely
-because every edge is seed-consistent; independent-study universality is a later
-untouched-cohort test.
+Next, freeze all six missing reciprocal additive directions as one post-discovery
+follow-up set. Then test prospectively whether expert-minus-pooled pathway
+signatures and router preferences predict those directed effects better than
+expression similarity, sample-count, platform/study, and random controls.
+
+Development remains donor-disjoint GTEx evidence. Independent-study universality
+requires a genuinely new untouched multisource cohort; the completed QC-amended
+ARCHS4 cohort cannot be recycled as a pristine Stage 2 lockbox.
 
 Label-free routing is optional and secondary. It was originally included to add
 novelty by linking a co-routing map to the transfer map, but the completed de novo

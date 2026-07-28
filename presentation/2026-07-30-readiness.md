@@ -1,13 +1,11 @@
 # July 30 presentation readiness
 
-**Updated:** 2026-07-28 08:06 PDT
+**Updated:** 2026-07-28 12:07 PDT
 
 ## Readiness decision
 
 The presentation is provisionally ready from the completed Stage 1 external
-evaluation and completed Stage 2 same-compute substitution result. The active
-additive experiment is a bounded development update, not a prerequisite for a
-defensible Thursday presentation.
+evaluation and completed Stage 2 substitution and additive development results.
 
 ## Current package
 
@@ -17,6 +15,8 @@ defensible Thursday presentation.
   notes, limitations, and likely questions.
 - `presentation/2026-07-30-stage2-directed-transfer-heatmap.png`: checksum-verified
   8×8 directed same-compute substitution heatmap.
+- `presentation/2026-07-30-stage2-additive-effects.png`: compact eight-edge
+  recipient-preserving additive result with uncertainty and seed signs.
 - `docs/stage-1-end-result.md`: canonical Stage 1 synthesis.
 - `docs/stage2-directed-transfer-preliminary-result.md`: canonical Stage 2
   substitution interpretation and correction audit.
@@ -48,6 +48,17 @@ deck.
 - The independently trained primary seed-101 lineage reproduced the accelerated
   lineage's scientific matrices and heatmap hashes exactly.
 
+### Stage 2 recipient-preserving addition
+
+- Estimand: A1500+B750 versus A1500 on held-out recipient-A donors.
+- Five of eight mean effects are positive.
+- Liver ← skin is the only edge positive in all three seeds with its interval above
+  zero: +1.956%, 95% CI +1.647% to +2.244%.
+- Four edges beat all random auxiliaries in all three seeds.
+- Zero of eight named donors beat A2250 in all three seeds.
+- Result checksum-manifest SHA256:
+  `0c005678d312ac8924e498249f215f45d33153704fc5fc646248596b32e5bf7b`.
+
 ## Required claim language
 
 Safe headline:
@@ -78,8 +89,7 @@ Do not claim:
 
 ## Remaining before Thursday 08:00 PDT
 
-- [ ] Incorporate the frozen additive result if it completes and passes integrity
-  checks; otherwise leave it explicitly as ongoing/future work.
+- [x] Incorporate the checksum-verified additive result with bounded claims.
 - [ ] Perform final visual QA of all nine slides at presentation resolution.
 - [ ] Verify speaker-note timing at 8–10 minutes.
 - [ ] Recheck likely-question answers against the final deck.

@@ -1,6 +1,6 @@
 # NASA RNA MoE: Progress and Operating Context
 
-**Last updated:** 2026-07-28 10:09 PDT / 2026-07-28 17:09 UTC
+**Last updated:** 2026-07-28 12:07 PDT / 2026-07-28 19:07 UTC
 
 > **Start with `docs/current-status.md`.** It is the compact canonical handoff with the
 > current candidate, live workflow, hashes, safeguards, and next decision. This file is
@@ -9,6 +9,36 @@
 
 Older detailed logs remain recoverable in Git history through commit `10a5e0e`;
 obsolete evaluation numbers are intentionally not repeated as current evidence.
+
+## 2026-07-28 — Stage 2 additive result complete; both GPUs idle
+
+All three recipient-preserving additive seeds are complete and retain
+`mechanical_only=false` with no best-seed selection. Primary seed 101 and parallel
+seeds 17/42 passed their immutable manifests. The checksum-gated continuation
+transferred only the compact parallel outputs, ran the frozen three-seed evaluator,
+verified its full manifest, and retrieved the result locally. The evaluation
+checksum-manifest SHA256 is
+`0c005678d312ac8924e498249f215f45d33153704fc5fc646248596b32e5bf7b`.
+Both hosts have no live Stage 2 session or process; both GPUs are idle.
+
+Five of eight A1500+B750 versus A1500 mean effects were positive. Only
+**liver ← skin** was positive in all three seeds with its paired donor-bootstrap
+interval above zero: +1.956%, 95% CI +1.647% to +2.244%. Four edges beat all three
+random auxiliaries across all seeds. Zero of eight named donors beat A2250 across
+all seeds, so more recipient-organ data remains the best tested use of the extra 750
+draws.
+
+The frozen subset also shows why the matrix is directional:
+skeletal muscle ← lung was +0.811%, whereas lung ← skeletal muscle was −0.383%.
+Neither is positive across all three seeds, so this is suggestive asymmetry rather
+than a universal biological claim. The full result is
+`docs/stage2-additive-transfer-result.md`.
+
+The July 30 deck now includes a presentation-readable additive effect panel. The
+next development step is to freeze all six missing reciprocal additive directions
+as one explicitly post-discovery follow-up, then test whether expert/pathway and
+router structure predicts directed transfer. A new untouched multisource cohort
+remains necessary for study universality.
 
 ## 2026-07-28 — Primary additive complete; checksum-status race repaired
 
