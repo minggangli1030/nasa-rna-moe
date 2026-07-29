@@ -1,25 +1,68 @@
 # Stage 2: organ-expert mechanism and directed transfer
 
-**Status:** seed-stability diagnosis complete; recipient-protected sharing is next
+**Status:** representation-first pivot approved; frozen residual-program audit active
 **Updated:** 2026-07-29
 
 ## Decision
 
-Stage 2 is representation-first and remains anchored *for the current diagnosis* on
-the independently validated organ experts. Organ is the strongest tested
-specialization axis and therefore the right controlled starting point, but it is not
-a permanent restriction on the MoE or on the scientific question.
+Stage 2 is representation-first and remains anchored on the independently validated
+organ experts. Organ is the strongest tested specialization axis and therefore the
+right controlled starting point, but it is not a permanent restriction on the MoE
+or on the scientific question.
 
-The immediate objective is to test one recipient-protected sharing design after raw
-cross-organ addition failed the frozen stability gate. The protected design must
-prevent donor gradients from overwriting the recipient adapter, retain the replicated
-organ experts as the anchor, and use the same crossed factors and stopping rule.
+The seed-factorized diagnosis showed that raw cross-organ addition is not a
+reproducible training policy. Although the frozen branch allowed one
+recipient-protected sharing design, the user approved moving directly to the more
+informative representation audit. This avoids optimizing another sharing mechanism
+before establishing that a seed-stable structure exists for it to exploit.
 
-If protected sharing still yields fewer than three stable-helpful edges, the project
-will pivot to hierarchical attributes, cross-cutting biological programs, or
-continuous residual representations. Such a pivot moves away from organ-to-organ
-transfer as the primary mechanism; it does not abandon the validated organ experts
-as a benchmark and control, nor does it abandon MoE representation learning.
+The immediate objective is now to measure frozen expert residual programs in the
+shared gene-output space, distinguish semantic organ corrections from generic
+adaptation and random partitions, and require cross-seed and donor-bootstrap
+stability. A passed representation gate authorizes a prospective predictor of safe
+sharing; it does not itself prove transfer. If the organ programs fail, the project
+will broaden to hierarchical attributes, tissue sites, cross-cutting biological
+programs, or continuous residual representations.
+
+### Frozen representation-pivot audit
+
+Protocol:
+`artifacts/stage2_organ_expert_mechanism/representation_pivot_protocol.json`.
+
+The audit uses the 1,826 GTEx calibration samples from 188 held-out donors, the
+fixed 4,634 score genes, and all three Stage 1 trunks and expert banks. For each
+organ and seed it records:
+
+- squared-error improvement of the named expert versus pooled and pooled-adapter
+  references;
+- semantic specificity versus the mean of three manifest-assigned random-K8
+  experts;
+- the functional correction made by the named expert relative to the generic
+  pooled adapter; and
+- an identically defined random-partition correction as a null comparator.
+
+Samples are averaged within donor and organ before donors receive equal weight.
+Reproducibility requires all pairwise functional-correction cosines to be at least
+0.5, all efficacy rank correlations to be at least 0.3, all top-100 overlaps to be
+at least 0.15, and positive donor-bootstrap lower bounds versus both the generic
+adapter and random controls. At least four of eight organs must pass for the
+representation-first success branch.
+
+Candidate stable genes additionally require the same direction in all three seeds
+and 99% donor-bootstrap intervals excluding zero for efficacy and exceeding zero
+for semantic specificity. They remain exploratory mechanism candidates, not
+multiplicity-controlled gene discoveries.
+
+Implementation:
+
+- `evaluation/extract_stage2_expert_residual_programs.py`;
+- `evaluation/evaluate_stage2_expert_residual_programs.py`; and
+- `runs/run_stage2_representation_pivot.sh`.
+
+The extractor must reproduce the original sample-level calibration scores before
+any gene-level cache is accepted. The launcher requires a clean full commit and
+binds every output to the protocol hash. There is no model fitting, best-seed
+selection, membership change, or ARCHS4 access.
 
 ## Stage 1 premise
 
@@ -232,20 +275,16 @@ unchanged eight edges.
 The frozen evaluator therefore selected the instability branch. The raw additive
 heatmap is not a training rule and the reciprocal expansion is deferred.
 
-The direct next step is one recipient-protected sharing test. A separate
-zero-initialized donor-residual branch receives donor updates while the recipient
-adapter remains protected. A bounded gate can turn sharing off and exactly recover
-the recipient-only path. The comparison must retain A1500, raw A1500+B750,
-protected A1500+B750, A2250, and protected random-auxiliary controls across the same
-3×3 factors and eight edges. Before outcomes, freeze the architecture, capacity
-match, gate regularization, schedules, and the unchanged success rule: at least
-three stable-helpful edges and no stable-harmful protected edge. Failure triggers
-the broader representation pivot.
+The frozen diagnosis allowed one recipient-protected sharing test, but the user
+approved the representation-first pivot before spending another training cycle on
+an unvalidated sharing mechanism. The protected branch remains a future option only
+if the residual-program audit establishes a reproducible structure that can specify
+what should be shared. It is no longer the direct next experiment.
 
 Do not run the six missing reverse directions yet. They would add breadth without
-fixing the demonstrated stability bottleneck. If protected sharing passes, freeze
-the reverse directions as one post-discovery set without choosing pairs by observed
-favorability.
+fixing the demonstrated stability bottleneck. If a prospective representation-based
+sharing rule later passes, freeze the reverse directions as one post-discovery set
+without choosing pairs by observed favorability.
 
 The full transfer matrix is a GTEx donor-disjoint development analysis. It can
 measure controlled transfer and freeze predictions, but GTEx cannot establish
@@ -347,17 +386,17 @@ same-compute and same-recipient-exposure comparisons above.
 
 ### Phase 4 or post-diagnosis pivot — broader representation structure
 
-Broader structure is considered only after the frozen seed-stability diagnosis, not
-by modifying the experiment while it is running:
+Broader structure is considered only after the completed frozen seed-stability
+diagnosis:
 
 - if organ sharing is reproducibly helpful, retain organ as the anchor and test
   hierarchical or factorized extensions;
 - if the organ map is reproducible but mostly harmful, preserve organ isolation and
   search for narrower shared modules that can transfer without overwriting
   recipient-specific signal; and
-- if instability remains after the single prespecified recipient-protected sharing
-  test, stop treating raw organ-to-organ transfer as the primary Stage 2 mechanism
-  and pivot to a broader representation-discovery question.
+- because raw addition remained unstable, stop treating raw organ-to-organ transfer
+  as the primary Stage 2 mechanism and audit broader representation structure before
+  another sharing implementation.
 
 Candidate axes include organ subregion, cell-composition or cell-state proxies, sex,
 age, disease or perturbation state, immune/stress/metabolic/mitochondrial programs,

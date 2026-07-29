@@ -1,10 +1,30 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-29 03:03 PDT / 2026-07-29 10:03 UTC
+**Last updated:** 2026-07-29 10:30 PDT / 2026-07-29 17:30 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
 2,800-line pre-cleanup chronology remains recoverable from Git commit `2bc1bef`.
+
+## 2026-07-29 — Stage 2 representation-first pivot frozen
+
+The user approved stopping raw organ-pair transfer as the main Stage 2 track. Organ
+experts remain the validated benchmark, but Stage 2 now asks whether they express a
+seed-stable functional representation before attempting another sharing mechanism.
+
+A read-only protocol was frozen before opening gene-level outputs. It uses the same
+1,826 GTEx calibration samples, 188 held-out donors, 4,634 score genes, and all
+three Stage 1 seeds. It compares named organ experts with pooled, pooled-adapter,
+and three donor-balanced random-K8 controls; requires cross-seed cosine, rank,
+top-gene overlap, and donor-bootstrap gates; and forbids fitting, seed selection,
+ARCHS4 access, and confirmatory individual-gene claims.
+
+The extractor, evaluator, and strict launcher were implemented. The extractor must
+round-trip the original frozen sample-level calibration scores before accepting any
+gene program. If at least four organs pass the frozen representation gate, the next
+step is a prospective test of whether signature structure predicts safe sharing. If
+none pass, Stage 2 broadens beyond organ-only structure to a frozen multi-attribute
+audit.
 
 ## 2026-07-29 — Stage 2 seed-stability diagnosis
 
@@ -24,12 +44,10 @@ Result:
   draws.
 
 The prespecified instability branch therefore fired. Raw cross-organ addition is not
-an actionable training policy. The one permitted next experiment is a
-recipient-protected sharing implementation in which donor gradients cannot overwrite
-the recipient path. It must use the same crossed stability logic and stop unless at
-least three edges become stable helpful. Failure then triggers a pivot toward
-organ-conditioned pathway, biological-state, or continuous expert-residual
-representations.
+an actionable training policy. The protocol allowed one recipient-protected sharing
+implementation, but the user subsequently approved moving directly to the
+representation-first audit recorded above. Protected sharing remains a conditional
+future option only if a stable representation supplies a prospective sharing rule.
 
 Integrity:
 
@@ -272,11 +290,11 @@ automatically.
 
 ## 2026-07-29 — Presentation diagnosis update
 
-The July 30 deck now reports the completed nine-run stability result without adding
-a failure narrative: 0/8 stable-helpful, 2/8 stable-harmful, and 6/8
-unstable/negligible relationships. The closing slide follows plan → result → next:
-one recipient-protected residual-sharing test with the unchanged three-edge success
-bar, then a broader representation pivot if stability still fails.
+The July 30 deck reports the completed nine-run stability result without adding a
+failure narrative: 0/8 stable-helpful, 2/8 stable-harmful, and 6/8
+unstable/negligible relationships. Its future-work slide will be refrozen after the
+active representation audit so it reports the verified branch rather than an
+obsolete protected-sharing promise.
 
 The preliminary additive heatmap remains visible but is explicitly not a training
 policy. Structural checks confirm ten slides, both referenced image assets,

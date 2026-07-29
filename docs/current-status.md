@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-29 03:03 PDT / 2026-07-29 10:03 UTC
+**Updated:** 2026-07-29 10:30 PDT / 2026-07-29 17:30 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -9,17 +9,26 @@ This is the operational handoff. Historical detail remains in Git through commit
 
 Stage 2 completed the frozen seed-factorized stability diagnosis. Raw
 recipient-preserving organ-to-organ addition did not produce an actionable helpful
-rule, so the prespecified instability branch is active:
+rule. The user approved the representation-first pivot rather than spending the next
+cycle on another organ-pair training implementation.
 
-1. design and freeze one recipient-protected sharing implementation;
-2. repeat the same crossed stability test without selecting an edge or seed; and
-3. if fewer than three edges become stable helpful, stop raw organ-transfer work and
-   pivot to broader, organ-conditioned representation structure.
+The active experiment is a read-only audit of the already validated organ experts:
 
-The protected design must keep the recipient adapter unchanged by donor gradients.
-The candidate implementation is a zero-initialized, bounded donor-residual branch
-whose updates cannot overwrite the recipient path. It must retain the A1500
-recipient-only, A2250 recipient-only, raw-addition, and random-auxiliary controls.
+1. extract per-gene functional corrections and reconstruction effects from all three
+   frozen GTEx K8 seeds on the same donor-disjoint calibration set;
+2. compare the organ expert with the pooled trunk, pooled adapter, and three
+   donor-balanced random-K8 controls;
+3. require prespecified cross-seed cosine, rank, top-gene overlap, and donor-bootstrap
+   gates before calling an organ program reproducible; and
+4. only after a representation gate passes, freeze a prospective rule that tests
+   whether signature structure predicts safe parameter or data sharing.
+
+The exact protocol is frozen before opening these gene-level outputs at
+`artifacts/stage2_organ_expert_mechanism/representation_pivot_protocol.json`.
+This audit performs no fitting, no seed selection, and no ARCHS4 access. Organ
+experts remain the benchmark, but organ is no longer assumed to be the only useful
+representation axis. If the organ programs fail, the next branch is a frozen
+multi-attribute audit rather than another search for a lucky organ pair.
 
 ## Completed seed-stability diagnosis
 
@@ -183,10 +192,9 @@ centered progress dots preserve the active-slide state. Ranked charts use semant
 color assignment: Muted Blue follows the verified winner, rather than a fixed series
 position. July 9 and July 16 rendered decks remain unchanged historical artifacts.
 
-The July 30 deck now includes the completed nine-run diagnosis on the additive-result
-slide and closes with the selected next step: one recipient-protected residual-sharing
-test with the unchanged stability bar, followed by a broader representation pivot if
-it fails. The preliminary heatmap remains visible and explicitly labeled as
+The July 30 deck includes the completed nine-run diagnosis on the additive-result
+slide. Its closing step still needs the final representation-audit result before the
+deck is refrozen. The preliminary heatmap remains visible and explicitly labeled as
 non-actionable development evidence.
 
 The obsolete parallel content brief, readiness checklist, one-use additive-chart

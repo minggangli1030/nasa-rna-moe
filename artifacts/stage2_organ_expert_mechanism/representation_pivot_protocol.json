@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "protocol_name": "stage2_frozen_organ_expert_residual_program_audit",
+  "status": "frozen_before_representation_outputs",
+  "frozen_at_utc": "2026-07-29T17:30:00Z",
+  "authorized_by_user": true,
+  "research_stage": "stage2_representation_first_pivot",
+  "primary_question": "Do independently trained organ experts express reproducible gene-level functional correction programs that are stronger than generic and random-partition controls?",
+  "rationale": {
+    "trigger": "The seed-factorized directed-transfer diagnosis found 0/8 stable-helpful additive edges and 6/8 unstable or negligible edges.",
+    "stopped_primary_track": "Raw organ-to-organ data addition is no longer the main Stage 2 discovery strategy.",
+    "preserved_evidence": "The Stage 1 organ-expert reconstruction result remains the validated benchmark; the preliminary directed-transfer heatmap remains descriptive development evidence only.",
+    "pivot": "Measure stable functional representations first, then test prospectively whether those representations predict safe sharing."
+  },
+  "inputs": {
+    "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+    "expression_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "calibration_donor_ids_sha256": "475b14e7cf359dc517b88276fd06d2e7e429a0cd5f2d0c3a39675bdcf3f9d2e4",
+    "seeds": [
+      17,
+      42,
+      101
+    ],
+    "organs": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "calibration_samples": 1826,
+    "calibration_donors": 188,
+    "score_genes": 4634,
+    "expression_role": "GTEx donor-disjoint calibration only",
+    "archs4_access": "none"
+  },
+  "frozen_estimands": {
+    "reference_models": [
+      "frozen pooled trunk",
+      "frozen one-expert pooled adapter",
+      "three frozen donor-balanced random-K8 banks"
+    ],
+    "specialist_efficacy_vs_pooled": "per-gene squared error of pooled trunk minus the named organ expert",
+    "specialist_efficacy_vs_generic_adapter": "per-gene squared error of pooled adapter minus the named organ expert",
+    "semantic_specificity_vs_random": "mean per-gene squared error of three manifest-assigned random experts minus the named organ expert",
+    "functional_correction": "named organ-expert prediction minus pooled-adapter prediction",
+    "random_functional_correction": "mean manifest-assigned random-expert prediction minus pooled-adapter prediction",
+    "aggregation": "samples are averaged within donor and organ before donors receive equal weight",
+    "seed_policy": "all three seeds are reported; no best-seed or best-organ selection"
+  },
+  "reproducibility_metrics": {
+    "functional_correction": [
+      "all three pairwise cosine similarities",
+      "minimum pairwise cosine similarity",
+      "minimum pairwise top-100 absolute-gene Jaccard overlap"
+    ],
+    "efficacy_signature": [
+      "all three pairwise Spearman correlations",
+      "minimum pairwise Spearman correlation"
+    ],
+    "uncertainty": "two-sided donor bootstrap over the three-seed mean donor effect",
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 20260729,
+    "candidate_stable_gene_rule": "same nonzero efficacy-vs-generic sign in all three seeds, 99% donor-bootstrap interval excluding zero, and 99% semantic-specificity interval above zero",
+    "candidate_gene_scope": "exploratory mechanism candidates, not multiplicity-controlled gene discoveries"
+  },
+  "organ_representation_gate": {
+    "minimum_pairwise_functional_correction_cosine": 0.5,
+    "minimum_pairwise_efficacy_spearman": 0.3,
+    "minimum_pairwise_top100_jaccard": 0.15,
+    "overall_specialist_vs_generic_adapter_95ci_lower_bound": 0.0,
+    "overall_semantic_specificity_vs_random_95ci_lower_bound": 0.0
+  },
+  "decision_rule": {
+    "representation_first_success": "at least 4 of 8 organs pass every organ representation gate",
+    "partial_signal": "1 to 3 organs pass; retain only those as hypotheses and broaden the attribute audit before any sharing implementation",
+    "organ_axis_insufficient": "zero organs pass; pivot from organ-only structure to a frozen multi-attribute audit using tissue site and other available outcome-independent metadata",
+    "next_experiment_after_success": "freeze a prospective predictor mapping expert-signature similarity to recipient-protected sharing decisions, then test on untouched schedules or studies",
+    "forbidden_inference": "signature similarity alone is not evidence that training data should be shared"
+  },
+  "firewalls": {
+    "model_fitting": false,
+    "checkpoint_selection": false,
+    "best_seed_selection": false,
+    "archs4_access": false,
+    "membership_changes": false,
+    "pathway_database_selection_after_outputs": false,
+    "individual_gene_confirmatory_claims": false,
+    "study_universality_claim": false
+  },
+  "implementation_binding": {
+    "rule": "The launcher requires a clean full Git commit and records that exact commit plus this protocol SHA256 in every output.",
+    "required_components": [
+      "evaluation/extract_stage2_expert_residual_programs.py",
+      "evaluation/evaluate_stage2_expert_residual_programs.py",
+      "runs/run_stage2_representation_pivot.sh"
+    ]
+  }
+}
