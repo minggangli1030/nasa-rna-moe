@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-29 07:15 PDT / 2026-07-29 14:15 UTC
+**Updated:** 2026-07-29 13:42 PDT / 2026-07-29 20:42 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -54,6 +54,24 @@ that threshold is not changed post hoc. The next Stage 2 implementation is an
 aligned factorized residual model: a fixed training-derived program decoder, shared
 coefficient head, and organ-private residual path, with three-seed donor-disjoint
 controls.
+
+That pivot is now implemented and protocol-frozen. Commit
+`93e5a9b5b95652e37b563c8bc649bb058524b20b` is deployed to the clean detached VM
+worktree
+`/media/volume/moe-reboot/worktrees/stage2_aligned_program_93e5a9b`.
+The exact protocol SHA256 is
+`5cecd43fd75bd832c6be7fa57c9c56fc752e01288184e9100758c09768952fd8`.
+
+The mechanical GPU smoke is active in screen session
+`stage2-aligned-program-smoke`, with result root
+`/media/volume/moe-reboot/results/stage2_aligned_program_smoke_93e5a9b`.
+Seed 17 has completed finite forward/backward updates for all six frozen
+conditions plus the full 4,634-score-gene calibration cache and checkpoint. Seed 42
+is active. A second detached session, `stage2-aligned-program`, waits for the exact
+three-seed smoke to complete and then launches the full run automatically. The full
+run remains fail-closed until all smoke artifacts complete. Canonical implementation
+handoff:
+[`stage2-aligned-program-heads.md`](stage2-aligned-program-heads.md).
 
 ## Completed seed-stability diagnosis
 
@@ -218,9 +236,11 @@ color assignment: Muted Blue follows the verified winner, rather than a fixed se
 position. July 9 and July 16 rendered decks remain unchanged historical artifacts.
 
 The July 30 deck includes the completed nine-run diagnosis on the additive-result
-slide. Its closing step still needs the final representation-audit result before the
-deck is refrozen. The preliminary heatmap remains visible and explicitly labeled as
-non-actionable development evidence.
+slide. Its final future-work slide now states the current limitation directly:
+aggregate organ utility survives, but the existing transfer/program map is not
+general or stable. It presents the shared-program plus organ-private architecture
+as planned work, not as a completed result. The preliminary heatmap remains visible
+and explicitly labeled as non-actionable development evidence.
 
 The obsolete parallel content brief, readiness checklist, one-use additive-chart
 renderer, and superseded July 16 image-generation prompt were removed. Rendered

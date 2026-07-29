@@ -1,6 +1,6 @@
 # Stage 2: organ-expert mechanism and directed transfer
 
-**Status:** exact-gene audit complete; multi-scale, multi-attribute audit next
+**Status:** read-only audits complete; aligned shared/private implementation deployed
 **Updated:** 2026-07-29
 
 ## Decision
@@ -111,6 +111,15 @@ donor-disjoint calibration remain mandatory. Success requires preserving the
 aggregate Stage 1 organ advantage while making the 32 program coefficients
 cross-seed reproducible; neither performance alone nor alignment alone is
 sufficient.
+
+Implementation is now frozen at
+`93e5a9b5b95652e37b563c8bc649bb058524b20b` under
+`artifacts/stage2_organ_expert_mechanism/aligned_program_protocol.json`
+(SHA256
+`5cecd43fd75bd832c6be7fa57c9c56fc752e01288184e9100758c09768952fd8`).
+The six matched conditions, joint utility/alignment gate, VM paths, and execution
+state are recorded in
+[`stage2-aligned-program-heads.md`](stage2-aligned-program-heads.md).
 
 ## Stage 1 premise
 

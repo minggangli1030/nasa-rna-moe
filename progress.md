@@ -1,10 +1,36 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-29 07:15 PDT / 2026-07-29 14:15 UTC
+**Last updated:** 2026-07-29 13:42 PDT / 2026-07-29 20:42 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
 2,800-line pre-cleanup chronology remains recoverable from Git commit `2bc1bef`.
+
+## 2026-07-29 — Aligned shared/private program-head pivot launched
+
+The user approved implementing the next architecture after the raw-transfer and
+read-only representation branches failed to produce a general stable rule.
+
+The implementation fixes the representation coordinates by construction: an
+input-derived 32-value shared head decodes through the frozen GTEx-training
+expression basis, while an organ-private residual branch protects specialization.
+It includes shared-only, private-only, matched generic-capacity, random-basis, and
+donor-balanced random-label controls. All six conditions share the same fitting
+schedule and masks within seed.
+
+The protocol was frozen before scientific training outcomes at SHA256
+`5cecd43fd75bd832c6be7fa57c9c56fc752e01288184e9100758c09768952fd8`.
+Success requires both utility and coefficient alignment; neither alone is enough.
+Exact commit `93e5a9b5b95652e37b563c8bc649bb058524b20b` is deployed to a
+clean detached primary-VM worktree. The three-seed mechanical smoke is active in
+screen session `stage2-aligned-program-smoke`; seed 17 passed the real finite-loss
+GPU update, full calibration-cache, and checkpoint path, while seed 42 is active.
+Detached session `stage2-aligned-program` will launch the full frozen run
+automatically when the exact smoke completes.
+
+The July 30 deck was changed only on the final future-work slide. It reports the
+shortcoming as a limitation—not a failed-result narrative—and presents the
+aligned shared/private architecture as the planned pivot.
 
 ## 2026-07-29 — Stage 2 representation-first pivot frozen
 
