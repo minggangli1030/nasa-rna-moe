@@ -123,3 +123,25 @@ from concentrating nearly all variation into one program direction. No claim of 
 
 Compact result:
 `artifacts/stage2_organ_expert_mechanism/aligned_program_evaluation_ba07442/`.
+
+## Read-only collapse diagnosis
+
+The fixed decoder itself has effective rank 29.00, and least-squares projection of
+the actual post-private residual into the same decoder span has sample-level
+effective rank 12.89–14.34 and within-organ rank 16.48–17.04. The learned
+coefficients remain rank 1.42–1.66 at sample level. The representational target is
+therefore not intrinsically one-dimensional.
+
+All three seeds instead learned nearly the same organ/difficulty shortcut. The
+leading direction is strongly associated with organ and tissue site, separates
+brain most sharply, and carries approximately 75–78% of decoded coefficient energy.
+This is a reproducible optimization outcome, not random collapse.
+
+For seed 17, a five-fold donor-grouped linear probe using the exact existing hidden
+summary predicted oracle coefficients at effective rank 12.40, with median
+component correlation 0.963, and removed 69.8% of private-path error. The trained
+nonlinear head removed 33.6%. Thus neither input information nor head capacity is
+the primary bottleneck.
+
+The detailed evidence and bounded repair are in
+[`stage2-aligned-program-collapse-diagnosis.md`](stage2-aligned-program-collapse-diagnosis.md).

@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-29 16:18 PDT / 2026-07-29 23:18 UTC
+**Last updated:** 2026-07-29 16:45 PDT / 2026-07-29 23:45 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -50,6 +50,25 @@ object arrays. The three model runs and score arrays were intact. A separate cle
 evaluator commit reconstructed strings from the hash-pinned manifest and never
 enabled pickle loading. Its compact result passed all checksums at
 `artifacts/stage2_organ_expert_mechanism/aligned_program_evaluation_ba07442/`.
+
+The subsequent read-only collapse diagnosis showed that the fixed decoder is
+high-rank (29.00) and that the actual post-private residual supports sample-level
+rank 12.89–14.34 in the same span. The trained head recovered only rank 1.42–1.66.
+Its repeated dominant direction primarily encodes organ/site identity and
+reconstruction difficulty, with brain at the strongest extreme. The collapse is
+therefore a reproducible shortcut caused by the present learning setup, not a
+one-dimensional target or a random seed failure.
+
+The bounded repair is to train and freeze the private path first, supervise the
+shared head on standardized training-only residual projection coefficients in the
+same exact decoder coordinates, retain decoded MSE as an auxiliary loss, and add
+overall/within-organ anti-collapse and per-organ safety gates.
+
+A five-fold donor-grouped seed-17 probe then showed that the existing global hidden
+summary is already adequate: a simple linear ridge predictor produced rank-12.40
+coefficients, median component correlation 0.963, and 69.8% error reduction versus
+the private path. The trained nonlinear head achieved only 33.6%. The next repair
+therefore changes the training sequence and target, not the model input or decoder.
 
 ## 2026-07-29 — Stage 2 representation-first pivot frozen
 

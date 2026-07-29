@@ -1,0 +1,113 @@
+{
+  "101": {
+    "mean_mse": {
+      "oracle": 0.10906584560871124,
+      "pooled": 0.4911578893661499,
+      "private": 0.4106971323490143,
+      "trained": 0.28007030487060547
+    },
+    "oracle_relative_reduction_vs_private": 0.7344372272491455,
+    "pooled_residual_oracle_coefficients": {
+      "donor_effective_rank": 7.144863319341981,
+      "donor_top_variance_fraction": 0.5468538774950445,
+      "sample_effective_rank": 12.97500083401972,
+      "sample_top8_variance_fraction": 0.7632177199873174,
+      "sample_top_variance_fraction": 0.32935514012461425,
+      "within_organ_effective_rank": 16.832821697787903,
+      "within_organ_top_variance_fraction": 0.2247275091155597
+    },
+    "post_private_oracle_coefficients": {
+      "donor_effective_rank": 8.045923264275949,
+      "donor_top_variance_fraction": 0.5056370398959097,
+      "sample_effective_rank": 14.341395028609211,
+      "sample_top8_variance_fraction": 0.7167734074925053,
+      "sample_top_variance_fraction": 0.3219276686995909,
+      "within_organ_effective_rank": 16.85103298083424,
+      "within_organ_top_variance_fraction": 0.22311104268901005
+    },
+    "trained_coefficients": {
+      "donor_effective_rank": 1.3055873894923278,
+      "donor_top_variance_fraction": 0.9414660606845019,
+      "sample_effective_rank": 1.657567640573662,
+      "sample_top8_variance_fraction": 0.9999983328251087,
+      "sample_top_variance_fraction": 0.8607652290828138,
+      "within_organ_effective_rank": 2.216101455584775,
+      "within_organ_top_variance_fraction": 0.6683707814134769
+    },
+    "trained_relative_reduction_vs_private": 0.3180612027645111
+  },
+  "17": {
+    "mean_mse": {
+      "oracle": 0.10312061756849289,
+      "pooled": 0.5187998414039612,
+      "private": 0.41449639201164246,
+      "trained": 0.2753625810146332
+    },
+    "oracle_relative_reduction_vs_private": 0.7512146830558777,
+    "pooled_residual_oracle_coefficients": {
+      "donor_effective_rank": 6.66703931775789,
+      "donor_top_variance_fraction": 0.5673327629097393,
+      "sample_effective_rank": 12.350528405034828,
+      "sample_top8_variance_fraction": 0.7783947650699179,
+      "sample_top_variance_fraction": 0.3420054011087453,
+      "within_organ_effective_rank": 16.427714626756078,
+      "within_organ_top_variance_fraction": 0.22551178162184154
+    },
+    "post_private_oracle_coefficients": {
+      "donor_effective_rank": 6.998717215056408,
+      "donor_top_variance_fraction": 0.545679577394352,
+      "sample_effective_rank": 12.89271971060659,
+      "sample_top8_variance_fraction": 0.7454528750518971,
+      "sample_top_variance_fraction": 0.35173930554050353,
+      "within_organ_effective_rank": 16.484198071817378,
+      "within_organ_top_variance_fraction": 0.22478091815334172
+    },
+    "trained_coefficients": {
+      "donor_effective_rank": 1.2305624213075108,
+      "donor_top_variance_fraction": 0.9485504265883368,
+      "sample_effective_rank": 1.4214278898352386,
+      "sample_top8_variance_fraction": 0.9999995150511825,
+      "sample_top_variance_fraction": 0.8939581898410963,
+      "within_organ_effective_rank": 1.7163697226165187,
+      "within_organ_top_variance_fraction": 0.7964975118859476
+    },
+    "trained_relative_reduction_vs_private": 0.33566954731941223
+  },
+  "42": {
+    "mean_mse": {
+      "oracle": 0.10058777779340744,
+      "pooled": 0.4882286787033081,
+      "private": 0.4188097417354584,
+      "trained": 0.2636898458003998
+    },
+    "oracle_relative_reduction_vs_private": 0.7598246335983276,
+    "pooled_residual_oracle_coefficients": {
+      "donor_effective_rank": 7.590898406106539,
+      "donor_top_variance_fraction": 0.5258806086676799,
+      "sample_effective_rank": 13.394046735843471,
+      "sample_top8_variance_fraction": 0.7599683652218706,
+      "sample_top_variance_fraction": 0.30976558743739263,
+      "within_organ_effective_rank": 17.091577787115146,
+      "within_organ_top_variance_fraction": 0.2197482313447266
+    },
+    "post_private_oracle_coefficients": {
+      "donor_effective_rank": 7.682563689731419,
+      "donor_top_variance_fraction": 0.5200809693187115,
+      "sample_effective_rank": 13.727431073260748,
+      "sample_top8_variance_fraction": 0.734459682202931,
+      "sample_top_variance_fraction": 0.32887797446033784,
+      "within_organ_effective_rank": 17.035520819228417,
+      "within_organ_top_variance_fraction": 0.22061056399879928
+    },
+    "trained_coefficients": {
+      "donor_effective_rank": 1.2218546012615088,
+      "donor_top_variance_fraction": 0.9581595417391188,
+      "sample_effective_rank": 1.468397294623162,
+      "sample_top8_variance_fraction": 0.9999972937189697,
+      "sample_top_variance_fraction": 0.9034606678822981,
+      "within_organ_effective_rank": 1.6525299934405349,
+      "within_organ_top_variance_fraction": 0.8606136689308417
+    },
+    "trained_relative_reduction_vs_private": 0.37038272619247437
+  }
+}

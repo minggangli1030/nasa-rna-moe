@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-29 16:18 PDT / 2026-07-29 23:18 UTC
+**Updated:** 2026-07-29 16:45 PDT / 2026-07-29 23:45 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -86,6 +86,24 @@ produced the verified result in a distinct path. Root checksum-manifest SHA256:
 `413cb73ad47db0f400682bc1001bcc426f668f3c690abbe6300b3d3786efc0ac`.
 Canonical implementation and result handoff:
 [`stage2-aligned-program-heads.md`](stage2-aligned-program-heads.md).
+
+A read-only collapse diagnosis subsequently localized the failure. The fixed
+decoder has effective rank 29.00, while the actual post-private residual projected
+into that same span has sample-level effective rank 12.89–14.34 and within-organ
+rank 16.48–17.04. The learned sample coefficients remain rank 1.42–1.66. Thus the
+target is not intrinsically one-dimensional.
+
+The learned leading direction is nevertheless almost identical across seeds and is
+strongly associated with organ/site identity, especially a brain-versus-other
+contrast, and with pooled reconstruction difficulty. The present joint,
+decoded-MSE-only training therefore converged on a stable shortcut. The bounded
+repair is private-first residualization and direct per-component standardized
+coefficient-target supervision while keeping the existing head and exact decoder.
+A five-fold donor-grouped seed-17 probe showed that the current global hidden
+summary already predicts high-rank oracle coefficients (rank 12.40, median
+component correlation 0.963) and recovers 69.8% of remaining error versus 33.6% for
+the trained head. Canonical diagnosis:
+[`stage2-aligned-program-collapse-diagnosis.md`](stage2-aligned-program-collapse-diagnosis.md).
 
 ## Completed seed-stability diagnosis
 
