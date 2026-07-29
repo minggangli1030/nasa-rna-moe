@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "protocol_name": "stage2_aligned_shared_private_program_heads",
+  "status": "frozen_before_aligned_program_training",
+  "frozen_at_utc": "2026-07-29T20:38:15Z",
+  "authorized_by_user": true,
+  "trigger": "Raw organ-to-organ transfer had 0/8 stable-helpful edges and the read-only exact-gene and multiscale audits did not reveal a general seed-stable representation.",
+  "primary_question": "Can an identifiable shared program path preserve independently validated organ specialization while learning reproducible per-sample coordinates across pooled-trunk seeds?",
+  "inputs": {
+    "expression_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
+    "expression_metadata_sha256": "111be4b987cb99f85329018fb0df951e1cafe0b8bcd385c9c31b5f944e8bb741",
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "source_training_basis_sha256": "5f5da334a9c623a9170f678653b75e534df5ccced82007ff859be8d35c3a09de",
+    "basis_bundle_sha256": "2d05ef136fe9e1660efe4bd649898412590ec6d36300da8c480b8bf75c919bfc",
+    "decoder_sha256": {
+      "program_decoder_sha256": "6ee414cf3bef516743aba7e39c46482104bd81c605332487aafbe7bdf4dbd7e7",
+      "random_decoder_sha256": "eb586fabbfc0a6e39645a9c4ff57d0fbf121c052477f3ab13c253df11710a43e"
+    },
+    "pooled_checkpoint_sha256": {
+      "17": "ae5d6d1619938d8061c8b5b6e1323ed345f71f67b34e3e065cc899f587da7c74",
+      "42": "969c510fb84e5e58605d34351db6c5608ef8d64d66b282ad9bf964b77bb33ce2",
+      "101": "3e9edacfb6b0e530f210f271af4802072a3c0154922bcf0b4b9f54e0ee612043"
+    },
+    "seeds": [
+      17,
+      42,
+      101
+    ],
+    "training_donors": 750,
+    "calibration_donors": 188,
+    "score_genes": 4634,
+    "components": 32
+  },
+  "architecture": {
+    "pooled_trunk": "frozen seed-specific Stage 1 GTEx trunk",
+    "shared_path": "input-derived 32-vector from an observed-gene mean hidden summary; decoded through the fixed training-expression basis",
+    "private_path": "hard-dispatched K8 residual adapters; organ label is visible only to this path",
+    "fixed_program_decoder": "32 PCA components fitted before this experiment on GTEx training expression only, multiplied by the frozen training-gene scale",
+    "random_decoder": "fixed 32-dimensional random orthonormal basis generated once with NumPy PCG64 seed 20260731 and multiplied by the same scale",
+    "identifiability": "program axes and signs are fixed before fitting; coefficient order cannot rotate independently across seeds",
+    "score_scope": "heads are fit and evaluated only on the 4634 frozen score genes; the trunk still receives the full expression vector",
+    "conditions": [
+      "generic_capacity_matched",
+      "organ_private_only",
+      "shared_program_only",
+      "shared_program_plus_organ_private",
+      "random_basis_plus_organ_private",
+      "shared_program_plus_random_private"
+    ],
+    "initialization_matching": "all shared coefficient heads start identically within seed and all K8 private banks start identically within seed",
+    "random_private_labels": "frozen donor-balanced random_k8_p17 manifest labels"
+  },
+  "training": {
+    "max_updates": 1500,
+    "batch_size": 8,
+    "validation_batch_size": 8,
+    "sampling_mode": "organ_sample_balanced",
+    "mask_scope": "30 percent of frozen score genes per fitting draw",
+    "mask_ratio": 0.3,
+    "mask_token": -10.0,
+    "program_head_dim": 64,
+    "private_adapter_dim": 64,
+    "generic_adapter_dim": 580,
+    "generic_capacity_tolerance_fraction": 0.02,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "optimizer": "AdamW",
+    "scheduler": "CosineAnnealingLR",
+    "mixed_precision": false,
+    "checkpoint_policy": "predetermined final update",
+    "log_interval": 100
+  },
+  "evaluation": {
+    "split": "donor and connected-study-disjoint GTEx calibration",
+    "mask": "all 4634 frozen score genes",
+    "mask_seed": 271828,
+    "performance_aggregation": "equal organs, equal held-out donors within organ",
+    "coefficient_aggregation": "average samples within held-out donor before cross-seed comparison",
+    "seed_policy": "report all three fixed seeds; select none",
+    "bootstrap": {
+      "unit": "held-out donor within organ",
+      "replicates": 2000,
+      "seed": 20260801
+    }
+  },
+  "success_gate": {
+    "positive_shared_private_vs_pooled_in_all_seeds": true,
+    "minimum_private_gain_fraction_preserved": 0.9,
+    "shared_private_vs_random_basis_all_seed_bootstrap_intervals_above_zero": true,
+    "shared_private_vs_generic_capacity_all_seed_bootstrap_intervals_above_zero": true,
+    "minimum_flattened_donor_coefficient_pearson": 0.5,
+    "minimum_pairwise_median_component_pearson": 0.3,
+    "minimum_effective_coefficient_rank": 8.0,
+    "joint_requirement": "utility and coefficient-alignment gates must both pass; neither alone advances the architecture"
+  },
+  "decision_rule": {
+    "joint_pass": "advance the aligned shared/private architecture to prospective study-disjoint confirmation and test whether stable coefficients predict safe sharing",
+    "utility_only": "revise coefficient identifiability or supervision once; do not claim a stable biological representation",
+    "alignment_only": "do not advance an architecture that is reproducible but loses predictive utility",
+    "joint_fail": "pivot Stage 2 beyond organ-only representation and preregister a broader attribute/program hypothesis"
+  },
+  "firewalls": {
+    "archs4_access": false,
+    "external_test_access": false,
+    "trunk_finetuning": false,
+    "basis_fitting_on_calibration": false,
+    "best_seed_selection": false,
+    "post_outcome_gate_changes": false,
+    "condition_removal_after_outcomes": false,
+    "study_universality_claim": false
+  },
+  "claim_boundary": "This is donor-disjoint GTEx development evidence. It can test whether fixed program coordinates improve seed alignment without erasing organ utility; it cannot establish biological mechanism, universality across independent studies, or downstream spaceflight or disease benefit."
+}
