@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-29 13:42 PDT / 2026-07-29 20:42 UTC
+**Updated:** 2026-07-29 16:18 PDT / 2026-07-29 23:18 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -62,15 +62,29 @@ worktree
 The exact protocol SHA256 is
 `5cecd43fd75bd832c6be7fa57c9c56fc752e01288184e9100758c09768952fd8`.
 
-The mechanical GPU smoke is active in screen session
-`stage2-aligned-program-smoke`, with result root
-`/media/volume/moe-reboot/results/stage2_aligned_program_smoke_93e5a9b`.
-Seed 17 has completed finite forward/backward updates for all six frozen
-conditions plus the full 4,634-score-gene calibration cache and checkpoint. Seed 42
-is active. A second detached session, `stage2-aligned-program`, waits for the exact
-three-seed smoke to complete and then launches the full run automatically. The full
-run remains fail-closed until all smoke artifacts complete. Canonical implementation
-handoff:
+The mechanical smoke and all three 1,500-update runs are complete. The full run
+finished at 2026-07-29 16:15 PDT; the repaired evaluator and immutable result
+finalization completed at 16:17 PDT. Every utility gate passed:
+
+- shared+private versus pooled: +36.620%, +35.082%, and +30.051% in seeds 17, 42,
+  and 101;
+- shared+private beat organ-private, random-basis+private, and matched generic
+  controls in every seed with donor-bootstrap intervals above zero; and
+- it retained 131.7% of the organ-private gain on average.
+
+However, the coefficient non-collapse gate failed. Cross-seed coefficients were
+highly correlated (minimum flattened donor correlation 0.834; minimum median
+component correlation 0.900) but had effective rank only 1.22–1.31 versus the
+frozen requirement of 8. Decision:
+`utility_pass_alignment_fail_revise_coefficient_identifiability`.
+
+The first evaluator correctly stopped on an object-string serialization mismatch.
+No predictions or models changed. Evaluator commit
+`ba07442d193d00a11c39546c26eb29954699260c` reconstructed text labels from the
+separately hash-pinned manifest, loaded only numeric arrays without pickle, and
+produced the verified result in a distinct path. Root checksum-manifest SHA256:
+`413cb73ad47db0f400682bc1001bcc426f668f3c690abbe6300b3d3786efc0ac`.
+Canonical implementation and result handoff:
 [`stage2-aligned-program-heads.md`](stage2-aligned-program-heads.md).
 
 ## Completed seed-stability diagnosis

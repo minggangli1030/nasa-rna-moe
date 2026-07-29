@@ -1,0 +1,56 @@
+{
+  "archs4_accessed": false,
+  "best_seed_selection_allowed": false,
+  "claim_boundary": "This is donor-disjoint GTEx development evidence. It can test whether fixed program coordinates improve seed alignment without erasing organ utility; it cannot establish biological mechanism, universality across independent studies, or downstream spaceflight or disease benefit.",
+  "coefficient_diagnostics": {
+    "effective_rank_by_seed": {
+      "101": 1.3055873934515874,
+      "17": 1.230562414152829,
+      "42": 1.2218545928640274
+    },
+    "minimum_effective_rank": 1.2218545928640274,
+    "minimum_flattened_donor_coefficient_pearson": 0.83444991858673,
+    "minimum_pairwise_median_component_pearson": 0.8996467000109325,
+    "pairwise_flattened_pearson": [
+      0.83444991858673,
+      0.8478139271466159,
+      0.8962828558315529
+    ],
+    "pairwise_median_component_pearson": [
+      0.8996467000109325,
+      0.9243661325344963,
+      0.9160698041049229
+    ]
+  },
+  "decision": "utility_pass_alignment_fail_revise_coefficient_identifiability",
+  "development_only": true,
+  "external_data_accessed": false,
+  "gates": {
+    "beats_generic_capacity_all_seed_intervals": true,
+    "beats_random_basis_all_seed_intervals": true,
+    "coefficient_component_reproducibility": true,
+    "coefficient_flattened_reproducibility": true,
+    "coefficient_noncollapse": false,
+    "minimum_private_gain_preserved": true,
+    "positive_vs_pooled_all_seeds": true
+  },
+  "hashes": {
+    "coefficient_reproducibility_sha256": "d9f223c4d010441845b1bf8dd1c777dc1ccdb0079a41a1c1963332e9963d2669",
+    "performance_comparisons_sha256": "67db0572f867269b5645d8f9be273e82cabfa4a92f82c5a50f1c8a5987ea50f7",
+    "protocol_sha256": "5cecd43fd75bd832c6be7fa57c9c56fc752e01288184e9100758c09768952fd8",
+    "seed_score_sha256": {
+      "101": "c0ff1ad480b64894ef2a713a9da777e7562e132587ea64e59a0fb32af352d638",
+      "17": "0975e6dcaa23687ec42cf72f3d4ba21d8c7b6fb54ae228cf326c24a2692d4fdc",
+      "42": "0370e6cbb8bc91774d6909e81373021d9784d63a9b9d78f55b9c22a94f04ce19"
+    }
+  },
+  "private_gain_preservation_fraction": 1.3169690645216576,
+  "research_stage": "stage2_aligned_program_development_evaluation",
+  "schema_version": 1,
+  "seeds": [
+    17,
+    42,
+    101
+  ],
+  "status": "complete"
+}

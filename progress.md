@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-29 13:42 PDT / 2026-07-29 20:42 UTC
+**Last updated:** 2026-07-29 16:18 PDT / 2026-07-29 23:18 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -31,6 +31,25 @@ automatically when the exact smoke completes.
 The July 30 deck was changed only on the final future-work slide. It reports the
 shortcoming as a limitation—not a failed-result narrative—and presents the
 aligned shared/private architecture as the planned pivot.
+
+The smoke and full three-seed run subsequently completed. Shared+private reduced
+balanced calibration MSE versus pooled by 36.620%, 35.082%, and 30.051% in seeds
+17, 42, and 101. It beat organ-private, random-basis+private, and matched generic
+controls in every seed with all donor-bootstrap intervals above zero. Thus every
+frozen utility gate passed.
+
+The representation gate did not fully pass. Shared coefficients were strongly
+correlated across seeds, but their effective rank was only 1.22–1.31, below the
+frozen minimum of 8. The model found a useful, reproducible, nearly one-dimensional
+correction rather than a non-collapsed 32-program representation. Prespecified
+decision:
+`utility_pass_alignment_fail_revise_coefficient_identifiability`.
+
+The first evaluator failed closed because string labels had been serialized as
+object arrays. The three model runs and score arrays were intact. A separate clean
+evaluator commit reconstructed strings from the hash-pinned manifest and never
+enabled pickle loading. Its compact result passed all checksums at
+`artifacts/stage2_organ_expert_mechanism/aligned_program_evaluation_ba07442/`.
 
 ## 2026-07-29 — Stage 2 representation-first pivot frozen
 

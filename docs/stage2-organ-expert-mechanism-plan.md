@@ -1,6 +1,6 @@
 # Stage 2: organ-expert mechanism and directed transfer
 
-**Status:** read-only audits complete; aligned shared/private implementation deployed
+**Status:** aligned shared/private development evaluation complete
 **Updated:** 2026-07-29
 
 ## Decision
@@ -120,6 +120,12 @@ Implementation is now frozen at
 The six matched conditions, joint utility/alignment gate, VM paths, and execution
 state are recorded in
 [`stage2-aligned-program-heads.md`](stage2-aligned-program-heads.md).
+
+The three-seed run passed every frozen utility gate, including superiority to the
+random-basis and capacity-matched controls, but failed the coefficient non-collapse
+gate: effective rank was 1.22–1.31 rather than at least 8. The active branch is one
+bounded coefficient-identifiability revision, not confirmation of a 32-program
+representation.
 
 ## Stage 1 premise
 

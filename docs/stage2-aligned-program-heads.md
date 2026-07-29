@@ -1,7 +1,9 @@
 # Stage 2 aligned shared/private program heads
 
-**Status:** implementation deployed; mechanical GPU smoke in progress  
-**Scientific commit:** `93e5a9b5b95652e37b563c8bc649bb058524b20b`  
+**Status:** three-seed development evaluation complete
+
+**Scientific commit:** `93e5a9b5b95652e37b563c8bc649bb058524b20b`
+
 **Protocol SHA256:** `5cecd43fd75bd832c6be7fa57c9c56fc752e01288184e9100758c09768952fd8`
 
 ## Why this pivot exists
@@ -89,3 +91,35 @@ after a complete smoke marker and exits instead if the smoke status becomes
 This remains donor-disjoint GTEx development evidence. A pass would justify a
 prospective independent-study confirmation; it would not establish biological
 mechanism, study universality, or spaceflight/disease utility.
+
+## Completed result
+
+All three fixed seeds completed 1,500 updates and the full donor-disjoint
+calibration:
+
+| Comparison | Seed 17 | Seed 42 | Seed 101 |
+|---|---:|---:|---:|
+| Shared+private vs pooled | +36.620% | +35.082% | +30.051% |
+| Shared+private vs organ-private | +6.811% | +18.775% | +4.500% |
+| Shared+private vs random-basis+private | +6.296% | +12.460% | +9.426% |
+| Shared+private vs matched generic | +38.268% | +35.168% | +31.740% |
+
+Every reported donor-bootstrap interval was above zero. The shared+private model
+retained 131.7% of the organ-private gain on average.
+
+The aligned coefficients were reproducible but collapsed:
+
+- minimum flattened donor-coefficient correlation: 0.834;
+- minimum pairwise median component correlation: 0.900; and
+- effective rank: 1.22–1.31, below the frozen minimum of 8.
+
+Decision:
+`utility_pass_alignment_fail_revise_coefficient_identifiability`.
+
+The next permitted step is one bounded identifiability revision. It should preserve
+the fixed decoder and successful utility controls while preventing the shared head
+from concentrating nearly all variation into one program direction. No claim of a
+32-program biological representation is supported yet.
+
+Compact result:
+`artifacts/stage2_organ_expert_mechanism/aligned_program_evaluation_ba07442/`.
