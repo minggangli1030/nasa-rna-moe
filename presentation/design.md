@@ -387,7 +387,9 @@ These are universal requirements derived from the July 30 deck review:
 - Static markup checks are not enough. Render every dense result slide at
   **1920×1080**, inspect it visually, and confirm text fit, chart-label legibility,
   active pagination, background integration, and absence of clipping. Repeat the
-  check in the exported delivery format.
+  check in the exported delivery format. Also inspect the responsive 16:9 layout at
+  **1280×720**: compact card padding and vertical gaps before reducing text, preserve
+  the 16 px floor, and keep callouts above the pagination lane.
 
 ## Slide-level checklist
 
