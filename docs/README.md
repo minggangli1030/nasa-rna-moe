@@ -16,6 +16,8 @@
   recipient-preserving additive result.
 - [`stage2-seed-stability-diagnosis.md`](stage2-seed-stability-diagnosis.md):
   active crossed stability protocol and post-diagnosis branches.
+- [`stage2-representation-pivot-result.md`](stage2-representation-pivot-result.md):
+  frozen gene-level expert audit and multi-attribute pivot.
 - [`../progress.md`](../progress.md): concise milestone chronology. Earlier detailed
   chronology remains in Git history through commit `2bc1bef`.
 

@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "protocol_name": "stage2_multiscale_tissue_attribute_audit",
+  "status": "frozen_before_multiscale_outputs",
+  "frozen_at_utc": "2026-07-29T14:20:00Z",
+  "authorized_by_user": true,
+  "trigger": "The exact-gene representation audit retained aggregate efficacy for 8/8 organs but produced 0/8 full representation-gate passes.",
+  "primary_question": "Is the expert signal reproducible in a shared, coarser continuous expression basis or within outcome-independent tissue sites nested under organ?",
+  "inputs": {
+    "parent_protocol_sha256": "a1ae007be01bb480f6649a6dfac6102b3359c5e3fa51393160c6469de67a5312",
+    "seed_cache_sha256": {
+      "17": "1e352b467dbb9fdab19daabe44e2c310b359e44f44fb278055d63916ae63c09d",
+      "42": "5a693bcb16629f0bd6172baa895b762e20f8c78d45430d5d8bddb7933f2285fe",
+      "101": "ef8408b957ba2b345f8c3ef381d1ca89b7986c41e1d6dfac38eb248c092f5b2e"
+    },
+    "expression_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "training_donors": 750,
+    "calibration_donors": 188,
+    "score_genes": 4634,
+    "seeds": [
+      17,
+      42,
+      101
+    ]
+  },
+  "basis": {
+    "source": "GTEx training split expression only; no expert losses, calibration outcomes, or ARCHS4",
+    "transform": "log1p TPM, weighted mean and variance with equal total weight per donor",
+    "algorithm": "sklearn PCA randomized SVD",
+    "sklearn_version": "1.7.2",
+    "components": 32,
+    "random_state": 20260729,
+    "n_oversamples": 16,
+    "iterated_power": 4,
+    "sign_rule": "the largest absolute loading in each component is positive",
+    "module_definition": "the 100 genes with largest absolute loading per component; overlap is allowed"
+  },
+  "attributes": {
+    "primary_strata": "all eight organs",
+    "secondary_strata": "every organ/tissue_site cell with at least 30 calibration donors",
+    "minimum_calibration_donors": 30,
+    "eligible_tissue_sites": [
+      "Adipose - Subcutaneous",
+      "Adipose - Visceral (Omentum)",
+      "Brain - Amygdala",
+      "Brain - Anterior cingulate cortex (BA24)",
+      "Brain - Caudate (basal ganglia)",
+      "Brain - Cerebellar Hemisphere",
+      "Brain - Cerebellum",
+      "Brain - Cortex",
+      "Brain - Frontal Cortex (BA9)",
+      "Brain - Hippocampus",
+      "Brain - Hypothalamus",
+      "Brain - Nucleus accumbens (basal ganglia)",
+      "Brain - Putamen (basal ganglia)",
+      "Brain - Substantia nigra",
+      "Colon - Sigmoid",
+      "Colon - Transverse",
+      "Heart - Atrial Appendage",
+      "Heart - Left Ventricle",
+      "Liver",
+      "Lung",
+      "Muscle - Skeletal",
+      "Skin - Not Sun Exposed (Suprapubic)",
+      "Skin - Sun Exposed (Lower leg)"
+    ],
+    "selection_rule": "eligibility uses manifest donor counts only, never efficacy or reproducibility"
+  },
+  "estimands": {
+    "module_correction": "donor-balanced specialist-minus-generic correction standardized by training-gene scale and projected onto the 32 frozen components",
+    "module_efficacy": "donor-balanced specialist-vs-generic squared-error improvement averaged within each component's frozen top-100 gene module",
+    "semantic_control": "donor-balanced random-K8 squared error minus named-specialist squared error",
+    "aggregation": "samples are averaged within donor and stratum before equal donor weighting",
+    "seed_policy": "all three seeds reported; no selection"
+  },
+  "gate": {
+    "minimum_pairwise_module_correction_cosine": 0.5,
+    "minimum_pairwise_module_efficacy_spearman": 0.3,
+    "minimum_pairwise_top8_module_jaccard": 0.33,
+    "overall_specialist_vs_generic_95ci_lower_bound": 0.0,
+    "overall_semantic_specificity_95ci_lower_bound": 0.0,
+    "bootstrap_replicates": 1000,
+    "bootstrap_seed": 20260730
+  },
+  "decision_rule": {
+    "coarse_program_success": "at least 4 of 8 organs pass every module gate",
+    "hierarchical_site_signal": "fewer than 4 organs pass, but at least 8 eligible sites spanning at least 3 multi-site organs pass",
+    "no_stable_existing_representation": "otherwise stop mining the current organ experts and design factorized experts with explicit shared canonical program heads",
+    "forbidden_inference": "module or site reproducibility alone does not prove that cross-organ training should be shared"
+  },
+  "firewalls": {
+    "expert_model_fitting": false,
+    "calibration_based_basis_fitting": false,
+    "best_seed_or_stratum_selection": false,
+    "post_output_threshold_changes": false,
+    "archs4_access": false,
+    "study_universality_claim": false
+  }
+}

@@ -1,0 +1,347 @@
+{
+  "archs4_accessed": false,
+  "best_seed_selection_performed": false,
+  "candidate_gene_scope": "exploratory mechanism candidates, not multiplicity-controlled gene discoveries",
+  "code_commit": "d90550eac1df7b1fe1bba72dd96f059b9ad402af",
+  "decision": "organ_axis_insufficient_pivot_multi_attribute",
+  "limitations": [
+    "GTEx donor-disjoint development evidence is not independent-study universality.",
+    "Candidate stable genes are exploratory and not multiplicity-controlled discoveries.",
+    "Signature similarity does not by itself authorize training-data sharing."
+  ],
+  "model_fitting_performed": false,
+  "organ_results": {
+    "adipose": {
+      "candidate_stable_genes": 822,
+      "donors": 159,
+      "efficacy_vs_generic_95ci_high": 0.012337397783994675,
+      "efficacy_vs_generic_95ci_low": 0.011799939908087254,
+      "efficacy_vs_generic_mean": 0.012073195539414883,
+      "median_correction_cosine": 0.11273060739040375,
+      "median_efficacy_spearman": 0.11424453280307004,
+      "median_random_correction_cosine": -0.07514255493879318,
+      "min_correction_cosine": 0.07289637625217438,
+      "min_efficacy_spearman": 0.10161627673644248,
+      "min_top100_jaccard": 0.030927835051546393,
+      "organ": "adipose",
+      "pairwise_correction_cosines": [
+        0.11273060739040375,
+        0.16471491754055023,
+        0.07289637625217438
+      ],
+      "pairwise_efficacy_spearman": [
+        0.11424453280307004,
+        0.17731556698605788,
+        0.10161627673644248
+      ],
+      "pairwise_random_correction_cosines": [
+        0.12820932269096375,
+        -0.07514255493879318,
+        -0.08377207070589066
+      ],
+      "pairwise_top100_jaccard": [
+        0.05263157894736842,
+        0.06951871657754011,
+        0.030927835051546393
+      ],
+      "representation_gate_pass": false,
+      "samples": 257,
+      "semantic_vs_random_95ci_high": 0.012364240363240242,
+      "semantic_vs_random_95ci_low": 0.01180617231875658,
+      "semantic_vs_random_mean": 0.012099352665245533
+    },
+    "brain": {
+      "candidate_stable_genes": 603,
+      "donors": 74,
+      "efficacy_vs_generic_95ci_high": 0.04950115457177162,
+      "efficacy_vs_generic_95ci_low": 0.0430433414876461,
+      "efficacy_vs_generic_mean": 0.046350110322237015,
+      "median_correction_cosine": 0.07358242571353912,
+      "median_efficacy_spearman": 0.09322221005895964,
+      "median_random_correction_cosine": 0.06693350523710251,
+      "min_correction_cosine": 0.05080569162964821,
+      "min_efficacy_spearman": -0.05690704340057648,
+      "min_top100_jaccard": 0.0,
+      "organ": "brain",
+      "pairwise_correction_cosines": [
+        0.07358242571353912,
+        0.05080569162964821,
+        0.1424131989479065
+      ],
+      "pairwise_efficacy_spearman": [
+        -0.05690704340057648,
+        0.09322221005895964,
+        0.1847050994143612
+      ],
+      "pairwise_random_correction_cosines": [
+        0.4811340868473053,
+        -0.15839087963104248,
+        0.06693350523710251
+      ],
+      "pairwise_top100_jaccard": [
+        0.0,
+        0.015228426395939087,
+        0.005025125628140704
+      ],
+      "representation_gate_pass": false,
+      "samples": 608,
+      "semantic_vs_random_95ci_high": 0.04972533509135246,
+      "semantic_vs_random_95ci_low": 0.04303210228681564,
+      "semantic_vs_random_mean": 0.046356234699487686
+    },
+    "colon": {
+      "candidate_stable_genes": 303,
+      "donors": 132,
+      "efficacy_vs_generic_95ci_high": 0.00393061013892293,
+      "efficacy_vs_generic_95ci_low": 0.0034689968451857567,
+      "efficacy_vs_generic_mean": 0.003695273771882057,
+      "median_correction_cosine": 0.024991121143102646,
+      "median_efficacy_spearman": -0.07233458536111989,
+      "median_random_correction_cosine": -0.00639818562194705,
+      "min_correction_cosine": -0.05061627924442291,
+      "min_efficacy_spearman": -0.3182709760147021,
+      "min_top100_jaccard": 0.005025125628140704,
+      "organ": "colon",
+      "pairwise_correction_cosines": [
+        0.03582296147942543,
+        -0.05061627924442291,
+        0.024991121143102646
+      ],
+      "pairwise_efficacy_spearman": [
+        -0.07233458536111989,
+        -0.3182709760147021,
+        0.026924160341959803
+      ],
+      "pairwise_random_correction_cosines": [
+        0.15478457510471344,
+        -0.12272227555513382,
+        -0.00639818562194705
+      ],
+      "pairwise_top100_jaccard": [
+        0.005025125628140704,
+        0.010101010101010102,
+        0.005025125628140704
+      ],
+      "representation_gate_pass": false,
+      "samples": 186,
+      "semantic_vs_random_95ci_high": 0.003922932781279087,
+      "semantic_vs_random_95ci_low": 0.0034708399325609207,
+      "semantic_vs_random_mean": 0.003704142291098833
+    },
+    "heart": {
+      "candidate_stable_genes": 720,
+      "donors": 108,
+      "efficacy_vs_generic_95ci_high": 0.02108009159564972,
+      "efficacy_vs_generic_95ci_low": 0.0195514764636755,
+      "efficacy_vs_generic_mean": 0.02028805762529373,
+      "median_correction_cosine": 0.12659743428230286,
+      "median_efficacy_spearman": 0.1476627280086526,
+      "median_random_correction_cosine": 0.008502933196723461,
+      "min_correction_cosine": 0.12529009580612183,
+      "min_efficacy_spearman": 0.14452892870757,
+      "min_top100_jaccard": 0.0,
+      "organ": "heart",
+      "pairwise_correction_cosines": [
+        0.12529009580612183,
+        0.14424648880958557,
+        0.12659743428230286
+      ],
+      "pairwise_efficacy_spearman": [
+        0.14452892870757,
+        0.16529841810567167,
+        0.1476627280086526
+      ],
+      "pairwise_random_correction_cosines": [
+        0.6768971681594849,
+        -0.1208404153585434,
+        0.008502933196723461
+      ],
+      "pairwise_top100_jaccard": [
+        0.0,
+        0.04712041884816754,
+        0.02564102564102564
+      ],
+      "representation_gate_pass": false,
+      "samples": 178,
+      "semantic_vs_random_95ci_high": 0.021053414791822433,
+      "semantic_vs_random_95ci_low": 0.019494954496622086,
+      "semantic_vs_random_mean": 0.020313819870352745
+    },
+    "liver": {
+      "candidate_stable_genes": 618,
+      "donors": 48,
+      "efficacy_vs_generic_95ci_high": 0.06145162135362625,
+      "efficacy_vs_generic_95ci_low": 0.0552697516977787,
+      "efficacy_vs_generic_mean": 0.058431994169950485,
+      "median_correction_cosine": 0.18369834125041962,
+      "median_efficacy_spearman": 0.11013000521211626,
+      "median_random_correction_cosine": 0.010329601354897022,
+      "min_correction_cosine": 0.12710532546043396,
+      "min_efficacy_spearman": 0.059409840854531826,
+      "min_top100_jaccard": 0.02040816326530612,
+      "organ": "liver",
+      "pairwise_correction_cosines": [
+        0.12710532546043396,
+        0.21052436530590057,
+        0.18369834125041962
+      ],
+      "pairwise_efficacy_spearman": [
+        0.059409840854531826,
+        0.146220844010422,
+        0.11013000521211626
+      ],
+      "pairwise_random_correction_cosines": [
+        0.5965197682380676,
+        -0.12148203700780869,
+        0.010329601354897022
+      ],
+      "pairwise_top100_jaccard": [
+        0.02040816326530612,
+        0.10497237569060773,
+        0.05263157894736842
+      ],
+      "representation_gate_pass": false,
+      "samples": 48,
+      "semantic_vs_random_95ci_high": 0.06137889251112938,
+      "semantic_vs_random_95ci_low": 0.05523577705025673,
+      "semantic_vs_random_mean": 0.058466505259275436
+    },
+    "lung": {
+      "candidate_stable_genes": 908,
+      "donors": 118,
+      "efficacy_vs_generic_95ci_high": 0.023430056869983673,
+      "efficacy_vs_generic_95ci_low": 0.01940915733575821,
+      "efficacy_vs_generic_mean": 0.0213860422372818,
+      "median_correction_cosine": 0.3665008544921875,
+      "median_efficacy_spearman": 0.2850455155854734,
+      "median_random_correction_cosine": -0.09171349555253983,
+      "min_correction_cosine": 0.3498707711696625,
+      "min_efficacy_spearman": 0.26203341345967707,
+      "min_top100_jaccard": 0.10497237569060773,
+      "organ": "lung",
+      "pairwise_correction_cosines": [
+        0.3665008544921875,
+        0.42133283615112305,
+        0.3498707711696625
+      ],
+      "pairwise_efficacy_spearman": [
+        0.26203341345967707,
+        0.2850455155854734,
+        0.29155698306677136
+      ],
+      "pairwise_random_correction_cosines": [
+        0.11496838927268982,
+        -0.09171349555253983,
+        -0.09945668280124664
+      ],
+      "pairwise_top100_jaccard": [
+        0.12994350282485875,
+        0.14942528735632185,
+        0.10497237569060773
+      ],
+      "representation_gate_pass": false,
+      "samples": 118,
+      "semantic_vs_random_95ci_high": 0.02357376553118229,
+      "semantic_vs_random_95ci_low": 0.019397588446736336,
+      "semantic_vs_random_mean": 0.02141064964234829
+    },
+    "skeletal_muscle": {
+      "candidate_stable_genes": 684,
+      "donors": 159,
+      "efficacy_vs_generic_95ci_high": 0.02665499784052372,
+      "efficacy_vs_generic_95ci_low": 0.024471577256917953,
+      "efficacy_vs_generic_mean": 0.02562921680510044,
+      "median_correction_cosine": -0.02848133258521557,
+      "median_efficacy_spearman": 0.1590870658175045,
+      "median_random_correction_cosine": -0.0433393232524395,
+      "min_correction_cosine": -0.03211114928126335,
+      "min_efficacy_spearman": 0.04000461241866968,
+      "min_top100_jaccard": 0.030927835051546393,
+      "organ": "skeletal_muscle",
+      "pairwise_correction_cosines": [
+        -0.02848133258521557,
+        0.5001372694969177,
+        -0.03211114928126335
+      ],
+      "pairwise_efficacy_spearman": [
+        0.1590870658175045,
+        0.18025591689994205,
+        0.04000461241866968
+      ],
+      "pairwise_random_correction_cosines": [
+        0.6193398237228394,
+        -0.11512628942728043,
+        -0.0433393232524395
+      ],
+      "pairwise_top100_jaccard": [
+        0.030927835051546393,
+        0.20481927710843373,
+        0.03626943005181347
+      ],
+      "representation_gate_pass": false,
+      "samples": 159,
+      "semantic_vs_random_95ci_high": 0.02678745612502098,
+      "semantic_vs_random_95ci_low": 0.024612784385681152,
+      "semantic_vs_random_mean": 0.025684690102934837
+    },
+    "skin": {
+      "candidate_stable_genes": 1304,
+      "donors": 166,
+      "efficacy_vs_generic_95ci_high": 0.11027412116527557,
+      "efficacy_vs_generic_95ci_low": 0.10214687883853912,
+      "efficacy_vs_generic_mean": 0.10630995035171509,
+      "median_correction_cosine": 0.41639062762260437,
+      "median_efficacy_spearman": 0.34332290861727754,
+      "median_random_correction_cosine": 0.02276926301419735,
+      "min_correction_cosine": 0.334924578666687,
+      "min_efficacy_spearman": 0.3224608799814414,
+      "min_top100_jaccard": 0.14285714285714285,
+      "organ": "skin",
+      "pairwise_correction_cosines": [
+        0.334924578666687,
+        0.41639062762260437,
+        0.48832571506500244
+      ],
+      "pairwise_efficacy_spearman": [
+        0.34332290861727754,
+        0.3224608799814414,
+        0.3557548078592024
+      ],
+      "pairwise_random_correction_cosines": [
+        0.12555870413780212,
+        -0.19404184818267822,
+        0.02276926301419735
+      ],
+      "pairwise_top100_jaccard": [
+        0.14285714285714285,
+        0.19760479041916168,
+        0.21212121212121213
+      ],
+      "representation_gate_pass": false,
+      "samples": 272,
+      "semantic_vs_random_95ci_high": 0.11038835346698761,
+      "semantic_vs_random_95ci_low": 0.10180018097162247,
+      "semantic_vs_random_mean": 0.10631310939788818
+    }
+  },
+  "organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "organs_passing_representation_gate": 0,
+  "protocol_sha256": "a1ae007be01bb480f6649a6dfac6102b3359c5e3fa51393160c6469de67a5312",
+  "research_stage": "stage2_representation_first_pivot",
+  "schema_version": 1,
+  "seeds": [
+    17,
+    42,
+    101
+  ],
+  "status": "complete"
+}

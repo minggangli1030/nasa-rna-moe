@@ -1,6 +1,6 @@
 # Stage 2: organ-expert mechanism and directed transfer
 
-**Status:** representation-first pivot approved; frozen residual-program audit active
+**Status:** exact-gene audit complete; multi-scale, multi-attribute audit next
 **Updated:** 2026-07-29
 
 ## Decision
@@ -16,13 +16,18 @@ recipient-protected sharing design, the user approved moving directly to the mor
 informative representation audit. This avoids optimizing another sharing mechanism
 before establishing that a seed-stable structure exists for it to exploit.
 
-The immediate objective is now to measure frozen expert residual programs in the
-shared gene-output space, distinguish semantic organ corrections from generic
-adaptation and random partitions, and require cross-seed and donor-bootstrap
-stability. A passed representation gate authorizes a prospective predictor of safe
-sharing; it does not itself prove transfer. If the organ programs fail, the project
-will broaden to hierarchical attributes, tissue sites, cross-cutting biological
-programs, or continuous residual representations.
+The exact-gene residual audit is complete. All eight organ experts retained positive
+donor-bootstrap effects versus the generic adapter and random partitions, but zero
+passed the full cross-seed functional-program gate. Aggregate organ utility is
+therefore reproducible while the detailed gene correction is not.
+
+The immediate objective is to test whether the stable scale is coarser than
+individual genes. A training-donor-only continuous expression basis and every
+adequately supported tissue site nested within organ will be frozen before their
+representation outputs are opened. A passed module-level gate can authorize a
+prospective sharing predictor; it does not itself prove transfer. Failure stops
+organ or organ-subsite structure as the primary Stage 2 mechanism and motivates a
+factorized architecture with explicitly shared canonical program heads.
 
 ### Frozen representation-pivot audit
 
@@ -63,6 +68,23 @@ The extractor must reproduce the original sample-level calibration scores before
 any gene-level cache is accepted. The launcher requires a clean full commit and
 binds every output to the protocol hash. There is no model fitting, best-seed
 selection, membership change, or ARCHS4 access.
+
+Completed result:
+[`stage2-representation-pivot-result.md`](stage2-representation-pivot-result.md).
+All 8/8 organs passed the two aggregate efficacy controls, but 0/8 passed the full
+representation gate. Minimum correction cosine was at most 0.350 and minimum
+top-100 overlap at most 0.143. The outcome preserves the Stage 1 organ advantage
+while rejecting exact gene rankings as a stable sharing rule.
+
+The multi-scale follow-up is frozen in
+`artifacts/stage2_organ_expert_mechanism/multiscale_attribute_protocol.json`.
+It derives 32 continuous components from GTEx training expression with equal total
+weight per donor, fixes each component's top-100 gene module, and evaluates all
+eight organs plus all 23 tissue sites having at least 30 calibration donors. At
+least four organs must pass the module gate to authorize a prospective sharing
+predictor. A secondary hierarchical branch requires at least eight passing sites
+spanning at least three multi-site organs. Otherwise the project stops mining the
+current experts and designs explicit shared canonical program heads.
 
 ## Stage 1 premise
 

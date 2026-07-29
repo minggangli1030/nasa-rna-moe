@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-29 10:30 PDT / 2026-07-29 17:30 UTC
+**Last updated:** 2026-07-29 07:15 PDT / 2026-07-29 14:15 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -25,6 +25,30 @@ gene program. If at least four organs pass the frozen representation gate, the n
 step is a prospective test of whether signature structure predicts safe sharing. If
 none pass, Stage 2 broadens beyond organ-only structure to a frozen multi-attribute
 audit.
+
+## 2026-07-29 — Exact-gene representation audit completed
+
+All three frozen Stage 1 seeds were re-scored gene by gene on the same 1,826 GTEx
+calibration samples and 188 held-out donors. Every seed round-tripped its original
+pooled, organ, pooled-adapter, and random-K8 calibration scores before its cache was
+published.
+
+All eight organs retained positive donor-bootstrap effects versus the generic
+adapter and random controls. However, zero passed the full representation gate:
+minimum cross-seed correction cosine ranged from −0.051 to 0.350, efficacy rank
+agreement was weak or inconsistent, and minimum top-100 overlap never reached 0.15.
+
+Decision: preserve organ experts as the validated aggregate benchmark, but do not
+use exact genes or lucky organ pairs as the Stage 2 sharing rule. The next frozen
+audit tests training-donor-derived continuous expression modules and tissue site
+nested within organ. Checksum-manifest SHA256:
+`0fca3aa432c37668e26e5f1006983b71126510a1056e5a6329bab7aae80650ea`.
+
+The follow-up protocol was frozen before its outputs at SHA256
+`78d772cb0f171707b8707756cc8e38dd5b286dca85361a8d14daaa2140dace51`.
+It uses 32 training-expression components and all 23 tissue sites meeting the
+outcome-independent 30-calibration-donor floor. The evaluator and strict launcher
+are implemented; no expert fitting or ARCHS4 access is permitted.
 
 ## 2026-07-29 — Stage 2 seed-stability diagnosis
 

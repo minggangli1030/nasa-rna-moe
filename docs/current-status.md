@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-29 10:30 PDT / 2026-07-29 17:30 UTC
+**Updated:** 2026-07-29 07:15 PDT / 2026-07-29 14:15 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -12,23 +12,34 @@ recipient-preserving organ-to-organ addition did not produce an actionable helpf
 rule. The user approved the representation-first pivot rather than spending the next
 cycle on another organ-pair training implementation.
 
-The active experiment is a read-only audit of the already validated organ experts:
+The read-only audit of the already validated organ experts is complete:
 
 1. extract per-gene functional corrections and reconstruction effects from all three
    frozen GTEx K8 seeds on the same donor-disjoint calibration set;
 2. compare the organ expert with the pooled trunk, pooled adapter, and three
    donor-balanced random-K8 controls;
-3. require prespecified cross-seed cosine, rank, top-gene overlap, and donor-bootstrap
-   gates before calling an organ program reproducible; and
-4. only after a representation gate passes, freeze a prospective rule that tests
-   whether signature structure predicts safe parameter or data sharing.
+3. all 8/8 organs retained positive donor-bootstrap effects versus both generic and
+   random controls; but
+4. 0/8 passed the complete exact-gene representation gate.
 
 The exact protocol is frozen before opening these gene-level outputs at
 `artifacts/stage2_organ_expert_mechanism/representation_pivot_protocol.json`.
-This audit performs no fitting, no seed selection, and no ARCHS4 access. Organ
-experts remain the benchmark, but organ is no longer assumed to be the only useful
-representation axis. If the organ programs fail, the next branch is a frozen
-multi-attribute audit rather than another search for a lucky organ pair.
+Minimum cross-seed correction cosines ranged from −0.051 to 0.350 and minimum
+top-100 overlaps from 0 to 0.143. The frozen decision is
+`organ_axis_insufficient_pivot_multi_attribute`.
+
+This audit performed no fitting, no seed selection, and no ARCHS4 access. Organ
+experts remain the benchmark, but exact genes and raw organ pairs are not stable
+enough to guide sharing. The next branch freezes a training-donor-only continuous
+expression basis and tests coarser modules plus tissue site nested within organ.
+Canonical result:
+[`stage2-representation-pivot-result.md`](stage2-representation-pivot-result.md).
+
+That next audit is now frozen at
+`artifacts/stage2_organ_expert_mechanism/multiscale_attribute_protocol.json`
+(SHA256 `78d772cb0f171707b8707756cc8e38dd5b286dca85361a8d14daaa2140dace51`).
+It uses 32 outcome-independent expression components fit on the 750 GTEx training
+donors and reports all 23 manifest-eligible tissue sites. No expert is retrained.
 
 ## Completed seed-stability diagnosis
 
