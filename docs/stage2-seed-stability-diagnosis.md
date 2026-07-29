@@ -1,6 +1,6 @@
 # Stage 2 seed-stability diagnosis
 
-**Status:** protocol frozen; 3×3 diagnosis running on two A100 hosts
+**Status:** complete; instability branch selected by the frozen evaluator
 
 ## Why this is now the direct next step
 
@@ -94,15 +94,97 @@ Exact input-bound commit
   42:223, and 101:211;
 - parallel 20 GB A100: combinations 17:227, 42:227, 101:223, and 101:227.
 
-Both detached sessions passed their input hashes and reached 98–100% GPU
-utilization on the first combination. The active two-hour monitor is
-`stage-2-seed-stability-diagnosis`.
+Both detached sessions passed their input hashes. All nine combinations completed
+24/24 arms in deterministic FP32:
+
+- primary completed at 2026-07-29 09:21 UTC; 379/379 immutable entries verified;
+- parallel completed at 2026-07-29 06:40 UTC; 304/304 immutable entries verified;
+- its score caches and metadata were copied to a distinct compact lineage with
+  207/207 entries verified and no adapter checkpoints transferred.
+
+The evaluator was run over the exact 3×3 roots with the frozen protocol, schedule,
+definitions, and decision gates. The first direct-file invocation stopped before
+result access because Python could not resolve the repository package; rerunning the
+identical evaluator as a module repaired only that invocation path. No input,
+estimand, gate, or scientific code changed.
+
+## Result
+
+The frozen evaluator selected:
+`optimization_instability_confirmed_test_robust_sharing_then_pivot`.
+
+| Recipient ← donor | Mean vs A1500 | 95% factor-bootstrap CI | Positive combinations | Classification |
+| --- | ---: | ---: | ---: | --- |
+| brain ← skin | −0.883% | [−1.621%, −0.298%] | 1/9 | stable harmful |
+| colon ← skeletal muscle | −0.104% | [−0.787%, +0.368%] | 5/9 | unstable/negligible |
+| liver ← skin | +3.011% | [−0.632%, +7.862%] | 6/9 | unstable/negligible |
+| adipose ← lung | +0.102% | [−0.491%, +0.807%] | 6/9 | unstable/negligible |
+| heart ← adipose | −0.740% | [−2.031%, +0.157%] | 2/9 | unstable/negligible |
+| lung ← skeletal muscle | −0.990% | [−2.115%, +0.539%] | 2/9 | unstable/negligible |
+| skeletal muscle ← lung | −1.682% | [−4.548%, +0.706%] | 2/9 | unstable/negligible |
+| skin ← adipose | −3.369% | [−6.654%, −0.682%] | 1/9 | stable harmful |
+
+Summary:
+
+- stable helpful: 0/8;
+- stable harmful: 2/8;
+- unstable or negligible: 6/8; and
+- 9/72 crossed cells beat A2250, while every edge's mean comparison with A2250 was
+  negative (mean across cells −3.664%).
+
+The earlier liver←skin result was not a fabricated fluke: its crossed mean remained
+positive. But it was not reliable enough to use as a rule. Its effect ranged from
+−2.402% to +11.316% across the nine combinations, its cross-combination standard
+deviation was 4.362%, and its interval included zero.
+
+The instability is not attributable to one universal factor. Edge-level variance
+decomposition differs: some relationships are trunk-sensitive, some are
+optimization-sensitive, and some are dominated by interaction/unresolved variance.
+This argues against fixing the result by selecting a seed or rerunning the same raw
+addition design.
+
+Immutable local result:
+`artifacts/stage2_organ_expert_mechanism/seed_stability_evaluation_3a27ffa/`.
+Its checksum-manifest SHA256 is
+`66dc24a0d8541f37dfea99be9553677509cb3523da843609835d36febf7c6801`.
+
+## Prespecified next experiment
+
+Run one recipient-protected sharing implementation, then stop or pivot.
+
+The design target is a separate, zero-initialized donor-residual branch:
+
+- recipient A1500 updates train the recipient adapter;
+- donor B750 updates cannot modify that recipient path;
+- donor information enters only through a bounded residual gate trained on
+  development donors;
+- the gate begins at zero, so disabling sharing exactly recovers the recipient-only
+  model; and
+- once the recipient organ expert is selected, the residual gate uses expression
+  only; this is a protected organ-expert test, not a return to de novo label-free
+  routing.
+
+Controls remain:
+
+- A1500 recipient-only;
+- the existing raw A1500+B750 addition;
+- protected A1500+B750;
+- A2250 recipient-only; and
+- protected random-auxiliary additions with matched exposure.
+
+Freeze the exact architecture, capacity match, eight edges, 3×3 factors, masks,
+seeds, gates, and stopping rule before opening outcomes. Keep the current bar:
+at least three of eight edges must be stable helpful under the same classification,
+and recipient protection must not introduce a stable-harmful edge. Otherwise stop
+raw organ-transfer work and pivot to organ-conditioned pathway/state or continuous
+expert-residual structure.
 
 ## Post-diagnosis scope
 
-This diagnosis decides whether raw organ-to-organ addition is reproducible enough to
-remain the primary Stage 2 mechanism. It does not bind the broader MoE project to
-organ labels alone.
+This diagnosis shows that raw organ-to-organ addition is not reproducible enough to
+remain the primary Stage 2 mechanism. It does not invalidate the independently
+replicated Stage 1 organ experts or bind the broader MoE project to organ labels
+alone.
 
 Organ remains the independently validated benchmark and control. If the diagnosis
 and the one permitted recipient-protected sharing test are disappointing, the

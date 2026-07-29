@@ -1,51 +1,45 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-28 14:16 PDT / 2026-07-28 21:16 UTC
+**Last updated:** 2026-07-29 03:03 PDT / 2026-07-29 10:03 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
 2,800-line pre-cleanup chronology remains recoverable from Git commit `2bc1bef`.
 
-## Active — Stage 2 seed-stability diagnosis
+## 2026-07-29 — Stage 2 seed-stability diagnosis
 
-The preliminary additive transfer map is not accepted as the final Stage 2 product.
-Only liver ← skin was positive in all three original seeds, while several small
-mean-positive effects changed sign.
+All nine frozen trunk-by-optimization combinations completed: pooled trunks 17, 42,
+and 101 crossed with optimization/mask/loader replicates 211, 223, and 227. Every
+combination used the same 24-arm deterministic-FP32 schedule; no best seed or
+favorable edge was selected.
 
-The frozen diagnosis crosses three pooled trunks (17, 42, 101) with three independent
-optimization/mask/loader replicates (211, 223, 227). Every combination runs the same
-24-arm FP32 schedule across the unchanged eight additive edges:
+Result:
 
-- eight target-organ-only references;
-- eight target-organ plus named-donor additions; and
-- eight additional-target-organ controls.
+- 0/8 edges were stable helpful;
+- brain ← skin and skin ← adipose were stable harmful;
+- 6/8 edges were unstable or negligible;
+- liver ← skin averaged +3.011% but was positive in only 6/9 combinations and its
+  factor-bootstrap interval crossed zero; and
+- all eight named additions remained worse on average than 2,250 recipient-organ
+  draws.
 
-Frozen identifiers:
+The prespecified instability branch therefore fired. Raw cross-organ addition is not
+an actionable training policy. The one permitted next experiment is a
+recipient-protected sharing implementation in which donor gradients cannot overwrite
+the recipient path. It must use the same crossed stability logic and stop unless at
+least three edges become stable helpful. Failure then triggers a pivot toward
+organ-conditioned pathway, biological-state, or continuous expert-residual
+representations.
 
-- input-bound implementation:
-  `3a27ffabdcb6d2a4209006452958b30cf0fff520`;
-- schedule SHA256:
-  `066144402245cac3114fee71a7dd8e0cfc4a6f4f74b9df405510e9b4e7b0c9a3`;
-- arm-definition SHA256:
-  `e206e20ae46721d6d353f0179afd9f4acbc0a19cb81d9d89e8b7018d24063c9d`;
-- protocol SHA256:
-  `cb6d32c5b96bb510c58e45bb6787feef3a8b088f069a7d3efce21d48631c7262`.
+Integrity:
 
-The experiment launched on both A100 hosts at 2026-07-28 19:52 UTC. It does not
-select a best seed or favorable edge.
+- primary immutable verification: 379/379 entries;
+- parallel immutable verification: 304/304 entries;
+- compact transfer verification: 207/207 entries, excluding model checkpoints; and
+- evaluation checksum-manifest SHA256:
+  `66dc24a0d8541f37dfea99be9553677509cb3523da843609835d36febf7c6801`.
 
-Prespecified branches:
-
-1. continue raw addition only with at least three stable-helpful edges;
-2. if signs are reproducible but mostly harmful, pivot to negative-transfer
-   avoidance/selective sharing; or
-3. if optimization instability dominates, test one recipient-protected sharing
-   implementation and then pivot if stability still fails.
-
-Organ is the strongest validated starting axis, not a permanent restriction.
-Post-diagnosis alternatives may include hierarchical metadata, pathway programs, or
-continuous expert-residual representations under the same stability and confound
-gates.
+This is donor-disjoint GTEx development evidence, not study universality.
 
 ## 2026-07-28 — Stage 2 recipient-preserving addition
 
@@ -275,6 +269,20 @@ The shared end product is a reproducible rule for which biological domains shoul
 share training information and which should remain isolated. The slide passed
 1920×1080 visual and overflow checks, and pagination now generates ten dots
 automatically.
+
+## 2026-07-29 — Presentation diagnosis update
+
+The July 30 deck now reports the completed nine-run stability result without adding
+a failure narrative: 0/8 stable-helpful, 2/8 stable-harmful, and 6/8
+unstable/negligible relationships. The closing slide follows plan → result → next:
+one recipient-protected residual-sharing test with the unchanged three-edge success
+bar, then a broader representation pivot if stability still fails.
+
+The preliminary additive heatmap remains visible but is explicitly not a training
+policy. Structural checks confirm ten slides, both referenced image assets,
+180-millisecond reduced-motion-aware navigation, and centered dynamic pagination.
+Pixel-level in-app preview was unavailable because local `file://` navigation was
+blocked by browser security policy; that restriction was not bypassed.
 
 ## 2026-07-28 — Presentation package consolidation
 

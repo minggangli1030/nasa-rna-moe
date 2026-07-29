@@ -1,66 +1,61 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-28 14:16 PDT / 2026-07-28 21:16 UTC
+**Updated:** 2026-07-29 03:03 PDT / 2026-07-29 10:03 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
 
 ## Current phase
 
-Stage 2 is running a frozen seed-factorized stability diagnosis. The purpose is to
-decide whether recipient-preserving cross-organ transfer contains a reproducible
-helpful rule or whether Stage 2 should pivot to negative-transfer avoidance,
-recipient-protected sharing, or broader representation axes.
+Stage 2 completed the frozen seed-factorized stability diagnosis. Raw
+recipient-preserving organ-to-organ addition did not produce an actionable helpful
+rule, so the prespecified instability branch is active:
 
-No best seed, favorable pair, or post-outcome schedule change is allowed.
+1. design and freeze one recipient-protected sharing implementation;
+2. repeat the same crossed stability test without selecting an edge or seed; and
+3. if fewer than three edges become stable helpful, stop raw organ-transfer work and
+   pivot to broader, organ-conditioned representation structure.
 
-## Active diagnosis
+The protected design must keep the recipient adapter unchanged by donor gradients.
+The candidate implementation is a zero-initialized, bounded donor-residual branch
+whose updates cannot overwrite the recipient path. It must retain the A1500
+recipient-only, A2250 recipient-only, raw-addition, and random-auxiliary controls.
 
-Crossed factors:
+## Completed seed-stability diagnosis
 
-- pooled-trunk seeds: 17, 42, 101;
-- optimization/mask/loader replicates: 211, 223, 227;
-- unchanged named additive edges: eight;
-- arms per crossed combination: 24; and
-- training mode: deterministic FP32.
+The frozen 3×3 design crossed pooled trunks 17, 42, and 101 with independent
+optimization/mask/loader replicates 211, 223, and 227. All nine deterministic-FP32
+combinations completed 24/24 arms without best-seed or edge selection.
 
-Each combination contains:
+Result:
 
-- eight A1500 target-organ references;
-- eight A1500+B750 named-donor additions; and
-- eight A2250 additional-target-organ controls.
+- stable helpful: **0/8** edges;
+- stable harmful: **2/8** edges;
+- unstable or negligible: **6/8** edges;
+- brain ← skin: −0.883%, 95% factor-bootstrap CI −1.621% to −0.298%;
+- skin ← adipose: −3.369%, CI −6.654% to −0.682%; and
+- the earlier liver ← skin signal averaged +3.011% but was positive in only 6/9
+  combinations and its interval crossed zero (−0.632% to +7.862%).
 
-Frozen identifiers:
+Every edge remained worse on average than the A2250 additional-recipient-exposure
+control. Only 9/72 crossed cells beat A2250; the mean difference was −3.664%.
+
+Prespecified decision:
+`optimization_instability_confirmed_test_robust_sharing_then_pivot`.
+
+Integrity:
 
 - exact input-bound commit:
   `3a27ffabdcb6d2a4209006452958b30cf0fff520`;
-- schedule SHA256:
-  `066144402245cac3114fee71a7dd8e0cfc4a6f4f74b9df405510e9b4e7b0c9a3`;
-- arm-definition SHA256:
-  `e206e20ae46721d6d353f0179afd9f4acbc0a19cb81d9d89e8b7018d24063c9d`;
-- protocol SHA256:
-  `cb6d32c5b96bb510c58e45bb6787feef3a8b088f069a7d3efce21d48631c7262`.
+- primary immutable entries verified: 379/379;
+- parallel immutable entries verified: 304/304;
+- compact transfer entries verified: 207/207, with no model checkpoints copied;
+- evaluation checksum-manifest SHA256:
+  `66dc24a0d8541f37dfea99be9553677509cb3523da843609835d36febf7c6801`.
 
-Execution:
-
-- launched: 2026-07-28 19:52 UTC;
-- primary 40 GB A100 screen: `stage2-seed-stability-primary`;
-- primary result root:
-  `/media/volume/moe-reboot/results/stage2_seed_stability_3a27ffa_primary`;
-- parallel 20 GB A100 screen: `stage2-seed-stability-parallel`;
-- parallel result root:
-  `/home/exouser/stage2_parallel/results/stage2_seed_stability_3a27ffa_parallel`;
-- active monitor: `stage-2-seed-stability-diagnosis`.
-
-Prespecified decision:
-
-1. **Raw addition viable:** at least three stable-helpful edges.
-2. **Reproducible but mostly harmful:** at least six stable signs but fewer than
-   three helpful edges; pivot to negative-transfer avoidance/selective sharing.
-3. **Optimization instability:** fewer than six stable signs; test one
-   recipient-protected sharing implementation and pivot if stability still fails.
-
-See [`stage2-seed-stability-diagnosis.md`](stage2-seed-stability-diagnosis.md).
+Canonical result:
+[`stage2-seed-stability-diagnosis.md`](stage2-seed-stability-diagnosis.md) and
+`artifacts/stage2_organ_expert_mechanism/seed_stability_evaluation_3a27ffa/`.
 
 ## Completed Stage 2 development results
 
@@ -150,7 +145,8 @@ Supported:
 - organ-specialized reconstruction improves aggregate balanced external performance;
 - expression-only routing preserves most of the known-organ gain;
 - same-budget cross-organ substitution causes reproducible negative transfer; and
-- recipient-preserving donor additions may contain directional information.
+- raw recipient-preserving organ addition has no stable-helpful edge under the
+  crossed diagnosis, while brain ← skin and skin ← adipose are stable harmful.
 
 Not supported:
 
@@ -187,11 +183,11 @@ centered progress dots preserve the active-slide state. Ranked charts use semant
 color assignment: Muted Blue follows the verified winner, rather than a fixed series
 position. July 9 and July 16 rendered decks remain unchanged historical artifacts.
 
-The July 30 deck now closes with a dedicated future-work decision slide. It states
-the active three-by-three stability diagnosis and the three prespecified outcomes:
-selective sharing if several helpful pairs repeat, negative-transfer prevention if
-signs are stable but help is rare, or one protected-sharing test followed by broader
-representation axes if the map remains unstable.
+The July 30 deck now includes the completed nine-run diagnosis on the additive-result
+slide and closes with the selected next step: one recipient-protected residual-sharing
+test with the unchanged stability bar, followed by a broader representation pivot if
+it fails. The preliminary heatmap remains visible and explicitly labeled as
+non-actionable development evidence.
 
 The obsolete parallel content brief, readiness checklist, one-use additive-chart
 renderer, and superseded July 16 image-generation prompt were removed. Rendered

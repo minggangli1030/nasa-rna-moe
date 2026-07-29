@@ -1,7 +1,7 @@
 # Stage 2: organ-expert mechanism and directed transfer
 
-**Status:** substitution and additive development results complete
-**Updated:** 2026-07-28
+**Status:** seed-stability diagnosis complete; recipient-protected sharing is next
+**Updated:** 2026-07-29
 
 ## Decision
 
@@ -10,18 +10,16 @@ the independently validated organ experts. Organ is the strongest tested
 specialization axis and therefore the right controlled starting point, but it is not
 a permanent restriction on the MoE or on the scientific question.
 
-The immediate objective is to determine what the replicated organ specialists learn
-differently, whether those differences predict helpful or harmful transfer between
-organs, and whether the input-only router uses the same functional structure. The
-frozen seed-stability diagnosis must finish without changing its organ edges,
-protocol, or decision rules.
+The immediate objective is to test one recipient-protected sharing design after raw
+cross-organ addition failed the frozen stability gate. The protected design must
+prevent donor gradients from overwriting the recipient adapter, retain the replicated
+organ experts as the anchor, and use the same crossed factors and stopping rule.
 
-After that diagnosis, the project may expand or pivot to hierarchical attributes,
-cross-cutting biological programs, or continuous residual representations if raw
-organ transfer is not sufficiently reproducible. Such a pivot would move away from
-organ-to-organ transfer as the primary mechanism; it would not abandon the validated
-organ experts as a benchmark and control, nor would it abandon MoE representation
-learning.
+If protected sharing still yields fewer than three stable-helpful edges, the project
+will pivot to hierarchical attributes, cross-cutting biological programs, or
+continuous residual representations. Such a pivot moves away from organ-to-organ
+transfer as the primary mechanism; it does not abandon the validated organ experts
+as a benchmark and control, nor does it abandon MoE representation learning.
 
 ## Stage 1 premise
 
@@ -220,18 +218,34 @@ The preliminary additive heatmap is retained for the July 30 presentation but is
 the Stage 2 final product. Mixed edge signs across the original three seeds cannot
 support a general helpful-transfer rule.
 
-The direct next step is therefore the seed-factorized stability diagnosis in
-`docs/stage2-seed-stability-diagnosis.md`, before the reciprocal expansion. It
-crosses all three frozen pooled trunks with three independent optimization/mask
-replicates across the unchanged eight edges. This determines whether instability is
-primarily trunk-dependent, optimization-dependent, or edge-specific. The result has
-three pre-outcome branches: continue raw transfer only if at least three edges are
-stable helpful; pivot toward negative-transfer avoidance/selective sharing if the
-map is reproducible but mostly harmful; or test one recipient-protected sharing
-implementation if optimization instability remains dominant.
+The seed-factorized stability diagnosis in
+`docs/stage2-seed-stability-diagnosis.md` is complete. It crossed all three frozen
+pooled trunks with three independent optimization/mask replicates across the
+unchanged eight edges.
 
-Only after that decision should the six missing reverse directions be run. They must
-remain one post-discovery set without choosing pairs by observed favorability.
+- 0/8 edges were stable helpful;
+- brain ← skin and skin ← adipose were stable harmful;
+- 6/8 were unstable or negligible; and
+- liver ← skin remained positive on average but was positive in only 6/9
+  combinations, with a factor-bootstrap interval crossing zero.
+
+The frozen evaluator therefore selected the instability branch. The raw additive
+heatmap is not a training rule and the reciprocal expansion is deferred.
+
+The direct next step is one recipient-protected sharing test. A separate
+zero-initialized donor-residual branch receives donor updates while the recipient
+adapter remains protected. A bounded gate can turn sharing off and exactly recover
+the recipient-only path. The comparison must retain A1500, raw A1500+B750,
+protected A1500+B750, A2250, and protected random-auxiliary controls across the same
+3×3 factors and eight edges. Before outcomes, freeze the architecture, capacity
+match, gate regularization, schedules, and the unchanged success rule: at least
+three stable-helpful edges and no stable-harmful protected edge. Failure triggers
+the broader representation pivot.
+
+Do not run the six missing reverse directions yet. They would add breadth without
+fixing the demonstrated stability bottleneck. If protected sharing passes, freeze
+the reverse directions as one post-discovery set without choosing pairs by observed
+favorability.
 
 The full transfer matrix is a GTEx donor-disjoint development analysis. It can
 measure controlled transfer and freeze predictions, but GTEx cannot establish

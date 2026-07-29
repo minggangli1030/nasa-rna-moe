@@ -1,0 +1,66 @@
+{
+  "best_seed_selection_allowed": false,
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 20260729,
+    "unit": "crossed trunk seed, optimization seed, and held-out GTEx donor"
+  },
+  "decision_gates": {
+    "factor_bootstrap_interval_must_exclude_zero": true,
+    "minimum_absolute_effect_percent": 0.5,
+    "raw_addition_required_helpful_edges": 3,
+    "raw_addition_viable_branch": "At least three of eight edges are stable helpful. Proceed to larger confirmation and directed predictor testing.",
+    "reproducible_but_not_helpful_branch": "At least six of eight edges have stable signs but fewer than three are helpful. Pivot raw addition toward negative-transfer avoidance or selective-sharing architectures.",
+    "reproducible_map_required_stable_edges": 6,
+    "required_positive_combos": 8,
+    "required_positive_optimization_means": 3,
+    "required_positive_trunk_means": 3,
+    "unstable_branch": "Fewer than six edges have stable signs. Treat optimization stability as the bottleneck; test one recipient-protected sharing implementation before deciding whether to pivot."
+  },
+  "development_only": true,
+  "factor_design": {
+    "combos": 9,
+    "loader_seed_equals_optimization_seed": true,
+    "mask_seed_equals_optimization_seed": true,
+    "optimization_seeds": [
+      211,
+      223,
+      227
+    ],
+    "trunk_seeds": [
+      17,
+      42,
+      101
+    ]
+  },
+  "hashes": {
+    "arm_definitions_sha256": "e206e20ae46721d6d353f0179afd9f4acbc0a19cb81d9d89e8b7018d24063c9d",
+    "combo_run_metadata_sha256": {
+      "101:211": "47239457285239759f45c26c0a562f4266ff23832387156d3da9f89e74450ffe",
+      "101:223": "108fab8282864d9abcc0d88fb3b9e8fc151475419ce6d9be9af8a7878ce69350",
+      "101:227": "c1f6b8d7cbd10bc7f46b8243e2d929561242d20d0c51954bc93b41cb6fe4d567",
+      "17:211": "612dd322e6708f5701d5536d6fd7e74e79bf6ed4fa178f4b4906d7f5e6ac1b9a",
+      "17:223": "69aef10f1454c2fb8eb17eaeea9923f31c6d114ade85c27571c5e4f42377e5ea",
+      "17:227": "661dc51464d1a558620efbd8a11e163431340b6aadef1c6a6fc295aa0ffb5d5b",
+      "42:211": "6a72ff3e75c96c40f36cf2be97f2409ed997570b04fe41b24289ae95753e7f1c",
+      "42:223": "bae82bcfbad7b1648b3e931138b4642b42a2a607e5c1a814d2c6ae6c13db1e45",
+      "42:227": "520c4c6f721c6c9be334916b6ca3ea80a07c6384744122830e95318627695730"
+    },
+    "combo_table_sha256": "6804eaaff5fc0549808a973730e2389e41289f2f50ed1dbfb703cc831115fd0e",
+    "edge_table_sha256": "bbb7b1743a9497251b56f4eec00ea57f2a8d501766d70017fded3e705589638d",
+    "protocol_sha256": "cb6d32c5b96bb510c58e45bb6787feef3a8b088f069a7d3efce21d48631c7262",
+    "training_schedules_sha256": "066144402245cac3114fee71a7dd8e0cfc4a6f4f74b9df405510e9b4e7b0c9a3"
+  },
+  "research_stage": "stage2_seed_factorized_stability_diagnosis",
+  "schema_version": 1,
+  "status": "complete",
+  "study_disjoint": false,
+  "summary": {
+    "decision": "optimization_instability_confirmed_test_robust_sharing_then_pivot",
+    "edges": 8,
+    "stable_harmful_edges": 2,
+    "stable_helpful_edges": 0,
+    "unstable_or_negligible_edges": 6
+  },
+  "universality_boundary": "This diagnosis separates frozen-trunk and optimization stability on donor-disjoint GTEx development data; it does not establish study universality."
+}
