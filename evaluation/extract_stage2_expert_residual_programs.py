@@ -227,8 +227,8 @@ def extract(args: argparse.Namespace) -> dict[str, Any]:
     truth = truth_full[:, score_indices].copy()
     masked = truth_full.copy()
     masked[:, score_indices] = np.float32(-10.0)
-    organs = calibration["organ"].astype(str).to_numpy()
-    donors = calibration["series_group_id"].astype(str).to_numpy()
+    organs = calibration["organ"].to_numpy(dtype=str)
+    donors = calibration["series_group_id"].to_numpy(dtype=str)
     if set(organs) != set(ORGANS) or list(expected["organs"]) != list(ORGANS):
         raise ValueError("organ labels differ from frozen order")
     organ_labels = calibration["organ_k8"].to_numpy(dtype=np.int64)

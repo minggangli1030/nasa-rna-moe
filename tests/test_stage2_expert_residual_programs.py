@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import numpy as np
+import pandas as pd
 
+from evaluation.extract_stage2_expert_residual_programs import ARRAY_NAMES
 from evaluation.evaluate_stage2_expert_residual_programs import (
     _bootstrap_ci,
     _cosine,
@@ -9,6 +11,15 @@ from evaluation.evaluate_stage2_expert_residual_programs import (
     _spearman,
     _top_jaccard,
 )
+
+
+def test_string_metadata_is_serializable_without_object_dtype():
+    frame = pd.DataFrame({"organ": ["brain"], "donor": ["GTEX-1"]})
+    organs = frame["organ"].to_numpy(dtype=str)
+    donors = frame["donor"].to_numpy(dtype=str)
+    assert organs.dtype.kind == "U"
+    assert donors.dtype.kind == "U"
+    assert "specialist_squared_error" in ARRAY_NAMES
 
 
 def test_similarity_helpers_identify_reproducible_programs():
