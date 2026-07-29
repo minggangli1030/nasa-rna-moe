@@ -41,6 +41,20 @@ That next audit is now frozen at
 It uses 32 outcome-independent expression components fit on the 750 GTEx training
 donors and reports all 23 manifest-eligible tissue sites. No expert is retrained.
 
+The audit is complete:
+
+- module gate: 1/8 organs passed (adipose);
+- tissue-site gate: 2/23 passed (both adipose sites);
+- the passing sites span only one organ, below the frozen hierarchical gate; and
+- decision:
+  `no_stable_existing_representation_design_explicit_program_heads`.
+
+Skin was the closest additional organ but missed the frozen top-module overlap gate;
+that threshold is not changed post hoc. The next Stage 2 implementation is an
+aligned factorized residual model: a fixed training-derived program decoder, shared
+coefficient head, and organ-private residual path, with three-seed donor-disjoint
+controls.
+
 ## Completed seed-stability diagnosis
 
 The frozen 3×3 design crossed pooled trunks 17, 42, and 101 with independent

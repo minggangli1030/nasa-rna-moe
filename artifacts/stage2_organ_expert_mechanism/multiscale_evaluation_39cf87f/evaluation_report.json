@@ -1,0 +1,25 @@
+{
+  "archs4_accessed": false,
+  "basis": {
+    "basis_sha256": "5f5da334a9c623a9170f678653b75e534df5ccced82007ff859be8d35c3a09de",
+    "components": 32,
+    "explained_variance_not_used_for_selection": true
+  },
+  "basis_fit_role": "GTEx training expression only",
+  "code_commit": "39cf87fc86bda3484342b8c0bd89912051dba18d",
+  "decision": "no_stable_existing_representation_design_explicit_program_heads",
+  "eligible_tissue_sites": 23,
+  "limitations": [
+    "Continuous expression components are statistical modules, not annotated biological pathways.",
+    "Tissue-site results remain GTEx donor-disjoint development evidence.",
+    "Reproducibility does not itself prove beneficial parameter or data sharing."
+  ],
+  "model_fitting_performed": false,
+  "multi_site_gate_passes": 2,
+  "multi_site_organs_with_pass": 1,
+  "organ_gate_passes": 1,
+  "protocol_sha256": "78d772cb0f171707b8707756cc8e38dd5b286dca85361a8d14daaa2140dace51",
+  "research_stage": "stage2_multiscale_multi_attribute_pivot",
+  "schema_version": 1,
+  "status": "complete"
+}

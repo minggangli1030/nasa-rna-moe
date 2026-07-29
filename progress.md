@@ -50,6 +50,14 @@ It uses 32 training-expression components and all 23 tissue sites meeting the
 outcome-independent 30-calibration-donor floor. The evaluator and strict launcher
 are implemented; no expert fitting or ARCHS4 access is permitted.
 
+The follow-up completed: adipose was the only organ passing the module gate, and
+its subcutaneous and visceral sites were the only 2/23 site passes. Because they
+span one organ rather than the required three, the frozen decision is to stop
+mining the current experts for a general hidden map and design explicit aligned
+program heads. Skin was close but missed the frozen top-module overlap gate; the
+threshold was not lowered. Checksum-manifest SHA256:
+`a6a26cde213b66b07758498590fa5948bd8450bd4cee0de3fe117ee83dfe5edd`.
+
 ## 2026-07-29 — Stage 2 seed-stability diagnosis
 
 All nine frozen trunk-by-optimization combinations completed: pooled trunks 17, 42,

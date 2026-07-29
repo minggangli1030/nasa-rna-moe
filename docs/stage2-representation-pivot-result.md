@@ -85,3 +85,32 @@ to a new factorized architecture with explicitly shared canonical program heads.
 
 This is donor-disjoint GTEx development evidence, not independent-study
 universality.
+
+## Multi-scale follow-up
+
+The frozen follow-up projected the same immutable predictions into 32 continuous
+expression components fit on GTEx training donors only and evaluated all 23
+manifest-eligible tissue sites.
+
+- 1/8 organs passed the full module gate: adipose.
+- 2/23 tissue sites passed: subcutaneous and visceral adipose.
+- Those two sites span only one organ, so the hierarchical-site branch failed.
+- Skin passed correction-cosine and efficacy-rank thresholds but missed the frozen
+  top-eight-module overlap threshold.
+- Decision:
+  `no_stable_existing_representation_design_explicit_program_heads`.
+
+The threshold is not lowered after observing skin. Adipose remains a bounded
+mechanistic hypothesis, not a project-wide sharing rule.
+
+Canonical artifact:
+`artifacts/stage2_organ_expert_mechanism/multiscale_evaluation_39cf87f/`.
+Its checksum-manifest SHA256 is
+`a6a26cde213b66b07758498590fa5948bd8450bd4cee0de3fe117ee83dfe5edd`.
+
+The next model should align representations by construction: decode residuals
+through a fixed training-derived program basis, learn shared per-sample program
+coefficients, and retain an organ-private residual path. This makes program
+coordinates comparable across seeds while preserving a safe private path. It must
+be compared with pooled, generic-adapter, organ-private, random-label, and
+parameter/update-matched controls across all three seeds.

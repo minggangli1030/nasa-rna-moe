@@ -86,6 +86,32 @@ predictor. A secondary hierarchical branch requires at least eight passing sites
 spanning at least three multi-site organs. Otherwise the project stops mining the
 current experts and designs explicit shared canonical program heads.
 
+The follow-up completed with 1/8 organ passes and 2/23 site passes, both adipose.
+The hierarchical branch therefore failed and the explicit-program-head decision is
+active. Skin was close but missed the frozen top-eight-module overlap gate; no
+threshold is changed after outcomes.
+
+### Next architecture — aligned shared/private program residuals
+
+The representation coordinates must be identifiable by construction:
+
+1. freeze the 32-component training-expression basis already generated without
+   calibration outcomes;
+2. predict per-sample coefficients in that fixed basis through a shared head;
+3. decode those coefficients back to score-gene residuals through the fixed basis;
+4. retain an organ-private residual branch so shared programs cannot erase
+   specialization; and
+5. expose the organ label only to the private branch or gate, while the shared
+   coefficient head remains input-derived.
+
+Required controls are the frozen pooled trunk, a generic pooled adapter, the
+existing organ-private adapter family, donor-balanced random labels, a random
+orthonormal basis, and parameter/update-matched capacity. Three seeds and
+donor-disjoint calibration remain mandatory. Success requires preserving the
+aggregate Stage 1 organ advantage while making the 32 program coefficients
+cross-seed reproducible; neither performance alone nor alignment alone is
+sufficient.
+
 ## Stage 1 premise
 
 The following statement is now supported:
