@@ -636,8 +636,8 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
     np.savez_compressed(
         score_path,
         sample_ids=np.asarray(validation_ids, dtype=str),
-        donors=selection.validation["series_group_id"].astype(str).to_numpy(),
-        organs=selection.validation["organ"].astype(str).to_numpy(),
+        donors=selection.validation["series_group_id"].astype(str).to_numpy(dtype=str),
+        organs=selection.validation["organ"].astype(str).to_numpy(dtype=str),
         organ_labels=validation_organ,
         random_labels=validation_random,
         sample_weights=weights,

@@ -19,6 +19,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from core.train_manifest import sha256_file  # noqa: E402
+from core.train_manifest import sha256_lines  # noqa: E402
 from core.train_stage2_aligned_programs import (  # noqa: E402
     COEFFICIENT_CONDITION,
     CONDITIONS,
@@ -51,12 +52,7 @@ def _load_seed(root: Path, seed: int, protocol_sha: str) -> dict[str, Any]:
         raise ValueError(f"seed {seed} protocol hash differs")
     if metadata["hashes"]["calibration_scores_sha256"] != sha256_file(scores_path):
         raise ValueError(f"seed {seed} score-cache hash differs")
-    with np.load(scores_path, allow_pickle=False) as archive:
-        arrays = {name: archive[name] for name in archive.files}
-    expected = {
-        "sample_ids",
-        "donors",
-        "organs",
+    numeric_expected = {
         "sample_weights",
         "pooled_mse",
         "program_coefficients",
@@ -64,7 +60,15 @@ def _load_seed(root: Path, seed: int, protocol_sha: str) -> dict[str, Any]:
         "organ_labels",
         "random_labels",
     }
-    if set(arrays) != expected:
+    complete_expected = numeric_expected | {"sample_ids", "donors", "organs"}
+    with np.load(scores_path, allow_pickle=False) as archive:
+        if set(archive.files) != complete_expected:
+            raise ValueError(f"seed {seed} score-cache fields differ")
+        # Text labels in the first completed run were emitted as NumPy object
+        # arrays. Never enable pickle to read them. The evaluator reconstructs
+        # those fields from the separately hash-pinned source manifest below.
+        arrays = {name: archive[name] for name in numeric_expected}
+    if set(arrays) != numeric_expected:
         raise ValueError(f"seed {seed} score-cache fields differ")
     if not all(np.isfinite(value).all() for value in arrays.values() if value.dtype.kind in "fc"):
         raise ValueError(f"seed {seed} score cache contains nonfinite values")
@@ -212,11 +216,31 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
         seed: _load_seed(root, seed, protocol_sha)
         for seed, root in zip(SEEDS, roots)
     }
+    manifest_path = Path(args.manifest)
+    if sha256_file(manifest_path) != protocol["inputs"]["manifest_sha256"]:
+        raise ValueError("source manifest differs from frozen protocol")
+    manifest = pd.read_parquet(manifest_path)
+    calibration = (
+        manifest.loc[manifest["split"].astype(str).eq("calibration")]
+        .sort_values("sample_id")
+        .reset_index(drop=True)
+    )
+    sample_ids = calibration["sample_id"].astype(str).to_numpy()
+    donors = calibration["series_group_id"].astype(str).to_numpy()
+    organs = calibration["organ"].astype(str).to_numpy()
+    for seed in SEEDS:
+        arrays = runs[seed]["arrays"]
+        if len(arrays["pooled_mse"]) != len(calibration):
+            raise ValueError(f"seed {seed} score rows differ from calibration manifest")
+        if (
+            runs[seed]["metadata"]["hashes"]["calibration_sample_ids_sha256"]
+            != sha256_lines(sample_ids.tolist())
+        ):
+            raise ValueError(f"seed {seed} calibration sample order differs")
+        arrays["sample_ids"] = sample_ids
+        arrays["donors"] = donors
+        arrays["organs"] = organs
     first = runs[SEEDS[0]]["arrays"]
-    for seed in SEEDS[1:]:
-        for name in ("sample_ids", "donors", "organs"):
-            if not np.array_equal(first[name], runs[seed]["arrays"][name]):
-                raise ValueError(f"seed {seed} {name} differs")
 
     comparisons = [
         ("shared_vs_pooled", "pooled_mse", f"{COEFFICIENT_CONDITION}_mse"),
@@ -365,6 +389,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--protocol", required=True)
     parser.add_argument("--expected-protocol-sha256", required=True)
     parser.add_argument("--seed-root", action="append", required=True)
+    parser.add_argument("--manifest", required=True)
     parser.add_argument("--output-dir", required=True)
     return parser
 
@@ -380,4 +405,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

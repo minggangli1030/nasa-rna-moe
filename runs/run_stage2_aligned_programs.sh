@@ -80,6 +80,7 @@ if [[ "$RUN_MODE" == "full" ]]; then
     --seed-root "$OUTPUT_ROOT/seed17" \
     --seed-root "$OUTPUT_ROOT/seed42" \
     --seed-root "$OUTPUT_ROOT/seed101" \
+    --manifest "$SOURCE_ROOT/manifest/gtex_training_manifest.parquet" \
     --output-dir "$OUTPUT_ROOT/evaluation" \
     > "$OUTPUT_ROOT/evaluation.log" 2>&1
   decision="$("$PYTHON_BIN" -c 'import json,sys; print(json.load(open(sys.argv[1]))["decision"])' "$OUTPUT_ROOT/evaluation/evaluation_report.json")"
@@ -95,4 +96,3 @@ fi
   find . -type f ! -name IMMUTABLE_SHA256SUMS ! -name PROGRAM_STATUS -print0 \
     | sort -z | xargs -0 sha256sum > IMMUTABLE_SHA256SUMS
 )
-
