@@ -168,6 +168,12 @@ No single comparator is simultaneously dataset-matched, capacity-matched,
 architecturally matched, and current SOTA. The ladder makes each comparison answer
 a named question instead of collapsing them into one ranking.
 
+For schedule control, the **core final-week set** is raw expression, PCA, pooled,
+pooled-plus-organ-label, the three deployable MoE modes, matched-data BulkRNABert,
+and published BulkFormer-147M. Published BulkRNABert and retrained BulkFormer-37M
+are extended comparisons: prepare their reproducible paths, but do not let them
+delay the core table, routing-safety result, or August 17 deck.
+
 ### Evaluation modes
 
 - frozen encoder plus identical linear probe: primary representation test;
