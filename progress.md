@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 13:35 PDT / 2026-07-30 20:35 UTC
+**Last updated:** 2026-07-30 13:42 PDT / 2026-07-30 20:42 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -20,11 +20,20 @@ phase-boundary tensor-hash guards. It also fixes the known second-phase failure 
 constructing fresh optimizers and makes the full seed-by-organ condition matrix a
 required evaluator output.
 
-The local focused Stage 2 suite passes 38 tests, including deliberate zero-LR,
-unchanged-module, incomplete-optimizer, and identical-hash failures plus the valid
-terminal cosine-zero case. The commit is pushed and deployed to a clean primary-VM
-worktree. A seed-17 mechanical smoke is running in
-`stage2b-phase-a-smoke`; no Stage 2B scientific result has been opened.
+The local focused Stage 2 suite passed 38 Phase A tests, including deliberate
+zero-LR, unchanged-module, incomplete-optimizer, and identical-hash failures plus
+the valid terminal cosine-zero case. The commit was pushed and deployed to a clean
+primary-VM worktree.
+
+The seed-17 mechanical smoke completed at 2026-07-30 13:39 PDT. All 11 immutable
+entries verify; both phases completed 2/2 updates; every declared module moved and
+changed tensor hash; the GPU returned idle. No Stage 2B scientific result was
+opened.
+
+Phase B implementation then started with commit
+`1990070c13601f5b94dba85868110e3591fc0c1a`. It makes incomplete or stale
+canonical-cache keys fail closed and makes ambiguous bare rank scalars impossible.
+The expanded Stage 2-focused suite passes 42 tests.
 
 ## 2026-07-30 — External Stage 2 critique reviewed and execution plan corrected
 

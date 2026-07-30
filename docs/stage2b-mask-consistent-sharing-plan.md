@@ -151,8 +151,10 @@ abort, and no scientific VM run starts before these checks pass.
 **Completed:** commit `b4100a1efd0090064a1a079fe658d7f116526373`
 implements the reusable guards, constructs fresh optimizers for the repaired second
 phase, and makes the full seed-by-organ condition matrix mandatory. The local Stage
-2-focused suite passes 38 tests. A seed-17 mechanical VM smoke is the final Phase A
-runtime check; it creates no scientific result.
+2-focused suite passes 38 Phase A tests. The seed-17 mechanical VM smoke completed
+2/2 updates in both phases, recorded positive deltas and changed hashes for every
+declared module, and verified all 11 immutable entries. It created no scientific
+result. Phase A is closed.
 
 ### Phase B — one frozen, read-only diagnostic protocol
 

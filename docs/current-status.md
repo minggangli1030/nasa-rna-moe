@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 13:35 PDT / 2026-07-30 20:35 UTC
+**Updated:** 2026-07-30 13:42 PDT / 2026-07-30 20:42 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -177,11 +177,19 @@ complete seed-by-organ condition matrix. The focused local Stage 2 suite passes
 38 tests.
 
 The exact commit is deployed in the clean detached primary-VM worktree
-`/media/volume/moe-reboot/worktrees/stage2b_phase_a_b4100a1`. A seed-17 mechanical
-smoke is running in screen `stage2b-phase-a-smoke`, writing only to the new path
-`/media/volume/moe-reboot/results/stage2b_phase_a_smoke_b4100a1`. This smoke reuses
-the old frozen repair inputs solely to prove the guards execute; it creates no new
-scientific result.
+`/media/volume/moe-reboot/worktrees/stage2b_phase_a_b4100a1`. The seed-17
+mechanical smoke completed at 2026-07-30 13:39 PDT in the new path
+`/media/volume/moe-reboot/results/stage2b_phase_a_smoke_b4100a1`. All 11 immutable
+entries verify. Both phases completed 2/2 updates; all six declared module-phase
+combinations had positive parameter deltas and changed tensor hashes. The session
+exited and the A100 returned idle. This smoke reused the old frozen repair inputs
+solely to prove the guards execute; it creates no new scientific result.
+
+Phase B contract implementation has started in commit
+`1990070c13601f5b94dba85868110e3591fc0c1a`: canonical cache keys now require every
+identity in Claude Section 17.2, and rank calculations return explicit entropy and
+participation ranks with spectra and conventions. The current Stage 2-focused suite
+passes 42 tests.
 
 No Stage 2B scientific run has been launched and no new diagnostic protocol is
 frozen yet. The next implementation is the single training-only B0–B5 diagnostic.
