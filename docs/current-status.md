@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 15:12 PDT / 2026-07-30 22:12 UTC
+**Updated:** 2026-07-30 15:20 PDT / 2026-07-30 22:20 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -202,21 +202,19 @@ and all immutable checksums verified. The identical smoke on the secondary host
 produced exact matching hashes for every canonical and B1 array despite its
 different CUDA/driver stack. This clears the cross-host split gate.
 
-Full read-only extraction is now active: seed 17 on primary in screen
-`stage2b-full-seed17-20d000e`, with seed 42 to follow on primary; seed 101 is
-running concurrently on secondary in screen `stage2b-full-seed101-20d000e`.
-After all three immutable caches verify, compact seed-101 output will be transferred
-to primary and the frozen B0–B5 evaluators will run. The larger neural candidate
-remains blocked until Phase B applies its frozen axis/representation/refusal
-decision.
+Full read-only extraction is complete for seeds 17, 42, and 101: each contains
+7,369 rows, reports bitwise determinism, and passes its immutable checksum manifest.
+Seed 42 completed at 2026-07-30 15:18:25 PDT. The independent secondary-host
+seed-101 lineage was verified locally and transferred to the distinct primary path
+`seed101_secondary`; the primary launcher's future lineage was not overwritten.
 
-Seed 17 and secondary seed 101 subsequently completed 7,369/7,369 rows with
-bitwise determinism and exact immutable metadata. Seed 42 started automatically at
-2026-07-30 14:48 PDT and is active at full GPU utilization. The observed per-seed
-wall time is about 30 minutes, giving a seed-42 ETA of approximately 15:18–15:25
-PDT. Compact transfer and checksum verification should take minutes; the
-all-pair B0–B4 CPU evaluation is expected to place the complete report around
-16:30–18:30 PDT if no fail-closed issue occurs.
+Detached fail-closed screen `stage2b-to-multiaxis-010d629` verified all three caches
+and launched the exact frozen B0–B4 evaluator at 15:19 PDT. It does not rerun B5.
+After B0–B4 checksums verify, the same operational watcher immediately builds the
+training-only multiaxis Tier-0 inventory. Its implementation is commit
+`010d629be5b273618efa8183c54209f3a173d203`, deployed outside the clean scientific
+worktree; the evaluator itself remains exact commit
+`20d000e0b8055f60d7dee8796b52834bd829ab43`.
 
 The independent B5 refusal evaluator is already complete. The frozen
 similarity-aware model reduced leave-one-organ-out MSE to 0.586 versus 0.726 for the

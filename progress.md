@@ -1,6 +1,23 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 15:12 PDT / 2026-07-30 22:12 UTC
+**Last updated:** 2026-07-30 15:20 PDT / 2026-07-30 22:20 UTC
+
+## 2026-07-30 — Three Stage 2B caches complete; evaluator launched immediately
+
+Seeds 17, 42, and 101 each completed 7,369 canonical training rows with bitwise
+determinism and valid immutable manifests. Seed 42 completed at 15:18:25 PDT.
+The independent seed-101 cache was transferred through a verified local relay into
+the distinct primary `seed101_secondary` lineage without overwriting another run.
+
+Operational commit `010d629be5b273618efa8183c54209f3a173d203` adds a fail-closed
+detached continuation. Screen `stage2b-to-multiaxis-010d629` verified all three
+caches and launched the frozen B0–B4 evaluator at 15:19 PDT using exact scientific
+commit `20d000e0b8055f60d7dee8796b52834bd829ab43`. It preserves the already complete
+B5 result. When evaluation finishes, it verifies checksums and immediately creates
+the training-only multiaxis Tier-0 inventory.
+
+The existing heartbeat was tightened from two hours to 30 minutes and extended
+through Tier-1 multiaxis screening and final architecture selection.
 
 ## 2026-07-30 — Critical path changed to close MoE by the weekend
 
@@ -38,10 +55,10 @@ the next evidence gap: reconstruction improvement over this project's pooled mod
 does not by itself establish downstream value.
 
 The final evaluation will compare frozen organ-MoE representations against raw
-expression, PCA/NMF, the pooled trunk, and Walt's BulkFormer under identical
-patient/donor/study-disjoint splits and matched downstream heads. Primary tasks will
-test disease/state, spaceflight/stress, or low-resource adaptation rather than
-organ prediction, which would be circular.
+expression, PCA/NMF, the pooled trunk, matched-data BulkRNABert, and published
+BulkFormer-147M under identical patient/donor/study-disjoint splits and matched
+downstream heads. Primary tasks will test disease/state, spaceflight/stress, or
+low-resource adaptation rather than organ prediction, which would be circular.
 
 The plan also broadens candidate expert axes without abandoning the validated organ
 experts. Tissue site, cell-type composition, disease/physiological state,
@@ -67,10 +84,11 @@ bitwise repeated extraction and all immutable checksums on the primary A100. The
 same exact smoke on the secondary A100 produced identical hashes for every
 canonical and B1 output, clearing the cross-host determinism gate.
 
-Full read-only extraction is active for seed 17 on primary and seed 101 on
-secondary; seed 42 follows on primary. B0–B5 evaluation begins only after all three
-full cache lineages verify. Candidate neural training remains blocked until the
-frozen Phase B decision is recorded.
+Full read-only extraction subsequently completed for all three seeds. The verified
+independent seed-101 cache was transferred to the primary, and frozen B0–B4
+evaluation launched immediately under a detached fail-closed continuation.
+Candidate neural training remains blocked until the frozen Phase B decision is
+recorded.
 
 ## 2026-07-30 — Stage 2B Phase A guards implemented and deployed
 
