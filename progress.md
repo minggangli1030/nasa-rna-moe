@@ -1,6 +1,31 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 14:55 PDT / 2026-07-30 21:55 UTC
+**Last updated:** 2026-07-30 15:12 PDT / 2026-07-30 22:12 UTC
+
+## 2026-07-30 — Critical path changed to close MoE by the weekend
+
+The final presentation remains 2026-08-17. The immediate priority is now explicit:
+finish Stage 2B, screen non-organ axes using cached training-donor residuals, close
+the MoE architecture by 2026-08-02, and launch final training by 2026-08-07.
+Downstream and SOTA evaluation is scheduled for 2026-08-10 through 2026-08-14.
+
+The axis workflow is a screen-many/train-one funnel. Tissue site is already part of
+Stage 2B B4. Available demographic metadata, frozen cell-composition scores, and
+continuous biological-program scores will use one donor-grouped organ-conditional
+probe. At most the strongest one or two axes receive short protected-adapter
+smokes; at most one enters final training. Disease, treatment, hypoxia, and
+spaceflight are primarily held-out downstream tasks, not axes selected on the same
+final cohort.
+
+The final baseline ladder now includes BulkRNABert as the closest public
+masked-reconstruction architectural peer, with its architecture retrained on the
+exact project split to avoid unknown GTEx overlap. BulkFormer-37M is an approximate
+capacity comparator and published BulkFormer-147M is a practical SOTA ceiling.
+Raw expression, PCA, matched pooled trunk, pooled-plus-organ-label, known-organ
+experts, hard/soft routing, and pooled fallback remain mandatory.
+
+Canonical schedule and protocol:
+[`docs/axis-smoke-and-final-evaluation-roadmap.md`](docs/axis-smoke-and-final-evaluation-roadmap.md).
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the

@@ -5,6 +5,12 @@
 **Status:** planning record; exact downstream datasets, splits, checkpoints, and
 gates must be frozen before model comparison
 
+**Execution calendar:** the MoE/secondary-axis design closes by 2026-08-02, final
+training begins by 2026-08-07, and downstream/SOTA evaluation is concentrated in
+the 2026-08-10 through 2026-08-14 final-evaluation window. The detailed funnel and
+baseline ladder are in
+[`axis-smoke-and-final-evaluation-roadmap.md`](axis-smoke-and-final-evaluation-roadmap.md).
+
 ## Why this is now required
 
 Stage 1 establishes that organ specialists reduce hidden-gene reconstruction error
@@ -58,16 +64,26 @@ head, hyperparameter budget, and seed policy.
 3. this project's frozen pooled trunk;
 4. frozen known-organ experts as a mechanistic upper bound;
 5. input-only hard and soft organ routing as deployable MoE conditions;
-6. Walt's BulkFormer using its exact released preprocessing, checkpoint, and
-   embedding contract; and
-7. optional recent bulk-expression comparators only after the direct BulkFormer
-   comparison is reproducible.
+6. BulkRNABert retrained on the exact frozen training partition as the closest
+   public same-data masked-reconstruction architecture comparison;
+7. published BulkRNABert after explicitly auditing GTEx/TCGA pretraining overlap;
+8. BulkFormer-37M as an approximate capacity-controlled modern comparator;
+9. published BulkFormer-147M using its exact released preprocessing, checkpoint,
+   gene order, and embedding contract as a practical SOTA ceiling; and
+10. optional recent bulk-expression comparators only after these comparisons are
+   reproducible.
 
-The repository already contains a TCGA analysis notebook that imports BulkFormer,
-but the BulkFormer implementation/checkpoint is not currently tracked here. Before
-freezing the benchmark, obtain and hash-pin Walt's exact code, checkpoint, gene
-mapping, normalization, and embedding layer. Notebook output alone is not a valid
-baseline lineage.
+Both closer-peer and SOTA code paths are public. BulkRNABert is the better
+architectural peer because it is an encoder-only masked bulk-expression
+reconstruction model; BulkFormer is the stronger large-scale SOTA reference. Before
+freezing the benchmark, hash-pin their exact source, checkpoints, gene mappings,
+normalization, and embedding layers. Notebook output alone is not a valid baseline
+lineage.
+
+A GTEx-pretrained public checkpoint cannot be assumed independent of held-out GTEx
+donors. Retraining the BulkRNABert architecture on the exact frozen project
+partition is therefore the primary same-data comparison. Published checkpoints are
+reported separately as transfer references.
 
 Use two clearly separated comparison tiers:
 
@@ -159,15 +175,17 @@ The key scientific test is incremental:
 ## Execution priorities toward August 17
 
 1. Complete and interpret the frozen Stage 2B B0–B5 diagnostic.
-2. Freeze the downstream benchmark datasets, splits, tasks, and BulkFormer lineage.
-3. Run frozen linear-probe comparisons before any model-specific fine-tuning.
-4. Inventory reliable biological and technical metadata in the selected downstream
-   cohorts.
-5. Run an organ-conditional residual-variance screen for candidate axes.
-6. Implement only the strongest factorized secondary axis; preserve organ experts
-   as the reference.
-7. Reserve the final days for immutable evaluation, visual summaries, and the
-   August 17 deck rather than opening additional architectures.
+2. By August 2, screen tissue site, available demographic fields, cell composition,
+   and continuous biological programs using cached residuals and grouped probes.
+3. Implement at most one secondary axis that clears stability, confound, and
+   per-organ safety gates; otherwise retain organ plus pooled fallback.
+4. Freeze and launch final training by August 7.
+5. Prepare and hash-pin BulkRNABert and BulkFormer during final-model execution,
+   without delaying the architecture freeze.
+6. From August 10, run frozen linear-probe and low-label comparisons before any
+   model-specific fine-tuning.
+7. Reserve August 15–16 for immutable evaluation, visual summaries, and the August
+   17 deck rather than opening additional architectures.
 
 Minimum final deliverables:
 

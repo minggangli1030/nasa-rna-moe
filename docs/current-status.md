@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 14:55 PDT / 2026-07-30 21:55 UTC
+**Updated:** 2026-07-30 15:12 PDT / 2026-07-30 22:12 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -366,13 +366,32 @@ universality.
 
 ## Presentation package
 
-The final presentation is scheduled for **2026-08-17**. Its evaluation roadmap is
-[`august-17-downstream-and-multiaxis-plan.md`](august-17-downstream-and-multiaxis-plan.md).
-The final evidence package will add downstream task comparisons against Walt's
-BulkFormer, raw expression, PCA/NMF, the pooled trunk, and organ-MoE routing under
-identical donor/patient/study-disjoint splits. Organ prediction is only a sanity
-check; primary tasks must test disease/state, spaceflight/stress, or low-resource
-adaptation so the result is not circular.
+The final presentation is scheduled for **2026-08-17**. The execution order is now
+time-bounded: close the MoE/secondary-axis design by August 2, launch final training
+by August 7, and concentrate downstream/SOTA evaluation in August 10–14. Canonical
+roadmaps:
+
+- [`axis-smoke-and-final-evaluation-roadmap.md`](axis-smoke-and-final-evaluation-roadmap.md)
+- [`august-17-downstream-and-multiaxis-plan.md`](august-17-downstream-and-multiaxis-plan.md)
+
+The immediate post-B0–B5 work is a cheap organ-conditional screen, not full training
+of every proposed axis. Tissue site is already covered by Stage 2B B4. Age/sex,
+cell-composition scores, and continuous immune/metabolic/mitochondrial/contractile/
+ECM/cell-cycle/stress programs enter one common grouped-CV residual screen.
+Disease, treatment, hypoxia, and spaceflight are primarily downstream targets and
+must not be used to select an expert on the same final-test cohort.
+
+The final external ladder now distinguishes BulkRNABert from BulkFormer.
+BulkRNABert is the closer public masked-reconstruction architectural peer and will
+be retrained on the exact frozen cohort for the primary same-data comparison.
+BulkFormer-37M is the capacity-oriented modern comparator and BulkFormer-147M is a
+published SOTA ceiling. Public pretrained GTEx/TCGA models are reported only after
+overlap audits and never substituted for the matched-data causal comparison.
+The final evidence package will compare raw expression, PCA/NMF, the pooled trunk,
+pooled-plus-organ-label conditioning, organ-MoE routing, matched-data BulkRNABert,
+and BulkFormer under identical donor/patient/study-disjoint splits. Organ prediction
+is only a sanity check; primary tasks must test disease/state, spaceflight/stress,
+or low-resource adaptation so the result is not circular.
 
 The same roadmap defines candidate biological axes beyond organ—tissue site,
 cell-type composition, disease/physiological state, age/development, sex, and
