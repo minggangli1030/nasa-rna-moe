@@ -341,6 +341,40 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
     organ_frame = pd.DataFrame(organ_rows)
     organ_frame.to_csv(output_dir / "per_organ_safety.csv", index=False)
 
+    performance_matrix_rows = []
+    for seed in SEEDS:
+        arrays = runs[seed]["arrays"]
+        for organ in sorted(set(organs)):
+            selected = organs == organ
+            organ_donors = donors[selected]
+            organ_labels = np.repeat(organ, int(selected.sum()))
+            for condition in CONDITIONS:
+                candidate = arrays[f"{condition}_mse"][selected]
+                performance_matrix_rows.append({
+                    "seed": seed,
+                    "organ": organ,
+                    "condition": condition,
+                    "relative_mse_reduction_vs_pooled": _balanced_effect(
+                        arrays["pooled_mse"][selected],
+                        candidate,
+                        organ_labels,
+                        organ_donors,
+                    ),
+                    "relative_mse_reduction_vs_private_phase1": _balanced_effect(
+                        arrays["organ_private_phase1_mse"][selected],
+                        candidate,
+                        organ_labels,
+                        organ_donors,
+                    ),
+                })
+    performance_matrix = pd.DataFrame(performance_matrix_rows)
+    expected_matrix_rows = len(SEEDS) * len(set(organs)) * len(CONDITIONS)
+    if len(performance_matrix) != expected_matrix_rows:
+        raise AssertionError("seed-by-organ condition matrix is incomplete")
+    performance_matrix.to_csv(
+        output_dir / "per_seed_organ_performance.csv", index=False
+    )
+
     candidate_pooled = frame.loc[frame["comparison"].eq("candidate_vs_pooled")]
     candidate_phase1 = frame.loc[
         frame["comparison"].eq("candidate_vs_private_phase1")
@@ -450,6 +484,9 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
             ),
             "per_organ_safety_sha256": sha256_file(
                 output_dir / "per_organ_safety.csv"
+            ),
+            "per_seed_organ_performance_sha256": sha256_file(
+                output_dir / "per_seed_organ_performance.csv"
             ),
             "seed_score_sha256": {
                 str(seed): runs[seed]["metadata"]["hashes"]["calibration_scores_sha256"]

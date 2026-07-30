@@ -37,6 +37,7 @@ from stage2_program_model import (  # noqa: E402
 )
 from train_fixed_partition_moe import _resolve_device  # noqa: E402
 from train_latent_moe import load_frozen_trunk  # noqa: E402
+from phase_guards import PhaseGuard, tensor_state_sha256  # noqa: E402
 from train_manifest import (  # noqa: E402
     DeterministicBudgetBatchSampler,
     balanced_validation_weights,
@@ -70,17 +71,6 @@ def _atomic_json(path: Path, value: Any) -> None:
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
     os.replace(temporary, path)
-
-
-def _tensor_state_sha256(state: dict[str, torch.Tensor]) -> str:
-    digest = hashlib.sha256()
-    for name in sorted(state):
-        value = state[name].detach().cpu().contiguous()
-        digest.update(name.encode())
-        digest.update(str(value.dtype).encode())
-        digest.update(np.asarray(value.shape, dtype=np.int64).tobytes())
-        digest.update(value.numpy().tobytes())
-    return digest.hexdigest()
 
 
 class ScoreGeneMaskDataset(Dataset):
@@ -564,6 +554,12 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
         )
         for name in phase1_names
     }
+    phase1_modules = {name: conditions[name] for name in phase1_names}
+    phase1_guard = PhaseGuard(
+        "phase1_private",
+        phase1_modules,
+        optimizers,
+    )
     schedulers = {
         name: CosineAnnealingLR(optimizers[name], T_max=phase1_updates)
         for name in phase1_names
@@ -621,6 +617,8 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
     trunk.eval()
     conditions.train()
     score_tensor = conditions[CONDITIONS[0]].score_gene_indices
+    phase1_guard_update = min(5, phase1_updates)
+    phase1_early_audit = None
     for update, (masked, truth_score, local_mask) in enumerate(phase1_loader, start=1):
         for optimizer in optimizers.values():
             optimizer.zero_grad(set_to_none=True)
@@ -658,6 +656,10 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
             scaler.step(optimizers[name])
             schedulers[name].step()
         scaler.update()
+        if update == phase1_guard_update:
+            phase1_early_audit = phase1_guard.movement(
+                checkpoint=f"update_{update}"
+            )
         if (
             update == 1
             or update % int(config["log_interval"]) == 0
@@ -676,6 +678,9 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
                 + " ".join(summary),
                 flush=True,
             )
+    if phase1_early_audit is None:
+        raise AssertionError("phase-1 movement guard was not reached")
+    phase1_final_audit = phase1_guard.movement(checkpoint="phase_end")
 
     _copy_private(
         conditions["organ_private_extended"], conditions["organ_private_phase1"]
@@ -774,8 +779,16 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
         "random_coefficient_supervised_plus_frozen_private",
     )
     optimizers = {
-        "organ_private_extended": optimizers["organ_private_extended"],
-        "generic_capacity_extended": optimizers["generic_capacity_extended"],
+        "organ_private_extended": AdamW(
+            conditions["organ_private_extended"].parameters(),
+            lr=float(config["learning_rate"]),
+            weight_decay=float(config["weight_decay"]),
+        ),
+        "generic_capacity_extended": AdamW(
+            conditions["generic_capacity_extended"].parameters(),
+            lr=float(config["learning_rate"]),
+            weight_decay=float(config["weight_decay"]),
+        ),
         "coefficient_supervised_plus_frozen_private": AdamW(
             conditions[
                 "coefficient_supervised_plus_frozen_private"
@@ -791,12 +804,29 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
             weight_decay=float(config["weight_decay"]),
         ),
     }
+    phase2_modules = {
+        "organ_private_extended": conditions["organ_private_extended"],
+        "generic_capacity_extended": conditions["generic_capacity_extended"],
+        "coefficient_supervised_plus_frozen_private": conditions[
+            "coefficient_supervised_plus_frozen_private"
+        ].program.coefficient_head,
+        "random_coefficient_supervised_plus_frozen_private": conditions[
+            "random_coefficient_supervised_plus_frozen_private"
+        ].program.coefficient_head,
+    }
+    phase2_guard = PhaseGuard(
+        "phase2_coefficient",
+        phase2_modules,
+        optimizers,
+    )
     schedulers = {
         name: CosineAnnealingLR(optimizers[name], T_max=phase2_updates)
         for name in phase2_names
     }
     conditions.train()
     cursor = 0
+    phase2_guard_update = min(5, phase2_updates)
+    phase2_early_audit = None
     for update, (masked, truth_score, local_mask) in enumerate(phase2_loader, start=1):
         for optimizer in optimizers.values():
             optimizer.zero_grad(set_to_none=True)
@@ -856,6 +886,10 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
             scaler.step(optimizers[name])
             schedulers[name].step()
         scaler.update()
+        if update == phase2_guard_update:
+            phase2_early_audit = phase2_guard.movement(
+                checkpoint=f"update_{update}"
+            )
         cursor += batch
         if update == 1 or update % int(config["log_interval"]) == 0 or update == phase2_updates:
             row = {"update": update}
@@ -871,6 +905,9 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
                 + " ".join(summary),
                 flush=True,
             )
+    if phase2_early_audit is None:
+        raise AssertionError("phase-2 movement guard was not reached")
+    phase2_final_audit = phase2_guard.movement(checkpoint="phase_end")
     if cursor != len(cached["summary"]):
         raise AssertionError("phase-2 cache does not align with fitting schedule")
 
@@ -918,11 +955,17 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
         "completed_phase2_updates": phase2_updates,
         "completed_updates": phase1_updates + phase2_updates,
         "metrics": metrics,
+        "phase_guards": {
+            "phase1_early": phase1_early_audit,
+            "phase1_final": phase1_final_audit,
+            "phase2_early": phase2_early_audit,
+            "phase2_final": phase2_final_audit,
+        },
     })
     metadata["hashes"].update({
         "calibration_scores_sha256": sha256_file(score_path),
         "checkpoint_sha256": sha256_file(checkpoint_path),
-        "final_state_sha256": _tensor_state_sha256(state),
+        "final_state_sha256": tensor_state_sha256(state),
         "coefficient_target_stats_sha256": sha256_file(target_stats_path),
     })
     _atomic_json(output_dir / "run_metadata.json", metadata)
