@@ -1,10 +1,29 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 13:42 PDT / 2026-07-30 20:42 UTC
+**Last updated:** 2026-07-30 14:18 PDT / 2026-07-30 21:18 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
 2,800-line pre-cleanup chronology remains recoverable from Git commit `2bc1bef`.
+
+## 2026-07-30 — Frozen Stage 2B diagnostics pass both smoke gates and start
+
+The complete training-only B0–B5 implementation is commit
+`20d000e0b8055f60d7dee8796b52834bd829ab43`. Its protocol was frozen before
+opening outputs at SHA256
+`db7cd772345272876cd01a603deb720b46c36d0cfb5252e3d245e7e58f5182be`.
+It permits no calibration or ARCHS4 access and no neural checkpoint updates.
+
+The frozen three-trunk ridge probe selected one shared lambda of zero by held-out
+gene-space reconstruction error. A 16-sample seed-17 cache smoke then passed
+bitwise repeated extraction and all immutable checksums on the primary A100. The
+same exact smoke on the secondary A100 produced identical hashes for every
+canonical and B1 output, clearing the cross-host determinism gate.
+
+Full read-only extraction is active for seed 17 on primary and seed 101 on
+secondary; seed 42 follows on primary. B0–B5 evaluation begins only after all three
+full cache lineages verify. Candidate neural training remains blocked until the
+frozen Phase B decision is recorded.
 
 ## 2026-07-30 — Stage 2B Phase A guards implemented and deployed
 

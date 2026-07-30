@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 13:42 PDT / 2026-07-30 20:42 UTC
+**Updated:** 2026-07-30 14:18 PDT / 2026-07-30 21:18 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -185,19 +185,30 @@ combinations had positive parameter deltas and changed tensor hashes. The sessio
 exited and the A100 returned idle. This smoke reused the old frozen repair inputs
 solely to prove the guards execute; it creates no new scientific result.
 
-Phase B contract implementation has started in commit
-`1990070c13601f5b94dba85868110e3591fc0c1a`: canonical cache keys now require every
-identity in Claude Section 17.2, and rank calculations return explicit entropy and
-participation ranks with spectra and conventions. The current Stage 2-focused suite
-passes 42 tests.
+Phase B is implemented at exact commit
+`20d000e0b8055f60d7dee8796b52834bd829ab43`, pushed to `origin/main`, and
+deployed to exact detached worktrees on both GPU hosts. The single training-only
+B0–B5 protocol was frozen before diagnostic output at SHA256
+`db7cd772345272876cd01a603deb720b46c36d0cfb5252e3d245e7e58f5182be`.
+It binds all three pooled trunks and valid phase-1 private states, the 7,369
+balanced training samples/750 training donors, the exact decoder and score indices,
+and every prior transfer input used by the refusal audit. Calibration and ARCHS4
+remain sealed, and neural checkpoint updates are prohibited.
 
-No Stage 2B scientific run has been launched and no new diagnostic protocol is
-frozen yet. The next implementation is the single training-only B0–B5 diagnostic.
-Both GPU hosts were verified idle before the mechanical smoke: primary
-`moe-reboot` has an A100 40 GB and the complete repair lineage; secondary
-`149.165.168.111` has an A100 20 GB, the exact expression table, and all three pooled
-trunks. Once code and protocols are frozen, primary will run seeds 17/42 and
-secondary seed 101.
+The prespecified 256-sample-per-trunk gene-space probe completed and selected one
+shared ridge value, lambda 0. The primary real-data cache smoke then passed on 16
+seed-17 samples: repeated canonical extraction was bitwise identical, B1 completed,
+and all immutable checksums verified. The identical smoke on the secondary host
+produced exact matching hashes for every canonical and B1 array despite its
+different CUDA/driver stack. This clears the cross-host split gate.
+
+Full read-only extraction is now active: seed 17 on primary in screen
+`stage2b-full-seed17-20d000e`, with seed 42 to follow on primary; seed 101 is
+running concurrently on secondary in screen `stage2b-full-seed101-20d000e`.
+After all three immutable caches verify, compact seed-101 output will be transferred
+to primary and the frozen B0–B5 evaluators will run. The larger neural candidate
+remains blocked until Phase B applies its frozen axis/representation/refusal
+decision.
 
 ## Completed seed-stability diagnosis
 

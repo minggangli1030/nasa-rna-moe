@@ -1,0 +1,258 @@
+{
+  "authorized_by_user": true,
+  "b0_cross_trunk": {
+    "claim_boundary": "cross-trunk reproducible sample-associated structure, not intrinsic biology",
+    "folds_identical_across_all_ordered_comparisons": true,
+    "high_probe_rule": {
+      "minimum_gene_space_error_recovery_fraction": 0.0,
+      "minimum_median_component_pearson": 0.3
+    },
+    "high_target_agreement_rule": {
+      "minimum_median_canonical_correlation_margin_over_random_basis": 0.05,
+      "minimum_median_component_pearson": 0.3
+    },
+    "metrics": [
+      "held_out_gene_space_reconstruction",
+      "median_component_correlation",
+      "entropy_rank",
+      "principal_angles",
+      "canonical_correlations"
+    ],
+    "probe_folds": 5,
+    "ridge_grid": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0
+    ],
+    "seed17_replication_rule": {
+      "minimum_gene_space_error_recovery_fraction": 0.0,
+      "minimum_median_component_pearson": 0.3
+    }
+  },
+  "b1_mask_decomposition": {
+    "arms": [
+      "behavioral",
+      "geometric",
+      "combined_legacy"
+    ],
+    "mask_seed": 20260731,
+    "partial_mask_ratio": 0.3,
+    "probe_samples_per_organ": 32,
+    "replicates": 8
+  },
+  "b2_rank": {
+    "aggregation_units": [
+      "sample",
+      "donor",
+      "within_organ"
+    ],
+    "bare_scalar_allowed": false,
+    "conventions": [
+      "raw",
+      "standardized",
+      "whitened"
+    ],
+    "metrics": [
+      "entropy_rank",
+      "participation_ratio"
+    ]
+  },
+  "b3_ceiling": {
+    "bootstrap_unit": "training donor",
+    "recompute_donor_means_and_spectrum_each_replicate": true,
+    "replicates": 2000,
+    "seed": 20260801
+  },
+  "b4_metadata": {
+    "available_manifest_fields": [
+      "balanced_train",
+      "donor_id",
+      "organ",
+      "organ_k8",
+      "pooled_adapter",
+      "random_k8_p101",
+      "random_k8_p17",
+      "random_k8_p42",
+      "sample_id",
+      "series_group_id",
+      "split",
+      "tissue_site",
+      "utility_split"
+    ],
+    "candidate_fields": [
+      "organ",
+      "tissue_site",
+      "sex",
+      "age_bracket",
+      "rin",
+      "ischemic_time",
+      "detected_gene_count",
+      "library_depth"
+    ],
+    "grouped_folds": 5,
+    "minimum_incremental_r2_margin_for_pause": 0.02,
+    "missing_fields_are_reported_not_invented": true,
+    "pause_requires_margin_in_all_three_trunks": true,
+    "pause_rule": "pause if a supported non-organ field has reproducibly larger held-out incremental R2 than organ"
+  },
+  "b5_refusal": {
+    "additive_edges_are_independent_small_holdout": true,
+    "candidate_features": [
+      "frozen_expert_utility_cosine_similarity",
+      "recipient_identity",
+      "donor_identity"
+    ],
+    "cross_validation": "leave one organ out; remove every edge touching held-out organ",
+    "feature_model_must_reduce_leave_one_organ_out_mse_vs_best_null": true,
+    "fixed_ridge_lambda": 1.0,
+    "flag_if_predicted_donor_specific_excess_is_below_zero": true,
+    "harmful_label": "mean donor-specific excess effect below zero with all three seed excess effects below zero",
+    "maximum_flagged_fraction": 0.5,
+    "maximum_outcome_independent_features": 3,
+    "null_models": [
+      "recipient_only",
+      "donor_only",
+      "recipient_plus_donor"
+    ],
+    "opportunity_cost_reported_separately": true,
+    "outcome": "donor-specific excess effect versus exposure-matched random auxiliaries",
+    "required_metrics": [
+      "precision",
+      "recall",
+      "specificity",
+      "flagged_fraction"
+    ],
+    "vacuous_refuse_everything_passes": false
+  },
+  "canonical_cache": {
+    "determinism_probe_samples": 32,
+    "determinism_requirement": "bitwise_identical_repeated_extraction",
+    "dtype_policy": "deterministic_fp32",
+    "fixed_batch_size": 8,
+    "mask_token": -10.0,
+    "partial_reuse_allowed": false,
+    "preprocessing_version": "stage2b-canonical-full-score-mask-v1",
+    "required_arrays": [
+      "h_canon",
+      "c_canon",
+      "r_full",
+      "pooled_prediction",
+      "private_prediction"
+    ],
+    "required_key_fields": [
+      "sample_id",
+      "trunk_checkpoint_sha256",
+      "manifest_sha256",
+      "score_index_sha256",
+      "decoder_sha256",
+      "mask_token_id",
+      "preprocessing_version",
+      "ridge_lambda",
+      "dtype_policy"
+    ]
+  },
+  "claim_boundary": "Training-only GTEx diagnostic evidence; no independent-study universality, mechanism, disease, clinical, or spaceflight claim.",
+  "code_commit": "20d000e0b8055f60d7dee8796b52834bd829ab43",
+  "decision_rule": {
+    "candidate_protocol_frozen_only_after_report": true,
+    "does_not_open_archs4": true,
+    "does_not_train_neural_checkpoints": true,
+    "phase_b_only": true,
+    "selects_conditioning_axis_and_representation_interpretation": true
+  },
+  "firewalls": {
+    "archs4_access": false,
+    "best_seed_selection": false,
+    "calibration_split_access": false,
+    "neural_checkpoint_updates": false,
+    "normalization_fit_outside_training_donors": false,
+    "post_outcome_threshold_changes": false
+  },
+  "frozen_at_utc": "2026-07-30T21:15:00Z",
+  "inputs": {
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "basis_bundle_sha256": "2d05ef136fe9e1660efe4bd649898412590ec6d36300da8c480b8bf75c919bfc",
+    "expression_metadata_sha256": "111be4b987cb99f85329018fb0df951e1cafe0b8bcd385c9c31b5f944e8bb741",
+    "expression_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "organs": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "pooled_checkpoint_sha256": {
+      "101": "3e9edacfb6b0e530f210f271af4802072a3c0154922bcf0b4b9f54e0ee612043",
+      "17": "ae5d6d1619938d8061c8b5b6e1323ed345f71f67b34e3e065cc899f587da7c74",
+      "42": "969c510fb84e5e58605d34351db6c5608ef8d64d66b282ad9bf964b77bb33ce2"
+    },
+    "program_decoder_sha256": "6ee414cf3bef516743aba7e39c46482104bd81c605332487aafbe7bdf4dbd7e7",
+    "random_decoder_sha256": "eb586fabbfc0a6e39645a9c4ff57d0fbf121c052477f3ab13c253df11710a43e",
+    "refusal_inputs_sha256": {
+      "additive_edges": "e23c209f12200fa51f70353d6b6b2aedd2aa3058fdb0f31f74aa51ab25064ee5",
+      "additive_per_seed": "437be59958967b8461d71bd5b8a74d3b5ec97b6fc260920ea3c9c2f22920e033",
+      "additive_report": "08e04f37460e8ecb6bf54ed9aaa934233b979e931690923ab37e73d1cc85cfbe",
+      "expert_similarity": "0b15ae7741123e57ccce82954dff8fdc3264354f83f55a901c8fb889e74c6646",
+      "stability_edges": "bbb7b1743a9497251b56f4eec00ea57f2a8d501766d70017fded3e705589638d",
+      "stability_report": "bc2af1a9bf086cdb7a66ec30dc2bcf7a15c11ad5f8f1d756fe16337e986a63b1",
+      "substitution_per_seed_edges": "10de9e7ed2bdb2b8afc70aa6fe90d60e5c93413be426b794b41b9eb995d51b90",
+      "substitution_report": "97819b318f5b01b6c9d67d4685f269a8b42103eb63736db66143f352499dac44"
+    },
+    "repair_protocol_sha256": "89f6e97218a1871782e08725104e04ae8d1d40001d74ec4e09e01a32e80c5764",
+    "score_index_sha256": "ed6c7ed7427dc87754e1391b5f6eed17d464dc1c665b2f6e9871002e5f2bc7a8",
+    "training_donor_ids_sha256": "5e9029440d06a15888510b85593661f4592b91f2f6460922c0ad5f795fddef7c",
+    "training_donors": 750,
+    "training_sample_ids_sha256": "937a1dcd71f42b5df966814ed4788581b621e9a123715daac64f67cb44ee5aec",
+    "training_samples": 7369,
+    "valid_private_inputs": {
+      "101": {
+        "final_heads_sha256": "daab72d0ee7043943860bbc94abde15287db017803f2362162fb14de08e8699d",
+        "run_metadata_sha256": "3f32c3ec7d213823ea37188fdc4bab08cfc71fccab68c9b72011b36c8913fba2",
+        "valid_state_prefix": "organ_private_phase1."
+      },
+      "17": {
+        "final_heads_sha256": "1e87252e2a299a516f2879fe303678a84597bebfd91807cb750d7dd94b1a891f",
+        "run_metadata_sha256": "13077d7a4b44e5874b3104abd104261627aae07f441c224e9ca0f7d29364b438",
+        "valid_state_prefix": "organ_private_phase1."
+      },
+      "42": {
+        "final_heads_sha256": "80643e2d4c10205e116c4fb46c0115bcb9fd53067408a913e35138f50f23a8da",
+        "run_metadata_sha256": "b8372fc126908b3c087260f8ed8c08a2ae68c313cdcc57e64194f4a998fb4bc5",
+        "valid_state_prefix": "organ_private_phase1."
+      }
+    }
+  },
+  "protocol_name": "stage2b_training_only_mask_consistency_diagnostic",
+  "ridge_selection": {
+    "fold_seed": 20260730,
+    "folds": 5,
+    "grid": [
+      0.0,
+      1e-08,
+      1e-07,
+      1e-06,
+      1e-05,
+      0.0001,
+      0.001,
+      0.01,
+      0.1
+    ],
+    "objective": "mean held-out gene-space residual reconstruction MSE across all three trunks",
+    "probe_samples_per_organ": 32,
+    "selection": "single minimum shared by all trunks; smallest lambda breaks exact ties"
+  },
+  "schema_version": 1,
+  "source_training": {
+    "private_adapter_dim": 64,
+    "program_components": 32,
+    "source_projection_ridge": 1e-05
+  },
+  "status": "frozen_before_stage2b_diagnostic_access"
+}
