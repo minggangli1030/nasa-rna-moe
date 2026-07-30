@@ -1,0 +1,175 @@
+{
+  "axis_registry": {
+    "age_or_developmental_stage": {
+      "kind": "categorical_or_continuous_biological",
+      "next_action": "join_then_inventory_before_fitting",
+      "source": "id_safe_public_gtex_subject_or_sample_attributes"
+    },
+    "cell_type_composition": {
+      "kind": "continuous_biological",
+      "next_action": "freeze_reference_and_visible_gene_scoring_contract",
+      "source": "frozen_public_marker_or_reference_method"
+    },
+    "continuous_programs": {
+      "kind": "continuous_biological",
+      "next_action": "freeze_gene_sets_and_visible_gene_scoring_contract",
+      "programs": [
+        "immune",
+        "metabolic",
+        "mitochondrial",
+        "contractile",
+        "extracellular_matrix",
+        "cell_cycle",
+        "stress_response"
+      ],
+      "source": "frozen_public_gene_sets"
+    },
+    "disease_treatment_hypoxia": {
+      "kind": "downstream_target_first",
+      "next_action": "do_not_select_architecture_on_final_evaluation_cohort",
+      "source": "independent_development_and_final_study_disjoint_cohorts"
+    },
+    "sex": {
+      "kind": "categorical_biological",
+      "next_action": "join_then_inventory_before_fitting",
+      "source": "id_safe_public_gtex_subject_attributes"
+    },
+    "spaceflight_state": {
+      "kind": "downstream_target_first",
+      "next_action": "do_not_select_architecture_on_final_evaluation_cohort",
+      "source": "osdr_mission_or_experiment_grouped_cohorts"
+    },
+    "tissue_site": {
+      "kind": "categorical_biological",
+      "next_action": "use_frozen_stage2b_b4_result",
+      "source": "existing_gtex_manifest"
+    }
+  },
+  "firewalls": {
+    "archs4_access": false,
+    "calibration_access": false,
+    "downstream_final_test_axis_selection": false,
+    "neural_checkpoint_updates": false
+  },
+  "inputs": {
+    "b0_b4_report_sha256": "aa2931dbd38847751ee2914370a711452a0c7c4604063216b2c3f8eeb69d63db",
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "organs": 8,
+    "tissue_sites": 23,
+    "training_donors": 750,
+    "training_samples": 7369
+  },
+  "manifest_field_inventory": {
+    "age_bracket": {
+      "status": "missing"
+    },
+    "balanced_train": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 1
+    },
+    "donor_id": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 750
+    },
+    "organ": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 8
+    },
+    "organ_k8": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 8
+    },
+    "pooled_adapter": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 1
+    },
+    "random_k8_p101": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 8
+    },
+    "random_k8_p17": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 8
+    },
+    "random_k8_p42": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 8
+    },
+    "sample_id": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 7369
+    },
+    "series_group_id": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 750
+    },
+    "sex": {
+      "status": "missing"
+    },
+    "split": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 1
+    },
+    "tissue_site": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 23
+    },
+    "utility_split": {
+      "missing_fraction": 0.0,
+      "status": "available",
+      "unique_nonmissing": 1
+    }
+  },
+  "next_gate": "freeze ID-safe metadata joins and public feature definitions before running the common organ-conditional grouped-CV Tier-1 screen",
+  "schema_version": 1,
+  "scope": "training-only Tier-0 inventory; no new efficacy fitting",
+  "stage2b_b4": {
+    "decision": "human_review_axis_amendment_required",
+    "inventory": {
+      "age_bracket": {
+        "status": "missing"
+      },
+      "detected_gene_count": {
+        "status": "missing"
+      },
+      "ischemic_time": {
+        "status": "missing"
+      },
+      "library_depth": {
+        "status": "missing"
+      },
+      "organ": {
+        "missing_fraction": 0.0,
+        "status": "available",
+        "unique_nonmissing": 8
+      },
+      "rin": {
+        "status": "missing"
+      },
+      "sex": {
+        "status": "missing"
+      },
+      "tissue_site": {
+        "missing_fraction": 0.0,
+        "status": "available",
+        "unique_nonmissing": 23
+      }
+    },
+    "pause_fields": [
+      "tissue_site"
+    ]
+  },
+  "status": "complete"
+}

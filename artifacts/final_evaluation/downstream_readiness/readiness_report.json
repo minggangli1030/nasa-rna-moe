@@ -1,0 +1,113 @@
+{
+  "model_fitting_performed": false,
+  "osdr_candidate_metadata": "artifacts/final_evaluation/downstream_readiness/osdr_spaceflight_candidate_metadata.csv",
+  "osdr_candidate_metadata_sha256": "f0b7f8d68dda922e7d96702c2eae1b72251deb27f78e9c67b4955c2468da1a68",
+  "osdr_organ_summary": [
+    {
+      "downstream_organ": "adipose",
+      "flight": 24.0,
+      "ground": 24.0,
+      "samples": 48,
+      "studies": 1
+    },
+    {
+      "downstream_organ": "brain",
+      "flight": 49.0,
+      "ground": 46.0,
+      "samples": 95,
+      "studies": 6
+    },
+    {
+      "downstream_organ": "colon",
+      "flight": 28.0,
+      "ground": 27.0,
+      "samples": 55,
+      "studies": 2
+    },
+    {
+      "downstream_organ": "heart",
+      "flight": 26.0,
+      "ground": 25.0,
+      "samples": 51,
+      "studies": 3
+    },
+    {
+      "downstream_organ": "liver",
+      "flight": 125.0,
+      "ground": 118.0,
+      "samples": 243,
+      "studies": 12
+    },
+    {
+      "downstream_organ": "lung",
+      "flight": 30.0,
+      "ground": 28.0,
+      "samples": 58,
+      "studies": 2
+    },
+    {
+      "downstream_organ": "skeletal_muscle",
+      "flight": 95.0,
+      "ground": 96.0,
+      "samples": 191,
+      "studies": 13
+    },
+    {
+      "downstream_organ": "skin",
+      "flight": 80.0,
+      "ground": 71.0,
+      "samples": 151,
+      "studies": 6
+    }
+  ],
+  "schema_version": 1,
+  "selection_outcomes_accessed": false,
+  "source_sha256": {
+    "archs4_candidate_labels": "de497e16f0c7cd1804683fe5dd45b736758f075ea62cb2f74ef6fe9e49fe723f",
+    "osdr_metadata": "cba026e1b6b7cc39cfa2ff5fa16524dded98d52eaeeec6e7122d3b2392304755"
+  },
+  "status": "downstream_cohort_readiness_audited",
+  "tasks": [
+    {
+      "cohort": "strict eight-organ OSDR RNA-seq study-organ units containing both exact Space Flight and Ground Control labels",
+      "expression_local": false,
+      "groups": 43,
+      "label_source": "structured OSDR study.factor value.spaceflight",
+      "local_expression_files": 0,
+      "readiness": "ready_after_versioned_download_and_qc",
+      "required_expression_files": 43,
+      "samples": 892,
+      "study_organ_units": 45,
+      "task": "OSDR mouse spaceflight versus exact ground control"
+    },
+    {
+      "candidate_positive_rows_in_historical_label_table": 20215,
+      "cohort": "not frozen; free-text candidates require independent label curation",
+      "expression_local": true,
+      "groups": null,
+      "historical_label_table_latest_submission_date": "2021-09-19",
+      "label_source": "ARCHS4/GEO free text; existing keyword flags are candidate retrieval only and are not valid phenotype labels",
+      "readiness": "cut_from_core_until_curated_study_disjoint_labels_exist",
+      "samples": null,
+      "task": "ARCHS4 within-organ disease or tumor versus control"
+    },
+    {
+      "cohort": "derived from the first frozen labeled downstream cohort",
+      "expression_local": false,
+      "groups": 43,
+      "label_source": "inherits OSDR structured labels",
+      "readiness": "extension_after_primary_osdr_harness_passes",
+      "samples": 892,
+      "task": "low-label adaptation curves"
+    },
+    {
+      "cohort": "not frozen",
+      "expression_local": false,
+      "groups": null,
+      "label_source": "not present locally",
+      "readiness": "cut_from_core",
+      "samples": null,
+      "task": "TCGA disease or cancer endpoint"
+    }
+  ]
+}

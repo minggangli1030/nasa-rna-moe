@@ -1,0 +1,74 @@
+{
+  "cohort": {
+    "candidate_metadata_sha256": "f0b7f8d68dda922e7d96702c2eae1b72251deb27f78e9c67b4955c2468da1a68",
+    "group_column": "id.accession",
+    "label_negative": "exact structured Ground Control",
+    "label_positive": "exact structured Space Flight",
+    "organs": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "post_qc_rule": "exclude failed samples and any study-organ unit losing either class; add no replacements",
+    "qc_min_nonzero": 14000,
+    "requested_samples": 892,
+    "requested_studies": 43,
+    "requested_study_organ_units": 45
+  },
+  "evaluation": {
+    "equal_tuning_budget": true,
+    "head": "elastic-net logistic regression",
+    "inner_split": "training-study-grouped only",
+    "outer_split": "study-grouped, identical across representations",
+    "post_hoc_split_or_seed_selection": false,
+    "primary_metric": "AUROC",
+    "secondary_metrics": [
+      "AUPRC",
+      "balanced_accuracy",
+      "macro_f1"
+    ]
+  },
+  "firewalls": {
+    "final_claim_requires_new_untouched_grouped_confirmation": true,
+    "osdr_used_for_stage1_architecture_selection": false,
+    "osdr_used_for_stage1_training": false,
+    "same_osdr_cohort_may_select_future_axis_and_confirm_it": false
+  },
+  "implementation_sha256": {
+    "audit": "2fa16f44fb914c1b889e099e16d500ea4fd1e8cb58fefc4a39fcb56b2faa4828",
+    "freeze": "e0b239144bab23faf5ca7e3ce4351a95035e0a127ed394a2588441b4bc3f1251",
+    "osdr_preprocessor": "aaf8cbe6a7f0472055b9184c68d5fc92d6f2151c9f5ec2dfc4786ded7e95ac9d",
+    "prepare": "0e614f1ceb87f2ae782ce16d9ad87052c31d18f4477b8e781da3343ef5dcbe0f"
+  },
+  "representations": {
+    "pca": true,
+    "raw_expression": true,
+    "stage1_score_panel_predictions": true,
+    "target_hiding": "reuse frozen Stage 1 score-gene panel and mask token"
+  },
+  "role": "external cross-species downstream development; not a final untouched confirmatory test",
+  "schema_version": 1,
+  "stage1_family": {
+    "best_seed_selection": false,
+    "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+    "checkpoint_updates": false,
+    "conditions": [
+      "pooled",
+      "pooled_adapter",
+      "true_organ",
+      "blind_router_hard",
+      "blind_router_soft"
+    ],
+    "seeds": [
+      17,
+      42,
+      101
+    ]
+  },
+  "status": "frozen_stage1_osdr_downstream_development"
+}

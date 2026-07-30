@@ -1,21 +1,27 @@
 # Axis smoke tests and final evaluation roadmap
 
-**Final presentation:** 2026-08-17  
-**MoE design target:** close by 2026-08-02  
-**Final training target:** launch by 2026-08-07  
-**Final evaluation window:** 2026-08-10 through 2026-08-14
+**Final presentation:** 2026-08-17
+
+**MoE design target:** close by 2026-08-02
+
+**Final training target:** launch by 2026-08-07
+
+**Downstream harness start:** 2026-07-30
+
+**Final-model swap/evaluation window:** 2026-08-10 through 2026-08-14
 
 ## Priority decision
 
-The immediate objective is to finish the MoE scientific design, not to reproduce
-every external foundation model at once.
+The downstream harness is now a parallel critical path rather than final-week work.
+Frozen Stage 1 checkpoints are the stand-in representation until the final model is
+available.
 
-1. Finish the frozen Stage 2B B0–B5 diagnosis.
-2. Reuse its immutable training-donor caches to screen candidate axes cheaply.
-3. Select at most one additional axis beyond the protected organ expert.
+1. Freeze one defensible labeled cohort and build its complete downstream harness
+   against Stage 1 now.
+2. Reuse immutable Stage 2B caches to screen candidate axes cheaply in parallel.
+3. Select at most one additional axis beyond the protected organ expert by August 2.
 4. Freeze the final architecture and launch final training by Friday, August 7.
-5. Run the downstream and SOTA comparison pipeline during the final evaluation
-   week.
+5. Swap the final embeddings into the already validated harness in the final week.
 
 This order prevents a large baseline-integration task from delaying the model whose
 representation must actually be evaluated.
@@ -50,9 +56,18 @@ and fit the same small grouped-CV probe for every axis:
 - base model: organ plus technical nuisance covariates;
 - candidate model: base model plus one candidate axis;
 - outcomes: pooled reconstruction error, post-private residual coefficients, and
-  protected-organ residual error;
+  protected-organ residual error, plus a downstream label in a separate development
+  cohort;
 - outputs: incremental cross-validated \(R^2\), donor-bootstrap interval, permutation
-  null, seed signs, organ-stratified effects, and coverage.
+  null, seed signs, organ-stratified effects, and coverage. The null permutes the
+  candidate axis **within organ**, never globally.
+
+An axis advances only if incremental cross-validated \(R^2\) is positive in all
+three seeds, the pooled donor-bootstrap lower bound is above zero, its point
+estimate exceeds the 95th percentile of the within-organ permutation null, every
+retained level has at least 20 donors and appears in at least five organs, and it
+retains value after organ plus technical nuisances. Rank passing axes by the frozen
+effect and take at most two.
 
 ### Tier 2 — protected adapter smoke
 
@@ -79,14 +94,16 @@ well-supported refusal to add an unstable axis is a valid result.
 |---|---|---|---|
 | Tissue site / anatomical subregion | Existing GTEx manifest | Stage 2B B4 plus organ-conditional grouped-CV probe | Immediate axis candidate |
 | Age, developmental stage, sex | GTEx subject/sample attributes after ID-safe join | Organ-conditional grouped-CV probe with missingness and confound audit | Candidate if sufficiently powered |
-| Cell-type composition | Frozen public marker/reference method applied without outcome fitting | Continuous composition scores beyond organ; technical and purity controls | Candidate shared program |
-| Immune, metabolic, mitochondrial, contractile, ECM, cell-cycle, stress programs | Frozen public gene sets scored on training-fold-visible expression | Continuous program scores beyond organ, with score-gene leakage rules bound to each task | Candidate shared program |
+| Immune, metabolic, mitochondrial, contractile, ECM, cell-cycle, stress programs | Hash-pinned MSigDB Hallmark 50 gene sets scored on training-fold-visible expression | Continuous program scores beyond organ, within-organ permutations, technical-proxy partial correlations | Candidate shared program |
 | Disease, treatment, inflammation, hypoxia | Independent development studies with repeated within-organ contrasts | Leave-one-study-out residual/downstream probe | Primarily downstream targets; expert axis only after independent support |
 | Spaceflight state | OSDR studies with mission/experiment grouping | Leave-one-mission or leave-one-study-out probe with permutations | NASA downstream target; not selected on the final test set |
 
 Disease, treatment, and spaceflight labels must not be used to design an expert on
 the same cohort later reported as its final evaluation. Use a separate development
 cohort or nested training folds.
+
+Cell-type composition is cut from this cycle: it is the most implementation-heavy
+and organ-confounded candidate. It remains a post–August 17 extension.
 
 ## Calendar and stop/go gates
 
@@ -97,10 +114,14 @@ cohort or nested training folds.
 - treat B4 tissue-site output as the first axis smoke;
 - freeze the generic multiaxis screen interface and data-inventory schema.
 
-### July 31–August 2
+### July 30–August 2
 
+- answer, for every downstream task, the exact cohort, samples, independent groups,
+  label source, and local-expression status; cut tasks that cannot answer all five
+  by July 31;
+- freeze and build the OSDR spaceflight harness against Stage 1;
 - add ID-safe GTEx age/sex/developmental metadata if available;
-- derive frozen pathway/program scores and one cell-composition representation;
+- derive frozen Hallmark pathway/program scores;
 - run Tier-0 and Tier-1 screens in parallel on cached arrays;
 - select no more than two candidates for Tier 2;
 - run short protected-adapter smokes; and
@@ -120,7 +141,8 @@ cohort or nested training folds.
 
 ### August 10–14
 
-- run the fixed downstream heads and baseline ladder;
+- swap final-model embeddings into the already validated downstream heads and
+  baseline ladder;
 - complete paired statistics, low-label curves, routing-safety results, and
   compute/parameter accounting;
 - freeze figures and the final interpretation.
@@ -134,12 +156,12 @@ cohort or nested training folds.
 
 ### Primary tasks
 
-1. Within-organ disease-versus-control prediction, macro-averaged across sufficiently
-   powered organ–disease combinations.
+1. OSDR spaceflight-versus-ground prediction with exact structured labels and
+   held-out studies; this is the first executable task.
 2. Low-label learning curves at 1%, 5%, 10%, 25%, 50%, and 100% of labeled training
    data.
-3. Spaceflight or stress-state prediction with an entire mission, experiment, or
-   study held out.
+3. Within-organ ARCHS4 disease-versus-control only after independently curated,
+   study-disjoint labels exist; otherwise it is cut from the core.
 
 Secondary tasks are organ-specific survival prediction and drug response, only if
 the primary pipeline is complete and their cohort contracts are defensible.
@@ -155,24 +177,20 @@ firewalls, downstream heads, tuning budgets, and seed reporting.
 4. pooled trunk plus organ label as an explicit conditioning control;
 5. known-organ experts;
 6. hard router, soft router, and pooled fallback;
-7. **BulkRNABert retrained on the exact frozen training partition** as the closest
-   external same-data masked-reconstruction architecture;
-8. published BulkRNABert as a public pretrained bulk-RNA reference, only after
-   pretraining-overlap risk is audited;
-9. BulkFormer-37M retrained on the same partition as an approximate
-   capacity-controlled modern comparator; and
-10. published BulkFormer-147M as a practical SOTA ceiling, not an apples-to-apples
+7. published BulkRNABert on a cohort outside its disclosed pretraining set;
+8. published BulkFormer-147M as a practical SOTA ceiling, not an apples-to-apples
     causal comparison.
 
 No single comparator is simultaneously dataset-matched, capacity-matched,
 architecturally matched, and current SOTA. The ladder makes each comparison answer
 a named question instead of collapsing them into one ranking.
 
-For schedule control, the **core final-week set** is raw expression, PCA, pooled,
-pooled-plus-organ-label, the three deployable MoE modes, matched-data BulkRNABert,
-and published BulkFormer-147M. Published BulkRNABert and retrained BulkFormer-37M
-are extended comparisons: prepare their reproducible paths, but do not let them
-delay the core table, routing-safety result, or August 17 deck.
+For schedule control, the core set is raw expression, PCA, pooled,
+pooled-plus-organ-label, the three deployable MoE modes, published BulkRNABert on a
+non-overlap cohort, and published BulkFormer-147M. Matched-data BulkRNABert
+retraining and BulkFormer-37M retraining are extensions and cannot delay the core
+table. Raw expression and PCA receive the same hyperparameter grid density, folds,
+seeds, and stopping policy as MoE representations.
 
 ### Evaluation modes
 
@@ -209,10 +227,9 @@ which remains the causal test of specialization.
 
 BulkRNABert has an official public implementation, checkpoints, preprocessing
 example, and ordered gene list. The public models include TCGA, GTEx+ENCODE, and
-combined pretraining variants. Because a GTEx-pretrained checkpoint may overlap
-held-out GTEx donors, the primary fair architectural comparison retrains the
-BulkRNABert architecture on this project's frozen training partition. Official
-resources:
+combined pretraining variants. The core comparison uses a published checkpoint only
+on a downstream cohort outside its disclosed pretraining set; matched-data
+retraining is demoted to an extension. Official resources:
 
 - [implementation and preprocessing](https://github.com/instadeepai/multiomics-open-research)
 - [peer-reviewed paper](https://proceedings.mlr.press/v259/gelard25a.html)

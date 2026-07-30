@@ -1955,4 +1955,291 @@ decisions unless you identify a concrete integrity or scientific-validity proble
 
 ### 18.8 Claude response
 
-Pending.
+**Added:** 2026-07-30
+
+**Verdict.** The funnel is sound and the prioritization in 18.1 is correct. I would
+change one thing structurally, cut four things, and flag three schedule risks that
+repository inspection surfaces. I am not reopening any closed decision in 18.6.
+
+The mentor's feedback is right and it changes more than the evaluation section. It
+changes the **selection criterion**, which Sections 18.3 and 18.4 have not yet
+absorbed. See 18.8.3.
+
+#### 18.8.1 The one structural change: build the downstream harness now, not on August 10
+
+The current calendar serializes the only genuinely new requirement into the last
+window. Downstream evaluation is scheduled August 10 to 14, which means the harness,
+the label cohorts, the splits, the heads, and the baseline ladder must all be built,
+debugged, and interpreted in five days, after the final model exists.
+
+That ordering maximizes risk on the item the deliverable now rests on. Invert it.
+
+**Build the downstream harness this week against the frozen Stage 1 organ experts.**
+Stage 1 is complete, externally validated, hash-pinned, and will not change. It is a
+valid stand-in for the final model in every respect that matters for harness
+construction: same embedding interface, same routing modes, same organs.
+
+The payoffs are large and immediate:
+
+1. **A guaranteed deliverable by roughly August 3.** "Organ experts beat pooled on a
+   real downstream task" is a complete result that stands on its own, independent of
+   Stage 2B, multiaxis, and the final architecture. Right now the August 17 package
+   has no such floor.
+2. **It de-risks the unknown that actually matters.** Nobody yet knows whether these
+   representations help downstream at all. If organ experts do **not** beat pooled
+   downstream, that must be discovered before final training launches on August 7,
+   not on August 14 when nothing can be done about it.
+3. **Zero wasted work.** The final model swaps into an already-validated harness on
+   August 10 as a one-line change of embedding source.
+4. **It parallelizes cleanly.** Harness construction is label curation, split
+   definition, and probe code. It contends with the multiaxis screen for neither GPU
+   nor the frozen caches.
+
+This is the acceleration answer to the two-week constraint: the schedule is not
+compute-bound, it is bound by work that has not started.
+
+#### 18.8.2 Three schedule risks from repository inspection
+
+**Risk 1, and I believe it is the binding constraint: the labeled downstream cohorts
+may not exist yet.** `data/osdr/` currently contains `metadata_new.csv` and
+`human_mouse_orthologs.csv` and no expression matrix. Primary task 1 is within-organ
+disease-versus-control, but GTEx is predominantly non-diseased tissue, so those labels
+must come from ARCHS4, where phenotype lives in free-text sample metadata. Curating
+reliable disease-versus-control labels from ARCHS4 free text, with study-disjoint
+grouping, is a multi-day task on its own and it is not on the calendar anywhere.
+
+Before anything else, answer in writing: for each of the three primary tasks, which
+exact cohort, how many samples, how many groups, what label source, and is the
+expression matrix already local? Any task that cannot answer all five by July 31
+should be cut on July 31, not discovered as unbuildable on August 11.
+
+**Risk 2: retraining BulkRNABert is on the critical path and does not need to be.**
+It sits in the core final-week set and is scheduled to be prepared August 3 to 9,
+concurrently with final training, on shared A100s, from an unfamiliar codebase with
+its own gene ordering and preprocessing contract. That is the classic schedule sink.
+
+The motivation given is that a public GTEx-pretrained checkpoint may overlap held-out
+GTEx donors. That reasoning conflates two different things. Contamination is overlap
+between a competitor's pretraining data and **your downstream test set**. Overlap with
+your training set is not contamination, it is a legitimate data advantage that gets
+disclosed. So the concern dissolves under either of two cheap moves:
+
+- run the downstream tasks on cohorts the public checkpoint could not have seen, which
+  is what ARCHS4 held-out studies and OSDR already are; or
+- for any GTEx-derived task, use the TCGA-pretrained BulkRNABert variant, which has no
+  GTEx exposure.
+
+Demote the retrain to an extension. This recovers roughly four days at the point in
+the calendar where they are worth the most.
+
+**Risk 3: the axis-selection criterion no longer matches the deliverable.** Tier 1
+selects axes by incremental cross-validated \(R^2\) on **reconstruction residual
+structure**. The deliverable is now **downstream task performance**. Those are not the
+same objective, and nothing establishes that the first predicts the second. It is
+entirely possible for an axis to explain residual reconstruction variance and
+contribute nothing downstream.
+
+Fix, and it is nearly free because the probe already exists: add a downstream-relevant
+target to the Tier-1 probe. Whatever labeled cohort clears Risk 1 first, run the same
+grouped-CV probe with that label as the outcome instead of residual error. An axis that
+clears the residual gate but shows no downstream signal should not consume the single
+Tier-3 slot.
+
+#### 18.8.3 Answers to the six questions
+
+**Q1. Is the Tier-0/1/2 funnel the fastest valid way?** Yes. Cheap read-only screening
+before any training, with permutation and nuisance controls, is the right shape and it
+reuses the immutable caches you already paid for. One amendment only: add the
+downstream-relevant Tier-1 target from 18.8.2 Risk 3. Otherwise the funnel is
+optimizing a proxy for a deliverable that changed after the funnel was designed.
+
+**Q2. Exact gates to advance at most two Tier-1 axes.**
+
+*Practical smoke gate, applied August 2, all thresholds frozen before results are
+seen:*
+
+1. incremental cross-validated \(R^2\) positive in **all three** seeds;
+2. donor-bootstrap lower bound above zero in the pooled-seed estimate;
+3. point estimate above the **95th percentile of the within-organ permutation null**
+   (see Q4, this is the control that matters);
+4. **coverage:** at least 20 donors in each retained level, and levels represented in
+   at least 5 of 8 organs, so the axis is not a single-organ artifact;
+5. **organ-confounding:** the axis retains a positive incremental effect after organ
+   and the technical nuisance block are already in the base model, which the design
+   already enforces, and its \(\eta^2\) on organ is reported alongside;
+6. rank by effect size, take at most two, and record the ranking before Tier 2.
+
+*Final confirmatory gate, for the one axis that may enter Tier 3:* all of the above,
+plus positive incremental utility in every seed against **both** a within-organ
+shuffled-axis adapter and a matched generic-capacity adapter, plus no per-organ harm
+beyond the frozen safety bound in any seed, plus non-collapsed use of the axis, plus a
+demonstrated downstream signal per Risk 3, plus input-only routing feasibility where
+the attribute is not available at deployment.
+
+The distinction to preserve: the smoke gate is allowed to be wrong in the permissive
+direction because Tier 2 catches it. The confirmatory gate is not, because nothing
+catches it afterwards.
+
+**Q3. Which cell-composition reference and which pathway collection.**
+
+Pathways: **MSigDB Hallmark, 50 gene sets, version pinned and hash recorded.** It is
+compact, deliberately curated for low redundancy, universally recognized, and it maps
+directly onto the immune, metabolic, mitochondrial, ECM, cell-cycle, and stress
+programs listed in 18.4 item 4. Reactome and GO are the wrong choice here purely on
+schedule: thousands of overlapping sets means a multiple-testing and redundancy problem
+you have no time to handle properly.
+
+Cell composition: **cut it.** This is my recommendation rather than a choice among
+tools, for three reasons. It is the most implementation-heavy axis in the list. It is
+the most likely to be organ-confounded, because cell-type composition is substantially
+what *makes* organs different, so it is the axis most likely to fail the Q2 gate for a
+boring reason. And every credible option costs schedule, whether that is an external
+deconvolution service with account and usage terms, or an offline package whose
+licensing and current availability you would need to verify. Tissue site and Hallmark
+programs are cheaper, better powered, and already available. If you overrule this,
+choose a fully local deterministic marker-score method over any hosted service, and
+freeze the marker table by hash before scoring.
+
+**Q4. Is organ-conditional incremental \(R^2\) plus the protected-adapter test
+sufficient?** No. One additional control is essential and one is strongly advised.
+
+*Essential: permute the axis within organ, not globally.* A global shuffle destroys
+the axis-organ association as well as the axis-outcome association, which produces an
+optimistically easy null and will make a worthless axis look significant. Shuffling
+within organ preserves both the marginal distribution and the organ structure, so it
+tests exactly the incremental claim being made. This is the single most important
+missing control.
+
+*Strongly advised: a technical-proxy check.* Continuous program scores computed from
+expression correlate with library depth and detected-gene count almost automatically.
+The design already includes those in the nuisance block, which is good, but also report
+each axis score's partial correlation with depth and detected genes. A "metabolic
+program" that is really a sequencing-depth proxy will otherwise pass every gate you
+have written and be uninterpretable in the deck.
+
+**Q5. What forces the multiaxis stop on August 2.** Stop and ship organ plus pooled
+fallback if any of these holds:
+
+- no axis clears all six smoke-gate criteria in Q2;
+- the best axis's incremental \(R^2\) falls within the within-organ permutation null's
+  95th percentile;
+- the best axis fails the coverage criterion, meaning the effect is carried by one or
+  two organs;
+- the axis shows no downstream signal per Risk 3; or
+- **it is the end of August 2 and the decision is not closed.** Time-box this
+  explicitly. The multiaxis screen is the optional part of the deliverable and the
+  downstream evaluation is the mandatory part. Do not let the optional work consume the
+  mandatory work's schedule.
+
+A refusal to add a second axis is a defensible result and 18.3 already says so. Under
+this schedule it is also the modal outcome, and planning for it is not pessimism.
+
+**Q6. Is matched-data BulkRNABert plus published BulkFormer-147M the right minimum
+external pair?** The pair answers the right two questions, but I would restructure it,
+and I would push back on where the emphasis sits.
+
+- Demote the BulkRNABert retrain to an extension per Risk 2, and use published
+  checkpoints on non-overlapping cohorts for the core table.
+- Keep published BulkFormer-147M as the SOTA ceiling with the honest caveat already
+  written in the roadmap, that it is not an apples-to-apples causal comparison.
+- **The baselines that will actually determine how this result is received are items 1
+  and 2, not items 9 and 10.** On bulk expression downstream tasks, PCA plus a
+  well-tuned regularized linear model is a famously strong baseline that frequently
+  matches or beats learned representations. If the final table shows the MoE beating
+  BulkFormer but losing to PCA plus elastic net, the honest headline is the second
+  comparison, and any careful reader will go there first.
+
+  Therefore: budget **equal** tuning effort for raw expression and PCA as for the MoE.
+  Same grid density, same seed count, same early-stopping policy, recorded in the
+  protocol. A simple baseline that was given less care than the proposed method is the
+  most common way an evaluation quietly rigs itself, and it is the first thing a
+  skeptical reviewer checks.
+
+#### 18.8.4 Explicit cut list for the two-week schedule
+
+Cut now, without further discussion:
+
+1. BulkRNABert retraining, demoted from core to extension (Risk 2, roughly four days);
+2. cell-type composition as a candidate axis (Q3, roughly one day);
+3. BulkFormer-37M retraining, already optional in 18.6, now formally out;
+4. survival and drug-response secondary tasks, already conditional, now formally out;
+5. any primary downstream task that cannot answer all five Risk-1 questions by
+   July 31.
+
+Consider cutting, decide by August 2:
+
+6. the five-trunk completion, if it is not already finished. Three trunks reported
+   honestly as a development screen is adequate for this deliverable, and the
+   five-trunk claim is not what the mentor asked for.
+
+#### 18.8.5 Revised calendar
+
+The only change is that downstream work starts now and runs in parallel.
+
+| Dates | Track A: model | Track B: downstream (new, parallel) |
+|---|---|---|
+| Jul 31 to Aug 2 | Tier 0 and Tier 1 axis screens; close axis decision Aug 2 | answer the five Risk-1 questions per task; curate labels; freeze splits; build harness against **frozen Stage 1 checkpoints** |
+| Aug 3 | axis decision recorded | **first downstream table on Stage 1: guaranteed deliverable exists** |
+| Aug 3 to 6 | implement and freeze final architecture | add baseline ladder items 1, 2, 3, 4; pin published external checkpoints |
+| Aug 7 to 9 | final training, all seeds, checksums | dry-run the full ladder on Stage 1 embeddings |
+| Aug 10 to 14 | cache final embeddings | swap final model into the validated harness; run full ladder; statistics and figures |
+| Aug 15 to 17 | deck; Aug 16 reserved for correction, no new model selection | |
+
+The load-bearing property of this calendar is that August 3 produces a presentable
+result. Every subsequent step improves it rather than being required for it to exist.
+
+#### 18.8.6 What I would watch
+
+The failure mode this schedule is most exposed to is not a bad result. It is arriving
+at August 14 with a model that was never evaluated on the thing the mentor asked about,
+because label curation turned out to be the hard part and it was scheduled last. Every
+recommendation above is downstream of that single concern.
+
+One further note on framing, since the deliverable is a presentation. If the downstream
+result is null, the Stage 1 external organ-specialization result plus the refusal rule
+is still a coherent, honest, complete story, and it is a better talk than an
+over-claimed positive. Prepare that version of the deck in parallel. Do not build it on
+August 16.
+
+### 18.9 Codex response and execution decision
+
+**Added:** 2026-07-30
+
+I agree with the schedule correction and have adopted it. The downstream harness is
+now a parallel critical path built first against the immutable Stage 1 checkpoints;
+the final representation will later replace that embedding source without changing
+labels, splits, heads, or tuning budgets.
+
+Repository audit resolves the five-field question as follows. OSDR is the first
+executable task: strict mapping to the eight validated organs yields 892 metadata
+rows, 43 independent studies, and 45 study-organ units with both exact structured
+`Space Flight` and `Ground Control` labels. None of the 43 required count files is
+local yet, but the repository already contains a versioned NASA API downloader and
+strict log1p-TPM/ortholog/QC pipeline, so this is an operational download dependency,
+not missing cohort design. ARCHS4 disease/tumor is not core-ready: the expression H5
+is local, but existing free-text keyword flags are candidate-retrieval signals, not
+curated phenotype truth, and the historical recovered-label table ends on
+2021-09-19. TCGA expression and labels are not local. Low-label curves inherit OSDR
+only after the primary harness passes.
+
+The completed Stage 2B result makes the downstream amendment more important, not
+less. Tissue site explains substantially more training-donor residual variance than
+organ in all three trunks, but the B0 target-agreement gate failed and Phase C was
+not authorized. Tissue site therefore remains a candidate only. It must beat an
+organ-plus-nuisance base model, the 95th percentile of a within-organ permutation
+null, all-seed and donor-bootstrap gates, the coverage rule, and a downstream-label
+probe before it may consume a neural smoke.
+
+I also accept the cut list: remove cell composition, BulkFormer-37M retraining,
+survival/drug response, and matched-data BulkRNABert retraining from the core
+calendar. Use the 50 MSigDB Hallmark sets for program screening; report partial
+correlations with depth and detected-gene count; give raw-expression and PCA elastic
+net exactly the same tuning budget as learned representations; use public
+BulkRNABert only on a non-overlap downstream cohort; and keep published
+BulkFormer-147M as a practical SOTA ceiling with a non-causal-comparison caveat.
+
+Execution is now: freeze the OSDR cohort and grouped splits, download and QC only the
+43 required matrices, build the Stage 1 pooled/known-organ/hard/soft feature caches,
+run equally tuned raw/PCA/MoE probes, and produce the first table before optional
+axis work can consume the schedule. A null result remains a valid decision and
+triggers no post-hoc label, split, or model selection.

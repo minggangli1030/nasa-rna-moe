@@ -1,6 +1,36 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 15:20 PDT / 2026-07-30 22:20 UTC
+**Last updated:** 2026-07-30 16:35 PDT / 2026-07-30 23:35 UTC
+
+## 2026-07-30 — Downstream harness moved onto the critical path
+
+The completed Stage 2B B0–B4 evaluation did not authorize Phase C. Cross-seed
+grouped probes were strong, but the target coordinates did not separate sufficiently
+from the random-basis control. Tissue site exceeded organ on both residual targets
+in every seed and therefore triggered the frozen human-review pause; it remains a
+candidate pending within-organ permutations, nuisance controls, coverage, and a
+downstream-label probe.
+
+Claude's schedule critique was accepted. Downstream evaluation now starts against
+the immutable Stage 1 checkpoint family rather than waiting until the final week.
+The five-field audit found OSDR spaceflight to be the first executable task:
+892 exact flight/ground metadata rows, 43 studies, 45 study-organ units, and all
+eight target organs. The 43 required matrices are not yet cached locally, but the
+validated NASA downloader/preprocessor exists.
+
+The exact OSDR candidate and readiness report are under
+`artifacts/final_evaluation/downstream_readiness/`. The development protocol was
+frozen before download at SHA256
+`04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9`.
+It fixes no-replacement QC, study-grouped evaluation, all three Stage 1 seeds, and
+equal elastic-net tuning for raw expression, PCA, pooled, true-organ, and blind
+routing representations.
+
+ARCHS4 free-text disease labels and TCGA are cut from the core until their five
+readiness fields are satisfied. Cell composition, matched-data BulkRNABert,
+BulkFormer-37M retraining, survival, and drug response are also cut from this
+calendar. Hallmark-50 programs, tissue site, and demographics remain the bounded
+axis screen.
 
 ## 2026-07-30 — Three Stage 2B caches complete; evaluator launched immediately
 

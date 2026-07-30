@@ -1,0 +1,24 @@
+organ,tissue_site,samples,donors
+adipose,Adipose - Subcutaneous,571,571
+adipose,Adipose - Visceral (Omentum),465,465
+brain,Brain - Amygdala,146,146
+brain,Brain - Anterior cingulate cortex (BA24),181,181
+brain,Brain - Caudate (basal ganglia),241,241
+brain,Brain - Cerebellar Hemisphere,221,221
+brain,Brain - Cerebellum,212,212
+brain,Brain - Cortex,214,214
+brain,Brain - Frontal Cortex (BA9),215,215
+brain,Brain - Hippocampus,205,205
+brain,Brain - Hypothalamus,207,207
+brain,Brain - Nucleus accumbens (basal ganglia),234,234
+brain,Brain - Putamen (basal ganglia),203,203
+brain,Brain - Substantia nigra,143,143
+colon,Colon - Sigmoid,331,331
+colon,Colon - Transverse,373,373
+heart,Heart - Atrial Appendage,369,369
+heart,Heart - Left Ventricle,362,362
+liver,Liver,213,213
+lung,Lung,483,483
+skeletal_muscle,Muscle - Skeletal,655,655
+skin,Skin - Not Sun Exposed (Suprapubic),524,524
+skin,Skin - Sun Exposed (Lower leg),601,601

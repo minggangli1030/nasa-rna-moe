@@ -1,11 +1,53 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 15:20 PDT / 2026-07-30 22:20 UTC
+**Updated:** 2026-07-30 16:35 PDT / 2026-07-30 23:35 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
 
 ## Current phase
+
+Stage 2B B0–B4 and the multiaxis Tier-0 inventory are complete and locally
+checksum-verified. The prespecified target-agreement gate failed: the absolute
+cross-trunk coefficient correlations were high, but their margin over the random
+basis was only about 0.018–0.020. Cross-seed grouped probes remained strong
+(gene-space recovery about 0.58–0.60; median component correlation about
+0.977–0.979), so the result is reproducible predictive structure without a unique
+shared coordinate interpretation. Phase C was not authorized.
+
+B4 triggered human review because tissue site exceeded organ on both residual
+targets in all three seeds. For pooled reconstruction \(R^2\), organ versus site was
+0.664 versus 0.809, 0.591 versus 0.775, and 0.596 versus 0.775. For post-private
+coefficients it was 0.248 versus 0.538, 0.282 versus 0.559, and 0.285 versus 0.565.
+This is a candidate signal, not authorization to train: tissue site must now clear
+within-organ permutation, nuisance, coverage, all-seed, donor-bootstrap, and
+downstream-label gates.
+
+The schedule has been reordered around the binding risk identified in `CLAUDE.md`:
+the downstream harness starts now against frozen Stage 1 checkpoints rather than
+waiting for the final model. A five-field readiness audit found one executable
+primary task. Strict eight-organ OSDR mapping yields 892 labeled metadata rows,
+43 studies, and 45 study-organ units with both exact structured `Space Flight` and
+`Ground Control` labels. The required 43 count matrices are not yet local, but the
+repository contains a validated NASA API downloader and strict mouse-ortholog,
+log1p-TPM, 14,000-gene QC path. The exact candidate metadata and audit are at
+`artifacts/final_evaluation/downstream_readiness/`.
+
+The OSDR downstream-development protocol was frozen before download at
+`artifacts/final_evaluation/stage1_osdr_downstream/protocol.json`, SHA256
+`04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9`.
+QC failures and study-organ units losing either class are excluded without
+replacement. The benchmark uses identical study-grouped splits and equal elastic
+net tuning for raw expression, PCA, pooled, pooled-adapter, true-organ, and blind
+hard/soft Stage 1 representations. This is cross-species downstream development,
+not an untouched final confirmation.
+
+ARCHS4 disease/tumor is cut from the core until free-text candidates receive
+independent phenotype curation; its existing keyword flags are not labels. TCGA is
+also cut because neither a cohort contract nor expression matrix is local.
+Cell-composition screening, matched-data BulkRNABert retraining, BulkFormer-37M
+retraining, survival, and drug response are removed from the core calendar.
+Hallmark-50 programs, tissue site, and demographics remain candidate screens.
 
 Stage 2 completed the frozen seed-factorized stability diagnosis. Raw
 recipient-preserving organ-to-organ addition did not produce an actionable helpful
@@ -373,35 +415,36 @@ universality.
 ## Presentation package
 
 The final presentation is scheduled for **2026-08-17**. The execution order is now
-time-bounded: close the MoE/secondary-axis design by August 2, launch final training
-by August 7, and concentrate downstream/SOTA evaluation in August 10–14. Canonical
+time-bounded: build the downstream harness immediately on Stage 1, close the
+MoE/secondary-axis design by August 2, launch final training by August 7, and swap
+the final model into the validated harness in August 10–14. Canonical
 roadmaps:
 
 - [`axis-smoke-and-final-evaluation-roadmap.md`](axis-smoke-and-final-evaluation-roadmap.md)
 - [`august-17-downstream-and-multiaxis-plan.md`](august-17-downstream-and-multiaxis-plan.md)
 
-The immediate post-B0–B5 work is a cheap organ-conditional screen, not full training
-of every proposed axis. Tissue site is already covered by Stage 2B B4. Age/sex,
-cell-composition scores, and continuous immune/metabolic/mitochondrial/contractile/
-ECM/cell-cycle/stress programs enter one common grouped-CV residual screen.
+The immediate post-B0–B5 model work is a cheap organ-conditional screen, not full
+training of every proposed axis. Tissue site is already covered by Stage 2B B4.
+Age/sex and hash-pinned Hallmark immune/metabolic/mitochondrial/contractile/ECM/
+cell-cycle/stress programs enter one common grouped-CV residual screen.
 Disease, treatment, hypoxia, and spaceflight are primarily downstream targets and
 must not be used to select an expert on the same final-test cohort.
 
 The final external ladder now distinguishes BulkRNABert from BulkFormer.
-BulkRNABert is the closer public masked-reconstruction architectural peer and will
-be retrained on the exact frozen cohort for the primary same-data comparison.
-BulkFormer-37M is the capacity-oriented modern comparator and BulkFormer-147M is a
-published SOTA ceiling. Public pretrained GTEx/TCGA models are reported only after
-overlap audits and never substituted for the matched-data causal comparison.
+BulkRNABert is the closer public masked-reconstruction architectural peer and its
+published checkpoint is used only on a non-overlap downstream cohort.
+BulkFormer-147M is a published SOTA ceiling. Retraining either family is an
+extension and cannot delay the core table.
 The final evidence package will compare raw expression, PCA/NMF, the pooled trunk,
-pooled-plus-organ-label conditioning, organ-MoE routing, matched-data BulkRNABert,
-and BulkFormer under identical donor/patient/study-disjoint splits. Organ prediction
+pooled-plus-organ-label conditioning, organ-MoE routing, published BulkRNABert, and
+BulkFormer under identical donor/patient/study-disjoint splits. Organ prediction
 is only a sanity check; primary tasks must test disease/state, spaceflight/stress,
 or low-resource adaptation so the result is not circular.
 
 The same roadmap defines candidate biological axes beyond organ—tissue site,
-cell-type composition, disease/physiological state, age/development, sex, and
-continuous pathway programs—and separates them from technical nuisance variables.
+disease/physiological state, age/development, sex, and continuous pathway
+programs—and separates them from technical nuisance variables. Cell composition is
+deferred beyond August 17.
 The preferred integration is factorized: a protected organ expert plus optional
 site/condition/pathway residual adapters, each with its own safety gate, rather than
 a sparse Cartesian expert for every attribute combination.

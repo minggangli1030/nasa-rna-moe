@@ -5,10 +5,11 @@
 **Status:** planning record; exact downstream datasets, splits, checkpoints, and
 gates must be frozen before model comparison
 
-**Execution calendar:** the MoE/secondary-axis design closes by 2026-08-02, final
-training begins by 2026-08-07, and downstream/SOTA evaluation is concentrated in
-the 2026-08-10 through 2026-08-14 final-evaluation window. The detailed funnel and
-baseline ladder are in
+**Execution calendar:** the downstream harness starts immediately against frozen
+Stage 1 checkpoints; the MoE/secondary-axis design closes by 2026-08-02, final
+training begins by 2026-08-07, and the final model is swapped into the validated
+harness during 2026-08-10 through 2026-08-14. The detailed funnel and baseline
+ladder are in
 [`axis-smoke-and-final-evaluation-roadmap.md`](axis-smoke-and-final-evaluation-roadmap.md).
 
 ## Why this is now required
@@ -36,20 +37,16 @@ competitive value.
 Prioritize tasks that are not a restatement of the organ labels used to construct
 the experts.
 
-1. **Within-organ disease or state prediction.** Examples include tumor versus
-   normal or molecular subtype within a tissue. Patient-level splitting is
-   mandatory. A cross-organ cancer-type task is secondary because organ identity
-   can dominate it.
-2. **Spaceflight or stress-condition prediction.** Use OSDR flight versus ground or
+1. **Spaceflight or stress-condition prediction.** Use OSDR flight versus ground or
    related exposure labels only where study design and sample size permit.
    Leave-one-study-out or study-grouped evaluation is preferred; a random
    sample split is not sufficient.
-3. **Low-resource adaptation.** Deliberately limit labeled examples in a recipient
+2. **Low-resource adaptation.** Deliberately limit labeled examples in a recipient
    organ and measure whether the organ expert or a frozen safe-sharing policy
    improves sample efficiency.
-4. **Clinical outcome or survival.** Include only if endpoint definitions,
-   censoring, and patient grouping can be made reliable. Do not add it merely to
-   increase the task count.
+3. **Within-organ disease or state prediction.** Retain only after a cohort has
+   curated labels, a local matrix, and patient/study-disjoint grouping. ARCHS4
+   keyword flags are retrieval aids, not phenotype truth.
 
 Organ classification may be retained as a positive-control sanity check, but it
 cannot be the primary downstream claim.
@@ -64,13 +61,11 @@ head, hyperparameter budget, and seed policy.
 3. this project's frozen pooled trunk;
 4. frozen known-organ experts as a mechanistic upper bound;
 5. input-only hard and soft organ routing as deployable MoE conditions;
-6. BulkRNABert retrained on the exact frozen training partition as the closest
-   public same-data masked-reconstruction architecture comparison;
-7. published BulkRNABert after explicitly auditing GTEx/TCGA pretraining overlap;
-8. BulkFormer-37M as an approximate capacity-controlled modern comparator;
-9. published BulkFormer-147M using its exact released preprocessing, checkpoint,
+6. published BulkRNABert on a downstream cohort outside its disclosed pretraining
+   set;
+7. published BulkFormer-147M using its exact released preprocessing, checkpoint,
    gene order, and embedding contract as a practical SOTA ceiling; and
-10. optional recent bulk-expression comparators only after these comparisons are
+8. optional matched-data retraining only after these comparisons are
    reproducible.
 
 Both closer-peer and SOTA code paths are public. BulkRNABert is the better
@@ -80,10 +75,9 @@ freezing the benchmark, hash-pin their exact source, checkpoints, gene mappings,
 normalization, and embedding layers. Notebook output alone is not a valid baseline
 lineage.
 
-A GTEx-pretrained public checkpoint cannot be assumed independent of held-out GTEx
-donors. Retraining the BulkRNABert architecture on the exact frozen project
-partition is therefore the primary same-data comparison. Published checkpoints are
-reported separately as transfer references.
+The core table uses public checkpoints only on downstream cohorts outside their
+disclosed pretraining data. Retraining BulkRNABert on the exact project partition is
+an extension, not a critical-path dependency.
 
 Use two clearly separated comparison tiers:
 
@@ -175,12 +169,13 @@ The key scientific test is incremental:
 ## Execution priorities toward August 17
 
 1. Complete and interpret the frozen Stage 2B B0–B5 diagnostic.
-2. By August 2, screen tissue site, available demographic fields, cell composition,
-   and continuous biological programs using cached residuals and grouped probes.
+2. By August 2, screen tissue site, available demographic fields, and hash-pinned
+   Hallmark programs using cached residuals, within-organ permutations, grouped
+   probes, and a downstream-label probe. Cell composition is cut from this cycle.
 3. Implement at most one secondary axis that clears stability, confound, and
    per-organ safety gates; otherwise retain organ plus pooled fallback.
 4. Freeze and launch final training by August 7.
-5. Prepare and hash-pin BulkRNABert and BulkFormer during final-model execution,
+5. Prepare and hash-pin published BulkRNABert and BulkFormer during final-model execution,
    without delaying the architecture freeze.
 6. From August 10, run frozen linear-probe and low-label comparisons before any
    model-specific fine-tuning.
