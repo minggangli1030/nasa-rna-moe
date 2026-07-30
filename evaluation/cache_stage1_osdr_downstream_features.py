@@ -90,14 +90,8 @@ def main() -> None:
             raise ValueError(f"OSDR cohort artifact hash mismatch: {path.name}")
 
     expression = pd.read_parquet(expression_path)
-    retained = pd.read_csv(retained_path, keep_default_na=False)
-    sample_column = retained.columns[0]
-    retained = retained.rename(columns={sample_column: "sample_id"}).set_index("sample_id")
-    retained = retained[retained["valid_study_organ_contrast"].astype(str).str.lower().eq("true")]
     expression.index = expression.index.astype(str)
-    expression = expression.reindex(retained.index)
-    if expression.isna().any().any():
-        raise ValueError("retained OSDR membership is absent from expression cache")
+    all_sample_ids = expression.index.to_numpy(dtype=str)
     metadata_columns = {
         "sample_name",
         "condition",
@@ -106,12 +100,23 @@ def main() -> None:
         "species",
     }
     genes = [column for column in expression.columns if column not in metadata_columns]
+    full_coverage = load_coverage_artifact(
+        coverage_path, all_sample_ids, genes
+    )
+    retained = pd.read_csv(retained_path, keep_default_na=False)
+    sample_column = retained.columns[0]
+    retained = retained.rename(columns={sample_column: "sample_id"}).set_index("sample_id")
+    retained = retained[retained["valid_study_organ_contrast"].astype(str).str.lower().eq("true")]
+    retained_positions = pd.Index(all_sample_ids).get_indexer(retained.index)
+    if np.any(retained_positions < 0):
+        raise ValueError("retained OSDR membership is absent from coverage cache")
+    coverage = full_coverage[retained_positions]
+    expression = expression.reindex(retained.index)
+    if expression.isna().any().any():
+        raise ValueError("retained OSDR membership is absent from expression cache")
     truth = expression[genes].to_numpy(dtype=np.float32)
     if not np.isfinite(truth).all():
         raise ValueError("OSDR expression contains nonfinite values")
-    coverage = load_coverage_artifact(
-        coverage_path, expression.index.to_numpy(dtype=str), genes
-    )
 
     ledger = json.loads(ledger_path.read_text())
     training_root = Path(args.training_root)
