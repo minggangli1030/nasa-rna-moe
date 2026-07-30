@@ -1823,6 +1823,13 @@ immutable caches, runs the exact frozen B0–B4 evaluator, and immediately creat
 first training-only multiaxis inventory. It does not rerun B5, update a neural
 checkpoint, or access calibration/ARCHS4.
 
+Update after deployment: seed 42 completed at `2026-07-30T22:18:25Z`; all three
+caches verified; and B0–B4 launched at `2026-07-30T22:19:14Z`. In parallel, the
+exact open-access GTEx v8 subject and sample annotations were hash-pinned and joined
+to all 7,369 training rows/750 donors. Age bracket and sex code are complete; death
+Hardy scale is 0.46% missing. RIN and ischemic time are each 15.04% missing and are
+classified as nuisance controls. This inventory performed no efficacy fitting.
+
 ### 18.3 Proposed fast multiaxis funnel
 
 The intended question is:
@@ -1865,7 +1872,9 @@ pooled fallback. Refusing an unstable extra axis is an acceptable result.
 1. **Tissue site/anatomical subregion:** immediate; already represented in the GTEx
    manifest and Stage 2B B4.
 2. **Age/developmental stage and sex:** next if an exact ID-safe public GTEx metadata
-   join yields adequate repeated, organ-conditional contrasts.
+   join yields adequate repeated, organ-conditional contrasts. The join is now
+   complete: six age brackets and two raw sex-code levels cover all 750 training
+   donors. Their incremental utility and organ confounding remain unopened.
 3. **Cell-type composition:** continuous scores from one frozen public
    marker/reference method. Definitions must be frozen before residual fitting.
 4. **Immune, metabolic, mitochondrial, contractile, ECM, cell-cycle, and stress

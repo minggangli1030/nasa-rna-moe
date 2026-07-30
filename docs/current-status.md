@@ -216,6 +216,14 @@ training-only multiaxis Tier-0 inventory. Its implementation is commit
 worktree; the evaluator itself remains exact commit
 `20d000e0b8055f60d7dee8796b52834bd829ab43`.
 
+The first independent Tier-0 task also completed while B0–B4 was running. Exact
+open-access GTEx v8 subject and sample annotations were joined by sample/donor ID to
+all 7,369 training rows and 750 donors. Age bracket and raw sex code are complete;
+death Hardy scale is 0.46% missing. RIN and ischemic time are each 15.04% missing
+and remain nuisance controls. No residual or efficacy outcome was read. Canonical
+compact artifact:
+`artifacts/stage2_organ_expert_mechanism/multiaxis_metadata_d265073/`.
+
 The independent B5 refusal evaluator is already complete. The frozen
 similarity-aware model reduced leave-one-organ-out MSE to 0.586 versus 0.726 for the
 best identity-only null, flagged 25% of directed edges, and had additive-holdout

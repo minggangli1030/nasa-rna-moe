@@ -19,6 +19,14 @@ the training-only multiaxis Tier-0 inventory.
 The existing heartbeat was tightened from two hours to 30 minutes and extended
 through Tier-1 multiaxis screening and final architecture selection.
 
+In parallel with B0–B4, the exact open-access GTEx v8 subject and sample annotations
+were downloaded, hash-pinned, and joined by exact ID to all 7,369 training rows/750
+donors. Age bracket and raw sex code have zero missingness; death Hardy scale is
+0.46% missing. RIN and ischemic time are each 15.04% missing and remain technical
+nuisance controls. This was a Tier-0 availability audit only; it did not open
+residual efficacy. Compact verified artifact:
+`artifacts/stage2_organ_expert_mechanism/multiaxis_metadata_d265073/`.
+
 ## 2026-07-30 — Critical path changed to close MoE by the weekend
 
 The final presentation remains 2026-08-17. The immediate priority is now explicit:

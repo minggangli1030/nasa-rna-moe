@@ -1,0 +1,71 @@
+{
+  "biological_candidate_fields": {
+    "age_bracket": {
+      "donors_with_value": 750,
+      "level_counts": {
+        "20-29": 426,
+        "30-39": 414,
+        "40-49": 905,
+        "50-59": 2375,
+        "60-69": 2984,
+        "70-79": 265
+      },
+      "missing_fraction": 0.0,
+      "unique_nonmissing": 6
+    },
+    "death_hardy_scale": {
+      "donors_with_value": 736,
+      "missing_fraction": 0.00461392319174922,
+      "numeric_max": 4.0,
+      "numeric_min": 0.0,
+      "unique_nonmissing": 5
+    },
+    "sex_code": {
+      "donors_with_value": 750,
+      "missing_fraction": 0.0,
+      "numeric_max": 2.0,
+      "numeric_min": 1.0,
+      "unique_nonmissing": 2
+    }
+  },
+  "donors": 750,
+  "firewalls": {
+    "archs4_access": false,
+    "calibration_rows_in_output": false,
+    "neural_checkpoint_updates": false,
+    "outcome_based_field_selection": false
+  },
+  "inputs": {
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "sample_attributes_sha256": "74f6ab4c34ed2648d708a0ae6e6dff324f6c86ea723ae7d1c37d76f5221148f0",
+    "subject_attributes_sha256": "821bdaff39e7a9a1d166919b3c786724c2b79c2861aeb936a2537a0f59b066f7"
+  },
+  "interpretation": {
+    "death_hardy_scale": "candidate physiological/death-context covariate; treat cautiously and test primarily as a nuisance/confound before a biological axis",
+    "rin_and_ischemic_time": "technical nuisance controls, not biological experts",
+    "sex_code": "retain official raw GTEx v8 code until the official data dictionary is hash-pinned; do not infer labels from the integer"
+  },
+  "next_gate": "freeze field handling and grouped-CV protocol before joining these features to Stage 2B residual outcomes",
+  "organs": 8,
+  "rows": 7369,
+  "schema_version": 1,
+  "scope": "GTEx v8 training rows only; metadata inventory without efficacy fitting",
+  "status": "complete",
+  "technical_nuisance_fields": {
+    "ischemic_time_minutes": {
+      "donors_with_value": 746,
+      "missing_fraction": 0.15035961460170988,
+      "numeric_max": 2075.0,
+      "numeric_min": 17.0,
+      "unique_nonmissing": 1360
+    },
+    "rin": {
+      "donors_with_value": 746,
+      "missing_fraction": 0.15035961460170988,
+      "numeric_max": 10.0,
+      "numeric_min": 4.6,
+      "unique_nonmissing": 51
+    }
+  },
+  "tissue_sites": 23
+}
