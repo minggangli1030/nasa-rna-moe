@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-29 16:45 PDT / 2026-07-29 23:45 UTC
+**Updated:** 2026-07-29 17:07 PDT / 2026-07-30 00:07 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -104,6 +104,21 @@ summary already predicts high-rank oracle coefficients (rank 12.40, median
 component correlation 0.963) and recovers 69.8% of remaining error versus 33.6% for
 the trained head. Canonical diagnosis:
 [`stage2-aligned-program-collapse-diagnosis.md`](stage2-aligned-program-collapse-diagnosis.md).
+
+The user authorized the bounded repair. It is implemented and protocol-frozen at
+commit `51ab2f58ee683cd7b10f0d62c86e8e77354009dc`; protocol SHA256
+`89f6e97218a1871782e08725104e04ae8d1d40001d74ec4e09e01a32e80c5764`.
+The repair trains the organ-private path first, freezes it, projects only
+training-draw masked residuals into the unchanged decoder, and supervises the
+unchanged shared head on standardized coefficients. It includes extended-private,
+extended-generic, and random-basis controls plus per-organ safety gates.
+
+The exact detached VM worktree is
+`/media/volume/moe-reboot/worktrees/stage2_aligned_program_repair_51ab2f5`.
+Mechanical smoke is active in screen
+`stage2-aligned-program-repair-smoke`; automatic full continuation is waiting in
+`stage2-aligned-program-repair-continuation`. Full result target:
+`/media/volume/moe-reboot/results/stage2_aligned_program_repair_51ab2f5`.
 
 ## Completed seed-stability diagnosis
 

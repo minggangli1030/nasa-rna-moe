@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-29 16:45 PDT / 2026-07-29 23:45 UTC
+**Last updated:** 2026-07-29 17:07 PDT / 2026-07-30 00:07 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -69,6 +69,14 @@ summary is already adequate: a simple linear ridge predictor produced rank-12.40
 coefficients, median component correlation 0.963, and 69.8% error reduction versus
 the private path. The trained nonlinear head achieved only 33.6%. The next repair
 therefore changes the training sequence and target, not the model input or decoder.
+
+The user authorized that bounded repair. Commit
+`51ab2f58ee683cd7b10f0d62c86e8e77354009dc` and protocol SHA256
+`89f6e97218a1871782e08725104e04ae8d1d40001d74ec4e09e01a32e80c5764`
+are deployed to a clean detached primary-VM worktree. Seven focused local tests and
+the VM projection preflight pass. The three-seed mechanical smoke is active, and a
+separate continuation session will automatically start the full frozen run only
+after the smoke marker is complete.
 
 ## 2026-07-29 — Stage 2 representation-first pivot frozen
 
