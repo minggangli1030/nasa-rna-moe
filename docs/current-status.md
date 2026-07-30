@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 16:35 PDT / 2026-07-30 23:35 UTC
+**Updated:** 2026-07-30 15:52 PDT / 2026-07-30 22:52 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -41,6 +41,18 @@ replacement. The benchmark uses identical study-grouped splits and equal elastic
 net tuning for raw expression, PCA, pooled, pooled-adapter, true-organ, and blind
 hard/soft Stage 1 representations. This is cross-species downstream development,
 not an untouched final confirmation.
+
+The download and frozen QC completed: 297/892 requested metadata rows survived the
+14,000-nonzero-gene rule, and 292 samples from 18 studies retain an exact
+two-class study-organ contrast. No replacements were added. The first feature-cache
+attempt failed before producing model outcomes because it narrowed to 292 rows
+before validating a 297-row coverage artifact. The failed empty lineage is
+preserved. A versioned fix now validates full coverage order before explicit
+subsetting; commit `18f408c`, execution-v2 SHA256
+`7bfc1b08457d1d0e6ff3fec6266a276516fc9a2c5fee7bfc1e38860184549b2b`.
+Detached screen `stage1-osdr-continuation-18f408c` is actively caching all three
+Stage 1 seeds on the primary A100 and will run the grouped smoke and full evaluator
+without intervention.
 
 ARCHS4 disease/tumor is cut from the core until free-text candidates receive
 independent phenotype curation; its existing keyword flags are not labels. TCGA is

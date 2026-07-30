@@ -1,6 +1,21 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 16:35 PDT / 2026-07-30 23:35 UTC
+**Last updated:** 2026-07-30 15:52 PDT / 2026-07-30 22:52 UTC
+
+## 2026-07-30 — Frozen OSDR downstream run active on the A100
+
+The versioned NASA download and 14,000-gene QC retained 297/892 requested rows.
+After removing study-organ units that lost either flight or ground during QC,
+292 samples from 18 studies remain; no replacements were added.
+
+The first feature-cache attempt stopped before model outcomes on a coverage-order
+assertion: it compared the 292-row contrast subset directly with the complete
+297-row coverage artifact. The failed lineage is preserved. Commit `18f408c`
+validates the full order first and then applies explicit positions; its frozen
+execution-v2 manifest SHA256 is
+`7bfc1b08457d1d0e6ff3fec6266a276516fc9a2c5fee7bfc1e38860184549b2b`.
+Screen `stage1-osdr-continuation-18f408c` is using the primary A100 to cache seeds
+17/42/101, then automatically runs the grouped smoke and full evaluator.
 
 ## 2026-07-30 — Downstream harness moved onto the critical path
 
