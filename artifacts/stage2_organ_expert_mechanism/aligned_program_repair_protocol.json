@@ -1,0 +1,118 @@
+{
+  "schema_version": 2,
+  "protocol_name": "stage2_aligned_program_private_first_coefficient_supervision_repair",
+  "status": "frozen_before_repair_training",
+  "frozen_at_utc": "2026-07-30T00:15:00Z",
+  "authorized_by_user": true,
+  "trigger": "The frozen aligned-program model passed utility but collapsed to rank 1.22-1.31. Read-only diagnosis showed a rank-29 decoder, post-private oracle sample rank 12.89-14.34, and a donor-grouped linear probe recovering rank 12.40 from the existing hidden summary.",
+  "primary_question": "Does assigning the shared head an explicit training-only post-private coefficient target recover a useful, seed-reproducible, non-collapsed representation without per-organ harm?",
+  "inputs": {
+    "expression_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
+    "expression_metadata_sha256": "111be4b987cb99f85329018fb0df951e1cafe0b8bcd385c9c31b5f944e8bb741",
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "basis_bundle_sha256": "2d05ef136fe9e1660efe4bd649898412590ec6d36300da8c480b8bf75c919bfc",
+    "decoder_sha256": {
+      "program_decoder_sha256": "6ee414cf3bef516743aba7e39c46482104bd81c605332487aafbe7bdf4dbd7e7",
+      "random_decoder_sha256": "eb586fabbfc0a6e39645a9c4ff57d0fbf121c052477f3ab13c253df11710a43e"
+    },
+    "pooled_checkpoint_sha256": {
+      "17": "ae5d6d1619938d8061c8b5b6e1323ed345f71f67b34e3e065cc899f587da7c74",
+      "42": "969c510fb84e5e58605d34351db6c5608ef8d64d66b282ad9bf964b77bb33ce2",
+      "101": "3e9edacfb6b0e530f210f271af4802072a3c0154922bcf0b4b9f54e0ee612043"
+    },
+    "seeds": [17, 42, 101],
+    "training_donors": 750,
+    "calibration_donors": 188,
+    "score_genes": 4634,
+    "components": 32
+  },
+  "architecture": {
+    "pooled_trunk": "frozen seed-specific Stage 1 GTEx trunk",
+    "shared_path": "unchanged 768-dimensional observed-gene mean hidden summary, 64-dimensional nonlinear head, and exact fixed 32-component decoder",
+    "private_path": "hard-dispatched K8 residual adapters trained first and then frozen for both decoder conditions",
+    "target": "per-draw least-squares projection of the training-only residual after frozen pooled plus private prediction onto the masked rows of the fixed decoder",
+    "target_standardization": "per-component mean and standard deviation calculated only from the frozen phase-2 training schedule",
+    "conditions": [
+      "organ_private_phase1",
+      "organ_private_extended",
+      "generic_capacity_extended",
+      "coefficient_supervised_plus_frozen_private",
+      "random_coefficient_supervised_plus_frozen_private"
+    ],
+    "decoder_change": false,
+    "pooling_change": false,
+    "variance_regularizer": false
+  },
+  "training": {
+    "phase1_private_updates": 1500,
+    "phase2_shared_updates": 1500,
+    "batch_size": 8,
+    "validation_batch_size": 8,
+    "sampling_mode": "organ_sample_balanced",
+    "mask_scope": "30 percent of frozen score genes per fitting draw",
+    "mask_ratio": 0.3,
+    "mask_token": -10.0,
+    "program_head_dim": 64,
+    "private_adapter_dim": 64,
+    "generic_adapter_dim": 580,
+    "generic_capacity_tolerance_fraction": 0.02,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "optimizer": "AdamW",
+    "scheduler": "CosineAnnealingLR separately within each phase",
+    "projection_ridge": 1e-05,
+    "target_scale_floor": 0.0001,
+    "coefficient_loss_weight": 1.0,
+    "decoded_auxiliary_weight": 0.25,
+    "mixed_precision": false,
+    "checkpoint_policy": "predetermined final update",
+    "log_interval": 100
+  },
+  "evaluation": {
+    "split": "donor and connected-study-disjoint GTEx calibration",
+    "mask": "all 4634 frozen score genes",
+    "mask_seed": 271828,
+    "performance_aggregation": "equal organs, equal held-out donors within organ",
+    "coefficient_aggregation": "sample, donor-average, and within-organ-residual ranks",
+    "seed_policy": "report all three fixed seeds; select none",
+    "bootstrap": {
+      "unit": "held-out donor within organ",
+      "replicates": 2000,
+      "seed": 20260803
+    }
+  },
+  "success_gate": {
+    "positive_candidate_vs_pooled_in_all_seeds": true,
+    "minimum_private_gain_fraction_preserved": 0.9,
+    "candidate_vs_private_phase1_all_seed_bootstrap_intervals_above_zero": true,
+    "candidate_vs_extended_private_all_seed_bootstrap_intervals_above_zero": true,
+    "candidate_vs_random_basis_all_seed_bootstrap_intervals_above_zero": true,
+    "candidate_vs_extended_generic_all_seed_bootstrap_intervals_above_zero": true,
+    "maximum_per_organ_harm_fraction": 0.05,
+    "minimum_flattened_donor_coefficient_pearson": 0.5,
+    "minimum_pairwise_median_component_pearson": 0.3,
+    "minimum_sample_effective_rank": 8.0,
+    "minimum_donor_effective_rank": 6.0,
+    "minimum_within_organ_effective_rank": 8.0,
+    "joint_requirement": "utility, extended-budget controls, per-organ safety, cross-seed alignment, and all three non-collapse gates must pass"
+  },
+  "decision_rule": {
+    "joint_pass": "advance once to prospective study-disjoint confirmation",
+    "utility_only": "stop repairing coefficient identifiability and pivot representation",
+    "alignment_only": "do not advance a representation that lacks utility or safety",
+    "joint_fail": "pivot Stage 2 beyond this expression-PCA program representation"
+  },
+  "firewalls": {
+    "archs4_access": false,
+    "external_test_access": false,
+    "trunk_finetuning": false,
+    "basis_or_decoder_change": false,
+    "basis_fitting_on_calibration": false,
+    "best_seed_selection": false,
+    "post_outcome_gate_changes": false,
+    "condition_removal_after_outcomes": false,
+    "study_universality_claim": false
+  },
+  "claim_boundary": "This is a single bounded, diagnosis-driven repair evaluated on donor-disjoint GTEx development data. It cannot establish biological mechanism, independent-study universality, or downstream spaceflight or disease utility."
+}
