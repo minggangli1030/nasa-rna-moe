@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-29 23:30 PDT / 2026-07-30 06:30 UTC
+**Updated:** 2026-07-30 13:35 PDT / 2026-07-30 20:35 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -137,6 +137,59 @@ Canonical result:
 The next branch stops repairing raw-expression PCA coordinates and first audits
 mask-target invariance, then freezes a residual-aligned, mask-consistent,
 multi-attribute representation with organ experts retained as the benchmark.
+
+The external methodological review in `CLAUDE.md` has now been evaluated and
+translated into a corrected Stage 2B execution plan:
+[`stage2b-mask-consistent-sharing-plan.md`](stage2b-mask-consistent-sharing-plan.md).
+Its strongest additions are fail-closed phase-transition checks, a canonical
+full-score-mask input and target, functional share/decline stability as a primary
+gate, and a conservative refusal-rule deliverable.
+
+Two proposed claims were corrected before adoption. The existing donor-rank
+calculation is across individual donor vectors and is not capped at seven; existing
+oracle donor ranks reach 8.05. Also, pooling non-score hidden states from a partial
+mask would remain mask-dependent because transformer states can attend to visible
+score genes. Stage 2B must instead cache a full-score-mask forward pass.
+
+Claude's second review accepted the implementation-backed corrections. Codex's
+round-3 closure accepts the added cross-trunk oracle-transfer audit, makes the
+three-trunk continuation gate a stopping gate, requires canonical-cache round trips
+before any utility result is interpreted, and requires refusal coverage so a
+refuse-everything policy cannot pass.
+
+The first Stage 2B scientific candidate is now resolved as a clean causal repair:
+keep the exact expression-PCA decoder, frozen pooled trunks, valid phase-1 private
+paths, donor cohort, and evaluation estimand; change only the mask-dependent
+input/target, broken phase controls, and absent safety gate. Residual/pathway bases
+and shared experts are deferred rather than run in parallel.
+
+Claude's final implementation-only additions are accepted: exhaustive cache keys,
+fixed-batch deterministic cache reproduction, one gene-space-selected ridge value
+shared across trunks, a nonsaturated gate with a dead-parameter guard, explicit
+rank result records, training-only normalization, organ-balanced loss exposure, and
+a cross-host determinism smoke.
+
+Phase A is implemented in commit
+`b4100a1efd0090064a1a079fe658d7f116526373` and pushed to `origin/main`.
+It adds reusable positive-LR, exact optimizer-coverage, early/final parameter-delta,
+and tensor-hash guards; constructs fresh second-phase optimizers; and requires a
+complete seed-by-organ condition matrix. The focused local Stage 2 suite passes
+38 tests.
+
+The exact commit is deployed in the clean detached primary-VM worktree
+`/media/volume/moe-reboot/worktrees/stage2b_phase_a_b4100a1`. A seed-17 mechanical
+smoke is running in screen `stage2b-phase-a-smoke`, writing only to the new path
+`/media/volume/moe-reboot/results/stage2b_phase_a_smoke_b4100a1`. This smoke reuses
+the old frozen repair inputs solely to prove the guards execute; it creates no new
+scientific result.
+
+No Stage 2B scientific run has been launched and no new diagnostic protocol is
+frozen yet. The next implementation is the single training-only B0–B5 diagnostic.
+Both GPU hosts were verified idle before the mechanical smoke: primary
+`moe-reboot` has an A100 40 GB and the complete repair lineage; secondary
+`149.165.168.111` has an A100 20 GB, the exact expression table, and all three pooled
+trunks. Once code and protocols are frozen, primary will run seeds 17/42 and
+secondary seed 101.
 
 ## Completed seed-stability diagnosis
 

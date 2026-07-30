@@ -1,10 +1,75 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-29 23:30 PDT / 2026-07-30 06:30 UTC
+**Last updated:** 2026-07-30 13:35 PDT / 2026-07-30 20:35 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
 2,800-line pre-cleanup chronology remains recoverable from Git commit `2bc1bef`.
+
+## 2026-07-30 — Stage 2B Phase A guards implemented and deployed
+
+Claude's final implementation review was accepted without changing the settled
+scientific plan. It adds exhaustive canonical-cache keys, fixed-batch determinism,
+one gene-space-selected ridge value across trunks, a nonsaturated gate that must
+move, explicit rank records, training-only normalization, and a cross-host smoke
+before work is split.
+
+Phase A commit `b4100a1efd0090064a1a079fe658d7f116526373` adds reusable
+positive-learning-rate, exact optimizer-coverage, parameter-movement, and
+phase-boundary tensor-hash guards. It also fixes the known second-phase failure by
+constructing fresh optimizers and makes the full seed-by-organ condition matrix a
+required evaluator output.
+
+The local focused Stage 2 suite passes 38 tests, including deliberate zero-LR,
+unchanged-module, incomplete-optimizer, and identical-hash failures plus the valid
+terminal cosine-zero case. The commit is pushed and deployed to a clean primary-VM
+worktree. A seed-17 mechanical smoke is running in
+`stage2b-phase-a-smoke`; no Stage 2B scientific result has been opened.
+
+## 2026-07-30 — External Stage 2 critique reviewed and execution plan corrected
+
+The methodological proposal in `CLAUDE.md` was reviewed against the actual Stage 2
+trainer, evaluator, and immutable results. The useful core is adopted: fix the
+zero-learning-rate phase-transition failure before another run, remove mask
+dependence from both the shared input and coefficient target, make per-organ safety
+and functional share/decline stability primary, and preserve a refusal rule as a
+valid result if helpful sharing remains unstable.
+
+The review also found material corrections. Donor-level rank is computed across
+individual donor vectors, not eight organ means, and is not capped at seven; the
+existing oracle reaches 8.05. The evaluator uses entropy effective rank, while the
+proposal's derivation used participation ratio. Further, selecting only non-score
+hidden states from a partial-mask forward pass would not be mask-invariant because
+transformer hidden states share context. The next shared input must come from a
+canonical full-score-mask forward pass.
+
+The refusal analysis will not treat raw A750+B750 versus A1500 substitution harm as
+pure pairwise incompatibility. It will model donor-specific excess effect relative
+to matched random auxiliaries, use leave-one-organ-out validation, and retain the
+eight additive edges as a small independent check.
+
+The reviewed plan is
+[`docs/stage2b-mask-consistent-sharing-plan.md`](docs/stage2b-mask-consistent-sharing-plan.md).
+No scientific run has started. Harness repair and a frozen training-only diagnostic
+are the blocking next steps; the diagnostic decision tree then fixes the candidate
+basis/axis before VM execution.
+
+Claude's round-2 response accepted the corrections and added a useful cross-trunk
+oracle-transfer audit. Codex accepted it with bounded wording: cross-seed agreement
+supports reproducible sample-associated structure, not intrinsic biology; the old
+probe regression uses its exact immutable population, while the new scientific
+analysis uses training donors only.
+
+Planning is now closed. The three-trunk continuation gate is bidirectional, cache
+round trips are mandatory before scientific interpretation, and the refusal audit
+must report the fraction of edges it flags. The first candidate keeps the exact
+expression-PCA decoder and valid private states so the mask fix is a clean causal
+test; residual/pathway bases are deferred.
+
+Both GPU hosts were verified idle. Primary `moe-reboot` has the complete repair
+lineage; secondary `149.165.168.111` already has the expression table and all pooled
+trunks and needs only the compact seed-101 private state plus frozen code/protocol.
+The planned allocation is seeds 17/42 on primary and seed 101 on secondary.
 
 ## 2026-07-29 — Aligned shared/private program-head pivot launched
 
