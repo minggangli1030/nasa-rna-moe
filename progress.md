@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-29 17:07 PDT / 2026-07-30 00:07 UTC
+**Last updated:** 2026-07-29 23:30 PDT / 2026-07-30 06:30 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
@@ -77,6 +77,28 @@ are deployed to a clean detached primary-VM worktree. Seven focused local tests 
 the VM projection preflight pass. The three-seed mechanical smoke is active, and a
 separate continuation session will automatically start the full frozen run only
 after the smoke marker is complete.
+
+The three-seed repair subsequently completed. Aggregate utility remained strong:
+35.9% mean reduction versus pooled, 5.2% versus the phase-1 private path, and 5.1%
+versus the random basis. Direct supervision raised sample coefficient rank only to
+1.81–2.18, far below the frozen minimum of 8; donor and within-organ ranks also
+failed, flattened cross-seed correlation fell to 0.271, and skin crossed the 5%
+harm boundary in two seeds. Frozen decision:
+`coefficient_supervision_repair_fail_pivot_representation`.
+
+The post-completion audit found that nominal extended-private and extended-generic
+controls reused optimizers whose learning rate had reached zero after phase 1. The
+private states and scores are exactly unchanged in all three seeds, so extended
+budget superiority is not claimed. Candidate and random-basis training are
+unaffected, and the independent rank/alignment/safety failures already determine
+the pivot.
+
+Stage 2 now stops patching expression-PCA coordinates. The prioritized next branch
+audits partial-mask versus full-mask target invariance, removes score genes from
+the shared-head input to align fit and evaluation, and freezes a common
+training-only residual or pathway representation. Organ remains the validated
+benchmark while tissue site and cross-cutting platform/quality/pathway attributes
+become eligible axes.
 
 ## 2026-07-29 — Stage 2 representation-first pivot frozen
 

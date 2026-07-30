@@ -1,6 +1,6 @@
 # Stage 2 aligned-program collapse diagnosis
 
-**Status:** read-only diagnosis complete
+**Status:** read-only diagnosis and one bounded repair complete
 
 **Evaluated scientific training commit:** `93e5a9b5b95652e37b563c8bc649bb058524b20b`
 
@@ -172,7 +172,7 @@ generic variance-maximization penalty is currently justified.
 - require donor-level and within-organ coefficient effective rank, not only global
   rank;
 - report per-organ benefit and harm rather than only the aggregate;
-- require cross-seed coordinate correlation after the fixed orthonormal transform;
+- require cross-seed coordinate correlation in the exact fixed decoder coordinates;
   and
 - treat all results as donor-disjoint GTEx development evidence until confirmed on
   a new study-disjoint cohort.
@@ -181,3 +181,19 @@ generic variance-maximization penalty is currently justified.
 
 Read-only numeric outputs are stored in
 `artifacts/stage2_organ_expert_mechanism/aligned_program_diagnosis_ba07442/`.
+
+## Repair disposition
+
+The prescribed private-first coefficient-supervision repair was executed once
+across all three fixed seeds. Utility remained positive, but sample, donor, and
+within-organ coefficient ranks stayed near 2 rather than clearing their frozen
+thresholds. Flattened cross-seed alignment and per-organ safety also failed.
+
+The probe result did not transfer from full-mask grouped validation to training on
+partial-mask coefficient targets. A train/evaluation mask-target mismatch is now a
+plausible explanation, but it remains post-result and unconfirmed.
+
+Per the frozen decision rule, do not continue tuning this expression-PCA
+representation. See
+[`stage2-aligned-program-repair-result.md`](stage2-aligned-program-repair-result.md)
+for the verified result, control-integrity limitation, and representation pivot.

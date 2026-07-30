@@ -145,3 +145,23 @@ the primary bottleneck.
 
 The detailed evidence and bounded repair are in
 [`stage2-aligned-program-collapse-diagnosis.md`](stage2-aligned-program-collapse-diagnosis.md).
+
+## Bounded repair outcome
+
+The private-first coefficient-supervision repair completed all three fixed seeds.
+It preserved utility but did not solve identifiability:
+
+- candidate versus pooled: +37.756%, +34.145%, and +35.769%;
+- sample effective rank: 1.81–2.18 versus the frozen minimum of 8;
+- donor effective rank: 1.39–2.25 versus the minimum of 6;
+- within-organ effective rank: 1.95–2.59 versus the minimum of 8;
+- minimum flattened donor correlation: 0.271 versus 0.5; and
+- skin harm exceeded 5% in seeds 17 and 101.
+
+The nominal extended-budget controls were invalid because their reused optimizer
+learning rates remained zero after phase 1. This does not alter the decision
+because rank, alignment, and safety independently failed. The expression-PCA
+program-head branch stops here.
+
+Canonical result and future plan:
+[`stage2-aligned-program-repair-result.md`](stage2-aligned-program-repair-result.md).

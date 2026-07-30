@@ -1,0 +1,74 @@
+{
+  "archs4_accessed": false,
+  "best_seed_selection_allowed": false,
+  "claim_boundary": "This is a single bounded, diagnosis-driven repair evaluated on donor-disjoint GTEx development data. It cannot establish biological mechanism, independent-study universality, or downstream spaceflight or disease utility.",
+  "coefficient_diagnostics": {
+    "donor_effective_rank_by_seed": {
+      "101": 1.5312621011961145,
+      "17": 2.245690997523883,
+      "42": 1.3916227731227724
+    },
+    "minimum_donor_effective_rank": 1.3916227731227724,
+    "minimum_flattened_donor_coefficient_pearson": 0.2709032623656623,
+    "minimum_pairwise_median_component_pearson": 0.5804064249198637,
+    "minimum_sample_effective_rank": 1.8145022871239564,
+    "minimum_within_organ_effective_rank": 1.9522856515138889,
+    "pairwise_flattened_pearson": [
+      0.5801381388891487,
+      0.2709032623656623,
+      0.7919394320083547
+    ],
+    "pairwise_median_component_pearson": [
+      0.666146641439306,
+      0.5804064249198637,
+      0.8334998272234291
+    ],
+    "sample_effective_rank_by_seed": {
+      "101": 2.059928590290445,
+      "17": 2.184557860140557,
+      "42": 1.8145022871239564
+    },
+    "within_organ_effective_rank_by_seed": {
+      "101": 2.5923068897792385,
+      "17": 1.9522856515138889,
+      "42": 2.246155266079878
+    }
+  },
+  "decision": "coefficient_supervision_repair_fail_pivot_representation",
+  "development_only": true,
+  "external_data_accessed": false,
+  "gates": {
+    "beats_extended_generic_all_seed_intervals": true,
+    "beats_extended_private_all_seed_intervals": true,
+    "beats_private_phase1_all_seed_intervals": true,
+    "beats_random_basis_all_seed_intervals": true,
+    "coefficient_component_reproducibility": true,
+    "coefficient_donor_noncollapse": false,
+    "coefficient_flattened_reproducibility": false,
+    "coefficient_sample_noncollapse": false,
+    "coefficient_within_organ_noncollapse": false,
+    "minimum_private_gain_preserved": true,
+    "per_organ_safety": false,
+    "positive_vs_pooled_all_seeds": true
+  },
+  "hashes": {
+    "coefficient_reproducibility_sha256": "e7ecb954c62cb97371d0791796c4cdfbe4d3bd9fc3b974c7ff75811f846de729",
+    "per_organ_safety_sha256": "4af2b3779e9da3b509f1eeb001863a09a18f945d0e4b5f61c9aac64e8db7bcc5",
+    "performance_comparisons_sha256": "4b540559a7b734daba6b2c9710b3b282d3a08a220b12bcded9d7efd5560977af",
+    "protocol_sha256": "89f6e97218a1871782e08725104e04ae8d1d40001d74ec4e09e01a32e80c5764",
+    "seed_score_sha256": {
+      "101": "cdffde6654ce3498b2951190760b1c532162a7f9826d5da4abcaf1c4a12a5a9d",
+      "17": "6406aa71618a92b67b50a1c821a85388ea141a5b90c385e548347fc48ebeb56d",
+      "42": "363e0f9f85cff1a3659d9ad850113744455f89cea89e05ceda411379d6026a73"
+    }
+  },
+  "private_gain_preservation_fraction": 1.114120229802353,
+  "research_stage": "stage2_aligned_program_coefficient_supervision_repair_evaluation",
+  "schema_version": 2,
+  "seeds": [
+    17,
+    42,
+    101
+  ],
+  "status": "complete"
+}

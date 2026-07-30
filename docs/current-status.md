@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-29 17:07 PDT / 2026-07-30 00:07 UTC
+**Updated:** 2026-07-29 23:30 PDT / 2026-07-30 06:30 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -113,12 +113,30 @@ training-draw masked residuals into the unchanged decoder, and supervises the
 unchanged shared head on standardized coefficients. It includes extended-private,
 extended-generic, and random-basis controls plus per-organ safety gates.
 
-The exact detached VM worktree is
-`/media/volume/moe-reboot/worktrees/stage2_aligned_program_repair_51ab2f5`.
-Mechanical smoke is active in screen
-`stage2-aligned-program-repair-smoke`; automatic full continuation is waiting in
-`stage2-aligned-program-repair-continuation`. Full result target:
-`/media/volume/moe-reboot/results/stage2_aligned_program_repair_51ab2f5`.
+The three-seed repair and frozen evaluator completed at 2026-07-29 23:14 PDT. It
+retained strong utility: +37.756%, +34.145%, and +35.769% versus pooled and
++3.207%, +5.885%, and +6.385% versus the phase-1 private path. It also beat the
+random-basis condition in every seed.
+
+It did not recover an acceptable representation. Minimum sample, donor, and
+within-organ effective ranks were 1.815, 1.392, and 1.952, versus frozen thresholds
+of 8, 6, and 8. Minimum flattened donor correlation was 0.271 versus 0.5. Skin was
+harmed by 5.890% and 6.478% in two seeds, crossing the frozen 5% safety boundary.
+Decision:
+`coefficient_supervision_repair_fail_pivot_representation`.
+
+A post-completion integrity audit also invalidated the two nominal extended-budget
+controls: reused optimizers remained at zero learning rate after phase 1. The
+phase-1 and “extended” private states and scores are exactly identical in all three
+seeds. The candidate and random-basis heads used new optimizers and are unaffected.
+The failed rank, alignment, and safety gates independently mandate the same pivot,
+so the run is not repeated or tuned.
+
+Canonical result:
+[`stage2-aligned-program-repair-result.md`](stage2-aligned-program-repair-result.md).
+The next branch stops repairing raw-expression PCA coordinates and first audits
+mask-target invariance, then freezes a residual-aligned, mask-consistent,
+multi-attribute representation with organ experts retained as the benchmark.
 
 ## Completed seed-stability diagnosis
 
