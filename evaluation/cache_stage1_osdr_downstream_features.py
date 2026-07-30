@@ -214,7 +214,7 @@ def main() -> None:
         if not all(
             np.isfinite(value).all()
             for value in arrays.values()
-            if np.asarray(value).dtype.kind not in {"U", "S"}
+            if np.asarray(value).dtype.kind not in {"U", "S", "O"}
         ):
             raise RuntimeError(f"seed {seed} features contain nonfinite values")
         metadata = {

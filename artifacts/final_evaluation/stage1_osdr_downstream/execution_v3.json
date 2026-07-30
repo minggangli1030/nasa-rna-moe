@@ -1,0 +1,125 @@
+{
+  "cache": {
+    "batch_size": 4,
+    "conditions": [
+      "pooled",
+      "pooled_adapter",
+      "true_organ",
+      "blind_router_hard",
+      "blind_router_soft"
+    ],
+    "seeds": [
+      17,
+      42,
+      101
+    ]
+  },
+  "frozen_before_model_outcomes": true,
+  "full": {
+    "best_seed_selection": false,
+    "grid": [
+      {
+        "C": 0.01,
+        "l1_ratio": 0.0
+      },
+      {
+        "C": 0.01,
+        "l1_ratio": 0.5
+      },
+      {
+        "C": 0.01,
+        "l1_ratio": 1.0
+      },
+      {
+        "C": 0.1,
+        "l1_ratio": 0.0
+      },
+      {
+        "C": 0.1,
+        "l1_ratio": 0.5
+      },
+      {
+        "C": 0.1,
+        "l1_ratio": 1.0
+      },
+      {
+        "C": 1.0,
+        "l1_ratio": 0.0
+      },
+      {
+        "C": 1.0,
+        "l1_ratio": 0.5
+      },
+      {
+        "C": 1.0,
+        "l1_ratio": 1.0
+      },
+      {
+        "C": 10.0,
+        "l1_ratio": 0.0
+      },
+      {
+        "C": 10.0,
+        "l1_ratio": 0.5
+      },
+      {
+        "C": 10.0,
+        "l1_ratio": 1.0
+      }
+    ],
+    "inner_folds": 3,
+    "outer_folds": 5,
+    "report_all_seeds": true,
+    "seeds": [
+      17,
+      42,
+      101
+    ]
+  },
+  "implementation_sha256": {
+    "continuation": "c4692cdf87ab02bde64bb95a6ce11c601faed58746f69a90f5a43c969b0c4d02",
+    "evaluator": "9c07e0a8c6c17b0bb66f8a584f35444056eb6a7c638e8fd2406e1393d4e2c2a2",
+    "feature_cache": "3c9bffafd08cf0e09052c965693f3ae4e28b40a2580ea7522cb7aa90ecc9a8d9"
+  },
+  "interpretation": {
+    "deployable_comparisons": [
+      "blind_router_hard versus pooled",
+      "blind_router_soft versus pooled"
+    ],
+    "must_also_compare": [
+      "raw_expression",
+      "pca_64"
+    ],
+    "positive_development_signal": "positive true-organ minus pooled AUROC in all three seeds; no universality or final-confirmation claim",
+    "primary_comparison": "true_organ versus pooled AUROC, all seeds"
+  },
+  "protocol_sha256": "04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9",
+  "schema_version": 1,
+  "smoke": {
+    "grid": [
+      {
+        "C": 0.1,
+        "l1_ratio": 0.0
+      },
+      {
+        "C": 0.1,
+        "l1_ratio": 1.0
+      },
+      {
+        "C": 1.0,
+        "l1_ratio": 0.0
+      },
+      {
+        "C": 1.0,
+        "l1_ratio": 1.0
+      }
+    ],
+    "inner_folds": 2,
+    "outer_folds": 2,
+    "role": "mechanical only; cannot select a representation",
+    "seeds": [
+      17
+    ]
+  },
+  "status": "frozen_stage1_osdr_downstream_execution"
+}
