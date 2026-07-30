@@ -1,10 +1,32 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 14:18 PDT / 2026-07-30 21:18 UTC
+**Last updated:** 2026-07-30 14:55 PDT / 2026-07-30 21:55 UTC
 
 Start with [`docs/current-status.md`](docs/current-status.md). It is the canonical
 operational handoff. This file retains only decision-relevant milestones; the
 2,800-line pre-cleanup chronology remains recoverable from Git commit `2bc1bef`.
+
+## 2026-07-30 — August 17 downstream and multi-axis evaluation added
+
+The final presentation date is 2026-08-17. Mentor feedback correctly identifies
+the next evidence gap: reconstruction improvement over this project's pooled model
+does not by itself establish downstream value.
+
+The final evaluation will compare frozen organ-MoE representations against raw
+expression, PCA/NMF, the pooled trunk, and Walt's BulkFormer under identical
+patient/donor/study-disjoint splits and matched downstream heads. Primary tasks will
+test disease/state, spaceflight/stress, or low-resource adaptation rather than
+organ prediction, which would be circular.
+
+The plan also broadens candidate expert axes without abandoning the validated organ
+experts. Tissue site, cell-type composition, disease/physiological state,
+age/development, sex, and continuous pathway programs will be screened for
+incremental residual value beyond organ. Technical variables remain nuisance
+controls. The preferred architecture is factorized: protected organ experts plus
+separately gated site/condition/pathway residual adapters.
+
+Canonical roadmap:
+[`docs/august-17-downstream-and-multiaxis-plan.md`](docs/august-17-downstream-and-multiaxis-plan.md).
 
 ## 2026-07-30 — Frozen Stage 2B diagnostics pass both smoke gates and start
 

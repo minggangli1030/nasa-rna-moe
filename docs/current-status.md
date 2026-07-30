@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 14:18 PDT / 2026-07-30 21:18 UTC
+**Updated:** 2026-07-30 14:55 PDT / 2026-07-30 21:55 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -210,6 +210,21 @@ to primary and the frozen B0–B5 evaluators will run. The larger neural candida
 remains blocked until Phase B applies its frozen axis/representation/refusal
 decision.
 
+Seed 17 and secondary seed 101 subsequently completed 7,369/7,369 rows with
+bitwise determinism and exact immutable metadata. Seed 42 started automatically at
+2026-07-30 14:48 PDT and is active at full GPU utilization. The observed per-seed
+wall time is about 30 minutes, giving a seed-42 ETA of approximately 15:18–15:25
+PDT. Compact transfer and checksum verification should take minutes; the
+all-pair B0–B4 CPU evaluation is expected to place the complete report around
+16:30–18:30 PDT if no fail-closed issue occurs.
+
+The independent B5 refusal evaluator is already complete. The frozen
+similarity-aware model reduced leave-one-organ-out MSE to 0.586 versus 0.726 for the
+best identity-only null, flagged 25% of directed edges, and had additive-holdout
+rank correlation 0.595 across eight edges. This is promising training-development
+evidence, not a universal refusal rule; the additive holdout is very small and its
+classification recall was weak.
+
 ## Completed seed-stability diagnosis
 
 The frozen 3×3 design crossed pooled trunks 17, 42, and 101 with independent
@@ -350,6 +365,21 @@ A new untouched multisource study-disjoint cohort is required for Stage 2 study
 universality.
 
 ## Presentation package
+
+The final presentation is scheduled for **2026-08-17**. Its evaluation roadmap is
+[`august-17-downstream-and-multiaxis-plan.md`](august-17-downstream-and-multiaxis-plan.md).
+The final evidence package will add downstream task comparisons against Walt's
+BulkFormer, raw expression, PCA/NMF, the pooled trunk, and organ-MoE routing under
+identical donor/patient/study-disjoint splits. Organ prediction is only a sanity
+check; primary tasks must test disease/state, spaceflight/stress, or low-resource
+adaptation so the result is not circular.
+
+The same roadmap defines candidate biological axes beyond organ—tissue site,
+cell-type composition, disease/physiological state, age/development, sex, and
+continuous pathway programs—and separates them from technical nuisance variables.
+The preferred integration is factorized: a protected organ expert plus optional
+site/condition/pathway residual adapters, each with its own safety gate, rather than
+a sparse Cartesian expert for every attribute combination.
 
 The July 30 package is:
 
