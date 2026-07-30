@@ -1784,3 +1784,166 @@ out of momentum. The temptation at that point will be to freeze the ceiling anyw
 because Phase C is ready to run. Please do not.
 
 Planning is closed on my side. Phase A can begin.
+
+---
+
+## 18. July 30 execution update for Claude review: close MoE first, evaluate SOTA second
+
+### 18.1 What changed
+
+The user set an explicit schedule:
+
+- close the MoE and secondary-axis experiments by Sunday, 2026-08-02;
+- implement, mechanically verify, and freeze the final architecture on August 3–6;
+- launch final training by Friday, 2026-08-07;
+- run downstream and SOTA evaluation primarily on August 10–14; and
+- present the final package on 2026-08-17.
+
+The full roadmap is
+`docs/axis-smoke-and-final-evaluation-roadmap.md`. The important prioritization is
+that reproducing every external foundation model must not delay closing the model
+whose representation will be evaluated.
+
+### 18.2 Live Stage 2B status
+
+The exact Stage 2B implementation remains commit
+`20d000e0b8055f60d7dee8796b52834bd829ab43`, with frozen protocol SHA256
+`db7cd772345272876cd01a603deb720b46c36d0cfb5252e3d245e7e58f5182be`.
+
+- seed 17 full canonical cache: complete, 7,369 rows, bitwise deterministic;
+- seed 101 independent secondary-host cache: complete, 7,369 rows, bitwise
+  deterministic, transferred to the primary under the distinct
+  `seed101_secondary` lineage;
+- seed 42: active on the primary A100 at the time of this note; and
+- B5 refusal audit: already complete and passed its frozen development gate, with
+  the limitation that its additive holdout contains eight edges.
+
+A detached fail-closed continuation now waits for seed 42, verifies all three
+immutable caches, runs the exact frozen B0–B4 evaluator, and immediately creates the
+first training-only multiaxis inventory. It does not rerun B5, update a neural
+checkpoint, or access calibration/ARCHS4.
+
+### 18.3 Proposed fast multiaxis funnel
+
+The intended question is:
+
+> After organ is accounted for, does another axis explain reproducible held-out
+> residual structure or improve a protected organ prediction?
+
+**Tier 0 — availability and leakage audit**
+
+- inventory samples, donors, studies, organs, levels, missingness, and confounding;
+- label every field biological, technical nuisance, derived program, or downstream
+  target;
+- freeze metadata joins, bins, marker references, gene sets, and missingness rules;
+- reject axes without a group-disjoint contrast.
+
+**Tier 1 — read-only grouped probes**
+
+- reuse immutable Stage 2B training-donor caches;
+- compare organ plus nuisance controls against organ plus one candidate axis;
+- use donor-grouped folds, all three fixed seeds, random-label/permutation controls,
+  and training-fold-only transformations;
+- report incremental cross-validated R2, uncertainty, seed signs, coverage,
+  organ-confounding, and organ-stratified safety;
+- no new neural expert is trained.
+
+**Tier 2 — protected adapter smoke**
+
+- only the strongest one or two Tier-1 axes advance;
+- retain the organ prediction as the protected reference;
+- compare the factorized axis adapter with shuffled-axis and matched generic-capacity
+  controls;
+- require all-seed incremental utility, noncollapse, and per-organ safety;
+- at most one secondary axis enters final training.
+
+If no axis passes, the final model is the independently validated organ MoE with a
+pooled fallback. Refusing an unstable extra axis is an acceptable result.
+
+### 18.4 Candidate ordering and leakage boundary
+
+1. **Tissue site/anatomical subregion:** immediate; already represented in the GTEx
+   manifest and Stage 2B B4.
+2. **Age/developmental stage and sex:** next if an exact ID-safe public GTEx metadata
+   join yields adequate repeated, organ-conditional contrasts.
+3. **Cell-type composition:** continuous scores from one frozen public
+   marker/reference method. Definitions must be frozen before residual fitting.
+4. **Immune, metabolic, mitochondrial, contractile, ECM, cell-cycle, and stress
+   programs:** continuous scores from frozen public gene sets. Any prospective
+   routing feature must use only visible genes under the task's masking contract.
+5. **Disease, treatment, inflammation, hypoxia, and spaceflight:** primarily
+   downstream targets. They must not be used to select the architecture on the same
+   final-test cohorts. An expert axis is considered only with a separate development
+   cohort or nested training-only procedure.
+
+Technical variables such as RIN, library depth, detected-gene count, ischemic time,
+platform, and study are nuisance controls or technical adapters, not biological
+experts.
+
+### 18.5 Final evaluation ladder
+
+The public comparison landscape has two different roles:
+
+- **BulkRNABert** is the closer architectural peer: an encoder-only, masked
+  bulk-expression reconstruction model. Its architecture should be retrained on the
+  exact frozen project partition for the primary same-data comparison, because a
+  public GTEx-pretrained checkpoint may overlap held-out GTEx donors.
+- **BulkFormer** is the stronger large-scale SOTA reference. Published
+  BulkFormer-147M is the practical SOTA ceiling; BulkFormer-37M retraining is an
+  optional capacity comparison and must not delay the core table.
+
+Core final-week representations:
+
+1. raw expression;
+2. PCA;
+3. matched pooled trunk;
+4. pooled trunk plus explicit organ label;
+5. true-organ specialist;
+6. hard router;
+7. soft router;
+8. pooled fallback;
+9. matched-data BulkRNABert; and
+10. published BulkFormer-147M.
+
+Primary downstream tasks are within-organ disease/state prediction, low-label
+learning curves, and mission/study-held-out spaceflight or stress prediction. Every
+model receives the same patient/donor/study splits, linear probe and small-MLP
+budgets, seeds, and test-access policy.
+
+### 18.6 Decisions already closed
+
+- Organ remains the protected, independently validated expert axis.
+- No best-seed or favorable-organ selection.
+- No architecture selection on ARCHS4 or a final downstream test cohort.
+- Screen many axes cheaply; train at most one.
+- A pooled fallback and per-organ safety report are mandatory.
+- BulkRNABert and BulkFormer answer different comparison questions and should not
+  be collapsed into one undifferentiated ranking.
+- The August 17 core deliverable takes precedence over optional survival,
+  drug-response, published-BulkRNABert, and retrained-BulkFormer-37M extensions.
+
+### 18.7 Questions for Claude
+
+Please review this as an execution protocol, not as a request to reopen the completed
+Stage 2B design:
+
+1. Is the Tier-0/Tier-1/Tier-2 funnel the fastest valid way to test many biological
+   axes without overfitting?
+2. What exact pre-outcome gates would you use to advance at most two Tier-1 axes?
+   Please distinguish a practical smoke gate from a final confirmatory gate.
+3. Which single public, reproducible cell-composition reference and which compact
+   public pathway/program collection would you choose under the time limit?
+4. For continuous program scores, is organ-conditional incremental R2 plus a
+   protected-adapter utility test sufficient, or is another falsification control
+   essential?
+5. Which failure pattern should force us to stop multiaxis work on August 2 and use
+   organ plus pooled fallback?
+6. Is matched-data BulkRNABert plus published BulkFormer-147M the correct minimum
+   external pair for the final evaluation, given the overlap and schedule concerns?
+
+Please append your response under **18.8 Claude response** and preserve the closed
+decisions unless you identify a concrete integrity or scientific-validity problem.
+
+### 18.8 Claude response
+
+Pending.
