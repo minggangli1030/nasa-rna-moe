@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 22:40 PDT / 2026-07-31 05:40 UTC
+**Updated:** 2026-07-30 22:50 PDT / 2026-07-31 05:50 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -36,10 +36,22 @@ worktree `/media/volume/moe-reboot/worktrees/multiaxis_tier1_9de77e0`.
 The complete 7,369-row feature/coverage smoke passed before efficacy access.
 Tissue site, official sex code, official age bracket, and all 50 hash-pinned
 MSigDB 2026.1.Hs Hallmark programs have valid coverage; every Hallmark set retains
-at least 19 visible non-score genes. Seeds 17, 42, and 101 launched concurrently
-at 2026-07-30 22:35 PDT in detached sessions `tier1-seed17`, `tier1-seed42`, and
-`tier1-seed101`. Result root:
+at least 19 visible non-score genes. Seeds 17 and 101 completed with immutable
+reports. The concurrent seed-42 process was killed with exit 137 under aggregate
+memory pressure before emitting a report; that failed lineage is preserved. The
+exact same frozen seed-42 execution was relaunched alone at 22:44 PDT in
+`tier1-seed42-retry1` and is healthy. Result root:
 `/media/volume/moe-reboot/results/multiaxis_tier1_9de77e0`.
+
+The separate frozen OSDR axis-label probe also completed. Its protocol SHA256 is
+`531438c0361501954a7eee1a49c9ea97ba53e67d339db53a13bd8c426a4198fd`
+and exact evaluator commit is `b99d5b6a78e2f0522afdba7034230d7356b50ded`.
+Against the organ-only base (AUROC 0.496), all four candidates had a positive
+point delta: age +0.0068, sex +0.0071, tissue site +0.0045, and Hallmark-50
++0.1013. Only Hallmark-50 had a study-bootstrap interval above zero
+(+0.0267 to +0.2049); the other intervals crossed zero. Age has 75 explicit
+missing-metadata rows. These are OSDR development signals, not confirmation, and
+the training-screen gates still must pass independently.
 
 The screen requires an organ-plus-nuisance base, within-organ permutations,
 technical-proxy partial correlations, all fixed seeds, donor bootstrap, coverage,

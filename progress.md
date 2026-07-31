@@ -1,6 +1,25 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 22:40 PDT / 2026-07-31 05:40 UTC
+**Last updated:** 2026-07-30 22:50 PDT / 2026-07-31 05:50 UTC
+
+## 2026-07-30 — OSDR Tier-1 axis probe complete; seed-42 training retry active
+
+The separately frozen OSDR development probe completed on the exact
+292-sample/18-study no-replacement cohort. Protocol SHA256 is
+`531438c0361501954a7eee1a49c9ea97ba53e67d339db53a13bd8c426a4198fd`;
+exact evaluator commit is `b99d5b6a78e2f0522afdba7034230d7356b50ded`.
+The organ-only base AUROC was 0.496. Candidate deltas were +0.0068 for age,
++0.0071 for sex, +0.0045 for tissue site, and +0.1013 for Hallmark-50. Only
+Hallmark-50 had a positive study-bootstrap interval (+0.0267 to +0.2049);
+age has 75 explicit missing rows. The frozen formal gate is a positive point
+delta, so all four pass this one gate, but none can advance without independently
+passing every all-seed training gate.
+
+Seeds 17 and 101 completed the training-only Tier-1 screen with immutable
+reports. The concurrent seed-42 process was killed with exit 137 from aggregate
+memory pressure before writing a report. Its failed lineage is preserved, and
+the exact same commit, protocol, cache, and seed were relaunched alone in
+`tier1-seed42-retry1`; no scientific setting changed.
 
 ## 2026-07-30 — Frozen Tier-1 multiaxis screen launched on all three seeds
 

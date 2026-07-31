@@ -1,0 +1,725 @@
+{
+  "best_seed_selection": false,
+  "coverage": {
+    "age_bracket": {
+      "counts": {
+        "12 {week}": 28,
+        "14 - 15 {week}": 10,
+        "14-15 {week}": 19,
+        "16 - 17 {week}": 20,
+        "16 {week}": 62,
+        "16-17 {week}": 76,
+        "30 {week}": 2,
+        "__missing__": 75
+      },
+      "levels": [
+        "12 {week}",
+        "14 - 15 {week}",
+        "14-15 {week}",
+        "16 - 17 {week}",
+        "16 {week}",
+        "16-17 {week}",
+        "30 {week}",
+        "__missing__"
+      ],
+      "missing_rows": 75
+    },
+    "hallmark_50": {
+      "minimum_visible_non_score_genes": 19,
+      "sets": 50,
+      "visible_non_score_genes": {
+        "HALLMARK_ADIPOGENESIS": 127,
+        "HALLMARK_ALLOGRAFT_REJECTION": 112,
+        "HALLMARK_ANDROGEN_RESPONSE": 67,
+        "HALLMARK_ANGIOGENESIS": 28,
+        "HALLMARK_APICAL_JUNCTION": 145,
+        "HALLMARK_APICAL_SURFACE": 35,
+        "HALLMARK_APOPTOSIS": 100,
+        "HALLMARK_BILE_ACID_METABOLISM": 74,
+        "HALLMARK_CHOLESTEROL_HOMEOSTASIS": 48,
+        "HALLMARK_COAGULATION": 77,
+        "HALLMARK_COMPLEMENT": 125,
+        "HALLMARK_DNA_REPAIR": 96,
+        "HALLMARK_E2F_TARGETS": 135,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 130,
+        "HALLMARK_ESTROGEN_RESPONSE_EARLY": 134,
+        "HALLMARK_ESTROGEN_RESPONSE_LATE": 128,
+        "HALLMARK_FATTY_ACID_METABOLISM": 98,
+        "HALLMARK_G2M_CHECKPOINT": 128,
+        "HALLMARK_GLYCOLYSIS": 120,
+        "HALLMARK_HEDGEHOG_SIGNALING": 23,
+        "HALLMARK_HEME_METABOLISM": 114,
+        "HALLMARK_HYPOXIA": 128,
+        "HALLMARK_IL2_STAT5_SIGNALING": 129,
+        "HALLMARK_IL6_JAK_STAT3_SIGNALING": 50,
+        "HALLMARK_INFLAMMATORY_RESPONSE": 127,
+        "HALLMARK_INTERFERON_ALPHA_RESPONSE": 46,
+        "HALLMARK_INTERFERON_GAMMA_RESPONSE": 109,
+        "HALLMARK_KRAS_SIGNALING_DN": 127,
+        "HALLMARK_KRAS_SIGNALING_UP": 142,
+        "HALLMARK_MITOTIC_SPINDLE": 132,
+        "HALLMARK_MTORC1_SIGNALING": 123,
+        "HALLMARK_MYC_TARGETS_V1": 123,
+        "HALLMARK_MYC_TARGETS_V2": 38,
+        "HALLMARK_MYOGENESIS": 131,
+        "HALLMARK_NOTCH_SIGNALING": 19,
+        "HALLMARK_OXIDATIVE_PHOSPHORYLATION": 115,
+        "HALLMARK_P53_PATHWAY": 124,
+        "HALLMARK_PANCREAS_BETA_CELLS": 27,
+        "HALLMARK_PEROXISOME": 72,
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": 64,
+        "HALLMARK_PROTEIN_SECRETION": 64,
+        "HALLMARK_REACTIVE_OXYGEN_SPECIES_PATHWAY": 35,
+        "HALLMARK_SPERMATOGENESIS": 86,
+        "HALLMARK_TGF_BETA_SIGNALING": 32,
+        "HALLMARK_TNFA_SIGNALING_VIA_NFKB": 121,
+        "HALLMARK_UNFOLDED_PROTEIN_RESPONSE": 78,
+        "HALLMARK_UV_RESPONSE_DN": 106,
+        "HALLMARK_UV_RESPONSE_UP": 100,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 24,
+        "HALLMARK_XENOBIOTIC_METABOLISM": 109
+      }
+    },
+    "sex": {
+      "counts": {
+        "female": 168,
+        "male": 124
+      },
+      "levels": [
+        "female",
+        "male"
+      ],
+      "missing_rows": 0
+    },
+    "tissue_site": {
+      "counts": {
+        "cerebrum": 24,
+        "colon": 19,
+        "extensor digitorum longus- both sides": 12,
+        "gastrocnemius": 2,
+        "heart": 20,
+        "heart right ventricle": 20,
+        "left gastrocnemius": 12,
+        "left lobe of the liver": 11,
+        "left lung": 19,
+        "left quadriceps femoris": 12,
+        "left tibialis anterior": 12,
+        "liver": 2,
+        "right extensor digitorum longus": 20,
+        "right hippocampus": 34,
+        "right quadriceps femoris": 19,
+        "right soleus": 20,
+        "right tibialis anterior": 18,
+        "soleus-both sides": 12,
+        "white adipose tissue": 4
+      },
+      "levels": [
+        "cerebrum",
+        "colon",
+        "extensor digitorum longus- both sides",
+        "gastrocnemius",
+        "heart",
+        "heart right ventricle",
+        "left gastrocnemius",
+        "left lobe of the liver",
+        "left lung",
+        "left quadriceps femoris",
+        "left tibialis anterior",
+        "liver",
+        "right extensor digitorum longus",
+        "right hippocampus",
+        "right quadriceps femoris",
+        "right soleus",
+        "right tibialis anterior",
+        "soleus-both sides",
+        "white adipose tissue"
+      ],
+      "missing_rows": 0
+    }
+  },
+  "final_confirmation": false,
+  "n_samples": 292,
+  "n_studies": 18,
+  "organ_base": {
+    "folds": [
+      {
+        "fold": 0,
+        "metrics": {
+          "auprc": 0.5,
+          "auroc": 0.5,
+          "balanced_accuracy": 0.5,
+          "macro_f1": 0.4666666666666667
+        },
+        "outer_fit_iterations": 12,
+        "selected": {
+          "C": 0.01,
+          "l1_ratio": 0.0,
+          "max_inner_iterations": 17,
+          "mean_inner_auroc": 0.509766778974096
+        },
+        "test_samples": 56,
+        "test_studies": 4,
+        "train_studies": 14
+      },
+      {
+        "fold": 1,
+        "metrics": {
+          "auprc": 0.4894880365939479,
+          "auroc": 0.49642857142857144,
+          "balanced_accuracy": 0.48214285714285715,
+          "macro_f1": 0.48214285714285715
+        },
+        "outer_fit_iterations": 17,
+        "selected": {
+          "C": 0.01,
+          "l1_ratio": 0.0,
+          "max_inner_iterations": 15,
+          "mean_inner_auroc": 0.5014142351594213
+        },
+        "test_samples": 58,
+        "test_studies": 3,
+        "train_studies": 15
+      },
+      {
+        "fold": 2,
+        "metrics": {
+          "auprc": 0.509090909090909,
+          "auroc": 0.5,
+          "balanced_accuracy": 0.5,
+          "macro_f1": 0.3373493975903614
+        },
+        "outer_fit_iterations": 18,
+        "selected": {
+          "C": 0.1,
+          "l1_ratio": 0.5,
+          "max_inner_iterations": 22,
+          "mean_inner_auroc": 0.5003561253561254
+        },
+        "test_samples": 55,
+        "test_studies": 3,
+        "train_studies": 15
+      },
+      {
+        "fold": 3,
+        "metrics": {
+          "auprc": 0.5472690615835777,
+          "auroc": 0.534375,
+          "balanced_accuracy": 0.5,
+          "macro_f1": 0.32608695652173914
+        },
+        "outer_fit_iterations": 13,
+        "selected": {
+          "C": 0.01,
+          "l1_ratio": 0.0,
+          "max_inner_iterations": 22,
+          "mean_inner_auroc": 0.5085137287480035
+        },
+        "test_samples": 62,
+        "test_studies": 4,
+        "train_studies": 14
+      },
+      {
+        "fold": 4,
+        "metrics": {
+          "auprc": 0.5097923010995825,
+          "auroc": 0.5059139784946236,
+          "balanced_accuracy": 0.49731182795698925,
+          "macro_f1": 0.4305931948208371
+        },
+        "outer_fit_iterations": 16,
+        "selected": {
+          "C": 10.0,
+          "l1_ratio": 0.5,
+          "max_inner_iterations": 28,
+          "mean_inner_auroc": 0.5212371205792259
+        },
+        "test_samples": 61,
+        "test_studies": 4,
+        "train_studies": 14
+      }
+    ],
+    "metrics": {
+      "auprc": 0.49978134517046574,
+      "auroc": 0.49577762139338494,
+      "balanced_accuracy": 0.4934083978418954,
+      "macro_f1": 0.4925555398994881
+    }
+  },
+  "organ_levels": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle"
+  ],
+  "predictions_sha256": "402822ff241fcbd67fd477dabb642260ac87191d27c3c16ab413ee300af99165",
+  "probe_protocol_sha256": "531438c0361501954a7eee1a49c9ea97ba53e67d339db53a13bd8c426a4198fd",
+  "results": {
+    "age_bracket": {
+      "auroc_minus_organ_base": 0.006755805770584045,
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.5,
+            "auroc": 0.5,
+            "balanced_accuracy": 0.5,
+            "macro_f1": 0.4666666666666667
+          },
+          "outer_fit_iterations": 14,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 17,
+            "mean_inner_auroc": 0.5179591176542396
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.4827586206896552,
+            "auroc": 0.5,
+            "balanced_accuracy": 0.5,
+            "macro_f1": 0.32558139534883723
+          },
+          "outer_fit_iterations": 5,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 4,
+            "mean_inner_auroc": 0.5
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.509090909090909,
+            "auroc": 0.5,
+            "balanced_accuracy": 0.5,
+            "macro_f1": 0.32926829268292684
+          },
+          "outer_fit_iterations": 6,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 4,
+            "mean_inner_auroc": 0.5
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.5424303519061583,
+            "auroc": 0.5427083333333333,
+            "balanced_accuracy": 0.5427083333333333,
+            "macro_f1": 0.48377835199540625
+          },
+          "outer_fit_iterations": 17,
+          "selected": {
+            "C": 1.0,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 25,
+            "mean_inner_auroc": 0.5095466133656121
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.5065780139557081,
+            "auroc": 0.49946236559139784,
+            "balanced_accuracy": 0.49731182795698925,
+            "macro_f1": 0.4305931948208371
+          },
+          "outer_fit_iterations": 13,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 16,
+            "mean_inner_auroc": 0.5180014673435727
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "metrics": {
+        "auprc": 0.5041726143895231,
+        "auroc": 0.502533427163969,
+        "balanced_accuracy": 0.5005864414731409,
+        "macro_f1": 0.49659928207065934
+      },
+      "positive_gate": true,
+      "study_bootstrap": {
+        "ci95": [
+          -0.006686224995048551,
+          0.024489800453716324
+        ],
+        "median": 0.004569434148752161,
+        "replicates": 2000
+      }
+    },
+    "hallmark_50": {
+      "auroc_minus_organ_base": 0.1013136288998358,
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.6691155776172388,
+            "auroc": 0.6900510204081632,
+            "balanced_accuracy": 0.5892857142857143,
+            "macro_f1": 0.5783960720130933
+          },
+          "outer_fit_iterations": 486,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 454,
+            "mean_inner_auroc": 0.6004070995445178
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.5408140417564469,
+            "auroc": 0.611904761904762,
+            "balanced_accuracy": 0.6047619047619048,
+            "macro_f1": 0.6033303597977996
+          },
+          "outer_fit_iterations": 483,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 442,
+            "mean_inner_auroc": 0.5916603060056206
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.8753734726805149,
+            "auroc": 0.8214285714285715,
+            "balanced_accuracy": 0.6607142857142857,
+            "macro_f1": 0.6131062569418734
+          },
+          "outer_fit_iterations": 602,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 565,
+            "mean_inner_auroc": 0.5045574118744851
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.5567523072100504,
+            "auroc": 0.4791666666666667,
+            "balanced_accuracy": 0.5052083333333333,
+            "macro_f1": 0.4892373106563912
+          },
+          "outer_fit_iterations": 475,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 444,
+            "mean_inner_auroc": 0.6049745188063546
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.7398410834589513,
+            "auroc": 0.667741935483871,
+            "balanced_accuracy": 0.589247311827957,
+            "macro_f1": 0.5883940620782726
+          },
+          "outer_fit_iterations": 472,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 415,
+            "mean_inner_auroc": 0.6106207470242558
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "metrics": {
+        "auprc": 0.5765210828829563,
+        "auroc": 0.5970912502932207,
+        "balanced_accuracy": 0.5863711001642036,
+        "macro_f1": 0.5808927321684875
+      },
+      "positive_gate": true,
+      "study_bootstrap": {
+        "ci95": [
+          0.026712401196228606,
+          0.20488855629465394
+        ],
+        "median": 0.107433489827856,
+        "replicates": 2000
+      }
+    },
+    "sex": {
+      "auroc_minus_organ_base": 0.007131128313394297,
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.5,
+            "auroc": 0.5,
+            "balanced_accuracy": 0.5,
+            "macro_f1": 0.3333333333333333
+          },
+          "outer_fit_iterations": 12,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 17,
+            "mean_inner_auroc": 0.5126690268495742
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.4827586206896552,
+            "auroc": 0.5,
+            "balanced_accuracy": 0.5,
+            "macro_f1": 0.3409090909090909
+          },
+          "outer_fit_iterations": 22,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 17,
+            "mean_inner_auroc": 0.5001185395922239
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.509090909090909,
+            "auroc": 0.5,
+            "balanced_accuracy": 0.5,
+            "macro_f1": 0.3373493975903614
+          },
+          "outer_fit_iterations": 18,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 22,
+            "mean_inner_auroc": 0.5003561253561254
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.5093949591721239,
+            "auroc": 0.4989583333333334,
+            "balanced_accuracy": 0.5104166666666666,
+            "macro_f1": 0.4972972972972973
+          },
+          "outer_fit_iterations": 13,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 25,
+            "mean_inner_auroc": 0.5123240538356071
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.505288207297726,
+            "auroc": 0.4940860215053764,
+            "balanced_accuracy": 0.49408602150537634,
+            "macro_f1": 0.4829094886519005
+          },
+          "outer_fit_iterations": 16,
+          "selected": {
+            "C": 1.0,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 22,
+            "mean_inner_auroc": 0.5107212475633528
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "metrics": {
+        "auprc": 0.5041353531341513,
+        "auroc": 0.5029087497067792,
+        "balanced_accuracy": 0.5061693642974431,
+        "macro_f1": 0.5015883552226068
+      },
+      "positive_gate": true,
+      "study_bootstrap": {
+        "ci95": [
+          -0.012114186745723335,
+          0.030360069806212104
+        ],
+        "median": 0.005012257774652362,
+        "replicates": 2000
+      }
+    },
+    "tissue_site": {
+      "auroc_minus_organ_base": 0.004503870513722752,
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.5,
+            "auroc": 0.5,
+            "balanced_accuracy": 0.5,
+            "macro_f1": 0.3333333333333333
+          },
+          "outer_fit_iterations": 4,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 5,
+            "mean_inner_auroc": 0.5
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.4894880365939479,
+            "auroc": 0.49642857142857144,
+            "balanced_accuracy": 0.48214285714285715,
+            "macro_f1": 0.48214285714285715
+          },
+          "outer_fit_iterations": 13,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 18,
+            "mean_inner_auroc": 0.5014142351594213
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.509090909090909,
+            "auroc": 0.5,
+            "balanced_accuracy": 0.5,
+            "macro_f1": 0.32926829268292684
+          },
+          "outer_fit_iterations": 18,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 22,
+            "mean_inner_auroc": 0.5003561253561254
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.5472690615835777,
+            "auroc": 0.534375,
+            "balanced_accuracy": 0.5,
+            "macro_f1": 0.32608695652173914
+          },
+          "outer_fit_iterations": 14,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 22,
+            "mean_inner_auroc": 0.5085137287480035
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.5097923010995825,
+            "auroc": 0.5059139784946236,
+            "balanced_accuracy": 0.5086021505376344,
+            "macro_f1": 0.5080645161290323
+          },
+          "outer_fit_iterations": 17,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 19,
+            "mean_inner_auroc": 0.5173231333319053
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "metrics": {
+        "auprc": 0.5024747258947163,
+        "auroc": 0.5002814919071077,
+        "balanced_accuracy": 0.49523809523809526,
+        "macro_f1": 0.4425180598555212
+      },
+      "positive_gate": true,
+      "study_bootstrap": {
+        "ci95": [
+          -0.0035238022733740187,
+          0.014565742644180294
+        ],
+        "median": 0.003166938446394929,
+        "replicates": 2000
+      }
+    }
+  },
+  "role": "OSDR spaceflight development probe for Tier-1 axis selection; not final confirmation",
+  "schema_version": 1,
+  "smoke": false,
+  "status": "complete"
+}
