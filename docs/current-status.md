@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 22:05 PDT / 2026-07-31 05:05 UTC
+**Updated:** 2026-07-30 22:40 PDT / 2026-07-31 05:40 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -26,8 +26,25 @@ the final model, and downstream utility must be designed explicitly rather than
 inferred from reconstruction. Canonical result:
 [`stage1-osdr-downstream-result.md`](stage1-osdr-downstream-result.md).
 
-The immediate branch remains bounded: finish the frozen training-only Tier-1
-screens for tissue site, age/sex, and Hallmark-50; add at most one axis that clears
+The immediate branch is now running. The training-only Tier-1 protocol is frozen
+at SHA256
+`cd1d3dab63689cd3d534533f37e48f5d0c05e4a7d9f407ec57ee0b49c6c5e4f1`
+and exact execution commit
+`9de77e040f3b69421b65ed6d780a007e9256501e` is deployed in the clean detached
+worktree `/media/volume/moe-reboot/worktrees/multiaxis_tier1_9de77e0`.
+
+The complete 7,369-row feature/coverage smoke passed before efficacy access.
+Tissue site, official sex code, official age bracket, and all 50 hash-pinned
+MSigDB 2026.1.Hs Hallmark programs have valid coverage; every Hallmark set retains
+at least 19 visible non-score genes. Seeds 17, 42, and 101 launched concurrently
+at 2026-07-30 22:35 PDT in detached sessions `tier1-seed17`, `tier1-seed42`, and
+`tier1-seed101`. Result root:
+`/media/volume/moe-reboot/results/multiaxis_tier1_9de77e0`.
+
+The screen requires an organ-plus-nuisance base, within-organ permutations,
+technical-proxy partial correlations, all fixed seeds, donor bootstrap, coverage,
+per-organ safety, and an independent downstream-label gate. Add at most one axis
+that clears
 within-organ permutation, nuisance, coverage, all-seed, donor-bootstrap,
 per-organ safety, and independent downstream-label gates; otherwise close the
 August 2 architecture as the validated organ MoE with pooled fallback. Cell

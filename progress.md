@@ -1,6 +1,32 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 22:05 PDT / 2026-07-31 05:05 UTC
+**Last updated:** 2026-07-30 22:40 PDT / 2026-07-31 05:40 UTC
+
+## 2026-07-30 — Frozen Tier-1 multiaxis screen launched on all three seeds
+
+The common training-only Tier-1 implementation is frozen and deployed. It tests
+exact tissue site, official GTEx v8 sex code and age bracket, and the 50
+MSigDB 2026.1.Hs Hallmark programs against the same organ-plus-technical-nuisance
+base. The protocol requires donor-grouped nested ridge evaluation, all three fixed
+seeds, 100 within-organ permutations, 2,000 donor bootstraps, coverage,
+technical-proxy partial correlations, per-organ safety, and a separate OSDR
+downstream-label probe. Cell composition remains excluded.
+
+Protocol SHA256 is
+`cd1d3dab63689cd3d534533f37e48f5d0c05e4a7d9f407ec57ee0b49c6c5e4f1`.
+The exact corrected execution commit is
+`9de77e040f3b69421b65ed6d780a007e9256501e`. Two implementation-only smoke
+lineages are preserved: the first exposed a missing sample-index assignment and
+the second preceded a coverage-join correction; neither opened Tier-1 efficacy
+outcomes.
+
+A 128-row feature smoke and then the complete 7,369-row/750-donor feature and
+coverage smoke passed before efficacy access. All four candidates clear their
+frozen availability gate; every Hallmark set retains at least 19 visible
+non-score genes. At 22:35 PDT, seeds 17, 42, and 101 launched concurrently in
+detached sessions `tier1-seed17`, `tier1-seed42`, and `tier1-seed101` under
+`/media/volume/moe-reboot/results/multiaxis_tier1_9de77e0`. All three processes
+were healthy and CPU-active at the initial check.
 
 ## 2026-07-30 — OSDR downstream harness complete; Stage 1 output contract fails the downstream gate
 
