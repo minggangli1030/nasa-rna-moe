@@ -133,8 +133,8 @@ def main() -> None:
     if not np.array_equal(score_indices, verified_indices):
         raise ValueError("router score panel changed")
 
-    organs = retained["organ"].astype(str).to_numpy()
-    groups = retained["study_id"].astype(str).to_numpy()
+    organs = retained["organ"].to_numpy(dtype=str)
+    groups = retained["study_id"].to_numpy(dtype=str)
     labels = retained["frozen_label"].astype(int).to_numpy()
     if not set(organs).issubset(ORGANS):
         raise ValueError("OSDR cohort contains an organ outside the frozen K8 family")
