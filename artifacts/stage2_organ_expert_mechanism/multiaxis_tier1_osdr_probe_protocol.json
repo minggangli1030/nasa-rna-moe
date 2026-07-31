@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_multiaxis_osdr_probe_outcome_access",
+  "role": "OSDR spaceflight development probe for Tier-1 axis selection; not final confirmation",
+  "parent_tier1_protocol_sha256": "cd1d3dab63689cd3d534533f37e48f5d0c05e4a7d9f407ec57ee0b49c6c5e4f1",
+  "cohort": {
+    "stage1_osdr_protocol_sha256": "04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9",
+    "membership": "exact 292-sample, 18-study post-QC cohort; no replacements",
+    "label": "exact structured spaceflight versus ground-control label",
+    "groups": "study_id",
+    "outer_folds": 5,
+    "inner_folds": 3
+  },
+  "inputs": {
+    "candidate_metadata_sha256": "f0b7f8d68dda922e7d96702c2eae1b72251deb27f78e9c67b4955c2468da1a68",
+    "hallmark_gmt_sha256": "eecaf6dad908334ae885406ec72bdc0646d8917588ed7c219fac92fc5363f596"
+  },
+  "base": "one-hot frozen eight-organ label",
+  "candidates": {
+    "tissue_site": "casefolded exact OSDR material-type metadata; no inferred mapping",
+    "sex": "casefolded exact OSDR sex metadata; no inferred mapping",
+    "age_bracket": "casefolded exact age-at-launch string; missing is an explicit category; no inferred numeric conversion",
+    "hallmark_50": "per-sample mean OSDR log1p expression across visible non-score member genes; each program is subsequently fold-fit standardized with the probe head"
+  },
+  "head": {
+    "model": "elastic-net logistic regression with balanced class weights",
+    "primary_metric": "pooled out-of-fold AUROC",
+    "grid": [
+      {"C": 0.01, "l1_ratio": 0.0},
+      {"C": 0.01, "l1_ratio": 0.5},
+      {"C": 0.01, "l1_ratio": 1.0},
+      {"C": 0.1, "l1_ratio": 0.0},
+      {"C": 0.1, "l1_ratio": 0.5},
+      {"C": 0.1, "l1_ratio": 1.0},
+      {"C": 1.0, "l1_ratio": 0.0},
+      {"C": 1.0, "l1_ratio": 0.5},
+      {"C": 1.0, "l1_ratio": 1.0},
+      {"C": 10.0, "l1_ratio": 0.0},
+      {"C": 10.0, "l1_ratio": 0.5},
+      {"C": 10.0, "l1_ratio": 1.0}
+    ],
+    "study_bootstrap_replicates": 2000,
+    "study_bootstrap_seed": 20260804
+  },
+  "advance_gate": "candidate AUROC minus organ-only AUROC is strictly positive; training-screen gates remain independently required",
+  "firewalls": {
+    "identical_cohort_splits_and_tuning_grid_for_base_and_candidates": true,
+    "best_seed_or_condition_selection": false,
+    "missing_metadata_imputation_or_sample_replacement": false,
+    "same_osdr_cohort_can_confirm_final_claim": false,
+    "post_hoc_gate_change": false
+  }
+}
