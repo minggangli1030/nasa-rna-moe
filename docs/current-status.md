@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 23:25 PDT / 2026-07-31 06:25 UTC
+**Updated:** 2026-07-31 07:42 PDT / 2026-07-31 14:42 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -63,10 +63,24 @@ protected-organ effect was nonnegative. Hallmark-50 was stronger in aggregate
 per-organ safety gate through skeletal-muscle harm in seeds 42 (−0.0568) and 101
 (−0.0396). Age and sex failed the all-seed bootstrap gate.
 
-The next execution is one bounded protected-adapter Tier-2 smoke for tissue site,
-with shuffled-site and equal-capacity generic controls. If it fails, close the
-August 2 architecture as validated organ MoE plus pooled fallback. Canonical
-result: [`multiaxis-tier1-result.md`](multiaxis-tier1-result.md).
+The bounded protected-adapter Tier-2 smoke is now frozen and running. Protocol
+SHA256 is
+`d922c1997389aacdc09c032415f0dc8a57ee579530f67f7f539477490eaac410`;
+exact implementation commit is
+`d47ac36f11647d3bcd6bd6d3aa3c2dffefc10378`. The focused suite passes nine
+tests locally and in the exact VM worktree. Sequential seeds 17, 42, and 101
+launched at 07:42 PDT in detached session `tissue-site-tier2`, result root
+`/media/volume/moe-reboot/results/tissue_site_tier2_d47ac36`. Seed 17 is active
+on the A100.
+
+The organ-private path, pooled trunk, and decoder are immutable. The primary
+input-only soft site adapter is compared with the protected base, a within-organ
+shuffled-site bank, and a parameter-matched generic adapter under five donor-grouped
+folds. The gate requires positive all-seed utility and donor-bootstrap lower bounds
+against all three references, known-site utility, no per-organ harm beyond 2%, and
+noncollapsed site routing. A failure closes the August 2 architecture as validated
+organ MoE plus pooled fallback. Canonical Tier-1 result:
+[`multiaxis-tier1-result.md`](multiaxis-tier1-result.md).
 
 ## Completed background
 

@@ -1,6 +1,22 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 23:25 PDT / 2026-07-31 06:25 UTC
+**Last updated:** 2026-07-31 07:42 PDT / 2026-07-31 14:42 UTC
+
+## 2026-07-31 — Protected tissue-site Tier-2 smoke frozen and launched
+
+The sole authorized Tier-1 candidate has entered the bounded neural smoke. The
+hash-frozen protocol preserves the valid organ-private prediction and fixed decoder,
+then tests a small input-only tissue-site residual bank against three references:
+the protected base, a within-organ shuffled-site bank, and a parameter-matched
+generic residual head. Five donor-grouped folds, all seeds, donor bootstrap,
+per-organ safety, and router noncollapse are fixed before outcome access.
+
+Protocol SHA256 is
+`d922c1997389aacdc09c032415f0dc8a57ee579530f67f7f539477490eaac410`;
+exact clean commit is `d47ac36f11647d3bcd6bd6d3aa3c2dffefc10378`. Nine
+focused assertions pass locally and in the VM environment. Sequential seeds 17,
+42, and 101 launched at 07:42 PDT in screen `tissue-site-tier2`; seed 17 is
+GPU-active. No calibration, ARCHS4, or OSDR outcome is used in this smoke.
 
 ## 2026-07-30 — Tissue site alone clears the full multiaxis Tier-1 gate
 
