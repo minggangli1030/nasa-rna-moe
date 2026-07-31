@@ -1,0 +1,120 @@
+{
+  "advance_gate": {
+    "all_outcomes_positive_in_all_three_seeds": true,
+    "coverage_pass": true,
+    "maximum_axes_advancing_to_tier2": 2,
+    "maximum_axes_in_final_architecture": 1,
+    "per_organ_safety_pass_all_seeds": true,
+    "primary_above_within_organ_permutation_p95_in_all_three_seeds": true,
+    "primary_bootstrap_lower_bound_positive_in_all_three_seeds": true,
+    "separate_osdr_downstream_label_probe_positive": true,
+    "technical_proxy_pass": true
+  },
+  "base_model": {
+    "features": [
+      "organ one-hot",
+      "RIN/10 plus missing indicator",
+      "ischemic minutes/2000 plus missing indicator",
+      "detected-gene fraction",
+      "log1p expression sum / 20"
+    ],
+    "technical_proxy_names": [
+      "rin",
+      "ischemic_time",
+      "detected_gene_fraction",
+      "log_expression_sum"
+    ]
+  },
+  "candidates": {
+    "age_bracket": {
+      "coverage": "every retained level >=20 donors and represented in >=5 organs",
+      "features": "official GTEx v8 age bracket",
+      "kind": "categorical_donor_attribute"
+    },
+    "hallmark_50": {
+      "coverage": "all 50 sets valid and nonconstant in all eight organs",
+      "features": "mean standardized log1p expression over visible non-score members for each of the 50 hash-pinned Hallmark sets",
+      "kind": "continuous_program_block",
+      "minimum_visible_genes_per_set": 10
+    },
+    "sex": {
+      "coverage": "every retained level >=20 donors and represented in >=5 organs",
+      "features": "official raw GTEx v8 sex code; no inferred relabeling",
+      "kind": "categorical_donor_attribute"
+    },
+    "tissue_site": {
+      "coverage": "at least two >=20-donor sites in at least five organs",
+      "features": "one-hot exact GTEx tissue site",
+      "kind": "categorical_nested_within_organ"
+    }
+  },
+  "deadline": "close architecture by 2026-08-02 even if no axis passes",
+  "firewalls": {
+    "best_seed_selection": false,
+    "calibration_or_archs4_access": false,
+    "cell_composition": false,
+    "neural_checkpoint_updates": false,
+    "no_post_hoc_gate_changes": true,
+    "osdr_can_select_axis_but_cannot_confirm_final_claim": true
+  },
+  "inputs": {
+    "hallmark_gmt_sha256": "eecaf6dad908334ae885406ec72bdc0646d8917588ed7c219fac92fc5363f596",
+    "hallmark_release": "MSigDB 2026.1.Hs",
+    "hallmark_source": "https://data.broadinstitute.org/gsea-msigdb/msigdb/release/2026.1.Hs/h.all.v2026.1.Hs.symbols.gmt",
+    "osdr_candidate_metadata_sha256": "f0b7f8d68dda922e7d96702c2eae1b72251deb27f78e9c67b4955c2468da1a68",
+    "osdr_protocol_sha256": "04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9",
+    "router_sha256": "b5a19bdee62efad108e0301f84afbbca088cfd04985f95cd37836a45b0236abe",
+    "seed_run_metadata_sha256": {
+      "101": "985f25e8c9681da930d297653cfad9541c25347b3dc412b8f307efced0df65b3",
+      "17": "2d903d8297312af2c11008a24847daaa74439befe177addc2243cc4c7da23049",
+      "42": "f5040dac64032ce65f352458132045f3f89fc427b7b89bc74e308ec2e0548a48"
+    },
+    "stage2b_protocol_sha256": "db7cd772345272876cd01a603deb720b46c36d0cfb5252e3d245e7e58f5182be",
+    "training_metadata_sha256": "1ecc9b966c08f25d77eb7831c7e59c3200a3bc57288e7748c778e03e0f129097"
+  },
+  "role": "training-donor multiaxis development screen plus separate OSDR downstream-label development probe; not final confirmation",
+  "schema_version": 1,
+  "status": "frozen_before_tier1_incremental_outcome_access",
+  "training_screen": {
+    "donor_bootstrap": {
+      "gate": "primary incremental R2 lower 95% bound above zero",
+      "replicates": 2000,
+      "seed": 20260803
+    },
+    "fold_seed_base": 20260801,
+    "folds": 5,
+    "groups": "GTEx training donor",
+    "outcomes": [
+      "pooled_reconstruction_error",
+      "protected_private_error",
+      "post_private_coefficients"
+    ],
+    "per_organ_safety": {
+      "maximum_incremental_r2_harm": 0.02,
+      "outcome": "protected_private_error"
+    },
+    "primary_outcome": "post_private_coefficients",
+    "ridge_grid": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0
+    ],
+    "seeds": [
+      17,
+      42,
+      101
+    ],
+    "technical_proxy_gate": {
+      "maximum_absolute_organ_partial_correlation": 0.5
+    },
+    "within_organ_permutation": {
+      "gate": "real incremental R2 above permutation 95th percentile",
+      "replicates": 100,
+      "seed": 20260802,
+      "unit": "sample row within exact organ"
+    }
+  }
+}
