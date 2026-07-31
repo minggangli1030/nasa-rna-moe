@@ -74,20 +74,67 @@ def _fit(
     *,
     c_value: float,
     l1_ratio: float,
-) -> tuple[np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, int]:
+    max_iter = 10_000
     model = LogisticRegression(
         C=c_value,
         penalty="elasticnet",
         solver="saga",
         l1_ratio=l1_ratio,
         class_weight="balanced",
-        max_iter=3000,
+        max_iter=max_iter,
         random_state=1701,
         n_jobs=1,
-        tol=1e-4,
+        tol=1e-3,
     )
     model.fit(x_train, y_train)
-    return model.predict_proba(x_test)[:, 1], model.predict(x_test)
+    n_iter = int(model.n_iter_.max())
+    if n_iter >= max_iter:
+        raise RuntimeError(
+            f"elastic-net logistic fit did not converge in {max_iter} iterations"
+        )
+    return model.predict_proba(x_test)[:, 1], model.predict(x_test), n_iter
+
+
+def _fit_grid_path(
+    x_train: np.ndarray,
+    y_train: np.ndarray,
+    x_test: np.ndarray,
+    grid: tuple[tuple[float, float], ...],
+) -> dict[tuple[float, float], tuple[np.ndarray, int]]:
+    """Fit the frozen grid with warm starts along C for each fixed L1 ratio."""
+    max_iter = 10_000
+    output = {}
+    ratios = sorted({l1_ratio for _, l1_ratio in grid})
+    for l1_ratio in ratios:
+        model = LogisticRegression(
+            C=1.0,
+            penalty="elasticnet",
+            solver="saga",
+            l1_ratio=l1_ratio,
+            class_weight="balanced",
+            max_iter=max_iter,
+            random_state=1701,
+            n_jobs=1,
+            tol=1e-3,
+            warm_start=True,
+        )
+        for c_value in sorted(c for c, ratio in grid if ratio == l1_ratio):
+            model.set_params(C=c_value)
+            model.fit(x_train, y_train)
+            n_iter = int(model.n_iter_.max())
+            if n_iter >= max_iter:
+                raise RuntimeError(
+                    "elastic-net logistic grid fit did not converge: "
+                    f"C={c_value}, l1_ratio={l1_ratio}, max_iter={max_iter}"
+                )
+            output[(c_value, l1_ratio)] = (
+                model.predict_proba(x_test)[:, 1],
+                n_iter,
+            )
+    if set(output) != set(grid):
+        raise RuntimeError("warm-start path did not cover the frozen grid")
+    return output
 
 
 def _score(y: np.ndarray, probability: np.ndarray, prediction: np.ndarray) -> dict:
@@ -114,28 +161,31 @@ def nested_group_evaluate(
     predictions = np.full(len(y), -1, dtype=np.int64)
     for outer_index, (train_index, test_index) in enumerate(_splits(groups, outer_folds)):
         inner_groups = groups[train_index]
+        candidate_scores = {item: [] for item in grid}
+        candidate_iterations = {item: [] for item in grid}
+        for inner_train, inner_test in _splits(inner_groups, inner_folds):
+            a = train_index[inner_train]
+            b = train_index[inner_test]
+            train, test = _transform(
+                x[a], x[b], pca_components=pca_components
+            )
+            path = _fit_grid_path(train, y[a], test, grid)
+            for item, (probability, n_iter) in path.items():
+                candidate_scores[item].append(
+                    float(roc_auc_score(y[b], probability))
+                )
+                candidate_iterations[item].append(n_iter)
         candidates = []
         for c_value, l1_ratio in grid:
-            scores = []
-            for inner_train, inner_test in _splits(inner_groups, inner_folds):
-                a = train_index[inner_train]
-                b = train_index[inner_test]
-                train, test = _transform(
-                    x[a], x[b], pca_components=pca_components
-                )
-                probability, _ = _fit(
-                    train,
-                    y[a],
-                    test,
-                    c_value=c_value,
-                    l1_ratio=l1_ratio,
-                )
-                scores.append(float(roc_auc_score(y[b], probability)))
+            scores = candidate_scores[(c_value, l1_ratio)]
             candidates.append(
                 {
                     "C": c_value,
                     "l1_ratio": l1_ratio,
                     "mean_inner_auroc": float(np.mean(scores)),
+                    "max_inner_iterations": int(
+                        max(candidate_iterations[(c_value, l1_ratio)])
+                    ),
                 }
             )
         selected = sorted(
@@ -149,7 +199,7 @@ def nested_group_evaluate(
         train, test = _transform(
             x[train_index], x[test_index], pca_components=pca_components
         )
-        probability, prediction = _fit(
+        probability, prediction, n_iter = _fit(
             train,
             y[train_index],
             test,
@@ -165,6 +215,7 @@ def nested_group_evaluate(
                 "test_studies": int(np.unique(groups[test_index]).size),
                 "test_samples": int(len(test_index)),
                 "selected": selected,
+                "outer_fit_iterations": n_iter,
                 "metrics": _score(y[test_index], probability, prediction),
             }
         )
