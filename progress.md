@@ -1,6 +1,23 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 22:50 PDT / 2026-07-31 05:50 UTC
+**Last updated:** 2026-07-30 23:25 PDT / 2026-07-31 06:25 UTC
+
+## 2026-07-30 — Tissue site alone clears the full multiaxis Tier-1 gate
+
+All three immutable training reports and the OSDR development probe are complete.
+Tissue site is the only candidate that passes coverage, organ-plus-nuisance
+incremental utility, all three outcomes in all seeds, within-organ permutation,
+donor bootstrap, technical-proxy, per-organ safety, and the separately measured
+OSDR point-direction gate. Primary incremental R² was 0.2837, 0.2715, and 0.2739
+for seeds 17, 42, and 101.
+
+Hallmark-50 had the largest aggregate signal (mean primary incremental R² 0.5233)
+and OSDR delta (+0.1013), but failed the frozen safety limit through
+skeletal-muscle harm of −0.0568 and −0.0396 in seeds 42 and 101. Age failed the
+bootstrap gate in two seeds; sex failed it in all three. No threshold or seed was
+selected. Only tissue site advances to the bounded Tier-2 protected-adapter
+smoke. Canonical result:
+[`docs/multiaxis-tier1-result.md`](docs/multiaxis-tier1-result.md).
 
 ## 2026-07-30 — OSDR Tier-1 axis probe complete; seed-42 training retry active
 

@@ -25,6 +25,13 @@ downstream-facing embedding or objective and beat raw/PCA, rather than assuming
 that better masked-gene predictions will transfer automatically. Canonical result:
 [`stage1-osdr-downstream-result.md`](stage1-osdr-downstream-result.md).
 
+The full multiaxis Tier-1 gate is also complete. Tissue site is the only axis that
+passes every frozen training and downstream-development gate and therefore the
+only candidate authorized for Tier 2. Hallmark-50 is not advanced despite its
+strong aggregate signal because it exceeded the prespecified per-organ harm
+limit in two seeds. Age and sex failed bootstrap stability. See
+[`multiaxis-tier1-result.md`](multiaxis-tier1-result.md).
+
 1. Freeze one defensible labeled cohort and build its complete downstream harness
    against Stage 1 now.
 2. Reuse immutable Stage 2B caches to screen candidate axes cheaply in parallel.

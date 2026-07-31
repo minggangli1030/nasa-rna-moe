@@ -1,0 +1,1811 @@
+{
+  "claim_boundary": "training-donor development screen; no calibration or ARCHS4 access, no neural fitting, no study-universality claim",
+  "inventory": {
+    "age_bracket_levels": [
+      "20-29",
+      "30-39",
+      "40-49",
+      "50-59",
+      "60-69",
+      "70-79"
+    ],
+    "donors": 750,
+    "hallmark_names": [
+      "HALLMARK_ADIPOGENESIS",
+      "HALLMARK_ALLOGRAFT_REJECTION",
+      "HALLMARK_ANDROGEN_RESPONSE",
+      "HALLMARK_ANGIOGENESIS",
+      "HALLMARK_APICAL_JUNCTION",
+      "HALLMARK_APICAL_SURFACE",
+      "HALLMARK_APOPTOSIS",
+      "HALLMARK_BILE_ACID_METABOLISM",
+      "HALLMARK_CHOLESTEROL_HOMEOSTASIS",
+      "HALLMARK_COAGULATION",
+      "HALLMARK_COMPLEMENT",
+      "HALLMARK_DNA_REPAIR",
+      "HALLMARK_E2F_TARGETS",
+      "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+      "HALLMARK_ESTROGEN_RESPONSE_EARLY",
+      "HALLMARK_ESTROGEN_RESPONSE_LATE",
+      "HALLMARK_FATTY_ACID_METABOLISM",
+      "HALLMARK_G2M_CHECKPOINT",
+      "HALLMARK_GLYCOLYSIS",
+      "HALLMARK_HEDGEHOG_SIGNALING",
+      "HALLMARK_HEME_METABOLISM",
+      "HALLMARK_HYPOXIA",
+      "HALLMARK_IL2_STAT5_SIGNALING",
+      "HALLMARK_IL6_JAK_STAT3_SIGNALING",
+      "HALLMARK_INFLAMMATORY_RESPONSE",
+      "HALLMARK_INTERFERON_ALPHA_RESPONSE",
+      "HALLMARK_INTERFERON_GAMMA_RESPONSE",
+      "HALLMARK_KRAS_SIGNALING_DN",
+      "HALLMARK_KRAS_SIGNALING_UP",
+      "HALLMARK_MITOTIC_SPINDLE",
+      "HALLMARK_MTORC1_SIGNALING",
+      "HALLMARK_MYC_TARGETS_V1",
+      "HALLMARK_MYC_TARGETS_V2",
+      "HALLMARK_MYOGENESIS",
+      "HALLMARK_NOTCH_SIGNALING",
+      "HALLMARK_OXIDATIVE_PHOSPHORYLATION",
+      "HALLMARK_P53_PATHWAY",
+      "HALLMARK_PANCREAS_BETA_CELLS",
+      "HALLMARK_PEROXISOME",
+      "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+      "HALLMARK_PROTEIN_SECRETION",
+      "HALLMARK_REACTIVE_OXYGEN_SPECIES_PATHWAY",
+      "HALLMARK_SPERMATOGENESIS",
+      "HALLMARK_TGF_BETA_SIGNALING",
+      "HALLMARK_TNFA_SIGNALING_VIA_NFKB",
+      "HALLMARK_UNFOLDED_PROTEIN_RESPONSE",
+      "HALLMARK_UV_RESPONSE_DN",
+      "HALLMARK_UV_RESPONSE_UP",
+      "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+      "HALLMARK_XENOBIOTIC_METABOLISM"
+    ],
+    "hallmark_visible_gene_counts": {
+      "HALLMARK_ADIPOGENESIS": 127,
+      "HALLMARK_ALLOGRAFT_REJECTION": 112,
+      "HALLMARK_ANDROGEN_RESPONSE": 67,
+      "HALLMARK_ANGIOGENESIS": 28,
+      "HALLMARK_APICAL_JUNCTION": 145,
+      "HALLMARK_APICAL_SURFACE": 35,
+      "HALLMARK_APOPTOSIS": 100,
+      "HALLMARK_BILE_ACID_METABOLISM": 74,
+      "HALLMARK_CHOLESTEROL_HOMEOSTASIS": 48,
+      "HALLMARK_COAGULATION": 77,
+      "HALLMARK_COMPLEMENT": 125,
+      "HALLMARK_DNA_REPAIR": 96,
+      "HALLMARK_E2F_TARGETS": 135,
+      "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 130,
+      "HALLMARK_ESTROGEN_RESPONSE_EARLY": 134,
+      "HALLMARK_ESTROGEN_RESPONSE_LATE": 128,
+      "HALLMARK_FATTY_ACID_METABOLISM": 98,
+      "HALLMARK_G2M_CHECKPOINT": 128,
+      "HALLMARK_GLYCOLYSIS": 120,
+      "HALLMARK_HEDGEHOG_SIGNALING": 23,
+      "HALLMARK_HEME_METABOLISM": 114,
+      "HALLMARK_HYPOXIA": 128,
+      "HALLMARK_IL2_STAT5_SIGNALING": 129,
+      "HALLMARK_IL6_JAK_STAT3_SIGNALING": 50,
+      "HALLMARK_INFLAMMATORY_RESPONSE": 127,
+      "HALLMARK_INTERFERON_ALPHA_RESPONSE": 46,
+      "HALLMARK_INTERFERON_GAMMA_RESPONSE": 109,
+      "HALLMARK_KRAS_SIGNALING_DN": 127,
+      "HALLMARK_KRAS_SIGNALING_UP": 142,
+      "HALLMARK_MITOTIC_SPINDLE": 132,
+      "HALLMARK_MTORC1_SIGNALING": 123,
+      "HALLMARK_MYC_TARGETS_V1": 123,
+      "HALLMARK_MYC_TARGETS_V2": 38,
+      "HALLMARK_MYOGENESIS": 131,
+      "HALLMARK_NOTCH_SIGNALING": 19,
+      "HALLMARK_OXIDATIVE_PHOSPHORYLATION": 115,
+      "HALLMARK_P53_PATHWAY": 124,
+      "HALLMARK_PANCREAS_BETA_CELLS": 27,
+      "HALLMARK_PEROXISOME": 72,
+      "HALLMARK_PI3K_AKT_MTOR_SIGNALING": 64,
+      "HALLMARK_PROTEIN_SECRETION": 64,
+      "HALLMARK_REACTIVE_OXYGEN_SPECIES_PATHWAY": 35,
+      "HALLMARK_SPERMATOGENESIS": 86,
+      "HALLMARK_TGF_BETA_SIGNALING": 32,
+      "HALLMARK_TNFA_SIGNALING_VIA_NFKB": 121,
+      "HALLMARK_UNFOLDED_PROTEIN_RESPONSE": 78,
+      "HALLMARK_UV_RESPONSE_DN": 106,
+      "HALLMARK_UV_RESPONSE_UP": 100,
+      "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 24,
+      "HALLMARK_XENOBIOTIC_METABOLISM": 109
+    },
+    "hallmark_visible_gene_sha256": "09d2f50459646a03a052d4f9440e8849d71522041345c21b35ac264648c70006",
+    "organ_levels": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "rows": 7369,
+    "sex_levels": [
+      "1",
+      "2"
+    ],
+    "tissue_site_levels": [
+      "Adipose - Subcutaneous",
+      "Adipose - Visceral (Omentum)",
+      "Brain - Amygdala",
+      "Brain - Anterior cingulate cortex (BA24)",
+      "Brain - Caudate (basal ganglia)",
+      "Brain - Cerebellar Hemisphere",
+      "Brain - Cerebellum",
+      "Brain - Cortex",
+      "Brain - Frontal Cortex (BA9)",
+      "Brain - Hippocampus",
+      "Brain - Hypothalamus",
+      "Brain - Nucleus accumbens (basal ganglia)",
+      "Brain - Putamen (basal ganglia)",
+      "Brain - Substantia nigra",
+      "Colon - Sigmoid",
+      "Colon - Transverse",
+      "Heart - Atrial Appendage",
+      "Heart - Left Ventricle",
+      "Liver",
+      "Lung",
+      "Muscle - Skeletal",
+      "Skin - Not Sun Exposed (Suprapubic)",
+      "Skin - Sun Exposed (Lower leg)"
+    ]
+  },
+  "protocol_sha256": "cd1d3dab63689cd3d534533f37e48f5d0c05e4a7d9f407ec57ee0b49c6c5e4f1",
+  "results": {
+    "age_bracket": {
+      "coverage": {
+        "levels": [
+          {
+            "age_bracket": "20-29",
+            "donors": 63,
+            "organs": 8
+          },
+          {
+            "age_bracket": "30-39",
+            "donors": 53,
+            "organs": 8
+          },
+          {
+            "age_bracket": "40-49",
+            "donors": 116,
+            "organs": 8
+          },
+          {
+            "age_bracket": "50-59",
+            "donors": 238,
+            "organs": 8
+          },
+          {
+            "age_bracket": "60-69",
+            "donors": 255,
+            "organs": 8
+          },
+          {
+            "age_bracket": "70-79",
+            "donors": 25,
+            "organs": 8
+          }
+        ],
+        "pass": true
+      },
+      "maximum_absolute_technical_proxy_partial_correlation": 0.10269513176345152,
+      "outcomes": {
+        "pooled_reconstruction_error": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 1.0,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 0.023176826772150237,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 1.0,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 0.023024040177679367,
+          "donor_bootstrap": {
+            "ci95": [
+              0.00023908241094526843,
+              0.004722148457825411
+            ],
+            "median": 0.0025721140737513153,
+            "replicates": 2000
+          },
+          "incremental_r2": 0.0025224294884182083,
+          "per_organ_incremental_r2": {
+            "adipose": 0.0010186147018412665,
+            "brain": 0.009147474762384483,
+            "colon": 0.0009035970444282897,
+            "heart": -0.0028333082710003898,
+            "liver": -0.004005867968554921,
+            "lung": -0.0050655126308007765,
+            "skeletal_muscle": -0.004453245987259109,
+            "skin": 0.002692724727635481
+          }
+        },
+        "post_private_coefficients": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 0.01,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.01,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.01,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 0.01,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.01,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 27.01901827160093,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 0.01,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.01,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.01,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 0.01,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.01,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 26.993079095957746,
+          "donor_bootstrap": {
+            "ci95": [
+              -0.00010387342703280281,
+              0.0014290983379785728
+            ],
+            "median": 0.0006519569181453693,
+            "replicates": 2000
+          },
+          "incremental_r2": 0.0006517455495239965,
+          "per_organ_incremental_r2": {
+            "adipose": 0.0009077740481287979,
+            "brain": 0.0006686339098032408,
+            "colon": 0.006705604495949618,
+            "heart": -0.001212929324839817,
+            "liver": -0.0009172390135234467,
+            "lung": -0.000627083909817618,
+            "skeletal_muscle": -0.00020041764698947487,
+            "skin": -0.0008546264702925168
+          },
+          "within_organ_permutation": {
+            "median": -0.0005441707373778195,
+            "p95": -0.0003700860630152641,
+            "real_above_p95": true,
+            "replicates": 100
+          }
+        },
+        "protected_private_error": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.1,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 0.011760275792804566,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.1,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 0.011683867014424266,
+          "donor_bootstrap": {
+            "ci95": [
+              0.0005382522946243872,
+              0.004527803074695022
+            ],
+            "median": 0.002533750849961277,
+            "replicates": 2000
+          },
+          "incremental_r2": 0.002510766276409191,
+          "per_organ_incremental_r2": {
+            "adipose": 0.0010375161430503787,
+            "brain": 0.008112900362950858,
+            "colon": 0.005100285831451253,
+            "heart": -0.0031563259335426574,
+            "liver": 0.00014277036166553437,
+            "lung": -0.00480033112380113,
+            "skeletal_muscle": -0.0038031267022884878,
+            "skin": 0.0011318497028454612
+          }
+        }
+      },
+      "technical_proxy_partial_correlations": [
+        [
+          -0.009598521637756744,
+          -0.05423287986731122,
+          -0.03798415629896821,
+          -0.01711659917450678
+        ],
+        [
+          0.01446949942665869,
+          -0.0388118792368989,
+          -0.012792065867337048,
+          -0.011913663318876319
+        ],
+        [
+          0.022293313465942745,
+          -0.08664691355574569,
+          0.0296791695904309,
+          -0.015566430272112299
+        ],
+        [
+          -0.004913910745899392,
+          -0.03850542809460895,
+          0.010240404173171253,
+          0.003633903954160022
+        ],
+        [
+          -0.025185284083576696,
+          0.10269513176345152,
+          -0.005692946938784567,
+          0.018979053507983377
+        ],
+        [
+          0.03272925377370345,
+          0.09705350993206747,
+          -9.444329697480616e-05,
+          0.004811023676237817
+        ]
+      ],
+      "technical_proxy_pass": true
+    },
+    "hallmark_50": {
+      "coverage": {
+        "nonconstant_programs": 50,
+        "organs_with_nonconstant_block": 8,
+        "pass": true,
+        "programs": 50
+      },
+      "maximum_absolute_technical_proxy_partial_correlation": 0.4875549061466326,
+      "outcomes": {
+        "pooled_reconstruction_error": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 1.0,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 0.023176826772150237,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 0.01,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.01,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.001,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 0.01,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.01,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 0.004720645685894408,
+          "donor_bootstrap": {
+            "ci95": [
+              0.2905906339360736,
+              0.3184457316452761
+            ],
+            "median": 0.3047069100998666,
+            "replicates": 2000
+          },
+          "incremental_r2": 0.3047022258515879,
+          "per_organ_incremental_r2": {
+            "adipose": -0.013942698589006031,
+            "brain": 0.8327683007307746,
+            "colon": 0.1320201977802461,
+            "heart": 0.013650899230355744,
+            "liver": -0.013380502796525837,
+            "lung": 0.03721242894905489,
+            "skeletal_muscle": -0.04694376381503445,
+            "skin": 0.1382525695810316
+          }
+        },
+        "post_private_coefficients": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 0.01,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.01,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.01,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 0.01,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.01,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 27.01901827160093,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 0.1,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 0.1,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.1,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 6.392233200015326,
+          "donor_bootstrap": {
+            "ci95": [
+              0.5116250201313912,
+              0.524758143010949
+            ],
+            "median": 0.518223016825061,
+            "replicates": 2000
+          },
+          "incremental_r2": 0.5182668700162075,
+          "per_organ_incremental_r2": {
+            "adipose": 0.3319966725494821,
+            "brain": 0.9000344141349362,
+            "colon": 0.7719072494733885,
+            "heart": 0.2474600106410173,
+            "liver": 0.07991598561248582,
+            "lung": 0.3725734105112203,
+            "skeletal_muscle": 0.2042989776974744,
+            "skin": 0.21348405567872525
+          },
+          "within_organ_permutation": {
+            "median": -0.005580640908524151,
+            "p95": -0.0048929081863507895,
+            "real_above_p95": true,
+            "replicates": 100
+          }
+        },
+        "protected_private_error": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.1,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 0.011760275792804566,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 0.01,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.01,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.001,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 0.01,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.01,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 0.003031852845588588,
+          "donor_bootstrap": {
+            "ci95": [
+              0.2749256444601315,
+              0.298698260980664
+            ],
+            "median": 0.28679204799285596,
+            "replicates": 2000
+          },
+          "incremental_r2": 0.2868129872857169,
+          "per_organ_incremental_r2": {
+            "adipose": 0.005276841837890111,
+            "brain": 0.7519299361010632,
+            "colon": 0.3338054448749258,
+            "heart": 0.026294990145853608,
+            "liver": -0.001222128373208963,
+            "lung": 0.05951664187828599,
+            "skeletal_muscle": -0.03959177974452666,
+            "skin": 0.02676384629979863
+          }
+        }
+      },
+      "technical_proxy_partial_correlations": [
+        [
+          0.12487267802750086,
+          -0.06660815535495752,
+          0.37938475425258317,
+          0.15846208420102087
+        ],
+        [
+          0.07070323412971463,
+          0.032060596885519856,
+          0.41244776304823766,
+          0.1673941043524911
+        ],
+        [
+          0.14676477448739908,
+          -0.0384004074967722,
+          0.39018376734019805,
+          0.17400827261548416
+        ],
+        [
+          0.0541515854807586,
+          0.0901434853563925,
+          0.41217770136446663,
+          0.18639865677708756
+        ],
+        [
+          0.10202212040472557,
+          0.07610020659589917,
+          0.43840535349527965,
+          0.20472713826646477
+        ],
+        [
+          0.11150968774170335,
+          0.06518347059921958,
+          0.40707804095096284,
+          0.19361317966226427
+        ],
+        [
+          0.08662898201602183,
+          0.022462276713636934,
+          0.4286638614849047,
+          0.19650766619268029
+        ],
+        [
+          0.10961550597245352,
+          -0.026463605689568088,
+          0.449528025185093,
+          0.17303687137576507
+        ],
+        [
+          0.09093336679997745,
+          -0.02380349704742058,
+          0.4383858067403893,
+          0.1723438501747741
+        ],
+        [
+          0.05822967559866698,
+          0.017873222645682158,
+          0.4586664146640418,
+          0.1885892352103608
+        ],
+        [
+          0.09374558324469183,
+          0.009984429613489465,
+          0.44023024310072206,
+          0.19262347495475163
+        ],
+        [
+          0.09060134449781208,
+          0.008102239489359895,
+          0.35537655909324095,
+          0.17320262434425798
+        ],
+        [
+          0.10795502006669562,
+          0.003396701712359143,
+          0.34395746326898763,
+          0.15262674100626603
+        ],
+        [
+          0.043257990478784474,
+          0.11465376027348329,
+          0.39988119935805094,
+          0.18358541874747963
+        ],
+        [
+          0.132003432437537,
+          -0.0016155602241708948,
+          0.4533906639962386,
+          0.18394640807139453
+        ],
+        [
+          0.11517470368342177,
+          -0.018150499172891868,
+          0.4875549061466326,
+          0.1769784265258331
+        ],
+        [
+          0.1252600407062513,
+          -0.06856836497435137,
+          0.40484430975230856,
+          0.1464731737016345
+        ],
+        [
+          0.12450087773565054,
+          0.016827893053415595,
+          0.33819063102726743,
+          0.16216366220225617
+        ],
+        [
+          0.09990855753244818,
+          -0.011463643772333911,
+          0.4172596601230725,
+          0.17739863779307405
+        ],
+        [
+          0.08423746375565308,
+          0.12023423075391208,
+          0.4240663013908559,
+          0.1880648226693119
+        ],
+        [
+          0.11627286757559155,
+          -0.0005614108977043921,
+          0.37184182113169,
+          0.18255997527589785
+        ],
+        [
+          0.08502908058465285,
+          0.04679860262134467,
+          0.3958660402787129,
+          0.19046880218651666
+        ],
+        [
+          0.07808321724937957,
+          0.02162677932270495,
+          0.4322127580278972,
+          0.19014488300558813
+        ],
+        [
+          0.06837054560554703,
+          -0.034752351735827594,
+          0.38875045912326156,
+          0.16571353747786016
+        ],
+        [
+          0.06012385748878345,
+          0.009919922029997539,
+          0.40057393848448525,
+          0.16723380914504626
+        ],
+        [
+          0.03211627519338866,
+          0.05916971896796225,
+          0.3903781195585542,
+          0.1719308172253936
+        ],
+        [
+          0.050533495577102364,
+          0.047773813019501586,
+          0.4061650999722602,
+          0.18386274662388216
+        ],
+        [
+          0.1412007137762981,
+          0.09093276143051797,
+          0.48219366352764703,
+          0.17700558843401
+        ],
+        [
+          0.09043230812300343,
+          0.03756396306865772,
+          0.46324052336250643,
+          0.1908657273721732
+        ],
+        [
+          0.12463554535712558,
+          0.048212391463466585,
+          0.3612911144905038,
+          0.18721900740858005
+        ],
+        [
+          0.11340789150763825,
+          -0.05472358297127998,
+          0.35935087015031003,
+          0.1597416759218173
+        ],
+        [
+          0.11205101203160853,
+          -0.02583334864660384,
+          0.3137805460724518,
+          0.16267062742587798
+        ],
+        [
+          0.09627492912358648,
+          -0.06519513535874105,
+          0.3129879295683994,
+          0.14407974787030509
+        ],
+        [
+          0.09290538142857398,
+          0.09116294629130708,
+          0.38619488055849227,
+          0.19104807651403358
+        ],
+        [
+          0.0773458595026279,
+          0.062553462135023,
+          0.37874106687392034,
+          0.19590352730365268
+        ],
+        [
+          0.10845129279755011,
+          -0.05751644989589107,
+          0.33274893550296036,
+          0.13027065331046017
+        ],
+        [
+          0.08368689451534646,
+          0.0014650499731141803,
+          0.3909688381261649,
+          0.18897681744883665
+        ],
+        [
+          0.09821102449498369,
+          -0.0037763507651474514,
+          0.4288891682993099,
+          0.13107007746157937
+        ],
+        [
+          0.11915482313834896,
+          -0.026660674658935044,
+          0.4168571619842215,
+          0.16841083246538294
+        ],
+        [
+          0.11057737794483632,
+          0.010053114974226349,
+          0.3740690410316418,
+          0.1825592596836092
+        ],
+        [
+          0.13690795592099905,
+          0.0030774186242536685,
+          0.35652576899999217,
+          0.1807725364311844
+        ],
+        [
+          0.07785599628543206,
+          -0.06091883002895673,
+          0.3488332528082531,
+          0.1601078131002554
+        ],
+        [
+          0.12647693801408272,
+          0.031283211280054526,
+          0.4661454362736123,
+          0.15548860039995163
+        ],
+        [
+          0.14200020256309953,
+          0.05928514984640056,
+          0.4122932258893683,
+          0.20356363668558033
+        ],
+        [
+          0.04520178170493501,
+          0.06440938860180827,
+          0.33886515185866034,
+          0.1568872557663709
+        ],
+        [
+          0.10454239990607316,
+          -0.011930993319012356,
+          0.3335187106313628,
+          0.17055144748922854
+        ],
+        [
+          0.1297232734014694,
+          0.07234245741804614,
+          0.40784489823814973,
+          0.19477339126850834
+        ],
+        [
+          0.08984246705191129,
+          0.0013288861949533387,
+          0.4014797125311916,
+          0.18168145482537087
+        ],
+        [
+          0.09436169071803382,
+          0.09362005936651172,
+          0.32288185146931325,
+          0.19173569130403942
+        ],
+        [
+          0.09451891624794966,
+          -0.07734496317107083,
+          0.43268288102719216,
+          0.1671448058421722
+        ]
+      ],
+      "technical_proxy_pass": true
+    },
+    "sex": {
+      "coverage": {
+        "levels": [
+          {
+            "donors": 504,
+            "organs": 8,
+            "sex_code": "1"
+          },
+          {
+            "donors": 246,
+            "organs": 8,
+            "sex_code": "2"
+          }
+        ],
+        "pass": true
+      },
+      "maximum_absolute_technical_proxy_partial_correlation": 0.04631959113689976,
+      "outcomes": {
+        "pooled_reconstruction_error": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 1.0,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 0.023176826772150237,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 1.0,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 0.023147791488958954,
+          "donor_bootstrap": {
+            "ci95": [
+              -0.00035495041201233694,
+              0.0013297217148959335
+            ],
+            "median": 0.0004886306746999724,
+            "replicates": 2000
+          },
+          "incremental_r2": 0.00047935785714648907,
+          "per_organ_incremental_r2": {
+            "adipose": -0.000785308214417945,
+            "brain": 0.002610726309483833,
+            "colon": -0.00016945519715906923,
+            "heart": -0.0006282573344994237,
+            "liver": -0.001991702061446075,
+            "lung": -0.00028444979107547237,
+            "skeletal_muscle": -0.0010739440301215416,
+            "skin": -0.00011871550469695795
+          }
+        },
+        "post_private_coefficients": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 0.01,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.01,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.01,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 0.01,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.01,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 27.01901827160093,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 0.01,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.01,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.01,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 0.01,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.01,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 27.016089610313383,
+          "donor_bootstrap": {
+            "ci95": [
+              -0.0003714759072184224,
+              0.0004836662550426057
+            ],
+            "median": 6.235277630608489e-05,
+            "replicates": 2000
+          },
+          "incremental_r2": 7.35852976393335e-05,
+          "per_organ_incremental_r2": {
+            "adipose": -0.00013135934251510057,
+            "brain": 0.0009468799304682077,
+            "colon": -0.0007216377160132742,
+            "heart": -0.001137592992685954,
+            "liver": -0.000407352941035518,
+            "lung": -0.0006452949824756765,
+            "skeletal_muscle": -9.354740481192132e-05,
+            "skin": 0.00016411531136189782
+          },
+          "within_organ_permutation": {
+            "median": -0.00011861505682904348,
+            "p95": 1.323796977337711e-06,
+            "real_above_p95": true,
+            "replicates": 100
+          }
+        },
+        "protected_private_error": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.1,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 0.011760275792804566,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.1,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 0.011754504581618043,
+          "donor_bootstrap": {
+            "ci95": [
+              -0.0003369593892792313,
+              0.0007478026609918219
+            ],
+            "median": 0.0001959858143239812,
+            "replicates": 2000
+          },
+          "incremental_r2": 0.00018964002210632787,
+          "per_organ_incremental_r2": {
+            "adipose": -0.00016837737096270727,
+            "brain": 0.0011706236266931075,
+            "colon": 1.8055734072700343e-05,
+            "heart": -0.00026012498240331,
+            "liver": -0.0017996746907573003,
+            "lung": -0.00038874913546697024,
+            "skeletal_muscle": -0.0005849675302816083,
+            "skin": -0.00011704859134671294
+          }
+        }
+      },
+      "technical_proxy_partial_correlations": [
+        [
+          -0.026668169600459254,
+          0.046319591136899735,
+          -0.042362504026067525,
+          0.0011262882444067548
+        ],
+        [
+          0.026668169600459212,
+          -0.04631959113689976,
+          0.04236250402606757,
+          -0.0011262882444067618
+        ]
+      ],
+      "technical_proxy_pass": true
+    },
+    "tissue_site": {
+      "coverage": {
+        "informative_organs_with_two_eligible_sites": 5,
+        "pass": true
+      },
+      "maximum_absolute_technical_proxy_partial_correlation": 0.20258164110972102,
+      "outcomes": {
+        "pooled_reconstruction_error": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 1.0,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 0.023176826772150237,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 0.1,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.01,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 0.1,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.01,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 0.012754681508365532,
+          "donor_bootstrap": {
+            "ci95": [
+              0.15888263225469462,
+              0.18479651474887718
+            ],
+            "median": 0.171865353316501,
+            "replicates": 2000
+          },
+          "incremental_r2": 0.1720643531390503,
+          "per_organ_incremental_r2": {
+            "adipose": 0.00809795113121838,
+            "brain": 0.5065113478553408,
+            "colon": 0.017862309080375362,
+            "heart": 0.009252682745921451,
+            "liver": 0.0007084721755827069,
+            "lung": -0.0005309216911262736,
+            "skeletal_muscle": 0.011388227991581516,
+            "skin": 0.0054131871538169165
+          }
+        },
+        "post_private_coefficients": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 0.01,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.01,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.01,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 0.01,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.01,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 27.01901827160093,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 0.01,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.01,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.01,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 0.01,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.01,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 16.116620756420428,
+          "donor_bootstrap": {
+            "ci95": [
+              0.26182321901713024,
+              0.28492413647899034
+            ],
+            "median": 0.2737543694931104,
+            "replicates": 2000
+          },
+          "incremental_r2": 0.2739327246711224,
+          "per_organ_incremental_r2": {
+            "adipose": 0.10673797228140555,
+            "brain": 0.6816100898160519,
+            "colon": 0.21803542206988394,
+            "heart": 0.10204555394392888,
+            "liver": 0.0043252974898528385,
+            "lung": 0.004134680275385924,
+            "skeletal_muscle": 0.008311102246259134,
+            "skin": 0.018413886498818723
+          },
+          "within_organ_permutation": {
+            "median": -0.0022724265870155357,
+            "p95": -0.0014720609403883979,
+            "real_above_p95": true,
+            "replicates": 100
+          }
+        },
+        "protected_private_error": {
+          "base_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.1,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 0.1,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 0.1,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "base_mse": 0.011760275792804566,
+          "candidate_folds": [
+            {
+              "fold": 0,
+              "selected_ridge": 1.0,
+              "test_rows": 1480,
+              "train_rows": 5889
+            },
+            {
+              "fold": 1,
+              "selected_ridge": 0.0001,
+              "test_rows": 1441,
+              "train_rows": 5928
+            },
+            {
+              "fold": 2,
+              "selected_ridge": 1.0,
+              "test_rows": 1546,
+              "train_rows": 5823
+            },
+            {
+              "fold": 3,
+              "selected_ridge": 1.0,
+              "test_rows": 1405,
+              "train_rows": 5964
+            },
+            {
+              "fold": 4,
+              "selected_ridge": 1.0,
+              "test_rows": 1497,
+              "train_rows": 5872
+            }
+          ],
+          "candidate_mse": 0.006067982068229695,
+          "donor_bootstrap": {
+            "ci95": [
+              0.17369698334010453,
+              0.1992023403204141
+            ],
+            "median": 0.1867657969133601,
+            "replicates": 2000
+          },
+          "incremental_r2": 0.1870468213474693,
+          "per_organ_incremental_r2": {
+            "adipose": 0.01704417687274686,
+            "brain": 0.5369111535471867,
+            "colon": 0.0510408059590043,
+            "heart": 0.006107505064786422,
+            "liver": 0.0006391270817649327,
+            "lung": 0.0010280139304578812,
+            "skeletal_muscle": 0.013088035474927012,
+            "skin": 0.00950099612566791
+          }
+        }
+      },
+      "technical_proxy_partial_correlations": [
+        [
+          -0.01894788170552225,
+          0.008647227008208936,
+          -0.028291526106853766,
+          -0.004843007697592905
+        ],
+        [
+          0.01894788170552227,
+          -0.008647227008208956,
+          0.028291526106853773,
+          0.004843007697592909
+        ],
+        [
+          -0.02370202224461127,
+          -0.020777302769369788,
+          -0.03537192841215119,
+          -0.00037468239941720915
+        ],
+        [
+          -0.037945549664898,
+          -0.03290678336109244,
+          0.005782831447734128,
+          -0.0012483806656076281
+        ],
+        [
+          0.033228528059920236,
+          -0.004167565631896591,
+          0.008916875942725222,
+          -0.02113664816903944
+        ],
+        [
+          0.029864091137001007,
+          -0.02005332049469336,
+          -0.08340695440763102,
+          0.02176732553106921
+        ],
+        [
+          0.0479945559739888,
+          0.11581608436927694,
+          -0.008932498818250785,
+          0.04545480333408188
+        ],
+        [
+          0.0234617621067669,
+          0.10632116219069646,
+          0.08437282382503625,
+          0.008469430384723796
+        ],
+        [
+          -0.015230900536069682,
+          -0.040690756777641085,
+          0.018733681509524983,
+          -0.003935927634648701
+        ],
+        [
+          -0.036667037647681644,
+          -0.03694287363077245,
+          -0.008901280579373465,
+          0.011770860049792746
+        ],
+        [
+          -0.03276463779281295,
+          -0.037373921994161265,
+          0.10170825701651565,
+          0.0006060485411577534
+        ],
+        [
+          0.018864420793292782,
+          -0.0037743267435259367,
+          0.0187074571295553,
+          -0.036335783640741484
+        ],
+        [
+          0.006953927734498746,
+          -0.01429427498224525,
+          -0.08007637463842189,
+          -0.0328478684865859
+        ],
+        [
+          -0.02949260501731262,
+          -0.020811070702633806,
+          -0.033080375011104224,
+          0.011613701393843772
+        ],
+        [
+          0.01788280153763159,
+          0.04474152163606465,
+          -0.09581589497241018,
+          0.01918160027381154
+        ],
+        [
+          -0.017882801537631575,
+          -0.04474152163606465,
+          0.09581589497241012,
+          -0.019181600273811526
+        ],
+        [
+          0.009051184659080095,
+          0.03172647305450443,
+          0.20258164110972093,
+          0.10473287746086132
+        ],
+        [
+          -0.009051184659080091,
+          -0.03172647305450446,
+          -0.20258164110972102,
+          -0.10473287746086138
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.006172265621273781,
+          0.011168646048849942,
+          -0.026221484875396522,
+          0.011315726005753793
+        ],
+        [
+          -0.006172265621273779,
+          -0.01116864604884998,
+          0.026221484875396533,
+          -0.011315726005753788
+        ]
+      ],
+      "technical_proxy_pass": true
+    }
+  },
+  "schema_version": 1,
+  "seed": 101,
+  "status": "complete"
+}

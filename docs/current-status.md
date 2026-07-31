@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 22:50 PDT / 2026-07-31 05:50 UTC
+**Updated:** 2026-07-30 23:25 PDT / 2026-07-31 06:25 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -33,14 +33,15 @@ and exact execution commit
 `9de77e040f3b69421b65ed6d780a007e9256501e` is deployed in the clean detached
 worktree `/media/volume/moe-reboot/worktrees/multiaxis_tier1_9de77e0`.
 
-The complete 7,369-row feature/coverage smoke passed before efficacy access.
+The complete 7,369-row feature/coverage smoke and all three full seed reports are
+complete and checksum-verified.
 Tissue site, official sex code, official age bracket, and all 50 hash-pinned
 MSigDB 2026.1.Hs Hallmark programs have valid coverage; every Hallmark set retains
-at least 19 visible non-score genes. Seeds 17 and 101 completed with immutable
-reports. The concurrent seed-42 process was killed with exit 137 under aggregate
-memory pressure before emitting a report; that failed lineage is preserved. The
-exact same frozen seed-42 execution was relaunched alone at 22:44 PDT in
-`tier1-seed42-retry1` and is healthy. Result root:
+at least 19 visible non-score genes. The concurrent seed-42 process was killed
+with exit 137 before emitting a report, and a first retry stopped before outcome
+access because its wrapper pre-created the output directory. Both failed
+lineages are preserved. The exact same frozen seed-42 execution completed alone
+at 23:19 PDT in `seed42_retry2`. Result root:
 `/media/volume/moe-reboot/results/multiaxis_tier1_9de77e0`.
 
 The separate frozen OSDR axis-label probe also completed. Its protocol SHA256 is
@@ -53,14 +54,19 @@ point delta: age +0.0068, sex +0.0071, tissue site +0.0045, and Hallmark-50
 missing-metadata rows. These are OSDR development signals, not confirmation, and
 the training-screen gates still must pass independently.
 
-The screen requires an organ-plus-nuisance base, within-organ permutations,
-technical-proxy partial correlations, all fixed seeds, donor bootstrap, coverage,
-per-organ safety, and an independent downstream-label gate. Add at most one axis
-that clears
-within-organ permutation, nuisance, coverage, all-seed, donor-bootstrap,
-per-organ safety, and independent downstream-label gates; otherwise close the
-August 2 architecture as the validated organ MoE with pooled fallback. Cell
-composition remains out of scope for this cycle.
+The deterministic joint gate is complete. **Tissue site is the only passing
+candidate and the only axis authorized for Tier 2.** Its primary incremental R²
+was 0.2837, 0.2715, and 0.2739 across seeds; donor-bootstrap lower bounds were
+positive, every real effect beat its within-organ permutation null, and every
+protected-organ effect was nonnegative. Hallmark-50 was stronger in aggregate
+(mean primary incremental R² 0.5233; OSDR delta +0.1013) but failed the frozen
+per-organ safety gate through skeletal-muscle harm in seeds 42 (−0.0568) and 101
+(−0.0396). Age and sex failed the all-seed bootstrap gate.
+
+The next execution is one bounded protected-adapter Tier-2 smoke for tissue site,
+with shuffled-site and equal-capacity generic controls. If it fails, close the
+August 2 architecture as validated organ MoE plus pooled fallback. Canonical
+result: [`multiaxis-tier1-result.md`](multiaxis-tier1-result.md).
 
 ## Completed background
 

@@ -1,0 +1,370 @@
+{
+  "best_seed_selection": false,
+  "input_sha256": {
+    "osdr_report": "9bfbf37b6705f6a4b288de872c6bc962b15481406c5a54a264b21e097fc2a83a",
+    "seed_reports": {
+      "101": "50f52671e4fa80a9108c46ee3313e2a41d74efa4b423ec69cbfbea77a00d4010",
+      "17": "9e359a4ede9675a2bb65df09318b3764deb69b72ecdedc91f36deab78dfff8fc",
+      "42": "c0ecea88fd0cf89fdabdb75a1f58cb68c9f84c656c988fbd13a71a1374ad667a"
+    }
+  },
+  "maximum_axes_advancing_to_tier2": 2,
+  "protocol_sha256": "cd1d3dab63689cd3d534533f37e48f5d0c05e4a7d9f407ec57ee0b49c6c5e4f1",
+  "ranking_rule": "descending mean all-seed primary post-private-coefficient incremental R2, then axis name",
+  "results": {
+    "age_bracket": {
+      "all_seed_training_pass": false,
+      "mean_primary_incremental_r2": 0.0006418998835816364,
+      "osdr_auroc_minus_organ_base": 0.006755805770584045,
+      "osdr_downstream_positive": true,
+      "osdr_study_bootstrap_ci95": [
+        -0.006686224995048551,
+        0.024489800453716324
+      ],
+      "per_seed": [
+        {
+          "all_training_gates_pass": true,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": true,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": true,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.10269513176345152,
+          "minimum_protected_per_organ_incremental_r2": -0.00402435172956559,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.002819780755779705,
+            "post_private_coefficients": 0.0007579516574902522,
+            "protected_private_error": 0.002532622984611178
+          },
+          "primary_bootstrap_ci95": [
+            7.90578938813074e-06,
+            0.0015357407164340738
+          ],
+          "primary_incremental_r2": 0.0007579516574902522,
+          "seed": 17
+        },
+        {
+          "all_training_gates_pass": false,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": true,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": false,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.10269513176345152,
+          "minimum_protected_per_organ_incremental_r2": -0.005882786929811348,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.0019051300381131083,
+            "post_private_coefficients": 0.0005160024437306603,
+            "protected_private_error": 0.0025244392037351085
+          },
+          "primary_bootstrap_ci95": [
+            -0.00027054768022948287,
+            0.0013065956238750326
+          ],
+          "primary_incremental_r2": 0.0005160024437306603,
+          "seed": 42
+        },
+        {
+          "all_training_gates_pass": false,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": true,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": false,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.10269513176345152,
+          "minimum_protected_per_organ_incremental_r2": -0.00480033112380113,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.0025224294884182083,
+            "post_private_coefficients": 0.0006517455495239965,
+            "protected_private_error": 0.002510766276409191
+          },
+          "primary_bootstrap_ci95": [
+            -0.00010387342703280281,
+            0.0014290983379785728
+          ],
+          "primary_incremental_r2": 0.0006517455495239965,
+          "seed": 101
+        }
+      ],
+      "tier1_pass": false
+    },
+    "hallmark_50": {
+      "all_seed_training_pass": false,
+      "mean_primary_incremental_r2": 0.523287778858963,
+      "osdr_auroc_minus_organ_base": 0.1013136288998358,
+      "osdr_downstream_positive": true,
+      "osdr_study_bootstrap_ci95": [
+        0.026712401196228606,
+        0.20488855629465394
+      ],
+      "per_seed": [
+        {
+          "all_training_gates_pass": true,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": true,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": true,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.4875549061466326,
+          "minimum_protected_per_organ_incremental_r2": -0.014775115745642536,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.2524431116461356,
+            "post_private_coefficients": 0.5379602515738818,
+            "protected_private_error": 0.3188091859836401
+          },
+          "primary_bootstrap_ci95": [
+            0.5318322583442568,
+            0.5443473312383693
+          ],
+          "primary_incremental_r2": 0.5379602515738818,
+          "seed": 17
+        },
+        {
+          "all_training_gates_pass": false,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": false,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": true,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.4875549061466326,
+          "minimum_protected_per_organ_incremental_r2": -0.05677821501590502,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.30155179297522,
+            "post_private_coefficients": 0.5136362149867997,
+            "protected_private_error": 0.36797195323512694
+          },
+          "primary_bootstrap_ci95": [
+            0.5068115499960223,
+            0.5206446753971994
+          ],
+          "primary_incremental_r2": 0.5136362149867997,
+          "seed": 42
+        },
+        {
+          "all_training_gates_pass": false,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": false,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": true,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.4875549061466326,
+          "minimum_protected_per_organ_incremental_r2": -0.03959177974452666,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.3047022258515879,
+            "post_private_coefficients": 0.5182668700162075,
+            "protected_private_error": 0.2868129872857169
+          },
+          "primary_bootstrap_ci95": [
+            0.5116250201313912,
+            0.524758143010949
+          ],
+          "primary_incremental_r2": 0.5182668700162075,
+          "seed": 101
+        }
+      ],
+      "tier1_pass": false
+    },
+    "sex": {
+      "all_seed_training_pass": false,
+      "mean_primary_incremental_r2": 0.00012596573569295425,
+      "osdr_auroc_minus_organ_base": 0.007131128313394297,
+      "osdr_downstream_positive": true,
+      "osdr_study_bootstrap_ci95": [
+        -0.012114186745723335,
+        0.030360069806212104
+      ],
+      "per_seed": [
+        {
+          "all_training_gates_pass": false,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": true,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": false,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.04631959113689976,
+          "minimum_protected_per_organ_incremental_r2": -0.001236110392983056,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.00047848932422165,
+            "post_private_coefficients": 0.0001404533312848898,
+            "protected_private_error": 3.398235382557334e-05
+          },
+          "primary_bootstrap_ci95": [
+            -0.00027820497163596813,
+            0.0005534363298964883
+          ],
+          "primary_incremental_r2": 0.0001404533312848898,
+          "seed": 17
+        },
+        {
+          "all_training_gates_pass": false,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": true,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": false,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.04631959113689976,
+          "minimum_protected_per_organ_incremental_r2": -0.0011141795546995826,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.000482924842207525,
+            "post_private_coefficients": 0.00016385857815463941,
+            "protected_private_error": 5.943221352015902e-05
+          },
+          "primary_bootstrap_ci95": [
+            -0.0002442786099651925,
+            0.0005678033750256365
+          ],
+          "primary_incremental_r2": 0.00016385857815463941,
+          "seed": 42
+        },
+        {
+          "all_training_gates_pass": false,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": true,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": false,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.04631959113689976,
+          "minimum_protected_per_organ_incremental_r2": -0.0017996746907573003,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.00047935785714648907,
+            "post_private_coefficients": 7.35852976393335e-05,
+            "protected_private_error": 0.00018964002210632787
+          },
+          "primary_bootstrap_ci95": [
+            -0.0003714759072184224,
+            0.0004836662550426057
+          ],
+          "primary_incremental_r2": 7.35852976393335e-05,
+          "seed": 101
+        }
+      ],
+      "tier1_pass": false
+    },
+    "tissue_site": {
+      "all_seed_training_pass": true,
+      "mean_primary_incremental_r2": 0.27637063963687075,
+      "osdr_auroc_minus_organ_base": 0.004503870513722752,
+      "osdr_downstream_positive": true,
+      "osdr_study_bootstrap_ci95": [
+        -0.0035238022733740187,
+        0.014565742644180294
+      ],
+      "per_seed": [
+        {
+          "all_training_gates_pass": true,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": true,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": true,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.20258164110972102,
+          "minimum_protected_per_organ_incremental_r2": 0.00047699039763912405,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.13787196795268675,
+            "post_private_coefficients": 0.28368034010110416,
+            "protected_private_error": 0.23366963961520046
+          },
+          "primary_bootstrap_ci95": [
+            0.2724737481899997,
+            0.29503619476823595
+          ],
+          "primary_incremental_r2": 0.28368034010110416,
+          "seed": 17
+        },
+        {
+          "all_training_gates_pass": true,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": true,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": true,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.20258164110972102,
+          "minimum_protected_per_organ_incremental_r2": 0.0012055976536362062,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.17533369045628844,
+            "post_private_coefficients": 0.2714988541383857,
+            "protected_private_error": 0.27140374386072424
+          },
+          "primary_bootstrap_ci95": [
+            0.2595404723433253,
+            0.2826033422337158
+          ],
+          "primary_incremental_r2": 0.2714988541383857,
+          "seed": 42
+        },
+        {
+          "all_training_gates_pass": true,
+          "gates": {
+            "all_outcomes_positive": true,
+            "coverage": true,
+            "per_organ_safety": true,
+            "primary_above_permutation_p95": true,
+            "primary_bootstrap_lower_positive": true,
+            "technical_proxy": true
+          },
+          "maximum_absolute_technical_proxy_partial_correlation": 0.20258164110972102,
+          "minimum_protected_per_organ_incremental_r2": 0.0006391270817649327,
+          "outcome_incremental_r2": {
+            "pooled_reconstruction_error": 0.1720643531390503,
+            "post_private_coefficients": 0.2739327246711224,
+            "protected_private_error": 0.1870468213474693
+          },
+          "primary_bootstrap_ci95": [
+            0.26182321901713024,
+            0.28492413647899034
+          ],
+          "primary_incremental_r2": 0.2739327246711224,
+          "seed": 101
+        }
+      ],
+      "tier1_pass": true
+    }
+  },
+  "role": "deterministic frozen multiaxis Tier-1 gate aggregation",
+  "schema_version": 1,
+  "seeds": [
+    17,
+    42,
+    101
+  ],
+  "status": "complete",
+  "tier1_passing_axes": [
+    "tissue_site"
+  ],
+  "tier2_advanced_axes": [
+    "tissue_site"
+  ]
+}
