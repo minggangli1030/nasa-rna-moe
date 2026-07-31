@@ -1,11 +1,39 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-30 15:52 PDT / 2026-07-30 22:52 UTC
+**Updated:** 2026-07-30 22:05 PDT / 2026-07-31 05:05 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
 
 ## Current phase
+
+The frozen OSDR downstream-development evaluation is complete. Exact evaluator
+commit `61766ee` finished at 2026-07-30 21:26 PDT on 292 samples from 18 studies;
+all three Stage 1 caches, grouped splits, converged elastic-net fits, and artifact
+hashes verify.
+
+The prespecified downstream-positive gate failed. True-organ minus pooled AUROC
+was −0.051, −0.003, and +0.018 across seeds 17, 42, and 101. Hard and soft
+input-only routing also failed the all-seed direction requirement. Mean learned
+AUROC was 0.590–0.605, versus 0.726 for raw expression and 0.733 for fold-fit
+PCA-64. No seed or representation was selected.
+
+This does not invalidate the 3.6–3.8% external masked-gene reconstruction gain. It
+shows that the current masked score-panel prediction contract does not preserve
+enough cross-species spaceflight-state information to beat simple observed
+expression baselines. Raw expression and PCA are therefore mandatory gates for
+the final model, and downstream utility must be designed explicitly rather than
+inferred from reconstruction. Canonical result:
+[`stage1-osdr-downstream-result.md`](stage1-osdr-downstream-result.md).
+
+The immediate branch remains bounded: finish the frozen training-only Tier-1
+screens for tissue site, age/sex, and Hallmark-50; add at most one axis that clears
+within-organ permutation, nuisance, coverage, all-seed, donor-bootstrap,
+per-organ safety, and independent downstream-label gates; otherwise close the
+August 2 architecture as the validated organ MoE with pooled fallback. Cell
+composition remains out of scope for this cycle.
+
+## Completed background
 
 Stage 2B B0–B4 and the multiaxis Tier-0 inventory are complete and locally
 checksum-verified. The prespecified target-agreement gate failed: the absolute
@@ -23,14 +51,14 @@ This is a candidate signal, not authorization to train: tissue site must now cle
 within-organ permutation, nuisance, coverage, all-seed, donor-bootstrap, and
 downstream-label gates.
 
-The schedule has been reordered around the binding risk identified in `CLAUDE.md`:
-the downstream harness starts now against frozen Stage 1 checkpoints rather than
+The schedule was reordered around the binding risk identified in `CLAUDE.md`: the
+downstream harness was built against frozen Stage 1 checkpoints rather than
 waiting for the final model. A five-field readiness audit found one executable
-primary task. Strict eight-organ OSDR mapping yields 892 labeled metadata rows,
+primary task. Strict eight-organ OSDR mapping yielded 892 labeled metadata rows,
 43 studies, and 45 study-organ units with both exact structured `Space Flight` and
-`Ground Control` labels. The required 43 count matrices are not yet local, but the
-repository contains a validated NASA API downloader and strict mouse-ortholog,
-log1p-TPM, 14,000-gene QC path. The exact candidate metadata and audit are at
+`Ground Control` labels. The repository's validated NASA API downloader and strict
+mouse-ortholog, log1p-TPM, 14,000-gene QC path prepared the frozen cohort. The
+exact candidate metadata and audit are at
 `artifacts/final_evaluation/downstream_readiness/`.
 
 The OSDR downstream-development protocol was frozen before download at
@@ -47,12 +75,11 @@ The download and frozen QC completed: 297/892 requested metadata rows survived t
 two-class study-organ contrast. No replacements were added. The first feature-cache
 attempt failed before producing model outcomes because it narrowed to 292 rows
 before validating a 297-row coverage artifact. The failed empty lineage is
-preserved. A versioned fix now validates full coverage order before explicit
-subsetting; commit `18f408c`, execution-v2 SHA256
-`7bfc1b08457d1d0e6ff3fec6266a276516fc9a2c5fee7bfc1e38860184549b2b`.
-Detached screen `stage1-osdr-continuation-18f408c` is actively caching all three
-Stage 1 seeds on the primary A100 and will run the grouped smoke and full evaluator
-without intervention.
+preserved. A versioned fix validated full coverage order before explicit
+subsetting. Later implementation-only lineages corrected safe string
+serialization and fail-closed solver convergence without changing the frozen
+cohort, splits, representations, seeds, or grid. They emitted no accepted model
+result. Exact commit `61766ee` produced the verified evaluation summarized above.
 
 ARCHS4 disease/tumor is cut from the core until free-text candidates receive
 independent phenotype curation; its existing keyword flags are not labels. TCGA is

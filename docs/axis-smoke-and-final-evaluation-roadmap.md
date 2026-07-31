@@ -16,6 +16,15 @@ The downstream harness is now a parallel critical path rather than final-week wo
 Frozen Stage 1 checkpoints are the stand-in representation until the final model is
 available.
 
+The first complete OSDR run is now a validated negative development result:
+PCA-64 AUROC was 0.733 and raw expression 0.726, while learned Stage 1 conditions
+averaged 0.590–0.605 and no specialist mode improved over pooled in all three
+seeds. This establishes the harness and a strict baseline floor. It also changes
+the final representation requirement: the final model must expose an explicit
+downstream-facing embedding or objective and beat raw/PCA, rather than assuming
+that better masked-gene predictions will transfer automatically. Canonical result:
+[`stage1-osdr-downstream-result.md`](stage1-osdr-downstream-result.md).
+
 1. Freeze one defensible labeled cohort and build its complete downstream harness
    against Stage 1 now.
 2. Reuse immutable Stage 2B caches to screen candidate axes cheaply in parallel.

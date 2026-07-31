@@ -30,6 +30,15 @@ The second question must compare against Walt's BulkFormer architecture and simp
 baselines. Otherwise a gain over this project's own pooled trunk cannot establish
 competitive value.
 
+The first Stage 1 OSDR development evaluation has now answered this question
+negatively for the current output contract. Raw expression achieved AUROC 0.726
+and fold-fit PCA-64 0.733; no organ-specialist mode improved over the pooled trunk
+in all three seeds, and the learned conditions averaged only 0.590–0.605 AUROC.
+The harness is therefore working and has established a non-negotiable baseline
+floor, but masked score-panel predictions cannot serve as the final downstream
+representation by themselves. See
+[`stage1-osdr-downstream-result.md`](stage1-osdr-downstream-result.md).
+
 ## Downstream benchmark: primary design
 
 ### Tasks

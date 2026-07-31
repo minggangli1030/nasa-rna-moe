@@ -1,0 +1,20 @@
+{
+  "candidate_metadata_sha256": "f0b7f8d68dda922e7d96702c2eae1b72251deb27f78e9c67b4955c2468da1a68",
+  "hashes": {
+    "coverage_sha256": "7250e59a49fb9d13dd411913d8ada395b222cd9dfb70d608757fcbbb0b25f80f",
+    "expression_sha256": "c5753c9c89183107807779e5cf3365491013c7b1cbd9c0168fbb0c86113db1ce",
+    "preprocessing_manifest_sha256": "82433eeb20a0e3e0efd74baa7131ceca4d2ab68052abee54ea62559f4a90efd0",
+    "retained_cohort_sha256": "47a3f47a8a54c517b9530f53c1c9ce4eefda1829729d4df90dd3ea53d6ac3f80"
+  },
+  "no_replacements": true,
+  "outcomes_used_for_model_selection": false,
+  "protocol_sha256": "04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9",
+  "requested_samples": 892,
+  "requested_studies": 43,
+  "retained_samples_after_qc": 297,
+  "retained_studies_after_qc": 22,
+  "retained_valid_contrast_samples": 292,
+  "retained_valid_contrast_studies": 18,
+  "schema_version": 1,
+  "status": "complete"
+}

@@ -1,6 +1,27 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-30 15:52 PDT / 2026-07-30 22:52 UTC
+**Last updated:** 2026-07-30 22:05 PDT / 2026-07-31 05:05 UTC
+
+## 2026-07-30 — OSDR downstream harness complete; Stage 1 output contract fails the downstream gate
+
+The corrected converged evaluator completed at 21:26 PDT using exact commit
+`61766ee`. All three frozen Stage 1 feature caches, the 292-sample/18-study
+no-replacement cohort, five study-grouped outer folds, three training-study inner
+folds, and the fixed 12-point elastic-net grid verified. Compact reports and
+out-of-fold predictions were retrieved locally with matching SHA256 values.
+
+The prespecified all-seed gate failed. True-organ minus same-seed pooled AUROC was
+−0.051, −0.003, and +0.018 for seeds 17, 42, and 101. Hard-router deltas were
+−0.046, +0.015, and −0.016; soft-router deltas were −0.028, approximately zero,
+and −0.003. Mean learned AUROC ranged from 0.590 to 0.605, while raw expression
+reached 0.726 and fold-fit PCA-64 reached 0.733.
+
+This is a useful negative result: external reconstruction specialization remains
+validated, but masked score-panel predictions are not a competitive frozen
+representation for mouse spaceflight-versus-ground classification. Raw expression
+and PCA are now mandatory final gates. No seed or condition is selected from this
+cohort. Canonical result:
+[`docs/stage1-osdr-downstream-result.md`](docs/stage1-osdr-downstream-result.md).
 
 ## 2026-07-30 — Frozen OSDR downstream run active on the A100
 

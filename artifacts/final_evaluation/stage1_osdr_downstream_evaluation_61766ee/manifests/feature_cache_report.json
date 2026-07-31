@@ -1,0 +1,112 @@
+{
+  "n_samples": 292,
+  "n_score_genes": 4634,
+  "n_studies": 18,
+  "protocol_sha256": "04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9",
+  "schema_version": 1,
+  "seeds": {
+    "101": {
+      "best_seed_selection": false,
+      "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+      "checkpoint_updates": false,
+      "cohort_qc_report_sha256": "2c992250a47b0c77c3d7dcacccf4481cce78f49c4b61d691662a514de381fb5a",
+      "conditions": [
+        "pooled",
+        "pooled_adapter",
+        "true_organ",
+        "blind_router_hard",
+        "blind_router_soft"
+      ],
+      "content_sha256": {
+        "feature__blind_router_hard": "67e6d6c6a9cde93a48418ab2fe473977807f129aac65c377fc0076967444f17d",
+        "feature__blind_router_soft": "7ae4547d97f449f3e8fd847284c8232d69827a9f959b4f0f68389a5b3c6e281e",
+        "feature__pooled": "5be55def1a6c5dc13fff8c9cf874a8b4ca8d352d94e37c6979db46d9e5314774",
+        "feature__pooled_adapter": "e45c348097889b1e6041758684a1c462d5c8a7a13587f26ddc277ca17ea7e742",
+        "feature__true_organ": "e8d797af67083bdbe8178a378e2fcad1b033d69b6bb03bb7de820c8aa8d425a3",
+        "groups": "41932c325aa210479222a170b8ce7e78128cfa19d82e763bbfcd3e6e044d098a",
+        "labels": "975b76e386279167bb6a9ba5df59c4e49d585ad90824d55d3a6a2ed89942d164",
+        "organs": "7dc5cadf942b1e2bac50f9cfbdc69fd77051a6f1615c6284938cad80951704b2",
+        "router_hard_labels": "7f15e35f217ff185c61748095898afe15c74b2e5d4cdc19422c9b5b6a4a711f5",
+        "router_probabilities": "3739b8c7e770c8d228982e53da1760f2e74aa72eefba82ba6b4f1bc42cf1339a",
+        "sample_ids": "9786990dc21d23fc0a66d203ce308f845a274b1378116390f2b17f9ffbe21a60",
+        "score_gene_indices": "0f598c41881008152b77dad736d5dc04bb14cd5df5da59cea92b6348b9f07f68"
+      },
+      "model_fitting_performed": false,
+      "output": "/media/volume/moe-reboot/results/stage1_osdr_downstream_5884756/features_v4/seed101_features.npz",
+      "output_sha256": "dfe2dc4c4ef160ab9acdf7ce279702456291dd26914a5bf1258051f1aaec348a",
+      "protocol_sha256": "04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9",
+      "schema_version": 1,
+      "seed": 101,
+      "status": "complete"
+    },
+    "17": {
+      "best_seed_selection": false,
+      "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+      "checkpoint_updates": false,
+      "cohort_qc_report_sha256": "2c992250a47b0c77c3d7dcacccf4481cce78f49c4b61d691662a514de381fb5a",
+      "conditions": [
+        "pooled",
+        "pooled_adapter",
+        "true_organ",
+        "blind_router_hard",
+        "blind_router_soft"
+      ],
+      "content_sha256": {
+        "feature__blind_router_hard": "c07215442676e2479e2db2105f2675a47152032e22b8f5e42c0a2d10cd49bc50",
+        "feature__blind_router_soft": "68041e92f49d3f5144f779d58587e0060712151fe94f528e7fca2d132d758aa9",
+        "feature__pooled": "4318ffb81828a66119dfc1a89b9e22960c112ffdab5da6ac7a573753ebde6532",
+        "feature__pooled_adapter": "1060f4517592fb5bbd158a5754c448975435c18d2469c39a7aa78a8d06ed1e34",
+        "feature__true_organ": "43644de24e166e04b601994b86d6b103a8ed2699eadba68f10b9eb9c6977888d",
+        "groups": "41932c325aa210479222a170b8ce7e78128cfa19d82e763bbfcd3e6e044d098a",
+        "labels": "975b76e386279167bb6a9ba5df59c4e49d585ad90824d55d3a6a2ed89942d164",
+        "organs": "7dc5cadf942b1e2bac50f9cfbdc69fd77051a6f1615c6284938cad80951704b2",
+        "router_hard_labels": "7f15e35f217ff185c61748095898afe15c74b2e5d4cdc19422c9b5b6a4a711f5",
+        "router_probabilities": "3739b8c7e770c8d228982e53da1760f2e74aa72eefba82ba6b4f1bc42cf1339a",
+        "sample_ids": "9786990dc21d23fc0a66d203ce308f845a274b1378116390f2b17f9ffbe21a60",
+        "score_gene_indices": "0f598c41881008152b77dad736d5dc04bb14cd5df5da59cea92b6348b9f07f68"
+      },
+      "model_fitting_performed": false,
+      "output": "/media/volume/moe-reboot/results/stage1_osdr_downstream_5884756/features_v4/seed17_features.npz",
+      "output_sha256": "eea461581b1168918ccc9911163eaa5fd1fddc482089bf9db578a849406bb939",
+      "protocol_sha256": "04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9",
+      "schema_version": 1,
+      "seed": 17,
+      "status": "complete"
+    },
+    "42": {
+      "best_seed_selection": false,
+      "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+      "checkpoint_updates": false,
+      "cohort_qc_report_sha256": "2c992250a47b0c77c3d7dcacccf4481cce78f49c4b61d691662a514de381fb5a",
+      "conditions": [
+        "pooled",
+        "pooled_adapter",
+        "true_organ",
+        "blind_router_hard",
+        "blind_router_soft"
+      ],
+      "content_sha256": {
+        "feature__blind_router_hard": "b3ebae4a858278489a5be22997d2af6d00ea870c918d935963a8f20ed5b9a693",
+        "feature__blind_router_soft": "717144684c5727daa1e345c93cf333efbd100a7c5d70b703525038e16f0b15a1",
+        "feature__pooled": "38ec8d08463458188d959704f321ccbb76431155895820ce9e8ce75bce186912",
+        "feature__pooled_adapter": "c66652a4aec7ba5f00c72152de641c183af9a900397fd0daf4fde5789a00ab8c",
+        "feature__true_organ": "58a3f8e25af95aa76f30b8942680e56016cc97c4e3e9004b83664ad763f334a4",
+        "groups": "41932c325aa210479222a170b8ce7e78128cfa19d82e763bbfcd3e6e044d098a",
+        "labels": "975b76e386279167bb6a9ba5df59c4e49d585ad90824d55d3a6a2ed89942d164",
+        "organs": "7dc5cadf942b1e2bac50f9cfbdc69fd77051a6f1615c6284938cad80951704b2",
+        "router_hard_labels": "7f15e35f217ff185c61748095898afe15c74b2e5d4cdc19422c9b5b6a4a711f5",
+        "router_probabilities": "3739b8c7e770c8d228982e53da1760f2e74aa72eefba82ba6b4f1bc42cf1339a",
+        "sample_ids": "9786990dc21d23fc0a66d203ce308f845a274b1378116390f2b17f9ffbe21a60",
+        "score_gene_indices": "0f598c41881008152b77dad736d5dc04bb14cd5df5da59cea92b6348b9f07f68"
+      },
+      "model_fitting_performed": false,
+      "output": "/media/volume/moe-reboot/results/stage1_osdr_downstream_5884756/features_v4/seed42_features.npz",
+      "output_sha256": "d4f027e6930abc3b98134171902ee9cb52d1977600b25384f18a9bc5bd3f23ce",
+      "protocol_sha256": "04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9",
+      "schema_version": 1,
+      "seed": 42,
+      "status": "complete"
+    }
+  },
+  "status": "complete"
+}
