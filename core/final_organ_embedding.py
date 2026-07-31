@@ -37,6 +37,10 @@ def compose_embeddings(
         raise ValueError("router probabilities do not match expert summaries")
     if true_labels.shape != (len(pooled_summary),):
         raise ValueError("true labels do not match pooled summaries")
+    router_probabilities = router_probabilities.to(
+        device=expert_summaries.device, dtype=expert_summaries.dtype
+    )
+    true_labels = true_labels.to(device=expert_summaries.device, dtype=torch.long)
     rows = torch.arange(len(pooled_summary), device=pooled_summary.device)
     hard_labels = router_probabilities.argmax(dim=1)
     true_summary = expert_summaries[rows, true_labels]

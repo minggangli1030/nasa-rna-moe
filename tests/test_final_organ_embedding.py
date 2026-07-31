@@ -24,3 +24,13 @@ def test_compose_embeddings_uses_true_hard_and_soft_routes():
         result["blind_router_soft_embedding"][:, 1], torch.tensor([1.5, 3.8])
     )
     assert result["pooled_hidden_plus_router"].shape == (2, 3)
+
+
+def test_compose_embeddings_normalizes_router_dtype():
+    result = compose_embeddings(
+        torch.ones(1, 2, dtype=torch.float32),
+        torch.ones(1, 2, 3, dtype=torch.float32),
+        torch.tensor([[0.5, 0.5]], dtype=torch.float64),
+        torch.tensor([0]),
+    )
+    assert result["blind_router_soft_embedding"].dtype == torch.float32
