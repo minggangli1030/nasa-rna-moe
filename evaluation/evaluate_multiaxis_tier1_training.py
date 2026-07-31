@@ -191,7 +191,10 @@ def coverage_records(
     training: pd.DataFrame, metadata: pd.DataFrame, candidates: dict[str, np.ndarray]
 ) -> dict[str, Any]:
     joined = training[["sample_id", "series_group_id", "organ"]].merge(
-        metadata, on="sample_id", how="left", validate="one_to_one"
+        metadata[["sample_id", "tissue_site", "sex_code", "age_bracket"]],
+        on="sample_id",
+        how="left",
+        validate="one_to_one",
     )
     records: dict[str, Any] = {}
     site = (
