@@ -1,0 +1,125 @@
+{
+  "any_deployable_embedding_passes": false,
+  "auroc": {
+    "blind_router_hard_embedding": {
+      "101": 0.5330049261083744,
+      "17": 0.5307529908515131,
+      "42": 0.5614825240441004
+    },
+    "blind_router_soft_embedding": {
+      "101": 0.5072953319258738,
+      "17": 0.5570959418250059,
+      "42": 0.5661740558292282
+    },
+    "pooled_hidden": {
+      "101": 0.6070842129955429,
+      "17": 0.5254515599343185,
+      "42": 0.5473610133708655
+    },
+    "pooled_hidden_plus_organ_label": {
+      "101": 0.5962467745718977,
+      "17": 0.5456251466103683,
+      "42": 0.5455782312925169
+    },
+    "pooled_hidden_plus_router": {
+      "101": 0.5510673234811165,
+      "17": 0.547853624208304,
+      "42": 0.5592071311283133
+    },
+    "true_organ_embedding": {
+      "101": 0.5461412151067324,
+      "17": 0.5711001642036124,
+      "42": 0.5365235749472201
+    }
+  },
+  "best_seed_selection": false,
+  "decision": "no_downstream_positive_embedding_retain_reconstruction_model_and_raw_pca_gates",
+  "deployable_gates": {
+    "blind_router_hard_embedding": {
+      "all_seed_gate_pass": false,
+      "by_seed": {
+        "101": {
+          "beats_all_references": false,
+          "candidate_auroc": 0.5330049261083744,
+          "minus_pca_64": -0.19971850809289238,
+          "minus_pooled_hidden": -0.07407928688716858,
+          "minus_raw_expression": -0.19305653295801073
+        },
+        "17": {
+          "beats_all_references": false,
+          "candidate_auroc": 0.5307529908515131,
+          "minus_pca_64": -0.20197044334975367,
+          "minus_pooled_hidden": 0.005301430917194594,
+          "minus_raw_expression": -0.19530846821487202
+        },
+        "42": {
+          "beats_all_references": false,
+          "candidate_auroc": 0.5614825240441004,
+          "minus_pca_64": -0.17124091015716636,
+          "minus_pooled_hidden": 0.01412151067323486,
+          "minus_raw_expression": -0.1645789350222847
+        }
+      }
+    },
+    "blind_router_soft_embedding": {
+      "all_seed_gate_pass": false,
+      "by_seed": {
+        "101": {
+          "beats_all_references": false,
+          "candidate_auroc": 0.5072953319258738,
+          "minus_pca_64": -0.2254281022753929,
+          "minus_pooled_hidden": -0.0997888810696691,
+          "minus_raw_expression": -0.21876612714051125
+        },
+        "17": {
+          "beats_all_references": false,
+          "candidate_auroc": 0.5570959418250059,
+          "minus_pca_64": -0.17562749237626085,
+          "minus_pooled_hidden": 0.03164438189068741,
+          "minus_raw_expression": -0.1689655172413792
+        },
+        "42": {
+          "beats_all_references": false,
+          "candidate_auroc": 0.5661740558292282,
+          "minus_pca_64": -0.16654937837203854,
+          "minus_pooled_hidden": 0.018813042458362683,
+          "minus_raw_expression": -0.1598874032371569
+        }
+      }
+    },
+    "pooled_hidden_plus_router": {
+      "all_seed_gate_pass": false,
+      "by_seed": {
+        "101": {
+          "beats_all_references": false,
+          "candidate_auroc": 0.5510673234811165,
+          "minus_pca_64": -0.1816561107201502,
+          "minus_pooled_hidden": -0.056016889514426405,
+          "minus_raw_expression": -0.17499413558526855
+        },
+        "17": {
+          "beats_all_references": false,
+          "candidate_auroc": 0.547853624208304,
+          "minus_pca_64": -0.18486980999296276,
+          "minus_pooled_hidden": 0.0224020642739855,
+          "minus_raw_expression": -0.17820783485808112
+        },
+        "42": {
+          "beats_all_references": false,
+          "candidate_auroc": 0.5592071311283133,
+          "minus_pca_64": -0.1735163030729534,
+          "minus_pooled_hidden": 0.011846117757447816,
+          "minus_raw_expression": -0.16685432793807176
+        }
+      }
+    }
+  },
+  "evaluation_report_sha256": "10c57530ae3f14a8ed210943e41cac5fa71af32b4bef972009cf45a5fc577c8f",
+  "pca_64_auroc": 0.7327234342012667,
+  "post_hoc_condition_selection": false,
+  "protocol_sha256": "3730da5059691065855c88f25cb79636e07887b7ed7f127e467256e9b848910a",
+  "raw_expression_auroc": 0.7260614590663851,
+  "role": "accessed_cross_species_downstream_development",
+  "schema_version": 1,
+  "status": "complete"
+}

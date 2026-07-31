@@ -45,6 +45,13 @@ bottleneck, and router probabilities. The existing OSDR development harness will
 test this contract without changing any checkpoint. Raw expression and fold-fit PCA
 remain mandatory gates, and this accessed cohort cannot provide final confirmation.
 
+That evaluation is now complete and negative. Pooled hidden, router probabilities,
+and organ bottlenecks did not beat raw expression or PCA in any seed; all deployable
+contracts also failed the all-seed direction gate versus pooled hidden. The final
+artifact therefore preserves the exact externally validated three-seed K8 weight
+family rather than creating an unvalidated post-lockbox refit. Hidden states remain
+diagnostic outputs, while raw/PCA stay mandatory in the final downstream ladder.
+
 1. Freeze one defensible labeled cohort and build its complete downstream harness
    against Stage 1 now.
 2. Reuse immutable Stage 2B caches to screen candidate axes cheaply in parallel.

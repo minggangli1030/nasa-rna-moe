@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_final_k8_package_execution",
+  "role": "immutable packaging of the already validated K8 organ-MoE family; no new fitting or efficacy scoring",
+  "architecture": {
+    "model": "three-seed K8 organ residual MoE with frozen target-hidden input-only router",
+    "seeds": [17, 42, 101],
+    "organ_order": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "secondary_axis": null,
+    "pooled_prediction_retained": true,
+    "best_seed_selection": false
+  },
+  "source": {
+    "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+    "stage1_training_commit": "98e2cbab7e94f101feb33e83cff0712834c38ee3",
+    "stage1_external_result": "post-access QC-amended ARCHS4 evaluation: true-organ +3.797%, hard router +3.633%, soft router +3.676% versus pooled",
+    "tissue_site_tier2_aggregate_sha256": "130d8ab775777a5e4a3d0a31513d3fb6c330add9452fb30c1a6fa73999f0d921",
+    "embedding_development_summary_sha256": "84cc59eeb69b73e72356c34c225ee013adfd85f185ddae7d1523de88b4f26638"
+  },
+  "weight_policy": {
+    "refit_performed": false,
+    "checkpoint_updates": false,
+    "reason": "preserve the exact externally validated weight family; a post-lockbox train-plus-calibration refit would be unvalidated and would require changing the fixed exposure budget to cover the 3030-row brain union",
+    "all_three_validated_seeds_packaged": true
+  },
+  "output_contract": {
+    "reconstruction_outputs": [
+      "pooled_prediction",
+      "true_organ_prediction_explanatory",
+      "blind_router_hard_prediction",
+      "blind_router_soft_prediction"
+    ],
+    "diagnostic_outputs_without_downstream_claim": [
+      "pooled_hidden_summary",
+      "organ_adapter_bottleneck",
+      "router_probabilities"
+    ],
+    "downstream_positive_embedding": null,
+    "mandatory_downstream_baselines": ["raw_expression", "fold_fit_pca_64"]
+  },
+  "package": {
+    "include_per_seed": [
+      "pooled_checkpoint",
+      "pooled_metadata",
+      "organ_k8_checkpoint",
+      "organ_k8_metadata"
+    ],
+    "include_shared": [
+      "target_hidden_router",
+      "router_report",
+      "candidate_ledger",
+      "package_protocol"
+    ],
+    "portable_manifest": true,
+    "full_sha256_manifest": true,
+    "checkpoint_roundtrip_required": true
+  },
+  "firewalls": {
+    "archs4_expression_access": false,
+    "osdr_expression_or_label_access": false,
+    "training_or_fine_tuning": false,
+    "efficacy_scoring": false,
+    "seed_or_condition_selection": false,
+    "architecture_reopening": false,
+    "final_downstream_claim_requires_new_untouched_grouped_cohort": true
+  }
+}

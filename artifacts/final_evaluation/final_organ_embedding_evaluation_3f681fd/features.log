@@ -1,0 +1,110 @@
+/media/volume/moe-reboot/worktrees/final_organ_embedding_3f681fd/core/numerator_and_denominator.py:27: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/media/volume/moe-reboot/worktrees/final_organ_embedding_3f681fd/core/numerator_and_denominator.py:47: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, res_grad, grads):
+/media/volume/moe-reboot/worktrees/final_organ_embedding_3f681fd/core/numerator_and_denominator.py:96: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/media/volume/moe-reboot/worktrees/final_organ_embedding_3f681fd/core/numerator_and_denominator.py:114: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, res_grad, k_grad):
+{
+  "n_samples": 292,
+  "n_studies": 18,
+  "protocol_sha256": "3730da5059691065855c88f25cb79636e07887b7ed7f127e467256e9b848910a",
+  "schema_version": 1,
+  "seeds": {
+    "101": {
+      "best_seed_selection": false,
+      "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+      "checkpoint_updates": false,
+      "cohort_qc_report_sha256": "2c992250a47b0c77c3d7dcacccf4481cce78f49c4b61d691662a514de381fb5a",
+      "conditions": [
+        "pooled_hidden",
+        "pooled_hidden_plus_router",
+        "true_organ_embedding",
+        "blind_router_hard_embedding",
+        "blind_router_soft_embedding"
+      ],
+      "content_sha256": {
+        "feature__blind_router_hard_embedding": "d63fe1b2562d6a63a658f9390fbfcee35b5fe0b778d25f82f82cc33aea2c7af9",
+        "feature__blind_router_soft_embedding": "297d3b39a99fd6f405445d0829c8e7ac7ba05d8678d1164f5def0851d2973bc6",
+        "feature__pooled_hidden": "44f037bc559b91b2427e5b81ff5cdba3df27097b170b94738f5ac0b8a36c5bf7",
+        "feature__pooled_hidden_plus_router": "71979233ac88659ddfdc0be84e55d810c8455c2a2d9514be6442fd20db148b8a",
+        "feature__true_organ_embedding": "ec4190eb6602d7fe33da985873abe7968286b9881a7275b0e71c42fa2cfd700c",
+        "groups": "41932c325aa210479222a170b8ce7e78128cfa19d82e763bbfcd3e6e044d098a",
+        "labels": "975b76e386279167bb6a9ba5df59c4e49d585ad90824d55d3a6a2ed89942d164",
+        "organs": "7dc5cadf942b1e2bac50f9cfbdc69fd77051a6f1615c6284938cad80951704b2",
+        "router_probabilities": "3739b8c7e770c8d228982e53da1760f2e74aa72eefba82ba6b4f1bc42cf1339a",
+        "sample_ids": "9786990dc21d23fc0a66d203ce308f845a274b1378116390f2b17f9ffbe21a60"
+      },
+      "model_fitting_performed": false,
+      "output_sha256": "ac8af5f968f1bc650e04416789085013e3fc6a548e93f2b08da7b3262d6b0283",
+      "protocol_sha256": "3730da5059691065855c88f25cb79636e07887b7ed7f127e467256e9b848910a",
+      "schema_version": 1,
+      "seed": 101,
+      "status": "complete"
+    },
+    "17": {
+      "best_seed_selection": false,
+      "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+      "checkpoint_updates": false,
+      "cohort_qc_report_sha256": "2c992250a47b0c77c3d7dcacccf4481cce78f49c4b61d691662a514de381fb5a",
+      "conditions": [
+        "pooled_hidden",
+        "pooled_hidden_plus_router",
+        "true_organ_embedding",
+        "blind_router_hard_embedding",
+        "blind_router_soft_embedding"
+      ],
+      "content_sha256": {
+        "feature__blind_router_hard_embedding": "bb3d8761fc79319c19d288dfd75f6df20b992782502860264ed02255521f7db3",
+        "feature__blind_router_soft_embedding": "183263e7f079358ffad2afa0e1707acb9d717b8e04980972fe1c8a2c56c548e3",
+        "feature__pooled_hidden": "85ec4f74d0ae9a29cbbf88c839e8bc76f5e0468b6940d8455bb932f5e59639f2",
+        "feature__pooled_hidden_plus_router": "9375236723d788ff9c20222c2f7a789c0bf7a376b3916d435405b746eed675a4",
+        "feature__true_organ_embedding": "4496e965bc9ee48e4f7a0b26cfe30f3e26986c7ea34f06100bc1d14353e9aafe",
+        "groups": "41932c325aa210479222a170b8ce7e78128cfa19d82e763bbfcd3e6e044d098a",
+        "labels": "975b76e386279167bb6a9ba5df59c4e49d585ad90824d55d3a6a2ed89942d164",
+        "organs": "7dc5cadf942b1e2bac50f9cfbdc69fd77051a6f1615c6284938cad80951704b2",
+        "router_probabilities": "3739b8c7e770c8d228982e53da1760f2e74aa72eefba82ba6b4f1bc42cf1339a",
+        "sample_ids": "9786990dc21d23fc0a66d203ce308f845a274b1378116390f2b17f9ffbe21a60"
+      },
+      "model_fitting_performed": false,
+      "output_sha256": "6a6108cdb3631f2d752822562cef5cc5271959942faade1cb205c1084912e7ac",
+      "protocol_sha256": "3730da5059691065855c88f25cb79636e07887b7ed7f127e467256e9b848910a",
+      "schema_version": 1,
+      "seed": 17,
+      "status": "complete"
+    },
+    "42": {
+      "best_seed_selection": false,
+      "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+      "checkpoint_updates": false,
+      "cohort_qc_report_sha256": "2c992250a47b0c77c3d7dcacccf4481cce78f49c4b61d691662a514de381fb5a",
+      "conditions": [
+        "pooled_hidden",
+        "pooled_hidden_plus_router",
+        "true_organ_embedding",
+        "blind_router_hard_embedding",
+        "blind_router_soft_embedding"
+      ],
+      "content_sha256": {
+        "feature__blind_router_hard_embedding": "dae189bca7a7d9940b597f70cf9d977fbd2012d86b07f9e5212ee59e47594a84",
+        "feature__blind_router_soft_embedding": "1a40c5545c252820afba240bb74a33bf49c3b22392f118ca4eb0d713d6a6e101",
+        "feature__pooled_hidden": "2750f3adefabea75d0c8d16327d818ae333509ebe424f6392de44b6ffad47354",
+        "feature__pooled_hidden_plus_router": "d11dadbc7f0d66bcf3f1241b5d9019d853e6bfc73edffa5ebd17757d8e4888e2",
+        "feature__true_organ_embedding": "b47e7819392152b4a0098983466014f263b5de4a04a71d0cafe40ac1b6bc2d01",
+        "groups": "41932c325aa210479222a170b8ce7e78128cfa19d82e763bbfcd3e6e044d098a",
+        "labels": "975b76e386279167bb6a9ba5df59c4e49d585ad90824d55d3a6a2ed89942d164",
+        "organs": "7dc5cadf942b1e2bac50f9cfbdc69fd77051a6f1615c6284938cad80951704b2",
+        "router_probabilities": "3739b8c7e770c8d228982e53da1760f2e74aa72eefba82ba6b4f1bc42cf1339a",
+        "sample_ids": "9786990dc21d23fc0a66d203ce308f845a274b1378116390f2b17f9ffbe21a60"
+      },
+      "model_fitting_performed": false,
+      "output_sha256": "5a2dfb8284362998bdc199e3e60d9d813d16a2df447966452788b0c3fe820ee2",
+      "protocol_sha256": "3730da5059691065855c88f25cb79636e07887b7ed7f127e467256e9b848910a",
+      "schema_version": 1,
+      "seed": 42,
+      "status": "complete"
+    }
+  },
+  "status": "complete"
+}

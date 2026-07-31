@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-31 08:16 PDT / 2026-07-31 15:16 UTC
+**Updated:** 2026-07-31 09:38 PDT / 2026-07-31 16:38 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -101,10 +101,27 @@ The dtype-only correction casts router probabilities to the checkpoint tensor dt
 the protocol, cohort, representations, splits, grid, seeds, and gates are unchanged.
 
 Five focused assertions and compilation passed in the new exact clean VM worktree at
-commit `3f681fdbe818d2f49b03f097f08a5f171b4e35c8`. The repaired extraction and automatic
-smoke/full evaluation launched at 08:15 PDT in screen
-`final-organ-embedding-retry1`, result root
-`/media/volume/moe-reboot/results/final_organ_embedding_3f681fd`.
+commit `3f681fdbe818d2f49b03f097f08a5f171b4e35c8`. The repaired extraction and full
+evaluation completed at 09:09 PDT in
+`/media/volume/moe-reboot/results/final_organ_embedding_3f681fd`; every cache,
+report, prediction table, and immutable checksum verifies.
+
+The downstream-positive embedding gate failed. Raw expression and fold-fit PCA-64
+retained AUROC 0.726 and 0.733. Pooled-hidden AUROC was 0.525, 0.547, and 0.607;
+blind hard was 0.531, 0.561, and 0.533; blind soft was 0.557, 0.566, and 0.507.
+All three deployable contracts were below raw/PCA in every seed and each showed a
+two-positive/one-negative direction versus same-seed pooled hidden. No seed or
+condition is selected. Canonical result:
+[`final-organ-embedding-development-result.md`](final-organ-embedding-development-result.md).
+
+The final model is therefore packaged without refitting: all three exact externally
+validated pooled trunks and K8 organ banks plus the frozen router. A post-lockbox
+train-plus-calibration refit would create an unvalidated weight family and cannot
+cover the 3,030-row brain union under the fixed 1,500-exposure-per-expert budget
+without changing the training contract. The package exposes hidden/bottleneck states
+as diagnostics only and retains raw/PCA as mandatory downstream gates. Package
+protocol SHA256 is
+`7243f5345ae6fc2b522905d139ec82036f7854c1dd167e33f64814d8ca495500`.
 
 ## Completed background
 

@@ -1,6 +1,25 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-31 08:16 PDT / 2026-07-31 15:16 UTC
+**Last updated:** 2026-07-31 09:38 PDT / 2026-07-31 16:38 UTC
+
+## 2026-07-31 — Explicit organ embedding fails downstream gate; final package frozen
+
+The repaired three-seed embedding extraction and full study-grouped OSDR evaluation
+completed at 09:09 PDT. All caches, predictions, reports, and the VM checksum manifest
+verify locally. Raw expression AUROC was 0.726 and PCA-64 was 0.733. Pooled-hidden
+AUROC was 0.525/0.547/0.607; blind hard was 0.531/0.561/0.533; blind soft was
+0.557/0.566/0.507 across seeds 17/42/101. No deployable embedding beat pooled hidden,
+raw, and PCA in every seed, so the frozen downstream-positive gate failed without
+seed or condition selection.
+
+The final K8 package protocol is now frozen at SHA256
+`7243f5345ae6fc2b522905d139ec82036f7854c1dd167e33f64814d8ca495500`.
+It packages all three exact externally validated pooled trunks and organ banks plus
+the frozen router, with no refit, fine-tuning, efficacy scoring, ARCHS4 access, or
+OSDR access. A new train-plus-calibration refit is rejected because it would lose the
+current external-weight validation and require changing the fixed exposure budget to
+cover the 3,030-row brain union. Hidden and bottleneck outputs remain diagnostic;
+raw/PCA remain mandatory downstream gates.
 
 ## 2026-07-31 — Tissue-site Tier 2 fails matched capacity; architecture closed
 
