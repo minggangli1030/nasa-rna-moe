@@ -1,0 +1,18 @@
+{
+  "diagnostic_outputs_without_downstream_claim": [
+    "pooled_hidden_summary",
+    "organ_adapter_bottleneck",
+    "router_probabilities"
+  ],
+  "downstream_positive_embedding": null,
+  "mandatory_downstream_baselines": [
+    "raw_expression",
+    "fold_fit_pca_64"
+  ],
+  "reconstruction_outputs": [
+    "pooled_prediction",
+    "true_organ_prediction_explanatory",
+    "blind_router_hard_prediction",
+    "blind_router_soft_prediction"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "archs4_expression_accessed": false,
+  "artifact": "/media/volume/moe-reboot/results/stage1_gtex_to_archs4_training_98e2cba/router/gtex_k8_target_hidden_router.npz",
+  "classes": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "config": {
+    "fit_pool": "gtex_train_plus_calibration",
+    "logistic_regression": {
+      "C": 1.0,
+      "class_weight": "balanced",
+      "max_iter": 2000,
+      "sample_weight": "equal donor mass within organ",
+      "solver": "lbfgs"
+    },
+    "mask_token": -10.0,
+    "n_donors": 938,
+    "n_fit_rows": 9195,
+    "normalization": "log1p_tpm",
+    "pipeline": [
+      "StandardScaler",
+      "LogisticRegression"
+    ],
+    "router_seed": 271828,
+    "selection_or_tuning_metric": null
+  },
+  "development_only": true,
+  "experiment": "gtex_k8_target_hidden_router_refit",
+  "expression_contract": {
+    "expression_space": "tpm",
+    "gene_order_sha256": "3332cb312000e426a866d669b3ba9b6206da50d70094fb5f9d30ef168e860dff",
+    "metadata_path": "/media/volume/moe-reboot/results/stage1_gtex_to_archs4_529c0c3/expression/extraction_report.json",
+    "metadata_sha256": "111be4b987cb99f85329018fb0df951e1cafe0b8bcd385c9c31b5f944e8bb741",
+    "model_value_space": "log1p_tpm",
+    "space_source": "extractor_metadata"
+  },
+  "hashes": {
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "expression_metadata_sha256": "111be4b987cb99f85329018fb0df951e1cafe0b8bcd385c9c31b5f944e8bb741",
+    "expression_parquet_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
+    "fit_sample_ids_sha256": "543b0331fa651da686d1f7d9265d3149eb7646b1da37947301c9fd69da93eaf5",
+    "gene_order_sha256": "3332cb312000e426a866d669b3ba9b6206da50d70094fb5f9d30ef168e860dff",
+    "manifest_report_sha256": "7a4bad1a97bbce53c7c5677a92d19614652ccbc4dcf538edb21bebf6aafc5ee7",
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "protocol_sha256": "1d982a469f3e1c7c907394d85f2c4b5c75558de88607680ecb1d51af06380a69",
+    "resolved_config_sha256": "becd87cb993b78400ce054c67b70a907aee0060c03d660ff8e855f4ccc086120",
+    "router_artifact_sha256": "b5a19bdee62efad108e0301f84afbbca088cfd04985f95cd37836a45b0236abe",
+    "router_source_sha256": "5c55c848b26d7108ed747e60f43c2e3834db7bf7b87a1af9205b685becf13cda"
+  },
+  "internal_efficacy_scoring": false,
+  "mechanical_only": false,
+  "performance_metrics_generated": false,
+  "schema_version": 1,
+  "status": "complete",
+  "target_hiding": {
+    "masked_feature_sha256": "beec55ae3e490d02850c14a2bc64dbfd5ddd2b70ec80878e9986d708729506e0",
+    "n_score_genes": 4634,
+    "score_gene_indices_sha256": "0f598c41881008152b77dad736d5dc04bb14cd5df5da59cea92b6348b9f07f68",
+    "score_genes_masked_for_every_row": true
+  },
+  "test_accessed": false
+}

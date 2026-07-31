@@ -1,0 +1,172 @@
+{
+  "archs4_expression_accessed": false,
+  "best_seed_selection": false,
+  "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+  "checkpoint_health": {
+    "101": {
+      "organ_k8": {
+        "all_tensors_finite": true,
+        "tensor_count": 32
+      },
+      "pooled": {
+        "all_tensors_finite": true,
+        "tensor_count": 60
+      }
+    },
+    "17": {
+      "organ_k8": {
+        "all_tensors_finite": true,
+        "tensor_count": 32
+      },
+      "pooled": {
+        "all_tensors_finite": true,
+        "tensor_count": 60
+      }
+    },
+    "42": {
+      "organ_k8": {
+        "all_tensors_finite": true,
+        "tensor_count": 32
+      },
+      "pooled": {
+        "all_tensors_finite": true,
+        "tensor_count": 60
+      }
+    }
+  },
+  "code_commit": "dc562cc97d3936c642467a5be563e9bd7e31fc7b",
+  "efficacy_scoring_performed": false,
+  "files": [
+    {
+      "path": "output_contract.json",
+      "role": "output_contract",
+      "sha256": "22904e839b78c2165df600c78424d9864599fed63a82e810bdde02961bc15e90",
+      "size_bytes": 447,
+      "source_path": "frozen package protocol"
+    },
+    {
+      "path": "provenance/candidate_ledger.json",
+      "role": "candidate_ledger",
+      "sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+      "size_bytes": 15935,
+      "source_path": "artifacts/stage1_gtex_to_archs4/candidate_ledger.json"
+    },
+    {
+      "path": "provenance/package_protocol.json",
+      "role": "package_protocol",
+      "sha256": "7243f5345ae6fc2b522905d139ec82036f7854c1dd167e33f64814d8ca495500",
+      "size_bytes": 2738,
+      "source_path": "artifacts/final_model/final_k8_package_protocol.json"
+    },
+    {
+      "path": "router/gtex_k8_target_hidden_router.npz",
+      "role": "target_hidden_router",
+      "sha256": "b5a19bdee62efad108e0301f84afbbca088cfd04985f95cd37836a45b0236abe",
+      "size_bytes": 1122435,
+      "source_path": "router/gtex_k8_target_hidden_router.npz"
+    },
+    {
+      "path": "router/router_report.json",
+      "role": "router_report",
+      "sha256": "11cc62447194ca9328b68cb717019df93c888830b6f69a60b35b4555e9350a7d",
+      "size_bytes": 2894,
+      "source_path": "router/router_report.json"
+    },
+    {
+      "path": "seed101/organ_k8_checkpoint.pt",
+      "role": "organ_k8_checkpoint",
+      "sha256": "20d1fc2e300acc0e0d78eb3a11d5e4093a2950264abf0af3c704d91264512a42",
+      "size_bytes": 1587918,
+      "source_path": "seed101/banks/banks/organ_k8/final_experts.pt"
+    },
+    {
+      "path": "seed101/organ_k8_metadata.json",
+      "role": "organ_k8_metadata",
+      "sha256": "208e98ab96c10f7dd74a87f94ff96a5aaeba5f1113d4a2dfb285e17c17a57ae1",
+      "size_bytes": 11449,
+      "source_path": "seed101/banks/banks/organ_k8/run_metadata.json"
+    },
+    {
+      "path": "seed101/pooled_checkpoint.pt",
+      "role": "pooled_checkpoint",
+      "sha256": "3e9edacfb6b0e530f210f271af4802072a3c0154922bcf0b4b9f54e0ee612043",
+      "size_bytes": 151680226,
+      "source_path": "seed101/pooled/best_model.pt"
+    },
+    {
+      "path": "seed101/pooled_metadata.json",
+      "role": "pooled_metadata",
+      "sha256": "57da7705dd08c26258d56a8aceefd2c78e58980c1d5a04e4a00d3ca27d98e24a",
+      "size_bytes": 242764,
+      "source_path": "seed101/pooled/run_metadata.json"
+    },
+    {
+      "path": "seed17/organ_k8_checkpoint.pt",
+      "role": "organ_k8_checkpoint",
+      "sha256": "0375df2669c7cb38a6cf31d45f26b73dd991abedfc28fe13c39f0ec3ee0e3138",
+      "size_bytes": 1587918,
+      "source_path": "seed17/banks/banks/organ_k8/final_experts.pt"
+    },
+    {
+      "path": "seed17/organ_k8_metadata.json",
+      "role": "organ_k8_metadata",
+      "sha256": "338a0719c09a18f05bf676bd80ff4cd7e96c9be75aeac2e9ad7163364cb575e5",
+      "size_bytes": 11844,
+      "source_path": "seed17/banks/banks/organ_k8/run_metadata.json"
+    },
+    {
+      "path": "seed17/pooled_checkpoint.pt",
+      "role": "pooled_checkpoint",
+      "sha256": "ae5d6d1619938d8061c8b5b6e1323ed345f71f67b34e3e065cc899f587da7c74",
+      "size_bytes": 151680226,
+      "source_path": "seed17/pooled/best_model.pt"
+    },
+    {
+      "path": "seed17/pooled_metadata.json",
+      "role": "pooled_metadata",
+      "sha256": "054bbdd4ea7e6f102e01cd770f9d5f05cc2074c62a40ba3c275cf337cfb0f431",
+      "size_bytes": 242759,
+      "source_path": "seed17/pooled/run_metadata.json"
+    },
+    {
+      "path": "seed42/organ_k8_checkpoint.pt",
+      "role": "organ_k8_checkpoint",
+      "sha256": "b5bbed3e83ab2fc64d1eaaf7073d26ab901a0b0aff315041586cc13ce0cff8c9",
+      "size_bytes": 1587918,
+      "source_path": "seed42/banks/banks/organ_k8/final_experts.pt"
+    },
+    {
+      "path": "seed42/organ_k8_metadata.json",
+      "role": "organ_k8_metadata",
+      "sha256": "22d8d9f69535bed2ab479f7068aedba074d36c6b4e044cc019fc246b499d2d54",
+      "size_bytes": 11702,
+      "source_path": "seed42/banks/banks/organ_k8/run_metadata.json"
+    },
+    {
+      "path": "seed42/pooled_checkpoint.pt",
+      "role": "pooled_checkpoint",
+      "sha256": "969c510fb84e5e58605d34351db6c5608ef8d64d66b282ad9bf964b77bb33ce2",
+      "size_bytes": 151680226,
+      "source_path": "seed42/pooled/best_model.pt"
+    },
+    {
+      "path": "seed42/pooled_metadata.json",
+      "role": "pooled_metadata",
+      "sha256": "0dc64ea02518ef5dbdf4197ba418f5ac44b81890e55ec51ed36a517a305e5cd2",
+      "size_bytes": 242759,
+      "source_path": "seed42/pooled/run_metadata.json"
+    }
+  ],
+  "osdr_accessed": false,
+  "protocol_sha256": "7243f5345ae6fc2b522905d139ec82036f7854c1dd167e33f64814d8ca495500",
+  "role": "immutable packaging of the already validated K8 organ-MoE family; no new fitting or efficacy scoring",
+  "schema_version": 1,
+  "seeds": [
+    17,
+    42,
+    101
+  ],
+  "status": "complete",
+  "training_performed": false,
+  "weights_updated": false
+}

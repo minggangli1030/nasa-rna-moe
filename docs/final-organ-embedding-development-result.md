@@ -66,6 +66,13 @@ true-organ, hard-router, and soft-router reconstruction outputs; pooled hidden a
 adapter bottlenecks are diagnostic outputs only. It performs no additional fitting
 and makes no downstream-positive assertion.
 
+The frozen package completed under exact clean commit
+`dc562cc97d3936c642467a5be563e9bd7e31fc7b` at
+`/media/volume/moe-reboot/results/final_k8_package_dc562cc`. Its 17 packaged
+artifacts and all checkpoint tensors passed immutable checksum and finiteness
+verification. Package-manifest SHA256 is
+`8c8e967faa7d63fda80bdb4c301678544290cbeb01f833ae7e6817be6a60e4e9`.
+
 ## Immutable evidence
 
 - protocol SHA256:

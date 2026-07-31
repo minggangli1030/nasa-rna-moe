@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-31 09:38 PDT / 2026-07-31 16:38 UTC
+**Last updated:** 2026-07-31 09:43 PDT / 2026-07-31 16:43 UTC
 
 ## 2026-07-31 — Explicit organ embedding fails downstream gate; final package frozen
 
@@ -20,6 +20,13 @@ OSDR access. A new train-plus-calibration refit is rejected because it would los
 current external-weight validation and require changing the fixed exposure budget to
 cover the 3,030-row brain union. Hidden and bottleneck outputs remain diagnostic;
 raw/PCA remain mandatory downstream gates.
+
+Exact packaging commit `dc562cc97d3936c642467a5be563e9bd7e31fc7b`
+completed the immutable 441 MiB package at 09:41 PDT. All 17 packaged artifacts,
+checkpoint loads, tensor-finiteness assertions, and checksum entries verify.
+Manifest SHA256 is
+`8c8e967faa7d63fda80bdb4c301678544290cbeb01f833ae7e6817be6a60e4e9`.
+No training, efficacy scoring, ARCHS4/OSDR access, or seed selection occurred.
 
 ## 2026-07-31 — Tissue-site Tier 2 fails matched capacity; architecture closed
 

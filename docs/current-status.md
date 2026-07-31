@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-31 09:38 PDT / 2026-07-31 16:38 UTC
+**Updated:** 2026-07-31 09:43 PDT / 2026-07-31 16:43 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -122,6 +122,18 @@ without changing the training contract. The package exposes hidden/bottleneck st
 as diagnostics only and retains raw/PCA as mandatory downstream gates. Package
 protocol SHA256 is
 `7243f5345ae6fc2b522905d139ec82036f7854c1dd167e33f64814d8ca495500`.
+The exact clean packaging commit is
+`dc562cc97d3936c642467a5be563e9bd7e31fc7b`. The no-training execution completed
+at 09:41 PDT in
+`/media/volume/moe-reboot/results/final_k8_package_dc562cc`; all 17 packaged
+artifacts, checkpoint round trips, tensor-finiteness checks, and immutable hashes
+verify. The package is 441 MiB. Manifest SHA256 is
+`8c8e967faa7d63fda80bdb4c301678544290cbeb01f833ae7e6817be6a60e4e9`;
+the checksum-manifest SHA256 is
+`b303ef625065615dc4ad335b5d46dbb5a7431c5f3aaa9eeecf9b26525bdb41d2`.
+Compact provenance is retained locally under
+`artifacts/final_model/final_k8_package_dc562cc/`; the validated weights remain
+on persistent VM storage.
 
 ## Completed background
 
