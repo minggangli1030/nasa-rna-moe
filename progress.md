@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-31 08:14 PDT / 2026-07-31 15:14 UTC
+**Last updated:** 2026-07-31 08:16 PDT / 2026-07-31 15:16 UTC
 
 ## 2026-07-31 — Tissue-site Tier 2 fails matched capacity; architecture closed
 
@@ -24,12 +24,15 @@ selected/router-weighted organ bottleneck and router probabilities, and tests th
 explicit output in the existing study-grouped OSDR development harness with raw/PCA
 mandatory gates. It cannot serve as final confirmation.
 
-The implementation and protocol were committed and pushed at exact execution
-commit `bc3502ac7260cb08925d8043739cbd0d53da3a83`. Direct focused assertions and
-compilation passed in its clean detached VM worktree. The three-seed extraction,
-then smoke and full study-grouped evaluation, launched at 08:13 PDT in screen
-`final-organ-embedding`, result root
-`/media/volume/moe-reboot/results/final_organ_embedding_bc3502a`.
+The initial implementation lineage at commit `bc3502a` failed before emitting a
+feature cache because NumPy router probabilities were FP64 and checkpoint features
+were FP32. It is preserved and has no scientific result. A dtype-only correction
+leaves the frozen protocol unchanged and adds a direct mixed-dtype assertion. Five
+focused assertions and compilation passed at exact commit
+`3f681fdbe818d2f49b03f097f08a5f171b4e35c8`. The repaired three-seed extraction,
+then smoke and full study-grouped evaluation, launched at 08:15 PDT in screen
+`final-organ-embedding-retry1`, result root
+`/media/volume/moe-reboot/results/final_organ_embedding_3f681fd`.
 
 ## 2026-07-31 — Protected tissue-site Tier-2 smoke frozen and launched
 

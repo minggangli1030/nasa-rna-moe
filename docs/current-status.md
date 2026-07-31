@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-31 08:14 PDT / 2026-07-31 15:14 UTC
+**Updated:** 2026-07-31 08:16 PDT / 2026-07-31 15:16 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -93,10 +93,18 @@ OSDR development harness with equal raw-expression and fold-fit PCA gates. This 
 select an output contract but cannot confirm it; a new untouched grouped cohort is
 still required. Protocol SHA256 is
 `3730da5059691065855c88f25cb79636e07887b7ed7f127e467256e9b848910a`.
-Four focused assertions and compilation passed in the exact clean VM worktree at
-commit `bc3502ac7260cb08925d8043739cbd0d53da3a83`. Extraction and automatic smoke/full
-evaluation launched at 08:13 PDT in screen `final-organ-embedding`, result root
-`/media/volume/moe-reboot/results/final_organ_embedding_bc3502a`.
+The first implementation lineage at commit `bc3502a` failed during seed-17 feature
+composition because the frozen NumPy router probabilities arrived as FP64 while the
+checkpoint bottlenecks are FP32. It emitted no feature cache or evaluation result
+and is preserved at `/media/volume/moe-reboot/results/final_organ_embedding_bc3502a`.
+The dtype-only correction casts router probabilities to the checkpoint tensor dtype;
+the protocol, cohort, representations, splits, grid, seeds, and gates are unchanged.
+
+Five focused assertions and compilation passed in the new exact clean VM worktree at
+commit `3f681fdbe818d2f49b03f097f08a5f171b4e35c8`. The repaired extraction and automatic
+smoke/full evaluation launched at 08:15 PDT in screen
+`final-organ-embedding-retry1`, result root
+`/media/volume/moe-reboot/results/final_organ_embedding_3f681fd`.
 
 ## Completed background
 
