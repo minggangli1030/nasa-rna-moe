@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-31 07:42 PDT / 2026-07-31 14:42 UTC
+**Updated:** 2026-07-31 08:10 PDT / 2026-07-31 15:10 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -63,24 +63,35 @@ protected-organ effect was nonnegative. Hallmark-50 was stronger in aggregate
 per-organ safety gate through skeletal-muscle harm in seeds 42 (−0.0568) and 101
 (−0.0396). Age and sex failed the all-seed bootstrap gate.
 
-The bounded protected-adapter Tier-2 smoke is now frozen and running. Protocol
+The bounded protected-adapter Tier-2 smoke is complete. Protocol
 SHA256 is
 `d922c1997389aacdc09c032415f0dc8a57ee579530f67f7f539477490eaac410`;
 exact implementation commit is
 `d47ac36f11647d3bcd6bd6d3aa3c2dffefc10378`. The focused suite passes nine
 tests locally and in the exact VM worktree. Sequential seeds 17, 42, and 101
-launched at 07:42 PDT in detached session `tissue-site-tier2`, result root
-`/media/volume/moe-reboot/results/tissue_site_tier2_d47ac36`. Seed 17 is active
-on the A100.
+completed at 07:47 PDT in result root
+`/media/volume/moe-reboot/results/tissue_site_tier2_d47ac36`; all reports, score
+archives, and immutable manifests verify.
 
-The organ-private path, pooled trunk, and decoder are immutable. The primary
-input-only soft site adapter is compared with the protected base, a within-organ
-shuffled-site bank, and a parameter-matched generic adapter under five donor-grouped
-folds. The gate requires positive all-seed utility and donor-bootstrap lower bounds
-against all three references, known-site utility, no per-organ harm beyond 2%, and
-noncollapsed site routing. A failure closes the August 2 architecture as validated
-organ MoE plus pooled fallback. Canonical Tier-1 result:
-[`multiaxis-tier1-result.md`](multiaxis-tier1-result.md).
+The site adapter beat the protected organ path by 70.50–70.70% and beat the
+within-organ shuffled-site control by 0.128–0.199%, while preserving per-organ
+safety and noncollapsed routing. However, the parameter-matched generic adapter
+was better in all seeds: soft-site minus generic effects were −0.461%, −0.534%,
+and −0.544%, with all donor-bootstrap intervals below zero. The same two frozen
+gates failed in every seed. This identifies mostly generic residual capacity, not
+an architecture-worthy site-specific advantage.
+
+**Architecture is closed:** validated K8 organ MoE plus pooled fallback/reference;
+no secondary axis. Hallmark remains excluded for its prior per-organ safety failure,
+and no thresholds were changed. Canonical Tier-2 result:
+[`tissue-site-tier2-result.md`](tissue-site-tier2-result.md).
+
+The next frozen development execution exposes an explicit downstream-facing organ
+embedding: pooled hidden summary plus selected/router-weighted 64-dimensional organ
+bottleneck and frozen router probabilities. It reuses the exact 292-sample/18-study
+OSDR development harness with equal raw-expression and fold-fit PCA gates. This may
+select an output contract but cannot confirm it; a new untouched grouped cohort is
+still required.
 
 ## Completed background
 

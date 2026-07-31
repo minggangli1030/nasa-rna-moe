@@ -32,6 +32,19 @@ strong aggregate signal because it exceeded the prespecified per-organ harm
 limit in two seeds. Age and sex failed bootstrap stability. See
 [`multiaxis-tier1-result.md`](multiaxis-tier1-result.md).
 
+Tier 2 is now complete and the matched-capacity gate failed in every seed. The
+input-only site adapter was consistently slightly worse than the parameter-matched
+generic adapter (−0.461%, −0.534%, and −0.544%), even though it beat the protected
+base and shuffled-site control. The final architecture is therefore frozen as the
+validated K8 organ MoE with pooled fallback/reference and no secondary axis. See
+[`tissue-site-tier2-result.md`](tissue-site-tier2-result.md).
+
+Before final refit, the frozen model now exposes a downstream-facing representation:
+the pooled sample hidden summary, the selected or router-weighted organ-adapter
+bottleneck, and router probabilities. The existing OSDR development harness will
+test this contract without changing any checkpoint. Raw expression and fold-fit PCA
+remain mandatory gates, and this accessed cohort cannot provide final confirmation.
+
 1. Freeze one defensible labeled cohort and build its complete downstream harness
    against Stage 1 now.
 2. Reuse immutable Stage 2B caches to screen candidate axes cheaply in parallel.

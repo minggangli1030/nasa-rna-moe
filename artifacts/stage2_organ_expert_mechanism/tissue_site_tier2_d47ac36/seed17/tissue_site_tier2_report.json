@@ -1,0 +1,145 @@
+{
+  "all_gates_pass": false,
+  "best_seed_selection": false,
+  "claim_boundary": "GTEx training-donor Tier-2 development smoke; no calibration, ARCHS4, or OSDR outcome access",
+  "device": "cuda",
+  "folds": [
+    {
+      "fold": 0,
+      "test_donors": 151,
+      "test_eligible_rows": 1246,
+      "training_donors": 599,
+      "training_eligible_rows": 4772
+    },
+    {
+      "fold": 1,
+      "test_donors": 151,
+      "test_eligible_rows": 1211,
+      "training_donors": 599,
+      "training_eligible_rows": 4807
+    },
+    {
+      "fold": 2,
+      "test_donors": 149,
+      "test_eligible_rows": 1159,
+      "training_donors": 601,
+      "training_eligible_rows": 4859
+    },
+    {
+      "fold": 3,
+      "test_donors": 148,
+      "test_eligible_rows": 1210,
+      "training_donors": 602,
+      "training_eligible_rows": 4808
+    },
+    {
+      "fold": 4,
+      "test_donors": 151,
+      "test_eligible_rows": 1192,
+      "training_donors": 599,
+      "training_eligible_rows": 4826
+    }
+  ],
+  "gates": {
+    "generic_parameter_match": true,
+    "known_site_improves_protected_base": true,
+    "pairwise_bootstrap_lower_bounds_positive": false,
+    "per_organ_safety": true,
+    "router_noncollapse": true,
+    "soft_site_improves_generic": false,
+    "soft_site_improves_protected_base": true,
+    "soft_site_improves_shuffled": true
+  },
+  "pairwise": {
+    "soft_site_vs_generic_capacity_matched": {
+      "donor_bootstrap": {
+        "ci95": [
+          -0.004957830183122917,
+          -0.004280997601672536
+        ],
+        "median": -0.004618380314880606,
+        "replicates": 2000
+      },
+      "relative_improvement": -0.004609791048703815
+    },
+    "soft_site_vs_protected_base": {
+      "donor_bootstrap": {
+        "ci95": [
+          0.700814052509216,
+          0.7130057250337823
+        ],
+        "median": 0.7071070797027963,
+        "replicates": 2000
+      },
+      "relative_improvement": 0.706955335155544
+    },
+    "soft_site_vs_soft_shuffled_site": {
+      "donor_bootstrap": {
+        "ci95": [
+          0.0013098985993586904,
+          0.0016840031401243465
+        ],
+        "median": 0.0014994172848948138,
+        "replicates": 2000
+      },
+      "relative_improvement": 0.0014937942819820435
+    }
+  },
+  "parameter_counts": {
+    "generic": 272372,
+    "generic_fractional_difference": 0.00011750018359403686,
+    "shuffled_bank_plus_router": 272340,
+    "site_bank_plus_router": 272340
+  },
+  "per_organ_soft_site_relative_improvement": {
+    "adipose": 0.8721343506180954,
+    "brain": 0.856914192653643,
+    "colon": 0.8743407880785548,
+    "heart": 0.8339997734126036,
+    "liver": 0.0,
+    "lung": 0.0,
+    "skeletal_muscle": 0.0,
+    "skin": 0.8774911670314516
+  },
+  "protocol_sha256": "d922c1997389aacdc09c032415f0dc8a57ee579530f67f7f539477490eaac410",
+  "relative_improvement_vs_protected_base": {
+    "generic_capacity_matched": 0.7083000111530378,
+    "hard_site": 0.706226235803228,
+    "known_site": 0.7082372444318984,
+    "soft_shuffled_site": 0.7065169318264478,
+    "soft_site": 0.706955335155544
+  },
+  "role": "bounded training-donor Tier-2 protected tissue-site adapter smoke; not final confirmation",
+  "router_usage": {
+    "adipose": {
+      "effective_soft_sites": 3.0108118903499497,
+      "hard_sites_used": 7,
+      "maximum_mean_soft_weight": 0.530793975535052
+    },
+    "brain": {
+      "effective_soft_sites": 12.650924351523773,
+      "hard_sites_used": 15,
+      "maximum_mean_soft_weight": 0.09904415108720599
+    },
+    "colon": {
+      "effective_soft_sites": 4.055316732953979,
+      "hard_sites_used": 9,
+      "maximum_mean_soft_weight": 0.43759330691995174
+    },
+    "heart": {
+      "effective_soft_sites": 3.344352412812221,
+      "hard_sites_used": 6,
+      "maximum_mean_soft_weight": 0.4490788911513364
+    },
+    "skin": {
+      "effective_soft_sites": 3.034750568830472,
+      "hard_sites_used": 8,
+      "maximum_mean_soft_weight": 0.46172453690403037
+    }
+  },
+  "schema_version": 1,
+  "scores_sha256": "d42d57c2a7b1fc0149a8bbe536eca3cdf03b369dbdcce72e0fb17162317b462a",
+  "seed": 17,
+  "status": "complete",
+  "torch_version": "2.6.0+cu124"
+}

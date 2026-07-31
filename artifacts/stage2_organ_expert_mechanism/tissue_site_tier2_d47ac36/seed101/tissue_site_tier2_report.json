@@ -1,0 +1,145 @@
+{
+  "all_gates_pass": false,
+  "best_seed_selection": false,
+  "claim_boundary": "GTEx training-donor Tier-2 development smoke; no calibration, ARCHS4, or OSDR outcome access",
+  "device": "cuda",
+  "folds": [
+    {
+      "fold": 0,
+      "test_donors": 149,
+      "test_eligible_rows": 1194,
+      "training_donors": 601,
+      "training_eligible_rows": 4824
+    },
+    {
+      "fold": 1,
+      "test_donors": 150,
+      "test_eligible_rows": 1242,
+      "training_donors": 600,
+      "training_eligible_rows": 4776
+    },
+    {
+      "fold": 2,
+      "test_donors": 151,
+      "test_eligible_rows": 1278,
+      "training_donors": 599,
+      "training_eligible_rows": 4740
+    },
+    {
+      "fold": 3,
+      "test_donors": 151,
+      "test_eligible_rows": 1132,
+      "training_donors": 599,
+      "training_eligible_rows": 4886
+    },
+    {
+      "fold": 4,
+      "test_donors": 149,
+      "test_eligible_rows": 1172,
+      "training_donors": 601,
+      "training_eligible_rows": 4846
+    }
+  ],
+  "gates": {
+    "generic_parameter_match": true,
+    "known_site_improves_protected_base": true,
+    "pairwise_bootstrap_lower_bounds_positive": false,
+    "per_organ_safety": true,
+    "router_noncollapse": true,
+    "soft_site_improves_generic": false,
+    "soft_site_improves_protected_base": true,
+    "soft_site_improves_shuffled": true
+  },
+  "pairwise": {
+    "soft_site_vs_generic_capacity_matched": {
+      "donor_bootstrap": {
+        "ci95": [
+          -0.005767411130467783,
+          -0.005117516706380894
+        ],
+        "median": -0.005431575228938499,
+        "replicates": 2000
+      },
+      "relative_improvement": -0.005440569499758978
+    },
+    "soft_site_vs_protected_base": {
+      "donor_bootstrap": {
+        "ci95": [
+          0.6990274077575426,
+          0.7114458707475405
+        ],
+        "median": 0.7049980977188178,
+        "replicates": 2000
+      },
+      "relative_improvement": 0.704953899305145
+    },
+    "soft_site_vs_soft_shuffled_site": {
+      "donor_bootstrap": {
+        "ci95": [
+          0.0011406529481889694,
+          0.0014362932020922398
+        ],
+        "median": 0.0012852669482131325,
+        "replicates": 2000
+      },
+      "relative_improvement": 0.0012826421240145856
+    }
+  },
+  "parameter_counts": {
+    "generic": 272372,
+    "generic_fractional_difference": 0.00011750018359403686,
+    "shuffled_bank_plus_router": 272340,
+    "site_bank_plus_router": 272340
+  },
+  "per_organ_soft_site_relative_improvement": {
+    "adipose": 0.8744197494068149,
+    "brain": 0.8487521235930756,
+    "colon": 0.8749066211651318,
+    "heart": 0.8413855908701069,
+    "liver": 0.0,
+    "lung": 0.0,
+    "skeletal_muscle": 0.0,
+    "skin": 0.8773998316117771
+  },
+  "protocol_sha256": "d922c1997389aacdc09c032415f0dc8a57ee579530f67f7f539477490eaac410",
+  "relative_improvement_vs_protected_base": {
+    "generic_capacity_matched": 0.70655043207412,
+    "hard_site": 0.7048334016521465,
+    "known_site": 0.7054753361188555,
+    "soft_shuffled_site": 0.7045749747232369,
+    "soft_site": 0.704953899305145
+  },
+  "role": "bounded training-donor Tier-2 protected tissue-site adapter smoke; not final confirmation",
+  "router_usage": {
+    "adipose": {
+      "effective_soft_sites": 2.655781285549943,
+      "hard_sites_used": 7,
+      "maximum_mean_soft_weight": 0.5498418450228777
+    },
+    "brain": {
+      "effective_soft_sites": 12.592109780049398,
+      "hard_sites_used": 15,
+      "maximum_mean_soft_weight": 0.0952526006947461
+    },
+    "colon": {
+      "effective_soft_sites": 3.6262828114162446,
+      "hard_sites_used": 6,
+      "maximum_mean_soft_weight": 0.4338546220524739
+    },
+    "heart": {
+      "effective_soft_sites": 2.8907508813599634,
+      "hard_sites_used": 7,
+      "maximum_mean_soft_weight": 0.48984262568410486
+    },
+    "skin": {
+      "effective_soft_sites": 2.508818416129587,
+      "hard_sites_used": 8,
+      "maximum_mean_soft_weight": 0.5171408343050214
+    }
+  },
+  "schema_version": 1,
+  "scores_sha256": "025f49f807d32a103888a97bd72989bc4301e50f6aae9bb1d4d090f3a6ff9605",
+  "seed": 101,
+  "status": "complete",
+  "torch_version": "2.6.0+cu124"
+}

@@ -1,6 +1,28 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-31 07:42 PDT / 2026-07-31 14:42 UTC
+**Last updated:** 2026-07-31 08:10 PDT / 2026-07-31 15:10 UTC
+
+## 2026-07-31 — Tissue-site Tier 2 fails matched capacity; architecture closed
+
+The frozen three-seed protected tissue-site adapter smoke completed and all compact
+artifacts verify. Soft site beat the protected base by 70.70%, 70.56%, and 70.50%,
+and beat the within-organ shuffled-site control by 0.149%, 0.199%, and 0.128%.
+
+The parameter-matched generic adapter nevertheless beat soft site in every seed;
+soft-site relative effects were −0.461%, −0.534%, and −0.544%, with bootstrap
+intervals entirely below zero. The same frozen gates failed in all seeds. The final
+architecture is therefore closed exactly as prespecified: validated K8 organ MoE
+plus pooled fallback/reference, no tissue-site or Hallmark secondary axis, no
+threshold changes, and no seed selection.
+
+Compact evidence is under
+`artifacts/stage2_organ_expert_mechanism/tissue_site_tier2_d47ac36/`; aggregate
+report SHA256 is
+`130d8ab775777a5e4a3d0a31513d3fb6c330add9452fb30c1a6fa73999f0d921`.
+The next frozen development protocol exposes pooled hidden state plus the
+selected/router-weighted organ bottleneck and router probabilities, and tests this
+explicit output in the existing study-grouped OSDR development harness with raw/PCA
+mandatory gates. It cannot serve as final confirmation.
 
 ## 2026-07-31 — Protected tissue-site Tier-2 smoke frozen and launched
 

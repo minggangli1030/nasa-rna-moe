@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_final_organ_embedding_development_outcome_access",
+  "role": "downstream-facing representation development on the already accessed OSDR development cohort; not final confirmation",
+  "architecture": {
+    "decision": "validated K8 organ MoE plus pooled fallback; no secondary axis",
+    "tissue_site_tier2_aggregate_sha256": "130d8ab775777a5e4a3d0a31513d3fb6c330add9452fb30c1a6fa73999f0d921",
+    "organ_experts": 8,
+    "organ_order": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "secondary_axis": null,
+    "pooled_prediction_always_retained": true,
+    "checkpoint_updates": false
+  },
+  "inputs": {
+    "stage1_candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+    "stage1_training_commit": "98e2cbab7e94f101feb33e83cff0712834c38ee3",
+    "osdr_cohort_protocol_sha256": "04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9",
+    "osdr_samples": 292,
+    "osdr_studies": 18,
+    "seeds": [17, 42, 101],
+    "no_replacements": true
+  },
+  "representation": {
+    "masking": "identical frozen full score-panel mask and missing-gene mask used by Stage 1 downstream evaluation",
+    "pooled_summary": "mean 768-dimensional pooled hidden state over observed non-score genes",
+    "organ_bottleneck": "mean 64-dimensional GELU-activated down-projection of the selected organ residual expert over observed non-score genes",
+    "router_features": "eight frozen target-hidden input-only organ probabilities",
+    "conditions": {
+      "pooled_hidden": "pooled_summary",
+      "pooled_hidden_plus_router": "pooled_summary concatenated with router_features",
+      "pooled_hidden_plus_organ_label": "pooled_summary concatenated with the revealed eight-way organ one-hot; explanatory upper bound",
+      "true_organ_embedding": "pooled_summary plus true-organ bottleneck plus router_features; explanatory upper bound",
+      "blind_router_hard_embedding": "pooled_summary plus hard-router-selected bottleneck plus router_features",
+      "blind_router_soft_embedding": "pooled_summary plus probability-weighted organ bottleneck plus router_features"
+    },
+    "no_new_trainable_model_parameters": true
+  },
+  "evaluation": {
+    "cohort": "same frozen OSDR development cohort; may select output contract but may never confirm it",
+    "outer_split": "five study-grouped folds identical across representations",
+    "inner_split": "three training-study-grouped folds only",
+    "head": "elastic-net logistic regression with fail-closed convergence",
+    "grid": {
+      "C": [0.01, 0.1, 1.0, 10.0],
+      "l1_ratio": [0.0, 0.5, 1.0]
+    },
+    "baselines": ["raw_expression", "fold_fit_pca_64"],
+    "primary_metric": "AUROC",
+    "secondary_metrics": ["AUPRC", "balanced_accuracy", "macro_f1"],
+    "selection_gate": "a deployable blind embedding must beat pooled_hidden and both raw expression and fold-fit PCA in all three seeds; otherwise the explicit embedding is not downstream-positive",
+    "best_seed_selection": false
+  },
+  "firewalls": {
+    "architecture_reopening": false,
+    "tissue_site_reuse": false,
+    "osdr_training_of_encoder_or_experts": false,
+    "checkpoint_updates": false,
+    "post_hoc_condition_or_seed_selection": false,
+    "final_claim_requires_new_untouched_grouped_cohort": true
+  },
+  "next_branch": {
+    "pass": "carry the fixed blind embedding contract into the final-refit packaging and prospective confirmation",
+    "fail": "retain organ MoE for reconstruction and use pooled hidden plus raw/PCA baselines for downstream evaluation; do not infer downstream utility from reconstruction"
+  }
+}

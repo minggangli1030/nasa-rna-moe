@@ -1,0 +1,140 @@
+{
+  "all_seeds_pass": false,
+  "best_seed_selection": false,
+  "comparisons": {
+    "soft_site_vs_generic_capacity_matched": {
+      "17": {
+        "donor_bootstrap": {
+          "ci95": [
+            -0.004957830183122917,
+            -0.004280997601672536
+          ],
+          "median": -0.004618380314880606,
+          "replicates": 2000
+        },
+        "relative_improvement": -0.004609791048703815
+      },
+      "42": {
+        "donor_bootstrap": {
+          "ci95": [
+            -0.005722808773252361,
+            -0.004995744740928281
+          ],
+          "median": -0.005342048666624135,
+          "replicates": 2000
+        },
+        "relative_improvement": -0.005342821794041132
+      },
+      "101": {
+        "donor_bootstrap": {
+          "ci95": [
+            -0.005767411130467783,
+            -0.005117516706380894
+          ],
+          "median": -0.005431575228938499,
+          "replicates": 2000
+        },
+        "relative_improvement": -0.005440569499758978
+      }
+    },
+    "soft_site_vs_protected_base": {
+      "17": {
+        "donor_bootstrap": {
+          "ci95": [
+            0.700814052509216,
+            0.7130057250337823
+          ],
+          "median": 0.7071070797027963,
+          "replicates": 2000
+        },
+        "relative_improvement": 0.706955335155544
+      },
+      "42": {
+        "donor_bootstrap": {
+          "ci95": [
+            0.6990998569941358,
+            0.7114061004892351
+          ],
+          "median": 0.7056535176215024,
+          "replicates": 2000
+        },
+        "relative_improvement": 0.7056001657482514
+      },
+      "101": {
+        "donor_bootstrap": {
+          "ci95": [
+            0.6990274077575426,
+            0.7114458707475405
+          ],
+          "median": 0.7049980977188178,
+          "replicates": 2000
+        },
+        "relative_improvement": 0.704953899305145
+      }
+    },
+    "soft_site_vs_soft_shuffled_site": {
+      "17": {
+        "donor_bootstrap": {
+          "ci95": [
+            0.0013098985993586904,
+            0.0016840031401243465
+          ],
+          "median": 0.0014994172848948138,
+          "replicates": 2000
+        },
+        "relative_improvement": 0.0014937942819820435
+      },
+      "42": {
+        "donor_bootstrap": {
+          "ci95": [
+            0.0017459244748929093,
+            0.0022126702733586056
+          ],
+          "median": 0.001983166271715935,
+          "replicates": 2000
+        },
+        "relative_improvement": 0.001985121335153591
+      },
+      "101": {
+        "donor_bootstrap": {
+          "ci95": [
+            0.0011406529481889694,
+            0.0014362932020922398
+          ],
+          "median": 0.0012852669482131325,
+          "replicates": 2000
+        },
+        "relative_improvement": 0.0012826421240145856
+      }
+    }
+  },
+  "decision": "close final architecture as validated organ MoE plus pooled fallback",
+  "failed_gates_by_seed": {
+    "17": [
+      "pairwise_bootstrap_lower_bounds_positive",
+      "soft_site_improves_generic"
+    ],
+    "42": [
+      "pairwise_bootstrap_lower_bounds_positive",
+      "soft_site_improves_generic"
+    ],
+    "101": [
+      "pairwise_bootstrap_lower_bounds_positive",
+      "soft_site_improves_generic"
+    ]
+  },
+  "protocol_sha256": "d922c1997389aacdc09c032415f0dc8a57ee579530f67f7f539477490eaac410",
+  "schema_version": 1,
+  "seed_report_sha256": {
+    "101": "cc40a6462e97d9183a0992b0a3661e2b7e0c5a44d138a6b8f049114b6004fa7a",
+    "17": "da6d3994d12eb8846fcc623ab547005954517097d49ee821d09a72491bd52e55",
+    "42": "49f87b49feff21aa3314df44762cb2354c60ebd7b87b778046e0a6b88d8b1f70"
+  },
+  "seeds": [
+    17,
+    42,
+    101
+  ],
+  "status": "complete",
+  "threshold_changes": false
+}

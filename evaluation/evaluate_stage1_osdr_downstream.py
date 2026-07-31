@@ -31,6 +31,15 @@ CONDITIONS = (
     "blind_router_soft",
 )
 
+EMBEDDING_CONDITIONS = (
+    "pooled_hidden",
+    "pooled_hidden_plus_router",
+    "pooled_hidden_plus_organ_label",
+    "true_organ_embedding",
+    "blind_router_hard_embedding",
+    "blind_router_soft_embedding",
+)
+
 
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
@@ -245,7 +254,16 @@ def main() -> None:
     if sha256_file(protocol_path) != args.expected_protocol_sha256:
         raise ValueError("downstream protocol SHA256 mismatch")
     protocol = json.loads(protocol_path.read_text())
-    if protocol.get("status") != "frozen_stage1_osdr_downstream_development":
+    status = protocol.get("status")
+    if status == "frozen_stage1_osdr_downstream_development":
+        conditions = CONDITIONS
+        organ_order = protocol["cohort"]["organs"]
+        role = "stage1_osdr_downstream_development"
+    elif status == "frozen_before_final_organ_embedding_development_outcome_access":
+        conditions = EMBEDDING_CONDITIONS
+        organ_order = protocol["architecture"]["organ_order"]
+        role = "final_organ_embedding_osdr_development"
+    else:
         raise ValueError("protocol is not frozen")
     output_dir = Path(args.output_dir)
     if output_dir.exists():
@@ -288,7 +306,6 @@ def main() -> None:
             if not np.array_equal(actual, comparable):
                 raise ValueError(f"seed {seed} {key} differs")
 
-    organ_order = protocol["cohort"]["organs"]
     organ_one_hot = np.eye(len(organ_order), dtype=np.float32)[
         [organ_order.index(value) for value in organs]
     ]
@@ -344,10 +361,13 @@ def main() -> None:
         )
     for seed in seeds:
         archive = feature_archives[seed]
-        for condition in CONDITIONS:
-            if condition == "pooled_plus_organ_label":
+        for condition in conditions:
+            if condition in {"pooled_plus_organ_label", "pooled_hidden_plus_organ_label"}:
+                pooled_name = (
+                    "pooled" if condition == "pooled_plus_organ_label" else "pooled_hidden"
+                )
                 features = np.concatenate(
-                    [archive["feature__pooled"], organ_one_hot], axis=1
+                    [archive[f"feature__{pooled_name}"], organ_one_hot], axis=1
                 )
             else:
                 features = archive[f"feature__{condition}"]
@@ -391,7 +411,7 @@ def main() -> None:
     report = {
         "schema_version": 1,
         "status": "complete",
-        "role": "stage1_osdr_downstream_development",
+        "role": role,
         "smoke": bool(args.smoke),
         "protocol_sha256": sha256_file(protocol_path),
         "n_samples": int(len(labels)),
