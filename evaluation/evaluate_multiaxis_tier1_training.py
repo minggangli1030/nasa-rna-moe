@@ -289,7 +289,12 @@ def main() -> None:
     )
     metadata = pd.read_parquet(args.metadata)
     expression = pd.read_parquet(args.expression)
-    expression.index = expression.index.astype(str)
+    if "sample_id" not in expression.columns:
+        raise ValueError("expression parquet lacks sample_id")
+    expression["sample_id"] = expression["sample_id"].astype(str)
+    if expression["sample_id"].duplicated().any():
+        raise ValueError("expression sample IDs are not unique")
+    expression = expression.set_index("sample_id")
     expression = expression.reindex(training["sample_id"].astype(str))
     with np.load(args.router, allow_pickle=False) as archive:
         gene_names = archive["gene_names"].astype(str).tolist()
