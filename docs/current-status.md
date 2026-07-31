@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-31 08:10 PDT / 2026-07-31 15:10 UTC
+**Updated:** 2026-07-31 08:14 PDT / 2026-07-31 15:14 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -91,7 +91,12 @@ embedding: pooled hidden summary plus selected/router-weighted 64-dimensional or
 bottleneck and frozen router probabilities. It reuses the exact 292-sample/18-study
 OSDR development harness with equal raw-expression and fold-fit PCA gates. This may
 select an output contract but cannot confirm it; a new untouched grouped cohort is
-still required.
+still required. Protocol SHA256 is
+`3730da5059691065855c88f25cb79636e07887b7ed7f127e467256e9b848910a`.
+Four focused assertions and compilation passed in the exact clean VM worktree at
+commit `bc3502ac7260cb08925d8043739cbd0d53da3a83`. Extraction and automatic smoke/full
+evaluation launched at 08:13 PDT in screen `final-organ-embedding`, result root
+`/media/volume/moe-reboot/results/final_organ_embedding_bc3502a`.
 
 ## Completed background
 
