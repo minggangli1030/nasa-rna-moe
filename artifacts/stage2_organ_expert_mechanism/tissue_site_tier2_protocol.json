@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_tissue_site_tier2_outcome_access",
+  "role": "bounded training-donor Tier-2 protected tissue-site adapter smoke; not final confirmation",
+  "selected_axis": "tissue_site",
+  "selection": {
+    "tier1_aggregate_sha256": "233023c6c136cd289d18954aa0a0b8a8ab922c93a93737522a459c4d21ac365a",
+    "tier1_protocol_sha256": "cd1d3dab63689cd3d534533f37e48f5d0c05e4a7d9f407ec57ee0b49c6c5e4f1",
+    "osdr_probe_report_sha256": "9bfbf37b6705f6a4b288de872c6bc962b15481406c5a54a264b21e097fc2a83a",
+    "no_other_axis_authorized": true
+  },
+  "inputs": {
+    "stage2b_protocol_sha256": "db7cd772345272876cd01a603deb720b46c36d0cfb5252e3d245e7e58f5182be",
+    "basis_bundle_sha256": "2d05ef136fe9e1660efe4bd649898412590ec6d36300da8c480b8bf75c919bfc",
+    "training_metadata_sha256": "1ecc9b966c08f25d77eb7831c7e59c3200a3bc57288e7748c778e03e0f129097",
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "seed_run_metadata_sha256": {
+      "17": "2d903d8297312af2c11008a24847daaa74439befe177addc2243cc4c7da23049",
+      "42": "f5040dac64032ce65f352458132045f3f89fc427b7b89bc74e308ec2e0548a48",
+      "101": "985f25e8c9681da930d297653cfad9541c25347b3dc412b8f307efced0df65b3"
+    },
+    "seeds": [17, 42, 101],
+    "rows": 7369,
+    "donors": 750,
+    "hidden_dim": 768,
+    "program_components": 32,
+    "score_genes": 4634
+  },
+  "scope": {
+    "informative_organs": ["adipose", "brain", "colon", "heart", "skin"],
+    "fallback_organs": ["liver", "lung", "skeletal_muscle"],
+    "site_levels": [
+      "Adipose - Subcutaneous",
+      "Adipose - Visceral (Omentum)",
+      "Brain - Amygdala",
+      "Brain - Anterior cingulate cortex (BA24)",
+      "Brain - Caudate (basal ganglia)",
+      "Brain - Cerebellar Hemisphere",
+      "Brain - Cerebellum",
+      "Brain - Cortex",
+      "Brain - Frontal Cortex (BA9)",
+      "Brain - Hippocampus",
+      "Brain - Hypothalamus",
+      "Brain - Nucleus accumbens (basal ganglia)",
+      "Brain - Putamen (basal ganglia)",
+      "Brain - Substantia nigra",
+      "Colon - Sigmoid",
+      "Colon - Transverse",
+      "Heart - Atrial Appendage",
+      "Heart - Left Ventricle",
+      "Skin - Not Sun Exposed (Suprapubic)",
+      "Skin - Sun Exposed (Lower leg)"
+    ],
+    "noninformative_organs_receive_exact_zero_correction": true
+  },
+  "model": {
+    "protected_base": "immutable valid phase-1 organ-private score-gene prediction",
+    "input": "immutable canonical pooled hidden vector",
+    "target": "training-fold-standardized fixed-decoder coefficients of truth minus protected-base residual",
+    "decoder": "unchanged hash-pinned 32-component program decoder",
+    "site_bank": "one 768-16-32 residual coefficient head per eligible site",
+    "site_hidden_dim": 16,
+    "router": "input-only linear 768-to-20 softmax; site metadata unavailable at evaluation",
+    "generic_control": "single 768-340-32 residual coefficient head",
+    "generic_hidden_dim": 340,
+    "generic_parameter_match_tolerance_fraction": 0.02,
+    "shuffled_control": "identical bank and router trained on a fixed row permutation of tissue site within exact organ",
+    "known_site_mode": "explanatory upper bound only",
+    "primary_mode": "input-only soft routing"
+  },
+  "training": {
+    "outer_folds": 5,
+    "group": "GTEx donor",
+    "fold_seed_base": 20260805,
+    "shuffle_seed_base": 20260806,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "epochs": 20,
+    "router_loss_weight": 0.1,
+    "gradient_clip_norm": 1.0,
+    "dtype": "deterministic FP32",
+    "checkpoint_selection": false,
+    "best_seed_selection": false
+  },
+  "evaluation": {
+    "primary_metric": "relative score-gene MSE improvement",
+    "conditions": ["protected_base", "known_site", "soft_site", "hard_site", "soft_shuffled_site", "generic_capacity_matched"],
+    "donor_bootstrap_replicates": 2000,
+    "donor_bootstrap_seed": 20260807,
+    "maximum_per_organ_relative_harm": 0.02,
+    "minimum_effective_soft_sites_per_informative_organ": 1.25,
+    "minimum_hard_sites_used_per_informative_organ": 2
+  },
+  "pass_gate": {
+    "soft_site_improves_protected_base_in_all_seeds": true,
+    "soft_site_improves_soft_shuffled_site_in_all_seeds": true,
+    "soft_site_improves_generic_capacity_matched_in_all_seeds": true,
+    "all_three_pairwise_donor_bootstrap_lower_bounds_positive_in_all_seeds": true,
+    "known_site_improves_protected_base_in_all_seeds": true,
+    "no_per_organ_harm_beyond_limit_in_any_seed": true,
+    "router_noncollapsed_in_every_informative_organ_and_seed": true
+  },
+  "decision": {
+    "pass": "tissue site is the sole secondary axis eligible for final architecture",
+    "fail": "close final architecture as validated organ MoE plus pooled fallback",
+    "no_threshold_changes_or_additional_axes": true
+  },
+  "firewalls": {
+    "organ_private_path_trainable": false,
+    "pooled_trunk_trainable": false,
+    "decoder_trainable": false,
+    "calibration_or_archs4_access": false,
+    "osdr_training_or_reuse": false,
+    "nontraining_split_fit": false,
+    "post_hoc_model_seed_or_condition_selection": false
+  }
+}
