@@ -790,3 +790,30 @@ retention, and the already negative state-task embedding result. D3 planning wil
 prioritize a human within-organ state task with a pre-freeze label-by-study contingency
 gate and the proposed raw-AUROC difficulty comparison; a human organ arm will be only
 a mechanical harness sanity check.
+
+### 12.1 Overnight results — 2026-08-02
+
+Both frozen runs completed and verified.
+
+**D2 failed cleanly.** Hallmark+PCA64 scored 0.732630 AUROC versus 0.732770 for PCA64
+and 0.725921 for raw. The study-bootstrap interval crossed zero against both. The
+primary beat every random/permuted control, but Hallmark alone scored 0.567394 and was
+worse than both simple references. The correct conclusion is that this deterministic
+Hallmark aggregation adds no robust state-task information beyond PCA; it is not an
+MoE result and does not advance.
+
+**The replacement D1b passed.** A classifier trained/tuned only on 6,244 GTEx rows
+from 750 donor groups achieved 0.9643 balanced accuracy with raw expression and
+0.7519/0.7553/0.6992 with pooled hidden for seeds 17/42/101. Every embedding seed
+cleared the frozen 0.60 gate. Cross-species organ geometry is therefore preserved in
+all seeds without fitting on OSDR. The result is uneven: heart recall is 0.00/0.05/0.00
+and lung is 0.263/0.789/0.105, while raw is substantially stronger. This rules out a
+globally meaningless mouse embedding but does not prove state retention, lossless
+encoding, or downstream superiority. Original D1b remains confounded; the new result
+is a separate unconfounded audit.
+
+**Updated priority.** Do not spend further time rescuing Hallmark features. Preserve
+the externally validated organ-MoE reconstruction result and the negative state-task
+finding. If a downstream extension remains desired, the next informative experiment
+is D3: a human within-organ state task whose label varies within studies, with frozen
+membership and raw/PCA difficulty matching before expression access.

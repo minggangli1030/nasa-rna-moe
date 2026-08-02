@@ -1,6 +1,25 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-01 23:42 PDT / 2026-08-02 06:42 UTC
+**Last updated:** 2026-08-02 01:42 PDT / 2026-08-02 08:42 UTC
+
+## 2026-08-02 — D2 fails; unconfounded cross-species organ transfer passes
+
+Both overnight evaluations completed automatically and every immutable checksum
+verifies locally and on the VM.
+
+D2 returned `HALLMARK_FEATURES_FAIL`. Hallmark+PCA64 AUROC was 0.732630 versus
+0.732770 for PCA64 and 0.725921 for raw. Its study-bootstrap interval crossed zero
+against both references. It beat permuted Hallmark and all three matched-random sets,
+but Hallmark alone scored only 0.567394. Deterministic Hallmark means therefore do not
+add robust state-task value beyond PCA under the frozen design.
+
+The GTEx-trained replacement D1b returned
+`CROSS_SPECIES_ORGAN_STRUCTURE_PRESERVED`. Raw balanced accuracy was 0.9643; pooled
+hidden reached 0.7519/0.7553/0.6992 across seeds 17/42/101, all above the frozen 0.60
+gate. This unconfounded result shows that mouse embeddings retain substantial human
+organ geometry. It is incomplete—heart recall is near zero, lung is seed-variable,
+and raw expression remains much stronger—and it does not establish perturbation-state
+retention. The original OSDR-trained D1b remains confounded and uninterpretable.
 
 ## 2026-08-01 — Encoder transfers; Hallmark downstream feature audit launched
 

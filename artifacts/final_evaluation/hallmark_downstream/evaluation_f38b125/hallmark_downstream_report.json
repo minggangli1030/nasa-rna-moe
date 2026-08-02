@@ -1,0 +1,950 @@
+{
+  "best_seed_or_condition_selection": false,
+  "comparisons": {
+    "hallmark_50": {
+      "minus_pca_64": {
+        "ci95": [
+          -0.27150760953741515,
+          -0.06307935044105872
+        ],
+        "median": -0.16159008877886327,
+        "replicates": 2000
+      },
+      "minus_raw_expression": {
+        "ci95": [
+          -0.27848653052221534,
+          -0.05763108567842528
+        ],
+        "median": -0.15392184511869506,
+        "replicates": 2000
+      }
+    },
+    "hallmark_50_plus_pca_64": {
+      "minus_pca_64": {
+        "ci95": [
+          -0.0006660062123086564,
+          0.00021550938083577642
+        ],
+        "median": -0.00012030801631179866,
+        "replicates": 2000
+      },
+      "minus_raw_expression": {
+        "ci95": [
+          -0.06867041929235768,
+          0.08636886684398179
+        ],
+        "median": 0.005381523238666197,
+        "replicates": 2000
+      }
+    }
+  },
+  "coverage": {
+    "HALLMARK_ADIPOGENESIS": 127,
+    "HALLMARK_ALLOGRAFT_REJECTION": 112,
+    "HALLMARK_ANDROGEN_RESPONSE": 67,
+    "HALLMARK_ANGIOGENESIS": 28,
+    "HALLMARK_APICAL_JUNCTION": 145,
+    "HALLMARK_APICAL_SURFACE": 35,
+    "HALLMARK_APOPTOSIS": 100,
+    "HALLMARK_BILE_ACID_METABOLISM": 74,
+    "HALLMARK_CHOLESTEROL_HOMEOSTASIS": 48,
+    "HALLMARK_COAGULATION": 77,
+    "HALLMARK_COMPLEMENT": 125,
+    "HALLMARK_DNA_REPAIR": 96,
+    "HALLMARK_E2F_TARGETS": 135,
+    "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 130,
+    "HALLMARK_ESTROGEN_RESPONSE_EARLY": 134,
+    "HALLMARK_ESTROGEN_RESPONSE_LATE": 128,
+    "HALLMARK_FATTY_ACID_METABOLISM": 98,
+    "HALLMARK_G2M_CHECKPOINT": 128,
+    "HALLMARK_GLYCOLYSIS": 120,
+    "HALLMARK_HEDGEHOG_SIGNALING": 23,
+    "HALLMARK_HEME_METABOLISM": 114,
+    "HALLMARK_HYPOXIA": 128,
+    "HALLMARK_IL2_STAT5_SIGNALING": 129,
+    "HALLMARK_IL6_JAK_STAT3_SIGNALING": 50,
+    "HALLMARK_INFLAMMATORY_RESPONSE": 127,
+    "HALLMARK_INTERFERON_ALPHA_RESPONSE": 46,
+    "HALLMARK_INTERFERON_GAMMA_RESPONSE": 109,
+    "HALLMARK_KRAS_SIGNALING_DN": 127,
+    "HALLMARK_KRAS_SIGNALING_UP": 142,
+    "HALLMARK_MITOTIC_SPINDLE": 132,
+    "HALLMARK_MTORC1_SIGNALING": 123,
+    "HALLMARK_MYC_TARGETS_V1": 123,
+    "HALLMARK_MYC_TARGETS_V2": 38,
+    "HALLMARK_MYOGENESIS": 131,
+    "HALLMARK_NOTCH_SIGNALING": 19,
+    "HALLMARK_OXIDATIVE_PHOSPHORYLATION": 115,
+    "HALLMARK_P53_PATHWAY": 124,
+    "HALLMARK_PANCREAS_BETA_CELLS": 27,
+    "HALLMARK_PEROXISOME": 72,
+    "HALLMARK_PI3K_AKT_MTOR_SIGNALING": 64,
+    "HALLMARK_PROTEIN_SECRETION": 64,
+    "HALLMARK_REACTIVE_OXYGEN_SPECIES_PATHWAY": 35,
+    "HALLMARK_SPERMATOGENESIS": 86,
+    "HALLMARK_TGF_BETA_SIGNALING": 32,
+    "HALLMARK_TNFA_SIGNALING_VIA_NFKB": 121,
+    "HALLMARK_UNFOLDED_PROTEIN_RESPONSE": 78,
+    "HALLMARK_UV_RESPONSE_DN": 106,
+    "HALLMARK_UV_RESPONSE_UP": 100,
+    "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 24,
+    "HALLMARK_XENOBIOTIC_METABOLISM": 109
+  },
+  "final_confirmation": false,
+  "frozen_gate": {
+    "beats_every_control": true,
+    "pca_interval_above_zero": false,
+    "raw_interval_above_zero": false
+  },
+  "n_samples": 292,
+  "n_studies": 18,
+  "predictions_sha256": "bd8e8735a79ccff60722414f529d5f06f4b0f8708627884a102edb944b0971be",
+  "protocol_sha256": "484667662935aed865d80a72503c428a68a6256f7c201beacaeb64f474632a62",
+  "results": {
+    "hallmark_50": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.7405315540405143,
+            "auroc": 0.7257653061224489,
+            "balanced_accuracy": 0.6964285714285714,
+            "macro_f1": 0.6955548448992644
+          },
+          "outer_fit_iterations": 521,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 468,
+            "mean_inner_auroc": 0.5892002353334894
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.4943013102776324,
+            "auroc": 0.5333333333333333,
+            "balanced_accuracy": 0.5178571428571428,
+            "macro_f1": 0.5172413793103449
+          },
+          "outer_fit_iterations": 265,
+          "selected": {
+            "C": 1.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 233,
+            "mean_inner_auroc": 0.5980608657437926
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.7287202387411057,
+            "auroc": 0.6917989417989417,
+            "balanced_accuracy": 0.587962962962963,
+            "macro_f1": 0.5316549426138467
+          },
+          "outer_fit_iterations": 467,
+          "selected": {
+            "C": 1.0,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 505,
+            "mean_inner_auroc": 0.5188744784273239
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.5739264922889489,
+            "auroc": 0.5135416666666667,
+            "balanced_accuracy": 0.5041666666666667,
+            "macro_f1": 0.49354413702239786
+          },
+          "outer_fit_iterations": 492,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 481,
+            "mean_inner_auroc": 0.6062895694153717
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.7102039942741665,
+            "auroc": 0.6473118279569893,
+            "balanced_accuracy": 0.5725806451612903,
+            "macro_f1": 0.5708874458874459
+          },
+          "outer_fit_iterations": 488,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 406,
+            "mean_inner_auroc": 0.6217543502631222
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "pooled_out_of_fold": {
+        "auprc": 0.5576949364369721,
+        "auroc": 0.5673938540933615,
+        "balanced_accuracy": 0.5723434201266714,
+        "macro_f1": 0.5704619005589879
+      }
+    },
+    "hallmark_50_plus_pca_64": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.7347472660691949,
+            "auroc": 0.7117346938775511,
+            "balanced_accuracy": 0.625,
+            "macro_f1": 0.5762162162162162
+          },
+          "outer_fit_iterations": 222,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 204,
+            "mean_inner_auroc": 0.6801491259254496
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.6865530207733062,
+            "auroc": 0.7583333333333333,
+            "balanced_accuracy": 0.730952380952381,
+            "macro_f1": 0.7156862745098038
+          },
+          "outer_fit_iterations": 287,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 263,
+            "mean_inner_auroc": 0.7030626582937237
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.8460564526509732,
+            "auroc": 0.8214285714285714,
+            "balanced_accuracy": 0.7447089947089947,
+            "macro_f1": 0.7446949602122015
+          },
+          "outer_fit_iterations": 412,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 38,
+            "mean_inner_auroc": 0.6053713299648259
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.7308978608457144,
+            "auroc": 0.7750000000000001,
+            "balanced_accuracy": 0.684375,
+            "macro_f1": 0.6648648648648648
+          },
+          "outer_fit_iterations": 262,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 244,
+            "mean_inner_auroc": 0.7544083557241451
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.7036348115872834,
+            "auroc": 0.7623655913978494,
+            "balanced_accuracy": 0.7682795698924731,
+            "macro_f1": 0.7653846153846153
+          },
+          "outer_fit_iterations": 156,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 91,
+            "mean_inner_auroc": 0.6751693157394912
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "pooled_out_of_fold": {
+        "auprc": 0.7198449098182331,
+        "auroc": 0.7326296035655642,
+        "balanced_accuracy": 0.7091484869809993,
+        "macro_f1": 0.7086273082657337
+      }
+    },
+    "hallmark_permuted": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.6560468101825566,
+            "auroc": 0.6530612244897959,
+            "balanced_accuracy": 0.6071428571428571,
+            "macro_f1": 0.5809523809523809
+          },
+          "outer_fit_iterations": 548,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 500,
+            "mean_inner_auroc": 0.6343152045561326
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.5492667417175631,
+            "auroc": 0.65,
+            "balanced_accuracy": 0.6773809523809524,
+            "macro_f1": 0.6675716440422323
+          },
+          "outer_fit_iterations": 552,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 495,
+            "mean_inner_auroc": 0.6070574425516658
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.509090909090909,
+            "auroc": 0.5,
+            "balanced_accuracy": 0.5,
+            "macro_f1": 0.3373493975903614
+          },
+          "outer_fit_iterations": 3,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 4,
+            "mean_inner_auroc": 0.5
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.5474607159697799,
+            "auroc": 0.5197916666666667,
+            "balanced_accuracy": 0.5354166666666667,
+            "macro_f1": 0.5291961246399581
+          },
+          "outer_fit_iterations": 401,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 362,
+            "mean_inner_auroc": 0.7090009457467737
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.5773856401296461,
+            "auroc": 0.6827956989247311,
+            "balanced_accuracy": 0.717741935483871,
+            "macro_f1": 0.7058156028368794
+          },
+          "outer_fit_iterations": 499,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 410,
+            "mean_inner_auroc": 0.6115293575819892
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "pooled_out_of_fold": {
+        "auprc": 0.5707980329532347,
+        "auroc": 0.6143560872624911,
+        "balanced_accuracy": 0.6089139103917429,
+        "macro_f1": 0.6054241145512305
+      }
+    },
+    "pca_64": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.7355153152243409,
+            "auroc": 0.7130102040816326,
+            "balanced_accuracy": 0.625,
+            "macro_f1": 0.5762162162162162
+          },
+          "outer_fit_iterations": 221,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 204,
+            "mean_inner_auroc": 0.6797426218604089
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.6865530207733062,
+            "auroc": 0.7583333333333333,
+            "balanced_accuracy": 0.730952380952381,
+            "macro_f1": 0.7156862745098038
+          },
+          "outer_fit_iterations": 285,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 262,
+            "mean_inner_auroc": 0.7030626582937237
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.8460564526509732,
+            "auroc": 0.8214285714285714,
+            "balanced_accuracy": 0.7447089947089947,
+            "macro_f1": 0.7446949602122015
+          },
+          "outer_fit_iterations": 412,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 38,
+            "mean_inner_auroc": 0.6053713299648259
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.7308978608457144,
+            "auroc": 0.7750000000000001,
+            "balanced_accuracy": 0.684375,
+            "macro_f1": 0.6648648648648648
+          },
+          "outer_fit_iterations": 261,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 243,
+            "mean_inner_auroc": 0.7544083557241451
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.7036348115872834,
+            "auroc": 0.7623655913978494,
+            "balanced_accuracy": 0.7682795698924731,
+            "macro_f1": 0.7653846153846153
+          },
+          "outer_fit_iterations": 155,
+          "selected": {
+            "C": 0.01,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 91,
+            "mean_inner_auroc": 0.6751693157394912
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "pooled_out_of_fold": {
+        "auprc": 0.7198337692735645,
+        "auroc": 0.732770349519118,
+        "balanced_accuracy": 0.7091484869809993,
+        "macro_f1": 0.7086273082657337
+      }
+    },
+    "random_50_seed10101": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.6277567291794175,
+            "auroc": 0.6275510204081634,
+            "balanced_accuracy": 0.5178571428571429,
+            "macro_f1": 0.42002301495972383
+          },
+          "outer_fit_iterations": 551,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 465,
+            "mean_inner_auroc": 0.5767963382775995
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.6591975794969696,
+            "auroc": 0.6869047619047619,
+            "balanced_accuracy": 0.5166666666666667,
+            "macro_f1": 0.3616698292220114
+          },
+          "outer_fit_iterations": 515,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 427,
+            "mean_inner_auroc": 0.6140718060807919
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.7166672166794642,
+            "auroc": 0.7539682539682541,
+            "balanced_accuracy": 0.6044973544973545,
+            "macro_f1": 0.5763305322128851
+          },
+          "outer_fit_iterations": 658,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 737,
+            "mean_inner_auroc": 0.5050921376124627
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.4835369096506281,
+            "auroc": 0.49375,
+            "balanced_accuracy": 0.47291666666666665,
+            "macro_f1": 0.45628487908583576
+          },
+          "outer_fit_iterations": 230,
+          "selected": {
+            "C": 1.0,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 279,
+            "mean_inner_auroc": 0.6744984393893251
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.6515682092800859,
+            "auroc": 0.6752688172043011,
+            "balanced_accuracy": 0.6688172043010753,
+            "macro_f1": 0.6565315315315315
+          },
+          "outer_fit_iterations": 650,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 728,
+            "mean_inner_auroc": 0.6079493605809395
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "pooled_out_of_fold": {
+        "auprc": 0.5497794346543483,
+        "auroc": 0.5835327234342013,
+        "balanced_accuracy": 0.5515130190007038,
+        "macro_f1": 0.5512382829456
+      }
+    },
+    "random_50_seed1701": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.5707056020936518,
+            "auroc": 0.5548469387755102,
+            "balanced_accuracy": 0.5178571428571428,
+            "macro_f1": 0.4903943377148635
+          },
+          "outer_fit_iterations": 308,
+          "selected": {
+            "C": 1.0,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 362,
+            "mean_inner_auroc": 0.6398977204450138
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.735552311926235,
+            "auroc": 0.7071428571428572,
+            "balanced_accuracy": 0.638095238095238,
+            "macro_f1": 0.6378233719892952
+          },
+          "outer_fit_iterations": 559,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 605,
+            "mean_inner_auroc": 0.548243011946478
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.574136158529659,
+            "auroc": 0.593915343915344,
+            "balanced_accuracy": 0.578042328042328,
+            "macro_f1": 0.5609163484901076
+          },
+          "outer_fit_iterations": 334,
+          "selected": {
+            "C": 1.0,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 357,
+            "mean_inner_auroc": 0.5205904153058625
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.5409181560439481,
+            "auroc": 0.5114583333333333,
+            "balanced_accuracy": 0.47708333333333336,
+            "macro_f1": 0.4244725738396624
+          },
+          "outer_fit_iterations": 409,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 377,
+            "mean_inner_auroc": 0.682836752028023
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.5963964344566883,
+            "auroc": 0.6387096774193549,
+            "balanced_accuracy": 0.6698924731182796,
+            "macro_f1": 0.6648351648351649
+          },
+          "outer_fit_iterations": 59,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 55,
+            "mean_inner_auroc": 0.6079896143492635
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "pooled_out_of_fold": {
+        "auprc": 0.5802220706646339,
+        "auroc": 0.5693642974431151,
+        "balanced_accuracy": 0.5756040347173352,
+        "macro_f1": 0.5748438307265982
+      }
+    },
+    "random_50_seed4201": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.6082775248822518,
+            "auroc": 0.639030612244898,
+            "balanced_accuracy": 0.5357142857142857,
+            "macro_f1": 0.46783625730994155
+          },
+          "outer_fit_iterations": 512,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 434,
+            "mean_inner_auroc": 0.6429791480951504
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.6985484343578117,
+            "auroc": 0.6857142857142857,
+            "balanced_accuracy": 0.6488095238095238,
+            "macro_f1": 0.6039024390243902
+          },
+          "outer_fit_iterations": 533,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.0,
+            "max_inner_iterations": 424,
+            "mean_inner_auroc": 0.6143658420936983
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.8761047320280099,
+            "auroc": 0.8187830687830687,
+            "balanced_accuracy": 0.7837301587301587,
+            "macro_f1": 0.78
+          },
+          "outer_fit_iterations": 526,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 525,
+            "mean_inner_auroc": 0.579881688621526
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.5900101049911934,
+            "auroc": 0.578125,
+            "balanced_accuracy": 0.565625,
+            "macro_f1": 0.5644028103044496
+          },
+          "outer_fit_iterations": 548,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 547,
+            "mean_inner_auroc": 0.712251629035968
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.71086911283611,
+            "auroc": 0.7021505376344086,
+            "balanced_accuracy": 0.556989247311828,
+            "macro_f1": 0.5569007263922519
+          },
+          "outer_fit_iterations": 560,
+          "selected": {
+            "C": 10.0,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 505,
+            "mean_inner_auroc": 0.6458360109675899
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "pooled_out_of_fold": {
+        "auprc": 0.603403686168847,
+        "auroc": 0.6344358433028384,
+        "balanced_accuracy": 0.6132066619751348,
+        "macro_f1": 0.6127911752625712
+      }
+    },
+    "raw_expression": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "auprc": 0.7516335954903439,
+            "auroc": 0.7614795918367347,
+            "balanced_accuracy": 0.5714285714285714,
+            "macro_f1": 0.49321266968325794
+          },
+          "outer_fit_iterations": 526,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 608,
+            "mean_inner_auroc": 0.7380170324994834
+          },
+          "test_samples": 56,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "auprc": 0.6062977384765127,
+            "auroc": 0.7119047619047619,
+            "balanced_accuracy": 0.75,
+            "macro_f1": 0.7276995305164319
+          },
+          "outer_fit_iterations": 552,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 645,
+            "mean_inner_auroc": 0.7582159502249363
+          },
+          "test_samples": 58,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "auprc": 0.9337546871728835,
+            "auroc": 0.9113756613756614,
+            "balanced_accuracy": 0.8392857142857143,
+            "macro_f1": 0.8328267477203647
+          },
+          "outer_fit_iterations": 631,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 604,
+            "mean_inner_auroc": 0.662638768939582
+          },
+          "test_samples": 55,
+          "test_studies": 3,
+          "train_studies": 15
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "auprc": 0.5980467770750273,
+            "auroc": 0.6166666666666666,
+            "balanced_accuracy": 0.6927083333333333,
+            "macro_f1": 0.6928292046936115
+          },
+          "outer_fit_iterations": 588,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 1.0,
+            "max_inner_iterations": 663,
+            "mean_inner_auroc": 0.8072351876909001
+          },
+          "test_samples": 62,
+          "test_studies": 4,
+          "train_studies": 14
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "auprc": 0.8163697962913319,
+            "auroc": 0.8462365591397849,
+            "balanced_accuracy": 0.7682795698924731,
+            "macro_f1": 0.7653846153846153
+          },
+          "outer_fit_iterations": 526,
+          "selected": {
+            "C": 0.1,
+            "l1_ratio": 0.5,
+            "max_inner_iterations": 559,
+            "mean_inner_auroc": 0.7332568422480703
+          },
+          "test_samples": 61,
+          "test_studies": 4,
+          "train_studies": 14
+        }
+      ],
+      "pooled_out_of_fold": {
+        "auprc": 0.6526548768912379,
+        "auroc": 0.7259207131128314,
+        "balanced_accuracy": 0.7227539291578701,
+        "macro_f1": 0.7225213810579665
+      }
+    }
+  },
+  "role": "OSDR spaceflight Hallmark downstream-feature development; accessed cohort, not final confirmation",
+  "schema_version": 1,
+  "smoke": false,
+  "status": "complete",
+  "verdict": "HALLMARK_FEATURES_FAIL"
+}

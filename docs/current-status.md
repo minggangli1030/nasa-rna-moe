@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-01 23:42 PDT / 2026-08-02 06:42 UTC
+**Updated:** 2026-08-02 01:42 PDT / 2026-08-02 08:42 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -36,24 +36,27 @@ same donor-grouped seven-organ classifier entirely on GTEx and applies it unchan
 to OSDR raw expression and each fixed-seed pooled-hidden representation. OSDR studies
 are never used for fitting or tuning. Frozen balanced-accuracy gates are at least
 0.60 for preserved, at most 0.25 for lost, with all three embedding seeds required.
-Exact deployed commit/worktree is `dbcabec18402b411e23e1511859ece4b04c8d713` /
-`/media/volume/moe-reboot/worktrees/cross_species_organ_transfer_dbcabec`. Screen
-`cross-species-organ-transfer-continuation` is healthy at `WAITING_FOR_D2` and will
-verify D2 checksums, then run replacement smoke and full sequentially. The two-hour
-heartbeat `d2-and-cross-species-audit-overnight` monitors both phases through the
-08:00 PDT morning handoff.
+The replacement completed and checksums verify. Raw-expression balanced accuracy was
+0.9643; pooled-hidden accuracy was 0.7519, 0.7553, and 0.6992 for seeds 17, 42, and
+101. All fixed seeds exceed the frozen 0.60 gate, giving verdict
+`CROSS_SPECIES_ORGAN_STRUCTURE_PRESERVED`. Transfer is uneven: heart recall is near
+zero and lung varies substantially, while raw expression is much stronger. This
+establishes coarse organ-geometry retention, not state retention or downstream
+superiority. Canonical result: [`cross-species-organ-transfer-result.md`](cross-species-organ-transfer-result.md).
 
-The independent D2 Hallmark feature audit is frozen at protocol SHA256
+The independent D2 Hallmark feature audit completed at protocol SHA256
 `484667662935aed865d80a72503c428a68a6256f7c201beacaeb64f474632a62`; scientific
 implementation commit is `f2700e846a17bf2f7dd3ef7f69eca597a32e6646` and deployed
 commit/worktree is `f38b125472576e4ea158afc7db73396c42467d19` /
 `/media/volume/moe-reboot/worktrees/osdr_hallmark_downstream_f38b125`. The unchanged
-smoke-to-full retry is active in screen `osdr-hallmark-downstream-retry1`. It compares
+smoke-to-full lineage completed and all checksums verify. It compares
 Hallmark-50, Hallmark+fold-fit PCA64, PCA64, raw expression, three fixed size-matched
 random-set draws, and permuted Hallmark under identical grouped splits and tuning.
-The first launch found only that the detached worktree lacked the ignored GMT file;
-it emitted no result and is preserved. Retry1 uses an existing copy with the exact
-frozen GMT hash.
+The frozen verdict is `HALLMARK_FEATURES_FAIL`. Hallmark+PCA64 AUROC was 0.732630,
+essentially neutral versus PCA64 at 0.732770; its bootstrap interval crossed zero
+against both PCA and raw. It beat all random/permuted controls, but Hallmark alone was
+0.567394 and materially worse. Canonical result:
+[`hallmark-downstream-feature-result.md`](hallmark-downstream-feature-result.md).
 
 The frozen OSDR downstream-development evaluation is complete. Exact evaluator
 commit `61766ee` finished at 2026-07-30 21:26 PDT on 292 samples from 18 studies;

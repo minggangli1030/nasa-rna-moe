@@ -1,0 +1,514 @@
+{
+  "best_seed_or_condition_selection": false,
+  "final_confirmation": false,
+  "gtex_donors": 750,
+  "gtex_rows": 6244,
+  "osdr_rows": 292,
+  "predictions_sha256": "ea2086f787a55781c708a0b73759c04a43d0360ffe55315aac5df2686c2dbaee",
+  "prior_d1b_status": "D1B_CONFOUNDED_UNINFORMATIVE",
+  "protocol_sha256": "c7309e52e3e291c71198e8c291caba2ea9b4c3bb000b904a2b00da3a6527c54a",
+  "results": {
+    "raw_expression": {
+      "balanced_accuracy": 0.9642857142857143,
+      "confusion_matrix": [
+        [
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          58,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          19,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          40,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          13,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          19,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          139
+        ]
+      ],
+      "donor_grouped_tuning": [
+        {
+          "alpha": 1e-05,
+          "fold_balanced_accuracy": [
+            1.0,
+            1.0,
+            0.999384236453202
+          ],
+          "max_iterations": 16,
+          "mean_donor_grouped_balanced_accuracy": 0.9997947454844006
+        },
+        {
+          "alpha": 0.0001,
+          "fold_balanced_accuracy": [
+            1.0,
+            1.0,
+            0.999384236453202
+          ],
+          "max_iterations": 13,
+          "mean_donor_grouped_balanced_accuracy": 0.9997947454844006
+        },
+        {
+          "alpha": 0.001,
+          "fold_balanced_accuracy": [
+            1.0,
+            1.0,
+            0.999384236453202
+          ],
+          "max_iterations": 11,
+          "mean_donor_grouped_balanced_accuracy": 0.9997947454844006
+        },
+        {
+          "alpha": 0.01,
+          "fold_balanced_accuracy": [
+            1.0,
+            1.0,
+            0.9987711156684073
+          ],
+          "max_iterations": 12,
+          "mean_donor_grouped_balanced_accuracy": 0.9995903718894691
+        }
+      ],
+      "final_iterations": 15,
+      "macro_f1": 0.9790798039645967,
+      "per_organ_recall": {
+        "adipose": 0.75,
+        "brain": 1.0,
+        "colon": 1.0,
+        "heart": 1.0,
+        "liver": 1.0,
+        "lung": 1.0,
+        "skeletal_muscle": 1.0
+      },
+      "selected_alpha": 1e-05
+    },
+    "seed101__pooled_hidden": {
+      "balanced_accuracy": 0.699248120300752,
+      "confusion_matrix": [
+        [
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          58,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          15,
+          0,
+          3,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          39
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          13,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          17,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          139
+        ]
+      ],
+      "donor_grouped_tuning": [
+        {
+          "alpha": 1e-05,
+          "fold_balanced_accuracy": [
+            0.9952470123383433,
+            0.9931902451345758,
+            0.9876349475998316
+          ],
+          "max_iterations": 37,
+          "mean_donor_grouped_balanced_accuracy": 0.9920240683575837
+        },
+        {
+          "alpha": 0.0001,
+          "fold_balanced_accuracy": [
+            0.9868295251895034,
+            0.986760593308602,
+            0.9749230786864388
+          ],
+          "max_iterations": 43,
+          "mean_donor_grouped_balanced_accuracy": 0.982837732394848
+        },
+        {
+          "alpha": 0.001,
+          "fold_balanced_accuracy": [
+            0.9732500834707055,
+            0.9722807357972169,
+            0.9620186440456273
+          ],
+          "max_iterations": 47,
+          "mean_donor_grouped_balanced_accuracy": 0.9691831544378499
+        },
+        {
+          "alpha": 0.01,
+          "fold_balanced_accuracy": [
+            0.9588811329060664,
+            0.9586608258197663,
+            0.9479316929638095
+          ],
+          "max_iterations": 43,
+          "mean_donor_grouped_balanced_accuracy": 0.9551578838965474
+        }
+      ],
+      "final_iterations": 35,
+      "macro_f1": 0.6448131073479004,
+      "per_organ_recall": {
+        "adipose": 1.0,
+        "brain": 1.0,
+        "colon": 0.7894736842105263,
+        "heart": 0.0,
+        "liver": 1.0,
+        "lung": 0.10526315789473684,
+        "skeletal_muscle": 1.0
+      },
+      "selected_alpha": 1e-05
+    },
+    "seed17__pooled_hidden": {
+      "balanced_accuracy": 0.7518796992481204,
+      "confusion_matrix": [
+        [
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          58,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          19,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          37
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          13,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          14,
+          0,
+          0,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          139
+        ]
+      ],
+      "donor_grouped_tuning": [
+        {
+          "alpha": 1e-05,
+          "fold_balanced_accuracy": [
+            0.9832788606353757,
+            0.979973582602577,
+            0.9768054783365235
+          ],
+          "max_iterations": 54,
+          "mean_donor_grouped_balanced_accuracy": 0.9800193071914921
+        },
+        {
+          "alpha": 0.0001,
+          "fold_balanced_accuracy": [
+            0.9725033071627679,
+            0.9756995490168409,
+            0.9643502289625767
+          ],
+          "max_iterations": 75,
+          "mean_donor_grouped_balanced_accuracy": 0.9708510283807286
+        },
+        {
+          "alpha": 0.001,
+          "fold_balanced_accuracy": [
+            0.9541389913959138,
+            0.9599131593174716,
+            0.9430362381704438
+          ],
+          "max_iterations": 79,
+          "mean_donor_grouped_balanced_accuracy": 0.9523627962946097
+        },
+        {
+          "alpha": 0.01,
+          "fold_balanced_accuracy": [
+            0.9421633521384881,
+            0.9450567678808053,
+            0.9286232214854534
+          ],
+          "max_iterations": 79,
+          "mean_donor_grouped_balanced_accuracy": 0.9386144471682489
+        }
+      ],
+      "final_iterations": 38,
+      "macro_f1": 0.7128736343022057,
+      "per_organ_recall": {
+        "adipose": 1.0,
+        "brain": 1.0,
+        "colon": 1.0,
+        "heart": 0.0,
+        "liver": 1.0,
+        "lung": 0.2631578947368421,
+        "skeletal_muscle": 1.0
+      },
+      "selected_alpha": 1e-05
+    },
+    "seed42__pooled_hidden": {
+      "balanced_accuracy": 0.7552631578947367,
+      "confusion_matrix": [
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          58,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          18,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          37
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          13,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          0,
+          15,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          139
+        ]
+      ],
+      "donor_grouped_tuning": [
+        {
+          "alpha": 1e-05,
+          "fold_balanced_accuracy": [
+            0.9885176117060024,
+            0.9863976645990836,
+            0.9832432331955502
+          ],
+          "max_iterations": 45,
+          "mean_donor_grouped_balanced_accuracy": 0.9860528365002121
+        },
+        {
+          "alpha": 0.0001,
+          "fold_balanced_accuracy": [
+            0.9803374756740462,
+            0.9746732743418771,
+            0.9714763205566579
+          ],
+          "max_iterations": 54,
+          "mean_donor_grouped_balanced_accuracy": 0.9754956901908605
+        },
+        {
+          "alpha": 0.001,
+          "fold_balanced_accuracy": [
+            0.9690738199000819,
+            0.966264671189749,
+            0.9516824456518939
+          ],
+          "max_iterations": 104,
+          "mean_donor_grouped_balanced_accuracy": 0.9623403122472416
+        },
+        {
+          "alpha": 0.01,
+          "fold_balanced_accuracy": [
+            0.9538294093188953,
+            0.954515293180536,
+            0.9424206372509596
+          ],
+          "max_iterations": 147,
+          "mean_donor_grouped_balanced_accuracy": 0.9502551132501301
+        }
+      ],
+      "final_iterations": 41,
+      "macro_f1": 0.7566095712437174,
+      "per_organ_recall": {
+        "adipose": 0.5,
+        "brain": 1.0,
+        "colon": 0.9473684210526315,
+        "heart": 0.05,
+        "liver": 1.0,
+        "lung": 0.7894736842105263,
+        "skeletal_muscle": 1.0
+      },
+      "selected_alpha": 1e-05
+    }
+  },
+  "role": "post-D1 methodological correction: GTEx-trained, OSDR-tested cross-species organ-transfer development audit",
+  "schema_version": 1,
+  "shared_organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle"
+  ],
+  "smoke": false,
+  "status": "complete",
+  "verdict": "CROSS_SPECIES_ORGAN_STRUCTURE_PRESERVED"
+}
