@@ -817,3 +817,215 @@ the externally validated organ-MoE reconstruction result and the negative state-
 finding. If a downstream extension remains desired, the next informative experiment
 is D3: a human within-organ state task whose label varies within studies, with frozen
 membership and raw/PCA difficulty matching before expression access.
+
+## 13. Current progress, binding bottleneck, and planned fix — 2026-08-02
+
+### 13.1 Where the project now stands
+
+The architecture search is closed. The scientific product is the frozen K8 organ MoE
+with a pooled fallback/reference. No tissue-site or Hallmark secondary expert axis is
+authorized, and the externally validated package will not be modified.
+
+The evidence now separates into four distinct findings:
+
+1. **Organ specialization improves masked-gene reconstruction.** On the post-access
+   QC-amended ARCHS4 external evaluation, true-organ routing improved MSE by 3.797%,
+   hard input-only routing by 3.633%, and soft routing by 3.676% versus pooled. All
+   fixed seeds improved. Random-K8 and pooled-adapter controls were neutral. This is
+   the strongest positive result and justifies organ specialization for the trained
+   reconstruction objective.
+2. **Naive cross-organ training transfer is not a reproducible positive mechanism.**
+   Helpful additive edges were generally optimization-sensitive, while negative
+   transfer was more reproducible. Recipient-protected and aligned-program repairs did
+   not produce a stable positive sharing rule. This supports selective isolation and
+   a pooled fallback, not a universal organ-to-organ transfer map.
+3. **Secondary biological axes did not earn architectural inclusion.** Tissue site
+   passed the cheap screen but failed the matched generic-capacity Tier-2 control in
+   every seed. Hallmark-50 showed a strong organ-adjusted development association but
+   failed protected-organ safety as an expert axis. Recasting Hallmark as deterministic
+   downstream features also failed: Hallmark+PCA64 was 0.732630 AUROC versus 0.732770
+   for PCA64, and Hallmark alone was only 0.567394.
+4. **The encoder preserves coarse organ identity across species, but the frozen
+   downstream output is not state-task competitive.** The unconfounded GTEx-trained
+   classifier passed the organ-transfer gate in every seed: pooled-hidden balanced
+   accuracy was 0.7519, 0.7553, and 0.6992, versus 0.9643 for raw expression. Yet on
+   the grouped OSDR spaceflight-state task, learned representations remained around
+   0.59–0.61 AUROC and lost to raw expression at 0.726 and PCA64 at 0.733.
+
+Operationally, both overnight runs are complete, checksum-verified, retrieved, and
+pushed. No relevant process or screen remains active on the primary VM; approximately
+110 GiB of memory is available. There is no unfinished training job to wait for.
+
+### 13.2 The binding scientific bottleneck
+
+The bottleneck is no longer data transfer, VM capacity, implementation stability, or
+gross cross-species encoder collapse. It is a **mismatch between what the model is
+optimized to preserve and what the downstream task requires**.
+
+The reconstruction objective rewards prediction of masked genes from broad expression
+context. Organ identity is a large, stable source of expression variation, so the
+encoder and organ adapters learn it well. Spaceflight, treatment, inflammation,
+hypoxia, disease state, and other perturbations are usually much smaller directions
+superimposed on organ, platform, study, and quality effects. Nothing in the present
+loss explicitly rewards preserving those state-sensitive directions in a linearly
+usable embedding. A model can therefore improve reconstruction and preserve organ
+geometry while still compressing the exact residual variation needed for a state
+classifier.
+
+The results rule out several simpler explanations:
+
+- the ortholog mapping is nearly complete and the missing-input fraction is only
+  0.000156;
+- the GTEx and OSDR model-input value spaces use the same log1p convention;
+- pooled hidden is mildly compressed but not globally degenerate;
+- a GTEx-only organ boundary transfers to OSDR in all seeds; and
+- deterministic Hallmark averaging does not rescue state classification.
+
+But the evidence does **not** yet distinguish among three remaining mechanisms:
+
+1. **Objective/output-contract loss:** reconstruction training discards subtle
+   perturbation-state information or places it in nonlinear/non-exposed features.
+2. **Species-specific perturbation loss:** coarse organ programs transfer from human
+   to mouse, while fine-grained response programs do not transfer reliably.
+3. **Task/cohort limitation:** heterogeneous OSDR studies, treatment definitions, and
+   state labels may cap any frozen representation even though raw/PCA still exploit
+   useful dataset-specific variation.
+
+The organ-transfer confusion structure is an additional warning. Brain, liver,
+skeletal muscle, and colon transfer strongly, but heart recall is 0.00/0.05/0.00 and
+lung recall is 0.263/0.789/0.105 across seeds. The model preserves an incomplete and
+seed-variable organ geometry. This does not invalidate the all-seed 0.60 gate, but it
+argues against claiming lossless or universal biological representation.
+
+### 13.3 Immediate blocker for the next experiment
+
+The missing asset is not a new model. It is a **defensible human within-organ state
+cohort contract**. Before any expression is opened, D3 needs five concrete answers:
+
+1. Which human cohort and state contrast will be used?
+2. How many retained samples are in each class?
+3. How many independent studies contain both classes within the same organ?
+4. What structured field, rather than free-text inference alone, defines the label?
+5. Is the exact expression matrix available and gene-compatible after membership is
+   frozen?
+
+The label must vary within study for a material number of studies. Otherwise the new
+task repeats the original D1b error and measures study identity. Title-derived donor
+or condition guesses cannot be treated as verified identity. A single study or a
+tumor-versus-normal task with near-perfect raw performance would also be a poor
+cross-species comparator, even if mechanically valid.
+
+### 13.4 Planned fix: D3 human state task, staged and fail-closed
+
+#### Phase D3-0 — metadata-only readiness audit
+
+Do not access ARCHS4 expression yet. Use metadata and existing manifests to enumerate
+candidate human, within-organ binary contrasts. Prioritize treatment, hypoxia,
+inflammation/immune stimulation, metabolic stress, or disease/control contrasts that
+occur within the same study. For every candidate, produce:
+
+- study × organ × label contingency tables;
+- exact sample and study counts;
+- structured-label provenance and excluded ambiguous rows;
+- duplicate/donor-overlap checks where explicit identifiers exist;
+- platform and library-strategy distributions;
+- missingness and class-balance summaries; and
+- a statement of whether the expression matrix is locally available, without opening
+  outcome values.
+
+Minimum feasibility rules should be frozen before selection. My proposed starting
+contract is at least five independent studies, at least three studies containing both
+classes after QC, at least 25 samples per class overall, no study contributing only a
+single class to the primary estimand, and no replacements after membership freeze.
+These are proposed readiness thresholds, not yet scientific gates; Claude should
+review them before they are frozen.
+
+#### Phase D3-1 — freeze one primary task before expression access
+
+Select one task from D3-0 using only feasibility, label quality, and coverage—not model
+outcomes. Freeze:
+
+- exact membership and exclusions with SHA256 hashes;
+- label dictionary and provenance;
+- study/donor grouping rules;
+- outer and inner grouped splits;
+- raw, fold-fit PCA64, pooled hidden, true-organ, hard-router, and soft-router
+  conditions;
+- the exact elastic-net grid and convergence rule;
+- all fixed model seeds, with no best-seed selection;
+- study-bootstrap replicates and seeds; and
+- primary and safety gates.
+
+The human task's raw-expression AUROC should be compared with the OSDR value 0.726.
+If raw AUROC lies within 0.10—that is, 0.626 to 0.826—the human/mouse contrast may be
+described as approximately difficulty matched. Outside that interval, the human result
+remains useful but the species comparison must be labeled suggestive rather than clean.
+The interval must be frozen before seeing expression outcomes.
+
+#### Phase D3-2 — baseline-first evaluation
+
+Run raw expression and fold-fit PCA64 first under identical grouped splits and tuning.
+This answers whether the task is learnable and whether it is grossly easier or harder
+than OSDR. Then evaluate the frozen K8 outputs without fine-tuning. A downstream win
+requires a deployable blind representation to beat both raw and PCA in every fixed
+seed with a study-bootstrap lower bound above zero. True-organ routing is explanatory,
+not deployable, and cannot substitute for a failed blind condition.
+
+Decision branches:
+
+- **Blind embedding beats raw/PCA in all seeds:** proceed to a new untouched human
+  cohort for confirmation; do not change the validated reconstruction package.
+- **Raw/PCA work but all learned outputs fail:** objective/output-contract mismatch is
+  the leading explanation; authorize one small downstream-supervised extension.
+- **Raw/PCA also fail:** task/label/cohort is not informative enough; stop rather than
+  tuning the model against noise.
+- **Mixed seed directions:** no downstream-positive claim; diagnose optimization
+  stability before any extension.
+
+### 13.5 Planned fix if D3 confirms an objective mismatch
+
+Do not retrofit or overwrite the frozen K8 package. Create a separately versioned
+model family with an explicit downstream objective. The smallest defensible extension
+is:
+
+1. retain the frozen reconstruction trunk and organ adapters as initialization;
+2. expose a compact downstream bottleneck before the reconstruction decoder;
+3. add one supervised or contrastive within-organ state objective so the representation
+   is rewarded for preserving perturbation signal;
+4. prevent study shortcuts through study-disjoint batches/splits and within-study
+   label balance;
+5. include a reconstruction-retention term and per-organ safety checks so state
+   supervision cannot silently destroy the validated Stage 1 behavior; and
+6. compare against equally tuned raw expression, PCA64, BulkRNABert, and BulkFormer
+   where reproducible preprocessing contracts exist.
+
+This extension should begin as a bounded three-seed smoke on one frozen task. It only
+advances if every seed beats raw and PCA, retains reconstruction within a prespecified
+tolerance, and shows no material organ harm. Failure closes the downstream-extension
+branch; it does not trigger broader axis searches or post-hoc task selection.
+
+### 13.6 What not to do
+
+- Do not add Hallmark experts or Hallmark downstream features after the frozen failure.
+- Do not reopen tissue site after its matched-capacity failure.
+- Do not interpret the original D1b result; only the GTEx-trained replacement is valid.
+- Do not claim that organ preservation implies perturbation-state preservation.
+- Do not fine-tune on OSDR or the accessed ARCHS4 lockbox.
+- Do not select a favorable seed, organ, task, or study after outcomes.
+- Do not build a large final model before raw/PCA establish that D3 is informative.
+
+### 13.7 Near-term deliverables
+
+1. Freeze and run the D3-0 metadata/readiness audit.
+2. Produce a one-page candidate table answering the five required cohort questions.
+3. Ask Claude to review the proposed minimum feasibility and difficulty-matching gates.
+4. Freeze one task or explicitly record that no defensible task exists.
+5. Only then open expression and run the baseline-first D3 evaluation.
+6. Update the August presentation skeleton with the now-stable four-result story and
+   keep D3 as a clearly labeled pending or completed fifth result.
+
+**Question for Claude.** Do you agree with the proposed D3-0 feasibility minima
+(five studies, three within-study two-class studies, 25 samples per class, no
+single-class primary studies), and should the first state-task family prioritize
+controlled treatment/stress over disease/control to reduce label and disease-stage
+heterogeneity?
