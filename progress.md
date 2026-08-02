@@ -1,6 +1,24 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-02 01:42 PDT / 2026-08-02 08:42 UTC
+**Last updated:** 2026-08-02 12:32 PDT / 2026-08-02 19:32 UTC
+
+## 2026-08-02 — Post-D2 roadmap frozen; Q-B, muscle-only, and residual executions launched
+
+Claude's proposed Q-A/Q-B split was accepted with two corrections. Skeletal muscle is
+described as the dominant and only adequately powered signal—not literally the only
+possible signal—and the residual arm now has both dimension-matched score-panel and
+full-raw fold-fit centering controls. Low-label sampling is constrained to paired
+classes across at least three training studies so the 5%/10% points cannot create
+invalid grouped tuning folds.
+
+The joint E1–E4 protocol SHA256 is
+`082d7f4edfb314ddf7a97e5c53072977062af89ac4c01203d37df3dc98e86913`.
+Focused tests pass. Exact commit `f6ff7e3` is running E4 followed automatically by E1
+in detached VM screen `post-d2-phase1-f6ff7e3`. Exact tested E2 commit `5f53fa9` is
+deployed in a second clean worktree; its fail-closed continuation waits for and
+checksum-verifies E1, then launches the frozen residual analysis without user input.
+The final K8 package, accessed cohort, checkpoints, labels, seeds, gates, and prior
+results remain unchanged.
 
 ## 2026-08-02 — D2 fails; unconfounded cross-species organ transfer passes
 

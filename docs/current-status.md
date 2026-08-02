@@ -1,11 +1,44 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-02 01:42 PDT / 2026-08-02 08:42 UTC
+**Updated:** 2026-08-02 12:32 PDT / 2026-08-02 19:32 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
 
 ## Current phase
+
+Claude's post-D2 roadmap has been reviewed, corrected, hash-frozen, and moved into
+execution. The key separation is now explicit: Q-A asks whether a deployable learned
+representation beats raw/PCA, while Q-B asks whether organ specialization beats a
+matched pooled representation. The frozen secondary-analysis protocol is
+`artifacts/final_evaluation/post_d2_phase1/protocol.json`, SHA256
+`082d7f4edfb314ddf7a97e5c53072977062af89ac4c01203d37df3dc98e86913`.
+It pins the accessed 292-sample/18-study cohort, all three model seeds, feature-cache
+and prior-OOF hashes, grouped folds, tuning grid, bootstrap draws, low-label fractions,
+and interpretation firewalls. This is development characterization, never confirmation.
+
+Exact E1/E4 execution commit `f6ff7e38c63b69c09f2bb042ede8106c793b489a`
+is deployed in clean detached worktree
+`/media/volume/moe-reboot/worktrees/post_d2_phase1_f6ff7e3`. Detached screen
+`post-d2-phase1-f6ff7e3` launched at 12:29 PDT into result root
+`/media/volume/moe-reboot/results/post_d2_phase1_f6ff7e3`; E4 first computes the
+matched specialization-minus-pooling estimand from both immutable OOF lineages, then
+E1 automatically runs the 139-sample/10-study skeletal-muscle-only nested evaluation.
+
+E2's residual implementation is separately frozen at exact tested commit
+`5f53fa9b4ed1e919723ed750f1299e3788009c0f` in clean worktree
+`/media/volume/moe-reboot/worktrees/post_d2_phase1_e2_5f53fa9`. Detached screen
+`post-d2-e2-continuation-5f53fa9` is waiting for E1 `COMPLETE`, will verify its
+immutable manifest, and then run the prespecified residual analysis automatically.
+E2 includes both dimension-matched score-panel centering and full-raw fold-fit organ
+centering; it will fail closed if a secondary full-cohort fold contains an organ absent
+from training rather than inventing a fallback. E3 low-label execution remains last
+because it multiplies nested fits across five fractions and ten frozen subsamples.
+
+The bounded interpretation was corrected before launch: skeletal muscle is the
+dominant and only adequately powered organ-specific signal in this accessed cohort.
+Heart and lung have high post-hoc point AUROCs at small sample sizes, so the stronger
+claim that muscle is literally the only possible signal is not authorized.
 
 The final K8 package remains frozen and unchanged. The read-only D1 encoder-validity
 audit is complete and checksum-verified at protocol SHA256
