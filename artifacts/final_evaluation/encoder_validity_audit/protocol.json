@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_encoder_validity_audit",
+  "role": "read-only development audit separating cross-species encoder breakdown from downstream objective mismatch",
+  "implementation": {
+    "commit": "8b928de55016bd290501da37c75439b3b7748cca",
+    "evaluator_sha256": "7b03fbca592da943fe8b1486cd522c40df5025bf555518c3bc7b7a273d2f0492",
+    "focused_test_sha256": "65ff80a33dc09f0963f4f1d9715ba345d2675cf40c625ffc5d92b8fe9eb6e428"
+  },
+  "inputs": {
+    "osdr_expression_sha256": "c5753c9c89183107807779e5cf3365491013c7b1cbd9c0168fbb0c86113db1ce",
+    "osdr_coverage_sha256": "7250e59a49fb9d13dd411913d8ada395b222cd9dfb70d608757fcbbb0b25f80f",
+    "osdr_retained_sha256": "47a3f47a8a54c517b9530f53c1c9ce4eefda1829729d4df90dd3ea53d6ac3f80",
+    "osdr_manifest_sha256": "82433eeb20a0e3e0efd74baa7131ceca4d2ab68052abee54ea62559f4a90efd0",
+    "osdr_feature_sha256": {
+      "17": "6a6108cdb3631f2d752822562cef5cc5271959942faade1cb205c1084912e7ac",
+      "42": "5a2dfb8284362998bdc199e3e60d9d813d16a2df447966452788b0c3fe820ee2",
+      "101": "ac8af5f968f1bc650e04416789085013e3fc6a548e93f2b08da7b3262d6b0283"
+    },
+    "gtex_expression_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
+    "gtex_manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "gtex_extraction_report_sha256": "111be4b987cb99f85329018fb0df951e1cafe0b8bcd385c9c31b5f944e8bb741",
+    "gtex_cache_sha256": {
+      "17": "4a3234ed61305bcecc2b036ce0430fcb71be30b659b28aaa81d2dbe6d3cd1d0f",
+      "42": "cfa1605f778830e03b8bd861d89f7858e25ef847a5fc277bcd08581b98f45eeb",
+      "101": "90a9b4d19c044986701d536e9661c5042ec3fff87c3d071d43d6867331c8db7c"
+    },
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "canonical_genes_sha256": "3332cb312000e426a866d669b3ba9b6206da50d70094fb5f9d30ef168e860dff",
+    "training_ortholog_map_sha256": "fba7a850b8a8b50a8e11af70fb0942f2f1cb479ae6544746d856733effa3ecd9",
+    "osdr_ortholog_table_sha256": "9c041e5c59cc6dceef4bf13803421d10baaca029035dd7c3cf9c78c9f18501c8",
+    "mouse_exon_lengths_sha256": "395d019ec1d19e3ee38957e22ed54e1e194f97baf640b94440c6d58bc185288d"
+  },
+  "design": {
+    "seeds": [17, 42, 101],
+    "gtex_training_rows": 7369,
+    "distribution_draw_rows": 292,
+    "distribution_draw_seed": 1701,
+    "relative_dead_threshold_definition": "dimension_sd <= max(median_positive_dimension_sd * 1e-6, 1e-12)",
+    "organ_order": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "stored_embedding_conditions": [
+      "pooled_hidden",
+      "pooled_hidden_plus_router",
+      "true_organ_embedding",
+      "blind_router_hard_embedding",
+      "blind_router_soft_embedding"
+    ],
+    "positive_control_organs": ["brain", "skeletal_muscle"],
+    "positive_control_positive_organ": "skeletal_muscle",
+    "positive_control_outer_folds": 3,
+    "positive_control_inner_folds": 2,
+    "positive_control_split": "deterministic class-balanced study assignment; every train and test fold contains both classes",
+    "head_grid": [
+      {"C": 0.01, "l1_ratio": 0.0},
+      {"C": 0.01, "l1_ratio": 0.5},
+      {"C": 0.01, "l1_ratio": 1.0},
+      {"C": 0.1, "l1_ratio": 0.0},
+      {"C": 0.1, "l1_ratio": 0.5},
+      {"C": 0.1, "l1_ratio": 1.0},
+      {"C": 1.0, "l1_ratio": 0.0},
+      {"C": 1.0, "l1_ratio": 0.5},
+      {"C": 1.0, "l1_ratio": 1.0},
+      {"C": 10.0, "l1_ratio": 0.0},
+      {"C": 10.0, "l1_ratio": 0.5},
+      {"C": 10.0, "l1_ratio": 1.0}
+    ],
+    "gtex_model_transform": "numpy.log1p_exactly_once"
+  },
+  "thresholds": {
+    "d1a": {
+      "relative_dead_threshold": 1e-6,
+      "in_distribution_rank_ratio": 0.7,
+      "in_distribution_median_abs_z": 2.0,
+      "out_of_distribution_rank_ratio": 0.5,
+      "out_of_distribution_median_abs_z": 3.0,
+      "out_of_distribution_dead_fraction": 0.25
+    },
+    "d1b": {
+      "minimum_raw_balanced_accuracy": 0.7,
+      "recovers_organ_ratio": 0.7,
+      "degenerate_ratio": 0.5
+    },
+    "d1c": {
+      "ok_fraction": 0.05,
+      "shift_fraction": 0.1
+    }
+  },
+  "decision": {
+    "any_failure": "CROSS_SPECIES_ENCODER_BREAKDOWN",
+    "all_pass": "ENCODER_TRANSFERS_OBJECTIVE_LIMIT",
+    "otherwise": "INCONCLUSIVE_MIXED"
+  },
+  "firewalls": {
+    "model_training": false,
+    "checkpoint_updates": false,
+    "best_seed_selection": false,
+    "architecture_changes": false,
+    "archs4_expression_access": false,
+    "osdr_is_development_only": true,
+    "threshold_changes_after_outcome_access": false
+  }
+}
