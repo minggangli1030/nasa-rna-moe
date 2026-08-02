@@ -20,6 +20,13 @@ at 14:42 PDT, and a fail-closed continuation will checksum-verify them before au
 aggregation. No checkpoint, cohort, seed, condition, or threshold is selected. Detailed interim result:
 [`docs/post-d2-phase1-interim-result.md`](docs/post-d2-phase1-interim-result.md).
 
+At the minimum label point, the baseline shard failed before a report because three
+paired studies make one two-fold inner-training side too small for fold-fit PCA. All
+three seed shards completed and verify but will not be reused against a differently
+sampled baseline. The correction uses the smallest feasible four paired studies/eight
+labels, still within the frozen "at least three and fail closed" rule, and reruns every
+shard in a new lineage. No scientific gate or outcome was changed.
+
 ## 2026-08-02 — Post-D2 roadmap frozen; Q-B, muscle-only, and residual executions launched
 
 Claude's proposed Q-A/Q-B split was accepted with two corrections. Skeletal muscle is

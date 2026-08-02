@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-02 14:35 PDT / 2026-08-02 21:35 UTC
+**Updated:** 2026-08-02 16:37 PDT / 2026-08-02 23:37 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -39,6 +39,18 @@ and seed101 shards launched concurrently at 14:42 PDT in screens prefixed
 for all four `COMPLETE` markers, verifies every immutable manifest, and then runs the
 deterministic aggregate gate automatically. Result root is
 `/media/volume/moe-reboot/results/post_d2_e3_6fd37e1`.
+
+The first E3 lineage exposed a fail-closed feasibility defect before any aggregate
+result: baseline PCA at the minimum label point used three paired studies, so one
+two-fold grouped inner-training side contained only one two-sample study and could
+form only one PCA component. The baseline emitted no report. Seed17/42/101 shards did
+finish and verify, but they are preserved as implementation-only lineages and will not
+be combined with a repaired baseline because their sampled memberships differ. The
+obsolete aggregate waiter was stopped. The protocol already requires at least three
+studies and fail-closed feasibility; the correction selects the smallest feasible
+four paired studies/eight labels at the nominal 5% floor, retains the same fractions,
+seeds, folds, grid, representations, and gates, and reruns all four shards in a new
+versioned lineage. Six focused tests pass after the correction.
 
 Claude's post-D2 roadmap has been reviewed, corrected, hash-frozen, and moved into
 execution. The key separation is now explicit: Q-A asks whether a deployable learned

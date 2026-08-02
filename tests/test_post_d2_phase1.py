@@ -101,8 +101,8 @@ def test_low_label_selection_is_paired_grouped_and_reproducible():
         train_index, groups, labels, fraction=0.05, seed=3101
     )
     assert np.array_equal(first, second)
-    assert len(first) == 6
-    assert len(np.unique(groups[first])) == 3
+    assert len(first) == 8
+    assert len(np.unique(groups[first])) == 4
     for group in np.unique(groups[first]):
         assert set(labels[first][groups[first] == group]) == {0, 1}
 

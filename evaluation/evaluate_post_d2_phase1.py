@@ -646,10 +646,14 @@ def select_low_label_indices(
             rng.shuffle(positive)
             eligible.append(str(group))
             pools[str(group)] = {0: list(negative), 1: list(positive)}
-    if len(eligible) < 3:
-        raise ValueError("low-label selection has fewer than three paired studies")
+    # The frozen two-fold grouped inner tuning requires four paired studies at the
+    # minimum point: with only three, one GroupKFold training side contains a single
+    # two-sample study and fold-fit PCA has only one available component.  Four still
+    # satisfies the protocol's "at least three" rule and is the smallest feasible set.
+    if len(eligible) < 4:
+        raise ValueError("low-label selection has fewer than four feasible paired studies")
     ordered = list(rng.permutation(eligible))
-    target = max(6, int(round(float(fraction) * len(train_index))))
+    target = max(8, int(round(float(fraction) * len(train_index))))
     target = min(len(train_index), target + target % 2)
     selected = []
     used_groups = set()
@@ -664,7 +668,7 @@ def select_low_label_indices(
                 break
         if not progressed:
             break
-    if len(selected) < 6 or len(used_groups) < 3:
+    if len(selected) < 8 or len(used_groups) < 4:
         raise ValueError("low-label selection cannot meet paired-study minimum")
     output = np.asarray(sorted(selected), dtype=np.int64)
     if set(np.unique(labels[output])) != {0, 1}:
