@@ -14,8 +14,10 @@ scope is structurally not estimable under the frozen folds and was not altered.
 
 E3 low-label learning curves are the final frozen Phase-1 test. The implementation
 preserves paired classes across at least three training studies and uses four
-resource-safe shards before deterministic aggregation. No checkpoint, cohort, seed,
-condition, or threshold is selected. Detailed interim result:
+resource-safe shards before deterministic aggregation. Exact commit `6fd37e1` passed
+focused local tests plus a VM mechanical smoke; all four shards launched concurrently
+at 14:42 PDT, and a fail-closed continuation will checksum-verify them before automatic
+aggregation. No checkpoint, cohort, seed, condition, or threshold is selected. Detailed interim result:
 [`docs/post-d2-phase1-interim-result.md`](docs/post-d2-phase1-interim-result.md).
 
 ## 2026-08-02 — Post-D2 roadmap frozen; Q-B, muscle-only, and residual executions launched

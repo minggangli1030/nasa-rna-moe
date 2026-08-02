@@ -30,7 +30,15 @@ frozen five label fractions and ten subsample seeds, paired labels within at lea
 three training studies, two grouped inner folds at low fractions, complete untouched
 outer-test studies, and the unchanged 12-point elastic-net grid. It is being tested
 and deployed as four resource-safe shards (raw/PCA plus one shard per model seed),
-followed by a deterministic frozen-gate aggregation.
+followed by a deterministic frozen-gate aggregation. Exact implementation commit
+`6fd37e1bc18e24ce0728d3fef559782ba60119e2` passed six focused local tests and a
+synthetic mechanical smoke in clean VM worktree
+`/media/volume/moe-reboot/worktrees/post_d2_e3_6fd37e1`. Baseline, seed17, seed42,
+and seed101 shards launched concurrently at 14:42 PDT in screens prefixed
+`post-d2-e3-`; all four processes are healthy. A fifth detached continuation waits
+for all four `COMPLETE` markers, verifies every immutable manifest, and then runs the
+deterministic aggregate gate automatically. Result root is
+`/media/volume/moe-reboot/results/post_d2_e3_6fd37e1`.
 
 Claude's post-D2 roadmap has been reviewed, corrected, hash-frozen, and moved into
 execution. The key separation is now explicit: Q-A asks whether a deployable learned
