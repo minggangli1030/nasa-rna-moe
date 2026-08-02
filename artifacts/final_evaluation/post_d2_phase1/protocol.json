@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "status": "frozen_post_d2_secondary_analysis_before_execution",
+  "role": "prespecified secondary analysis of an already accessed OSDR development cohort; characterization only, never confirmation",
+  "questions": {
+    "q_a": "Does a deployable learned representation beat raw expression and fold-fit PCA?",
+    "q_b": "Does organ specialization beat pooling while holding the representation family fixed?"
+  },
+  "inputs": {
+    "cohort_protocol_sha256": "04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9",
+    "cohort_expression_sha256": "c5753c9c89183107807779e5cf3365491013c7b1cbd9c0168fbb0c86113db1ce",
+    "retained_cohort_sha256": "47a3f47a8a54c517b9530f53c1c9ce4eefda1829729d4df90dd3ea53d6ac3f80",
+    "samples": 292,
+    "studies": 18,
+    "model_seeds": [17, 42, 101],
+    "final_embedding_feature_sha256": {
+      "17": "6a6108cdb3631f2d752822562cef5cc5271959942faade1cb205c1084912e7ac",
+      "42": "5a2dfb8284362998bdc199e3e60d9d813d16a2df447966452788b0c3fe820ee2",
+      "101": "ac8af5f968f1bc650e04416789085013e3fc6a548e93f2b08da7b3262d6b0283"
+    },
+    "score_panel_feature_sha256": {
+      "17": "eea461581b1168918ccc9911163eaa5fd1fddc482089bf9db578a849406bb939",
+      "42": "d4f027e6930abc3b98134171902ee9cb52d1977600b25384f18a9bc5bd3f23ce",
+      "101": "dfe2dc4c4ef160ab9acdf7ce279702456291dd26914a5bf1258051f1aaec348a"
+    },
+    "embedding_oof_sha256": "e153499ef28b0a835109decd741841274e7f62c8ec90ee1281f91b1b6c881612",
+    "score_panel_oof_sha256": "1313b52d26d74b080f8fc0b1b8e9648c6e3ba5e8d50e16cf620753bd03d6ad3d"
+  },
+  "shared_evaluation": {
+    "outer_folds": 5,
+    "inner_folds": 3,
+    "group": "study_id",
+    "primary_metric": "AUROC",
+    "grid": {
+      "C": [0.01, 0.1, 1.0, 10.0],
+      "l1_ratio": [0.0, 0.5, 1.0]
+    },
+    "study_bootstrap_replicates": 2000,
+    "study_bootstrap_seed": 20260802,
+    "convergence": "fail closed at 10000 iterations and tolerance 1e-3",
+    "best_seed_or_condition_selection": false
+  },
+  "e1_muscle_only": {
+    "membership": "exact skeletal_muscle subset of frozen cohort",
+    "expected_samples": 139,
+    "expected_studies": 10,
+    "representations": [
+      "raw_expression",
+      "pca_64",
+      "pooled_hidden",
+      "pooled_hidden_plus_router",
+      "pooled_hidden_plus_organ_label",
+      "true_organ_embedding",
+      "blind_router_hard_embedding",
+      "blind_router_soft_embedding"
+    ],
+    "q_b_comparisons": "true-organ, blind-hard, and blind-soft versus pooled_hidden, per model seed",
+    "q_a_comparisons": "deployable blind-hard and blind-soft versus raw_expression and pca_64, per model seed",
+    "purpose": "localize retained signal and estimate specialization versus pooling; raw-expression ceiling is expected and not a gate failure"
+  },
+  "e2_residuals": {
+    "primary_scope": "skeletal_muscle",
+    "secondary_scope": "full cohort",
+    "residuals": "observed score-panel expression minus frozen predicted score panel",
+    "representations": [
+      "residual_pooled",
+      "residual_true_organ",
+      "residual_blind_router_hard",
+      "residual_blind_router_soft"
+    ],
+    "matched_controls": [
+      "score_panel_within_organ_centered_fold_fit",
+      "full_raw_within_organ_centered_fold_fit",
+      "raw_expression",
+      "pca_64"
+    ],
+    "scientific_gate": "a fixed specialized residual must beat residual_pooled and score_panel_within_organ_centered_fold_fit in every model seed with paired study-bootstrap lower bounds above zero",
+    "deployment_gate": "a fixed blind residual must additionally beat raw_expression, pca_64, and full_raw_within_organ_centered_fold_fit in every model seed",
+    "fold_firewall": "organ means are estimated on each training fold only and applied unchanged to validation or test rows"
+  },
+  "e3_low_label": {
+    "scope": "skeletal_muscle",
+    "fractions": [0.05, 0.1, 0.25, 0.5, 1.0],
+    "subsample_seeds": [3101, 3109, 3119, 3121, 3137, 3163, 3167, 3169, 3181, 3187],
+    "representations": [
+      "raw_expression",
+      "pca_64",
+      "pooled_hidden",
+      "true_organ_embedding",
+      "blind_router_hard_embedding",
+      "blind_router_soft_embedding"
+    ],
+    "sampling": "within each outer-training partition, select paired classes within randomly ordered training studies; use at least three studies and fail closed if either class or grouped inner folds are infeasible",
+    "low_label_inner_folds": 2,
+    "test_policy": "score the complete untouched outer test studies",
+    "gate": "the same fixed learned representation must beat raw_expression at both 5% and 10% with the across-subsample interval above zero in all three model seeds"
+  },
+  "e4_specialization_estimand": {
+    "sources": ["final embedding OOF predictions", "score-panel OOF predictions"],
+    "scopes": ["full cohort", "skeletal_muscle", "brain"],
+    "minimum_organ_samples": 20,
+    "comparisons": "true-organ, blind-hard, and blind-soft against the matched pooled representation",
+    "reporting": "per seed only; never average away a seed reversal; paired study bootstrap"
+  },
+  "interpretation_firewalls": {
+    "accessed_secondary_analysis": true,
+    "signal_wording": "skeletal muscle is the dominant and only adequately powered organ-specific signal; do not claim it is the only possible signal",
+    "new_confirmation_required": true,
+    "checkpoint_updates": false,
+    "cohort_or_label_changes": false,
+    "post_hoc_threshold_changes": false,
+    "best_seed_selection": false
+  }
+}

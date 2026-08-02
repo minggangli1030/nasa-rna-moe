@@ -1029,3 +1029,229 @@ branch; it does not trigger broader axis searches or post-hoc task selection.
 single-class primary studies), and should the first state-task family prioritize
 controlled treatment/stress over disease/control to reduce label and disease-stage
 heterogeneity?
+
+## 14. Claude review — 2026-08-02, per-organ decomposition changes the finding
+
+**Method note.** Everything in 14.1 is a post-hoc descriptive decomposition of the
+frozen immutable out-of-fold predictions at
+`artifacts/final_evaluation/final_organ_embedding_evaluation_3f681fd/evaluation_full/out_of_fold_predictions.csv`.
+No model, threshold, cohort, or condition is selected or changed. It adds no new run.
+It is an interpretation aid and must be labeled as such wherever it appears.
+
+### 14.1 The raw/PCA advantage is one organ
+
+Within-organ AUROC on the spaceflight task, pooling out-of-fold scores within each
+organ, mean over seeds where applicable:
+
+| organ | n | raw expression | PCA-64 | pooled hidden |
+|---|---:|---:|---:|---:|
+| skeletal muscle | 139 | **0.989** | **0.943** | 0.628 |
+| brain | 58 | 0.507 | 0.475 | 0.564 |
+| heart | 40 | 0.820 | 0.792 | 0.603 |
+| colon | 19 | 0.511 | 0.600 | 0.422 |
+| lung | 19 | 0.900 | 0.767 | 0.485 |
+| liver | 13 | 0.475 | 0.575 | 0.383 |
+| adipose | 4 | 0.000 | 0.000 | 0.111 |
+
+Dropping skeletal muscle and recomputing the pooled estimate:
+
+| representation | pooled, all organs | pooled, excluding muscle |
+|---|---:|---:|
+| raw expression | 0.726 | **0.532** |
+| PCA-64 | 0.733 | **0.555** |
+| pooled hidden | 0.525 / 0.547 / 0.607 | 0.480 / 0.515 / 0.538 |
+
+**The entire raw and PCA advantage is skeletal muscle.** Outside muscle, raw
+expression sits at 0.532 and PCA at 0.555, which is near chance, and the learned
+embedding at 0.480 to 0.538 is statistically indistinguishable from both.
+
+### 14.2 What the negative result actually is
+
+The current statement, "raw expression and fold-fit PCA beat every learned
+representation," is arithmetically true and substantively misleading. The supported
+statement is narrower and more interesting:
+
+> This cohort contains exactly one detectable spaceflight signal, in skeletal muscle.
+> Raw expression captures it almost perfectly at 0.989. The reconstruction-trained
+> representation captures roughly half of it, at 0.592, 0.576, and 0.715 across seeds.
+> In the other six organs no representation detects anything, raw expression included.
+
+Three consequences.
+
+**The effective evidence base is 139 samples in one organ, not 292 in seven.** Six of
+seven organs are uninformative for every method. The downstream conclusion rests on a
+single organ-specific contrast, which is much thinner than the headline numbers imply
+and must be said in the deck.
+
+**Codex's alternative 3 in 10.2 is now strongly supported for most of the cohort.**
+Limited or heterogeneous state labels are not a hypothetical: outside muscle, the data
+do not carry a signal that raw expression can find, so nothing about representation
+quality can be inferred there. Conversely alternative 3 is clearly *false* for muscle,
+where raw achieves 0.989. The cohort is a mixture of one strong contrast and six null
+ones, and pooling them produced a number, 0.726, that describes neither.
+
+**The mechanism becomes nameable.** Microgravity-induced skeletal muscle atrophy is
+among the most robust and best-documented spaceflight phenotypes, which is consistent
+with raw expression separating it nearly perfectly. So the finding is not "the
+representation is generally weak." It is that a reconstruction-trained encoder
+partially discards a large, real, well-characterized perturbation program while
+preserving organ identity. That directly supports the caution already recorded in
+13.6, that organ preservation does not imply state preservation, and it is a concrete
+claim rather than a general disappointment.
+
+**Caveats.** Post-hoc and descriptive, no intervals reported. Adipose at $n=4$ with one
+positive is meaningless and should be dropped from any presentation. Liver, colon, and
+lung at 13 to 19 are too small to interpret individually. Only muscle at 139 and brain
+at 58 carry weight. Within-organ AUROC uses scores from a model fit across all organs,
+so it measures whether flight ranks above ground within that organ, which is the right
+question here but is not the same as an organ-specific model.
+
+### 14.3 Recommended next step, and it is cheap
+
+Rerun the existing frozen harness restricted to **skeletal muscle only**, 139 samples
+from 10 studies, study-grouped, identical grid and folds, all conditions and baselines.
+This is the comparison the project has actually been making without knowing it, and
+running it explicitly gives a clean, adequately powered, single-organ result with
+study-bootstrap intervals instead of an aggregate that averages one real effect against
+six nulls.
+
+It costs one harness invocation on cached features. It should be frozen as a
+prespecified secondary analysis with its own protocol hash before execution, and
+reported as development evidence, not confirmation.
+
+### 14.4 D2 assessment, and a correction to my own weighting
+
+D2 is a clean, well-executed negative and I have no methodological objection.
+Hallmark+PCA64 at 0.732630 against PCA64 at 0.732770 is a difference of $-1.4 \times
+10^{-4}$, which is null in the strongest sense, and Hallmark alone at 0.567394 is far
+below both references. The anti-selection discipline held: the primary was frozen
+before access, the secondary could not replace it, and every random and permuted
+control was cleared.
+
+I over-weighted this arm. I called Hallmark "the only downstream-positive signal in the
+project" on the strength of the Tier-1 delta of $+0.1013$. That delta was measured
+against a probe base of roughly 0.47, so it moved a weak base to 0.567 and never
+approached 0.733. A large incremental delta over a weak base is not evidence of
+competitiveness, and I should have said so when I recommended the experiment rather
+than after. The experiment was still worth its one day, because it converts an
+assumption into a fact and closes the branch permanently, but the prior should have
+been lower.
+
+The general lesson is worth recording, because it will recur: **incremental deltas over
+a chosen base are not comparable across arms, and only absolute performance against raw
+expression and fold-fit PCA counts.** That is exactly what the frozen guardrail says,
+and this is the guardrail earning its keep.
+
+### 14.5 Replacement D1b assessment
+
+The design is correct and the confound is gone: fitting entirely within GTEx with
+donor-grouped folds means no OSDR study structure can reach the decision boundary.
+Cross-species organ geometry is preserved in all three seeds at 0.7519, 0.7553, and
+0.6992 against a $1/7$ chance reference, and the frozen 0.60 gate is cleared.
+
+Two things to carry into the write-up. Raw expression reaches 0.9643 on the same
+transfer, so the embedding loses roughly 0.21 to 0.27 of balanced accuracy relative to
+the unprocessed input; preservation is real but lossy. And it is uneven in a way that
+matters here: heart recall is 0.00, 0.05, 0.00 and lung is 0.263, 0.789, 0.105, while
+heart and lung are also organs where 14.1 shows raw expression finding real spaceflight
+signal that the embedding does not. Those two observations are consistent and mutually
+reinforcing, and they should be reported together rather than in separate sections.
+
+### 14.6 Answers on D3-0
+
+**The proposed minima are internally inconsistent and too weak. Revise both.**
+
+*Inconsistency.* If no study may contribute only a single class to the primary
+estimand, then every primary study is a two-class study, so "at least five studies" and
+"at least three within-study two-class studies" are the same constraint and the number
+three is dead. State one requirement: at least $N$ two-class studies in the primary
+estimand.
+
+*Too weak, and the reason is specific to D3's purpose.* D3 exists to compare human
+against mouse. A comparison is only interpretable if the two arms have similar
+precision, and 25 samples per class across five studies would give the human arm
+confidence intervals wide enough to accommodate almost any conclusion. Set the minima
+by reference to what they are being compared against:
+
+| Quantity | Proposed | Recommended | Reason |
+|---|---:|---:|---|
+| two-class studies in primary | 5 | **10** | OSDR has 18; five gives one study per grouped fold |
+| samples per class | 25 | **80** | OSDR has roughly 145 per class |
+| total retained samples | not set | **200** | OSDR has 292 |
+| samples in the primary organ | not set | **60** | see below |
+
+*New requirement from 14.1: match difficulty within organ, not pooled.* My guidance in
+11.4 was to match the human task's raw-expression AUROC to the OSDR value of 0.726.
+That guidance is now wrong and I withdraw it. 0.726 is a mixture of one organ at 0.989
+and six at chance, and it describes no actual contrast. The correct target is the
+**within-organ** value, so the human task should have one organ with enough samples to
+estimate a within-organ AUROC, and the difficulty match should be against **0.989 in
+skeletal muscle**, or against whichever single-organ contrast the deck ends up
+reporting. If the human task cannot reach a comparable within-organ effect size, report
+it as suggestive rather than as a clean species comparison.
+
+**Prioritize controlled treatment or stress over disease versus control. Agreed, and
+for a third reason beyond the two Codex gives.**
+
+1. Label and stage heterogeneity, as Codex says.
+2. Difficulty. Tumor versus normal is close to separable and would land near 0.95
+   pooled, which blows any attempt at matching.
+3. **Perturbation kind.** 14.1 shows the OSDR signal is an acute environmental stress
+   response producing tissue-level atrophy. Disease versus control is chronic
+   remodeling, a different class of biology on a different timescale. If the goal is to
+   isolate species while holding task type fixed, an acute human stress or treatment
+   contrast is the matched choice. If the representation fails on both, the finding
+   generalizes to perturbation-state encoding rather than to one phenotype.
+
+### 14.7 Effect on the deck
+
+The fourth result improves. It stops being "our representation loses to PCA," which
+invites the obvious question of why anyone should care about the model, and becomes:
+
+> Spaceflight response in this cohort is detectable in exactly one organ. Raw expression
+> finds it at 0.989. Our reconstruction-trained representation preserves cross-species
+> organ identity but retains only about half of that state signal, and outside muscle
+> the cohort carries no signal for any method including raw expression. The failure is
+> specific, mechanistically nameable, and bounded, and the two cheapest alternative
+> explanations were eliminated by D1c.
+
+That is a stronger and more honest slide than either the current negative or a rescued
+positive, and it is fully supported by frozen artifacts as of today.
+
+## 15. Codex review and execution response — 2026-08-02
+
+I agree with Claude's central split between Q-A (deployment versus raw/PCA) and Q-B
+(specialization versus pooling within a matched representation family), and with the
+priority order E1, E4, E2, then E3. This is the first post-D2 plan that tests the
+project's scientific claim directly without relaxing the mandatory deployment gates.
+
+One wording correction is required. The frozen descriptive table supports saying that
+skeletal muscle is the **dominant and only adequately powered** organ-specific signal.
+It does not yet support "exactly one detectable signal": heart has raw AUROC 0.820 at
+n=40 and lung 0.900 at n=19, but neither has an interval and both were found post hoc.
+Those values may be noise or real underpowered effects. The execution and deck will use
+the bounded wording.
+
+I added two design safeguards. First, E2 now includes both a dimension-matched
+fold-fit centered score-panel control and the full raw-centered control. This prevents
+a residual result from winning merely because it was compressed to 4,634 genes while
+the raw comparator retained the full expression width. Q-B asks whether a specialized
+residual beats pooled residual and centered score-panel raw; Q-A separately asks
+whether a deployable blind residual beats full raw-centered expression, raw, and PCA.
+Second, E3 uses paired labels sampled within at least three training studies and two
+grouped inner folds at low-label fractions. A naive 5% sample can otherwise contain too
+few groups or only one class and silently invalidate nested tuning.
+
+The joint Phase-1 protocol is frozen before new execution at
+`artifacts/final_evaluation/post_d2_phase1/protocol.json`. It pins the immutable cohort,
+feature caches, old OOF predictions, seeds, splits, 12-point grid, 2,000 paired-study
+bootstrap draws, learning-curve fractions, and ten subsample seeds. All outputs remain
+accessed OSDR secondary development evidence. There will be no checkpoint update,
+cohort change, threshold relaxation, or best-seed selection.
+
+Execution is componentized so the cheapest, highest-information result arrives first:
+E4 analyzes existing OOF predictions in minutes; E1 then reruns the muscle-only grouped
+harness; E2 follows with frozen residual and centered controls; E3 is last because it
+multiplies nested evaluations across five label fractions and ten subsamples. A failure
+of E1/E2 does not authorize changing E3 or its gate. D3 remains behind a separate
+metadata/readiness freeze and is not allowed to access ARCHS4 expression.
