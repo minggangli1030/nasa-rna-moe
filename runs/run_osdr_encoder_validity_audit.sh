@@ -8,8 +8,8 @@ cd "$ROOT_DIR"
 PYTHON_BIN="${PYTHON_BIN:-/home/exouser/moe-env/bin/python3}"
 CODE_COMMIT="${CODE_COMMIT:?set exact deployed commit}"
 OUTPUT_DIR="${OUTPUT_DIR:?set a new persistent output directory}"
-PROTOCOL="${PROTOCOL:-artifacts/final_evaluation/encoder_validity_audit/protocol.json}"
-EXPECTED_PROTOCOL_SHA256=72760c259bdcdf6cad4aa1b941e65ac41c2a5a45362a98d422940d569a8c49f2
+PROTOCOL="${PROTOCOL:-artifacts/final_evaluation/encoder_validity_audit/protocol_v2.json}"
+EXPECTED_PROTOCOL_SHA256=e959ef694a83d2b8b2df6f50d20101ea467967bb30d6c1120b3fac44983b819f
 OSDR_ROOT="${OSDR_ROOT:-/media/volume/moe-reboot/results/stage1_osdr_downstream_5884756/osdr_cohort}"
 OSDR_FEATURE_ROOT="${OSDR_FEATURE_ROOT:-/media/volume/moe-reboot/results/final_organ_embedding_3f681fd/features}"
 GTEX_SOURCE="${GTEX_SOURCE:-/media/volume/moe-reboot/results/stage1_gtex_to_archs4_529c0c3}"
