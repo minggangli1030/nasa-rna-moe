@@ -109,10 +109,11 @@ respectively.
 
 ## 2026-08-01 interpretation audit addendum
 
-The numeric result above remains valid, but its mechanism is provisional pending
-the frozen D1 encoder-validity audit in
-[`downstream-negative-result-audit-plan.md`](downstream-negative-result-audit-plan.md).
-The present evidence establishes failure on this mouse, cross-species OSDR task; it
-does not yet distinguish an intrinsically weak downstream representation from an
-out-of-distribution human-to-mouse encoder input. No model, seed, condition, cohort,
-or threshold is changed by the audit.
+The frozen D1 audit is complete with verdict `ENCODER_TRANSFERS_OBJECTIVE_LIMIT`.
+Pooled hidden passed the GTEx-relative distribution gate in all seeds, recovered a
+cross-study brain-versus-skeletal-muscle positive control at 0.996 balanced accuracy
+versus 1.000 for raw expression, and passed mapping, missing-input, and normalization
+checks. The negative result above therefore is not explained by a degenerate mouse-
+input encoder. It remains bounded to this accessed, cross-species spaceflight-state
+task and output contract; it does not establish that every downstream representation
+learned by an organ MoE must fail.

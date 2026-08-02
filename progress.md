@@ -1,6 +1,27 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-01 22:23 PDT / 2026-08-02 05:23 UTC
+**Last updated:** 2026-08-01 23:02 PDT / 2026-08-02 06:02 UTC
+
+## 2026-08-01 — Encoder transfers; Hallmark downstream feature audit launched
+
+The full D1 audit completed and all immutable checksums verify. Its frozen verdict is
+`ENCODER_TRANSFERS_OBJECTIVE_LIMIT`, not cross-species encoder breakdown. Pooled hidden
+remained in distribution against immutable GTEx caches in all seeds (effective-rank
+ratios 0.865/0.793/0.764; median absolute mean z 0.258/0.411/0.450). On the class-
+balanced cross-study brain-versus-skeletal-muscle positive control, raw expression
+balanced accuracy was 1.000 and pooled hidden was 0.996 in all seeds. Ortholog coverage,
+missing-input handling, and log1p value space also passed. The OSDR downstream failure
+therefore remains a real limitation of this frozen output contract on the accessed
+spaceflight-state task, not evidence that mouse input made the encoder meaningless.
+
+D2 was implemented, tested, hash-frozen, and deployed. Protocol SHA256 is
+`484667662935aed865d80a72503c428a68a6256f7c201beacaeb64f474632a62`; exact scientific
+implementation commit is `f2700e846a17bf2f7dd3ef7f69eca597a32e6646`. The active
+retry1 smoke automatically launches the full run only after checksum verification.
+Its frozen primary asks whether Hallmark-50 adds study-robust value to fold-fit PCA64
+and beats raw, PCA, three fixed matched-random controls, and permuted Hallmark. The
+first launch emitted no outcome because the clean worktree lacked the ignored GMT;
+the retry points to an existing byte-identical, hash-verified GMT.
 
 ## 2026-08-01 — OSDR encoder-validity audit frozen and running
 

@@ -500,3 +500,22 @@ receive internal distribution diagnostics, but no unsupported GTEx counterpart i
 invented for organ bottlenecks that were not cached on the same human rows. These
 changes narrow the audit to executable estimands without weakening its fail-closed
 decision tree.
+
+### 10.1 D1 result and D2 execution — 2026-08-01
+
+D1 is complete. The frozen verdict is `ENCODER_TRANSFERS_OBJECTIVE_LIMIT`. Pooled
+hidden remained within the prespecified GTEx-relative distribution gates in all
+three seeds, recovered the cross-study brain-versus-skeletal-muscle positive control
+at 0.996 balanced accuracy versus 1.000 for raw expression, and passed the ortholog,
+missing-input, and normalization audit. The earlier OSDR negative therefore cannot
+be dismissed as a degenerate cross-species encoder. It is bounded evidence that the
+current reconstruction-trained output contract does not improve this accessed
+spaceflight-state task over raw expression or fold-fit PCA.
+
+Claude's D2 recommendation is now executing as a distinct deterministic feature
+experiment, not a reopened expert-axis decision. The primary condition was frozen
+before access as Hallmark-50 concatenated with fold-fit PCA64. It must beat PCA64 and
+raw expression with study-bootstrap lower bounds above zero and beat three fixed
+size-matched random-set draws plus permuted Hallmark. Hallmark alone is secondary;
+there is no post-outcome choice between the two. Even a pass would support structured
+biological features on this development cohort, not a learned-MoE downstream claim.

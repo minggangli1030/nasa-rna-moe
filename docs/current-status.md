@@ -1,27 +1,39 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-01 22:23 PDT / 2026-08-02 05:23 UTC
+**Updated:** 2026-08-01 23:02 PDT / 2026-08-02 06:02 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
 
 ## Current phase
 
-The final K8 package remains frozen and unchanged. A new read-only D1 audit is now
-the blocking interpretation task: it distinguishes cross-species encoder/input
-breakdown from a genuine downstream-objective limit before the OSDR negative result
-is generalized. The corrected protocol is frozen at SHA256
-`e959ef694a83d2b8b2df6f50d20101ea467967bb30d6c1120b3fac44983b819f`;
-exact deployed commit is `5b1bc12282ad6edb8df71b068c311ca09ff62b02` in clean
-worktree `/media/volume/moe-reboot/worktrees/osdr_encoder_audit_5b1bc12`.
+The final K8 package remains frozen and unchanged. The read-only D1 encoder-validity
+audit is complete and checksum-verified at protocol SHA256
+`e959ef694a83d2b8b2df6f50d20101ea467967bb30d6c1120b3fac44983b819f` and deployed
+commit `5b1bc12282ad6edb8df71b068c311ca09ff62b02`. Its prespecified verdict is
+`ENCODER_TRANSFERS_OBJECTIVE_LIMIT`: the OSDR negative is not explained by a broken
+human-to-mouse encoder or input pipeline.
 
-The first smoke lineage at commit `9607c78` stopped before reading audit outcomes
-because direct script execution lacked the repository root on `sys.path`; its empty
-output is preserved. The import-only correction passed focused tests locally and on
-the VM. Corrected smoke `osdr-encoder-audit-smoke-v2` is CPU-active, and fail-closed
-screen `osdr-encoder-audit-continuation` will launch the full audit only after the
-smoke completes and its checksum manifest verifies. The audit performs no training,
-checkpoint updates, seed selection, architecture changes, or ARCHS4 access.
+D1a classified pooled hidden as in-distribution in all seeds: OSDR/GTEx effective-
+rank ratios were 0.865, 0.793, and 0.764 for seeds 17, 42, and 101, and median
+absolute mean z-shifts were 0.258, 0.411, and 0.450. D1b's cross-study brain-versus-
+skeletal-muscle positive control achieved balanced accuracy 1.000 with raw expression
+and 0.996 with pooled hidden in every seed. D1c verified identical model-input value
+space, mean missing-entry fraction 0.000156, and constant-gene fraction 0.000832.
+Thus the encoder transfers meaningful organ structure, while the frozen representation
+still fails to improve the accessed spaceflight-state task over raw/PCA.
+
+The independent D2 Hallmark feature audit is frozen at protocol SHA256
+`484667662935aed865d80a72503c428a68a6256f7c201beacaeb64f474632a62`; scientific
+implementation commit is `f2700e846a17bf2f7dd3ef7f69eca597a32e6646` and deployed
+commit/worktree is `f38b125472576e4ea158afc7db73396c42467d19` /
+`/media/volume/moe-reboot/worktrees/osdr_hallmark_downstream_f38b125`. The unchanged
+smoke-to-full retry is active in screen `osdr-hallmark-downstream-retry1`. It compares
+Hallmark-50, Hallmark+fold-fit PCA64, PCA64, raw expression, three fixed size-matched
+random-set draws, and permuted Hallmark under identical grouped splits and tuning.
+The first launch found only that the detached worktree lacked the ignored GMT file;
+it emitted no result and is preserved. Retry1 uses an existing copy with the exact
+frozen GMT hash.
 
 The frozen OSDR downstream-development evaluation is complete. Exact evaluator
 commit `61766ee` finished at 2026-07-30 21:26 PDT on 292 samples from 18 studies;

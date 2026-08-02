@@ -88,10 +88,11 @@ verification. Package-manifest SHA256 is
 
 ## 2026-08-01 interpretation audit addendum
 
-The AUROC values and frozen gate decision remain unchanged. The broader explanation
-is provisional pending the D1 encoder-validity audit in
-[`downstream-negative-result-audit-plan.md`](downstream-negative-result-audit-plan.md).
-That read-only audit tests whether the human-trained encoder remains in distribution
-and preserves a limited cross-study organ positive control on mouse input. Until its
-verdict is recorded, this document supports a cross-species task failure but not a
-general mechanism claim about the representation.
+The read-only D1 audit completed with verdict `ENCODER_TRANSFERS_OBJECTIVE_LIMIT`.
+All seeds passed the pooled-hidden GTEx-relative distribution gate; pooled hidden
+recovered the cross-study brain-versus-skeletal-muscle control at 0.996 balanced
+accuracy versus 1.000 for raw expression; mapping and normalization checks passed.
+Thus the AUROC failure here is not attributable to a collapsed cross-species encoder.
+The conclusion remains deliberately narrow: this frozen embedding contract did not
+beat raw/PCA on this accessed mouse spaceflight task. It is not a universal negative
+claim about organ-conditioned downstream learning.

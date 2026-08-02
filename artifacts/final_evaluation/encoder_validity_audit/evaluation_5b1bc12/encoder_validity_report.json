@@ -1,0 +1,2155 @@
+{
+  "d1a": {
+    "gtex_draw_ordinals_sha256": "160781b5cd4595aff91723a653221bc877f2e7fe1d9c753c797c53833e006cf1",
+    "osdr_condition_metrics": {
+      "101": {
+        "blind_router_hard_embedding": {
+          "dead_dimension_fraction": 0.0011904761904761906,
+          "dead_dimensions": 1,
+          "dimensions": 840,
+          "effective_rank": 1.8286878372637447,
+          "mean_pairwise_cosine_similarity": 0.9688644055354676,
+          "median_dimension_sd": 0.3010193844680493,
+          "pc1_variance_fraction": 0.8716601964542521
+        },
+        "blind_router_soft_embedding": {
+          "dead_dimension_fraction": 0.0011904761904761906,
+          "dead_dimensions": 1,
+          "dimensions": 840,
+          "effective_rank": 1.7762289535869975,
+          "mean_pairwise_cosine_similarity": 0.9691561011778612,
+          "median_dimension_sd": 0.3010193844680493,
+          "pc1_variance_fraction": 0.8797009877647388
+        },
+        "pooled_hidden": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 768,
+          "effective_rank": 1.2842809782680515,
+          "mean_pairwise_cosine_similarity": 0.9719896304909222,
+          "median_dimension_sd": 0.31113528951547365,
+          "pc1_variance_fraction": 0.9558552935127685
+        },
+        "pooled_hidden_plus_organ_label": {
+          "dead_dimension_fraction": 0.001288659793814433,
+          "dead_dimensions": 1,
+          "dimensions": 776,
+          "effective_rank": 1.3074445437404223,
+          "mean_pairwise_cosine_similarity": 0.971865585716917,
+          "median_dimension_sd": 0.3102523142846725,
+          "pc1_variance_fraction": 0.952942259570837
+        },
+        "pooled_hidden_plus_router": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 776,
+          "effective_rank": 1.3083462144790459,
+          "mean_pairwise_cosine_similarity": 0.9718717773508356,
+          "median_dimension_sd": 0.3102523142846725,
+          "pc1_variance_fraction": 0.9529422323944998
+        },
+        "true_organ_embedding": {
+          "dead_dimension_fraction": 0.0011904761904761906,
+          "dead_dimensions": 1,
+          "dimensions": 840,
+          "effective_rank": 1.7497495488257846,
+          "mean_pairwise_cosine_similarity": 0.9693403369081688,
+          "median_dimension_sd": 0.3010193844680493,
+          "pc1_variance_fraction": 0.8855983763568877
+        }
+      },
+      "17": {
+        "blind_router_hard_embedding": {
+          "dead_dimension_fraction": 0.0035714285714285713,
+          "dead_dimensions": 3,
+          "dimensions": 840,
+          "effective_rank": 1.7803409858991635,
+          "mean_pairwise_cosine_similarity": 0.9842425571713556,
+          "median_dimension_sd": 0.236851975329182,
+          "pc1_variance_fraction": 0.8683598029220408
+        },
+        "blind_router_soft_embedding": {
+          "dead_dimension_fraction": 0.004761904761904762,
+          "dead_dimensions": 4,
+          "dimensions": 840,
+          "effective_rank": 1.7210721596449619,
+          "mean_pairwise_cosine_similarity": 0.984441643715259,
+          "median_dimension_sd": 0.236851975329182,
+          "pc1_variance_fraction": 0.8787891849282359
+        },
+        "pooled_hidden": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 768,
+          "effective_rank": 1.2460174581922459,
+          "mean_pairwise_cosine_similarity": 0.9861354486702258,
+          "median_dimension_sd": 0.25324975629681923,
+          "pc1_variance_fraction": 0.9588820081088485
+        },
+        "pooled_hidden_plus_organ_label": {
+          "dead_dimension_fraction": 0.001288659793814433,
+          "dead_dimensions": 1,
+          "dimensions": 776,
+          "effective_rank": 1.28405114080003,
+          "mean_pairwise_cosine_similarity": 0.9860347235010256,
+          "median_dimension_sd": 0.25187299098600935,
+          "pc1_variance_fraction": 0.9540848045634212
+        },
+        "pooled_hidden_plus_router": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 776,
+          "effective_rank": 1.284273869786456,
+          "mean_pairwise_cosine_similarity": 0.9860400007474439,
+          "median_dimension_sd": 0.25324975629681923,
+          "pc1_variance_fraction": 0.9541081332189569
+        },
+        "true_organ_embedding": {
+          "dead_dimension_fraction": 0.0035714285714285713,
+          "dead_dimensions": 3,
+          "dimensions": 840,
+          "effective_rank": 1.705865861436047,
+          "mean_pairwise_cosine_similarity": 0.9843044089254268,
+          "median_dimension_sd": 0.236851975329182,
+          "pc1_variance_fraction": 0.8827716335973328
+        }
+      },
+      "42": {
+        "blind_router_hard_embedding": {
+          "dead_dimension_fraction": 0.005952380952380952,
+          "dead_dimensions": 5,
+          "dimensions": 840,
+          "effective_rank": 1.3820400940594284,
+          "mean_pairwise_cosine_similarity": 0.9809479061993973,
+          "median_dimension_sd": 0.23521379323875183,
+          "pc1_variance_fraction": 0.9398705297752904
+        },
+        "blind_router_soft_embedding": {
+          "dead_dimension_fraction": 0.005952380952380952,
+          "dead_dimensions": 5,
+          "dimensions": 840,
+          "effective_rank": 1.3748067492532303,
+          "mean_pairwise_cosine_similarity": 0.9809615417916108,
+          "median_dimension_sd": 0.2346634135706529,
+          "pc1_variance_fraction": 0.9405519693433937
+        },
+        "pooled_hidden": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 768,
+          "effective_rank": 1.2930884301069911,
+          "mean_pairwise_cosine_similarity": 0.9812931516146827,
+          "median_dimension_sd": 0.25064748437824236,
+          "pc1_variance_fraction": 0.952203191208564
+        },
+        "pooled_hidden_plus_organ_label": {
+          "dead_dimension_fraction": 0.001288659793814433,
+          "dead_dimensions": 1,
+          "dimensions": 776,
+          "effective_rank": 1.321814870742463,
+          "mean_pairwise_cosine_similarity": 0.9811878648371424,
+          "median_dimension_sd": 0.24970525226579288,
+          "pc1_variance_fraction": 0.9486173874366222
+        },
+        "pooled_hidden_plus_router": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 776,
+          "effective_rank": 1.3222666602600917,
+          "mean_pairwise_cosine_similarity": 0.9811930841449843,
+          "median_dimension_sd": 0.25064748437824236,
+          "pc1_variance_fraction": 0.9486147525333831
+        },
+        "true_organ_embedding": {
+          "dead_dimension_fraction": 0.007142857142857143,
+          "dead_dimensions": 6,
+          "dimensions": 840,
+          "effective_rank": 1.3833579112315422,
+          "mean_pairwise_cosine_similarity": 0.9809381596050792,
+          "median_dimension_sd": 0.23521379323875183,
+          "pc1_variance_fraction": 0.9395080054445406
+        }
+      }
+    },
+    "seed_reports": {
+      "101": {
+        "effective_rank_ratio": 0.764082268230795,
+        "fraction_dimensions_abs_mean_z_gt_3": 0.0,
+        "gtex_pooled_hidden": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 768,
+          "effective_rank": 1.6808150531247872,
+          "mean_pairwise_cosine_similarity": 0.9751387302782519,
+          "median_dimension_sd": 0.3127984823384976,
+          "pc1_variance_fraction": 0.8773774514904615
+        },
+        "median_abs_mean_z": 0.45035264726889235,
+        "osdr_pooled_hidden": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 768,
+          "effective_rank": 1.2842809782680515,
+          "mean_pairwise_cosine_similarity": 0.9719896304909222,
+          "median_dimension_sd": 0.31113528951547365,
+          "pc1_variance_fraction": 0.9558552935127685
+        },
+        "verdict": "ENCODER_IN_DISTRIBUTION"
+      },
+      "17": {
+        "effective_rank_ratio": 0.8646330152142733,
+        "fraction_dimensions_abs_mean_z_gt_3": 0.0,
+        "gtex_pooled_hidden": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 768,
+          "effective_rank": 1.4410940089807442,
+          "mean_pairwise_cosine_similarity": 0.9874035897080701,
+          "median_dimension_sd": 0.24774813509644003,
+          "pc1_variance_fraction": 0.9228930552387923
+        },
+        "median_abs_mean_z": 0.2575723937188864,
+        "osdr_pooled_hidden": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 768,
+          "effective_rank": 1.2460174581922459,
+          "mean_pairwise_cosine_similarity": 0.9861354486702258,
+          "median_dimension_sd": 0.25324975629681923,
+          "pc1_variance_fraction": 0.9588820081088485
+        },
+        "verdict": "ENCODER_IN_DISTRIBUTION"
+      },
+      "42": {
+        "effective_rank_ratio": 0.7928410905097962,
+        "fraction_dimensions_abs_mean_z_gt_3": 0.0,
+        "gtex_pooled_hidden": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 768,
+          "effective_rank": 1.630955364933894,
+          "mean_pairwise_cosine_similarity": 0.9830061289795976,
+          "median_dimension_sd": 0.25790776796459725,
+          "pc1_variance_fraction": 0.888516659238834
+        },
+        "median_abs_mean_z": 0.4108832249877803,
+        "osdr_pooled_hidden": {
+          "dead_dimension_fraction": 0.0,
+          "dead_dimensions": 0,
+          "dimensions": 768,
+          "effective_rank": 1.2930884301069911,
+          "mean_pairwise_cosine_similarity": 0.9812931516146827,
+          "median_dimension_sd": 0.25064748437824236,
+          "pc1_variance_fraction": 0.952203191208564
+        },
+        "verdict": "ENCODER_IN_DISTRIBUTION"
+      }
+    },
+    "verdict": "ENCODER_IN_DISTRIBUTION"
+  },
+  "d1b": {
+    "n_samples": 197,
+    "n_studies": 13,
+    "organ_by_study_sha256": "6211a8ef651a3a9b5eaad9bf607183ebe85aa80a6f0d7bd2329ee2a7a0506126",
+    "pooled_hidden_to_raw_ratios": {
+      "101": 0.9964028776978417,
+      "17": 0.9964028776978417,
+      "42": 0.9964028776978417
+    },
+    "positive_control_organs": [
+      "brain",
+      "skeletal_muscle"
+    ],
+    "raw_balanced_accuracy": 1.0,
+    "results": {
+      "pca_64": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 80,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 87,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 54,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 87,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 67,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 67,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "raw_expression": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 194,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 265,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 279,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 265,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 153,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 237,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed101__blind_router_hard_embedding": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 47,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 29,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 51,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 54,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed101__blind_router_soft_embedding": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 46,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 54,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 30,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 51,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 57,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 54,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed101__pooled_hidden": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 0.9891304347826086,
+              "macro_f1": 0.9843014128728415
+            },
+            "outer_fit_iterations": 48,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 54,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 27,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 50,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 46,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 54,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 0.9964028776978417,
+          "macro_f1": 0.9939214415748712
+        }
+      },
+      "seed101__pooled_hidden_plus_router": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 47,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 29,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 50,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 48,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed101__true_organ_embedding": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 44,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 30,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 51,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 56,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed17__blind_router_hard_embedding": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 44,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 55,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 30,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 45,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 48,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 55,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed17__blind_router_soft_embedding": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 42,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 31,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 46,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 50,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed17__pooled_hidden": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 0.9891304347826086,
+              "macro_f1": 0.9843014128728415
+            },
+            "outer_fit_iterations": 48,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 49,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 20,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 46,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 50,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 49,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 0.9964028776978417,
+          "macro_f1": 0.9939214415748712
+        }
+      },
+      "seed17__pooled_hidden_plus_router": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 47,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 32,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 46,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 48,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed17__true_organ_embedding": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 42,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 52,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 32,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 48,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 46,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 52,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed42__blind_router_hard_embedding": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 47,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 34,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 47,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 44,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed42__blind_router_soft_embedding": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 46,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 33,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 47,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 47,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 53,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed42__pooled_hidden": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 0.9891304347826086,
+              "macro_f1": 0.9843014128728415
+            },
+            "outer_fit_iterations": 49,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 46,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 32,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 46,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 38,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 42,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 0.9964028776978417,
+          "macro_f1": 0.9939214415748712
+        }
+      },
+      "seed42__pooled_hidden_plus_router": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 48,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 50,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 32,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 47,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 37,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 50,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "seed42__true_organ_embedding": {
+        "folds": [
+          {
+            "fold": 0,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 46,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 52,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-665"
+            ],
+            "train_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-770",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 1,
+            "metrics": {
+              "auprc": 0.9999999999999999,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 33,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 49,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-103",
+              "OSD-105",
+              "OSD-562",
+              "OSD-770"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-104",
+              "OSD-401",
+              "OSD-457",
+              "OSD-564",
+              "OSD-576",
+              "OSD-665",
+              "OSD-666",
+              "OSD-99"
+            ]
+          },
+          {
+            "fold": 2,
+            "metrics": {
+              "auprc": 1.0,
+              "auroc": 1.0,
+              "balanced_accuracy": 1.0,
+              "macro_f1": 1.0
+            },
+            "outer_fit_iterations": 36,
+            "selected": {
+              "C": 0.01,
+              "l1_ratio": 0.0,
+              "max_inner_iterations": 52,
+              "mean_inner_auroc": 1.0
+            },
+            "test_studies": [
+              "OSD-564",
+              "OSD-576",
+              "OSD-666",
+              "OSD-99"
+            ],
+            "train_studies": [
+              "OSD-101",
+              "OSD-103",
+              "OSD-104",
+              "OSD-105",
+              "OSD-401",
+              "OSD-457",
+              "OSD-562",
+              "OSD-665",
+              "OSD-770"
+            ]
+          }
+        ],
+        "pooled_out_of_fold": {
+          "auprc": 0.9999999999999998,
+          "auroc": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      }
+    },
+    "verdict": "ENCODER_RECOVERS_ORGAN"
+  },
+  "d1c": {
+    "absent_gene_policy": "set to mask_token_-10_using_per_sample_coverage",
+    "fraction_non_score_dimensions_abs_mean_z_gt_3": 0.05224708710930276,
+    "gtex_expression_space_on_disk": "tpm",
+    "gtex_model_transform": "numpy.log1p_exactly_once",
+    "mean_non_score_missing_entry_fraction": 0.00015581020037445118,
+    "median_abs_model_input_mean_z": 0.6820866109980803,
+    "model_gene_panel": 15448,
+    "non_score_constant_gene_fraction": 0.0008322544849269465,
+    "non_score_genes_absent_in_all_samples_fraction": 9.24727205474385e-05,
+    "normalization_identical_at_model_input_value_space": true,
+    "osdr_expression_space": "log1p_tpm",
+    "osdr_normalization_order": "decode_valid_length_qc_map_aggregate_canonical_tpm_log1p",
+    "osdr_reference_homology_type_unique_human_genes": {
+      "ortholog_one2one": 15448
+    },
+    "retained_samples": 292,
+    "training_one_to_one_mapped_fraction": 1.0,
+    "training_one_to_one_mapped_panel_genes": 15448,
+    "verdict": "INPUT_DOMAIN_OK"
+  },
+  "firewalls": {
+    "architecture_changes": false,
+    "archs4_expression_access": false,
+    "best_seed_selection": false,
+    "checkpoint_updates": false,
+    "model_training": false
+  },
+  "protocol_sha256": "e959ef694a83d2b8b2df6f50d20101ea467967bb30d6c1120b3fac44983b819f",
+  "role": "osdr_encoder_validity_development_audit",
+  "schema_version": 1,
+  "smoke": false,
+  "status": "complete",
+  "verdict": "ENCODER_TRANSFERS_OBJECTIVE_LIMIT"
+}
