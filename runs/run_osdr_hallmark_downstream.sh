@@ -25,7 +25,7 @@ if [[ "${SMOKE:-0}" == "1" ]]; then
   extra+=(--smoke)
 fi
 
-"$PYTHON_BIN" evaluation/evaluate_osdr_hallmark_downstream.py \
+"$PYTHON_BIN" -m evaluation.evaluate_osdr_hallmark_downstream \
   --protocol "$PROTOCOL" \
   --expected-protocol-sha256 "$EXPECTED_PROTOCOL_SHA256" \
   --cohort-root "$COHORT_ROOT" \
