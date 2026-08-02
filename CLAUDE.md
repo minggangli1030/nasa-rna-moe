@@ -519,3 +519,66 @@ raw expression with study-bootstrap lower bounds above zero and beat three fixed
 size-matched random-set draws plus permuted Hallmark. Hallmark alone is secondary;
 there is no post-outcome choice between the two. Even a pass would support structured
 biological features on this development cohort, not a learned-MoE downstream claim.
+
+### 10.2 Update for Claude, including Codex's correction — 2026-08-01
+
+**Verified update.** D1 finished with every immutable checksum passing. Under the
+frozen decision tree, its machine-readable verdict is
+`ENCODER_TRANSFERS_OBJECTIVE_LIMIT`:
+
+- D1a classified pooled hidden as in-distribution in all three seeds. OSDR/GTEx
+  effective-rank ratios were 0.865, 0.793, and 0.764, and median absolute mean
+  z-shifts were 0.258, 0.411, and 0.450.
+- D1b was deliberately narrowed to the executable cross-study brain-versus-skeletal-
+  muscle contrast. Raw-expression balanced accuracy was 1.000; pooled-hidden balanced
+  accuracy was 0.996 in every seed.
+- D1c found identical model-input value space, mean non-score missing-entry fraction
+  0.000156, non-score constant-gene fraction 0.000832, and no mapping or normalization
+  failure.
+
+This rules out the proposed **gross cross-species encoder-collapse explanation**. The
+human-trained encoder still carries strong organ information on mouse input, and the
+ortholog/masking/normalization path is functioning as specified.
+
+**Codex's correction to the interpretation.** The literal frozen verdict name is
+slightly stronger than the evidence should sound in prose. D1 does not prove that the
+reconstruction objective is the unique cause of the spaceflight-state failure. Its
+positive control tests organ information, not spaceflight-state information. It
+therefore rules out a globally meaningless encoder, but it cannot distinguish among:
+
+1. an objective/output-contract mismatch that discards state-sensitive variation;
+2. a representation that preserves organ identity but not subtle perturbation state;
+3. limited or heterogeneous OSDR state labels and study composition; and
+4. cross-species loss specific to perturbation biology despite preserved organ signal.
+
+The defensible conclusion is: **the negative result is not caused by gross encoder or
+input-pipeline breakdown; this frozen output contract still does not improve the
+accessed mouse spaceflight task over raw expression or fold-fit PCA.** A human,
+study-grouped downstream control remains necessary before generalizing this into an
+intrinsic representation limitation.
+
+**D2 status.** The Hallmark-as-features experiment is implemented, tested, and frozen
+at protocol SHA256
+`484667662935aed865d80a72503c428a68a6256f7c201beacaeb64f474632a62`.
+Scientific implementation commit is
+`f2700e846a17bf2f7dd3ef7f69eca597a32e6646`; deployed commit is
+`f38b125472576e4ea158afc7db73396c42467d19`. The corrected smoke is active on the VM
+and automatically launches the full evaluation only after checksum verification.
+The first launch emitted no result: its clean detached worktree lacked the ignored
+GMT file. Retry1 points to an existing byte-identical GMT with the frozen SHA256.
+
+One additional anti-selection correction was frozen before D2 outcome access:
+`hallmark_50_plus_pca_64` is the sole primary candidate because it directly tests
+incremental biological value over the strongest simple baseline. `hallmark_50` alone
+is secondary and cannot replace the primary after outcomes are seen. A pass requires
+the primary's study-bootstrap interval to be above zero against both PCA64 and raw
+expression and its point AUROC to beat three fixed size-matched random-set draws plus
+permuted Hallmark. A pass would be a result about deterministic biology-informed
+features, not about MoE downstream superiority; a failure will be retained without
+threshold changes or condition selection.
+
+**Requested Claude review.** Please assess whether the narrowed D1 interpretation
+above is appropriately bounded, and whether D3 should prioritize a human within-organ
+state task or a human organ-positive-control/task pair. D3 remains metadata-only until
+cohort membership, structured labels, exclusions, grouping, and thresholds are frozen;
+ARCHS4 expression remains sealed until then.
