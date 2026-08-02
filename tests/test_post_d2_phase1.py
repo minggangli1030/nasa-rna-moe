@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "evaluation"))
 from evaluate_post_d2_phase1 import (  # noqa: E402
     _center_from_training_groups,
     paired_study_bootstrap,
+    select_low_label_indices,
     sha256_file,
     verify_protocol,
 )
@@ -87,3 +88,30 @@ def test_fold_fit_centering_uses_training_means_only():
     )
     assert np.allclose(train, [[-1.0], [1.0], [-2.0], [2.0]])
     assert np.allclose(test, [[99.0], [102.0]])
+
+
+def test_low_label_selection_is_paired_grouped_and_reproducible():
+    groups = np.repeat(["a", "b", "c", "d"], 6)
+    labels = np.tile([0, 0, 0, 1, 1, 1], 4)
+    train_index = np.arange(len(labels))
+    first = select_low_label_indices(
+        train_index, groups, labels, fraction=0.05, seed=3101
+    )
+    second = select_low_label_indices(
+        train_index, groups, labels, fraction=0.05, seed=3101
+    )
+    assert np.array_equal(first, second)
+    assert len(first) == 6
+    assert len(np.unique(groups[first])) == 3
+    for group in np.unique(groups[first]):
+        assert set(labels[first][groups[first] == group]) == {0, 1}
+
+
+def test_full_label_selection_preserves_every_training_row():
+    groups = np.repeat(["a", "b", "c"], 4)
+    labels = np.tile([0, 0, 1, 1], 3)
+    train_index = np.asarray([0, 1, 2, 3, 5, 6, 8, 9, 10, 11])
+    selected = select_low_label_indices(
+        train_index, groups, labels, fraction=1.0, seed=3101
+    )
+    assert np.array_equal(selected, train_index)

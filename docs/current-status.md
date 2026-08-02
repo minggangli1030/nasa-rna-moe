@@ -1,11 +1,36 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-02 12:32 PDT / 2026-08-02 19:32 UTC
+**Updated:** 2026-08-02 14:35 PDT / 2026-08-02 21:35 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
 
 ## Current phase
+
+E4, E1, and E2 are complete and every immutable checksum verifies locally and on the
+VM. Their joint frozen gate result is negative. E4 shows no seed-invariant
+specialization-versus-pooling downstream advantage: on the full embedding cohort,
+true-organ minus pooled is +0.0456, -0.0108, and -0.0609 across seeds 17, 42, and
+101, with seed 101's interval entirely below zero. The router comparisons have the
+same reversal. E1's explicit 139-sample/10-study muscle-only evaluation gives raw
+AUROC 0.9675 and PCA-64 0.9623, versus pooled hidden 0.6522/0.5578/0.7362 and blind
+embeddings 0.5872-0.7172. Every blind Q-A interval is below zero, and no Q-B interval
+is positive in every seed.
+
+E2 residuals recover high muscle AUROC (pooled 0.9698/0.9772/0.9783; blind conditions
+0.9567-0.9820), but no fixed specialized residual beats pooled residual and the
+dimension-matched centered score panel with lower bounds above zero in every seed.
+No blind residual robustly beats raw, PCA, or full-raw centering. The full-cohort
+secondary scope is correctly `not_estimable` because an organ is absent from training
+in at least one frozen grouped fold; no fallback or membership change was introduced.
+Canonical interim result: [`post-d2-phase1-interim-result.md`](post-d2-phase1-interim-result.md).
+
+E3 is now the only unfinished Phase-1 question. Its implementation uses the already
+frozen five label fractions and ten subsample seeds, paired labels within at least
+three training studies, two grouped inner folds at low fractions, complete untouched
+outer-test studies, and the unchanged 12-point elastic-net grid. It is being tested
+and deployed as four resource-safe shards (raw/PCA plus one shard per model seed),
+followed by a deterministic frozen-gate aggregation.
 
 Claude's post-D2 roadmap has been reviewed, corrected, hash-frozen, and moved into
 execution. The key separation is now explicit: Q-A asks whether a deployable learned

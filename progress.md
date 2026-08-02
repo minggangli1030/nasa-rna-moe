@@ -1,6 +1,22 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-02 12:32 PDT / 2026-08-02 19:32 UTC
+**Last updated:** 2026-08-02 14:35 PDT / 2026-08-02 21:35 UTC
+
+## 2026-08-02 — E4/E1/E2 complete; downstream specialization and residual gates fail
+
+All E4, E1, and E2 outputs are checksum-verified. E4 directly estimates Q-B and finds
+seed reversals rather than a robust specialization benefit. E1 confirms a nearly
+saturated skeletal-muscle raw/PCA task (0.9675/0.9623) while learned embeddings remain
+at 0.5578-0.7563. E2 residuals reach 0.9567-0.9820, but pooled residual is equally
+strong and no specialized condition clears the all-seed paired-bootstrap gate against
+both pooled residual and centered raw controls. The full-cohort centered secondary
+scope is structurally not estimable under the frozen folds and was not altered.
+
+E3 low-label learning curves are the final frozen Phase-1 test. The implementation
+preserves paired classes across at least three training studies and uses four
+resource-safe shards before deterministic aggregation. No checkpoint, cohort, seed,
+condition, or threshold is selected. Detailed interim result:
+[`docs/post-d2-phase1-interim-result.md`](docs/post-d2-phase1-interim-result.md).
 
 ## 2026-08-02 — Post-D2 roadmap frozen; Q-B, muscle-only, and residual executions launched
 

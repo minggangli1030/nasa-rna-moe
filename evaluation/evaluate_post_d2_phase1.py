@@ -623,6 +623,298 @@ def run_e2(args, protocol: dict, output_dir: Path) -> dict:
     }
 
 
+def select_low_label_indices(
+    train_index: np.ndarray,
+    groups: np.ndarray,
+    labels: np.ndarray,
+    *,
+    fraction: float,
+    seed: int,
+) -> np.ndarray:
+    """Select paired labels from at least three randomly ordered studies."""
+    if fraction == 1.0:
+        return np.asarray(train_index, dtype=np.int64)
+    rng = np.random.default_rng(seed)
+    eligible = []
+    pools = {}
+    for group in np.unique(groups[train_index]):
+        group_rows = train_index[groups[train_index] == group]
+        negative = group_rows[labels[group_rows] == 0].copy()
+        positive = group_rows[labels[group_rows] == 1].copy()
+        if len(negative) and len(positive):
+            rng.shuffle(negative)
+            rng.shuffle(positive)
+            eligible.append(str(group))
+            pools[str(group)] = {0: list(negative), 1: list(positive)}
+    if len(eligible) < 3:
+        raise ValueError("low-label selection has fewer than three paired studies")
+    ordered = list(rng.permutation(eligible))
+    target = max(6, int(round(float(fraction) * len(train_index))))
+    target = min(len(train_index), target + target % 2)
+    selected = []
+    used_groups = set()
+    while len(selected) < target:
+        progressed = False
+        for group in ordered:
+            if pools[group][0] and pools[group][1] and len(selected) < target:
+                selected.extend([pools[group][0].pop(), pools[group][1].pop()])
+                used_groups.add(group)
+                progressed = True
+            if len(selected) >= target:
+                break
+        if not progressed:
+            break
+    if len(selected) < 6 or len(used_groups) < 3:
+        raise ValueError("low-label selection cannot meet paired-study minimum")
+    output = np.asarray(sorted(selected), dtype=np.int64)
+    if set(np.unique(labels[output])) != {0, 1}:
+        raise RuntimeError("low-label selection lost a class")
+    return output
+
+
+def _fit_low_label_outer(
+    features: np.ndarray,
+    labels: np.ndarray,
+    groups: np.ndarray,
+    selected_train: np.ndarray,
+    test_index: np.ndarray,
+    *,
+    pca_components: int | None,
+    inner_folds: int,
+) -> tuple[np.ndarray, np.ndarray, dict]:
+    candidate_scores = {item: [] for item in GRID}
+    candidate_iterations = {item: [] for item in GRID}
+    selected_groups = groups[selected_train]
+    for inner_train, inner_test in _splits(selected_groups, inner_folds):
+        a = selected_train[inner_train]
+        b = selected_train[inner_test]
+        if len(np.unique(labels[a])) != 2 or len(np.unique(labels[b])) != 2:
+            raise ValueError("low-label grouped inner split lost a class")
+        train, test = _transform(
+            features[a], features[b], pca_components=pca_components
+        )
+        path = _fit_grid_path(train, labels[a], test, GRID)
+        for item, (probability, n_iter) in path.items():
+            candidate_scores[item].append(float(roc_auc_score(labels[b], probability)))
+            candidate_iterations[item].append(n_iter)
+    candidates = []
+    for c_value, l1_ratio in GRID:
+        candidates.append(
+            {
+                "C": c_value,
+                "l1_ratio": l1_ratio,
+                "mean_inner_auroc": float(
+                    np.mean(candidate_scores[(c_value, l1_ratio)])
+                ),
+                "max_inner_iterations": int(
+                    max(candidate_iterations[(c_value, l1_ratio)])
+                ),
+            }
+        )
+    selected = sorted(
+        candidates,
+        key=lambda item: (-item["mean_inner_auroc"], item["C"], item["l1_ratio"]),
+    )[0]
+    train, test = _transform(
+        features[selected_train], features[test_index], pca_components=pca_components
+    )
+    probability, prediction, n_iter = _fit(
+        train,
+        labels[selected_train],
+        test,
+        c_value=selected["C"],
+        l1_ratio=selected["l1_ratio"],
+    )
+    selected["outer_fit_iterations"] = n_iter
+    return probability, prediction, selected
+
+
+def evaluate_low_label_curve(
+    features: np.ndarray,
+    labels: np.ndarray,
+    groups: np.ndarray,
+    *,
+    pca_components: int | None,
+    fractions: list[float],
+    subsample_seeds: list[int],
+    inner_folds: int,
+) -> dict:
+    output = {}
+    outer_splits = _splits(groups, 5)
+    for fraction in fractions:
+        fraction_key = f"{fraction:.2f}"
+        output[fraction_key] = {}
+        effective_seeds = subsample_seeds[:1] if fraction == 1.0 else subsample_seeds
+        cached_full = None
+        for subsample_seed in effective_seeds:
+            probabilities = np.full(len(labels), np.nan, dtype=np.float64)
+            predictions = np.full(len(labels), -1, dtype=np.int64)
+            folds = []
+            for outer_index, (train_index, test_index) in enumerate(outer_splits):
+                selected_train = select_low_label_indices(
+                    train_index,
+                    groups,
+                    labels,
+                    fraction=fraction,
+                    seed=int(subsample_seed) + outer_index * 10007,
+                )
+                probability, prediction, selected = _fit_low_label_outer(
+                    features,
+                    labels,
+                    groups,
+                    selected_train,
+                    test_index,
+                    pca_components=pca_components,
+                    inner_folds=inner_folds,
+                )
+                probabilities[test_index] = probability
+                predictions[test_index] = prediction
+                folds.append(
+                    {
+                        "fold": outer_index,
+                        "labeled_samples": int(len(selected_train)),
+                        "labeled_studies": int(np.unique(groups[selected_train]).size),
+                        "selected": selected,
+                    }
+                )
+            if not np.isfinite(probabilities).all() or np.any(predictions < 0):
+                raise RuntimeError("low-label curve did not score every sample")
+            result = {
+                "subsample_seed": int(subsample_seed),
+                "metrics": _score(labels, probabilities, predictions),
+                "folds": folds,
+            }
+            output[fraction_key][str(subsample_seed)] = result
+            if fraction == 1.0:
+                cached_full = result
+        if fraction == 1.0:
+            for subsample_seed in subsample_seeds[1:]:
+                duplicate = json.loads(json.dumps(cached_full))
+                duplicate["subsample_seed"] = int(subsample_seed)
+                output[fraction_key][str(subsample_seed)] = duplicate
+    return output
+
+
+def run_e3_shard(args, protocol: dict) -> dict:
+    archives = load_archives(
+        Path(args.embedding_feature_root),
+        protocol["inputs"]["final_embedding_feature_sha256"],
+    )
+    reference = archives[17]
+    assert_aligned(archives, reference)
+    _, groups, organs, labels, raw = load_cohort(Path(args.cohort_root), reference)
+    keep = organs == "skeletal_muscle"
+    groups = groups[keep]
+    labels = labels[keep]
+    raw = raw[keep]
+    specification = protocol["e3_low_label"]
+    fractions = [float(value) for value in specification["fractions"]]
+    subsample_seeds = [int(value) for value in specification["subsample_seeds"]]
+    inner_folds = int(specification["low_label_inner_folds"])
+    if args.e3_shard == "baseline":
+        representations = {
+            "raw_expression": (raw, None),
+            "pca_64": (raw, 64),
+        }
+        model_seed = -1
+    else:
+        model_seed = int(args.e3_shard.removeprefix("seed"))
+        if model_seed not in archives:
+            raise ValueError("unknown E3 model-seed shard")
+        archive = archives[model_seed]
+        representations = {
+            "pooled_hidden": (archive["feature__pooled_hidden"][keep], None),
+            "true_organ_embedding": (archive["feature__true_organ_embedding"][keep], None),
+            "blind_router_hard_embedding": (
+                archive["feature__blind_router_hard_embedding"][keep], None
+            ),
+            "blind_router_soft_embedding": (
+                archive["feature__blind_router_soft_embedding"][keep], None
+            ),
+        }
+    results = {}
+    for name, (features, pca_components) in representations.items():
+        results[name] = evaluate_low_label_curve(
+            features,
+            labels,
+            groups,
+            pca_components=pca_components,
+            fractions=fractions,
+            subsample_seeds=subsample_seeds,
+            inner_folds=inner_folds,
+        )
+    return {
+        "status": "complete",
+        "component": "e3_low_label_shard",
+        "shard": args.e3_shard,
+        "model_seed": model_seed,
+        "n_samples": int(len(labels)),
+        "n_studies": int(np.unique(groups).size),
+        "results": results,
+    }
+
+
+def run_e3_aggregate(args, protocol: dict) -> dict:
+    root = Path(args.e3_shard_root)
+    reports = {}
+    for shard in ("baseline", "seed17", "seed42", "seed101"):
+        shard_root = root / shard
+        if not (shard_root / "COMPLETE").exists():
+            raise FileNotFoundError(f"incomplete E3 shard: {shard}")
+        reports[shard] = json.loads((shard_root / "evaluation_report.json").read_text())
+        if reports[shard].get("protocol_sha256") != sha256_file(Path(args.protocol)):
+            raise ValueError(f"E3 shard protocol mismatch: {shard}")
+    baseline = reports["baseline"]["results"]["raw_expression"]
+    fixed_candidates = (
+        "pooled_hidden",
+        "true_organ_embedding",
+        "blind_router_hard_embedding",
+        "blind_router_soft_embedding",
+    )
+    per_seed = {}
+    for model_seed in (17, 42, 101):
+        candidate_report = reports[f"seed{model_seed}"]["results"]
+        per_seed[str(model_seed)] = {}
+        for candidate in fixed_candidates:
+            per_seed[str(model_seed)][candidate] = {}
+            for fraction in ("0.05", "0.10"):
+                deltas = []
+                for subsample_seed in protocol["e3_low_label"]["subsample_seeds"]:
+                    key = str(subsample_seed)
+                    candidate_auroc = candidate_report[candidate][fraction][key]["metrics"]["auroc"]
+                    raw_auroc = baseline[fraction][key]["metrics"]["auroc"]
+                    deltas.append(float(candidate_auroc - raw_auroc))
+                per_seed[str(model_seed)][candidate][fraction] = {
+                    "mean_delta_auroc": float(np.mean(deltas)),
+                    "across_subsample_ci95": [
+                        float(np.quantile(deltas, 0.025)),
+                        float(np.quantile(deltas, 0.975)),
+                    ],
+                    "all_subsample_deltas": deltas,
+                    "passes": bool(np.quantile(deltas, 0.025) > 0),
+                }
+    gates = {}
+    for candidate in fixed_candidates:
+        gates[candidate] = {
+            "passes_all_model_seeds_at_5_and_10_percent": all(
+                per_seed[str(model_seed)][candidate][fraction]["passes"]
+                for model_seed in (17, 42, 101)
+                for fraction in ("0.05", "0.10")
+            )
+        }
+    return {
+        "status": "complete",
+        "component": "e3_low_label_aggregate",
+        "shard_reports": reports,
+        "raw_comparisons": per_seed,
+        "frozen_gates": gates,
+        "any_gate_passes": any(
+            value["passes_all_model_seeds_at_5_and_10_percent"]
+            for value in gates.values()
+        ),
+    }
+
+
 def write_immutable_output(output_dir: Path, report: dict, protocol_path: Path) -> None:
     report["protocol_sha256"] = sha256_file(protocol_path)
     report["best_seed_selection"] = False
@@ -639,7 +931,11 @@ def write_immutable_output(output_dir: Path, report: dict, protocol_path: Path) 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--component", choices=("e1", "e2", "e4"), required=True)
+    parser.add_argument(
+        "--component",
+        choices=("e1", "e2", "e3", "e3_aggregate", "e4"),
+        required=True,
+    )
     parser.add_argument("--protocol", required=True)
     parser.add_argument("--expected-protocol-sha256", required=True)
     parser.add_argument("--output-dir", required=True)
@@ -648,6 +944,8 @@ def main() -> None:
     parser.add_argument("--score-feature-root")
     parser.add_argument("--embedding-oof")
     parser.add_argument("--score-oof")
+    parser.add_argument("--e3-shard", choices=("baseline", "seed17", "seed42", "seed101"))
+    parser.add_argument("--e3-shard-root")
     args = parser.parse_args()
     protocol_path = Path(args.protocol)
     protocol = verify_protocol(protocol_path, args.expected_protocol_sha256)
@@ -663,6 +961,14 @@ def main() -> None:
         if not args.cohort_root or not args.score_feature_root:
             raise ValueError("E2 requires cohort and score-panel feature roots")
         report = run_e2(args, protocol, output_dir)
+    elif args.component == "e3":
+        if not args.cohort_root or not args.embedding_feature_root or not args.e3_shard:
+            raise ValueError("E3 requires cohort, embedding features, and an exact shard")
+        report = run_e3_shard(args, protocol)
+    elif args.component == "e3_aggregate":
+        if not args.e3_shard_root:
+            raise ValueError("E3 aggregation requires the exact shard root")
+        report = run_e3_aggregate(args, protocol)
     else:
         if not args.embedding_oof or not args.score_oof:
             raise ValueError("E4 requires both frozen OOF prediction files")

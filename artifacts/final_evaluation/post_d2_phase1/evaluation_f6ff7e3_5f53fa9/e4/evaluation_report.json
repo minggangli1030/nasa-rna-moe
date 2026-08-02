@@ -1,0 +1,817 @@
+{
+  "best_seed_selection": false,
+  "component": "e4_specialization_estimand",
+  "confirmation_claim": false,
+  "protocol_sha256": "082d7f4edfb314ddf7a97e5c53072977062af89ac4c01203d37df3dc98e86913",
+  "results": {
+    "embedding": {
+      "brain": {
+        "101": {
+          "blind_router_hard_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5511904761904762,
+            "candidate": "blind_router_hard_embedding",
+            "candidate_auroc": 0.5291666666666667,
+            "delta_auroc": -0.022023809523809557,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.22027972027972031,
+              0.084710743801653
+            ]
+          },
+          "blind_router_soft_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5511904761904762,
+            "candidate": "blind_router_soft_embedding",
+            "candidate_auroc": 0.5458333333333333,
+            "delta_auroc": -0.005357142857142949,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.22027972027972031,
+              0.14049586776859513
+            ]
+          },
+          "true_organ_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5511904761904762,
+            "candidate": "true_organ_embedding",
+            "candidate_auroc": 0.5416666666666666,
+            "delta_auroc": -0.009523809523809601,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.03519668737060033,
+              0.01388888888888895
+            ]
+          }
+        },
+        "17": {
+          "blind_router_hard_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5267857142857142,
+            "candidate": "blind_router_hard_embedding",
+            "candidate_auroc": 0.5875,
+            "delta_auroc": 0.06071428571428583,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              0.0,
+              0.20041322314049592
+            ]
+          },
+          "blind_router_soft_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5267857142857142,
+            "candidate": "blind_router_soft_embedding",
+            "candidate_auroc": 0.5613095238095238,
+            "delta_auroc": 0.03452380952380962,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.07999999999999996,
+              0.11776859504132242
+            ]
+          },
+          "true_organ_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5267857142857142,
+            "candidate": "true_organ_embedding",
+            "candidate_auroc": 0.5726190476190476,
+            "delta_auroc": 0.04583333333333339,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.0031055900621116406,
+              0.17132867132867136
+            ]
+          }
+        },
+        "42": {
+          "blind_router_hard_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.6130952380952381,
+            "candidate": "blind_router_hard_embedding",
+            "candidate_auroc": 0.5976190476190477,
+            "delta_auroc": -0.015476190476190421,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.23776223776223782,
+              0.08799048751486316
+            ]
+          },
+          "blind_router_soft_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.6130952380952381,
+            "candidate": "blind_router_soft_embedding",
+            "candidate_auroc": 0.6321428571428572,
+            "delta_auroc": 0.01904761904761909,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.022774327122153215,
+              0.07015457788347201
+            ]
+          },
+          "true_organ_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.6130952380952381,
+            "candidate": "true_organ_embedding",
+            "candidate_auroc": 0.6369047619047619,
+            "delta_auroc": 0.023809523809523725,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.010351966873705987,
+              0.08333333333333337
+            ]
+          }
+        }
+      },
+      "full_cohort": {
+        "101": {
+          "blind_router_hard_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.6070842129955429,
+            "candidate": "blind_router_hard_embedding",
+            "candidate_auroc": 0.5330049261083744,
+            "delta_auroc": -0.07407928688716858,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.14644622636244953,
+              -0.00938538981605783
+            ]
+          },
+          "blind_router_soft_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.6070842129955429,
+            "candidate": "blind_router_soft_embedding",
+            "candidate_auroc": 0.5072953319258738,
+            "delta_auroc": -0.0997888810696691,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.17699321511821506,
+              -0.030057245790742385
+            ]
+          },
+          "true_organ_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.6070842129955429,
+            "candidate": "true_organ_embedding",
+            "candidate_auroc": 0.5461412151067324,
+            "delta_auroc": -0.060942997888810524,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.11021031601079642,
+              -0.005369620143364468
+            ]
+          }
+        },
+        "17": {
+          "blind_router_hard_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5254515599343185,
+            "candidate": "blind_router_hard_embedding",
+            "candidate_auroc": 0.5307529908515131,
+            "delta_auroc": 0.005301430917194594,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.03751142202888526,
+              0.05806454879488515
+            ]
+          },
+          "blind_router_soft_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5254515599343185,
+            "candidate": "blind_router_soft_embedding",
+            "candidate_auroc": 0.5570959418250059,
+            "delta_auroc": 0.03164438189068741,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.023180559860080323,
+              0.0890265809631965
+            ]
+          },
+          "true_organ_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5254515599343185,
+            "candidate": "true_organ_embedding",
+            "candidate_auroc": 0.5711001642036124,
+            "delta_auroc": 0.04564860426929396,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              0.01613447951057714,
+              0.09390919395652923
+            ]
+          }
+        },
+        "42": {
+          "blind_router_hard_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5473610133708655,
+            "candidate": "blind_router_hard_embedding",
+            "candidate_auroc": 0.5614825240441004,
+            "delta_auroc": 0.01412151067323486,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.04821371511610585,
+              0.07158607714415828
+            ]
+          },
+          "blind_router_soft_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5473610133708655,
+            "candidate": "blind_router_soft_embedding",
+            "candidate_auroc": 0.5661740558292282,
+            "delta_auroc": 0.018813042458362683,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.019675515545480415,
+              0.05678762254108646
+            ]
+          },
+          "true_organ_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5473610133708655,
+            "candidate": "true_organ_embedding",
+            "candidate_auroc": 0.5365235749472201,
+            "delta_auroc": -0.010837438423645374,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.08152241448837794,
+              0.06625855453009218
+            ]
+          }
+        }
+      },
+      "skeletal_muscle": {
+        "101": {
+          "blind_router_hard_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.7153209109730848,
+            "candidate": "blind_router_hard_embedding",
+            "candidate_auroc": 0.5973084886128365,
+            "delta_auroc": -0.11801242236024834,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.2525254825470829,
+              -0.01071232323232328
+            ]
+          },
+          "blind_router_soft_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.7153209109730848,
+            "candidate": "blind_router_soft_embedding",
+            "candidate_auroc": 0.5813664596273292,
+            "delta_auroc": -0.13395445134575557,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.2800550662178961,
+              0.02139482868454264
+            ]
+          },
+          "true_organ_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.7153209109730848,
+            "candidate": "true_organ_embedding",
+            "candidate_auroc": 0.6534161490683229,
+            "delta_auroc": -0.06190476190476191,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.14525393423815394,
+              0.02403702688434052
+            ]
+          }
+        },
+        "17": {
+          "blind_router_hard_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5917184265010352,
+            "candidate": "blind_router_hard_embedding",
+            "candidate_auroc": 0.5563146997929607,
+            "delta_auroc": -0.03540372670807457,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.09240775670652637,
+              0.005953069885361633
+            ]
+          },
+          "blind_router_soft_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5917184265010352,
+            "candidate": "blind_router_soft_embedding",
+            "candidate_auroc": 0.5761904761904763,
+            "delta_auroc": -0.01552795031055898,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.07860518053375186,
+              0.027100639746551816
+            ]
+          },
+          "true_organ_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5917184265010352,
+            "candidate": "true_organ_embedding",
+            "candidate_auroc": 0.6138716356107661,
+            "delta_auroc": 0.022153209109730843,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.023020256909185462,
+              0.10575711004545156
+            ]
+          }
+        },
+        "42": {
+          "blind_router_hard_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5761904761904761,
+            "candidate": "blind_router_hard_embedding",
+            "candidate_auroc": 0.5939958592132505,
+            "delta_auroc": 0.017805383022774346,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.1145070198379244,
+              0.1264207775266069
+            ]
+          },
+          "blind_router_soft_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5761904761904761,
+            "candidate": "blind_router_soft_embedding",
+            "candidate_auroc": 0.5677018633540373,
+            "delta_auroc": -0.008488612836438869,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.08118364908687489,
+              0.04706423150891415
+            ]
+          },
+          "true_organ_embedding": {
+            "baseline": "pooled_hidden",
+            "baseline_auroc": 0.5761904761904761,
+            "candidate": "true_organ_embedding",
+            "candidate_auroc": 0.5643892339544513,
+            "delta_auroc": -0.011801242236024856,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.057700703724943236,
+              0.05034858301757559
+            ]
+          }
+        }
+      }
+    },
+    "score_panel": {
+      "brain": {
+        "101": {
+          "blind_router_hard": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5607142857142857,
+            "candidate": "blind_router_hard",
+            "candidate_auroc": 0.5476190476190477,
+            "delta_auroc": -0.013095238095238049,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.11983471074380159,
+              0.29370629370629364
+            ]
+          },
+          "blind_router_soft": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5607142857142857,
+            "candidate": "blind_router_soft",
+            "candidate_auroc": 0.5392857142857143,
+            "delta_auroc": -0.021428571428571463,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.15082644628099173,
+              0.29370629370629364
+            ]
+          },
+          "true_organ": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5607142857142857,
+            "candidate": "true_organ",
+            "candidate_auroc": 0.5440476190476191,
+            "delta_auroc": -0.016666666666666607,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.13842975206611574,
+              0.2867132867132868
+            ]
+          }
+        },
+        "17": {
+          "blind_router_hard": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5523809523809524,
+            "candidate": "blind_router_hard",
+            "candidate_auroc": 0.5821428571428572,
+            "delta_auroc": 0.029761904761904767,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.07999999999999996,
+              0.1678321678321678
+            ]
+          },
+          "blind_router_soft": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5523809523809524,
+            "candidate": "blind_router_soft",
+            "candidate_auroc": 0.5738095238095238,
+            "delta_auroc": 0.021428571428571352,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.07999999999999996,
+              0.25874125874125875
+            ]
+          },
+          "true_organ": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5523809523809524,
+            "candidate": "true_organ",
+            "candidate_auroc": 0.5452380952380952,
+            "delta_auroc": -0.0071428571428572285,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.07999999999999996,
+              0.09090909090909088
+            ]
+          }
+        },
+        "42": {
+          "blind_router_hard": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5142857142857143,
+            "candidate": "blind_router_hard",
+            "candidate_auroc": 0.5654761904761905,
+            "delta_auroc": 0.05119047619047612,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              0.03095975232198145,
+              0.7200000000000001
+            ]
+          },
+          "blind_router_soft": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5142857142857143,
+            "candidate": "blind_router_soft",
+            "candidate_auroc": 0.5583333333333333,
+            "delta_auroc": 0.044047619047619,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              0.017027863777089758,
+              0.68
+            ]
+          },
+          "true_organ": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5142857142857143,
+            "candidate": "true_organ",
+            "candidate_auroc": 0.575,
+            "delta_auroc": 0.06071428571428561,
+            "n_samples": 58,
+            "n_studies": 3,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.006993006993006978,
+              0.7200000000000001
+            ]
+          }
+        }
+      },
+      "full_cohort": {
+        "101": {
+          "blind_router_hard": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5695519587145202,
+            "candidate": "blind_router_hard",
+            "candidate_auroc": 0.5539291578700446,
+            "delta_auroc": -0.015622800844475648,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.05786831827592706,
+              0.04299803969615267
+            ]
+          },
+          "blind_router_soft": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5695519587145202,
+            "candidate": "blind_router_soft",
+            "candidate_auroc": 0.5665493783720384,
+            "delta_auroc": -0.0030025803424817976,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.03536394081734029,
+              0.056349642179631225
+            ]
+          },
+          "true_organ": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.5695519587145202,
+            "candidate": "true_organ",
+            "candidate_auroc": 0.5878958479943701,
+            "delta_auroc": 0.018343889279849868,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.020854194288188348,
+              0.07570222452677232
+            ]
+          }
+        },
+        "17": {
+          "blind_router_hard": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.6311986863711001,
+            "candidate": "blind_router_hard",
+            "candidate_auroc": 0.5853155055125498,
+            "delta_auroc": -0.045883180858550254,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.09193547174849298,
+              0.0016428724256097645
+            ]
+          },
+          "blind_router_soft": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.6311986863711001,
+            "candidate": "blind_router_soft",
+            "candidate_auroc": 0.6035186488388459,
+            "delta_auroc": -0.02768003753225423,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.07325920559077757,
+              0.016204756782573004
+            ]
+          },
+          "true_organ": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.6311986863711001,
+            "candidate": "true_organ",
+            "candidate_auroc": 0.5800609899132066,
+            "delta_auroc": -0.051137696457893456,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.08806336734271382,
+              -0.0047048021499594165
+            ]
+          }
+        },
+        "42": {
+          "blind_router_hard": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.6154820548909218,
+            "candidate": "blind_router_hard",
+            "candidate_auroc": 0.6304011259676283,
+            "delta_auroc": 0.014919071076706536,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.033408175559227836,
+              0.0653211050335361
+            ]
+          },
+          "blind_router_soft": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.6154820548909218,
+            "candidate": "blind_router_soft",
+            "candidate_auroc": 0.6153882242552192,
+            "delta_auroc": -9.383063570256311e-05,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.043197108805446624,
+              0.043722894853820485
+            ]
+          },
+          "true_organ": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.6154820548909218,
+            "candidate": "true_organ",
+            "candidate_auroc": 0.6126671358198451,
+            "delta_auroc": -0.0028149190710766714,
+            "n_samples": 292,
+            "n_studies": 18,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.03294094662131357,
+              0.03626686274509804
+            ]
+          }
+        }
+      },
+      "skeletal_muscle": {
+        "101": {
+          "blind_router_hard": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.6561076604554865,
+            "candidate": "blind_router_hard",
+            "candidate_auroc": 0.6770186335403727,
+            "delta_auroc": 0.02091097308488621,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.04076712500154706,
+              0.07552017427017427
+            ]
+          },
+          "blind_router_soft": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.6561076604554865,
+            "candidate": "blind_router_soft",
+            "candidate_auroc": 0.6875776397515528,
+            "delta_auroc": 0.03146997929606632,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.05044433801617706,
+              0.10001581955501133
+            ]
+          },
+          "true_organ": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.6561076604554865,
+            "candidate": "true_organ",
+            "candidate_auroc": 0.7229813664596274,
+            "delta_auroc": 0.06687370600414089,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.0180784637255496,
+              0.13086224133922333
+            ]
+          }
+        },
+        "17": {
+          "blind_router_hard": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.7420289855072464,
+            "candidate": "blind_router_hard",
+            "candidate_auroc": 0.6645962732919255,
+            "delta_auroc": -0.07743271221532089,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.1318386423702879,
+              -0.0021588629099950447
+            ]
+          },
+          "blind_router_soft": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.7420289855072464,
+            "candidate": "blind_router_soft",
+            "candidate_auroc": 0.6819875776397515,
+            "delta_auroc": -0.0600414078674949,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.12359393064382718,
+              -0.0016188412344686346
+            ]
+          },
+          "true_organ": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.7420289855072464,
+            "candidate": "true_organ",
+            "candidate_auroc": 0.6859213250517598,
+            "delta_auroc": -0.05610766045548654,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.10327043537146252,
+              0.02929320075248587
+            ]
+          }
+        },
+        "42": {
+          "blind_router_hard": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.712008281573499,
+            "candidate": "blind_router_hard",
+            "candidate_auroc": 0.7364389233954451,
+            "delta_auroc": 0.024430641821946097,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.037638724911452134,
+              0.08577900212454538
+            ]
+          },
+          "blind_router_soft": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.712008281573499,
+            "candidate": "blind_router_soft",
+            "candidate_auroc": 0.7269151138716357,
+            "delta_auroc": 0.014906832298136607,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.040464647033835836,
+              0.07230583176565436
+            ]
+          },
+          "true_organ": {
+            "baseline": "pooled",
+            "baseline_auroc": 0.712008281573499,
+            "candidate": "true_organ",
+            "candidate_auroc": 0.7349896480331263,
+            "delta_auroc": 0.022981366459627228,
+            "n_samples": 139,
+            "n_studies": 10,
+            "replicates": 2000,
+            "study_bootstrap_ci95": [
+              -0.006237126216350586,
+              0.06267377704066003
+            ]
+          }
+        }
+      }
+    }
+  },
+  "status": "complete"
+}

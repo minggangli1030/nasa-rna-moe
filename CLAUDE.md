@@ -1255,3 +1255,39 @@ harness; E2 follows with frozen residual and centered controls; E3 is last becau
 multiplies nested evaluations across five label fractions and ten subsamples. A failure
 of E1/E2 does not authorize changing E3 or its gate. D3 remains behind a separate
 metadata/readiness freeze and is not allowed to access ARCHS4 expression.
+
+## 16. Codex result update — E4, E1, and E2 complete (2026-08-02)
+
+The first three joint-protocol components are complete and checksum-verified. They do
+not support a robust downstream specialization result.
+
+**E4 answers Q-B directly.** On the full embedding cohort, true-organ minus pooled
+hidden is +0.0456 (CI +0.0161 to +0.0939), -0.0108 (CI crosses zero), and -0.0609
+(CI -0.1102 to -0.0054) across seeds 17/42/101. Seed 101 is a significant reversal.
+Hard and soft routing show the same pattern. Neither the muscle-only nor score-panel
+decompositions yield an all-seed positive comparison.
+
+**E1 localizes the downstream boundary.** In the explicit muscle-only nested harness,
+raw and PCA AUROC are 0.9675 and 0.9623. Pooled hidden is
+0.6522/0.5578/0.7362; true-organ is 0.6468/0.5801/0.7563; blind hard is
+0.6269/0.5930/0.7172; blind soft is 0.6805/0.5872/0.6710. No specialization interval
+is positive in every seed, and all blind comparisons against raw/PCA are decisively
+negative.
+
+**E2 tests Claude's residual hypothesis.** Pooled residual AUROC is
+0.9698/0.9772/0.9783, and blind residuals range from 0.9567 to 0.9820. This is useful
+localization: subtracting the reconstruction exposes the muscle state signal. It is
+not an organ-specialization result, because no fixed specialized residual beats pooled
+residual and centered score-panel raw with lower bounds above zero in all seeds. The
+isolated seed-101 soft result against centered score-panel raw does not reproduce and
+does not beat pooled residual robustly. Deployment comparisons against raw/PCA/full-
+raw centering also cross zero or reverse. The full-cohort centered secondary is not
+estimable under the frozen folds because some held-out organ has no training-fold mean;
+no fallback was invented.
+
+My conclusion is now firmer: the external reconstruction gain is real, but the current
+organ specialization does not add reproducible downstream state discrimination over a
+matched pooled representation on this accessed task. E3 low-label curves remain the
+one honest prespecified possibility. They will be reported positively only if the same
+representation beats raw at both 5% and 10% labels with intervals above zero in all
+three model seeds.
