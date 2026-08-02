@@ -1,6 +1,23 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-07-31 09:43 PDT / 2026-07-31 16:43 UTC
+**Last updated:** 2026-08-01 22:23 PDT / 2026-08-02 05:23 UTC
+
+## 2026-08-01 — OSDR encoder-validity audit frozen and running
+
+Claude's review identified a missing positive control: the human-trained encoder
+could be out of distribution on mouse ortholog-mapped input, which would make the
+OSDR result a cross-species boundary rather than evidence of a general objective
+mismatch. The read-only D1 audit now compares pooled hidden distributions against
+immutable GTEx caches, tests cross-study brain-versus-skeletal-muscle recovery, and
+audits ortholog coverage, missing-input policy, and normalization.
+
+The corrected protocol SHA256 is
+`e959ef694a83d2b8b2df6f50d20101ea467967bb30d6c1120b3fac44983b819f`;
+exact deployed commit is `5b1bc12282ad6edb8df71b068c311ca09ff62b02`.
+The first lineage emitted no outcome because of a direct-import defect and is
+preserved. Its import-only replacement passed focused checks and is running a smoke;
+a detached fail-closed continuation will launch the full audit only after smoke
+checksums pass. No frozen model or scientific threshold changed.
 
 ## 2026-07-31 — Explicit organ embedding fails downstream gate; final package frozen
 

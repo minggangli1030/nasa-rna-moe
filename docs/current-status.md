@@ -1,11 +1,27 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-07-31 09:43 PDT / 2026-07-31 16:43 UTC
+**Updated:** 2026-08-01 22:23 PDT / 2026-08-02 05:23 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
 
 ## Current phase
+
+The final K8 package remains frozen and unchanged. A new read-only D1 audit is now
+the blocking interpretation task: it distinguishes cross-species encoder/input
+breakdown from a genuine downstream-objective limit before the OSDR negative result
+is generalized. The corrected protocol is frozen at SHA256
+`e959ef694a83d2b8b2df6f50d20101ea467967bb30d6c1120b3fac44983b819f`;
+exact deployed commit is `5b1bc12282ad6edb8df71b068c311ca09ff62b02` in clean
+worktree `/media/volume/moe-reboot/worktrees/osdr_encoder_audit_5b1bc12`.
+
+The first smoke lineage at commit `9607c78` stopped before reading audit outcomes
+because direct script execution lacked the repository root on `sys.path`; its empty
+output is preserved. The import-only correction passed focused tests locally and on
+the VM. Corrected smoke `osdr-encoder-audit-smoke-v2` is CPU-active, and fail-closed
+screen `osdr-encoder-audit-continuation` will launch the full audit only after the
+smoke completes and its checksum manifest verifies. The audit performs no training,
+checkpoint updates, seed selection, architecture changes, or ARCHS4 access.
 
 The frozen OSDR downstream-development evaluation is complete. Exact evaluator
 commit `61766ee` finished at 2026-07-30 21:26 PDT on 292 samples from 18 studies;
