@@ -25,7 +25,9 @@ paired studies make one two-fold inner-training side too small for fold-fit PCA.
 three seed shards completed and verify but will not be reused against a differently
 sampled baseline. The correction uses the smallest feasible four paired studies/eight
 labels, still within the frozen "at least three and fail closed" rule, and reruns every
-shard in a new lineage. No scientific gate or outcome was changed.
+shard in a new lineage. Exact corrected commit `d627cfd` passed a PCA-specific VM
+smoke; all four shards relaunched at 16:40 PDT with an automatic checksum-gated
+aggregate continuation. No scientific gate or outcome was changed.
 
 ## 2026-08-02 — Post-D2 roadmap frozen; Q-B, muscle-only, and residual executions launched
 

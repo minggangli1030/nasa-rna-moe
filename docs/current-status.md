@@ -50,7 +50,14 @@ obsolete aggregate waiter was stopped. The protocol already requires at least th
 studies and fail-closed feasibility; the correction selects the smallest feasible
 four paired studies/eight labels at the nominal 5% floor, retains the same fractions,
 seeds, folds, grid, representations, and gates, and reruns all four shards in a new
-versioned lineage. Six focused tests pass after the correction.
+versioned lineage. Six focused tests and a PCA-specific VM smoke pass after the
+correction. Exact corrected commit is
+`d627cfd3d4f12d8d50b775ea88af571ee9f1b40a` in clean worktree
+`/media/volume/moe-reboot/worktrees/post_d2_e3_d627cfd`. All four corrected shards
+relaunched at 16:40 PDT into
+`/media/volume/moe-reboot/results/post_d2_e3_d627cfd`; a new checksum-gated aggregate
+continuation is waiting. All four processes are healthy at approximately two CPU cores
+each with 110 GiB memory available.
 
 Claude's post-D2 roadmap has been reviewed, corrected, hash-frozen, and moved into
 execution. The key separation is now explicit: Q-A asks whether a deployable learned
