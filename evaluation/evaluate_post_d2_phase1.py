@@ -19,6 +19,11 @@ from sklearn.metrics import roc_auc_score
 
 from evaluate_stage1_osdr_downstream import (
     EMBEDDING_CONDITIONS,
+    _fit,
+    _fit_grid_path,
+    _score,
+    _splits,
+    _transform,
     nested_group_evaluate,
 )
 
@@ -88,6 +93,106 @@ def assert_aligned(archives: dict[int, np.lib.npyio.NpzFile], reference) -> None
             right = reference[key].astype(str) if key != "labels" else reference[key]
             if not np.array_equal(left, right):
                 raise ValueError(f"seed {seed} {key} differs from reference")
+
+
+def _center_from_training_groups(
+    x_train: np.ndarray,
+    organs_train: np.ndarray,
+    x_test: np.ndarray,
+    organs_test: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Subtract organ means learned only from the training partition."""
+    train = np.empty_like(x_train, dtype=np.float32)
+    test = np.empty_like(x_test, dtype=np.float32)
+    for organ in np.unique(organs_train):
+        train_rows = organs_train == organ
+        test_rows = organs_test == organ
+        mean = x_train[train_rows].mean(axis=0, dtype=np.float64).astype(np.float32)
+        train[train_rows] = x_train[train_rows] - mean
+        if np.any(test_rows):
+            test[test_rows] = x_test[test_rows] - mean
+    unseen = set(np.unique(organs_test)) - set(np.unique(organs_train))
+    if unseen:
+        raise ValueError(f"test partition contains unseen organs: {sorted(unseen)}")
+    return train, test
+
+
+def nested_group_evaluate_centered(
+    x: np.ndarray,
+    y: np.ndarray,
+    groups: np.ndarray,
+    organs: np.ndarray,
+    *,
+    outer_folds: int,
+    inner_folds: int,
+    grid: tuple[tuple[float, float], ...],
+) -> dict:
+    """Nested grouped evaluation with fold-fit organ centering before scaling."""
+    folds = []
+    probabilities = np.full(len(y), np.nan, dtype=np.float64)
+    predictions = np.full(len(y), -1, dtype=np.int64)
+    for outer_index, (train_index, test_index) in enumerate(_splits(groups, outer_folds)):
+        candidate_scores = {item: [] for item in grid}
+        candidate_iterations = {item: [] for item in grid}
+        inner_groups = groups[train_index]
+        for inner_train, inner_test in _splits(inner_groups, inner_folds):
+            a = train_index[inner_train]
+            b = train_index[inner_test]
+            centered_train, centered_test = _center_from_training_groups(
+                x[a], organs[a], x[b], organs[b]
+            )
+            train, test = _transform(centered_train, centered_test, pca_components=None)
+            path = _fit_grid_path(train, y[a], test, grid)
+            for item, (probability, n_iter) in path.items():
+                candidate_scores[item].append(float(roc_auc_score(y[b], probability)))
+                candidate_iterations[item].append(n_iter)
+        candidates = []
+        for c_value, l1_ratio in grid:
+            candidates.append(
+                {
+                    "C": c_value,
+                    "l1_ratio": l1_ratio,
+                    "mean_inner_auroc": float(
+                        np.mean(candidate_scores[(c_value, l1_ratio)])
+                    ),
+                    "max_inner_iterations": int(
+                        max(candidate_iterations[(c_value, l1_ratio)])
+                    ),
+                }
+            )
+        selected = sorted(
+            candidates,
+            key=lambda item: (-item["mean_inner_auroc"], item["C"], item["l1_ratio"]),
+        )[0]
+        centered_train, centered_test = _center_from_training_groups(
+            x[train_index], organs[train_index], x[test_index], organs[test_index]
+        )
+        train, test = _transform(centered_train, centered_test, pca_components=None)
+        probability, prediction, n_iter = _fit(
+            train,
+            y[train_index],
+            test,
+            c_value=selected["C"],
+            l1_ratio=selected["l1_ratio"],
+        )
+        probabilities[test_index] = probability
+        predictions[test_index] = prediction
+        folds.append(
+            {
+                "fold": outer_index,
+                "selected": selected,
+                "outer_fit_iterations": n_iter,
+                "metrics": _score(y[test_index], probability, prediction),
+            }
+        )
+    if not np.isfinite(probabilities).all() or np.any(predictions < 0):
+        raise RuntimeError("centered grouped evaluation did not score every sample")
+    return {
+        "pooled_out_of_fold": _score(y, probabilities, predictions),
+        "folds": folds,
+        "probabilities": probabilities,
+        "predictions": predictions,
+    }
 
 
 def paired_study_bootstrap(
@@ -349,6 +454,175 @@ def run_e4(args, protocol: dict) -> dict:
     }
 
 
+def _centered_scope_is_feasible(groups: np.ndarray, organs: np.ndarray) -> bool:
+    for train_index, test_index in _splits(groups, 5):
+        if set(np.unique(organs[test_index])) - set(np.unique(organs[train_index])):
+            return False
+        inner_groups = groups[train_index]
+        for inner_train, inner_test in _splits(inner_groups, 3):
+            a = train_index[inner_train]
+            b = train_index[inner_test]
+            if set(np.unique(organs[b])) - set(np.unique(organs[a])):
+                return False
+    return True
+
+
+def _comparison_frame(
+    frame: pd.DataFrame,
+    *,
+    seed: int,
+    candidate: str,
+    baseline: str,
+) -> pd.DataFrame:
+    baseline_seed = -1 if baseline in {
+        "score_panel_within_organ_centered",
+        "full_raw_within_organ_centered",
+        "raw_expression",
+        "pca_64",
+    } else seed
+    return frame.loc[
+        ((frame["seed"] == seed) & (frame["representation"] == candidate))
+        | ((frame["seed"] == baseline_seed) & (frame["representation"] == baseline))
+    ]
+
+
+def run_e2(args, protocol: dict, output_dir: Path) -> dict:
+    archives = load_archives(
+        Path(args.score_feature_root),
+        protocol["inputs"]["score_panel_feature_sha256"],
+    )
+    reference = archives[17]
+    assert_aligned(archives, reference)
+    sample_ids, groups, organs, labels, raw = load_cohort(Path(args.cohort_root), reference)
+    score_indices = reference["score_gene_indices"].astype(np.int64)
+    if np.any(score_indices < 0) or np.any(score_indices >= raw.shape[1]):
+        raise ValueError("score-gene indices are outside the cohort expression matrix")
+    observed_score = raw[:, score_indices]
+    scope_masks = {
+        "skeletal_muscle": organs == "skeletal_muscle",
+        "full_cohort": np.ones(len(organs), dtype=bool),
+    }
+    reports = {}
+    bootstrap = protocol["shared_evaluation"]
+    for scope_index, (scope, keep) in enumerate(scope_masks.items()):
+        scoped_groups = groups[keep]
+        scoped_organs = organs[keep]
+        if not _centered_scope_is_feasible(scoped_groups, scoped_organs):
+            reports[scope] = {
+                "status": "not_estimable",
+                "reason": "at least one grouped inner/test fold contains an organ absent from its training partition; frozen fold-fit centering has no authorized fallback",
+                "n_samples": int(keep.sum()),
+                "n_studies": int(np.unique(scoped_groups).size),
+            }
+            continue
+        rows = []
+        results = {}
+        baseline_specs = (
+            ("score_panel_within_organ_centered", observed_score, "centered"),
+            ("full_raw_within_organ_centered", raw, "centered"),
+            ("raw_expression", raw, "plain"),
+            ("pca_64", raw, "pca"),
+        )
+        for name, features, mode in baseline_specs:
+            if mode == "centered":
+                result = nested_group_evaluate_centered(
+                    features[keep], labels[keep], scoped_groups, scoped_organs,
+                    outer_folds=5, inner_folds=3, grid=GRID,
+                )
+            else:
+                result = nested_group_evaluate(
+                    features[keep], labels[keep], scoped_groups,
+                    outer_folds=5, inner_folds=3,
+                    pca_components=64 if mode == "pca" else None,
+                    grid=GRID,
+                )
+            results[name] = {
+                key: value
+                for key, value in result.items()
+                if key not in {"probabilities", "predictions"}
+            }
+            rows.extend(
+                prediction_rows(
+                    seed=-1, representation=name, sample_ids=sample_ids[keep],
+                    groups=scoped_groups, organs=scoped_organs, labels=labels[keep],
+                    result=result,
+                )
+            )
+        residual_conditions = {
+            "residual_pooled": "pooled",
+            "residual_true_organ": "true_organ",
+            "residual_blind_router_hard": "blind_router_hard",
+            "residual_blind_router_soft": "blind_router_soft",
+        }
+        for model_seed, archive in archives.items():
+            for name, source in residual_conditions.items():
+                residual = observed_score - archive[f"feature__{source}"]
+                result = nested_group_evaluate(
+                    residual[keep], labels[keep], scoped_groups,
+                    outer_folds=5, inner_folds=3, pca_components=None, grid=GRID,
+                )
+                results[f"seed{model_seed}__{name}"] = {
+                    key: value
+                    for key, value in result.items()
+                    if key not in {"probabilities", "predictions"}
+                }
+                rows.extend(
+                    prediction_rows(
+                        seed=model_seed, representation=name, sample_ids=sample_ids[keep],
+                        groups=scoped_groups, organs=scoped_organs, labels=labels[keep],
+                        result=result,
+                    )
+                )
+        frame = pd.DataFrame(rows)
+        predictions_path = output_dir / f"{scope}_out_of_fold_predictions.csv"
+        frame.to_csv(predictions_path, index=False)
+        comparisons = {}
+        scientific_candidates = (
+            "residual_true_organ",
+            "residual_blind_router_hard",
+            "residual_blind_router_soft",
+        )
+        for seed_index, model_seed in enumerate((17, 42, 101)):
+            comparisons[str(model_seed)] = {}
+            comparison_index = 0
+            for candidate in scientific_candidates:
+                baselines = [
+                    "residual_pooled",
+                    "score_panel_within_organ_centered",
+                ]
+                if candidate.startswith("residual_blind"):
+                    baselines.extend(
+                        ["full_raw_within_organ_centered", "raw_expression", "pca_64"]
+                    )
+                for baseline in baselines:
+                    selected = _comparison_frame(
+                        frame, seed=model_seed, candidate=candidate, baseline=baseline
+                    )
+                    key = f"{candidate}_vs_{baseline}"
+                    comparisons[str(model_seed)][key] = paired_study_bootstrap(
+                        selected,
+                        candidate=candidate,
+                        baseline=baseline,
+                        seed=int(bootstrap["study_bootstrap_seed"])
+                        + 10000 + scope_index * 1000 + seed_index * 100 + comparison_index,
+                        replicates=int(bootstrap["study_bootstrap_replicates"]),
+                    )
+                    comparison_index += 1
+        reports[scope] = {
+            "status": "complete",
+            "n_samples": int(keep.sum()),
+            "n_studies": int(np.unique(scoped_groups).size),
+            "results": results,
+            "comparisons": comparisons,
+            "predictions_sha256": sha256_file(predictions_path),
+        }
+    return {
+        "status": "complete",
+        "component": "e2_organ_conditional_residuals",
+        "scopes": reports,
+    }
+
+
 def write_immutable_output(output_dir: Path, report: dict, protocol_path: Path) -> None:
     report["protocol_sha256"] = sha256_file(protocol_path)
     report["best_seed_selection"] = False
@@ -365,12 +639,13 @@ def write_immutable_output(output_dir: Path, report: dict, protocol_path: Path) 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--component", choices=("e1", "e4"), required=True)
+    parser.add_argument("--component", choices=("e1", "e2", "e4"), required=True)
     parser.add_argument("--protocol", required=True)
     parser.add_argument("--expected-protocol-sha256", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--cohort-root")
     parser.add_argument("--embedding-feature-root")
+    parser.add_argument("--score-feature-root")
     parser.add_argument("--embedding-oof")
     parser.add_argument("--score-oof")
     args = parser.parse_args()
@@ -384,6 +659,10 @@ def main() -> None:
         if not args.cohort_root or not args.embedding_feature_root:
             raise ValueError("E1 requires cohort and embedding feature roots")
         report = run_e1(args, protocol, output_dir)
+    elif args.component == "e2":
+        if not args.cohort_root or not args.score_feature_root:
+            raise ValueError("E2 requires cohort and score-panel feature roots")
+        report = run_e2(args, protocol, output_dir)
     else:
         if not args.embedding_oof or not args.score_oof:
             raise ValueError("E4 requires both frozen OOF prediction files")

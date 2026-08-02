@@ -7,10 +7,13 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "evaluation"))
 
 from evaluate_post_d2_phase1 import (  # noqa: E402
+    _center_from_training_groups,
     paired_study_bootstrap,
     sha256_file,
     verify_protocol,
 )
+
+import numpy as np
 
 
 def test_paired_study_bootstrap_is_directional_and_deterministic():
@@ -72,3 +75,15 @@ def test_protocol_hash_is_fail_closed(tmp_path: Path):
         assert "mismatch" in str(error)
     else:
         raise AssertionError("modified protocol did not fail closed")
+
+
+def test_fold_fit_centering_uses_training_means_only():
+    x_train = np.asarray([[1.0], [3.0], [10.0], [14.0]], dtype=np.float32)
+    organ_train = np.asarray(["a", "a", "b", "b"])
+    x_test = np.asarray([[101.0], [114.0]], dtype=np.float32)
+    organ_test = np.asarray(["a", "b"])
+    train, test = _center_from_training_groups(
+        x_train, organ_train, x_test, organ_test
+    )
+    assert np.allclose(train, [[-1.0], [1.0], [-2.0], [2.0]])
+    assert np.allclose(test, [[99.0], [102.0]])
