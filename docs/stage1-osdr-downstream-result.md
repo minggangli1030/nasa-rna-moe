@@ -109,11 +109,12 @@ respectively.
 
 ## 2026-08-01 interpretation audit addendum
 
-The frozen D1 audit is complete with verdict `ENCODER_TRANSFERS_OBJECTIVE_LIMIT`.
-Pooled hidden passed the GTEx-relative distribution gate in all seeds, recovered a
-cross-study brain-versus-skeletal-muscle positive control at 0.996 balanced accuracy
-versus 1.000 for raw expression, and passed mapping, missing-input, and normalization
-checks. The negative result above therefore is not explained by a degenerate mouse-
-input encoder. It remains bounded to this accessed, cross-species spaceflight-state
-task and output contract; it does not establish that every downstream representation
-learned by an organ MoE must fail.
+The frozen D1 audit's original machine verdict was
+`ENCODER_TRANSFERS_OBJECTIVE_LIMIT`, but its executed brain-versus-skeletal-muscle
+control is now reclassified `D1B_CONFOUNDED_UNINFORMATIVE`: organ is completely
+aliased with OSDR study for that contrast. The 1.000 raw and 0.996 pooled-hidden
+balanced accuracies remain recorded but support no organ-transfer inference. D1a
+instead shows mild compression without global degeneration, and D1c passes mapping,
+missing-input, and normalization checks. The negative result above is therefore not
+explained by gross encoder or pipeline failure, but fine-grained cross-species
+biological retention remains unresolved pending the frozen GTEx-trained replacement.

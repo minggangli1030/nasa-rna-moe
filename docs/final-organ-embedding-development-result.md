@@ -88,11 +88,11 @@ verification. Package-manifest SHA256 is
 
 ## 2026-08-01 interpretation audit addendum
 
-The read-only D1 audit completed with verdict `ENCODER_TRANSFERS_OBJECTIVE_LIMIT`.
-All seeds passed the pooled-hidden GTEx-relative distribution gate; pooled hidden
-recovered the cross-study brain-versus-skeletal-muscle control at 0.996 balanced
-accuracy versus 1.000 for raw expression; mapping and normalization checks passed.
-Thus the AUROC failure here is not attributable to a collapsed cross-species encoder.
-The conclusion remains deliberately narrow: this frozen embedding contract did not
-beat raw/PCA on this accessed mouse spaceflight task. It is not a universal negative
-claim about organ-conditioned downstream learning.
+The read-only D1 audit's executed brain-versus-skeletal-muscle arm is reclassified
+`D1B_CONFOUNDED_UNINFORMATIVE` because organ is completely aliased with OSDR study.
+Its 0.996 pooled-hidden and 1.000 raw balanced accuracies remain correct numbers but
+do not demonstrate organ transfer. D1a supports mild compression rather than global
+collapse, and D1c passes mapping and normalization checks. Thus the AUROC failure is
+not attributable to a grossly broken encoder/input path, but biological information
+retention across species is not established by D1b. The conclusion remains narrow:
+this frozen embedding contract did not beat raw/PCA on this accessed mouse state task.

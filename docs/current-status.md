@@ -10,9 +10,11 @@ This is the operational handoff. Historical detail remains in Git through commit
 The final K8 package remains frozen and unchanged. The read-only D1 encoder-validity
 audit is complete and checksum-verified at protocol SHA256
 `e959ef694a83d2b8b2df6f50d20101ea467967bb30d6c1120b3fac44983b819f` and deployed
-commit `5b1bc12282ad6edb8df71b068c311ca09ff62b02`. Its prespecified verdict is
-`ENCODER_TRANSFERS_OBJECTIVE_LIMIT`: the OSDR negative is not explained by a broken
-human-to-mouse encoder or input pipeline.
+commit `5b1bc12282ad6edb8df71b068c311ca09ff62b02`. The original machine-readable verdict
+was `ENCODER_TRANSFERS_OBJECTIVE_LIMIT`, but Claude's post-run contingency review
+identified that executed D1b is completely confounded by organ–study aliasing. D1b's
+numbers remain valid, but its biological inference is withdrawn and recorded as
+`D1B_CONFOUNDED_UNINFORMATIVE`.
 
 D1a classified pooled hidden as in-distribution in all seeds: OSDR/GTEx effective-
 rank ratios were 0.865, 0.793, and 0.764 for seeds 17, 42, and 101, and median
@@ -20,8 +22,20 @@ absolute mean z-shifts were 0.258, 0.411, and 0.450. D1b's cross-study brain-ver
 skeletal-muscle positive control achieved balanced accuracy 1.000 with raw expression
 and 0.996 with pooled hidden in every seed. D1c verified identical model-input value
 space, mean missing-entry fraction 0.000156, and constant-gene fraction 0.000832.
-Thus the encoder transfers meaningful organ structure, while the frozen representation
-still fails to improve the accessed spaceflight-state task over raw/PCA.
+D1a and D1c still show that the representation is mildly compressed rather than
+globally degenerate and that the ortholog/masking/normalization path is correct. They
+do not establish fine-grained biological transfer. The corrected bounded statement is:
+the OSDR failure is not explained by gross encoder or input-pipeline breakdown, while
+the frozen representation still fails to improve this accessed state task over
+raw/PCA.
+
+The replacement D1b is frozen before its outcomes at protocol SHA256
+`c7309e52e3e291c71198e8c291caba2ea9b4c3bb000b904a2b00da3a6527c54a` and scientific
+implementation commit `cdf32079561e7d6d56171f1d50fed5fe7b459640`. It trains the
+same donor-grouped seven-organ classifier entirely on GTEx and applies it unchanged
+to OSDR raw expression and each fixed-seed pooled-hidden representation. OSDR studies
+are never used for fitting or tuning. Frozen balanced-accuracy gates are at least
+0.60 for preserved, at most 0.25 for lost, with all three embedding seeds required.
 
 The independent D2 Hallmark feature audit is frozen at protocol SHA256
 `484667662935aed865d80a72503c428a68a6256f7c201beacaeb64f474632a62`; scientific

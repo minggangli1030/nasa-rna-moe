@@ -23,6 +23,24 @@ and beats raw, PCA, three fixed matched-random controls, and permuted Hallmark. 
 first launch emitted no outcome because the clean worktree lacked the ignored GMT;
 the retry points to an existing byte-identical, hash-verified GMT.
 
+### Post-run D1b correction
+
+Claude's review of the emitted organ-by-study table found complete aliasing for the
+executed brain-versus-skeletal-muscle control: no study contains both labels. The
+numeric balanced accuracies remain correct but cannot distinguish organ biology from
+study identity. D1b is therefore reclassified as `D1B_CONFOUNDED_UNINFORMATIVE`, and
+the claim that it demonstrated organ recovery is withdrawn. D1a is now described as
+"mildly compressed, not degenerate"; D1c still closes the mapping and normalization
+failure hypotheses.
+
+A replacement was implemented and frozen before its outcomes. It fits seven-organ
+classifiers only on human GTEx donor-grouped data, then applies them unchanged to OSDR
+raw expression and each fixed-seed pooled-hidden representation. Protocol SHA256 is
+`c7309e52e3e291c71198e8c291caba2ea9b4c3bb000b904a2b00da3a6527c54a`; implementation
+commit is `cdf32079561e7d6d56171f1d50fed5fe7b459640`. The prespecified gates require all
+embedding seeds to reach balanced accuracy 0.60 for preserved structure; 0.25 or less
+is the loss boundary. OSDR is never used for fitting or tuning.
+
 ## 2026-08-01 — OSDR encoder-validity audit frozen and running
 
 Claude's review identified a missing positive control: the human-trained encoder
