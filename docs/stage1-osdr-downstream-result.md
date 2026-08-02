@@ -106,3 +106,13 @@ The full report and predictions have SHA256
 and
 `1313b52d26d74b080f8fc0b1b8e9648c6e3ba5e8d50e16cf620753bd03d6ad3d`,
 respectively.
+
+## 2026-08-01 interpretation audit addendum
+
+The numeric result above remains valid, but its mechanism is provisional pending
+the frozen D1 encoder-validity audit in
+[`downstream-negative-result-audit-plan.md`](downstream-negative-result-audit-plan.md).
+The present evidence establishes failure on this mouse, cross-species OSDR task; it
+does not yet distinguish an intrinsically weak downstream representation from an
+out-of-distribution human-to-mouse encoder input. No model, seed, condition, cohort,
+or threshold is changed by the audit.

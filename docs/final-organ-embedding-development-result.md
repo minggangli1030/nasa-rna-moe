@@ -85,3 +85,13 @@ verification. Package-manifest SHA256 is
   `84cc59eeb69b73e72356c34c225ee013adfd85f185ddae7d1523de88b4f26638`; and
 - local compact lineage:
   `artifacts/final_evaluation/final_organ_embedding_evaluation_3f681fd/`.
+
+## 2026-08-01 interpretation audit addendum
+
+The AUROC values and frozen gate decision remain unchanged. The broader explanation
+is provisional pending the D1 encoder-validity audit in
+[`downstream-negative-result-audit-plan.md`](downstream-negative-result-audit-plan.md).
+That read-only audit tests whether the human-trained encoder remains in distribution
+and preserves a limited cross-study organ positive control on mouse input. Until its
+verdict is recorded, this document supports a cross-species task failure but not a
+general mechanism claim about the representation.
