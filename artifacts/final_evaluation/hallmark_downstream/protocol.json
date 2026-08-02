@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_d2_hallmark_outcome_access",
+  "role": "OSDR spaceflight Hallmark downstream-feature development; accessed cohort, not final confirmation",
+  "implementation_commit": "f2700e846a17bf2f7dd3ef7f69eca597a32e6646",
+  "cohort": {
+    "membership": "exact 292-sample, 18-study post-QC cohort; no replacements",
+    "label": "exact structured spaceflight versus ground-control label",
+    "groups": "study_id",
+    "outer_folds": 5,
+    "inner_folds": 3,
+    "parent_protocol_sha256": "04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9"
+  },
+  "inputs": {
+    "retained_cohort_sha256": "47a3f47a8a54c517b9530f53c1c9ce4eefda1829729d4df90dd3ea53d6ac3f80",
+    "expression_sha256": "c5753c9c89183107807779e5cf3365491013c7b1cbd9c0168fbb0c86113db1ce",
+    "hallmark_gmt_sha256": "eecaf6dad908334ae885406ec72bdc0646d8917588ed7c219fac92fc5363f596",
+    "router_sha256": "b5a19bdee62efad108e0301f84afbbca088cfd04985f95cd37836a45b0236abe",
+    "expression_space": "OSDR human-ortholog log1p TPM",
+    "score_gene_policy": "exclude the exact frozen router score-gene panel from every gene set"
+  },
+  "conditions": {
+    "primary": "hallmark_50_plus_pca_64",
+    "secondary": "hallmark_50",
+    "baselines": [
+      "pca_64",
+      "raw_expression"
+    ],
+    "controls": [
+      "three random_50 size-matched draws",
+      "hallmark_permuted"
+    ],
+    "feature_definition": "per-sample mean across visible non-score genes; fold-fit standardization",
+    "combined_definition": "fold-fit PCA64 of raw expression concatenated with independently fold-fit standardized Hallmark-50 features"
+  },
+  "controls": {
+    "random_draw_seeds": [
+      1701,
+      4201,
+      10101
+    ],
+    "permuted_hallmark_seed": 20260802,
+    "random_pool": "same visible non-score expression-gene pool",
+    "set_sizes": "exact visible non-score Hallmark set sizes",
+    "sampling": "without replacement within each set"
+  },
+  "head": {
+    "model": "elastic-net logistic regression with balanced class weights",
+    "primary_metric": "pooled out-of-fold AUROC",
+    "grid": [
+      {"C": 0.01, "l1_ratio": 0.0},
+      {"C": 0.01, "l1_ratio": 0.5},
+      {"C": 0.01, "l1_ratio": 1.0},
+      {"C": 0.1, "l1_ratio": 0.0},
+      {"C": 0.1, "l1_ratio": 0.5},
+      {"C": 0.1, "l1_ratio": 1.0},
+      {"C": 1.0, "l1_ratio": 0.0},
+      {"C": 1.0, "l1_ratio": 0.5},
+      {"C": 1.0, "l1_ratio": 1.0},
+      {"C": 10.0, "l1_ratio": 0.0},
+      {"C": 10.0, "l1_ratio": 0.5},
+      {"C": 10.0, "l1_ratio": 1.0}
+    ],
+    "convergence": "fail closed at 10000 iterations, tolerance 1e-3"
+  },
+  "statistics": {
+    "study_bootstrap_replicates": 2000,
+    "study_bootstrap_seed": 20260804,
+    "comparisons": [
+      "primary minus pca_64",
+      "primary minus raw_expression",
+      "secondary minus pca_64",
+      "secondary minus raw_expression"
+    ]
+  },
+  "frozen_gate": {
+    "primary_candidate": "hallmark_50_plus_pca_64",
+    "pca_interval": "study-bootstrap 95% interval strictly above zero",
+    "raw_interval": "study-bootstrap 95% interval strictly above zero",
+    "controls": "primary AUROC strictly greater than every random draw and permuted Hallmark",
+    "decision": "all three requirements must pass"
+  },
+  "firewalls": {
+    "model_or_checkpoint_training": false,
+    "best_condition_selection": false,
+    "cohort_or_label_change": false,
+    "sample_replacement": false,
+    "post_hoc_gate_change": false,
+    "same_osdr_cohort_can_confirm_final_claim": false,
+    "final_k8_package_modification": false,
+    "archs4_expression_access": false
+  }
+}
