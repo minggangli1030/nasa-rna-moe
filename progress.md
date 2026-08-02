@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-01 23:02 PDT / 2026-08-02 06:02 UTC
+**Last updated:** 2026-08-01 23:42 PDT / 2026-08-02 06:42 UTC
 
 ## 2026-08-01 — Encoder transfers; Hallmark downstream feature audit launched
 
@@ -40,6 +40,13 @@ raw expression and each fixed-seed pooled-hidden representation. Protocol SHA256
 commit is `cdf32079561e7d6d56171f1d50fed5fe7b459640`. The prespecified gates require all
 embedding seeds to reach balanced accuracy 0.60 for preserved structure; 0.25 or less
 is the loss boundary. OSDR is never used for fitting or tuning.
+
+Exact deployed continuation commit is
+`dbcabec18402b411e23e1511859ece4b04c8d713`. At 23:42 PDT, the D2 smoke had passed,
+the full D2 process was healthy at 154% CPU with 109 GiB memory available, and the
+replacement audit was waiting in a detached screen. It will start automatically only
+after D2 completion and checksum verification. A two-hour heartbeat is active through
+the 08:00 PDT result handoff.
 
 ## 2026-08-01 — OSDR encoder-validity audit frozen and running
 

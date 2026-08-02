@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-01 23:02 PDT / 2026-08-02 06:02 UTC
+**Updated:** 2026-08-01 23:42 PDT / 2026-08-02 06:42 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
@@ -36,6 +36,12 @@ same donor-grouped seven-organ classifier entirely on GTEx and applies it unchan
 to OSDR raw expression and each fixed-seed pooled-hidden representation. OSDR studies
 are never used for fitting or tuning. Frozen balanced-accuracy gates are at least
 0.60 for preserved, at most 0.25 for lost, with all three embedding seeds required.
+Exact deployed commit/worktree is `dbcabec18402b411e23e1511859ece4b04c8d713` /
+`/media/volume/moe-reboot/worktrees/cross_species_organ_transfer_dbcabec`. Screen
+`cross-species-organ-transfer-continuation` is healthy at `WAITING_FOR_D2` and will
+verify D2 checksums, then run replacement smoke and full sequentially. The two-hour
+heartbeat `d2-and-cross-species-audit-overnight` monitors both phases through the
+08:00 PDT morning handoff.
 
 The independent D2 Hallmark feature audit is frozen at protocol SHA256
 `484667662935aed865d80a72503c428a68a6256f7c201beacaeb64f474632a62`; scientific
