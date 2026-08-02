@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_cross_species_organ_transfer_outcome_access",
+  "role": "post-D1 methodological correction: GTEx-trained, OSDR-tested cross-species organ-transfer development audit",
+  "implementation_commit": "cdf32079561e7d6d56171f1d50fed5fe7b459640",
+  "reason": "Executed D1b is confounded because organ is aliased with OSDR study. Its numbers are retained but its biological inference is withdrawn.",
+  "cohort": {
+    "gtex_membership": "exact balanced_train rows from the immutable Stage 1 GTEx training manifest",
+    "gtex_training_rows": 7369,
+    "gtex_groups": "donor_id",
+    "osdr_membership": "exact 292-sample, 18-study post-QC development cohort; no replacements",
+    "osdr_rows": 292,
+    "shared_organs": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle"
+    ],
+    "excluded_gtex_organ": "skin because absent from OSDR",
+    "osdr_studies_never_used_for_fitting_or_tuning": true
+  },
+  "inputs": {
+    "gtex_expression_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
+    "gtex_manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "gtex_cache_sha256": {
+      "17": "4a3234ed61305bcecc2b036ce0430fcb71be30b659b28aaa81d2dbe6d3cd1d0f",
+      "42": "cfa1605f778830e03b8bd861d89f7858e25ef847a5fc277bcd08581b98f45eeb",
+      "101": "90a9b4d19c044986701d536e9661c5042ec3fff87c3d071d43d6867331c8db7c"
+    },
+    "osdr_expression_sha256": "c5753c9c89183107807779e5cf3365491013c7b1cbd9c0168fbb0c86113db1ce",
+    "osdr_retained_sha256": "47a3f47a8a54c517b9530f53c1c9ce4eefda1829729d4df90dd3ea53d6ac3f80",
+    "osdr_feature_sha256": {
+      "17": "6a6108cdb3631f2d752822562cef5cc5271959942faade1cb205c1084912e7ac",
+      "42": "5a2dfb8284362998bdc199e3e60d9d813d16a2df447966452788b0c3fe820ee2",
+      "101": "ac8af5f968f1bc650e04416789085013e3fc6a548e93f2b08da7b3262d6b0283"
+    }
+  },
+  "representations": {
+    "primary": "pooled_hidden evaluated independently for fixed seeds 17, 42, and 101",
+    "comparator": "ortholog-aligned raw log1p TPM expression",
+    "fitting_domain": "GTEx only",
+    "testing_domain": "OSDR only"
+  },
+  "classifier": {
+    "model": "multiclass SGD logistic classifier with L2 penalty, balanced class weights, and averaged iterates",
+    "preprocessing": "feature-wise StandardScaler fit on GTEx only",
+    "alpha_grid": [
+      0.00001,
+      0.0001,
+      0.001,
+      0.01
+    ],
+    "selection_metric": "mean donor-grouped GTEx balanced accuracy",
+    "donor_grouped_folds": 3,
+    "random_seed": 1701,
+    "max_iter": 5000,
+    "tolerance": 0.0001,
+    "fail_closed_unless_every_fold_contains_every_organ": true
+  },
+  "metrics": {
+    "primary": "OSDR seven-organ balanced accuracy",
+    "secondary": [
+      "macro-F1",
+      "per-organ recall",
+      "confusion matrix"
+    ],
+    "chance_reference": 0.14285714285714285
+  },
+  "thresholds": {
+    "preserved_balanced_accuracy": 0.60,
+    "lost_balanced_accuracy": 0.25,
+    "decision": {
+      "all_embedding_seeds_at_or_above_preserved": "CROSS_SPECIES_ORGAN_STRUCTURE_PRESERVED",
+      "raw_at_or_above_preserved_and_all_embedding_seeds_at_or_below_lost": "ENCODER_SPECIFIC_ORGAN_INFORMATION_LOSS",
+      "raw_at_or_below_lost": "CROSS_SPECIES_GAP_UPSTREAM_OR_TASK_LIMIT",
+      "otherwise": "CROSS_SPECIES_ORGAN_TRANSFER_PARTIAL"
+    }
+  },
+  "interpretation": {
+    "prior_d1b": "D1B_CONFOUNDED_UNINFORMATIVE",
+    "d1a": "mildly compressed, not degenerate",
+    "d1c": "input mapping and normalization path passes",
+    "replacement_scope": "development evidence about cross-species organ-region transfer; not state-task utility or final confirmation"
+  },
+  "firewalls": {
+    "model_or_checkpoint_training": false,
+    "osdr_fit_or_tuning": false,
+    "architecture_change": false,
+    "best_seed_or_condition_selection": false,
+    "cohort_or_label_change": false,
+    "post_hoc_threshold_change": false,
+    "archs4_expression_access": false,
+    "final_k8_package_modification": false
+  }
+}
