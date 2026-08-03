@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "status": "frozen_after_complete_post_d2_phase1",
+  "decision": "close the current frozen downstream-output-contract branch on the accessed OSDR task",
+  "evidence": {
+    "e1_q_a": "failed",
+    "e1_q_b": "failed",
+    "e2_residual_scientific_gate": "failed",
+    "e2_residual_deployment_gate": "failed",
+    "e3_low_label_gate": "failed",
+    "e4_matched_specialization_gate": "failed",
+    "stage1_external_reconstruction": "retained as the validated positive result",
+    "cross_species_organ_geometry": "preserved but lossy and not state evidence"
+  },
+  "priorities": [
+    {
+      "rank": 1,
+      "action": "consolidate the August 17 report and presentation using bounded reconstruction-positive and downstream-negative claims",
+      "deadline": "2026-08-17"
+    },
+    {
+      "rank": 2,
+      "action": "run D3-0 metadata/readiness only for a human controlled-treatment or acute-stress task",
+      "gates": {
+        "two_class_studies": 10,
+        "samples_per_class": 80,
+        "total_samples": 200,
+        "primary_organ_samples": 60,
+        "label_varies_within_study": true
+      },
+      "expression_access_before_contract_freeze": false
+    },
+    {
+      "rank": 3,
+      "action": "write a pristine study-disjoint reconstruction-confirmation cohort contract without accessing outcomes"
+    },
+    {
+      "rank": 4,
+      "action": "consider a separately versioned supervised or contrastive downstream model only after benchmark selection",
+      "benchmark_rule": "select task and grouped cohort before training; require raw-expression AUROC with measurable headroom, approximately 0.65 to 0.85",
+      "reuse_frozen_k8_as_claimed_downstream_model": false
+    }
+  ],
+  "firewalls": {
+    "no_more_osdr_output_selection": true,
+    "no_best_seed_selection": true,
+    "no_threshold_relaxation": true,
+    "no_archs4_expression_access": true,
+    "final_k8_package_unchanged": true,
+    "new_confirmation_required": true
+  }
+}

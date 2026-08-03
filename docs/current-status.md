@@ -1,11 +1,36 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-02 16:37 PDT / 2026-08-02 23:37 UTC
+**Updated:** 2026-08-02 18:38 PDT / 2026-08-03 01:38 UTC
 
 This is the operational handoff. Historical detail remains in Git through commit
 `2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
 
 ## Current phase
+
+Post-D2 Phase 1 is complete. The corrected E3 lineage at exact commit
+`d627cfd3d4f12d8d50b775ea88af571ee9f1b40a` completed all four shards and automatic
+aggregation at 17:35 PDT; every local and VM checksum verifies. No low-label gate
+passes. At the nominal 5% floor, raw/PCA mean AUROC is 0.6289/0.6329 versus
+0.4890-0.5250 learned. At 10%, raw/PCA is 0.7313/0.7203 versus 0.5074-0.5339 learned.
+Every learned-minus-raw mean delta is negative in every model seed; every 10% interval
+is entirely below zero. The low-label hypothesis is therefore closed rather than
+rescued by a favorable seed or condition.
+
+All E1-E4 gates now fail under the joint frozen protocol. The current downstream-
+output-contract branch is closed on accessed OSDR development evidence. Stage 1's
+external masked-gene reconstruction gain remains the validated positive result; the
+downstream negatives do not revise it. The finalized result is
+[`post-d2-phase1-interim-result.md`](post-d2-phase1-interim-result.md) (filename
+retained for link stability). Compact E3 results are under
+`artifacts/final_evaluation/post_d2_phase1/evaluation_d627cfd/`.
+
+The prioritized next plan is frozen at SHA256
+`de8af08bebd44a74c93fb83aeab70b6af80cbe8071256c748ef6a7fa2004deb3`:
+August 17 consolidation first; then D3-0 metadata/readiness only for a controlled human
+stress/treatment task; then an untouched reconstruction-confirmation contract. A
+supervised downstream extension is a separately versioned future family and may begin
+only after selecting a grouped benchmark with measurable raw-expression headroom.
+No more OSDR output selection and no ARCHS4 expression access are authorized.
 
 E4, E1, and E2 are complete and every immutable checksum verifies locally and on the
 VM. Their joint frozen gate result is negative. E4 shows no seed-invariant

@@ -1291,3 +1291,25 @@ matched pooled representation on this accessed task. E3 low-label curves remain 
 one honest prespecified possibility. They will be reported positively only if the same
 representation beats raw at both 5% and 10% labels with intervals above zero in all
 three model seeds.
+
+## 17. Codex final Phase-1 update — E3 also fails (2026-08-02)
+
+The corrected E3 lineage is complete and checksum-verified. The first lineage's
+three-study minimum was infeasible for fold-fit PCA under two grouped inner folds; it
+emitted no baseline report. I preserved it, refused to combine its completed seed
+shards with a new baseline, and reran all four shards using the smallest feasible four
+paired studies/eight labels. This still satisfies the frozen at-least-three and
+fail-closed rules; no fraction, seed, grid, representation, or gate changed.
+
+The low-label hypothesis fails clearly. Mean raw AUROC is 0.629 at the nominal 5%
+floor and 0.731 at 10%; PCA is 0.633 and 0.720. Learned conditions are only
+0.489-0.525 at 5% and 0.507-0.534 at 10%. Every learned-minus-raw mean delta is
+negative in every model seed. At 10%, all across-subsample intervals are entirely
+below zero. No frozen gate passes.
+
+This closes the current downstream-output-contract branch on OSDR. The bounded final
+statement is: organ experts provide a robust external reconstruction advantage, but
+the frozen hidden, predicted-panel, residual, and low-label representations do not
+provide seed-robust perturbation-state discrimination beyond matched pooling or
+raw/PCA on this accessed cross-species task. The next defensible work is benchmark and
+objective design, not another post-hoc representation search.

@@ -1,6 +1,6 @@
-# Post-D2 Phase 1 interim result: E4, E1, and E2
+# Post-D2 Phase 1 final result: E1–E4
 
-**Completed:** 2026-08-02
+**Completed:** 2026-08-02 17:35 PDT
 **Status:** checksum-verified secondary analysis on an already accessed OSDR
 development cohort; not confirmation
 **Joint protocol SHA256:**
@@ -8,7 +8,7 @@ development cohort; not confirmation
 
 ## Decision
 
-E4, E1, and E2 all fail their frozen downstream-specialization gates. The result is
+E1, E2, E3, and E4 all fail their frozen downstream-specialization gates. The result is
 now more precise than the earlier aggregate negative:
 
 - the skeletal-muscle task is real but close to saturated for raw expression;
@@ -18,8 +18,8 @@ now more precise than the earlier aggregate negative:
 - organ-conditional residuals are highly predictive, but their useful signal is
   already present in the pooled residual and simple observed-expression controls.
 
-No seed, representation, organ, interval, or condition is selected. E3 low-label
-learning curves remain the one final frozen Phase-1 question.
+No seed, representation, organ, interval, or condition is selected. The current frozen
+downstream-output-contract branch is closed on this accessed development task.
 
 ## E4: specialization versus pooling on frozen OOF predictions
 
@@ -100,7 +100,49 @@ or changing membership.
 **E2 verdict:** organ specialization contributes no reproducible residual advantage
 beyond the pooled residual or simple fold-fit expression controls on this task.
 
-## Interpretation and remaining step
+## E3: low-label learning curves
+
+E3 tested the last prespecified rescue hypothesis: compact embeddings might beat raw
+expression when labeled training data are scarce. The corrected, checksum-verified
+lineage uses four paired studies/eight labels at the nominal 5% floor, approximately
+the smallest setting compatible with two grouped inner folds and fold-fit PCA. It
+retains all ten frozen subsample seeds and scores complete untouched outer-test
+studies.
+
+The frozen gate fails for pooled hidden, true-organ, blind hard, and blind soft. No
+representation beats raw at both 5% and 10% with a positive across-subsample interval
+in all three model seeds. Every mean learned-minus-raw delta is negative.
+
+| seed | representation | 5% mean delta (95% interval) | 10% mean delta (95% interval) |
+|---:|---|---:|---:|
+| 17 | pooled hidden | -0.104 (-0.246, +0.074) | -0.197 (-0.305, -0.096) |
+| 17 | true-organ | -0.114 (-0.230, +0.004) | -0.201 (-0.301, -0.071) |
+| 17 | blind hard | -0.118 (-0.248, +0.002) | -0.201 (-0.297, -0.073) |
+| 17 | blind soft | -0.118 (-0.224, +0.002) | -0.215 (-0.297, -0.161) |
+| 42 | pooled hidden | -0.134 (-0.245, +0.001) | -0.220 (-0.347, -0.090) |
+| 42 | true-organ | -0.136 (-0.260, -0.013) | -0.217 (-0.303, -0.144) |
+| 42 | blind hard | -0.140 (-0.238, -0.005) | -0.224 (-0.310, -0.111) |
+| 42 | blind soft | -0.123 (-0.251, +0.005) | -0.211 (-0.276, -0.104) |
+| 101 | pooled hidden | -0.119 (-0.227, +0.020) | -0.209 (-0.355, -0.072) |
+| 101 | true-organ | -0.119 (-0.220, -0.000) | -0.212 (-0.289, -0.078) |
+| 101 | blind hard | -0.109 (-0.207, -0.008) | -0.212 (-0.286, -0.085) |
+| 101 | blind soft | -0.122 (-0.246, +0.008) | -0.208 (-0.285, -0.085) |
+
+Mean absolute AUROC is 0.6289 for raw and 0.6329 for PCA at 5%, versus
+0.4890-0.5250 for learned representations. At 10%, raw is 0.7313 and PCA is 0.7203,
+versus 0.5074-0.5339 learned. At 100%, learned AUROCs remain 0.5568-0.7491, while
+raw/PCA are 0.9424/0.9700 under E3's common two-inner-fold tuning scheme.
+
+The first E3 lineage is preserved as an implementation failure: three paired studies
+left one PCA inner-training split with only a single available component. It emitted
+no baseline report. Although its three seed shards completed, none was reused. The
+corrected lineage reran all four shards with the smallest feasible four paired studies;
+all shard and aggregate checksums verify.
+
+**E3 verdict:** compact learned representations do not gain a low-label advantage on
+this task. Scarce labels amplify rather than close the raw-expression gap.
+
+## Interpretation and next step
 
 The combined result separates three facts that were previously conflated:
 
@@ -112,8 +154,11 @@ The combined result separates three facts that were previously conflated:
    into seed-robust downstream discrimination, whether represented as hidden states,
    predicted score panels, or organ-conditional residuals.
 
-E3 now tests the remaining prespecified possibility: compact learned representations
-may help when labels are deliberately scarce even though they lose at full-label
-performance. A positive result requires the same representation to beat raw at both
-5% and 10% labels with across-subsample intervals above zero in all three model seeds.
-Anything weaker is reported as a negative or exploratory pattern, not a rescue.
+The current frozen representation family is therefore supported for external
+masked-gene reconstruction and coarse cross-species organ geometry, not for
+perturbation-state classification. The next work should not tune another output on
+OSDR. It should first consolidate the August 17 package, run the metadata-only D3-0
+readiness audit for a genuinely informative human controlled-stress task, and write a
+pristine reconstruction-confirmation cohort contract. Any supervised downstream
+extension must be a separately versioned model family evaluated on a task selected
+before model training.

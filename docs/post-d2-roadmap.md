@@ -3,7 +3,8 @@
 **Written:** 2026-08-02
 **Review input:** [`../CLAUDE.md`](../CLAUDE.md) Sections 13 and 14
 **Horizon:** August 17 deliverable, plus a post-deadline research program
-**Status:** execution roadmap for Codex; each phase requires its own frozen protocol
+**Status:** Phase 1 complete; all frozen downstream gates failed; Phase 2 is
+metadata-readiness only until a defensible cohort contract exists
 
 ---
 
@@ -191,6 +192,12 @@ seed. Plot AUROC against labeled sample count.
 seeds. Crossing at low label counts while losing at 100% is a **legitimate and
 reportable result**, and it is the outcome I consider most likely if any positive
 exists. Prespecify that so it cannot look like post-hoc rescue.
+
+**Completed result.** No gate passes. Raw/PCA mean AUROC is 0.629/0.633 at the nominal
+5% floor and 0.731/0.720 at 10%, while learned representations span 0.489-0.525 and
+0.507-0.534. Every learned-minus-raw mean delta is negative in every model seed, and
+all 10% intervals are below zero. The current downstream-output-contract branch is
+closed.
 
 ### E4. Q-B as a first-class estimand
 

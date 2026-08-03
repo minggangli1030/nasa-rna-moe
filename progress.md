@@ -1,6 +1,23 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-02 14:35 PDT / 2026-08-02 21:35 UTC
+**Last updated:** 2026-08-02 18:38 PDT / 2026-08-03 01:38 UTC
+
+## 2026-08-02 — E3 fails; post-D2 Phase 1 and current downstream branch close
+
+The corrected four-shard E3 run and deterministic aggregate completed at 17:35 PDT;
+all checksums verify. Raw/PCA mean AUROC was 0.6289/0.6329 at the nominal 5% floor and
+0.7313/0.7203 at 10%, while learned representations were only 0.4890-0.5250 and
+0.5074-0.5339. Every learned-minus-raw mean delta was negative in all model seeds, and
+all 10% intervals were below zero. No pooled, true-organ, hard-router, or soft-router
+gate passed.
+
+Together with E1, E2, and E4, this closes the current frozen downstream-output-contract
+branch on accessed OSDR evidence. The external reconstruction result remains positive
+and unchanged. The next plan is frozen at SHA256
+`de8af08bebd44a74c93fb83aeab70b6af80cbe8071256c748ef6a7fa2004deb3`:
+consolidate for August 17, perform D3-0 metadata readiness without expression access,
+and write an untouched reconstruction-confirmation cohort contract before considering
+a separately versioned supervised downstream model.
 
 ## 2026-08-02 — E4/E1/E2 complete; downstream specialization and residual gates fail
 
