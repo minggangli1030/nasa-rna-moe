@@ -1,6 +1,24 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-04 03:35 PDT / 2026-08-04 10:35 UTC
+**Last updated:** 2026-08-04 15:33 PDT / 2026-08-04 22:33 UTC
+
+## 2026-08-04 — ARCHS4 downstream metadata firewall passes VM smoke
+
+Claude's ARCHS4 benchmark direction was accepted with scientific-integrity
+corrections. The new cohort excludes the complete original Stage-1 manifest—not only
+the 63 post-QC retained groups. The 64 connected groups contain 72 individual GEO
+series tokens, all of which are now checksum-bound. The implementation also excludes
+explicit GTEx markers, maps only high-confidence samples in the eight frozen organs,
+and cannot accept an expression path.
+
+The focused local suite passed 24 tests. The first VM attempt stopped safely before a
+report because the ignored Stage-1 manifest was absent from the detached worktree. A
+versioned retry at exact commit `1532ea7` used the separately transferred,
+SHA-verified compact manifest and passed end to end on synthetic metadata. It produced
+the four expected decisions, zero eligible overlap rows, and recorded
+`expression_accessed=false`. This is a mechanical result only. ARCHS4 expression stays
+sealed until development/confirmation membership, target panel, mask schedules,
+generic-K8 construction, baselines, and evaluator gates are frozen.
 
 ## 2026-08-04 — Frozen-trunk K8 adapter diversity curve completes
 

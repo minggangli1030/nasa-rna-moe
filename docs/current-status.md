@@ -1,11 +1,24 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-04 03:35 PDT / 2026-08-04 10:35 UTC
+**Updated:** 2026-08-04 15:33 PDT / 2026-08-04 22:33 UTC
 
 This is the operational handoff. Historical detail is preserved in Git and in
 [`../progress.md`](../progress.md).
 
 ## Current phase
+
+The proposed ARCHS4 human downstream benchmark has passed its first implementation
+milestone without outcome access. Claude's two-family direction is accepted with
+firewall corrections: targeted-panel imputation is the cheap first utility test;
+within-organ state classification remains the more independent but curation-heavy
+test. The metadata-only implementation binds all 64 original Stage-1 connected study
+groups (72 constituent GSE tokens), excludes explicit GTEx overlap, and never accepts
+an expression input. The focused local suite passes 24 tests. A synthetic end-to-end
+VM smoke passed at exact commit `1532ea7`, with zero eligible overlap and
+`expression_accessed=false`. Real ARCHS4 expression remains sealed until the new
+development/confirmation membership, panel, masks, controls, and evaluator are
+hash-frozen. See
+[`archs4-downstream-benchmark-implementation.md`](archs4-downstream-benchmark-implementation.md).
 
 The Claude/Codex August 17 dispute is resolved and implementation has started within
 the authorized boundary. The exact execution plan is frozen at SHA256

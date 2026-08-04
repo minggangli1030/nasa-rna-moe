@@ -67,3 +67,25 @@ The metadata-only implementation:
 The VM smoke uses synthetic metadata. It proves mechanics and portability only; it is
 not a scientific result. Real ARCHS4 expression remains sealed until the complete
 benchmark contract is frozen.
+
+## Mechanical smoke result
+
+The focused local suite passed 24 tests, including the existing organ-recovery tests.
+The dependency-light end-to-end smoke then passed on the primary VM at exact detached
+commit `1532ea78159bc8faa03a14bab395cbd3333e1be9`.
+
+- protocol SHA256: `0e09c5dc3f840aa5a00136511251027aa9824865790afbe204dbda2ef1543771`;
+- VM result: `/media/volume/moe-reboot/results/archs4_downstream_metadata_smoke_1532ea7_retry1`;
+- result SHA256: `9221ca8cb4245a2c54077aa3c082f12325c0399c9c0dee6291eb53bea3c61e8e`;
+- decisions: one prior-Stage-1 exclusion, one explicit-GTEx exclusion, one eligible
+  target-organ row, and one outside-organ exclusion;
+- all 64 connected Stage-1 groups and all 72 constituent GSE tokens were bound;
+- eligible prior-Stage-1 overlaps: zero;
+- eligible explicit-GTEx overlaps: zero;
+- expression accessed: false.
+
+The earlier `4cfd52b` VM attempt is preserved as an implementation-only failure. It
+stopped before producing a report because the original Stage-1 manifest is intentionally
+not tracked in Git. The retry added an explicit input path, transferred the compact
+manifest separately, and verified its frozen SHA256 before execution. No cohort,
+threshold, mapping rule, or scientific gate changed.
