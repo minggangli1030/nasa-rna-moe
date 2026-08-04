@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "status": "frozen_real_metadata_catalog_execution",
+  "access_mode": "metadata_only_no_expression",
+  "scientific_outcome_access_authorized": false,
+  "archs4_expression_access_authorized": false,
+  "catalog_implementation_commit": "1532ea78159bc8faa03a14bab395cbd3333e1be9",
+  "catalog_implementation_sha256": "0576b586b8f24c07a925c7fb0138da97dbf0bdcc8b086369d3da6d7c1ad33066",
+  "protocol_sha256": "0e09c5dc3f840aa5a00136511251027aa9824865790afbe204dbda2ef1543771",
+  "ontology_sha256": "42d31a298b81b14de3603c4259a68c1f142c2ff81c8b0ed45398dfb3a1e1b688",
+  "stage1_original_manifest_sha256": "0605a5781f0daa0e039f7e9ddd240c6f24025c62cd063f148bcedcecae0d5d54",
+  "metadata_export": {
+    "exporter_sha256": "3553071b7d5cf08b1338cac0f29cfd1d8a5cc0a8d2611c0406709936322c3c2b",
+    "parquet_sha256": "40dfa45127726b016be64086fd226c0b66f37d2b46a53b28da766f29f0d3756b",
+    "report_sha256": "5d3e334480054f8b4a7ec9e7dea5c2e761b9d177c71352a5e0f5c89d1fd1ef58",
+    "n_samples": 1098771,
+    "geo_accession_sha256": "c5de80247162140d15d490d64ce88343d69e77ac1c97174ea44efa395106527a",
+    "archs4_version": "2.7",
+    "archs4_creation_date": "07/03/2026",
+    "expression_accessed": false
+  },
+  "remote_inputs": {
+    "metadata_parquet": "/media/volume/moe-reboot/inputs/archs4_downstream/human_sample_metadata_40dfa451.parquet",
+    "stage1_manifest": "/media/volume/moe-reboot/inputs/archs4_downstream/stage1_original_lockbox_manifest_0605a578.csv"
+  },
+  "remote_output": "/media/volume/moe-reboot/results/archs4_downstream_metadata_catalog_v1_1532ea7",
+  "required_preflight": [
+    "verify exact clean catalog implementation lineage",
+    "verify every input SHA256",
+    "verify metadata-only protocol",
+    "verify output path does not exist"
+  ],
+  "interpretation": "Metadata inventory only. Candidate labels, expression, headroom, and efficacy remain sealed."
+}
