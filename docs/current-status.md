@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-03 21:09 PDT / 2026-08-04 04:09 UTC
+**Updated:** 2026-08-03 21:14 PDT / 2026-08-04 04:14 UTC
 
 This is the operational handoff. Historical detail is preserved in Git and in
 [`../progress.md`](../progress.md).
@@ -72,7 +72,10 @@ combination marker. The exact scientific execution commit is
 `f21e40ffa86fa17f0e1a29881a2efb0be74c508c`. All 15 frozen budget-by-seed
 combinations launched across the two verified GPUs at 21:07 PDT: eight on primary and
 seven on the secondary host, with no overlap. Both first combinations are active at
-full GPU training settings; no scale outcome has yet been aggregated or interpreted.
+full GPU training settings. At 21:13 PDT both had reached update 200/1,500 at roughly
+33 updates/minute. Including the measured two-bank calibration time, the conservative
+completion window is 04:00–05:00 PDT on August 4. No scale outcome has yet been
+aggregated or interpreted.
 
 ## Frozen completed results
 

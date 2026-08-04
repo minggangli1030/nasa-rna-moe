@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-03 21:09 PDT / 2026-08-04 04:09 UTC
+**Last updated:** 2026-08-03 21:14 PDT / 2026-08-04 04:14 UTC
 
 ## 2026-08-03 — August 17 plan frozen; deck and metadata-only D3 work started
 
@@ -82,6 +82,11 @@ seven in `gtex-k8-scale-parallel-f21e40f`. Both use protocol SHA256
 and exact matching expression, metadata, axis-definition, and pooled-checkpoint
 hashes. Evaluation remains locked until all source outputs are checksum-verified and
 their compact score caches are merged without overwriting either lineage.
+At 21:13 PDT, both hosts were at update 200/1,500 of their first combination at about
+33 updates/minute with 98–100% GPU utilization. The measured training plus two-bank
+calibration rate gives a conservative full completion window of 04:00–05:00 PDT on
+August 4; frozen evaluation follows automatically through the dedicated two-hour
+execution heartbeat.
 
 ## 2026-08-02 — E3 fails; post-D2 Phase 1 and current downstream branch close
 
