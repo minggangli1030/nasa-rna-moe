@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-03 19:52 PDT / 2026-08-04 02:52 UTC
+**Last updated:** 2026-08-03 20:33 PDT / 2026-08-04 03:33 UTC
 
 ## 2026-08-03 — August 17 plan frozen; deck and metadata-only D3 work started
 
@@ -47,8 +47,12 @@ contains one sample from exactly 25/50/100/150/200 donors in every organ (200/40
 calibration cohort unchanged. Scale manifest SHA256 is
 `5f1f8bd62371ad993a2d4016c94e1ee252a18b795fc73e1c4b5f51570cdf66fc`.
 The scientific training/evaluation protocol is frozen at SHA256
-`264a4a42b206353f848bc55b0b35cff78cb33f2b8083bccbad2c4430e4b343e5`;
-mechanical GPU smoke is next.
+`0a93107daa1a916a1ce58fecc3c5992c0f1ea7e7e0f59afd21c0f9d8f8d9f22a`.
+The first trainer smoke failed before training because the combined manifest did not
+match the trainer's exact selected-train-plus-calibration row contract; it emitted no
+model or calibration outcome. Five corrected per-budget manifests and reports are
+checksum-verified, and all three focused manifest/evaluator tests pass. The versioned
+replacement GPU smoke is next.
 
 ## 2026-08-02 — E3 fails; post-D2 Phase 1 and current downstream branch close
 

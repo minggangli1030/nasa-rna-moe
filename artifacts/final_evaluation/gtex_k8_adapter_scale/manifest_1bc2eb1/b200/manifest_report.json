@@ -1,0 +1,14 @@
+{
+  "budget": 200,
+  "calibration_samples": 1826,
+  "expression_values_read": false,
+  "external_data_accessed": false,
+  "hashes": {
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "partition_manifest_sha256": "00ab9cc080c4b4dff303e0d6216a52624129bc114fa5757dc8c4c301cfe3311c"
+  },
+  "schema_version": 1,
+  "selected_train_samples": 1600,
+  "status": "complete",
+  "test_accessed": false
+}

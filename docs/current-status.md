@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-03 19:52 PDT / 2026-08-04 02:52 UTC
+**Updated:** 2026-08-03 20:33 PDT / 2026-08-04 03:33 UTC
 
 This is the operational handoff. Historical detail is preserved in Git and in
 [`../progress.md`](../progress.md).
@@ -56,10 +56,14 @@ per organ, one expression-blind sample per donor. The immutable scale manifest i
 identical across its two metadata-only build lineages and its trainer-compatible hash
 is `5f1f8bd62371ad993a2d4016c94e1ee252a18b795fc73e1c4b5f51570cdf66fc`.
 The scientific protocol SHA256 is
-`264a4a42b206353f848bc55b0b35cff78cb33f2b8083bccbad2c4430e4b343e5`.
+`0a93107daa1a916a1ce58fecc3c5992c0f1ea7e7e0f59afd21c0f9d8f8d9f22a`.
 It compares organ K8 with the equal-capacity pooled adapter on identical samples,
-updates, and total exposures across all three seeds. A mechanical GPU smoke is the
-next gate; no scale outcome exists yet.
+updates, and total exposures across all three seeds. The first mechanical lineage
+failed before training because its combined manifest included unselected training
+rows; it emitted no model or calibration outcome and is preserved. Five corrected,
+budget-specific trainer manifests now pass their immutable checksums and focused
+contract tests. A new mechanical GPU smoke is the next gate; no scale outcome exists
+yet.
 
 ## Frozen completed results
 

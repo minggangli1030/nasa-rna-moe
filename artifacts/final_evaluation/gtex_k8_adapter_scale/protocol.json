@@ -10,9 +10,23 @@
     "expression_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
     "expression_metadata_sha256": "111be4b987cb99f85329018fb0df951e1cafe0b8bcd385c9c31b5f944e8bb741",
     "source_manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
-    "scale_manifest_protocol_sha256": "879ab6b149e9e33e52d09491ca2795724e281d13eb3519b4d3306418dda813f9",
+    "scale_manifest_protocol_sha256": "ba62679b9e556b761f71f825560ed81923dbb6ac4a91014778e08c52d8abb9",
     "scale_manifest_sha256": "5f1f8bd62371ad993a2d4016c94e1ee252a18b795fc73e1c4b5f51570cdf66fc",
-    "scale_manifest_report_sha256": "c746e53574bb1b2482def1ad24e4ce406787c06f6eb76df2f80f57fec6e7c5e5",
+    "scale_manifest_report_sha256": "c9ae6c85e91f864bd1750bb76ed64cf1c43e402090f2a5217aa33fd6d022fd47",
+    "trainer_manifest_sha256_by_budget": {
+      "25": "659cd0bf47b645d67265ffb95bc299383b5c5711fb8fded8ce506efd49d692d8",
+      "50": "95dca0a9c1a694cc780bcbfc7518af66fded1f4c0d4d01916bb8186bb91148f3",
+      "100": "4d927f791218fb8b03c9d723d5a0a4e3ce1321ea32e43be8e9ecc121e9ecdaa3",
+      "150": "c5bcc72da6f42c4778fbfcbc0061eee6ff235dd93a07fc66d4ae60c36c024204",
+      "200": "00ab9cc080c4b4dff303e0d6216a52624129bc114fa5757dc8c4c301cfe3311c"
+    },
+    "trainer_manifest_report_sha256_by_budget": {
+      "25": "cf9ec915c75bc7cf5e8d0fa3459a59bd04ccd347227ed94fa57f5365f24b11eb",
+      "50": "263b917f1e7fa39cb1dd441b0fe6b32546c73b6ec03e09110ea919cb4af90b14",
+      "100": "526db154307ddd84880ba9bade36fa731b297b5fc476af2182986494c18cc4a0",
+      "150": "10b0151e8ff44efd0337be5aa7f3ee96ceb2a35637d2db00f9f545cc611af742",
+      "200": "72f0f8718c61871185dee7fcad6ab07cbad7eaff37a401ce6a27c2dcd4a4b6bc"
+    },
     "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
     "calibration_sample_ids_sha256": "39abfb762c9459de93d2f3391681279591c5ec73e473e6430905ff213f515181",
     "gene_order_sha256": "3332cb312000e426a866d669b3ba9b6206da50d70094fb5f9d30ef168e860dff",
