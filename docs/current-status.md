@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-03 20:33 PDT / 2026-08-04 03:33 UTC
+**Updated:** 2026-08-03 20:38 PDT / 2026-08-04 03:38 UTC
 
 This is the operational handoff. Historical detail is preserved in Git and in
 [`../progress.md`](../progress.md).
@@ -62,8 +62,12 @@ updates, and total exposures across all three seeds. The first mechanical lineag
 failed before training because its combined manifest included unselected training
 rows; it emitted no model or calibration outcome and is preserved. Five corrected,
 budget-specific trainer manifests now pass their immutable checksums and focused
-contract tests. A new mechanical GPU smoke is the next gate; no scale outcome exists
-yet.
+contract tests. The first replacement smoke then failed before its first update when
+a legacy trainer fallback exposure argument was not batch-divisible for the one-bank
+pooled control. The per-axis scientific targets were already correct; the versioned
+launcher repair sets that nonauthoritative fallback to the unchanged pooled total
+(`16` smoke, `12,000` full). No model/calibration outcome exists from either failed
+lineage. A second replacement GPU smoke is the next gate; no scale outcome exists yet.
 
 ## Frozen completed results
 

@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-03 20:33 PDT / 2026-08-04 03:33 UTC
+**Last updated:** 2026-08-03 20:38 PDT / 2026-08-04 03:38 UTC
 
 ## 2026-08-03 — August 17 plan frozen; deck and metadata-only D3 work started
 
@@ -53,6 +53,14 @@ match the trainer's exact selected-train-plus-calibration row contract; it emitt
 model or calibration outcome. Five corrected per-budget manifests and reports are
 checksum-verified, and all three focused manifest/evaluator tests pass. The versioned
 replacement GPU smoke is next.
+
+The first replacement smoke passed the corrected manifest checks but failed before
+its first optimizer update because the launcher's legacy fallback exposure argument
+was 1,500, which is not batch-divisible for the one-bank pooled control. The explicit
+scientific targets remained the frozen 1,500 per organ expert and 12,000 pooled total.
+The implementation-only repair uses the unchanged pooled total as the trainer
+fallback (`16` for smoke and `12,000` full); focused tests now cover both values. The
+failed VM lineage is preserved and emitted no model or calibration outcome.
 
 ## 2026-08-02 — E3 fails; post-D2 Phase 1 and current downstream branch close
 

@@ -50,6 +50,13 @@ def _parse_combo(value: str) -> tuple[int, int]:
     return budget, seed
 
 
+def _trainer_fallback_exposures(pooled_exposures: int, batch_size: int) -> int:
+    """Return a batch-divisible fallback; per-axis overrides remain authoritative."""
+    if pooled_exposures <= 0 or pooled_exposures % batch_size:
+        raise ValueError("pooled exposure total must be positive and batch-divisible")
+    return pooled_exposures
+
+
 def run(args: argparse.Namespace) -> None:
     root = Path(__file__).resolve().parents[1]
     protocol_path = Path(args.protocol)
@@ -153,7 +160,9 @@ def run(args: argparse.Namespace) -> None:
             "--validation-split", "calibration",
             "--train-filter-column", f"scale_b{budget}",
             "--adapter-dim", "64",
-            "--exposures-per-expert", "1500",
+            "--exposures-per-expert", str(
+                _trainer_fallback_exposures(pooled_exposures, batch_size=8)
+            ),
             "--maximum-exposure-fractional-deviation", "0.05",
             "--max-updates", str(update_budget),
             "--batch-size", "8",

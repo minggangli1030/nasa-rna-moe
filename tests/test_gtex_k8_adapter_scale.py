@@ -10,6 +10,12 @@ MODULE = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
 SPEC.loader.exec_module(MODULE)
 
+RUNNER_PATH = Path(__file__).resolve().parents[1] / "runs" / "run_gtex_k8_adapter_scale.py"
+RUNNER_SPEC = importlib.util.spec_from_file_location("run_gtex_k8_adapter_scale", RUNNER_PATH)
+RUNNER = importlib.util.module_from_spec(RUNNER_SPEC)
+assert RUNNER_SPEC.loader is not None
+RUNNER_SPEC.loader.exec_module(RUNNER)
+
 
 def test_macro_organ_donor_mse_equalizes_organs_and_donors():
     organs = np.repeat(np.asarray(MODULE.ORGANS), 3)
@@ -22,3 +28,8 @@ def test_macro_organ_donor_mse_equalizes_organs_and_donors():
 def test_relative_gain_direction():
     assert MODULE.relative_gain(10.0, 9.0) == 10.0
     assert MODULE.relative_gain(10.0, 11.0) == -10.0
+
+
+def test_trainer_fallback_exposures_are_batch_divisible():
+    assert RUNNER._trainer_fallback_exposures(16, 8) == 16
+    assert RUNNER._trainer_fallback_exposures(12_000, 8) == 12_000
