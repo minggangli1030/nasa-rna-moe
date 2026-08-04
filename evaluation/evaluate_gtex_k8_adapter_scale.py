@@ -23,7 +23,6 @@ ORGANS = (
     "skin",
 )
 SEEDS = (17, 42, 101)
-RANDOM_AXES = ("random_k8_p17", "random_k8_p42", "random_k8_p101")
 
 
 def sha256_file(path: Path, chunk_size: int = 8 * 1024 * 1024) -> str:
@@ -52,6 +51,26 @@ def macro_organ_donor_mse(
         selected = donor_names if selected_groups is None else selected_groups[organ]
         organ_means.append(float(np.mean([donor_values[str(donor)] for donor in selected])))
     return float(np.mean(organ_means))
+
+
+def per_organ_donor_mse(
+    values: np.ndarray,
+    organs: np.ndarray,
+    groups: np.ndarray,
+    selected_groups: dict[str, np.ndarray] | None = None,
+) -> dict[str, float]:
+    values = np.asarray(values, dtype=np.float64)
+    result = {}
+    for organ in ORGANS:
+        rows = np.flatnonzero(organs == organ)
+        donor_names = np.asarray(sorted(set(groups[rows].astype(str))), dtype=str)
+        donor_values = {
+            donor: float(values[rows[groups[rows] == donor]].mean())
+            for donor in donor_names
+        }
+        selected = donor_names if selected_groups is None else selected_groups[organ]
+        result[organ] = float(np.mean([donor_values[str(donor)] for donor in selected]))
+    return result
 
 
 def relative_gain(reference: float, candidate: float) -> float:
@@ -91,7 +110,7 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
         for seed in SEEDS:
             bank_root = result_root / f"b{budget}" / f"seed{seed}" / "banks" / "banks"
             axis_caches = {}
-            for axis in ("organ_k8", "pooled_adapter", *RANDOM_AXES):
+            for axis in ("organ_k8", "pooled_adapter"):
                 path = bank_root / axis / "calibration_scores.npz"
                 cache_hashes[str(path.relative_to(result_root))] = sha256_file(path)
                 axis_caches[axis] = _load_cache(path)
@@ -110,10 +129,6 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
             conditions[(budget, seed, "pooled_adapter")] = axis_caches["pooled_adapter"][
                 "true_partition_mse"
             ].astype(float)
-            random_stack = np.stack(
-                [axis_caches[axis]["true_partition_mse"].astype(float) for axis in RANDOM_AXES]
-            )
-            conditions[(budget, seed, "random_k8_mean")] = random_stack.mean(axis=0)
     assert canonical is not None
     sample_ids, groups, organs = canonical
     if set(organs) != set(ORGANS):
@@ -127,19 +142,26 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
         for seed in SEEDS:
             losses = {
                 condition: macro_organ_donor_mse(conditions[(budget, seed, condition)], organs, groups)
-                for condition in ("pooled", "pooled_adapter", "random_k8_mean", "organ_k8")
+                for condition in ("pooled", "pooled_adapter", "organ_k8")
             }
+            reference_by_organ = per_organ_donor_mse(
+                conditions[(budget, seed, "pooled_adapter")], organs, groups
+            )
+            candidate_by_organ = per_organ_donor_mse(
+                conditions[(budget, seed, "organ_k8")], organs, groups
+            )
             points[str(budget)][str(seed)] = {
                 "macro_organ_donor_mse": losses,
                 "organ_minus_pooled_adapter_gain_percent": relative_gain(
                     losses["pooled_adapter"], losses["organ_k8"]
                 ),
-                "organ_minus_random_k8_gain_percent": relative_gain(
-                    losses["random_k8_mean"], losses["organ_k8"]
-                ),
                 "organ_minus_pooled_trunk_gain_percent": relative_gain(
                     losses["pooled"], losses["organ_k8"]
                 ),
+                "per_organ_gain_vs_pooled_adapter_percent": {
+                    organ: relative_gain(reference_by_organ[organ], candidate_by_organ[organ])
+                    for organ in ORGANS
+                },
             }
 
     draws = int(protocol["statistics"]["donor_bootstrap_draws"])
@@ -152,7 +174,7 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
         (budget, seed, reference): np.empty(draws, dtype=float)
         for budget in budgets
         for seed in SEEDS
-        for reference in ("pooled_adapter", "random_k8_mean", "pooled")
+        for reference in ("pooled_adapter", "pooled")
     }
     for draw in range(draws):
         selected = {
@@ -164,7 +186,7 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
                 organ_loss = macro_organ_donor_mse(
                     conditions[(budget, seed, "organ_k8")], organs, groups, selected
                 )
-                for reference in ("pooled_adapter", "random_k8_mean", "pooled"):
+                for reference in ("pooled_adapter", "pooled"):
                     reference_loss = macro_organ_donor_mse(
                         conditions[(budget, seed, reference)], organs, groups, selected
                     )
@@ -180,7 +202,7 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
                     "mean_gain_percent": float(gains[(budget, seed, reference)].mean()),
                     "ci95": _ci(gains[(budget, seed, reference)]),
                 }
-                for reference in ("pooled_adapter", "random_k8_mean", "pooled")
+                for reference in ("pooled_adapter", "pooled")
             }
 
     x = np.log(np.asarray(budgets, dtype=float))
@@ -208,6 +230,21 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
             for seed in SEEDS
         )
     ]
+    safety_violations = [
+        {
+            "budget": budget,
+            "seed": seed,
+            "organ": organ,
+            "gain_vs_pooled_adapter_percent": points[str(budget)][str(seed)][
+                "per_organ_gain_vs_pooled_adapter_percent"
+            ][organ],
+        }
+        for budget in budgets
+        for seed in SEEDS
+        for organ in ORGANS
+        if points[str(budget)][str(seed)]["per_organ_gain_vs_pooled_adapter_percent"][organ]
+        < -float(protocol["safety"]["maximum_per_organ_harm_percent"])
+    ]
     report = {
         "schema_version": 1,
         "status": "complete",
@@ -219,6 +256,13 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
         "bootstrap": bootstrap,
         "log_budget_slopes": slopes,
         "stable_positive_vs_pooled_adapter_budgets": stable_budget_points,
+        "per_organ_safety": {
+            "maximum_allowed_harm_percent": float(
+                protocol["safety"]["maximum_per_organ_harm_percent"]
+            ),
+            "passes": not safety_violations,
+            "violations": safety_violations,
+        },
         "monotonic_decision": (
             "CONSISTENT_NONZERO_LOG_BUDGET_SLOPE"
             if same_nonzero_sign and every_interval_excludes_zero

@@ -1,0 +1,138 @@
+{
+  "decision": "MISLABEL_UTILITY_DOES_NOT_BEAT_RAW_AND_PCA_ALL_SEEDS",
+  "donor_bootstrap": {
+    "expert_seed101": {
+      "ci95": [
+        0.999095632876423,
+        0.9997727808674525
+      ],
+      "draw_mean": 0.9994595742980853
+    },
+    "expert_seed101_minus_pca64_centroid": {
+      "ci95": [
+        -0.0008535869600061197,
+        -0.00020445854590908646
+      ],
+      "draw_mean": -0.0005076941457478407
+    },
+    "expert_seed101_minus_raw_centroid": {
+      "ci95": [
+        0.0007315554610367314,
+        0.0030078233552262397
+      ],
+      "draw_mean": 0.0017162239348208022
+    },
+    "expert_seed17": {
+      "ci95": [
+        0.997957383297816,
+        0.9991441896751667
+      ],
+      "draw_mean": 0.9985953078955329
+    },
+    "expert_seed17_minus_pca64_centroid": {
+      "ci95": [
+        -0.002004351342807467,
+        -0.00081277912758006
+      ],
+      "draw_mean": -0.0013719605483001952
+    },
+    "expert_seed17_minus_raw_centroid": {
+      "ci95": [
+        -0.00014640357864967034,
+        0.0020384389971374326
+      ],
+      "draw_mean": 0.0008519575322684477
+    },
+    "expert_seed42": {
+      "ci95": [
+        0.9776267410001602,
+        0.9805384295038451
+      ],
+      "draw_mean": 0.9790923940793076
+    },
+    "expert_seed42_minus_pca64_centroid": {
+      "ci95": [
+        -0.02232438913343588,
+        -0.01945235971973292
+      ],
+      "draw_mean": -0.02087487436452544
+    },
+    "expert_seed42_minus_raw_centroid": {
+      "ci95": [
+        -0.02036919768243792,
+        -0.016831518680322715
+      ],
+      "draw_mean": -0.018650956283956795
+    },
+    "pca64_centroid": {
+      "ci95": [
+        0.9998965938132143,
+        1.0
+      ],
+      "draw_mean": 0.9999672684438331
+    },
+    "raw_centroid": {
+      "ci95": [
+        0.9964659270981089,
+        0.9986910754554634
+      ],
+      "draw_mean": 0.9977433503632644
+    }
+  },
+  "donors": 188,
+  "evaluator_sha256": "ec1e0b799280cbdebc478537055b28abf6ae15fa169878d5769a477680ab017e",
+  "firewalls": {
+    "archs4_expression_accessed": false,
+    "best_seed_selected": false,
+    "checkpoint_updated": false,
+    "confirmation_claim": false,
+    "neural_training_performed": false
+  },
+  "organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "point_macro_organ_auc": {
+    "expert_seed101": 0.9994682360726693,
+    "expert_seed17": 0.9986104728570728,
+    "expert_seed42": 0.9790817919975541,
+    "pca64_centroid": 0.9999670536872838,
+    "raw_centroid": 0.9977777271931753
+  },
+  "protocol_sha256": "b8de39a7b87c6d3f09976b822e49135186c94a5be2f75f7843090a938d3b9fd6",
+  "role": "gtex_calibration_development_organ_label_compatibility",
+  "samples": 1826,
+  "schema_version": 1,
+  "seed_gates": {
+    "101": {
+      "pca64_delta_lower_above_zero": false,
+      "point_above_pca64": false,
+      "point_above_raw": true,
+      "raw_delta_lower_above_zero": true
+    },
+    "17": {
+      "pca64_delta_lower_above_zero": false,
+      "point_above_pca64": false,
+      "point_above_raw": true,
+      "raw_delta_lower_above_zero": false
+    },
+    "42": {
+      "pca64_delta_lower_above_zero": false,
+      "point_above_pca64": false,
+      "point_above_raw": false,
+      "raw_delta_lower_above_zero": false
+    }
+  },
+  "seeds": [
+    17,
+    42,
+    101
+  ],
+  "status": "complete"
+}

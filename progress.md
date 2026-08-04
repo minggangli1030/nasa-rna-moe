@@ -31,12 +31,24 @@ closeout prioritizes an organ-label/anomaly utility audit, a frozen-trunk adapte
 data-diversity curve, and the Track A confirmation contract.
 
 The first read-only label-compatibility evaluator is implemented and frozen. Protocol
-SHA256 is `d9cf1462b68491b1abba67b8f5f8d4966546d72f854a0b0fada6ef46c1ebcabc`;
+SHA256 is `b8de39a7b87c6d3f09976b822e49135186c94a5be2f75f7843090a938d3b9fd6`;
 evaluator SHA256 is
-`d5b4a70db9c45b787f87a19952d061bd687686178c8e69917dc7193957b9e061`.
+`ec1e0b799280cbdebc478537055b28abf6ae15fa169878d5769a477680ab017e`.
 It compares all-seed expert compatibility margins with train-only raw and PCA64
-centroid margins under 2,000 donor bootstraps. Two focused tests pass; no outcome has
-yet been emitted.
+centroid margins under 2,000 donor bootstraps. The completed result fails its all-seed
+gate: expert AUROC is 0.998610/0.979082/0.999468, versus raw 0.997778 and PCA64
+0.999967. Every expert-minus-PCA interval is below zero. The experts carry strong
+organ compatibility, but this synthetic task is already saturated by a simple PCA
+baseline and provides no deployable MoE advantage.
+
+The expression-blind adapter-scale membership is also frozen and verified. Each point
+contains one sample from exactly 25/50/100/150/200 donors in every organ (200/400/800/
+1,200/1,600 total training samples), with nested membership and the original
+calibration cohort unchanged. Scale manifest SHA256 is
+`5f1f8bd62371ad993a2d4016c94e1ee252a18b795fc73e1c4b5f51570cdf66fc`.
+The scientific training/evaluation protocol is frozen at SHA256
+`264a4a42b206353f848bc55b0b35cff78cb33f2b8083bccbad2c4430e4b343e5`;
+mechanical GPU smoke is next.
 
 ## 2026-08-02 — E3 fails; post-D2 Phase 1 and current downstream branch close
 

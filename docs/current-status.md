@@ -39,16 +39,27 @@ frozen: exact expression source, minimum per-organ coverage, membership, overlap
 and evaluator/checkpoint manifests are required first. Exact current planning hashes
 are in `artifacts/final_evaluation/aug17_planning/PLANNING_SHA256SUMS`.
 
-The first closeout experiment is implementation-complete and protocol-frozen but has
-not yet produced an outcome. The read-only organ-label compatibility evaluator uses
+The first closeout experiment is complete. The read-only organ-label compatibility evaluator uses
 the existing GTEx calibration score caches, all seven wrong label assignments per
 sample, and train-only raw/PCA centroid margins. Protocol SHA256 is
-`d9cf1462b68491b1abba67b8f5f8d4966546d72f854a0b0fada6ef46c1ebcabc`;
+`b8de39a7b87c6d3f09976b822e49135186c94a5be2f75f7843090a938d3b9fd6`;
 evaluator SHA256 is
-`d5b4a70db9c45b787f87a19952d061bd687686178c8e69917dc7193957b9e061`.
-Two focused tests pass. The gate requires the expert compatibility margin to beat
-both raw and PCA in every seed with positive donor-bootstrap lower bounds. It performs
-no neural training, does not use ARCHS4, and is development evidence only.
+`ec1e0b799280cbdebc478537055b28abf6ae15fa169878d5769a477680ab017e`.
+Expert AUROC is 0.998610/0.979082/0.999468 for seeds 17/42/101, but PCA64 reaches
+0.999967 and raw reaches 0.997778. Every expert-minus-PCA interval is negative, so the
+all-seed gate fails. This closes synthetic label-swap utility without tuning. See
+[`gtex-k8-mislabel-result.md`](gtex-k8-mislabel-result.md).
+
+The main new closeout experiment is now protocol-frozen but not yet trained: a
+frozen-trunk adapter data-diversity curve at exactly 25/50/100/150/200 unique donors
+per organ, one expression-blind sample per donor. The immutable scale manifest is
+identical across its two metadata-only build lineages and its trainer-compatible hash
+is `5f1f8bd62371ad993a2d4016c94e1ee252a18b795fc73e1c4b5f51570cdf66fc`.
+The scientific protocol SHA256 is
+`264a4a42b206353f848bc55b0b35cff78cb33f2b8083bccbad2c4430e4b343e5`.
+It compares organ K8 with the equal-capacity pooled adapter on identical samples,
+updates, and total exposures across all three seeds. A mechanical GPU smoke is the
+next gate; no scale outcome exists yet.
 
 ## Frozen completed results
 

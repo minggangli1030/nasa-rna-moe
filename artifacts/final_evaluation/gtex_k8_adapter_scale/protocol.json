@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "written": "2026-08-03",
+  "status": "frozen_gtex_k8_adapter_scale_protocol",
+  "purpose": "measure when organ-specific residual adapters help relative to an equal-capacity pooled adapter as unique donor diversity changes",
+  "scope": "adapter_data_diversity_curve_conditional_on_the_frozen_full_data_pooled_trunk",
+  "not_claimed": "end_to_end_model_scaling_law",
+  "inputs": {
+    "stage1_protocol_sha256": "1d982a469f3e1c7c907394d85f2c4b5c75558de88607680ecb1d51af06380a69",
+    "expression_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
+    "expression_metadata_sha256": "111be4b987cb99f85329018fb0df951e1cafe0b8bcd385c9c31b5f944e8bb741",
+    "source_manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "scale_manifest_protocol_sha256": "879ab6b149e9e33e52d09491ca2795724e281d13eb3519b4d3306418dda813f9",
+    "scale_manifest_sha256": "5f1f8bd62371ad993a2d4016c94e1ee252a18b795fc73e1c4b5f51570cdf66fc",
+    "scale_manifest_report_sha256": "c746e53574bb1b2482def1ad24e4ce406787c06f6eb76df2f80f57fec6e7c5e5",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "calibration_sample_ids_sha256": "39abfb762c9459de93d2f3391681279591c5ec73e473e6430905ff213f515181",
+    "gene_order_sha256": "3332cb312000e426a866d669b3ba9b6206da50d70094fb5f9d30ef168e860dff",
+    "score_gene_indices_sha256": "87ab09ccf16bac5da76bf89de4e16628f62d63986ce0f5cf17a2ba92884b544e"
+  },
+  "data_curve": {
+    "donors_per_organ": [25, 50, 100, 150, 200],
+    "one_sample_per_donor": true,
+    "nested": true,
+    "exact_samples_per_budget": [200, 400, 800, 1200, 1600],
+    "train_filter_columns": [
+      "scale_b25",
+      "scale_b50",
+      "scale_b100",
+      "scale_b150",
+      "scale_b200"
+    ],
+    "calibration_membership_unchanged": true,
+    "budget_selection_after_outcome_access": false
+  },
+  "model": {
+    "seeds": [17, 42, 101],
+    "ordered_organs": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "conditions": ["organ_k8", "pooled_adapter"],
+    "pooled_trunk_checkpoint_sha256_by_seed": {
+      "17": "ae5d6d1619938d8061c8b5b6e1323ed345f71f67b34e3e065cc899f587da7c74",
+      "42": "969c510fb84e5e58605d34351db6c5608ef8d64d66b282ad9bf964b77bb33ce2",
+      "101": "3e9edacfb6b0e530f210f271af4802072a3c0154922bcf0b4b9f54e0ee612043"
+    },
+    "pooled_trunk_updated": false,
+    "adapter_dim": 64,
+    "axis_update_budget": 1500,
+    "batch_size": 8,
+    "total_schedule_draws": 12000,
+    "organ_target_exposures_per_expert": 1500,
+    "pooled_adapter_total_target_exposures": 12000,
+    "sampling_mode": "organ_sample_balanced",
+    "mask_ratio": 0.30,
+    "mask_token": -10.0,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "optimizer": "AdamW",
+    "scheduler": "CosineAnnealingLR",
+    "checkpoint_policy": "predetermined_final_update",
+    "use_amp": true,
+    "random_k8_retrained_on_curve": false,
+    "random_k8_reason": "the nested organ-balanced subsets do not preserve the historical random-shard exposure balance; the equal-capacity pooled adapter is the primary generic-capacity control"
+  },
+  "evaluation": {
+    "primary_estimand": "equal_organ_equal_donor_relative_mse_gain_of_organ_k8_over_pooled_adapter",
+    "secondary_reference": "frozen_pooled_trunk",
+    "all_budgets_and_seeds_reported": true,
+    "best_seed_or_budget_selection": false,
+    "per_organ_reporting": true,
+    "monotonic_claim": "allowed_only_if_all_three_seed_log_budget_slopes_share_one_nonzero_sign_and_every_seed_interval_excludes_zero",
+    "stable_positive_budget": "organ_vs_pooled_adapter_bootstrap_lower_bound_above_zero_in_all_three_seeds"
+  },
+  "statistics": {
+    "donor_bootstrap_draws": 2000,
+    "bootstrap_seed": 20260805,
+    "confidence_interval": [0.025, 0.975]
+  },
+  "safety": {
+    "maximum_per_organ_harm_percent": 2.0,
+    "threshold_relaxation": false
+  },
+  "implementation": {
+    "trainer": "core/train_fixed_partition_banks.py",
+    "trainer_sha256": "dc94f860f3f2160c1af5443d2e7b2dd7b14110db16088b2d7579bf6b93f59949",
+    "evaluator": "evaluation/evaluate_gtex_k8_adapter_scale.py",
+    "evaluator_sha256": "d78fedce2c13f6bab5d29c865f3cd91dd056286fd6496475a5fef7c4523ffafb"
+  },
+  "execution": {
+    "mechanical_smoke_required": true,
+    "smoke_budget": 25,
+    "smoke_seed": 17,
+    "smoke_updates": 2,
+    "full_combinations": 15,
+    "resource_safe_parallel_hosts": 2,
+    "automatic_evaluation_only_after_all_checksums": true
+  },
+  "firewalls": {
+    "archs4_expression_access": false,
+    "osdr_outcome_access": false,
+    "final_k8_package_modification": false,
+    "pooled_trunk_update": false,
+    "best_seed_selection": false,
+    "best_budget_selection": false,
+    "confirmation_claim": false,
+    "post_outcome_protocol_change": false
+  }
+}
