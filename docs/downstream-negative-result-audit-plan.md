@@ -1,6 +1,9 @@
 # Downstream negative-result audit and correction plan
 
-**Status:** execution plan for Codex; not yet a frozen scientific protocol
+**Historical record. Execution complete. Superseded for planning by
+[`aug17-execution-plan.md`](aug17-execution-plan.md).**
+
+**Status:** completed historical execution plan
 **Written:** 2026-08-01
 **Review input:** [`../CLAUDE.md`](../CLAUDE.md) Section 9
 **Blocks:** any further writing of the downstream negative result, and the

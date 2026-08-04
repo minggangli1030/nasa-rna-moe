@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "written": "2026-08-03",
+  "status": "frozen_gtex_k8_mislabel_development_protocol",
+  "purpose": "test whether frozen organ-conditioned reconstruction errors provide deployable organ-label compatibility beyond raw and PCA centroid margins",
+  "evidence_role": "accessed_gtex_calibration_development_not_confirmation",
+  "inputs": {
+    "expression_sha256": "ef5949975e8139d0a29f6fca003da6098a308677f2ab34d7f589851b5ea36550",
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "router_sha256": "b5a19bdee62efad108e0301f84afbbca088cfd04985f95cd37836a45b0236abe",
+    "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+    "calibration_sample_ids_sha256": "39abfb762c9459de93d2f3391681279591c5ec73e473e6430905ff213f515181",
+    "gene_order_sha256": "3332cb312000e426a866d669b3ba9b6206da50d70094fb5f9d30ef168e860dff",
+    "score_gene_indices_sha256": "87ab09ccf16bac5da76bf89de4e16628f62d63986ce0f5cf17a2ba92884b544e",
+    "calibration_score_sha256_by_seed": {
+      "17": "7720934c2e0f8ca7fea9821f61a95e392920a7a76976cb56a92b305c5e5e8890",
+      "42": "500bf6a5c45ca8e07498f2af487b7f309251e157daec59259ed7ca2ccbca0c8a",
+      "101": "1b6432eff36094f18efc30b962ce2a6e48fe15f8478d08ada22308d190d9316f"
+    }
+  },
+  "cohort": {
+    "fit_split": "train",
+    "evaluation_split": "calibration",
+    "group": "global_gtex_donor_id",
+    "ordered_organs": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "membership_change": false,
+    "replacement_samples": false
+  },
+  "task": {
+    "clean_assignment": "the frozen organ label",
+    "wrong_assignments": "all seven other frozen organ labels for every sample",
+    "pairing": "each sample's clean and wrong assignments remain in the same donor bootstrap unit",
+    "primary_score": "assigned_label_error_minus_minimum_error_across_eight_labels",
+    "primary_metric": "equal_organ_macro_auroc_for_wrong_vs_clean_assignment"
+  },
+  "baselines": {
+    "raw_centroid": "train_only_score_panel_centroids_with_train_only_feature_scaling",
+    "pca64_centroid": "train_only_standardization_then_global_pca64_then_train_only_organ_centroids",
+    "pca_components": 64,
+    "pca_random_state": 20260803,
+    "pooled_reconstruction_primary_comparator": false,
+    "pooled_reason": "pooled reconstruction is label invariant and therefore structurally uninformative for label swaps"
+  },
+  "statistics": {
+    "donor_bootstrap_draws": 2000,
+    "bootstrap_seed": 20260804,
+    "confidence_interval": [0.025, 0.975],
+    "best_seed_selection": false,
+    "all_seeds_reported": true
+  },
+  "gate": {
+    "required_in_every_seed": [
+      "expert_point_auroc_above_raw_centroid",
+      "expert_point_auroc_above_pca64_centroid",
+      "expert_minus_raw_bootstrap_lower_bound_above_zero",
+      "expert_minus_pca64_bootstrap_lower_bound_above_zero"
+    ],
+    "failure_decision": "MISLABEL_UTILITY_DOES_NOT_BEAT_RAW_AND_PCA_ALL_SEEDS",
+    "threshold_relaxation": false
+  },
+  "implementation": {
+    "evaluator": "evaluation/evaluate_gtex_k8_mislabel.py",
+    "evaluator_sha256": "d5b4a70db9c45b787f87a19952d061bd687686178c8e69917dc7193957b9e061"
+  },
+  "firewalls": {
+    "neural_training": false,
+    "checkpoint_update": false,
+    "best_seed_selection": false,
+    "archs4_expression_access": false,
+    "osdr_outcome_reuse": false,
+    "final_k8_package_modification": false,
+    "confirmation_claim": false
+  }
+}

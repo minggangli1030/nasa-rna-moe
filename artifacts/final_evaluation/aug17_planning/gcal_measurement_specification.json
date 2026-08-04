@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "written": "2026-08-03",
+  "status": "rules_frozen_inputs_unresolved_measurement_not_authorized",
+  "purpose": "define the development-only reconstruction-retention reference before any G_cal measurement",
+  "estimand": {
+    "name": "G_cal",
+    "unit": "percent",
+    "formula": "100 * (mse_pooled - mse_true_organ) / mse_pooled",
+    "reported_separately_for_seeds": [17, 42, 101],
+    "aggregation_policy": "no best-seed selection; retain every per-seed value and donor-bootstrap interval"
+  },
+  "required_before_measurement": {
+    "named_gtex_donor_disjoint_calibration_split": "gtex_calibration_from_stage1_protocol_split_seed_20260724",
+    "membership_sha256": "39abfb762c9459de93d2f3391681279591c5ec73e473e6430905ff213f515181",
+    "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+    "organ_checkpoint_sha256_by_seed": {
+      "17": "0375df2669c7cb38a6cf31d45f26b73dd991abedfc28fe13c39f0ec3ee0e3138",
+      "42": "b5bbed3e83ab2fc64d1eaaf7073d26ab901a0b0aff315041586cc13ce0cff8c9",
+      "101": "20d1fc2e300acc0e0d78eb3a11d5e4093a2950264abf0af3c704d91264512a42"
+    },
+    "organ_calibration_score_sha256_by_seed": {
+      "17": "7720934c2e0f8ca7fea9821f61a95e392920a7a76976cb56a92b305c5e5e8890",
+      "42": "500bf6a5c45ca8e07498f2af487b7f309251e157daec59259ed7ca2ccbca0c8a",
+      "101": "1b6432eff36094f18efc30b962ce2a6e48fe15f8478d08ada22308d190d9316f"
+    },
+    "pooled_trunk_checkpoint_sha256_by_seed": {
+      "17": "ae5d6d1619938d8061c8b5b6e1323ed345f71f67b34e3e065cc899f587da7c74",
+      "42": "969c510fb84e5e58605d34351db6c5608ef8d64d66b282ad9bf964b77bb33ce2",
+      "101": "3e9edacfb6b0e530f210f271af4802072a3c0154922bcf0b4b9f54e0ee612043"
+    },
+    "pooled_adapter_checkpoint_sha256_by_seed": {
+      "17": "a96ddcea01950e827d3264ac5f31870ba9ecd34544c440a605aafaefd34a0954",
+      "42": "0ac394442b512b0671e9c8de3b04e105fa79a2544ccbca8cde4ed1b37d7ad321",
+      "101": "b1cb9ab2b9105de96a72b6e0f23cba611205c73a22e2e705a268c658c09b20d2"
+    },
+    "pooled_adapter_calibration_score_sha256_by_seed": {
+      "17": "5fe7344805f63a8c1827d92189dcc9831aca173904f7649e61f77fae01cfa117",
+      "42": "5b929abd17ec39084b691df29e8640b63faaea56bbc18a7bced84ac11b28e346",
+      "101": "191921245a942e5d3cd9c0baadd5de815167a6bf56f6aa14fb72c0e0ce704a5c"
+    },
+    "matched_pooled_reference_choice": null,
+    "score_panel_sha256": "87ab09ccf16bac5da76bf89de4e16628f62d63986ce0f5cf17a2ba92884b544e",
+    "mask_schedule": "mask_all_4634_frozen_score_gene_indices_with_mask_token_minus_10",
+    "mask_schedule_sha256": null,
+    "evaluator_commit": null,
+    "evaluator_sha256": null,
+    "donor_bootstrap_draws": 2000,
+    "fixed_retention_fraction": 0.90
+  },
+  "estimability_gate": {
+    "gcal_must_be_positive_in_every_seed": true,
+    "donor_bootstrap_lower_bound_must_be_positive_in_every_seed": true,
+    "failure_branch": "NOT_ESTIMABLE_AND_ARM3_NOT_AUTHORIZED",
+    "post_outcome_fallback_threshold_allowed": false
+  },
+  "use_policy": {
+    "arms_1_and_2_change_reconstruction": false,
+    "arm_3_requires_estimable_gcal": true,
+    "arm_3_must_retain_fraction_of_each_seed_gcal": 0.90,
+    "archs4_3_797_percent_used_for_development": false,
+    "prospective_reconstruction_result_used_for_tuning": false
+  },
+  "access_firewall": {
+    "measurement_authorized_while_required_fields_are_null": false,
+    "measurement_authorized_while_pooled_reference_is_ambiguous": false,
+    "archs4_expression_access": false,
+    "checkpoint_update": false,
+    "model_selection": false
+  }
+}

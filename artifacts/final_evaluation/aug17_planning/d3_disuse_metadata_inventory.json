@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "written": "2026-08-03",
+  "status": "preliminary_metadata_only_exact_membership_unresolved",
+  "expression_accessed": false,
+  "headroom_measured": false,
+  "candidate_family": "human_disuse_or_bed_rest_skeletal_muscle",
+  "studies": [
+    {"accession": "GSE104999", "approx_primary_observations": 24, "disposition": "retain_for_contract_audit"},
+    {"accession": "GSE148152", "approx_primary_observations": 42, "disposition": "retain_for_contract_audit"},
+    {"accession": "GSE24215", "approx_primary_observations": 40, "disposition": "retain_conditionally_multifactor"},
+    {"accession": "GSE211204", "approx_primary_observations": 22, "disposition": "retain_for_contract_audit"},
+    {"accession": "GSE113165", "approx_primary_observations": 54, "disposition": "retain_for_contract_audit"},
+    {"accession": "GSE130722", "approx_primary_observations": 20, "disposition": "retain_for_contract_audit"},
+    {"accession": "GSE186045", "approx_primary_observations": 26, "disposition": "retain_for_contract_audit"},
+    {"accession": "GSE226973", "approx_primary_observations": 44, "disposition": "retain_conditionally_countermeasures"},
+    {"accession": "GSE21496", "approx_primary_observations": 14, "disposition": "retain_for_contract_audit"},
+    {"accession": "GSE33886", "approx_primary_observations": 12, "disposition": "retain_conditionally_exclude_sci_fes"},
+    {"accession": "GSE14798", "approx_primary_observations": null, "disposition": "exclude_metadata_6681_gene_custom_array_below_14000_gene_rule"}
+  ],
+  "planning_total_range": [250, 300],
+  "gate_passed": false,
+  "unresolved": [
+    "exact_sample_and_subject_membership",
+    "binary_label_contract_by_study",
+    "assay_and_gene_coverage",
+    "normalization_and_common_gene_contract",
+    "gtex_and_archs4_overlap_firewalls",
+    "confirmation_reservation"
+  ]
+}

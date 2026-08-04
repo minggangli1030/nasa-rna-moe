@@ -1,797 +1,120 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-02 18:38 PDT / 2026-08-03 01:38 UTC
+**Updated:** 2026-08-03 19:52 PDT / 2026-08-04 02:52 UTC
 
-This is the operational handoff. Historical detail remains in Git through commit
-`2bc1bef`; concise milestones are in [`../progress.md`](../progress.md).
+This is the operational handoff. Historical detail is preserved in Git and in
+[`../progress.md`](../progress.md).
 
 ## Current phase
 
-Post-D2 Phase 1 is complete. The corrected E3 lineage at exact commit
-`d627cfd3d4f12d8d50b775ea88af571ee9f1b40a` completed all four shards and automatic
-aggregation at 17:35 PDT; every local and VM checksum verifies. No low-label gate
-passes. At the nominal 5% floor, raw/PCA mean AUROC is 0.6289/0.6329 versus
-0.4890-0.5250 learned. At 10%, raw/PCA is 0.7313/0.7203 versus 0.5074-0.5339 learned.
-Every learned-minus-raw mean delta is negative in every model seed; every 10% interval
-is entirely below zero. The low-label hypothesis is therefore closed rather than
-rescued by a favorable seed or condition.
-
-All E1-E4 gates now fail under the joint frozen protocol. The current downstream-
-output-contract branch is closed on accessed OSDR development evidence. Stage 1's
-external masked-gene reconstruction gain remains the validated positive result; the
-downstream negatives do not revise it. The finalized result is
-[`post-d2-phase1-interim-result.md`](post-d2-phase1-interim-result.md) (filename
-retained for link stability). Compact E3 results are under
-`artifacts/final_evaluation/post_d2_phase1/evaluation_d627cfd/`.
-
-The prioritized next plan is frozen at SHA256
-`de8af08bebd44a74c93fb83aeab70b6af80cbe8071256c748ef6a7fa2004deb3`:
-August 17 consolidation first; then D3-0 metadata/readiness only for a controlled human
-stress/treatment task; then an untouched reconstruction-confirmation contract. A
-supervised downstream extension is a separately versioned future family and may begin
-only after selecting a grouped benchmark with measurable raw-expression headroom.
-No more OSDR output selection and no ARCHS4 expression access are authorized.
-
-E4, E1, and E2 are complete and every immutable checksum verifies locally and on the
-VM. Their joint frozen gate result is negative. E4 shows no seed-invariant
-specialization-versus-pooling downstream advantage: on the full embedding cohort,
-true-organ minus pooled is +0.0456, -0.0108, and -0.0609 across seeds 17, 42, and
-101, with seed 101's interval entirely below zero. The router comparisons have the
-same reversal. E1's explicit 139-sample/10-study muscle-only evaluation gives raw
-AUROC 0.9675 and PCA-64 0.9623, versus pooled hidden 0.6522/0.5578/0.7362 and blind
-embeddings 0.5872-0.7172. Every blind Q-A interval is below zero, and no Q-B interval
-is positive in every seed.
-
-E2 residuals recover high muscle AUROC (pooled 0.9698/0.9772/0.9783; blind conditions
-0.9567-0.9820), but no fixed specialized residual beats pooled residual and the
-dimension-matched centered score panel with lower bounds above zero in every seed.
-No blind residual robustly beats raw, PCA, or full-raw centering. The full-cohort
-secondary scope is correctly `not_estimable` because an organ is absent from training
-in at least one frozen grouped fold; no fallback or membership change was introduced.
-Canonical interim result: [`post-d2-phase1-interim-result.md`](post-d2-phase1-interim-result.md).
-
-E3 is now the only unfinished Phase-1 question. Its implementation uses the already
-frozen five label fractions and ten subsample seeds, paired labels within at least
-three training studies, two grouped inner folds at low fractions, complete untouched
-outer-test studies, and the unchanged 12-point elastic-net grid. It is being tested
-and deployed as four resource-safe shards (raw/PCA plus one shard per model seed),
-followed by a deterministic frozen-gate aggregation. Exact implementation commit
-`6fd37e1bc18e24ce0728d3fef559782ba60119e2` passed six focused local tests and a
-synthetic mechanical smoke in clean VM worktree
-`/media/volume/moe-reboot/worktrees/post_d2_e3_6fd37e1`. Baseline, seed17, seed42,
-and seed101 shards launched concurrently at 14:42 PDT in screens prefixed
-`post-d2-e3-`; all four processes are healthy. A fifth detached continuation waits
-for all four `COMPLETE` markers, verifies every immutable manifest, and then runs the
-deterministic aggregate gate automatically. Result root is
-`/media/volume/moe-reboot/results/post_d2_e3_6fd37e1`.
-
-The first E3 lineage exposed a fail-closed feasibility defect before any aggregate
-result: baseline PCA at the minimum label point used three paired studies, so one
-two-fold grouped inner-training side contained only one two-sample study and could
-form only one PCA component. The baseline emitted no report. Seed17/42/101 shards did
-finish and verify, but they are preserved as implementation-only lineages and will not
-be combined with a repaired baseline because their sampled memberships differ. The
-obsolete aggregate waiter was stopped. The protocol already requires at least three
-studies and fail-closed feasibility; the correction selects the smallest feasible
-four paired studies/eight labels at the nominal 5% floor, retains the same fractions,
-seeds, folds, grid, representations, and gates, and reruns all four shards in a new
-versioned lineage. Six focused tests and a PCA-specific VM smoke pass after the
-correction. Exact corrected commit is
-`d627cfd3d4f12d8d50b775ea88af571ee9f1b40a` in clean worktree
-`/media/volume/moe-reboot/worktrees/post_d2_e3_d627cfd`. All four corrected shards
-relaunched at 16:40 PDT into
-`/media/volume/moe-reboot/results/post_d2_e3_d627cfd`; a new checksum-gated aggregate
-continuation is waiting. All four processes are healthy at approximately two CPU cores
-each with 110 GiB memory available.
-
-Claude's post-D2 roadmap has been reviewed, corrected, hash-frozen, and moved into
-execution. The key separation is now explicit: Q-A asks whether a deployable learned
-representation beats raw/PCA, while Q-B asks whether organ specialization beats a
-matched pooled representation. The frozen secondary-analysis protocol is
-`artifacts/final_evaluation/post_d2_phase1/protocol.json`, SHA256
-`082d7f4edfb314ddf7a97e5c53072977062af89ac4c01203d37df3dc98e86913`.
-It pins the accessed 292-sample/18-study cohort, all three model seeds, feature-cache
-and prior-OOF hashes, grouped folds, tuning grid, bootstrap draws, low-label fractions,
-and interpretation firewalls. This is development characterization, never confirmation.
-
-Exact E1/E4 execution commit `f6ff7e38c63b69c09f2bb042ede8106c793b489a`
-is deployed in clean detached worktree
-`/media/volume/moe-reboot/worktrees/post_d2_phase1_f6ff7e3`. Detached screen
-`post-d2-phase1-f6ff7e3` launched at 12:29 PDT into result root
-`/media/volume/moe-reboot/results/post_d2_phase1_f6ff7e3`; E4 first computes the
-matched specialization-minus-pooling estimand from both immutable OOF lineages, then
-E1 automatically runs the 139-sample/10-study skeletal-muscle-only nested evaluation.
-
-E2's residual implementation is separately frozen at exact tested commit
-`5f53fa9b4ed1e919723ed750f1299e3788009c0f` in clean worktree
-`/media/volume/moe-reboot/worktrees/post_d2_phase1_e2_5f53fa9`. Detached screen
-`post-d2-e2-continuation-5f53fa9` is waiting for E1 `COMPLETE`, will verify its
-immutable manifest, and then run the prespecified residual analysis automatically.
-E2 includes both dimension-matched score-panel centering and full-raw fold-fit organ
-centering; it will fail closed if a secondary full-cohort fold contains an organ absent
-from training rather than inventing a fallback. E3 low-label execution remains last
-because it multiplies nested fits across five fractions and ten frozen subsamples.
-
-The bounded interpretation was corrected before launch: skeletal muscle is the
-dominant and only adequately powered organ-specific signal in this accessed cohort.
-Heart and lung have high post-hoc point AUROCs at small sample sizes, so the stronger
-claim that muscle is literally the only possible signal is not authorized.
-
-The final K8 package remains frozen and unchanged. The read-only D1 encoder-validity
-audit is complete and checksum-verified at protocol SHA256
-`e959ef694a83d2b8b2df6f50d20101ea467967bb30d6c1120b3fac44983b819f` and deployed
-commit `5b1bc12282ad6edb8df71b068c311ca09ff62b02`. The original machine-readable verdict
-was `ENCODER_TRANSFERS_OBJECTIVE_LIMIT`, but Claude's post-run contingency review
-identified that executed D1b is completely confounded by organ–study aliasing. D1b's
-numbers remain valid, but its biological inference is withdrawn and recorded as
-`D1B_CONFOUNDED_UNINFORMATIVE`.
-
-D1a classified pooled hidden as in-distribution in all seeds: OSDR/GTEx effective-
-rank ratios were 0.865, 0.793, and 0.764 for seeds 17, 42, and 101, and median
-absolute mean z-shifts were 0.258, 0.411, and 0.450. D1b's cross-study brain-versus-
-skeletal-muscle positive control achieved balanced accuracy 1.000 with raw expression
-and 0.996 with pooled hidden in every seed. D1c verified identical model-input value
-space, mean missing-entry fraction 0.000156, and constant-gene fraction 0.000832.
-D1a and D1c still show that the representation is mildly compressed rather than
-globally degenerate and that the ortholog/masking/normalization path is correct. They
-do not establish fine-grained biological transfer. The corrected bounded statement is:
-the OSDR failure is not explained by gross encoder or input-pipeline breakdown, while
-the frozen representation still fails to improve this accessed state task over
-raw/PCA.
-
-The replacement D1b is frozen before its outcomes at protocol SHA256
-`c7309e52e3e291c71198e8c291caba2ea9b4c3bb000b904a2b00da3a6527c54a` and scientific
-implementation commit `cdf32079561e7d6d56171f1d50fed5fe7b459640`. It trains the
-same donor-grouped seven-organ classifier entirely on GTEx and applies it unchanged
-to OSDR raw expression and each fixed-seed pooled-hidden representation. OSDR studies
-are never used for fitting or tuning. Frozen balanced-accuracy gates are at least
-0.60 for preserved, at most 0.25 for lost, with all three embedding seeds required.
-The replacement completed and checksums verify. Raw-expression balanced accuracy was
-0.9643; pooled-hidden accuracy was 0.7519, 0.7553, and 0.6992 for seeds 17, 42, and
-101. All fixed seeds exceed the frozen 0.60 gate, giving verdict
-`CROSS_SPECIES_ORGAN_STRUCTURE_PRESERVED`. Transfer is uneven: heart recall is near
-zero and lung varies substantially, while raw expression is much stronger. This
-establishes coarse organ-geometry retention, not state retention or downstream
-superiority. Canonical result: [`cross-species-organ-transfer-result.md`](cross-species-organ-transfer-result.md).
-
-The independent D2 Hallmark feature audit completed at protocol SHA256
-`484667662935aed865d80a72503c428a68a6256f7c201beacaeb64f474632a62`; scientific
-implementation commit is `f2700e846a17bf2f7dd3ef7f69eca597a32e6646` and deployed
-commit/worktree is `f38b125472576e4ea158afc7db73396c42467d19` /
-`/media/volume/moe-reboot/worktrees/osdr_hallmark_downstream_f38b125`. The unchanged
-smoke-to-full lineage completed and all checksums verify. It compares
-Hallmark-50, Hallmark+fold-fit PCA64, PCA64, raw expression, three fixed size-matched
-random-set draws, and permuted Hallmark under identical grouped splits and tuning.
-The frozen verdict is `HALLMARK_FEATURES_FAIL`. Hallmark+PCA64 AUROC was 0.732630,
-essentially neutral versus PCA64 at 0.732770; its bootstrap interval crossed zero
-against both PCA and raw. It beat all random/permuted controls, but Hallmark alone was
-0.567394 and materially worse. Canonical result:
-[`hallmark-downstream-feature-result.md`](hallmark-downstream-feature-result.md).
-
-The frozen OSDR downstream-development evaluation is complete. Exact evaluator
-commit `61766ee` finished at 2026-07-30 21:26 PDT on 292 samples from 18 studies;
-all three Stage 1 caches, grouped splits, converged elastic-net fits, and artifact
-hashes verify.
-
-The prespecified downstream-positive gate failed. True-organ minus pooled AUROC
-was −0.051, −0.003, and +0.018 across seeds 17, 42, and 101. Hard and soft
-input-only routing also failed the all-seed direction requirement. Mean learned
-AUROC was 0.590–0.605, versus 0.726 for raw expression and 0.733 for fold-fit
-PCA-64. No seed or representation was selected.
-
-This does not invalidate the 3.6–3.8% external masked-gene reconstruction gain. It
-shows that the current masked score-panel prediction contract does not preserve
-enough cross-species spaceflight-state information to beat simple observed
-expression baselines. Raw expression and PCA are therefore mandatory gates for
-the final model, and downstream utility must be designed explicitly rather than
-inferred from reconstruction. Canonical result:
-[`stage1-osdr-downstream-result.md`](stage1-osdr-downstream-result.md).
-
-The immediate branch is now running. The training-only Tier-1 protocol is frozen
-at SHA256
-`cd1d3dab63689cd3d534533f37e48f5d0c05e4a7d9f407ec57ee0b49c6c5e4f1`
-and exact execution commit
-`9de77e040f3b69421b65ed6d780a007e9256501e` is deployed in the clean detached
-worktree `/media/volume/moe-reboot/worktrees/multiaxis_tier1_9de77e0`.
-
-The complete 7,369-row feature/coverage smoke and all three full seed reports are
-complete and checksum-verified.
-Tissue site, official sex code, official age bracket, and all 50 hash-pinned
-MSigDB 2026.1.Hs Hallmark programs have valid coverage; every Hallmark set retains
-at least 19 visible non-score genes. The concurrent seed-42 process was killed
-with exit 137 before emitting a report, and a first retry stopped before outcome
-access because its wrapper pre-created the output directory. Both failed
-lineages are preserved. The exact same frozen seed-42 execution completed alone
-at 23:19 PDT in `seed42_retry2`. Result root:
-`/media/volume/moe-reboot/results/multiaxis_tier1_9de77e0`.
-
-The separate frozen OSDR axis-label probe also completed. Its protocol SHA256 is
-`531438c0361501954a7eee1a49c9ea97ba53e67d339db53a13bd8c426a4198fd`
-and exact evaluator commit is `b99d5b6a78e2f0522afdba7034230d7356b50ded`.
-Against the organ-only base (AUROC 0.496), all four candidates had a positive
-point delta: age +0.0068, sex +0.0071, tissue site +0.0045, and Hallmark-50
-+0.1013. Only Hallmark-50 had a study-bootstrap interval above zero
-(+0.0267 to +0.2049); the other intervals crossed zero. Age has 75 explicit
-missing-metadata rows. These are OSDR development signals, not confirmation, and
-the training-screen gates still must pass independently.
-
-The deterministic joint gate is complete. **Tissue site is the only passing
-candidate and the only axis authorized for Tier 2.** Its primary incremental R²
-was 0.2837, 0.2715, and 0.2739 across seeds; donor-bootstrap lower bounds were
-positive, every real effect beat its within-organ permutation null, and every
-protected-organ effect was nonnegative. Hallmark-50 was stronger in aggregate
-(mean primary incremental R² 0.5233; OSDR delta +0.1013) but failed the frozen
-per-organ safety gate through skeletal-muscle harm in seeds 42 (−0.0568) and 101
-(−0.0396). Age and sex failed the all-seed bootstrap gate.
-
-The bounded protected-adapter Tier-2 smoke is complete. Protocol
-SHA256 is
-`d922c1997389aacdc09c032415f0dc8a57ee579530f67f7f539477490eaac410`;
-exact implementation commit is
-`d47ac36f11647d3bcd6bd6d3aa3c2dffefc10378`. The focused suite passes nine
-tests locally and in the exact VM worktree. Sequential seeds 17, 42, and 101
-completed at 07:47 PDT in result root
-`/media/volume/moe-reboot/results/tissue_site_tier2_d47ac36`; all reports, score
-archives, and immutable manifests verify.
-
-The site adapter beat the protected organ path by 70.50–70.70% and beat the
-within-organ shuffled-site control by 0.128–0.199%, while preserving per-organ
-safety and noncollapsed routing. However, the parameter-matched generic adapter
-was better in all seeds: soft-site minus generic effects were −0.461%, −0.534%,
-and −0.544%, with all donor-bootstrap intervals below zero. The same two frozen
-gates failed in every seed. This identifies mostly generic residual capacity, not
-an architecture-worthy site-specific advantage.
-
-**Architecture is closed:** validated K8 organ MoE plus pooled fallback/reference;
-no secondary axis. Hallmark remains excluded for its prior per-organ safety failure,
-and no thresholds were changed. Canonical Tier-2 result:
-[`tissue-site-tier2-result.md`](tissue-site-tier2-result.md).
-
-The next frozen development execution exposes an explicit downstream-facing organ
-embedding: pooled hidden summary plus selected/router-weighted 64-dimensional organ
-bottleneck and frozen router probabilities. It reuses the exact 292-sample/18-study
-OSDR development harness with equal raw-expression and fold-fit PCA gates. This may
-select an output contract but cannot confirm it; a new untouched grouped cohort is
-still required. Protocol SHA256 is
-`3730da5059691065855c88f25cb79636e07887b7ed7f127e467256e9b848910a`.
-The first implementation lineage at commit `bc3502a` failed during seed-17 feature
-composition because the frozen NumPy router probabilities arrived as FP64 while the
-checkpoint bottlenecks are FP32. It emitted no feature cache or evaluation result
-and is preserved at `/media/volume/moe-reboot/results/final_organ_embedding_bc3502a`.
-The dtype-only correction casts router probabilities to the checkpoint tensor dtype;
-the protocol, cohort, representations, splits, grid, seeds, and gates are unchanged.
-
-Five focused assertions and compilation passed in the new exact clean VM worktree at
-commit `3f681fdbe818d2f49b03f097f08a5f171b4e35c8`. The repaired extraction and full
-evaluation completed at 09:09 PDT in
-`/media/volume/moe-reboot/results/final_organ_embedding_3f681fd`; every cache,
-report, prediction table, and immutable checksum verifies.
-
-The downstream-positive embedding gate failed. Raw expression and fold-fit PCA-64
-retained AUROC 0.726 and 0.733. Pooled-hidden AUROC was 0.525, 0.547, and 0.607;
-blind hard was 0.531, 0.561, and 0.533; blind soft was 0.557, 0.566, and 0.507.
-All three deployable contracts were below raw/PCA in every seed and each showed a
-two-positive/one-negative direction versus same-seed pooled hidden. No seed or
-condition is selected. Canonical result:
-[`final-organ-embedding-development-result.md`](final-organ-embedding-development-result.md).
-
-The final model is therefore packaged without refitting: all three exact externally
-validated pooled trunks and K8 organ banks plus the frozen router. A post-lockbox
-train-plus-calibration refit would create an unvalidated weight family and cannot
-cover the 3,030-row brain union under the fixed 1,500-exposure-per-expert budget
-without changing the training contract. The package exposes hidden/bottleneck states
-as diagnostics only and retains raw/PCA as mandatory downstream gates. Package
-protocol SHA256 is
-`7243f5345ae6fc2b522905d139ec82036f7854c1dd167e33f64814d8ca495500`.
-The exact clean packaging commit is
-`dc562cc97d3936c642467a5be563e9bd7e31fc7b`. The no-training execution completed
-at 09:41 PDT in
-`/media/volume/moe-reboot/results/final_k8_package_dc562cc`; all 17 packaged
-artifacts, checkpoint round trips, tensor-finiteness checks, and immutable hashes
-verify. The package is 441 MiB. Manifest SHA256 is
-`8c8e967faa7d63fda80bdb4c301678544290cbeb01f833ae7e6817be6a60e4e9`;
-the checksum-manifest SHA256 is
-`b303ef625065615dc4ad335b5d46dbb5a7431c5f3aaa9eeecf9b26525bdb41d2`.
-Compact provenance is retained locally under
-`artifacts/final_model/final_k8_package_dc562cc/`; the validated weights remain
-on persistent VM storage.
-
-## Completed background
-
-Stage 2B B0–B4 and the multiaxis Tier-0 inventory are complete and locally
-checksum-verified. The prespecified target-agreement gate failed: the absolute
-cross-trunk coefficient correlations were high, but their margin over the random
-basis was only about 0.018–0.020. Cross-seed grouped probes remained strong
-(gene-space recovery about 0.58–0.60; median component correlation about
-0.977–0.979), so the result is reproducible predictive structure without a unique
-shared coordinate interpretation. Phase C was not authorized.
-
-B4 triggered human review because tissue site exceeded organ on both residual
-targets in all three seeds. For pooled reconstruction \(R^2\), organ versus site was
-0.664 versus 0.809, 0.591 versus 0.775, and 0.596 versus 0.775. For post-private
-coefficients it was 0.248 versus 0.538, 0.282 versus 0.559, and 0.285 versus 0.565.
-This is a candidate signal, not authorization to train: tissue site must now clear
-within-organ permutation, nuisance, coverage, all-seed, donor-bootstrap, and
-downstream-label gates.
-
-The schedule was reordered around the binding risk identified in `CLAUDE.md`: the
-downstream harness was built against frozen Stage 1 checkpoints rather than
-waiting for the final model. A five-field readiness audit found one executable
-primary task. Strict eight-organ OSDR mapping yielded 892 labeled metadata rows,
-43 studies, and 45 study-organ units with both exact structured `Space Flight` and
-`Ground Control` labels. The repository's validated NASA API downloader and strict
-mouse-ortholog, log1p-TPM, 14,000-gene QC path prepared the frozen cohort. The
-exact candidate metadata and audit are at
-`artifacts/final_evaluation/downstream_readiness/`.
-
-The OSDR downstream-development protocol was frozen before download at
-`artifacts/final_evaluation/stage1_osdr_downstream/protocol.json`, SHA256
-`04e8354b1417c2f4bb4459f053a4e343dce1e65a9b552e16f7fea08c52d8abb9`.
-QC failures and study-organ units losing either class are excluded without
-replacement. The benchmark uses identical study-grouped splits and equal elastic
-net tuning for raw expression, PCA, pooled, pooled-adapter, true-organ, and blind
-hard/soft Stage 1 representations. This is cross-species downstream development,
-not an untouched final confirmation.
-
-The download and frozen QC completed: 297/892 requested metadata rows survived the
-14,000-nonzero-gene rule, and 292 samples from 18 studies retain an exact
-two-class study-organ contrast. No replacements were added. The first feature-cache
-attempt failed before producing model outcomes because it narrowed to 292 rows
-before validating a 297-row coverage artifact. The failed empty lineage is
-preserved. A versioned fix validated full coverage order before explicit
-subsetting. Later implementation-only lineages corrected safe string
-serialization and fail-closed solver convergence without changing the frozen
-cohort, splits, representations, seeds, or grid. They emitted no accepted model
-result. Exact commit `61766ee` produced the verified evaluation summarized above.
-
-ARCHS4 disease/tumor is cut from the core until free-text candidates receive
-independent phenotype curation; its existing keyword flags are not labels. TCGA is
-also cut because neither a cohort contract nor expression matrix is local.
-Cell-composition screening, matched-data BulkRNABert retraining, BulkFormer-37M
-retraining, survival, and drug response are removed from the core calendar.
-Hallmark-50 programs, tissue site, and demographics remain candidate screens.
-
-Stage 2 completed the frozen seed-factorized stability diagnosis. Raw
-recipient-preserving organ-to-organ addition did not produce an actionable helpful
-rule. The user approved the representation-first pivot rather than spending the next
-cycle on another organ-pair training implementation.
-
-The read-only audit of the already validated organ experts is complete:
-
-1. extract per-gene functional corrections and reconstruction effects from all three
-   frozen GTEx K8 seeds on the same donor-disjoint calibration set;
-2. compare the organ expert with the pooled trunk, pooled adapter, and three
-   donor-balanced random-K8 controls;
-3. all 8/8 organs retained positive donor-bootstrap effects versus both generic and
-   random controls; but
-4. 0/8 passed the complete exact-gene representation gate.
-
-The exact protocol is frozen before opening these gene-level outputs at
-`artifacts/stage2_organ_expert_mechanism/representation_pivot_protocol.json`.
-Minimum cross-seed correction cosines ranged from −0.051 to 0.350 and minimum
-top-100 overlaps from 0 to 0.143. The frozen decision is
-`organ_axis_insufficient_pivot_multi_attribute`.
-
-This audit performed no fitting, no seed selection, and no ARCHS4 access. Organ
-experts remain the benchmark, but exact genes and raw organ pairs are not stable
-enough to guide sharing. The next branch freezes a training-donor-only continuous
-expression basis and tests coarser modules plus tissue site nested within organ.
-Canonical result:
-[`stage2-representation-pivot-result.md`](stage2-representation-pivot-result.md).
-
-That next audit is now frozen at
-`artifacts/stage2_organ_expert_mechanism/multiscale_attribute_protocol.json`
-(SHA256 `78d772cb0f171707b8707756cc8e38dd5b286dca85361a8d14daaa2140dace51`).
-It uses 32 outcome-independent expression components fit on the 750 GTEx training
-donors and reports all 23 manifest-eligible tissue sites. No expert is retrained.
-
-The audit is complete:
-
-- module gate: 1/8 organs passed (adipose);
-- tissue-site gate: 2/23 passed (both adipose sites);
-- the passing sites span only one organ, below the frozen hierarchical gate; and
-- decision:
-  `no_stable_existing_representation_design_explicit_program_heads`.
-
-Skin was the closest additional organ but missed the frozen top-module overlap gate;
-that threshold is not changed post hoc. The next Stage 2 implementation is an
-aligned factorized residual model: a fixed training-derived program decoder, shared
-coefficient head, and organ-private residual path, with three-seed donor-disjoint
-controls.
-
-That pivot is now implemented and protocol-frozen. Commit
-`93e5a9b5b95652e37b563c8bc649bb058524b20b` is deployed to the clean detached VM
-worktree
-`/media/volume/moe-reboot/worktrees/stage2_aligned_program_93e5a9b`.
-The exact protocol SHA256 is
-`5cecd43fd75bd832c6be7fa57c9c56fc752e01288184e9100758c09768952fd8`.
-
-The mechanical smoke and all three 1,500-update runs are complete. The full run
-finished at 2026-07-29 16:15 PDT; the repaired evaluator and immutable result
-finalization completed at 16:17 PDT. Every utility gate passed:
-
-- shared+private versus pooled: +36.620%, +35.082%, and +30.051% in seeds 17, 42,
-  and 101;
-- shared+private beat organ-private, random-basis+private, and matched generic
-  controls in every seed with donor-bootstrap intervals above zero; and
-- it retained 131.7% of the organ-private gain on average.
-
-However, the coefficient non-collapse gate failed. Cross-seed coefficients were
-highly correlated (minimum flattened donor correlation 0.834; minimum median
-component correlation 0.900) but had effective rank only 1.22–1.31 versus the
-frozen requirement of 8. Decision:
-`utility_pass_alignment_fail_revise_coefficient_identifiability`.
-
-The first evaluator correctly stopped on an object-string serialization mismatch.
-No predictions or models changed. Evaluator commit
-`ba07442d193d00a11c39546c26eb29954699260c` reconstructed text labels from the
-separately hash-pinned manifest, loaded only numeric arrays without pickle, and
-produced the verified result in a distinct path. Root checksum-manifest SHA256:
-`413cb73ad47db0f400682bc1001bcc426f668f3c690abbe6300b3d3786efc0ac`.
-Canonical implementation and result handoff:
-[`stage2-aligned-program-heads.md`](stage2-aligned-program-heads.md).
-
-A read-only collapse diagnosis subsequently localized the failure. The fixed
-decoder has effective rank 29.00, while the actual post-private residual projected
-into that same span has sample-level effective rank 12.89–14.34 and within-organ
-rank 16.48–17.04. The learned sample coefficients remain rank 1.42–1.66. Thus the
-target is not intrinsically one-dimensional.
-
-The learned leading direction is nevertheless almost identical across seeds and is
-strongly associated with organ/site identity, especially a brain-versus-other
-contrast, and with pooled reconstruction difficulty. The present joint,
-decoded-MSE-only training therefore converged on a stable shortcut. The bounded
-repair is private-first residualization and direct per-component standardized
-coefficient-target supervision while keeping the existing head and exact decoder.
-A five-fold donor-grouped seed-17 probe showed that the current global hidden
-summary already predicts high-rank oracle coefficients (rank 12.40, median
-component correlation 0.963) and recovers 69.8% of remaining error versus 33.6% for
-the trained head. Canonical diagnosis:
-[`stage2-aligned-program-collapse-diagnosis.md`](stage2-aligned-program-collapse-diagnosis.md).
-
-The user authorized the bounded repair. It is implemented and protocol-frozen at
-commit `51ab2f58ee683cd7b10f0d62c86e8e77354009dc`; protocol SHA256
-`89f6e97218a1871782e08725104e04ae8d1d40001d74ec4e09e01a32e80c5764`.
-The repair trains the organ-private path first, freezes it, projects only
-training-draw masked residuals into the unchanged decoder, and supervises the
-unchanged shared head on standardized coefficients. It includes extended-private,
-extended-generic, and random-basis controls plus per-organ safety gates.
-
-The three-seed repair and frozen evaluator completed at 2026-07-29 23:14 PDT. It
-retained strong utility: +37.756%, +34.145%, and +35.769% versus pooled and
-+3.207%, +5.885%, and +6.385% versus the phase-1 private path. It also beat the
-random-basis condition in every seed.
-
-It did not recover an acceptable representation. Minimum sample, donor, and
-within-organ effective ranks were 1.815, 1.392, and 1.952, versus frozen thresholds
-of 8, 6, and 8. Minimum flattened donor correlation was 0.271 versus 0.5. Skin was
-harmed by 5.890% and 6.478% in two seeds, crossing the frozen 5% safety boundary.
-Decision:
-`coefficient_supervision_repair_fail_pivot_representation`.
-
-A post-completion integrity audit also invalidated the two nominal extended-budget
-controls: reused optimizers remained at zero learning rate after phase 1. The
-phase-1 and “extended” private states and scores are exactly identical in all three
-seeds. The candidate and random-basis heads used new optimizers and are unaffected.
-The failed rank, alignment, and safety gates independently mandate the same pivot,
-so the run is not repeated or tuned.
-
-Canonical result:
-[`stage2-aligned-program-repair-result.md`](stage2-aligned-program-repair-result.md).
-The next branch stops repairing raw-expression PCA coordinates and first audits
-mask-target invariance, then freezes a residual-aligned, mask-consistent,
-multi-attribute representation with organ experts retained as the benchmark.
-
-The external methodological review in `CLAUDE.md` has now been evaluated and
-translated into a corrected Stage 2B execution plan:
-[`stage2b-mask-consistent-sharing-plan.md`](stage2b-mask-consistent-sharing-plan.md).
-Its strongest additions are fail-closed phase-transition checks, a canonical
-full-score-mask input and target, functional share/decline stability as a primary
-gate, and a conservative refusal-rule deliverable.
-
-Two proposed claims were corrected before adoption. The existing donor-rank
-calculation is across individual donor vectors and is not capped at seven; existing
-oracle donor ranks reach 8.05. Also, pooling non-score hidden states from a partial
-mask would remain mask-dependent because transformer states can attend to visible
-score genes. Stage 2B must instead cache a full-score-mask forward pass.
-
-Claude's second review accepted the implementation-backed corrections. Codex's
-round-3 closure accepts the added cross-trunk oracle-transfer audit, makes the
-three-trunk continuation gate a stopping gate, requires canonical-cache round trips
-before any utility result is interpreted, and requires refusal coverage so a
-refuse-everything policy cannot pass.
-
-The first Stage 2B scientific candidate is now resolved as a clean causal repair:
-keep the exact expression-PCA decoder, frozen pooled trunks, valid phase-1 private
-paths, donor cohort, and evaluation estimand; change only the mask-dependent
-input/target, broken phase controls, and absent safety gate. Residual/pathway bases
-and shared experts are deferred rather than run in parallel.
-
-Claude's final implementation-only additions are accepted: exhaustive cache keys,
-fixed-batch deterministic cache reproduction, one gene-space-selected ridge value
-shared across trunks, a nonsaturated gate with a dead-parameter guard, explicit
-rank result records, training-only normalization, organ-balanced loss exposure, and
-a cross-host determinism smoke.
-
-Phase A is implemented in commit
-`b4100a1efd0090064a1a079fe658d7f116526373` and pushed to `origin/main`.
-It adds reusable positive-LR, exact optimizer-coverage, early/final parameter-delta,
-and tensor-hash guards; constructs fresh second-phase optimizers; and requires a
-complete seed-by-organ condition matrix. The focused local Stage 2 suite passes
-38 tests.
-
-The exact commit is deployed in the clean detached primary-VM worktree
-`/media/volume/moe-reboot/worktrees/stage2b_phase_a_b4100a1`. The seed-17
-mechanical smoke completed at 2026-07-30 13:39 PDT in the new path
-`/media/volume/moe-reboot/results/stage2b_phase_a_smoke_b4100a1`. All 11 immutable
-entries verify. Both phases completed 2/2 updates; all six declared module-phase
-combinations had positive parameter deltas and changed tensor hashes. The session
-exited and the A100 returned idle. This smoke reused the old frozen repair inputs
-solely to prove the guards execute; it creates no new scientific result.
-
-Phase B is implemented at exact commit
-`20d000e0b8055f60d7dee8796b52834bd829ab43`, pushed to `origin/main`, and
-deployed to exact detached worktrees on both GPU hosts. The single training-only
-B0–B5 protocol was frozen before diagnostic output at SHA256
-`db7cd772345272876cd01a603deb720b46c36d0cfb5252e3d245e7e58f5182be`.
-It binds all three pooled trunks and valid phase-1 private states, the 7,369
-balanced training samples/750 training donors, the exact decoder and score indices,
-and every prior transfer input used by the refusal audit. Calibration and ARCHS4
-remain sealed, and neural checkpoint updates are prohibited.
-
-The prespecified 256-sample-per-trunk gene-space probe completed and selected one
-shared ridge value, lambda 0. The primary real-data cache smoke then passed on 16
-seed-17 samples: repeated canonical extraction was bitwise identical, B1 completed,
-and all immutable checksums verified. The identical smoke on the secondary host
-produced exact matching hashes for every canonical and B1 array despite its
-different CUDA/driver stack. This clears the cross-host split gate.
-
-Full read-only extraction is complete for seeds 17, 42, and 101: each contains
-7,369 rows, reports bitwise determinism, and passes its immutable checksum manifest.
-Seed 42 completed at 2026-07-30 15:18:25 PDT. The independent secondary-host
-seed-101 lineage was verified locally and transferred to the distinct primary path
-`seed101_secondary`; the primary launcher's future lineage was not overwritten.
-
-Detached fail-closed screen `stage2b-to-multiaxis-010d629` verified all three caches
-and launched the exact frozen B0–B4 evaluator at 15:19 PDT. It does not rerun B5.
-After B0–B4 checksums verify, the same operational watcher immediately builds the
-training-only multiaxis Tier-0 inventory. Its implementation is commit
-`010d629be5b273618efa8183c54209f3a173d203`, deployed outside the clean scientific
-worktree; the evaluator itself remains exact commit
-`20d000e0b8055f60d7dee8796b52834bd829ab43`.
-
-The first independent Tier-0 task also completed while B0–B4 was running. Exact
-open-access GTEx v8 subject and sample annotations were joined by sample/donor ID to
-all 7,369 training rows and 750 donors. Age bracket and raw sex code are complete;
-death Hardy scale is 0.46% missing. RIN and ischemic time are each 15.04% missing
-and remain nuisance controls. No residual or efficacy outcome was read. Canonical
-compact artifact:
-`artifacts/stage2_organ_expert_mechanism/multiaxis_metadata_d265073/`.
-
-The independent B5 refusal evaluator is already complete. The frozen
-similarity-aware model reduced leave-one-organ-out MSE to 0.586 versus 0.726 for the
-best identity-only null, flagged 25% of directed edges, and had additive-holdout
-rank correlation 0.595 across eight edges. This is promising training-development
-evidence, not a universal refusal rule; the additive holdout is very small and its
-classification recall was weak.
-
-## Completed seed-stability diagnosis
-
-The frozen 3×3 design crossed pooled trunks 17, 42, and 101 with independent
-optimization/mask/loader replicates 211, 223, and 227. All nine deterministic-FP32
-combinations completed 24/24 arms without best-seed or edge selection.
-
-Result:
-
-- stable helpful: **0/8** edges;
-- stable harmful: **2/8** edges;
-- unstable or negligible: **6/8** edges;
-- brain ← skin: −0.883%, 95% factor-bootstrap CI −1.621% to −0.298%;
-- skin ← adipose: −3.369%, CI −6.654% to −0.682%; and
-- the earlier liver ← skin signal averaged +3.011% but was positive in only 6/9
-  combinations and its interval crossed zero (−0.632% to +7.862%).
-
-Every edge remained worse on average than the A2250 additional-recipient-exposure
-control. Only 9/72 crossed cells beat A2250; the mean difference was −3.664%.
-
-Prespecified decision:
-`optimization_instability_confirmed_test_robust_sharing_then_pivot`.
-
-Integrity:
-
-- exact input-bound commit:
-  `3a27ffabdcb6d2a4209006452958b30cf0fff520`;
-- primary immutable entries verified: 379/379;
-- parallel immutable entries verified: 304/304;
-- compact transfer entries verified: 207/207, with no model checkpoints copied;
-- evaluation checksum-manifest SHA256:
-  `66dc24a0d8541f37dfea99be9553677509cb3523da843609835d36febf7c6801`.
-
-Canonical result:
-[`stage2-seed-stability-diagnosis.md`](stage2-seed-stability-diagnosis.md) and
-`artifacts/stage2_organ_expert_mechanism/seed_stability_evaluation_3a27ffa/`.
-
-## Completed Stage 2 development results
-
-### Same-budget substitution
-
-Comparison: A750+B750 versus A1500 on held-out target-organ donors.
-
-- all 56 directed edges were negative in all three seeds;
-- every donor-bootstrap interval was below zero;
-- mean effect: −3.273%; and
-- the independent seed-101 lineage reproduced the scientific hashes.
-
-Interpretation: with fixed training draws, target-organ data is more useful than
-replacing half of it with another organ.
-
-### Recipient-preserving addition
-
-Comparison: A1500+B750 versus A1500, with A2250 and random auxiliaries as controls.
-
-- five of eight mean effects were positive;
-- liver ← skin was the only edge positive in all three seeds with its interval above
-  zero: +1.956%, 95% CI +1.647% to +2.244%;
-- four edges beat all random auxiliaries in all three seeds; and
-- zero of eight named donors beat A2250 in all three seeds.
-
-Interpretation: donor identity can matter, but the helpful map is not stable enough
-to guide training. More target-organ exposure remains the best tested use of the
-added budget.
-
-Canonical documents:
-
-- [`stage2-directed-transfer-preliminary-result.md`](stage2-directed-transfer-preliminary-result.md)
-- [`stage2-additive-transfer-result.md`](stage2-additive-transfer-result.md)
-- [`stage2-organ-expert-mechanism-plan.md`](stage2-organ-expert-mechanism-plan.md)
-
-## Completed Stage 1 result
-
-The final GTEx-trained K8 external evaluation used 821 ARCHS4 samples from 63
-connected studies across all eight organs.
-
-Results versus pooled:
-
-- correct organ specialist: 3.797% lower MSE;
-- target-hidden hard routing: 3.633% lower;
-- target-hidden soft routing: 3.676% lower;
-- equal-capacity pooled adapter: effectively neutral; and
-- random K8 controls: effectively neutral.
-
-All three routed conditions improved in seeds 17, 42, and 101; every paired
-connected-study bootstrap interval was above zero.
-
-Evidence label:
-`post_access_qc_amended_external_evaluation`.
-
-Reason: exactly six rows failed the frozen 14,000-nonzero-gene rule after expression
-access and were excluded without replacement, threshold change, fine-tuning, or
-seed selection. A new untouched cohort is required for pristine preregistered
-confirmation.
-
-The earlier K4-EPE candidate also passed the GTEx V11 donor-controlled validation on
-6,795 samples from 930 donors: 3.301% true-route and 3.157% target-hidden improvement
-versus pooled.
-
-Canonical documents:
-
-- [`stage-1-end-result.md`](stage-1-end-result.md)
-- [`stage1-k4-final-refit.md`](stage1-k4-final-refit.md)
-
-## Representation-first principle
-
-The intended advance is not to find a lucky organ pair. It is to learn a
-reproducible rule that separates helpful shared gradients from domain-specific
-interference across trunks, optimization replicates, donors, and eventually
-independent studies.
-
-Organ is the strongest independently validated specialization axis and current
-benchmark, not a permanent restriction. If organ transfer remains disappointing
-after the protected-sharing test, Stage 2 may test hierarchical attributes,
-cross-cutting biological programs, or continuous expert-residual representations.
-Every alternative must beat organ and pooled controls under donor/study-disjoint,
-seed-stability, anti-collapse, utility, and confound gates.
-
-## Claim boundaries
-
-Supported:
-
-- organ-specialized reconstruction improves aggregate balanced external performance;
-- expression-only routing preserves most of the known-organ gain;
-- same-budget cross-organ substitution causes reproducible negative transfer; and
-- raw recipient-preserving organ addition has no stable-helpful edge under the
-  crossed diagnosis, while brain ← skin and skin ← adipose are stable harmful.
-
-Not supported:
-
-- improvement in every organ, seed cell, or individual study;
-- universal directed-transfer relationships;
-- causal biological mechanism;
-- verified donor identity within every ARCHS4 study;
-- spaceflight, disease, clinical, or downstream task benefit; or
-- a claim that all parameter sharing is harmful.
-
-A new untouched multisource study-disjoint cohort is required for Stage 2 study
-universality.
-
-## Presentation package
-
-The final presentation is scheduled for **2026-08-17**. The execution order is now
-time-bounded: build the downstream harness immediately on Stage 1, close the
-MoE/secondary-axis design by August 2, launch final training by August 7, and swap
-the final model into the validated harness in August 10–14. Canonical
-roadmaps:
-
-- [`axis-smoke-and-final-evaluation-roadmap.md`](axis-smoke-and-final-evaluation-roadmap.md)
-- [`august-17-downstream-and-multiaxis-plan.md`](august-17-downstream-and-multiaxis-plan.md)
-
-The immediate post-B0–B5 model work is a cheap organ-conditional screen, not full
-training of every proposed axis. Tissue site is already covered by Stage 2B B4.
-Age/sex and hash-pinned Hallmark immune/metabolic/mitochondrial/contractile/ECM/
-cell-cycle/stress programs enter one common grouped-CV residual screen.
-Disease, treatment, hypoxia, and spaceflight are primarily downstream targets and
-must not be used to select an expert on the same final-test cohort.
-
-The final external ladder now distinguishes BulkRNABert from BulkFormer.
-BulkRNABert is the closer public masked-reconstruction architectural peer and its
-published checkpoint is used only on a non-overlap downstream cohort.
-BulkFormer-147M is a published SOTA ceiling. Retraining either family is an
-extension and cannot delay the core table.
-The final evidence package will compare raw expression, PCA/NMF, the pooled trunk,
-pooled-plus-organ-label conditioning, organ-MoE routing, published BulkRNABert, and
-BulkFormer under identical donor/patient/study-disjoint splits. Organ prediction
-is only a sanity check; primary tasks must test disease/state, spaceflight/stress,
-or low-resource adaptation so the result is not circular.
-
-The same roadmap defines candidate biological axes beyond organ—tissue site,
-disease/physiological state, age/development, sex, and continuous pathway
-programs—and separates them from technical nuisance variables. Cell composition is
-deferred beyond August 17.
-The preferred integration is factorized: a protected organ expert plus optional
-site/condition/pathway residual adapters, each with its own safety gate, rather than
-a sparse Cartesian expert for every attribute combination.
-
-The July 30 package is:
-
-- deck: `presentation/2026-07-30-biweekly.html`;
-- canonical design: `presentation/design.md`;
-- Stage 2 heatmap:
-  `presentation/2026-07-30-stage2-directed-transfer-heatmap.png`; and
-- additive chart: `presentation/2026-07-30-stage2-additive-effects.png`.
-
-All current and future decks use
-`presentation/design.md`. Its Anthropic-inspired field-journal system uses parchment
-surfaces, Anthropic Serif/Sans tokens with portable Source Serif 4/Inter fallbacks,
-a restrained clay accent, plus Atrium sage and muted blue only where functional data
-distinctions require them. Presentations remain audience-first, visual-first, and
-script-free. Biweekly updates use plan → results → next, with results occupying most
-of the talk. The specification now uses a 1720 px standard content canvas at
-1920×1080—about 20% wider than the original—and enforces a 16 px minimum for center
-content and retained footnotes. Result slides remain frameless and chart-dominant;
-centered progress dots preserve the active-slide state. Ranked charts use semantic
-color assignment: Muted Blue follows the verified winner, rather than a fixed series
-position. July 9 and July 16 rendered decks remain unchanged historical artifacts.
-
-The July 30 deck includes the completed nine-run diagnosis on the additive-result
-slide. Its final future-work slide now states the current limitation directly:
-aggregate organ utility survives, but the existing transfer/program map is not
-general or stable. It presents the shared-program plus organ-private architecture
-as planned work, not as a completed result. The preliminary heatmap remains visible
-and explicitly labeled as non-actionable development evidence.
-
-The obsolete parallel content brief, readiness checklist, one-use additive-chart
-renderer, and superseded July 16 image-generation prompt were removed. Rendered
-decks and every visual asset they load remain preserved.
-
-## Preserved recovery assets
-
-Do not delete:
-
-- `backups/stage1_gtex_to_archs4_training_98e2cba/`;
-- `backups/stage1_k4_final_refit_e8c0383/`;
-- `backups/stage1_k4_gtex_v11_6cc8095/`;
-- `backups/stage1_k4_external_scout_182207b/`;
-- current `checkpoints/`, `data/archs4/`, and final tracked `artifacts/`; or
-- any active Stage 2 result root or immutable checksum manifest.
-
-Large data, checkpoints, runtime results, and backups remain ignored by Git.
+The Claude/Codex August 17 dispute is resolved and implementation has started within
+the authorized boundary. The exact execution plan is frozen at SHA256
+`cab2f979d4387edd3a72241a18780234463f4625aaf0f89831662e984851754f`.
+The protected deliverable is now the separate deck
+[`../presentation/2026-08-17-final.html`](../presentation/2026-08-17-final.html).
+Static validation passes eight slides, unique IDs, no pure white/black, and a minimum
+explicit text size of 16 px. The July 30 deck and shared design file were not modified
+by this implementation step.
+
+D3-0 metadata readiness is active without candidate expression access. The first
+candidate family is human disuse/bed-rest skeletal muscle. Public metadata yielded ten
+potentially retainable studies and one prespecified coverage exclusion (`GSE14798`, a
+6,681-gene custom array below the unchanged 14,000-gene rule). The rough retained
+planning range is 250–300 observations, but this is not a gate pass. Exact paired
+membership, structured contrasts, assay/gene coverage, GTEx/ARCHS4 overlap firewalls,
+and untouched confirmation reservation remain unresolved. No headroom outcome has
+been measured and no supervised training has started. See
+[`d3-metadata-readiness-inventory.md`](d3-metadata-readiness-inventory.md).
+
+The future calibration-retention estimand is frozen symbolically, not measured. Exact
+organ, pooled-trunk, pooled-adapter, and calibration-score hashes are recorded for all
+three seeds. Measurement remains fail-closed because calibration membership, score
+panel/mask schedule, evaluator, and the intended matched-pooled comparator are not yet
+unambiguous. Until those fields are resolved and the specification is re-hashed,
+`G_cal` cannot be computed and partially unfrozen Arm 3 is not authorized. Frozen
+encoder Arms 1 and 2 are post-presentation future work, not active execution.
+
+The untouched reconstruction-confirmation contract is drafted but intentionally not
+frozen: exact expression source, minimum per-organ coverage, membership, overlap audit,
+and evaluator/checkpoint manifests are required first. Exact current planning hashes
+are in `artifacts/final_evaluation/aug17_planning/PLANNING_SHA256SUMS`.
+
+The first closeout experiment is implementation-complete and protocol-frozen but has
+not yet produced an outcome. The read-only organ-label compatibility evaluator uses
+the existing GTEx calibration score caches, all seven wrong label assignments per
+sample, and train-only raw/PCA centroid margins. Protocol SHA256 is
+`d9cf1462b68491b1abba67b8f5f8d4966546d72f854a0b0fada6ef46c1ebcabc`;
+evaluator SHA256 is
+`d5b4a70db9c45b787f87a19952d061bd687686178c8e69917dc7193957b9e061`.
+Two focused tests pass. The gate requires the expert compatibility margin to beat
+both raw and PCA in every seed with positive donor-bootstrap lower bounds. It performs
+no neural training, does not use ARCHS4, and is development evidence only.
+
+## Frozen completed results
+
+### Stage 1: external reconstruction result remains positive
+
+The final GTEx-to-ARCHS4 evaluation used 821 QC-passing samples from 63 connected
+studies across eight organs. Against pooled reconstruction:
+
+- true-organ K8 improved equal-organ/equal-study MSE by 3.797%;
+- input-only hard routing improved it by 3.633%;
+- input-only soft routing improved it by 3.676%;
+- pooled-adapter and random-K8 controls were effectively neutral;
+- all three fixed seeds improved without best-seed selection.
+
+This is correctly labeled a post-access QC-amended external evaluation, not a pristine
+preregistered confirmation. The accessed ARCHS4 expression and its 3.797% result are
+never reused for development, tolerance setting, or model selection.
+
+### Stage 2: naive sharing and secondary axes did not clear robust gates
+
+Directed organ transfer did not yield a reproducible helpful sharing rule. All 56
+substitution edges were harmful; no additive edge beat extra recipient data, and raw
+addition did not produce a stable helpful pattern across the frozen seed-factorized
+diagnosis. Tissue site was the only Tier-1 candidate but failed its matched generic-
+capacity control in every seed. Hallmark-50 failed per-organ safety. The architecture
+therefore remains the validated K8 organ MoE plus pooled fallback/reference, with no
+secondary axis.
+
+### Downstream development: current frozen-output branch is closed
+
+The final K8 encoder preserves cross-species organ structure but its tested frozen
+outputs do not beat raw expression or fold-fit PCA on the accessed OSDR state task.
+Raw/PCA AUROC was 0.726/0.733 on the 292-sample, 18-study development cohort. In the
+only adequately powered skeletal-muscle analysis, raw/PCA reached 0.9675/0.9623 while
+learned embeddings remained 0.5578–0.7563. Specialization-versus-pooling directions
+reversed across seeds. Residual features recovered state prediction but not a stable
+organ-specific advantage over pooled residual and centered-expression controls.
+
+At the nominal 5% label floor, raw/PCA mean AUROC was 0.6289/0.6329 versus
+0.4890–0.5250 learned. At 10%, raw/PCA was 0.7313/0.7203 versus 0.5074–0.5339 learned.
+Every learned-minus-raw mean was negative in every model seed and every 10% interval
+was below zero. The bounded conclusion is reduced linear accessibility under the
+tested grouped elastic-net contract—not proof of information-theoretic absence.
+
+All E1–E4 gates failed under their frozen protocol. This closes further selection
+among existing frozen outputs on accessed OSDR development evidence; it does not
+revoke the Stage 1 reconstruction result or prove failure on every downstream task.
+
+## Authorization and next gates
+
+Authorized now:
+
+1. finish the metadata-only D3 membership/label/coverage/overlap audit;
+2. reserve a grouped confirmation subset before any supervised development;
+3. complete the untouched reconstruction-confirmation contract without accessing its
+   expression outcomes;
+4. complete and statically/visually verify the August 17 deck using frozen results.
+
+Blocked until exact contracts are frozen:
+
+- candidate expression access and raw/PCA headroom measurement;
+- `G_cal` computation;
+- any supervised Arm 1/2/3 run;
+- any ARCHS4 expression access or final K8 package modification.
+
+If D3 metadata clears every frozen gate, raw/PCA headroom is measured once using the
+primary-organ 0.60–0.90 AUROC band, study-bootstrap interval, and single-study
+dominance check. If it does not clear, infeasibility is documented without changing
+thresholds or substituting samples after access.

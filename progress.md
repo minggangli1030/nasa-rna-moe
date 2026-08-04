@@ -1,6 +1,42 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-02 18:38 PDT / 2026-08-03 01:38 UTC
+**Last updated:** 2026-08-03 19:52 PDT / 2026-08-04 02:52 UTC
+
+## 2026-08-03 — August 17 plan frozen; deck and metadata-only D3 work started
+
+Claude and Codex resolved the scientific wording and protocol disputes. The bounded
+low-label conclusion is reduced linear accessibility under the tested probe contract,
+not proof that information is absent. `G_cal` must use a named donor-disjoint GTEx
+calibration split and cannot be measured until membership, comparator, mask schedule,
+and evaluator are unambiguous. The D3 headroom gate is primary-organ AUROC 0.60–0.90,
+with deterministic candidate order and no post-access rescue. Exact Arm 1/2/3 meanings
+and untouched-confirmation firewalls are now documented.
+
+The revised execution plan is frozen at SHA256
+`cab2f979d4387edd3a72241a18780234463f4625aaf0f89831662e984851754f`.
+A separate eight-slide August 17 deck was created and passes static structural/design
+checks. The first D3 candidate-family inventory found ten potentially usable human
+disuse/bed-rest muscle studies and excluded one 6,681-gene custom-array study before
+expression access. Rough counts suggest 250–300 possible observations, but exact
+membership, pairing, coverage, overlap, and confirmation reservation remain blocking;
+therefore no headroom evaluation or training has started. Exact planning-file hashes
+are preserved in `artifacts/final_evaluation/aug17_planning/PLANNING_SHA256SUMS`.
+
+Claude's final strategic review was accepted with corrections. The embedding Q-B
+comparison is verified to be nested: the 768-dimensional pooled hidden state is an
+exact bitwise prefix of every 840-dimensional organ embedding in all nine seed/router
+conditions. The 3.797% MSE gain is not interpreted as 96% representation agreement.
+Axis hunting and pre-presentation supervised extension work are closed. The two-week
+closeout prioritizes an organ-label/anomaly utility audit, a frozen-trunk adapter
+data-diversity curve, and the Track A confirmation contract.
+
+The first read-only label-compatibility evaluator is implemented and frozen. Protocol
+SHA256 is `d9cf1462b68491b1abba67b8f5f8d4966546d72f854a0b0fada6ef46c1ebcabc`;
+evaluator SHA256 is
+`d5b4a70db9c45b787f87a19952d061bd687686178c8e69917dc7193957b9e061`.
+It compares all-seed expert compatibility margins with train-only raw and PCA64
+centroid margins under 2,000 donor bootstraps. Two focused tests pass; no outcome has
+yet been emitted.
 
 ## 2026-08-02 — E3 fails; post-D2 Phase 1 and current downstream branch close
 

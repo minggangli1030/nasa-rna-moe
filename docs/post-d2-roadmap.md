@@ -1,5 +1,8 @@
 # Post-D2 roadmap: what remains testable, and what to execute
 
+**Historical record. Phase 1 execution complete. Superseded for planning by
+[`aug17-execution-plan.md`](aug17-execution-plan.md).**
+
 **Written:** 2026-08-02
 **Review input:** [`../CLAUDE.md`](../CLAUDE.md) Sections 13 and 14
 **Horizon:** August 17 deliverable, plus a post-deadline research program

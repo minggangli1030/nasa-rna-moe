@@ -71,7 +71,11 @@ does not rescue that gap.
 ## E2: organ-conditional residuals
 
 Residuals are observed score-panel expression minus each frozen predicted score
-panel. The muscle-only AUROCs are:
+panel. They therefore retain a direct observed-expression component. Subtraction can
+still remove, distort, or amplify state signal, and the score panel is not the full raw
+vector, so high residual AUROC was not guaranteed. It is nevertheless not evidence of
+an MoE benefit by itself; the informative comparison is specialized residual versus
+pooled and fold-fit centered controls. The muscle-only AUROCs are:
 
 | representation | seed 17 | seed 42 | seed 101 |
 |---|---:|---:|---:|
@@ -139,8 +143,12 @@ no baseline report. Although its three seed shards completed, none was reused. T
 corrected lineage reran all four shards with the smallest feasible four paired studies;
 all shard and aggregate checksums verify.
 
-**E3 verdict:** compact learned representations do not gain a low-label advantage on
-this task. Scarce labels amplify rather than close the raw-expression gap.
+**E3 verdict:** under the same elastic-net probe family, label budget, and grouped
+splits, compact learned representations make the state signal less linearly accessible
+than raw expression at the 5% and 10% floors in every model seed. Scarce labels amplify
+rather than close the raw-expression gap. This is strong evidence that the frozen
+reconstruction outputs do not preserve state information in a practically useful form;
+it does not establish information-theoretic absence.
 
 ## Interpretation and next step
 

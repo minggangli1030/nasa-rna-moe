@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "written": "2026-08-03",
+  "status": "rules_frozen_before_candidate_expression_access",
+  "purpose": "metadata-only selection of one human controlled-state development task with measurable primary-organ headroom",
+  "candidate_order": [
+    "human_disuse_or_bed_rest_skeletal_muscle",
+    "acute_exercise_skeletal_muscle",
+    "controlled_hypoxia_or_pharmacological_challenge"
+  ],
+  "selection_policy": {
+    "order_source": "metadata and biological relevance only",
+    "evaluation": "sequential",
+    "stopping_rule": "stop at the first candidate satisfying every frozen metadata and headroom gate",
+    "rejected_candidate_reuse_for_confirmation": false,
+    "threshold_relaxation": false,
+    "replacement_samples_after_expression_access": false
+  },
+  "metadata_gates": {
+    "minimum_two_class_studies": 10,
+    "minimum_samples_per_class": 80,
+    "minimum_total_samples": 200,
+    "minimum_primary_organ_samples": 60,
+    "minimum_studies_per_class_within_primary_organ": 3,
+    "label_varies_within_study": true,
+    "single_class_studies_in_primary_estimand_allowed": false,
+    "structured_label_source_required": true,
+    "study_disjoint_evaluation_required": true,
+    "per_organ_reporting_required": true
+  },
+  "headroom_gates_after_metadata_pass": {
+    "primary_organ_raw_auroc_minimum_inclusive": 0.60,
+    "primary_organ_raw_auroc_maximum_inclusive": 0.90,
+    "earlier_0_65_to_0_85_range_has_selection_role": false,
+    "study_bootstrap_interval_must_exclude_chance": true,
+    "single_study_dominance_check_required": true,
+    "all_adequately_powered_organs_reported": true,
+    "secondary_organ_above_0_90_allowed_in_pooled_headline": false,
+    "untouched_grouped_confirmation_reserved_before_training": true
+  },
+  "access_firewall": {
+    "metadata_access": true,
+    "candidate_expression_access": false,
+    "archs4_expression_access": false,
+    "osdr_outcome_reuse": false,
+    "model_training": false,
+    "final_k8_package_modification": false
+  },
+  "completion_branches": [
+    "one_candidate_contract_frozen",
+    "metadata_infeasibility_documented_by_gate"
+  ]
+}

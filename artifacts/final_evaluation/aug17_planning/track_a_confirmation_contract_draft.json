@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "written": "2026-08-03",
+  "status": "draft_unexecuted_inputs_and_minimum_coverage_pending",
+  "purpose": "prospective untouched confirmation of the frozen K8 organ-specialization reconstruction effect",
+  "overlap_firewall": {
+    "exclude_all_gtex_training_and_calibration_donors": true,
+    "exclude_all_63_accessed_archs4_studies": true,
+    "deduplicate_samples_donors_bioprojects_and_accessions_across_sources": true,
+    "cross_source_accession_normalization_required": true
+  },
+  "cohort_rules": {
+    "expression_source_and_release": null,
+    "minimum_studies_per_organ": null,
+    "minimum_samples_per_organ": null,
+    "primary_aggregate_organ_set": null,
+    "under_coverage_rule": "metadata_and_qc_only_exclusion_with_no_replacements",
+    "nonzero_gene_threshold": 14000,
+    "post_access_qc_amendment_allowed": false
+  },
+  "conditions": [
+    "pooled",
+    "true_organ",
+    "blind_router_hard",
+    "blind_router_soft",
+    "random_k8",
+    "equal_capacity_generic_adapter"
+  ],
+  "seeds": [17, 42, 101],
+  "primary_estimand": "aggregate_relative_mse_improvement_vs_pooled_with_paired_study_bootstrap",
+  "secondary_reporting": "mandatory_per_organ_safety_and_descriptive_results",
+  "selection_firewall": {
+    "best_seed_selection": false,
+    "membership_change_after_expression_access": false,
+    "replacement_samples": false,
+    "threshold_relaxation": false,
+    "fine_tuning_on_confirmation": false
+  },
+  "required_before_freeze": [
+    "expression_file_sha256",
+    "membership_sha256",
+    "organ_mapping_sha256",
+    "checkpoint_sha256_by_condition_and_seed",
+    "protocol_sha256",
+    "evaluator_commit_and_sha256",
+    "minimum_coverage_values"
+  ]
+}
