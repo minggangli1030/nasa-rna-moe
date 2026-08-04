@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-03 21:14 PDT / 2026-08-04 04:14 UTC
+**Last updated:** 2026-08-03 23:14 PDT / 2026-08-04 06:14 UTC
 
 ## 2026-08-03 — August 17 plan frozen; deck and metadata-only D3 work started
 
@@ -87,6 +87,17 @@ At 21:13 PDT, both hosts were at update 200/1,500 of their first combination at 
 calibration rate gives a conservative full completion window of 04:00–05:00 PDT on
 August 4; frozen evaluation follows automatically through the dedicated two-hour
 execution heartbeat.
+
+At the first two-hour heartbeat, 6/15 combinations were complete—three per host—and
+both runners had entered combination 4. The six completed top-level records and all
+12 bank records were independently verified: status complete, expected fixed seed,
+`config.final_update=1500`, `test_accessed=false`, `external_data_accessed=false`, and
+bank completion markers present. Both worktrees remain exactly clean at `f21e40f`,
+and protocol/scale-manifest hashes still match. Primary was budget 100/seed 17 at
+update 100; secondary had just started budget 100/seed 101. GPU utilization was
+94–98%, RAM/disk headroom was ample, and no failure signature was found. The observed
+roughly 41-minute combination rate moves expected training completion to about
+02:30–03:30 PDT, followed by checksums, compact merge, and frozen evaluation.
 
 ## 2026-08-02 — E3 fails; post-D2 Phase 1 and current downstream branch close
 
