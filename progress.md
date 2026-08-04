@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-03 20:53 PDT / 2026-08-04 03:53 UTC
+**Last updated:** 2026-08-03 21:09 PDT / 2026-08-04 04:09 UTC
 
 ## 2026-08-03 — August 17 plan frozen; deck and metadata-only D3 work started
 
@@ -70,6 +70,18 @@ trainer's canonical `config.final_update`. The validator now reads the canonical
 nested field, verifies commit and firewall fields, and repairs the resume path so a
 verified completed bank receives its combination marker. All five focused tests pass;
 the final end-to-end smoke will use a new output lineage.
+
+The final end-to-end smoke at exact clean commit
+`f21e40ffa86fa17f0e1a29881a2efb0be74c508c` passed both two-update banks,
+both calibration caches, the top-level completion marker, and the runner's combination
+marker. At 21:07 PDT, the 15 full combinations launched without overlap across two
+verified GPUs. Primary runs eight combinations in screen
+`gtex-k8-scale-primary-f21e40f`; the strictly checked secondary host runs the other
+seven in `gtex-k8-scale-parallel-f21e40f`. Both use protocol SHA256
+`0a93107daa1a916a1ce58fecc3c5992c0f1ea7e7e0f59afd21c0f9d8f8d9f22a`
+and exact matching expression, metadata, axis-definition, and pooled-checkpoint
+hashes. Evaluation remains locked until all source outputs are checksum-verified and
+their compact score caches are merged without overwriting either lineage.
 
 ## 2026-08-02 — E3 fails; post-D2 Phase 1 and current downstream branch close
 

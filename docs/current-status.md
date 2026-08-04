@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-03 20:53 PDT / 2026-08-04 03:53 UTC
+**Updated:** 2026-08-03 21:09 PDT / 2026-08-04 04:09 UTC
 
 This is the operational handoff. Historical detail is preserved in Git and in
 [`../progress.md`](../progress.md).
@@ -67,7 +67,12 @@ completed both finite two-update banks and calibration caches, but its wrapper r
 the trainer's canonical nested `config.final_update` field. All lineages are preserved;
 none is a scale result. Five per-budget manifests pass immutable checksums, and the
 versioned validator/resume correction passes all five focused tests. One final
-end-to-end GPU smoke is the next gate; no scale outcome exists yet.
+end-to-end GPU smoke passed both banks, both calibration caches, and the top-level
+combination marker. The exact scientific execution commit is
+`f21e40ffa86fa17f0e1a29881a2efb0be74c508c`. All 15 frozen budget-by-seed
+combinations launched across the two verified GPUs at 21:07 PDT: eight on primary and
+seven on the secondary host, with no overlap. Both first combinations are active at
+full GPU training settings; no scale outcome has yet been aggregated or interpreted.
 
 ## Frozen completed results
 
