@@ -63,6 +63,7 @@ p{font-size:22px;margin-bottom:12px}.lede{font-size:29px;color:var(--muted);max-
 .segment{position:absolute;height:3px;transform-origin:left center}.segment.raw{background:var(--blue)}.segment.pca{background:var(--sage-deep)}.segment.learned{background:var(--clay)}
 .xlab{position:absolute;bottom:-29px;transform:translateX(-50%);font:16px var(--sans);color:var(--muted)}
 .legend{display:flex;gap:20px;margin-top:34px;font:17px var(--sans)}.legend span:before{content:"";display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:7px;background:var(--c)}
+.scale-curve{display:block;width:100%;height:455px;background:var(--card);border:1px solid var(--rule);border-radius:24px;padding:12px 16px}.curve-grid{stroke:rgba(204,203,200,.85);stroke-width:1}.curve-axis{stroke:var(--muted);stroke-width:1.5}.curve-text{fill:var(--muted);font:18px var(--sans)}.curve-title{fill:var(--ink);font:600 20px var(--sans)}.curve-line{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.curve-point{stroke:var(--card);stroke-width:4}
 .checks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.check{padding:14px 15px;border-top:3px solid var(--sage);background:rgba(250,249,245,.7)}.check b{display:block;font:700 16px var(--sans);text-transform:uppercase;letter-spacing:.04em}.check span{font-size:17px;color:var(--muted)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:18px}.step{min-height:230px;padding:24px 26px;background:var(--card);border:1px solid var(--rule);border-radius:24px}.step .n{font:700 16px var(--sans);color:var(--clay-deep);letter-spacing:.12em;text-transform:uppercase}.step h3{margin-top:10px}.step p{font-size:20px;color:var(--muted)}
 .gate{margin-top:14px;padding-top:13px;border-top:1px solid var(--rule);font:600 18px var(--sans)}
@@ -85,7 +86,7 @@ table{width:100%;border-collapse:collapse;margin-top:16px}th{text-align:left;pad
     <span class="eyebrow">NASA RNA mixture-of-experts · Final progress review · August 17, 2026</span>
     <h1>Organ specialists improve <em>reconstruction</em>—but not yet state prediction</h1>
     <p class="lede">Like a hospital, we asked whether biological specialists outperform one general practitioner, whether the front desk can choose automatically, and when specialists should share what they learn.</p>
-    <div class="meta"><span>Stage 1: external reconstruction advantage</span><span>Stage 2: sharing and downstream limits</span><span>Decision: preserve the validated model; redesign downstream supervision</span></div>
+    <div class="meta"><span>Stage 1: external reconstruction advantage</span><span>Closeout: specialists beat pooling at every tested donor budget</span><span>Decision: preserve the validated model; redesign downstream supervision</span></div>
   </div>
 </section>
 
@@ -120,7 +121,49 @@ table{width:100%;border-collapse:collapse;margin-top:16px}th{text-align:left;pad
 
 <section class="slide result">
   <div class="inner">
-    <span class="eyebrow">Result 2 · sharing between organs</span>
+    <span class="eyebrow">Result 2 · data diversity</span>
+    <h2>Specialists win at every tested budget—but the gain is not <em>monotonic</em></h2>
+    <div class="figure-split">
+      <div>
+        <svg class="scale-curve" viewBox="0 0 950 500" role="img" aria-label="Organ K8 MSE improvement versus pooled adapter across donor budgets and three seeds">
+          <text class="curve-title" x="78" y="38">Lower MSE than matched pooled adapter (%)</text>
+          <line class="curve-grid" x1="92" y1="430" x2="855" y2="430"></line><text class="curve-text" x="48" y="437">0</text>
+          <line class="curve-grid" x1="92" y1="327" x2="855" y2="327"></line><text class="curve-text" x="48" y="334">4</text>
+          <line class="curve-grid" x1="92" y1="224" x2="855" y2="224"></line><text class="curve-text" x="48" y="231">8</text>
+          <line class="curve-grid" x1="92" y1="121" x2="855" y2="121"></line><text class="curve-text" x="38" y="128">12</text>
+          <line class="curve-axis" x1="92" y1="70" x2="92" y2="430"></line><line class="curve-axis" x1="92" y1="430" x2="855" y2="430"></line>
+          <polyline class="curve-line" style="stroke:var(--blue)" points="130,254.6 300,312.6 470,259.2 640,255.1 810,277.6"></polyline>
+          <polyline class="curve-line" style="stroke:var(--sage-deep)" points="130,156.1 300,109.7 470,137.9 640,122.4 810,143.0"></polyline>
+          <polyline class="curve-line" style="stroke:var(--clay)" points="130,165.3 300,209.8 470,156.8 640,252.5 810,197.9"></polyline>
+          <g fill="var(--blue)"><circle class="curve-point" cx="130" cy="254.6" r="9"></circle><circle class="curve-point" cx="300" cy="312.6" r="9"></circle><circle class="curve-point" cx="470" cy="259.2" r="9"></circle><circle class="curve-point" cx="640" cy="255.1" r="9"></circle><circle class="curve-point" cx="810" cy="277.6" r="9"></circle></g>
+          <g fill="var(--sage-deep)"><circle class="curve-point" cx="130" cy="156.1" r="9"></circle><circle class="curve-point" cx="300" cy="109.7" r="9"></circle><circle class="curve-point" cx="470" cy="137.9" r="9"></circle><circle class="curve-point" cx="640" cy="122.4" r="9"></circle><circle class="curve-point" cx="810" cy="143" r="9"></circle></g>
+          <g fill="var(--clay)"><circle class="curve-point" cx="130" cy="165.3" r="9"></circle><circle class="curve-point" cx="300" cy="209.8" r="9"></circle><circle class="curve-point" cx="470" cy="156.8" r="9"></circle><circle class="curve-point" cx="640" cy="252.5" r="9"></circle><circle class="curve-point" cx="810" cy="197.9" r="9"></circle></g>
+          <g class="curve-text" text-anchor="middle"><text x="130" y="464">25</text><text x="300" y="464">50</text><text x="470" y="464">100</text><text x="640" y="464">150</text><text x="810" y="464">200</text></g>
+          <text class="curve-text" x="472" y="493" text-anchor="middle">unique training donors per organ</text>
+        </svg>
+        <div class="legend"><span style="--c:var(--blue)">Seed 17</span><span style="--c:var(--sage-deep)">Seed 42</span><span style="--c:var(--clay)">Seed 101</span></div>
+      </div>
+      <div>
+        <div class="panel rule-top">
+          <h3>Robust specialization</h3>
+          <div class="big-number">15 / 15</div>
+          <p>Every prespecified budget×seed run favored the organ adapters. Every donor-bootstrap interval stayed above zero.</p>
+          <div class="stat-row">
+            <div class="stat"><b>4.6–12.5%</b><span>lower MSE</span></div>
+            <div class="stat"><b>5 / 5</b><span>budgets pass</span></div>
+            <div class="stat"><b>0</b><span>safety failures</span></div>
+          </div>
+        </div>
+        <div class="callout"><p><strong>What did not emerge:</strong> more unique donors did not consistently increase the benefit. Two seed slopes rose; one fell.</p></div>
+      </div>
+    </div>
+    <p class="disclosure">Evidence boundary: donor-disjoint GTEx development with the trunk frozen. Samples, updates, and active adapter width are matched; total stored parameters are not. This is not an end-to-end scaling law or external confirmation.</p>
+  </div>
+</section>
+
+<section class="slide result">
+  <div class="inner">
+    <span class="eyebrow">Result 3 · sharing between organs</span>
     <h2>Naive sharing produced no reproducibly <em>helpful</em> rule</h2>
     <div class="figure-split">
       <div>
@@ -149,7 +192,7 @@ table{width:100%;border-collapse:collapse;margin-top:16px}th{text-align:left;pad
 
 <section class="slide result">
   <div class="inner">
-    <span class="eyebrow">Result 3 · other biological divisions</span>
+    <span class="eyebrow">Result 4 · other biological divisions</span>
     <h2>Extra biological labels did not beat a matched <em>capacity</em> control</h2>
     <div class="grid2">
       <div class="panel">
@@ -175,7 +218,7 @@ table{width:100%;border-collapse:collapse;margin-top:16px}th{text-align:left;pad
 
 <section class="slide result">
   <div class="inner">
-    <span class="eyebrow">Result 4 · downstream perturbation state</span>
+    <span class="eyebrow">Result 5 · downstream perturbation state</span>
     <h2>The frozen outputs lose state signal; diagnostics <em>narrow</em> the bottleneck</h2>
     <div class="two-chart">
       <div class="mini-chart">
@@ -235,6 +278,7 @@ table{width:100%;border-collapse:collapse;margin-top:16px}th{text-align:left;pad
       <thead><tr><th>Result</th><th>Supported statement</th><th>Boundary</th></tr></thead>
       <tbody>
         <tr><td>ARCHS4 reconstruction</td><td>Organ specialization lowers aggregate external MSE in all seeds.</td><td>Post-access QC-amended; not pristine confirmation.</td></tr>
+        <tr><td>GTEx donor-budget curve</td><td>Organ adapters beat matched pooling at all five budgets in every seed.</td><td>Frozen trunk; not total-parameter matched; no robust monotonic slope.</td></tr>
         <tr><td>Directed transfer</td><td>No reproducibly helpful rule under tested substitution/addition protocols.</td><td>Does not rule out all hierarchical or protected sharing.</td></tr>
         <tr><td>Secondary axes</td><td>No tested axis survived all matched controls and safety gates.</td><td>Does not prove organ is the only biological structure.</td></tr>
         <tr><td>OSDR downstream</td><td>Frozen outputs are less linearly useful than raw/PCA for this task.</td><td>Accessed cross-species development cohort; not information-theoretic absence.</td></tr>

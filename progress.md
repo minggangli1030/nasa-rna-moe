@@ -1,6 +1,26 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-04 01:16 PDT / 2026-08-04 08:16 UTC
+**Last updated:** 2026-08-04 03:35 PDT / 2026-08-04 10:35 UTC
+
+## 2026-08-04 — Frozen-trunk K8 adapter diversity curve completes
+
+All 15 frozen budget-by-seed combinations completed across the two verified GPU
+lineages. Every top-level and bank record passed the canonical final-update, fixed-seed,
+commit, test/external-access, and completion-marker checks. Deterministic source
+checksums verified; only 30 calibration score caches and necessary metadata were merged
+into a no-overwrite aggregate, with no checkpoints. The frozen evaluator report and its
+immutable checksum verify.
+
+Organ K8 beats the active-width/compute-matched pooled adapter in every run. Gains span
+4.565–12.455% MSE across 25/50/100/150/200 donors per organ and seeds 17/42/101; all 15
+donor-bootstrap intervals are above zero. Every budget passes the all-seed
+stable-positive gate and no per-organ harm exceeds the 2% safety bound. However,
+log-budget slopes are +0.098, +0.170, and −0.784 percentage points for seeds 17, 42,
+and 101, respectively. The frozen conclusion is therefore robust specialization across
+the tested range but `NO_ROBUST_MONOTONIC_CLAIM`, not a scaling law. This is
+donor-disjoint GTEx development with a frozen trunk; the pooled adapter is not
+total-parameter matched. The result is documented in
+`docs/gtex-k8-adapter-scale-result.md`.
 
 ## 2026-08-03 — August 17 plan frozen; deck and metadata-only D3 work started
 

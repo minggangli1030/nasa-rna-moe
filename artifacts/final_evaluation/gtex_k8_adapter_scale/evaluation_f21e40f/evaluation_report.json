@@ -1,0 +1,632 @@
+{
+  "bootstrap": {
+    "100": {
+      "101": {
+        "pooled": {
+          "ci95": [
+            10.443199945277547,
+            10.79169042077327
+          ],
+          "mean_gain_percent": 10.617263499988493
+        },
+        "pooled_adapter": {
+          "ci95": [
+            10.450612480081077,
+            10.799804293563254
+          ],
+          "mean_gain_percent": 10.624855957577468
+        }
+      },
+      "17": {
+        "pooled": {
+          "ci95": [
+            6.509394115135734,
+            6.75161966614713
+          ],
+          "mean_gain_percent": 6.631084124539234
+        },
+        "pooled_adapter": {
+          "ci95": [
+            6.52218033510526,
+            6.765803285954363
+          ],
+          "mean_gain_percent": 6.644779280712772
+        }
+      },
+      "42": {
+        "pooled": {
+          "ci95": [
+            11.095572140547425,
+            11.608579564077086
+          ],
+          "mean_gain_percent": 11.355176822966936
+        },
+        "pooled_adapter": {
+          "ci95": [
+            11.099891305451184,
+            11.613215099263046
+          ],
+          "mean_gain_percent": 11.359708523230438
+        }
+      }
+    },
+    "150": {
+      "101": {
+        "pooled": {
+          "ci95": [
+            6.752012886921003,
+            7.030442765422926
+          ],
+          "mean_gain_percent": 6.89006289705845
+        },
+        "pooled_adapter": {
+          "ci95": [
+            6.761914444272337,
+            7.040754563673328
+          ],
+          "mean_gain_percent": 6.900086505190637
+        }
+      },
+      "17": {
+        "pooled": {
+          "ci95": [
+            6.651925587790254,
+            6.914362437799855
+          ],
+          "mean_gain_percent": 6.788351239536633
+        },
+        "pooled_adapter": {
+          "ci95": [
+            6.665366408148097,
+            6.927658674087556
+          ],
+          "mean_gain_percent": 6.801556046037378
+        }
+      },
+      "42": {
+        "pooled": {
+          "ci95": [
+            11.740619515335752,
+            12.177214144729833
+          ],
+          "mean_gain_percent": 11.949002146176408
+        },
+        "pooled_adapter": {
+          "ci95": [
+            11.755765175287255,
+            12.194319812585803
+          ],
+          "mean_gain_percent": 11.964955470271702
+        }
+      }
+    },
+    "200": {
+      "101": {
+        "pooled": {
+          "ci95": [
+            8.839980587615818,
+            9.195090203095354
+          ],
+          "mean_gain_percent": 9.019432564663452
+        },
+        "pooled_adapter": {
+          "ci95": [
+            8.847685711789088,
+            9.202720243022343
+          ],
+          "mean_gain_percent": 9.027089868979497
+        }
+      },
+      "17": {
+        "pooled": {
+          "ci95": [
+            5.809161748164985,
+            6.011022702951321
+          ],
+          "mean_gain_percent": 5.9086091674055545
+        },
+        "pooled_adapter": {
+          "ci95": [
+            5.826406095838423,
+            6.029889664471154
+          ],
+          "mean_gain_percent": 5.926386433393671
+        }
+      },
+      "42": {
+        "pooled": {
+          "ci95": [
+            10.94464667787826,
+            11.36824639239571
+          ],
+          "mean_gain_percent": 11.154993252703978
+        },
+        "pooled_adapter": {
+          "ci95": [
+            10.951262390039016,
+            11.375164393085752
+          ],
+          "mean_gain_percent": 11.161629228530165
+        }
+      }
+    },
+    "25": {
+      "101": {
+        "pooled": {
+          "ci95": [
+            10.160642728593695,
+            10.470225239561579
+          ],
+          "mean_gain_percent": 10.317017549131299
+        },
+        "pooled_adapter": {
+          "ci95": [
+            10.136029974199747,
+            10.448573193333882
+          ],
+          "mean_gain_percent": 10.293854549936363
+        }
+      },
+      "17": {
+        "pooled": {
+          "ci95": [
+            6.644700663214547,
+            6.958260952239558
+          ],
+          "mean_gain_percent": 6.802248748065873
+        },
+        "pooled_adapter": {
+          "ci95": [
+            6.6620059284152635,
+            6.975466742790379
+          ],
+          "mean_gain_percent": 6.819784042193318
+        }
+      },
+      "42": {
+        "pooled": {
+          "ci95": [
+            10.386218926314777,
+            10.9040161390807
+          ],
+          "mean_gain_percent": 10.64996175887681
+        },
+        "pooled_adapter": {
+          "ci95": [
+            10.388249790865093,
+            10.90579601397573
+          ],
+          "mean_gain_percent": 10.652347701772882
+        }
+      }
+    },
+    "50": {
+      "101": {
+        "pooled": {
+          "ci95": [
+            8.412989980193094,
+            8.724667371585188
+          ],
+          "mean_gain_percent": 8.56790412678342
+        },
+        "pooled_adapter": {
+          "ci95": [
+            8.408128735275346,
+            8.720654004389182
+          ],
+          "mean_gain_percent": 8.563658021496375
+        }
+      },
+      "17": {
+        "pooled": {
+          "ci95": [
+            4.409085192639632,
+            4.6879115328742715
+          ],
+          "mean_gain_percent": 4.547442513778305
+        },
+        "pooled_adapter": {
+          "ci95": [
+            4.426458930575336,
+            4.7056284930857215
+          ],
+          "mean_gain_percent": 4.56484738379149
+        }
+      },
+      "42": {
+        "pooled": {
+          "ci95": [
+            12.222520021618594,
+            12.697991365577737
+          ],
+          "mean_gain_percent": 12.457610356261855
+        },
+        "pooled_adapter": {
+          "ci95": [
+            12.221446628918027,
+            12.69693501702748
+          ],
+          "mean_gain_percent": 12.456627278154144
+        }
+      }
+    }
+  },
+  "cache_sha256": {
+    "b100/seed101/banks/banks/organ_k8/calibration_scores.npz": "b5aa41cbad74af14d43aac58f778f65d16ce1392ce247a288b4b1b0e70fcd262",
+    "b100/seed101/banks/banks/pooled_adapter/calibration_scores.npz": "9703657ee68a4f0248784825f0dfa620cd18226d264edbd2fb502e07b9835d10",
+    "b100/seed17/banks/banks/organ_k8/calibration_scores.npz": "b6a658ce5550e9f607e2c3d2009e1dcebf84d4f4b395b40230fe413abad4f026",
+    "b100/seed17/banks/banks/pooled_adapter/calibration_scores.npz": "b2be8d3cabfadc0f00f8f79e40711227eb6388db8f88c185c66c17840fc08af1",
+    "b100/seed42/banks/banks/organ_k8/calibration_scores.npz": "0830f42ebce741f4f510d0d2d36bbce97d7a517752f7315bce53c5b6e2f5952e",
+    "b100/seed42/banks/banks/pooled_adapter/calibration_scores.npz": "23aa30b46f5535aeabfdf93e0bc3cda59af19d1bcf4647dc721e2fc5fd62f640",
+    "b150/seed101/banks/banks/organ_k8/calibration_scores.npz": "00cf2f26c5780712e2ea920e804ba2eafe0a1ee51832c5772fdd7e47f3074539",
+    "b150/seed101/banks/banks/pooled_adapter/calibration_scores.npz": "05bf9dcd43f455485d5fefd08b78da192f8567946add20d841024118255156de",
+    "b150/seed17/banks/banks/organ_k8/calibration_scores.npz": "d804ba40b86c98ca29c69b5a3f60f0cf478be39a733134945e0351c5da7a2676",
+    "b150/seed17/banks/banks/pooled_adapter/calibration_scores.npz": "18b4afb29f24bdb559583e44a1601fd3abe1e420d5ad9e49e30d5c8d99e7bd99",
+    "b150/seed42/banks/banks/organ_k8/calibration_scores.npz": "db5b417e9625bf8f2f0376f9e62afcb2814665444f6ab2d60ebf0fb0a72d6a5a",
+    "b150/seed42/banks/banks/pooled_adapter/calibration_scores.npz": "01f88fb10b9b29c259bfbe9aa107140eec0a776cb85deef7995a341a37ac1069",
+    "b200/seed101/banks/banks/organ_k8/calibration_scores.npz": "6937047ba1f0bd2ff0b2f6e99e226c28abc0651ab3ca2fca76c9bc424df70497",
+    "b200/seed101/banks/banks/pooled_adapter/calibration_scores.npz": "2fdefbaf61e35ab882b25093953bbe99046a2807bf6ccc3d2346f01bd42fadb3",
+    "b200/seed17/banks/banks/organ_k8/calibration_scores.npz": "f43db8f71b775358e6eeed1d7eb271c6a7eb4fdf633c64d4ef1826bc3b58267a",
+    "b200/seed17/banks/banks/pooled_adapter/calibration_scores.npz": "e4246d731405cf1cb1f30e69f99d59c7d5e9d3d30a26333c62b090e4246ef3bb",
+    "b200/seed42/banks/banks/organ_k8/calibration_scores.npz": "3acdcd940e40db31497e3eee32d5c2b2ca5193d6ff44d276d158cd1a93f132aa",
+    "b200/seed42/banks/banks/pooled_adapter/calibration_scores.npz": "8afb69d75c5a01153d8cb90516c739b8bb11d83c5b00dae481e5530536a3e945",
+    "b25/seed101/banks/banks/organ_k8/calibration_scores.npz": "a3826049a1a8caf19fd01b733a96c3419bdc3312383a3a38e5a73bd4ca5deaba",
+    "b25/seed101/banks/banks/pooled_adapter/calibration_scores.npz": "5e82092708bd58cd15aaf14c3e55365499204e0000e85841aa948ba0daf19e77",
+    "b25/seed17/banks/banks/organ_k8/calibration_scores.npz": "3d3223eb0f16700bb1340a3f221ba6d005aacce50cfd50cd7036c3a6605acbd3",
+    "b25/seed17/banks/banks/pooled_adapter/calibration_scores.npz": "a19d3fc9eb1bbcaf1160dd2788dbfc658a3d681415d7e2c07d79d18ca38f8c2b",
+    "b25/seed42/banks/banks/organ_k8/calibration_scores.npz": "8349eb12ce0e868e049849daa572c951a56806b65af52cf9d6a1a834f0d7badc",
+    "b25/seed42/banks/banks/pooled_adapter/calibration_scores.npz": "26a12dd91856f55274d6eca4e75defcbf06b06ec02d24c93ea3a2253960fdba8",
+    "b50/seed101/banks/banks/organ_k8/calibration_scores.npz": "c3873e54099d936e7b6f2cfd9c2771081221f3ee3a3751e99d84ac0f54a24f0e",
+    "b50/seed101/banks/banks/pooled_adapter/calibration_scores.npz": "0508c19ff1928416dcbc867bbcbf6aac005b5f104ffd1cdef2b744319ae02b0e",
+    "b50/seed17/banks/banks/organ_k8/calibration_scores.npz": "39ce297e6b67df04c7590a1b8881f2a26d4a0b69067b5af84616804b7cf11f0b",
+    "b50/seed17/banks/banks/pooled_adapter/calibration_scores.npz": "eefabf8d80dc01ebd7d4931aa69ddd3773f1f30ce5891cd6e97ad64232944274",
+    "b50/seed42/banks/banks/organ_k8/calibration_scores.npz": "d0bde877844e3c58519bc1f09e24d814189633d504d101ecd5549b3658c750d5",
+    "b50/seed42/banks/banks/pooled_adapter/calibration_scores.npz": "aa007b4436ded513d4d6960bde96944e8419a58d90f1f8bca751ac7eaac7250f"
+  },
+  "donors": 188,
+  "firewalls": {
+    "archs4_expression_accessed": false,
+    "best_seed_or_budget_selected": false,
+    "confirmation_claim": false,
+    "end_to_end_scaling_claim": false,
+    "pooled_trunk_updated": false
+  },
+  "log_budget_slopes": {
+    "101": {
+      "ci95": [
+        -0.8589445936103758,
+        -0.7151086566760578
+      ],
+      "point_per_log_budget": -0.7843151757984689
+    },
+    "17": {
+      "ci95": [
+        0.02645634413037807,
+        0.17200580349232963
+      ],
+      "point_per_log_budget": 0.09849310667898771
+    },
+    "42": {
+      "ci95": [
+        0.0891833042619696,
+        0.2522385232326328
+      ],
+      "point_per_log_budget": 0.16979433290978854
+    }
+  },
+  "monotonic_decision": "NO_ROBUST_MONOTONIC_CLAIM",
+  "per_organ_safety": {
+    "maximum_allowed_harm_percent": 2.0,
+    "passes": true,
+    "violations": []
+  },
+  "points": {
+    "100": {
+      "101": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.3763457250797267,
+          "pooled": 0.42105127956988864,
+          "pooled_adapter": 0.4210869997756279
+        },
+        "organ_minus_pooled_adapter_gain_percent": 10.625185465174935,
+        "organ_minus_pooled_trunk_gain_percent": 10.617603284766043,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 6.8886623208327435,
+          "brain": 5.280041986211301,
+          "colon": 5.225848936310675,
+          "heart": 5.112012760612714,
+          "liver": 21.838388732785074,
+          "lung": 6.288824277587483,
+          "skeletal_muscle": 7.220267313070336,
+          "skin": 20.4221398148629
+        }
+      },
+      "17": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.41020928311943106,
+          "pooled": 0.4393353020451637,
+          "pooled_adapter": 0.4393997031914595
+        },
+        "organ_minus_pooled_adapter_gain_percent": 6.643249838361703,
+        "organ_minus_pooled_trunk_gain_percent": 6.629564888172468,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 1.6986070609341994,
+          "brain": 5.1381397703653375,
+          "colon": -0.003599864020802081,
+          "heart": 4.577388557726517,
+          "liver": 7.655849681304476,
+          "lung": 3.240222409975315,
+          "skeletal_muscle": 8.78372682360279,
+          "skin": 18.09963451834318
+        }
+      },
+      "42": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.3751212620073785,
+          "pooled": 0.42317273331764393,
+          "pooled_adapter": 0.423194386207446
+        },
+        "organ_minus_pooled_adapter_gain_percent": 11.359584570789293,
+        "organ_minus_pooled_trunk_gain_percent": 11.355049020655311,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 3.70164029809721,
+          "brain": 22.751189868379235,
+          "colon": 2.7062920820684746,
+          "heart": 6.350138441372447,
+          "liver": 8.88527627029511,
+          "lung": 5.006562856574667,
+          "skeletal_muscle": 10.57764040193116,
+          "skin": 16.872907257804826
+        }
+      }
+    },
+    "150": {
+      "101": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.3920330695967389,
+          "pooled": 0.42105127956988864,
+          "pooled_adapter": 0.4210965963027961
+        },
+        "organ_minus_pooled_adapter_gain_percent": 6.901866925839181,
+        "organ_minus_pooled_trunk_gain_percent": 6.891846998492051,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 2.5704494754019653,
+          "brain": 8.691544742808217,
+          "colon": 3.012164891339751,
+          "heart": 5.754702995769147,
+          "liver": 13.590792446299963,
+          "lung": 7.022839539529668,
+          "skeletal_muscle": 9.728080023826793,
+          "skin": 1.0995199652177927
+        }
+      },
+      "17": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.40950925121200454,
+          "pooled": 0.4393353020451637,
+          "pooled_adapter": 0.43939749357222796
+        },
+        "organ_minus_pooled_adapter_gain_percent": 6.802096688635389,
+        "organ_minus_pooled_trunk_gain_percent": 6.788903758545,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 0.18798954030203915,
+          "brain": 8.17620508163779,
+          "colon": 2.87660659401806,
+          "heart": 0.267832115972234,
+          "liver": 9.655568996877568,
+          "lung": 6.3395205978335545,
+          "skeletal_muscle": 8.874608832075825,
+          "skin": 11.676870240011555
+        }
+      },
+      "42": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.3726115274831713,
+          "pooled": 0.42317273331764393,
+          "pooled_adapter": 0.4232494675743971
+        },
+        "organ_minus_pooled_adapter_gain_percent": 11.96408831449383,
+        "organ_minus_pooled_trunk_gain_percent": 11.948124690850571,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 3.151832872860438,
+          "brain": 12.945867575198179,
+          "colon": 1.5943107398840637,
+          "heart": 6.165194272408102,
+          "liver": 27.26761705030938,
+          "lung": 1.6657794633167409,
+          "skeletal_muscle": 9.691911347666114,
+          "skin": 16.988367806911032
+        }
+      }
+    },
+    "200": {
+      "101": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.38307133054918596,
+          "pooled": 0.42105127956988864,
+          "pooled_adapter": 0.4210866400202802
+        },
+        "organ_minus_pooled_adapter_gain_percent": 9.027906814916603,
+        "organ_minus_pooled_trunk_gain_percent": 9.020266856687828,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 4.6007875039801425,
+          "brain": 1.8804254887634484,
+          "colon": 3.0983730328997927,
+          "heart": 9.180754141199468,
+          "liver": 26.44108487859948,
+          "lung": 7.84420225361945,
+          "skeletal_muscle": 1.1539868642608186,
+          "skin": 11.839846958706069
+        }
+      },
+      "17": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.41337769930191537,
+          "pooled": 0.4393353020451637,
+          "pooled_adapter": 0.4394182847501059
+        },
+        "organ_minus_pooled_adapter_gain_percent": 5.926149719281628,
+        "organ_minus_pooled_trunk_gain_percent": 5.908380824944469,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 5.876445047594969,
+          "brain": 7.506368788655121,
+          "colon": -0.02105805107477138,
+          "heart": 9.675514147452649,
+          "liver": 6.642346705253562,
+          "lung": 3.239652074735908,
+          "skeletal_muscle": 4.5023431941703524,
+          "skin": 7.3118640980343095
+        }
+      },
+      "42": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.3759707446765169,
+          "pooled": 0.42317273331764393,
+          "pooled_adapter": 0.42320434534411233
+        },
+        "organ_minus_pooled_adapter_gain_percent": 11.160944160247038,
+        "organ_minus_pooled_trunk_gain_percent": 11.154307667950816,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 2.216273617686052,
+          "brain": 9.48181685189159,
+          "colon": 2.7563247097291117,
+          "heart": 3.268001920425854,
+          "liver": 28.941106391416557,
+          "lung": 3.3346849606780005,
+          "skeletal_muscle": 4.32505989613729,
+          "skin": 18.104867210434783
+        }
+      }
+    },
+    "25": {
+      "101": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.3776166468083466,
+          "pooled": 0.42105127956988864,
+          "pooled_adapter": 0.4209417030408523
+        },
+        "organ_minus_pooled_adapter_gain_percent": 10.292412445602002,
+        "organ_minus_pooled_trunk_gain_percent": 10.315758404988408,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 4.75470349118702,
+          "brain": 9.855785273946944,
+          "colon": 2.5624962285137163,
+          "heart": 7.504857736596466,
+          "liver": 14.745256350390862,
+          "lung": 6.76802627833916,
+          "skeletal_muscle": 6.204126723719856,
+          "skin": 21.732667809880326
+        }
+      },
+      "17": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.40945199794065096,
+          "pooled": 0.4393353020451637,
+          "pooled_adapter": 0.4394179067872809
+        },
+        "organ_minus_pooled_adapter_gain_percent": 6.819455553306844,
+        "organ_minus_pooled_trunk_gain_percent": 6.801935552504435,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 2.447774972936192,
+          "brain": 5.526111962279524,
+          "colon": 2.3724634666057414,
+          "heart": 7.944333298950765,
+          "liver": 17.19805555922362,
+          "lung": 6.977509756128985,
+          "skeletal_muscle": 5.303874463130399,
+          "skin": 2.883062770432101
+        }
+      },
+      "42": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.378106717555546,
+          "pooled": 0.42317273331764393,
+          "pooled_adapter": 0.423183977937087
+        },
+        "organ_minus_pooled_adapter_gain_percent": 10.651929829971605,
+        "organ_minus_pooled_trunk_gain_percent": 10.649555657516876,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 1.2652736398407367,
+          "brain": 9.373367240225738,
+          "colon": 0.009038204528786686,
+          "heart": 6.725098277941867,
+          "liver": 33.60936590229417,
+          "lung": 7.707158765959108,
+          "skeletal_muscle": 9.987932542113175,
+          "skin": 3.9487149430301685
+        }
+      }
+    },
+    "50": {
+      "101": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.3849841278103095,
+          "pooled": 0.42105127956988864,
+          "pooled_adapter": 0.42103166495006394
+        },
+        "organ_minus_pooled_adapter_gain_percent": 8.56171640772668,
+        "organ_minus_pooled_trunk_gain_percent": 8.56597604843343,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 2.5555790476752147,
+          "brain": 5.77927936183365,
+          "colon": 1.650291476906525,
+          "heart": 14.419605708700129,
+          "liver": 11.018125415278668,
+          "lung": 7.709637078946706,
+          "skeletal_muscle": 6.422572083406522,
+          "skin": 16.91312257855455
+        }
+      },
+      "17": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.4193575347340742,
+          "pooled": 0.4393353020451637,
+          "pooled_adapter": 0.43941520205277185
+        },
+        "organ_minus_pooled_adapter_gain_percent": 4.564627537917723,
+        "organ_minus_pooled_trunk_gain_percent": 4.547271120278824,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 1.9314772865876562,
+          "brain": 4.504067043598891,
+          "colon": 1.9096710330567543,
+          "heart": 6.036360417496222,
+          "liver": 10.057395549241868,
+          "lung": 0.03971435873901116,
+          "skeletal_muscle": 10.051098539760044,
+          "skin": 0.2384267033722833
+        }
+      },
+      "42": {
+        "macro_organ_donor_mse": {
+          "organ_k8": 0.3704614031729052,
+          "pooled": 0.42317273331764393,
+          "pooled_adapter": 0.42316799269992234
+        },
+        "organ_minus_pooled_adapter_gain_percent": 12.455240102337447,
+        "organ_minus_pooled_trunk_gain_percent": 12.456220827718663,
+        "per_organ_gain_vs_pooled_adapter_percent": {
+          "adipose": 1.2941229056778227,
+          "brain": 15.505137434226421,
+          "colon": 2.34113539868599,
+          "heart": 11.146978134494688,
+          "liver": 21.29003215597109,
+          "lung": 5.424257618006151,
+          "skeletal_muscle": 11.246268272120457,
+          "skin": 17.908607415787923
+        }
+      }
+    }
+  },
+  "protocol_sha256": "0a93107daa1a916a1ce58fecc3c5992c0f1ea7e7e0f59afd21c0f9d8f8d9f22a",
+  "role": "frozen_trunk_adapter_data_diversity_development_curve",
+  "samples": 1826,
+  "schema_version": 1,
+  "stable_positive_vs_pooled_adapter_budgets": [
+    25,
+    50,
+    100,
+    150,
+    200
+  ],
+  "status": "complete"
+}

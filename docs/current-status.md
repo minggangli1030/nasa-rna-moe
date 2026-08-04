@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-04 01:16 PDT / 2026-08-04 08:16 UTC
+**Updated:** 2026-08-04 03:35 PDT / 2026-08-04 10:35 UTC
 
 This is the operational handoff. Historical detail is preserved in Git and in
 [`../progress.md`](../progress.md).
@@ -12,7 +12,7 @@ the authorized boundary. The exact execution plan is frozen at SHA256
 `cab2f979d4387edd3a72241a18780234463f4625aaf0f89831662e984851754f`.
 The protected deliverable is now the separate deck
 [`../presentation/2026-08-17-final.html`](../presentation/2026-08-17-final.html).
-Static validation passes eight slides, unique IDs, no pure white/black, and a minimum
+Static validation passes nine slides, unique IDs, no pure white/black, and a minimum
 explicit text size of 16 px. The July 30 deck and shared design file were not modified
 by this implementation step.
 
@@ -50,35 +50,18 @@ Expert AUROC is 0.998610/0.979082/0.999468 for seeds 17/42/101, but PCA64 reache
 all-seed gate fails. This closes synthetic label-swap utility without tuning. See
 [`gtex-k8-mislabel-result.md`](gtex-k8-mislabel-result.md).
 
-The main new closeout experiment is now protocol-frozen but not yet trained: a
-frozen-trunk adapter data-diversity curve at exactly 25/50/100/150/200 unique donors
-per organ, one expression-blind sample per donor. The immutable scale manifest is
-identical across its two metadata-only build lineages and its trainer-compatible hash
-is `5f1f8bd62371ad993a2d4016c94e1ee252a18b795fc73e1c4b5f51570cdf66fc`.
-The scientific protocol SHA256 is
-`0a93107daa1a916a1ce58fecc3c5992c0f1ea7e7e0f59afd21c0f9d8f8d9f22a`.
-It compares organ K8 with the active-width/compute-matched pooled adapter on identical
-samples, updates, and total exposures across all three seeds; the pooled control has
-one adapter and is not matched for K8's total stored parameter count. The first
-mechanical lineage failed before training because its combined manifest included
-unselected training rows. A replacement then failed before its first update because a
-legacy fallback exposure argument was not batch-divisible. The next smoke successfully
-completed both finite two-update banks and calibration caches, but its wrapper rejected
-the trainer's canonical nested `config.final_update` field. All lineages are preserved;
-none is a scale result. Five per-budget manifests pass immutable checksums, and the
-versioned validator/resume correction passes all five focused tests. One final
-end-to-end GPU smoke passed both banks, both calibration caches, and the top-level
-combination marker. The exact scientific execution commit is
-`f21e40ffa86fa17f0e1a29881a2efb0be74c508c`. All 15 frozen budget-by-seed
-combinations launched across the two verified GPUs at 21:07 PDT: eight on primary and
-seven on the secondary host, with no overlap. At 01:16 PDT, 11/15 combinations were
-complete: six on primary and five on secondary. Primary had safely started combination
-7/8 (budget 200/seed 17); secondary was finishing the second-bank calibration for
-combination 6/7 (budget 150/seed 42) at 99% GPU. The exact clean commit and frozen
-hashes still match on both hosts, memory and disk remain adequate, and there is no
-failure trace. At the measured per-host rate, full training should finish around
-02:30–03:00 PDT; checksum verification, compact no-overwrite aggregation, and the
-frozen evaluator follow. No scale outcome has yet been aggregated or interpreted.
+The main closeout experiment is complete. The frozen-trunk adapter data-diversity
+curve used exactly 25/50/100/150/200 unique donors per organ and all three fixed seeds.
+All 15 organ-K8 estimates beat the active-width/compute-matched pooled adapter by
+4.565–12.455% MSE, and every 95% donor-bootstrap interval is above zero. All five
+budgets therefore pass the stable-positive gate, and no per-organ safety violation is
+present. The log-budget slope is positive in seeds 17/42 but negative in seed 101, so
+the frozen monotonic decision is `NO_ROBUST_MONOTONIC_CLAIM`: specialization is robust
+across this tested range, but the effect does not systematically grow with donor
+diversity. This is frozen-trunk donor-disjoint GTEx development evidence, not a full
+end-to-end scaling law or external confirmation. The pooled control is not matched for
+K8's total stored parameter count. See
+[`gtex-k8-adapter-scale-result.md`](gtex-k8-adapter-scale-result.md).
 
 ## Frozen completed results
 

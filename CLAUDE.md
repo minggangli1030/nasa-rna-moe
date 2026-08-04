@@ -1493,3 +1493,28 @@ At this checkpoint 11/15 combinations are complete: primary is on combination 7/
 Both lineages remain healthy with no failure trace. Training ETA is 02:30–03:00 PDT,
 after which source checksums, compact no-overwrite aggregation, and the frozen evaluator
 will run. No outcome has been aggregated or interpreted during training.
+
+### 17.7 Frozen scale-curve result — 2026-08-04 03:35 PDT
+
+All 15 budget-by-seed runs, their compact aggregation, and the prespecified evaluator
+are complete and checksum-verified. Organ K8 beats the active-width/compute-matched
+pooled adapter in every run: gains are 4.565–12.455%, and all 15 donor-bootstrap
+intervals are above zero. All five budgets (25, 50, 100, 150, and 200 donors per organ)
+therefore pass the all-seed stable-positive gate. Per-organ safety passes with no harm
+beyond 2%.
+
+The important correction is that this is not a monotonic data-diversity curve. Gain per
+log budget is +0.098 [0.026, 0.172] in seed 17, +0.170 [0.089, 0.252] in seed 42, and
+−0.784 [−0.859, −0.715] in seed 101. The frozen decision is
+`NO_ROBUST_MONOTONIC_CLAIM`. The result supports a robust organ-specific residual
+correction across the tested 25–200 donor range, but it does not identify a crossover
+or show that more unique donors enlarge the benefit.
+
+This is donor-disjoint GTEx development conditional on a frozen trunk, not an
+end-to-end scaling law or external confirmation. The pooled adapter matches active
+width, samples, updates, and draws, but not K8's total stored parameter count. Its
+4.565–12.455% values are not numerically interchangeable with the 3.797% external
+ARCHS4 result because the estimands, cohorts, and comparators differ. The bounded
+August 17 narrative may now add: organ specialization is reproducibly useful across
+all tested data budgets, while the amount of benefit is seed-dependent and not
+monotonic with donor diversity.
