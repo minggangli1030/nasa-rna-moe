@@ -33,3 +33,8 @@ def test_relative_gain_direction():
 def test_trainer_fallback_exposures_are_batch_divisible():
     assert RUNNER._trainer_fallback_exposures(16, 8) == 16
     assert RUNNER._trainer_fallback_exposures(12_000, 8) == 12_000
+
+
+def test_completed_final_update_uses_canonical_nested_metadata():
+    assert RUNNER._completed_final_update({"config": {"final_update": 2}}) == 2
+    assert RUNNER._completed_final_update({"final_update": 1500}) == 1500

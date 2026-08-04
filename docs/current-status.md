@@ -1,6 +1,6 @@
 # NASA RNA MoE: current canonical status
 
-**Updated:** 2026-08-03 20:38 PDT / 2026-08-04 03:38 UTC
+**Updated:** 2026-08-03 20:53 PDT / 2026-08-04 03:53 UTC
 
 This is the operational handoff. Historical detail is preserved in Git and in
 [`../progress.md`](../progress.md).
@@ -57,17 +57,17 @@ identical across its two metadata-only build lineages and its trainer-compatible
 is `5f1f8bd62371ad993a2d4016c94e1ee252a18b795fc73e1c4b5f51570cdf66fc`.
 The scientific protocol SHA256 is
 `0a93107daa1a916a1ce58fecc3c5992c0f1ea7e7e0f59afd21c0f9d8f8d9f22a`.
-It compares organ K8 with the equal-capacity pooled adapter on identical samples,
-updates, and total exposures across all three seeds. The first mechanical lineage
-failed before training because its combined manifest included unselected training
-rows; it emitted no model or calibration outcome and is preserved. Five corrected,
-budget-specific trainer manifests now pass their immutable checksums and focused
-contract tests. The first replacement smoke then failed before its first update when
-a legacy trainer fallback exposure argument was not batch-divisible for the one-bank
-pooled control. The per-axis scientific targets were already correct; the versioned
-launcher repair sets that nonauthoritative fallback to the unchanged pooled total
-(`16` smoke, `12,000` full). No model/calibration outcome exists from either failed
-lineage. A second replacement GPU smoke is the next gate; no scale outcome exists yet.
+It compares organ K8 with the active-width/compute-matched pooled adapter on identical
+samples, updates, and total exposures across all three seeds; the pooled control has
+one adapter and is not matched for K8's total stored parameter count. The first
+mechanical lineage failed before training because its combined manifest included
+unselected training rows. A replacement then failed before its first update because a
+legacy fallback exposure argument was not batch-divisible. The next smoke successfully
+completed both finite two-update banks and calibration caches, but its wrapper rejected
+the trainer's canonical nested `config.final_update` field. All lineages are preserved;
+none is a scale result. Five per-budget manifests pass immutable checksums, and the
+versioned validator/resume correction passes all five focused tests. One final
+end-to-end GPU smoke is the next gate; no scale outcome exists yet.
 
 ## Frozen completed results
 

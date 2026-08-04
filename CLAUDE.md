@@ -1429,8 +1429,13 @@ conditional on the frozen pooled trunk**, not a full end-to-end model scaling la
   so neither arm receives more examples or optimization merely because it is pooled;
 - all three fixed model seeds, the frozen calibration cohort, donor bootstrap, no
   best-seed or budget selection;
-- random-K8 controls frozen in advance, with their exact coverage across curve points
-  determined before outcomes;
+- the pooled comparator is matched for active adapter width, scheduled updates, total
+  draws, and training samples, but not for total stored parameters: organ K8 keeps
+  eight 64-dimensional adapters while the pooled control keeps one;
+- random-K8 is not retrained on the curve because the organ-balanced nested subsets do
+  not preserve equal exposure to eight random shards. The already-frozen full-data
+  random-K8 null remains context, while the active-capacity/compute-matched pooled
+  adapter is the curve's prespecified generic-sharing comparator;
 - primary output: specialization-minus-pooled relative MSE by budget, with per-organ
   safety and intervals.
 

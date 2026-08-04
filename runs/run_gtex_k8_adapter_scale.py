@@ -57,6 +57,44 @@ def _trainer_fallback_exposures(pooled_exposures: int, batch_size: int) -> int:
     return pooled_exposures
 
 
+def _completed_final_update(metadata: dict) -> int:
+    """Read the trainer's canonical nested field, retaining legacy compatibility."""
+    value = metadata.get("final_update")
+    if value is None:
+        value = metadata.get("config", {}).get("final_update", -1)
+    return int(value)
+
+
+def _validate_completed_banks(
+    bank_root: Path,
+    *,
+    seed: int,
+    update_budget: int,
+    code_commit: str,
+) -> None:
+    metadata = json.loads((bank_root / "run_metadata.json").read_text())
+    if (
+        metadata.get("status") != "complete"
+        or int(metadata.get("training_seed", -1)) != seed
+        or metadata.get("code_commit") != code_commit
+        or metadata.get("test_accessed") is not False
+        or metadata.get("external_data_accessed") is not False
+    ):
+        raise ValueError(f"invalid completed metadata: {bank_root}")
+    for axis in ("organ_k8", "pooled_adapter"):
+        axis_root = bank_root / "banks" / axis
+        axis_metadata = json.loads((axis_root / "run_metadata.json").read_text())
+        if (
+            axis_metadata.get("status") != "complete"
+            or _completed_final_update(axis_metadata) != update_budget
+            or axis_metadata.get("code_commit") != code_commit
+            or axis_metadata.get("test_accessed") is not False
+            or axis_metadata.get("external_data_accessed") is not False
+            or not (axis_root / "COMPLETE").is_file()
+        ):
+            raise ValueError(f"invalid {axis} metadata for seed {seed}")
+
+
 def run(args: argparse.Namespace) -> None:
     root = Path(__file__).resolve().parents[1]
     protocol_path = Path(args.protocol)
@@ -107,9 +145,13 @@ def run(args: argparse.Namespace) -> None:
         seed_root = output_root / f"b{budget}" / f"seed{seed}"
         bank_root = seed_root / "banks"
         if (bank_root / "COMPLETE").exists():
-            metadata = json.loads((bank_root / "run_metadata.json").read_text())
-            if metadata.get("status") != "complete":
-                raise ValueError(f"completed marker has invalid metadata: {bank_root}")
+            _validate_completed_banks(
+                bank_root,
+                seed=seed,
+                update_budget=update_budget,
+                code_commit=commit,
+            )
+            (seed_root / "COMBINATION_COMPLETE").write_text("COMPLETE\n")
             continue
         if bank_root.exists():
             raise FileExistsError(f"incomplete output already exists: {bank_root}")
@@ -183,18 +225,12 @@ def run(args: argparse.Namespace) -> None:
         log_path = seed_root / "banks.log"
         with log_path.open("wb") as log:
             subprocess.run(command, cwd=root, stdout=log, stderr=subprocess.STDOUT, check=True)
-        metadata = json.loads((bank_root / "run_metadata.json").read_text())
-        if metadata.get("status") != "complete" or int(metadata.get("training_seed", -1)) != seed:
-            raise ValueError(f"invalid completed metadata for budget {budget}, seed {seed}")
-        for axis in ("organ_k8", "pooled_adapter"):
-            axis_metadata = json.loads((bank_root / "banks" / axis / "run_metadata.json").read_text())
-            if (
-                axis_metadata.get("status") != "complete"
-                or int(axis_metadata.get("final_update", -1)) != update_budget
-                or axis_metadata.get("test_accessed") is not False
-                or axis_metadata.get("external_data_accessed") is not False
-            ):
-                raise ValueError(f"invalid {axis} metadata for budget {budget}, seed {seed}")
+        _validate_completed_banks(
+            bank_root,
+            seed=seed,
+            update_budget=update_budget,
+            code_commit=commit,
+        )
         (seed_root / "COMBINATION_COMPLETE").write_text("COMPLETE\n")
     _atomic_status(status_path, f"COMPLETE combinations={len(combinations)}")
 

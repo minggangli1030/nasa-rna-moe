@@ -1,6 +1,6 @@
 # NASA RNA MoE: concise milestone chronology
 
-**Last updated:** 2026-08-03 20:38 PDT / 2026-08-04 03:38 UTC
+**Last updated:** 2026-08-03 20:53 PDT / 2026-08-04 03:53 UTC
 
 ## 2026-08-03 — August 17 plan frozen; deck and metadata-only D3 work started
 
@@ -61,6 +61,15 @@ scientific targets remained the frozen 1,500 per organ expert and 12,000 pooled 
 The implementation-only repair uses the unchanged pooled total as the trainer
 fallback (`16` for smoke and `12,000` full); focused tests now cover both values. The
 failed VM lineage is preserved and emitted no model or calibration outcome.
+
+The following versioned smoke completed both finite two-update banks and both
+calibration score caches with `mechanical_only=true`, `test_accessed=false`, and
+`external_data_accessed=false`. Its launcher nevertheless stopped after training
+because it looked for `final_update` at the metadata top level rather than the
+trainer's canonical `config.final_update`. The validator now reads the canonical
+nested field, verifies commit and firewall fields, and repairs the resume path so a
+verified completed bank receives its combination marker. All five focused tests pass;
+the final end-to-end smoke will use a new output lineage.
 
 ## 2026-08-02 — E3 fails; post-D2 Phase 1 and current downstream branch close
 
