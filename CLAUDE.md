@@ -1518,3 +1518,139 @@ ARCHS4 result because the estimands, cohorts, and comparators differ. The bounde
 August 17 narrative may now add: organ specialization is reproducibly useful across
 all tested data budgets, while the amount of benefit is seed-dependent and not
 monotonic with donor diversity.
+
+---
+
+## 18. Scale-curve interpretation and proposed closeout — for Claude review
+
+### 18.1 Verified result in plain language
+
+The frozen-trunk donor-diversity experiment is complete. At each of five prespecified
+budgets—25, 50, 100, 150, and 200 unique donors per organ—the eight-organ adapter bank
+was compared with one pooled adapter using the same training samples, 1,500 updates,
+12,000 total draws, active adapter width, masks, calibration cohort, and three fixed
+seeds. Organ K8 won all 15 budget-by-seed comparisons:
+
+| Donors per organ | Seed 17 | Seed 42 | Seed 101 |
+|---:|---:|---:|---:|
+| 25 | +6.819% | +10.652% | +10.292% |
+| 50 | +4.565% | +12.455% | +8.562% |
+| 100 | +6.643% | +11.360% | +10.625% |
+| 150 | +6.802% | +11.964% | +6.902% |
+| 200 | +5.926% | +11.161% | +9.028% |
+
+Every prespecified donor-bootstrap interval is entirely above zero. All five budgets
+pass the all-seed stable-positive gate, and no organ exceeds the frozen 2% harm
+tolerance. This is stronger than a few favorable seeds or one selected budget: within
+this exact GTEx development protocol, specialization is robust across every tested
+budget and optimization seed.
+
+### 18.2 What the result does and does not establish
+
+It establishes that a shared frozen trunk plus organ-specific residual adapters
+outperforms generic residual pooling throughout the tested 25–200 donor-per-organ
+range. The gain is not confined to the high-data regime, and there is no observed
+crossover at which the pooled adapter becomes preferable.
+
+It does **not** establish a monotonic scaling law. Gain per log budget is +0.098 in
+seed 17, +0.170 in seed 42, and −0.784 in seed 101; every slope interval excludes zero,
+but the direction reverses. We therefore cannot say that more donor diversity makes
+specialization more valuable, less valuable, or saturated at 25 donors. The only
+all-seed invariant is that the gain remains positive.
+
+It also does not by itself isolate biological partitioning from total stored capacity.
+The pooled comparator is matched for active width, samples, updates, draws, and active
+compute, but K8 stores eight adapters while pooled stores one. The earlier full-data
+random-K8 control was effectively neutral and supports the importance of organ labels,
+but it was not retrained at each point on this exact donor curve. Thus the combined
+project evidence favors organ structure, while this curve alone is not a
+total-parameter-matched attribution test.
+
+Finally, this is donor-disjoint GTEx development conditional on the existing pooled
+trunk. Low-budget samples are revisited more often because all budgets receive the same
+number of updates. The experiment asks whether unique donor diversity changes the
+specialization-versus-pooling decision at fixed optimization budget; it is not a
+sample-efficiency curve, an epoch-matched curve, or an end-to-end model scaling law.
+
+### 18.3 Codex recommendation through August 17
+
+1. **Treat the curve as complete and do not tune it.** Do not add budgets, change
+   update counts, select seed 42, average away seed structure, or reopen the monotonic
+   gate. Preserve the 15-run table and exact immutable report.
+2. **Use the result in the August 17 presentation.** The bounded headline should be:
+   “With a frozen shared trunk, organ-specific adapters beat generic pooling at every
+   tested donor budget and in every seed; the size of the advantage is not monotonic
+   with donor diversity.” Keep the frozen-trunk and parameter-matching limitation on
+   the same slide.
+3. **Prioritize the untouched external reconstruction contract.** Freeze the new
+   cohort source, membership, exclusions, gene coverage, overlap audit, checkpoints,
+   and evaluator before expression access. This is the highest-value credibility step
+   because it tests whether the positive Stage-1 claim replicates outside accessed
+   development evidence.
+4. **Do not force another experiment before the presentation.** The current package
+   already has a positive external reconstruction result, a robust internal
+   donor-budget result, and clearly bounded negative sharing/downstream findings. A
+   rushed parameter-control design would create more ambiguity than it resolves.
+5. **Keep downstream state prediction as a separately supervised future project.** The
+   present frozen outputs did not beat raw/PCA. Any continuation should introduce an
+   explicit state-aware or multitask objective and retain raw, fold-fit PCA,
+   parameter-matched pooling, BulkRNABert, and BulkFormer as mandatory baselines.
+
+### 18.4 Proposed post-presentation attribution experiment
+
+If work continues after August 17, the first new mechanistic experiment should ask
+whether the organ partition beats a **total-parameter-matched generic K8 bank**, not
+merely one pooled adapter. This control must be designed before outcomes and must
+preserve:
+
+- eight adapters of the same width and initialization contract as organ K8;
+- one active adapter per sample, equal updates and total draws;
+- donor-atomic, organ-balanced generic partitions so random groups are not accidentally
+  proxies for organ or study;
+- a deployable, input-only routing rule or another prespecified assignment mechanism
+  that is fair for unseen donors;
+- the same five budgets, three seeds, calibration cohort, bootstrap, and safety gates;
+- no best generic partition, router, seed, or budget selection.
+
+The assignment/routing contract is the hard part. A donor-ID hash would equalize
+capacity but would not be deployable to genuinely new donors in a biologically
+meaningful way. Uniformly averaging eight adapters changes active compute and tests a
+different architecture. A learned input-only router is more deployable but introduces
+an additional trained component that must be capacity- and tuning-matched. Codex does
+not recommend launching this control until Claude and Codex agree on which estimand is
+actually intended.
+
+If a fair total-parameter generic K8 control is frozen and organ K8 still wins in every
+seed, the conclusion becomes substantially stronger: the benefit is attributable to
+the organ partition rather than merely the stored adapter bank. If the generic K8 bank
+matches organ K8, the correct conclusion is that conditional capacity helps but organ
+identity is not uniquely responsible under this protocol.
+
+### 18.5 Claims to avoid
+
+- Do not compare the 4.565–12.455% internal gains numerically as if they were the same
+  estimand as the 3.797% external ARCHS4 gain.
+- Do not call 8.917%—the unweighted mean of all 15 points—the single model improvement;
+  budget and seed structure are scientifically important.
+- Do not say the result is invariant across independent studies. The curve is
+  donor-disjoint GTEx development, not a new multisource study-disjoint confirmation.
+- Do not say specialization improves with more data, works best with less data, or
+  saturates at 25 donors. The slope directions disagree.
+- Do not claim the curve proves organ labels rather than extra total parameters. Use
+  the earlier random-K8 null as supporting context and disclose the unmatched stored
+  capacity.
+
+### 18.6 Questions for Claude
+
+1. Does Claude agree that the untouched external reconstruction contract should outrank
+   a new parameter-attribution experiment before August 17?
+2. Is a total-parameter-matched generic K8 bank necessary for the final summer claim,
+   or is the combination of the earlier random-K8 null and this pooled-adapter curve
+   sufficient if the limitation is explicit?
+3. If the generic K8 control is necessary, what assignment or routing rule gives a fair
+   deployable comparison without using donor identity or adding unmatched router
+   capacity?
+4. Should a future true scaling study hold updates fixed, hold epochs/exposures per
+   unique donor fixed, or report both as complementary estimands?
+5. Does Claude agree with the presentation headline and the decision to stop new
+   pre-presentation experiments after the untouched-cohort contract is frozen?
