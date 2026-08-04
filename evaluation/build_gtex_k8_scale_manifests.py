@@ -175,6 +175,9 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         "protocol_sha256": sha256_file(protocol_path),
         "source_manifest_sha256": sha256_file(manifest_path),
         "scale_manifest_sha256": sha256_file(output_manifest),
+        "hashes": {
+            "partition_manifest_sha256": sha256_file(output_manifest),
+        },
         "expression_values_read": False,
         "calibration_membership_changed": False,
         "budgets": budgets,

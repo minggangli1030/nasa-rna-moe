@@ -30,7 +30,7 @@
   ],
   "implementation": {
     "manifest_builder": "evaluation/build_gtex_k8_scale_manifests.py",
-    "manifest_builder_sha256": "8cb18a4c8c5c0f206d8506a566ba3a57de1823956d65f03f3a53ea161cca8c11"
+    "manifest_builder_sha256": "b20650e9872503b14ce79393fc599d5c464b93082c9f0f60cd2f7f61e10c9c13"
   },
   "firewalls": {
     "expression_access": false,
