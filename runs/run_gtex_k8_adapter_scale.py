@@ -75,11 +75,6 @@ def run(args: argparse.Namespace) -> None:
             Path(args.expression_metadata),
             protocol["inputs"]["expression_metadata_sha256"],
         ),
-        "manifest": (Path(args.manifest), protocol["inputs"]["scale_manifest_sha256"]),
-        "manifest_report": (
-            Path(args.manifest_report),
-            protocol["inputs"]["scale_manifest_report_sha256"],
-        ),
         "axis_definitions": (
             Path(args.axis_definitions),
             protocol["inputs"]["axis_definitions_sha256"],
@@ -120,16 +115,24 @@ def run(args: argparse.Namespace) -> None:
         expected_checkpoint = protocol["model"]["pooled_trunk_checkpoint_sha256_by_seed"][str(seed)]
         if not pooled_checkpoint.is_file() or sha256_file(pooled_checkpoint) != expected_checkpoint:
             raise ValueError(f"pooled checkpoint changed for seed {seed}")
+        manifest_path = Path(args.manifest_root) / f"b{budget}" / "manifest.parquet"
+        manifest_report_path = Path(args.manifest_root) / f"b{budget}" / "manifest_report.json"
+        expected_manifest = protocol["inputs"]["trainer_manifest_sha256_by_budget"][str(budget)]
+        expected_report = protocol["inputs"]["trainer_manifest_report_sha256_by_budget"][str(budget)]
+        if not manifest_path.is_file() or sha256_file(manifest_path) != expected_manifest:
+            raise ValueError(f"trainer manifest changed for budget {budget}")
+        if not manifest_report_path.is_file() or sha256_file(manifest_report_path) != expected_report:
+            raise ValueError(f"trainer manifest report changed for budget {budget}")
         command = [
             args.python_bin,
             str(root / "core" / "train_fixed_partition_banks.py"),
             "--expression-parquet", str(inputs["expression"][0]),
             "--expression-metadata", str(inputs["expression_metadata"][0]),
-            "--manifest", str(inputs["manifest"][0]),
+            "--manifest", str(manifest_path),
             "--pooled-checkpoint", str(pooled_checkpoint),
             "--protocol", str(protocol_path),
-            "--partition-manifest", str(inputs["manifest"][0]),
-            "--partition-report", str(inputs["manifest_report"][0]),
+            "--partition-manifest", str(manifest_path),
+            "--partition-report", str(manifest_report_path),
             "--axis-definitions", str(inputs["axis_definitions"][0]),
             "--axis", "organ_k8",
             "--axis", "pooled_adapter",
@@ -193,8 +196,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--expected-protocol-sha256", required=True)
     parser.add_argument("--expression-parquet", required=True)
     parser.add_argument("--expression-metadata", required=True)
-    parser.add_argument("--manifest", required=True)
-    parser.add_argument("--manifest-report", required=True)
+    parser.add_argument("--manifest-root", required=True)
     parser.add_argument("--axis-definitions", required=True)
     parser.add_argument("--training-root", required=True)
     parser.add_argument("--output-root", required=True)

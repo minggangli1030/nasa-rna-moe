@@ -169,6 +169,49 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     )
     output_manifest = output_dir / "scale_manifest.parquet"
     _atomic_parquet(frame, output_manifest)
+    artifact_lines = []
+    for budget_text, budget_report in budgets.items():
+        budget = int(budget_text)
+        budget_dir = output_dir / f"b{budget}"
+        budget_dir.mkdir()
+        selected_train = frame.loc[
+            frame["split"].eq("train") & frame[f"scale_b{budget}"]
+        ]
+        calibration = frame.loc[frame["split"].eq("calibration")]
+        partition = pd.concat([selected_train, calibration], ignore_index=True)
+        partition_path = budget_dir / "manifest.parquet"
+        _atomic_parquet(partition, partition_path)
+        partition_report = {
+            "schema_version": 1,
+            "status": "complete",
+            "test_accessed": False,
+            "external_data_accessed": False,
+            "expression_values_read": False,
+            "budget": budget,
+            "selected_train_samples": int(len(selected_train)),
+            "calibration_samples": int(len(calibration)),
+            "hashes": {
+                "partition_manifest_sha256": sha256_file(partition_path),
+                "axis_definitions_sha256": protocol["inputs"]["axis_definitions_sha256"],
+            },
+        }
+        partition_report_path = budget_dir / "manifest_report.json"
+        _atomic_json(partition_report_path, partition_report)
+        (budget_dir / "IMMUTABLE_SHA256SUMS").write_text(
+            f"{sha256_file(partition_report_path)}  manifest_report.json\n"
+            f"{sha256_file(partition_path)}  manifest.parquet\n"
+        )
+        budget_report["trainer_manifest_sha256"] = sha256_file(partition_path)
+        budget_report["trainer_manifest_report_sha256"] = sha256_file(
+            partition_report_path
+        )
+        budget_report["trainer_manifest_rows"] = int(len(partition))
+        artifact_lines.extend(
+            [
+                f"{sha256_file(partition_report_path)}  b{budget}/manifest_report.json",
+                f"{sha256_file(partition_path)}  b{budget}/manifest.parquet",
+            ]
+        )
     report = {
         "schema_version": 1,
         "status": "complete",
@@ -188,6 +231,8 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     sums.write_text(
         f"{sha256_file(report_path)}  manifest_report.json\n"
         f"{sha256_file(output_manifest)}  scale_manifest.parquet\n"
+        + "\n".join(artifact_lines)
+        + "\n"
     )
     (output_dir / "COMPLETE").write_text("COMPLETE\n")
     return report

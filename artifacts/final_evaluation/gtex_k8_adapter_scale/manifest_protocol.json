@@ -5,7 +5,8 @@
   "purpose": "freeze an expression-blind nested donor/sample selection for an adapter data-diversity curve",
   "inputs": {
     "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
-    "source_calibration_sample_ids_sha256": "39abfb762c9459de93d2f3391681279591c5ec73e473e6430905ff213f515181"
+    "source_calibration_sample_ids_sha256": "39abfb762c9459de93d2f3391681279591c5ec73e473e6430905ff213f515181",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb"
   },
   "data_curve": {
     "unit": "unique_train_donors_per_organ_with_one_expression_blind_sample_per_donor",
@@ -30,7 +31,7 @@
   ],
   "implementation": {
     "manifest_builder": "evaluation/build_gtex_k8_scale_manifests.py",
-    "manifest_builder_sha256": "b20650e9872503b14ce79393fc599d5c464b93082c9f0f60cd2f7f61e10c9c13"
+    "manifest_builder_sha256": "21795d3f7b80eb6e5caf8e57b747e9990a1f768cef9003cf2ad615247ed8e27d"
   },
   "firewalls": {
     "expression_access": false,
