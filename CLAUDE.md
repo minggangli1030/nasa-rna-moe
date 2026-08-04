@@ -1479,3 +1479,17 @@ If anomaly detection is negative, it is documented and closed. If the scaling cu
 flat or favors pooling at low data, that is still the planned result and cleanly closes
 the summer question. No post-hoc replacement experiment is started to manufacture a
 positive before August 17.
+
+### 17.6 Frozen scale-run operational milestone — 2026-08-04 01:16 PDT
+
+The complete end-to-end smoke passed and the exact 15 budget-by-seed combinations are
+running across two verified GPUs at clean commit
+`f21e40ffa86fa17f0e1a29881a2efb0be74c508c`. Protocol SHA256 remains
+`0a93107daa1a916a1ce58fecc3c5992c0f1ea7e7e0f59afd21c0f9d8f8d9f22a` and
+the immutable manifest SHA256 remains
+`5f1f8bd62371ad993a2d4016c94e1ee252a18b795fc73e1c4b5f51570cdf66fc`.
+At this checkpoint 11/15 combinations are complete: primary is on combination 7/8
+(budget 200/seed 17), and secondary is finishing combination 6/7 (budget 150/seed 42).
+Both lineages remain healthy with no failure trace. Training ETA is 02:30–03:00 PDT,
+after which source checksums, compact no-overwrite aggregation, and the frozen evaluator
+will run. No outcome has been aggregated or interpreted during training.
