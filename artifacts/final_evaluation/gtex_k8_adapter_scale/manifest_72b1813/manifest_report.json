@@ -1,0 +1,296 @@
+{
+  "budgets": {
+    "100": {
+      "filter_column": "scale_b100",
+      "ordered_donor_ids_sha256": "5040ebdcebed0a0bd3d446c14972c806b4a78d3e5ac4c7eda5250f5d1c6ef6ac",
+      "ordered_sample_ids_sha256": "dafa8454723a5aa61163d504647a0254cf03aa8ab447b8f8bf4e4fdc764314b8",
+      "per_organ": {
+        "adipose": {
+          "donor_ids_sha256": "998bc20949c72c742861fcf8bd5f98baaa56806fae828c944a6419832ea2e9e3",
+          "donors": 100,
+          "sample_ids_sha256": "c574c15109e4a5299525557ef3891bfb6dc2f7c1269e25b4433dd2459b665979",
+          "samples": 100
+        },
+        "brain": {
+          "donor_ids_sha256": "29125d8ada47d69bafaf357bbef46ea00582d6ac116746c378b16cd9ecf6ccd5",
+          "donors": 100,
+          "sample_ids_sha256": "10bebce1176b5124a83f64e2c1541a90a7677c70c1d13193e8aac47151d257bc",
+          "samples": 100
+        },
+        "colon": {
+          "donor_ids_sha256": "ac9f1c26b4da8a61253bb1aac8a5bf598ecb90ecb8cfbd48c155f294613bdde4",
+          "donors": 100,
+          "sample_ids_sha256": "7295f7bf1d5adb945cab7e6fd4e767798b3926f65abfbb22349d878031f656d8",
+          "samples": 100
+        },
+        "heart": {
+          "donor_ids_sha256": "39631c73d8e2538415d50355ea74bd4cecc5a119de02493bb3c454a97b37445e",
+          "donors": 100,
+          "sample_ids_sha256": "f5f03703c809321a36164e7bb5abeb80b2bca3c12635717730bbe22f6662d77f",
+          "samples": 100
+        },
+        "liver": {
+          "donor_ids_sha256": "da5b86243d5c2253764dbd28897a734891ecf243b42212668f9212c4a3999a34",
+          "donors": 100,
+          "sample_ids_sha256": "b6d7c7b32bb782429b66b79acbe8cd647528d0a44d110210fe91116c6c1396a0",
+          "samples": 100
+        },
+        "lung": {
+          "donor_ids_sha256": "d5c92ffb117d3f74b30109929f316114a5e38d6bb549a99c1d20dc84bbc6c0bf",
+          "donors": 100,
+          "sample_ids_sha256": "39efa7c5d94fee8024fb829e30af36f938d654ac9ebf5ead4eb10b05b5bb6a3b",
+          "samples": 100
+        },
+        "skeletal_muscle": {
+          "donor_ids_sha256": "662c77138b69d3783c2fa5cae536601fedba47edf0b65ba88ff6ef143b1adfcf",
+          "donors": 100,
+          "sample_ids_sha256": "775c428701b453a8d38e381491d10658b3d6a76a4d777d861c3bad8fc5f75af5",
+          "samples": 100
+        },
+        "skin": {
+          "donor_ids_sha256": "7517f74396ce7641938efe6e883998bb1b6a80ab951463291ba5f1dbac315121",
+          "donors": 100,
+          "sample_ids_sha256": "dfa1748a82de24192e07b42278941b101cb97e6c069257e30bce6669af752d63",
+          "samples": 100
+        }
+      },
+      "total_donors": 800,
+      "total_samples": 800
+    },
+    "150": {
+      "filter_column": "scale_b150",
+      "ordered_donor_ids_sha256": "1e2190124ee8d522984d3a9cb07cac29d522e2760832259fc41f715cbda3e6b1",
+      "ordered_sample_ids_sha256": "69a23781cca6418d9b2014ba13eb0af2b13a713d064beb666e9be1d5d632905a",
+      "per_organ": {
+        "adipose": {
+          "donor_ids_sha256": "9da06b1f5306ec42658fcc56688742f9c358028de8e95d24a6c93d98abc82d18",
+          "donors": 150,
+          "sample_ids_sha256": "7b550a4828d85fbb7c2b45f5a07f26beb786aa647680d20d8d28f911b26459d1",
+          "samples": 150
+        },
+        "brain": {
+          "donor_ids_sha256": "06f141c1702cacaba063674a71d19258c1079e2a865093dfea8276b62351ab65",
+          "donors": 150,
+          "sample_ids_sha256": "d10049e4c9e626de0fd16df9ea063c9f68387b9b156ab2479f87755b2418ba23",
+          "samples": 150
+        },
+        "colon": {
+          "donor_ids_sha256": "87438078397f0992dc80e069a83f980a8beb575a1ee557613020b9646e65e6f2",
+          "donors": 150,
+          "sample_ids_sha256": "16efe99aff632986c172f27124f01f953599ba74860dfb8395b5e7dbd8b30cb1",
+          "samples": 150
+        },
+        "heart": {
+          "donor_ids_sha256": "496f573b44f5150d4cc2959b2cff84828d9204383dcfd80acd349e18bad237a1",
+          "donors": 150,
+          "sample_ids_sha256": "0b608d7e8d086fe08ec00fe82bdadfc36053a7048cac9ee85c1ca941596b14a4",
+          "samples": 150
+        },
+        "liver": {
+          "donor_ids_sha256": "4d9b1a22385fa632638bf538551d6baf0e9d6e6bb457e816dab83bfd78a3ecdd",
+          "donors": 150,
+          "sample_ids_sha256": "6b0d7f52bf1fd445d1274c79e6622322303bee4bb2c0cbaef65bc0b1d6bb1ea2",
+          "samples": 150
+        },
+        "lung": {
+          "donor_ids_sha256": "8e287446f0de39e8173602673f7ed4b65b6680a5af52af5eac895177f058404b",
+          "donors": 150,
+          "sample_ids_sha256": "5cbd22c925d3eb86fe08ef34fcb04f987d48265f6963e69cc0a4eebdfd750a0f",
+          "samples": 150
+        },
+        "skeletal_muscle": {
+          "donor_ids_sha256": "f2fe8af1b2e18984fefe148f6ec1f09ece9921982b0e00b223d969ba415ee8b1",
+          "donors": 150,
+          "sample_ids_sha256": "10f82d8988290a8cbb0553708ee79dd9b85d201cb9d55f869bd972290db5e789",
+          "samples": 150
+        },
+        "skin": {
+          "donor_ids_sha256": "6e5ad65cca4d483805dd67bdfbc8ed2b1a541dde5958c5f9dfa718f9da4420b5",
+          "donors": 150,
+          "sample_ids_sha256": "368032202ce551bf404b37eb039efb89124dc2ec4eadaa438534aa2e13e24e11",
+          "samples": 150
+        }
+      },
+      "total_donors": 1200,
+      "total_samples": 1200
+    },
+    "200": {
+      "filter_column": "scale_b200",
+      "ordered_donor_ids_sha256": "084ef0a54c601df3035ec00a6f623d0c7a307d7cf0b12f08c3c8dad5bb391f07",
+      "ordered_sample_ids_sha256": "5c5b2288fd86840ae00f029415cc487e043c800eb76209296d972475bbc1b3fa",
+      "per_organ": {
+        "adipose": {
+          "donor_ids_sha256": "c2f3932eb7457fd7fdd3ee3f0461c8abe89bfd0af708b04530913e0879997019",
+          "donors": 200,
+          "sample_ids_sha256": "83991f34b22eccfce11b8842a6b84f9300c95b4e9081690f409d85a42f1c0747",
+          "samples": 200
+        },
+        "brain": {
+          "donor_ids_sha256": "90cb4176f7d9a66b3732b6dd28c8df586ccf636a8f2ac9d2adeeaece705796c1",
+          "donors": 200,
+          "sample_ids_sha256": "f19c26e1de60e6b866d2af90a9ec07e6743495715a9abbbdf77e9661b765ff9a",
+          "samples": 200
+        },
+        "colon": {
+          "donor_ids_sha256": "53d3f69bd0a4ca7581557997dddf5c0cc42cd0d5925c53d9b59ef4fda496115a",
+          "donors": 200,
+          "sample_ids_sha256": "d8c08b28ba741b9ab02ae92914f412a05b681a639d3b8b151489baa83df40300",
+          "samples": 200
+        },
+        "heart": {
+          "donor_ids_sha256": "333fa8f8bc3eb3b3defa1d1e394f08877bae2c236adb560bdb2fa4ab4ae601d2",
+          "donors": 200,
+          "sample_ids_sha256": "2cc69d5bbd764c539508b41c5255987975619b9076f94bd8883770e929cf3f66",
+          "samples": 200
+        },
+        "liver": {
+          "donor_ids_sha256": "63ce397dd2817d330b0da435f311ae27ec4e474bf88d34199118370c89530823",
+          "donors": 200,
+          "sample_ids_sha256": "70bbf1b87f2b524afe2e0e910bce1626796123e9ca150ab0248e696070456944",
+          "samples": 200
+        },
+        "lung": {
+          "donor_ids_sha256": "850fc5f18b64fd270c63950af0f9e93b0edab9a0645008375a9153dd45204847",
+          "donors": 200,
+          "sample_ids_sha256": "dd80362356c7bc92ebcb8177913c52ec02e280f0a822d49dc5ed47fb725d9521",
+          "samples": 200
+        },
+        "skeletal_muscle": {
+          "donor_ids_sha256": "398bc751c64db90cc8738a626887a58e70752d154068144a4960c57de6f261a0",
+          "donors": 200,
+          "sample_ids_sha256": "33788acd5e5b246756938855f2fea788b62b8944b33e63353efd22e812ae8ab4",
+          "samples": 200
+        },
+        "skin": {
+          "donor_ids_sha256": "46b1ec2e7b3f77b22e583fc89a1009d92680f495bcd702bb699b26921a79faa6",
+          "donors": 200,
+          "sample_ids_sha256": "196ef543fbb84facb44647c099dcd7e2945af9ae245dc49abcf40ef4691ef641",
+          "samples": 200
+        }
+      },
+      "total_donors": 1600,
+      "total_samples": 1600
+    },
+    "25": {
+      "filter_column": "scale_b25",
+      "ordered_donor_ids_sha256": "61eeb6500706d5aff818d14bd6e2591822c883d073b9ed732362b091f8cef0ca",
+      "ordered_sample_ids_sha256": "6de36b98a1f58ba76e84b6db8c3327d19b60ae306b30b4a7ba44d37cecdbb634",
+      "per_organ": {
+        "adipose": {
+          "donor_ids_sha256": "ef44a624a9f23fdb6c1b3026563060dc27aa326ac4075a3955ab199b8e788f04",
+          "donors": 25,
+          "sample_ids_sha256": "db694a76fba435df0d7248bef7d1d435d434dc314dd992ccdb4fbc81b924fb6c",
+          "samples": 25
+        },
+        "brain": {
+          "donor_ids_sha256": "76c1d6bf832cc2eedfafc4e651f35c84908ac21869d3f3bd6af23c6945fa1609",
+          "donors": 25,
+          "sample_ids_sha256": "6764f02b0d0bf32077eddb5494400aab736a5abcb4d8429a90f298bd221d60ce",
+          "samples": 25
+        },
+        "colon": {
+          "donor_ids_sha256": "df0c2085de20f52dbda030ea3c8ea6c1ab5bc0713b69b6f821ea2ed06b2206e9",
+          "donors": 25,
+          "sample_ids_sha256": "f9931a71bf0213efa624c0d4e9327639de3a6c74b9ad054b0c309fbdf9ed8c5b",
+          "samples": 25
+        },
+        "heart": {
+          "donor_ids_sha256": "1205100571dacb3e40c3ca3147ae7928b3eea661ac0f5ba93ca035e3394200ce",
+          "donors": 25,
+          "sample_ids_sha256": "c7fba101fb6d2846ae2320aa6c08a30e57dc8ee017c5eae336f0d65ef33e6581",
+          "samples": 25
+        },
+        "liver": {
+          "donor_ids_sha256": "852fab9bb300dc4ae10e4c14c9b2e71ae9c9b88b314373fad9ff377734f00c5b",
+          "donors": 25,
+          "sample_ids_sha256": "cba8d5059273bca9fd86879c08ad124afb216222bdb2579ef4255d4f85af65e5",
+          "samples": 25
+        },
+        "lung": {
+          "donor_ids_sha256": "04199dcd7e41cd1e7c7c1516825c45428cc0d28884bb7ed74753fd2c17a8ca1a",
+          "donors": 25,
+          "sample_ids_sha256": "7b14bc802e8c0ed1c92244eb5b3d7763241dccc2b012437f0e7bdcb7dd1aaadc",
+          "samples": 25
+        },
+        "skeletal_muscle": {
+          "donor_ids_sha256": "0f28769818ecf761ae20a2dc61aca2ab06d10d086c903c2760e5737ec49dfab1",
+          "donors": 25,
+          "sample_ids_sha256": "c16e718131f83576a0f2410f94cf704cb4bb526261b34749c777dcfc0678e19a",
+          "samples": 25
+        },
+        "skin": {
+          "donor_ids_sha256": "3883c6a4d19efd3871fb58cf53a79d89af68762bb36dfe4eb4560e9f4428ad70",
+          "donors": 25,
+          "sample_ids_sha256": "faa299a1932f54fdc8a8d723ba4539ed0a0be810595e69f5c669e24a2ecb0dc1",
+          "samples": 25
+        }
+      },
+      "total_donors": 200,
+      "total_samples": 200
+    },
+    "50": {
+      "filter_column": "scale_b50",
+      "ordered_donor_ids_sha256": "109c362b1e2151fccefe7f2f499f561368d108569d5415555749f45062999077",
+      "ordered_sample_ids_sha256": "3f8bb341a725d5061a7e87189b22fe55f64a2c7f4d5d85bde3f62fe4c8c35f36",
+      "per_organ": {
+        "adipose": {
+          "donor_ids_sha256": "9cc998559292e8bec1c1c87d4526cfae7f632b6f0bab37995fe90a4a0a5a01d9",
+          "donors": 50,
+          "sample_ids_sha256": "63d18b41e6038b77f407f3a87c3cd2dce9dfa973d933b1a737a230e10633917d",
+          "samples": 50
+        },
+        "brain": {
+          "donor_ids_sha256": "27feacab88447ba5c48f1ed054e64c1b1715706d0206b451ca8586076254e85c",
+          "donors": 50,
+          "sample_ids_sha256": "68ff99a99572e19e68c30bc0be0fc2dcfadb900da2a6d0216e7d412548d53157",
+          "samples": 50
+        },
+        "colon": {
+          "donor_ids_sha256": "1b5d4f87ef496347441b1c1e8193f21cc041b6f7a08358ccb9149ffc2e21e132",
+          "donors": 50,
+          "sample_ids_sha256": "da214efec1ae79080f2ada5edcbc838ad3c175934c8e0f74812d017278c477f3",
+          "samples": 50
+        },
+        "heart": {
+          "donor_ids_sha256": "15c1bfa44a392fb6d7728835106d8613d2e25409e7d33ee785f3dd864a089898",
+          "donors": 50,
+          "sample_ids_sha256": "bae6f768c88e1a9a546034a89e7f9e7de0a5a5df898154f272882876c04f3630",
+          "samples": 50
+        },
+        "liver": {
+          "donor_ids_sha256": "a3519d54e440ff7685e1278fcfcc2341041e3c21f37c7f50ed15822ca659176e",
+          "donors": 50,
+          "sample_ids_sha256": "be5f4447f16a500a8b926d13f8eef59803f64cc6386847bf55c8815c21dc9838",
+          "samples": 50
+        },
+        "lung": {
+          "donor_ids_sha256": "29d9032e0bfb38e42ecc6eadfa6feaa76c359829d02173a5b06ebcc8b61b1e3b",
+          "donors": 50,
+          "sample_ids_sha256": "e4d6a42869374bf1b2fa34b1c01e09993c4b5cef896e21ab6ca89906f2019103",
+          "samples": 50
+        },
+        "skeletal_muscle": {
+          "donor_ids_sha256": "b130639380546e87e21929c3253768890cd704c9f4ce7b77f9337bf653af452b",
+          "donors": 50,
+          "sample_ids_sha256": "1a1e6195bad27c36664d09416df22a35f62f668a83994a6800912704bb8f3629",
+          "samples": 50
+        },
+        "skin": {
+          "donor_ids_sha256": "380fdb294a8097775fd386752b473c0964fc0e28911a483a461d303f8d6e07a5",
+          "donors": 50,
+          "sample_ids_sha256": "b8cc8b51ee55930b8743defbeb321e3e5a556452cabbbbd39f3140e847228b9b",
+          "samples": 50
+        }
+      },
+      "total_donors": 400,
+      "total_samples": 400
+    }
+  },
+  "calibration_membership_changed": false,
+  "expression_values_read": false,
+  "protocol_sha256": "d8b7ebb41f3ebbb437cf80958747836b5e6f371b74249cd1a4176f8d47ea837b",
+  "scale_manifest_sha256": "5f1f8bd62371ad993a2d4016c94e1ee252a18b795fc73e1c4b5f51570cdf66fc",
+  "schema_version": 1,
+  "source_manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+  "status": "complete"
+}

@@ -51,16 +51,6 @@ def sha256_lines(values: list[str]) -> str:
     return digest.hexdigest()
 
 
-def sha256_array(values: np.ndarray) -> str:
-    values = np.asarray(values)
-    digest = hashlib.sha256()
-    digest.update(str(values.shape).encode("utf-8"))
-    contiguous = np.ascontiguousarray(values)
-    digest.update(contiguous.dtype.str.encode("utf-8"))
-    digest.update(contiguous.tobytes())
-    return digest.hexdigest()
-
-
 def _load_json(path: Path) -> dict[str, Any]:
     value = json.loads(path.read_text())
     if not isinstance(value, dict):
@@ -230,7 +220,8 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
         router_genes = archive["gene_names"].astype(str).tolist()
     if router_genes != genes or len(score_indices) != 4634:
         raise ValueError("router score panel changed")
-    if sha256_array(score_indices) != inputs["score_gene_indices_sha256"]:
+    historical_score_hash = sha256_lines([str(value) for value in score_indices])
+    if historical_score_hash != inputs["score_gene_indices_sha256"]:
         raise ValueError("score-gene index hash changed")
 
     values = np.log1p(expression.to_numpy(dtype=np.float32))[:, score_indices]
