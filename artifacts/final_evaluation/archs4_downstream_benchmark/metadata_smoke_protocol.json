@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "status": "frozen_metadata_only_mechanical_smoke",
+  "access_mode": "metadata_only_no_expression",
+  "scientific_outcome_access_authorized": false,
+  "archs4_expression_access_authorized": false,
+  "plan_sha256": "a3a9ea56dc229efb07339ec4fa20faa0d167be24227dc21a39eb9cdf38bd7278",
+  "archs4_source": {
+    "size_bytes": 62257385524,
+    "sha256": "284855959248f249ddef5a9a5b780c72b86ef99240ed1403f08b01609778ed56",
+    "permitted_group": "meta/samples",
+    "forbidden_group": "data/expression"
+  },
+  "stage1_exclusion_firewall": {
+    "manifest_sha256": "0605a5781f0daa0e039f7e9ddd240c6f24025c62cd063f148bcedcecae0d5d54",
+    "connected_study_groups": 64,
+    "connected_study_group_sha256": "746ac018979d42c65066b04727a383bc0296b13cfb3534d4296924466c0583f1",
+    "geo_series_tokens": 72,
+    "geo_series_token_sha256": "f55f05e816c2ae52f6cc3840d3543098154a06fdd803e6d9a3c199439b6ca7ef",
+    "rule": "Exclude every GEO series token represented by all 64 original connected Stage-1 study groups, including groups or samples later removed by post-access QC."
+  },
+  "gtex_overlap_firewall": {
+    "search_fields": [
+      "geo_accession",
+      "series_id",
+      "source_name_ch1",
+      "title",
+      "characteristics_ch1"
+    ],
+    "explicit_markers": ["GTEx", "GTEX-<donor>"],
+    "identity_limit": "Title-derived donor keys are not verified identity."
+  },
+  "target_organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "organ_mapping": {
+    "ontology": "data/ontology/uberon_organ_map.json",
+    "ontology_sha256": "42d31a298b81b14de3603c4259a68c1f142c2ff81c8b0ed45398dfb3a1e1b688",
+    "single_cell_threshold": 0.5,
+    "eligible_tier": "high_confidence",
+    "outside_target_policy": "drop_not_reassign"
+  },
+  "smoke_scope": [
+    "validate the exact Stage-1 exclusion ledger",
+    "exclude prior-study and explicit-GTEx overlaps",
+    "map only high-confidence target-organ metadata",
+    "emit study and characteristic-key inventories",
+    "prove no expression was accessed"
+  ],
+  "not_yet_authorized": [
+    "ARCHS4 expression extraction",
+    "candidate outcome or headroom measurement",
+    "generic-K8 fitting",
+    "candidate or mask-setting selection"
+  ]
+}
