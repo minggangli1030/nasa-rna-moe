@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "written": "2026-08-03",
+  "status": "frozen_gtex_k8_scale_manifest_protocol",
+  "purpose": "freeze an expression-blind nested donor/sample selection for an adapter data-diversity curve",
+  "inputs": {
+    "manifest_sha256": "d37023f08fabf5059a886501ab416feb5caabbce9aa719086832f6d2579ed2e6",
+    "source_calibration_sample_ids_sha256": "39abfb762c9459de93d2f3391681279591c5ec73e473e6430905ff213f515181"
+  },
+  "data_curve": {
+    "unit": "unique_train_donors_per_organ_with_one_expression_blind_sample_per_donor",
+    "donors_per_organ": [25, 50, 100, 150, 200],
+    "selection_seed": 20260804,
+    "donor_order": "SHA256 rank of seed, organ and donor ID",
+    "within_donor_sample_order": "SHA256 rank of seed, organ, donor ID and sample ID",
+    "nested": true,
+    "exactly_balanced_across_organs": true,
+    "calibration_membership_unchanged": true,
+    "expression_values_used_for_selection": false
+  },
+  "ordered_organs": [
+    "adipose",
+    "brain",
+    "colon",
+    "heart",
+    "liver",
+    "lung",
+    "skeletal_muscle",
+    "skin"
+  ],
+  "implementation": {
+    "manifest_builder": "evaluation/build_gtex_k8_scale_manifests.py",
+    "manifest_builder_sha256": "8cb18a4c8c5c0f206d8506a566ba3a57de1823956d65f03f3a53ea161cca8c11"
+  },
+  "firewalls": {
+    "expression_access": false,
+    "model_training_authorized_by_this_protocol": false,
+    "outcome_evaluation_authorized_by_this_protocol": false,
+    "budget_replacement_after_outcome_access": false,
+    "archs4_expression_access": false,
+    "final_k8_package_modification": false
+  }
+}
