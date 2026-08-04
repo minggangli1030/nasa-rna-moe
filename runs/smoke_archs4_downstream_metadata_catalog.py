@@ -21,6 +21,14 @@ from evaluation.build_archs4_downstream_metadata_catalog import build_catalog  #
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-root", required=True)
+    parser.add_argument(
+        "--stage1-manifest",
+        default=str(
+            ROOT
+            / "artifacts/stage1_gtex_to_archs4/lockbox_run_73f9bd1/membership/lockbox_manifest.csv"
+        ),
+        help="Exact original 827-sample Stage-1 manifest; its SHA256 is protocol-bound.",
+    )
     args = parser.parse_args()
 
     output_root = Path(args.output_root)
@@ -39,7 +47,7 @@ def main() -> None:
 
     report = build_catalog(
         metadata_path=metadata_path,
-        stage1_manifest_path=ROOT / "artifacts/stage1_gtex_to_archs4/lockbox_run_73f9bd1/membership/lockbox_manifest.csv",
+        stage1_manifest_path=args.stage1_manifest,
         ontology_path=ROOT / "data/ontology/uberon_organ_map.json",
         protocol_path=ROOT / "artifacts/final_evaluation/archs4_downstream_benchmark/metadata_smoke_protocol.json",
         output_dir=output_root / "catalog",
