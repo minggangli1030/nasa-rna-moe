@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "status": "frozen_pre_expression_candidate_membership",
+  "written": "2026-08-11",
+  "source_role": "metadata_only_no_expression",
+  "manifest_file": "pre_qc_candidate_manifest.parquet",
+  "manifest_sha256": "7e7ca561bbddf99235b7be5802eabd98d5f7bf6b241ecdb08f8dd23060f5cf14",
+  "manifest_size_bytes": 1134322,
+  "source_metadata_sha256": "40dfa45127726b016be64086fd226c0b66f37d2b46a53b28da766f29f0d3756b",
+  "catalog_report_sha256": "7723f5e2cf1a87b4b2551e42a0a3cb0174cda115f69f39e1d80aab0d17e67d7d",
+  "catalog_protocol_sha256": "0e09c5dc3f840aa5a00136511251027aa9824865790afbe204dbda2ef1543771",
+  "membership": {
+    "samples": 23975,
+    "unique_geo_accessions": 23975,
+    "series_values": 931,
+    "geo_series_tokens": 1044,
+    "primary_cluster_column": "series_id",
+    "order": "source H5 row order retained from the catalog output",
+    "missing_accessions": 0,
+    "missing_series_values": 0,
+    "duplicate_accessions": 0
+  },
+  "per_organ": {
+    "adipose": {"samples": 3393, "series_values": 92},
+    "brain": {"samples": 3847, "series_values": 154},
+    "colon": {"samples": 2032, "series_values": 122},
+    "heart": {"samples": 1830, "series_values": 127},
+    "liver": {"samples": 3367, "series_values": 122},
+    "lung": {"samples": 1628, "series_values": 119},
+    "skeletal_muscle": {"samples": 3944, "series_values": 113},
+    "skin": {"samples": 3934, "series_values": 168}
+  },
+  "firewalls": {
+    "eligible_stage1_overlap_rows": 0,
+    "eligible_explicit_gtex_overlap_rows": 0,
+    "all_64_original_stage1_connected_groups_bound": true,
+    "all_72_original_stage1_geo_tokens_excluded": true
+  },
+  "access_assertions": {
+    "expression_accessed": false,
+    "nonzero_gene_qc_measured": false,
+    "model_scoring_performed": false,
+    "efficacy_outcome_accessed": false
+  }
+}

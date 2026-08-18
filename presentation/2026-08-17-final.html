@@ -83,15 +83,17 @@ table{width:100%;border-collapse:collapse;margin-top:16px}th{text-align:left;pad
 
 <section class="slide dark">
   <div class="inner">
+    <!-- Claims: docs/stage-1-end-result.md; docs/gtex-k8-adapter-scale-result.md -->
     <span class="eyebrow">NASA RNA mixture-of-experts · Final progress review · August 17, 2026</span>
     <h1>Organ specialists improve <em>reconstruction</em>—but not yet state prediction</h1>
     <p class="lede">Like a hospital, we asked whether biological specialists outperform one general practitioner, whether the front desk can choose automatically, and when specialists should share what they learn.</p>
-    <div class="meta"><span>Stage 1: external reconstruction advantage</span><span>Closeout: specialists beat pooling at every tested donor budget</span><span>Decision: preserve the validated model; redesign downstream supervision</span></div>
+    <div class="meta"><span>Stage 1: blind routing retains ≈97% of the revealed-organ gain</span><span>Closeout: specialists beat pooling at every tested donor budget</span><span>Decision: preserve the validated model; redesign downstream supervision</span></div>
   </div>
 </section>
 
 <section class="slide result">
   <div class="inner">
+    <!-- Exact values: artifacts/stage1_gtex_to_archs4/lockbox_qc_amended_run_b26623b/evaluation_report.json -->
     <span class="eyebrow">Result 1 · external reconstruction</span>
     <h2>Specialists reduce hidden-gene prediction error by <em>3.6–3.8%</em></h2>
     <div class="grid2">
@@ -107,7 +109,7 @@ table{width:100%;border-collapse:collapse;margin-top:16px}th{text-align:left;pad
       <div class="panel rule-top">
         <h3>What this establishes</h3>
         <div class="big-number">All 3 seeds</div>
-        <p>Specialization helped whether the correct organ was supplied or selected automatically from the input.</p>
+        <p>Specialization helped whether the correct organ was supplied or selected automatically. Blind soft routing retained ≈97% of the revealed-organ gain.</p>
         <div class="stat-row">
           <div class="stat"><b>821</b><span>external samples</span></div>
           <div class="stat"><b>63</b><span>independent studies</span></div>
@@ -121,6 +123,7 @@ table{width:100%;border-collapse:collapse;margin-top:16px}th{text-align:left;pad
 
 <section class="slide result">
   <div class="inner">
+    <!-- Exact values: artifacts/final_evaluation/gtex_k8_adapter_scale/evaluation_f21e40f/evaluation_report.json -->
     <span class="eyebrow">Result 2 · data diversity</span>
     <h2>Specialists win at every tested budget—but the gain is not <em>monotonic</em></h2>
     <div class="figure-split">
@@ -149,12 +152,12 @@ table{width:100%;border-collapse:collapse;margin-top:16px}th{text-align:left;pad
           <div class="big-number">15 / 15</div>
           <p>Every prespecified budget×seed run favored the organ adapters. Every donor-bootstrap interval stayed above zero.</p>
           <div class="stat-row">
-            <div class="stat"><b>4.6–12.5%</b><span>lower MSE</span></div>
+            <div class="stat"><b>4.565–12.455%</b><span>lower MSE</span></div>
             <div class="stat"><b>5 / 5</b><span>budgets pass</span></div>
             <div class="stat"><b>0</b><span>safety failures</span></div>
           </div>
         </div>
-        <div class="callout"><p><strong>What did not emerge:</strong> more unique donors did not consistently increase the benefit. Two seed slopes rose; one fell.</p></div>
+        <div class="callout"><p><strong>No monotonic claim:</strong> log-budget slopes were +0.098, +0.170, and −0.784 across seeds. The advantage persisted; its magnitude did not scale consistently.</p></div>
       </div>
     </div>
     <p class="disclosure">Evidence boundary: donor-disjoint GTEx development with the trunk frozen. Samples, updates, and active adapter width are matched; total stored parameters are not. This is not an end-to-end scaling law or external confirmation.</p>
@@ -218,15 +221,16 @@ table{width:100%;border-collapse:collapse;margin-top:16px}th{text-align:left;pad
 
 <section class="slide result">
   <div class="inner">
+    <!-- Exact values: docs/post-d2-phase1-interim-result.md; artifacts/final_evaluation/cross_species_organ_transfer/evaluation_dbcabec/cross_species_organ_transfer_report.json; docs/aug17-execution-plan.md -->
     <span class="eyebrow">Result 5 · downstream perturbation state</span>
     <h2>The frozen outputs lose state signal; diagnostics <em>narrow</em> the bottleneck</h2>
     <div class="two-chart">
       <div class="mini-chart">
         <h3>The only powered organ is near ceiling</h3>
         <div class="bars">
-          <div class="bar-row"><span class="bar-label">Raw expression</span><div class="track"><div class="fill blue" style="width:96.75%"></div></div><span class="bar-value">0.968</span></div>
-          <div class="bar-row"><span class="bar-label">PCA-64</span><div class="track"><div class="fill" style="width:96.23%"></div></div><span class="bar-value">0.962</span></div>
-          <div class="bar-row"><span class="bar-label">Best learned range</span><div class="track"><div class="fill clay" style="width:75.63%"></div></div><span class="bar-value">≤0.756</span></div>
+          <div class="bar-row"><span class="bar-label">Raw expression</span><div class="track"><div class="fill blue" style="width:96.75%"></div></div><span class="bar-value">0.9675</span></div>
+          <div class="bar-row"><span class="bar-label">PCA-64</span><div class="track"><div class="fill" style="width:96.23%"></div></div><span class="bar-value">0.9623</span></div>
+          <div class="bar-row"><span class="bar-label">Best learned range</span><div class="track"><div class="fill clay" style="width:75.63%"></div></div><span class="bar-value">≤0.7563</span></div>
         </div>
         <p class="caption">Skeletal-muscle AUROC. Raw expression leaves almost no improvement headroom.</p>
       </div>
@@ -245,13 +249,13 @@ table{width:100%;border-collapse:collapse;margin-top:16px}th{text-align:left;pad
           <span class="xlab" style="left:22%">5% labels</span><span class="xlab" style="left:78%">10% labels</span>
         </div>
         <div class="legend"><span style="--c:var(--blue)">Raw</span><span style="--c:var(--sage-deep)">PCA</span><span style="--c:var(--clay)">Learned range</span></div>
-        <p class="caption">Matched linear probes: learned 0.489–0.534 versus raw/PCA 0.629–0.731.</p>
+        <p class="caption">At 10% labels: raw/PCA 0.7313/0.7203 versus learned 0.5074–0.5339. Every learned-minus-raw interval was negative.</p>
       </div>
     </div>
     <div class="checks">
-      <div class="check"><b>Encoder not collapsed</b><span>Organ transfer BA 0.699–0.755</span></div>
-      <div class="check"><b>Mapping intact</b><span>Missing inputs 0.016%</span></div>
-      <div class="check"><b>Normalization intact</b><span>Constant genes 0.083%</span></div>
+      <div class="check"><b>Encoder not collapsed</b><span>Organ-transfer BA 0.7519 / 0.7553 / 0.6992</span></div>
+      <div class="check"><b>Mapping intact</b><span>Missing-input fraction 1.56×10<sup>−4</sup></span></div>
+      <div class="check"><b>Normalization intact</b><span>Constant-gene fraction 8.32×10<sup>−4</sup></span></div>
       <div class="check"><b>Matched comparison unstable</b><span>Specialist effect reverses by seed</span></div>
     </div>
   </div>

@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "written": "2026-08-11",
+  "status": "frozen_scientific_contract_unexecuted",
+  "purpose": "Pristine prospective confirmation of the deployable reconstruction effect of the final frozen K8 organ model.",
+  "decision_source": "CLAUDE.md Section 23.2, resolving review packet track_a_confirmation_contract_review_v2.json",
+  "authorization": {
+    "contract_freeze_authorized": true,
+    "expression_access_authorized": false,
+    "execution_authorized": false,
+    "training_authorized": false,
+    "efficacy_scoring_authorized": false,
+    "next_allowed_work": "bind execution-only code and runtime hashes in a second manifest after the August 17 presentation"
+  },
+  "evidence_label": {
+    "before_execution": "frozen_unexecuted_prospective_confirmation_contract",
+    "after_valid_execution": "pristine_prospective_external_confirmation",
+    "k4_epe_role": "separate adaptive development evidence; not a Track A candidate",
+    "generic_k8_role": "separate post-Track-A capacity-attribution experiment; not a Track A condition"
+  },
+  "source": {
+    "name": "ARCHS4 human gene-level v2.latest",
+    "reported_version": "2.7",
+    "creation_date": "2026-07-03",
+    "expression_file_sha256": "284855959248f249ddef5a9a5b780c72b86ef99240ed1403f08b01609778ed56",
+    "expression_file_size_bytes": 62257385524,
+    "metadata_export_sha256": "40dfa45127726b016be64086fd226c0b66f37d2b46a53b28da766f29f0d3756b",
+    "canonical_gene_order_sha256": "3332cb312000e426a866d669b3ba9b6206da50d70094fb5f9d30ef168e860dff",
+    "ordered_gene_length_sha256": "7dcb65374dbcc6246b05a6c0891b475d3802c97cd198bdcfcda3504b1cdd6941"
+  },
+  "pre_qc_membership": {
+    "manifest": "pre_qc_candidate_manifest.parquet",
+    "manifest_sha256": "7e7ca561bbddf99235b7be5802eabd98d5f7bf6b241ecdb08f8dd23060f5cf14",
+    "manifest_report": "pre_qc_manifest_report.json",
+    "samples": 23975,
+    "series_values": 931,
+    "geo_series_tokens": 1044,
+    "membership_rule": "all and only rows marked catalog_eligible in the frozen metadata-only catalog",
+    "primary_cluster_column": "series_id",
+    "membership_change_before_expression": false,
+    "manual_curation_after_freeze": false
+  },
+  "overlap_firewall": {
+    "stage1_original_manifest_sha256": "0605a5781f0daa0e039f7e9ddd240c6f24025c62cd063f148bcedcecae0d5d54",
+    "stage1_connected_groups_bound": 64,
+    "stage1_geo_tokens_bound": 72,
+    "exclude_every_stage1_geo_token": true,
+    "exclude_explicit_gtex_marker_or_donor_identifier": true,
+    "eligible_stage1_overlap_rows": 0,
+    "eligible_explicit_gtex_overlap_rows": 0,
+    "identity_limitation": "Title-derived donor identity is not verified identity; the primary power unit is the frozen series_id value."
+  },
+  "post_expression_qc": {
+    "timing": "after one-time expression extraction and before score-cache construction or efficacy scoring",
+    "only_allowed_sample_exclusion": "fewer than 14000 nonzero genes under the frozen canonical extraction contract",
+    "nonzero_gene_threshold": 14000,
+    "replacement_samples": false,
+    "replacement_studies": false,
+    "manual_relabeling": false,
+    "threshold_revision": false,
+    "post_qc_manifest_and_report_required": true,
+    "post_qc_manifest_sha256_recorded_after_derivation": true,
+    "reproducibility_requirement": "post-QC membership must be reproduced exactly from the frozen pre-QC manifest, frozen expression file, and this one QC rule",
+    "human_review_between_qc_and_coverage_decision": false
+  },
+  "coverage_gate": {
+    "fixed_organs": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "minimum_qc_passing_series_values_per_organ": 8,
+    "minimum_qc_passing_samples_per_organ": 50,
+    "failure_behavior": "stop automatically before score-cache construction or efficacy scoring and report whole-confirmation cohort infeasibility",
+    "drop_undercovered_organ": false,
+    "redefine_primary_aggregate": false,
+    "replacement_or_threshold_relaxation": false
+  },
+  "model": {
+    "candidate": "final frozen K8 package",
+    "seeds": [17, 42, 101],
+    "best_seed_selection": false,
+    "organ_order": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "package_protocol_sha256": "7243f5345ae6fc2b522905d139ec82036f7854c1dd167e33f64814d8ca495500",
+    "package_manifest_sha256": "8c8e967faa7d63fda80bdb4c301678544290cbeb01f833ae7e6817be6a60e4e9",
+    "package_full_sha256_ledger_sha256": "b303ef625065615dc4ad335b5d46dbb5a7431c5f3aaa9eeecf9b26525bdb41d2",
+    "candidate_ledger_sha256": "1bd0e2de4b45f3e1ba4cfe4ca898db9f9b3ef5e0b60fd64ccfcf80bbb3e1a2a8",
+    "random_control_mappings_sha256": "4386f372002dc14591d7e2a0203bf794bacf39cacc50736abc339b89a4f99496",
+    "target_hidden_router_sha256": "b5a19bdee62efad108e0301f84afbbca088cfd04985f95cd37836a45b0236abe",
+    "router_report_sha256": "11cc62447194ca9328b68cb717019df93c888830b6f69a60b35b4555e9350a7d",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "checkpoints_by_seed": {
+      "17": {
+        "pooled": "ae5d6d1619938d8061c8b5b6e1323ed345f71f67b34e3e065cc899f587da7c74",
+        "organ_k8": "0375df2669c7cb38a6cf31d45f26b73dd991abedfc28fe13c39f0ec3ee0e3138"
+      },
+      "42": {
+        "pooled": "969c510fb84e5e58605d34351db6c5608ef8d64d66b282ad9bf964b77bb33ce2",
+        "organ_k8": "b5bbed3e83ab2fc64d1eaaf7073d26ab901a0b0aff315041586cc13ce0cff8c9"
+      },
+      "101": {
+        "pooled": "3e9edacfb6b0e530f210f271af4802072a3c0154922bcf0b4b9f54e0ee612043",
+        "organ_k8": "20d1fc2e300acc0e0d78eb3a11d5e4093a2950264abf0af3c704d91264512a42"
+      }
+    }
+  },
+  "prediction_contract": {
+    "expression_space": "TPM produced by the original frozen canonical extraction order; trainer applies log1p exactly once",
+    "target_panel": "all 4634 frozen score genes",
+    "target_panel_action": "replace every target-panel input with mask token -10 before every prediction",
+    "externally_unavailable_score_genes": [
+      "ABHD16B",
+      "CIDEB",
+      "FAM187A",
+      "FKBP2",
+      "LRRC24",
+      "MSMP",
+      "PTPRCAP",
+      "SERINC4",
+      "TREX1",
+      "ZNF593"
+    ],
+    "external_target_metric_rule": "score exactly the 4624 available target genes; keep the ten unavailable targets zero-filled and masked as model inputs but exclude them from every target metric",
+    "primary_condition": "blind_router_hard",
+    "primary_comparator": "pooled",
+    "mandatory_supportive_conditions": [
+      "blind_router_soft",
+      "true_organ"
+    ],
+    "mandatory_negative_controls": [
+      "random_k8_p17",
+      "random_k8_p42",
+      "random_k8_p101"
+    ],
+    "generic_k8_in_track_a": false,
+    "fine_tuning_or_weight_update": false
+  },
+  "estimand": {
+    "sample_metric": "mean squared error over the frozen available target panel in log1p(TPM) space",
+    "aggregation": "average target-gene MSE within sample; average samples within frozen series_id value; equal-weight series values within organ; equal-weight all eight organs",
+    "primary_effect": "100 * (pooled_mse - blind_router_hard_mse) / pooled_mse",
+    "per_seed_reporting": true,
+    "per_organ_reporting": true,
+    "supportive_results_cannot_replace_primary": true
+  },
+  "statistics": {
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 314159,
+    "bootstrap_unit": "series_id value resampled within organ",
+    "paired_resampling": true,
+    "common_resample_across_conditions_and_seeds": true,
+    "aggregate_seed_handling": "compute paired effects within each seed under the common resample, then average the three seed effects for each bootstrap draw",
+    "confidence_interval_quantiles": [0.025, 0.975]
+  },
+  "primary_confirmation_gate": {
+    "blind_hard_relative_mse_improvement_positive_in_every_seed": true,
+    "aggregate_seed_averaged_bootstrap_lower_95_bound_above_zero": true,
+    "maximum_relative_mse_harm_percent_per_organ_per_seed": 2.0,
+    "any_safety_violation_fails_confirmation": true,
+    "soft_and_true_organ_are_co_primary": false,
+    "random_k8_may_define_success": false,
+    "decision_labels": {
+      "pass": "PRISTINE_DEPLOYABLE_K8_RECONSTRUCTION_CONFIRMED",
+      "fail": "PRISTINE_DEPLOYABLE_K8_RECONSTRUCTION_NOT_CONFIRMED",
+      "infeasible": "TRACK_A_COHORT_INFEASIBLE_BEFORE_EFFICACY"
+    }
+  },
+  "capacity_attribution_boundary": {
+    "part_of_track_a": false,
+    "future_contract_required": true,
+    "required_future_controls": [
+      "expression-cluster K8 with nearest-centroid assignment and adjusted Rand index disclosed",
+      "organ-balanced random K8 under revealed assignment"
+    ],
+    "prohibited_claim_before_future_contract": "the whole Track A effect is uniquely attributable to organ biology rather than stored capacity"
+  },
+  "second_stage_execution_manifest": {
+    "required_before_expression_access": true,
+    "may_add_only": [
+      "runtime paths",
+      "existing candidate-ledger artifact presence and SHA256 checks",
+      "post-QC derivation implementation commit and source SHA256",
+      "score-cache implementation commit and source SHA256",
+      "evaluator implementation commit and source SHA256",
+      "one-time launcher source SHA256",
+      "mechanical smoke report SHA256"
+    ],
+    "generic_control_checkpoint_hashes_expected": false,
+    "may_change_scientific_design": false,
+    "forbidden_changes": [
+      "source",
+      "membership",
+      "overlap firewall",
+      "QC rule",
+      "coverage gate",
+      "organ set",
+      "model candidates",
+      "target panel or mask",
+      "conditions",
+      "estimand",
+      "bootstrap",
+      "confirmation gate",
+      "interpretation"
+    ]
+  },
+  "firewalls": {
+    "expression_access_before_execution_manifest": false,
+    "score_before_coverage_pass": false,
+    "human_pause_after_expression_access": false,
+    "membership_replacement": false,
+    "best_seed_or_condition_selection": false,
+    "post_access_protocol_amendment": false,
+    "reuse_as_downstream_development": false,
+    "new_pre_presentation_training_or_experiment": false
+  }
+}

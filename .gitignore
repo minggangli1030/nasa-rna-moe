@@ -56,3 +56,6 @@ artifacts/stage1_gtex_to_archs4/qc_amended_protocol_*.json
 
 # misc
 .DS_Store
+
+# large presentation media — preserve in the local closeout backup or external storage
+presentation/*.mp4

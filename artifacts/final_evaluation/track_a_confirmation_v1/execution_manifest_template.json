@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "status": "template_not_executable",
+  "parent_protocol_sha256": null,
+  "runtime_paths": null,
+  "candidate_artifact_verification": null,
+  "post_qc_derivation_implementation_commit": null,
+  "post_qc_derivation_source_sha256": null,
+  "score_cache_implementation_commit": null,
+  "score_cache_source_sha256": null,
+  "evaluator_implementation_commit": null,
+  "evaluator_source_sha256": null,
+  "one_time_launcher_sha256": null,
+  "mechanical_smoke_report_sha256": null,
+  "expression_access_authorized": false,
+  "note": "A completed second-stage manifest may fill only these execution fields and may not change the parent scientific contract."
+}

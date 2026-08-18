@@ -313,6 +313,9 @@ part of the same reference implementation.
 
 Biweekly updates use a strict **plan → results → next** structure:
 
+0. **Title first.** The title slide is always slide 1. It should state the newest
+   supported conclusion and the unresolved next question; background recaps follow
+   it rather than preceding it.
 1. **Plan/question — 10–15% of the deck.** State the scientific question, frozen
    comparison, and what was completed.
 2. **Results — 60–70% of the deck.** Give the main quantitative findings the most
@@ -332,6 +335,12 @@ Prefer:
 > Here is what they justify doing next.
 
 The result section should be the largest portion of a biweekly deck.
+
+After a short objective/setup recap, show the primary result and its robustness
+before detailed implementation, protocol, or cohort mechanics. Supporting methods
+can follow the result as evidence for why it should be trusted. When a stage exposes
+a problem, summarize it as **issue → design mistake → correction → next decision**;
+do not organize slides around the chronological sequence of attempts.
 
 ### Required closing future-work slide
 
@@ -369,6 +378,13 @@ artifacts—not in presentation-only companion documents.
 
 These are universal requirements derived from the July 30 deck review:
 
+- Label short orientation slides directly as `Recap: Objective`, `Recap: Stage 1`,
+  and so on. Avoid meta labels such as “mentor briefing” that describe the meeting
+  instead of the scientific content.
+- Numbered question or process lists must remain legible if decorative styling
+  fails. Prefer plain editorial number columns with horizontal rules; use arch
+  number tokens only after verifying their text alignment and shape in the rendered
+  deck.
 - Measure typography in the **rendered 16:9 slide**, not only in the source CSS or
   chart-generation code. The 16 px floor applies to visible center content after
   layout; embedded raster labels must also be readable at the final displayed size.

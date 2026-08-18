@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>When do RNA specialists help? — NASA RNA MoE — 2026-07-30</title>
+<title>Organ specialists transfer; safe sharing is next — NASA RNA MoE — 2026-07-30</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -100,6 +100,56 @@
   .matrix-label{font:17px var(--sans);color:var(--muted);text-align:center;margin-top:7px}
   .pending{position:absolute;inset:36% 8%;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(240,238,230,.94);border:1px solid var(--terra);border-radius:24px;color:var(--ink);font:700 14px var(--sans)}
   .heatmap-img{display:block;width:100%;max-height:74vh;object-fit:contain;background:transparent;border:0;border-radius:0;mix-blend-mode:multiply}
+  .brief-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:34px;align-items:center}
+  .brief-question-list{display:grid}
+  .brief-question{display:grid;grid-template-columns:42px 1fr;gap:17px;align-items:start;background:transparent;border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:17px 0}
+  .brief-question:first-child{border-top:1px solid var(--rule)}
+  .brief-question.active{border-left:0;background:transparent}
+  .brief-number{width:auto;height:auto;display:block;border:0;border-radius:0;color:var(--terra);font:700 16px var(--sans);letter-spacing:.08em;padding-top:5px}
+  .brief-question b{display:block;font-size:23px;margin-bottom:3px}
+  .brief-question div span{display:block;color:var(--muted);font-size:19px;line-height:1.28}
+  .dial-card{background:rgba(250,249,245,.86);border:1px solid var(--rule);border-radius:24px;padding:23px 25px}
+  .dial-card .label{font:700 16px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--terra)}
+  .dial-card h3{font-size:28px;margin:8px 0 13px}
+  .dial-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:8px}
+  .dial{height:24px;border:1px solid var(--rule);border-radius:12px 12px 2px 2px;background:var(--oat-warm)}
+  .dial:nth-child(3n+1){background:var(--sage)}
+  .dial:nth-child(5n+2){background:var(--blue)}
+  .dial.hidden{background:transparent;border:1px dashed var(--terra)}
+  .routing-diagram{display:grid;grid-template-columns:1fr 74px 1fr 74px 1.15fr;gap:12px;align-items:center;margin:22px 0}
+  .route-arrow{font:600 36px var(--sans);color:var(--terra);text-align:center}
+  .role-card{background:rgba(250,249,245,.86);border:1px solid var(--rule);border-radius:24px;padding:24px;text-align:center;min-height:190px;display:flex;flex-direction:column;justify-content:center}
+  .role-card.front{border-top:4px solid var(--blue);background:rgba(227,218,204,.48)}
+  .role-card strong{font-size:28px;display:block;margin-bottom:8px}
+  .role-card span{font-size:19px;color:var(--muted)}
+  .route-stack{display:grid;gap:13px}
+  .route-option{background:rgba(250,249,245,.88);border:1px solid var(--rule);border-left:4px solid var(--sage);border-radius:18px;padding:17px 20px}
+  .route-option:nth-child(2){border-left-color:var(--blue)}
+  .route-option b{display:block;font-size:22px}
+  .route-option span{font-size:17px;color:var(--muted)}
+  .stage-result-row{display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:stretch}
+  .hospital-choice{display:grid;grid-template-columns:.72fr 52px 1.28fr;gap:14px;align-items:center}
+  .choice-arrow{font:600 33px var(--sans);color:var(--terra);text-align:center}
+  .practitioner{background:rgba(250,249,245,.86);border:1px solid var(--rule);border-radius:24px;padding:23px;text-align:center}
+  .practitioner.general{border-top:4px solid var(--cloud-dark)}
+  .practitioner.special{border-top:4px solid var(--sage)}
+  .practitioner h3{font-size:27px;margin-bottom:7px}
+  .practitioner p{font-size:18px;color:var(--muted);margin:0}
+  .specialist-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:15px}
+  .specialist-grid span{padding:9px 5px;background:var(--oat-warm);border-radius:14px 14px 3px 3px;font:600 16px var(--sans);text-align:center}
+  .transfer-strip{display:grid;grid-template-columns:1fr 66px 1fr;align-items:center;margin-top:18px}
+  .transfer-site{border-top:1px solid var(--rule);padding-top:12px}
+  .transfer-site b{font-size:21px;display:block}
+  .transfer-site span{font-size:17px;color:var(--muted)}
+  .brief-pass-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:21px 0}
+  .brief-pass{background:rgba(250,249,245,.86);border:1px solid var(--rule);border-top:4px solid var(--cloud-dark);border-radius:24px;padding:23px 25px;min-height:310px}
+  .brief-pass:nth-child(2){border-top-color:var(--blue)}
+  .brief-pass:nth-child(3){border-top-color:var(--terra)}
+  .brief-pass .pass-label{font:700 16px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .brief-pass h3{font-size:27px;margin:8px 0 12px}
+  .brief-pass .big-result{font:700 34px var(--sans);font-variant-numeric:tabular-nums;margin:10px 0;color:var(--ink)}
+  .brief-pass p{font-size:19px;color:var(--muted)}
+  .brief-pass .plain{padding-top:12px;margin-top:14px;border-top:1px solid var(--rule);color:var(--ink);font-size:19px}
   .foot{margin-top:14px;color:var(--muted);font:17px/1.35 var(--serif)}
   .footer-label{position:absolute;left:2vw;bottom:14px;color:var(--muted);font:17px/1.3 var(--sans);letter-spacing:-.005em}
   .slide-dots{position:fixed;z-index:20;left:50%;bottom:14px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;padding:5px 9px;border-radius:999px;background:rgba(240,238,230,.86)}
@@ -116,6 +166,12 @@
     .decision-grid{gap:14px;margin:14px 0}.decision{min-height:0;padding:18px 20px}
     .decision p{font-size:17px}.decision .outcome{font-size:16px;margin-top:10px;padding-top:10px}
     .callout{padding:10px 16px;margin-top:10px}
+    .brief-grid{gap:22px}.brief-question{padding:11px 15px}.brief-question b{font-size:19px}.brief-question div span{font-size:16px}
+    .dial-card{padding:15px 18px}.dial-card h3{font-size:22px}.dial{height:17px}
+    .routing-diagram{margin:12px 0}.role-card{min-height:132px;padding:15px}.role-card strong{font-size:22px}.role-card span{font-size:16px}
+    .route-option{padding:10px 14px}.route-option b{font-size:18px}.route-option span{font-size:15px}
+    .practitioner{padding:15px}.practitioner h3{font-size:21px}.practitioner p{font-size:15px}.specialist-grid span{font-size:12px;padding:6px 3px}
+    .brief-pass-grid{margin:12px 0;gap:14px}.brief-pass{min-height:0;padding:15px 18px}.brief-pass h3{font-size:21px}.brief-pass .big-result{font-size:27px}.brief-pass p,.brief-pass .plain{font-size:16px}
   }
   @media print{
     html,body{height:auto;overflow:visible}.deck{display:block;height:auto;overflow:visible}
@@ -133,85 +189,125 @@
 <section class="slide">
   <div class="inner">
     <span class="eyebrow">NASA RNA mixture-of-experts · biweekly result</span>
-    <h1>Organ specialists improve prediction across independent <em>studies</em></h1>
-    <p class="lede">Models trained to specialize by organ reduced hidden-gene prediction error by 3.6–3.8% versus one general model—even when the model had to choose the specialist automatically.</p>
+    <h1>Organ specialists transfer; safe <em>sharing</em> is the next challenge</h1>
+    <p class="lede">Organ specialists reduced hidden-gene prediction error by 3.6–3.8% across independent studies. The next question—when specialists should share what they learn—remains unresolved: helpful sharing was unstable, while harmful sharing was more likely to repeat.</p>
     <div class="meta">
       <span><b>Date</b> 2026-07-30</span><span><b>Presenter</b> Martin</span>
-      <span><b>Program</b> NASA Ames</span><span><b>Status</b> Stage 2 development active</span>
+      <span><b>Program</b> NASA Ames</span><span><b>Status</b> Stage 2 corrective test planned</span>
     </div>
   </div>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">The plan</span>
-    <h2>Train on one dataset, freeze the models, then test once on <em>another</em></h2>
-    <div class="stats">
-      <div class="stat"><div class="n">9,195</div><div class="label">training samples from GTEx</div></div>
-      <div class="stat"><div class="n">938</div><div class="label">separate people represented</div></div>
-      <div class="stat"><div class="n">8</div><div class="label">organ-specialized models</div></div>
-      <div class="stat"><div class="n">3</div><div class="label">independent repeat trainings</div></div>
-    </div>
-    <div class="pipeline">
-      <div class="pipe"><b>Train</b><span>one general model and eight organ specialists</span></div>
-      <div class="pipe"><b>Lock</b><span>models, test samples, and comparison rules</span></div>
-      <div class="pipe"><b>Test once</b><span>use independent ARCHS4 studies</span></div>
-      <div class="pipe"><b>Compare</b><span>measure hidden-gene prediction error</span></div>
-      <div class="pipe"><b>Repeat</b><span>retain all three trainings; select none</span></div>
-    </div>
-    <div class="callout"><p><strong>Why this matters:</strong> success means organ specialization learned in a clean reference dataset still helps across messier studies collected elsewhere.</p></div>
-  </div>
-</section>
-
-<section class="slide">
-  <div class="inner">
-    <span class="eyebrow">What was completed</span>
-    <h2>The full external test ran without tuning to the <em>answers</em></h2>
-    <div class="cols">
-      <div class="panel">
-        <span class="badge">Implemented and frozen</span>
-        <h3 style="margin-top:14px">End-to-end protocol</h3>
-        <ul>
-          <li>Prepared the independent expression test set.</li>
-          <li>Scored the general and specialized models three times.</li>
-          <li>Compared studies fairly, regardless of study size.</li>
-        </ul>
+    <span class="eyebrow">Recap: Objective</span>
+    <h2>When should biological specialists work alone—or <em>share</em>?</h2>
+    <div class="brief-grid">
+      <div>
+        <p class="lede">This is the same question a hospital faces. Do you want one general practitioner, or a cardiologist and a dermatologist and a neurologist? If you go with specialists, can the front desk figure out which one a patient needs without being told? And should the specialists share their notes with each other, or does that just confuse everyone?</p>
+        <div class="dial-card">
+          <span class="label">One tissue sample</span>
+          <h3>About 20,000 gene-activity dials</h3>
+          <p>We hide some dials and judge the model by how accurately it restores them.</p>
+          <div class="dial-grid" aria-label="Simplified gene activity dashboard with several hidden values">
+            <span class="dial"></span><span class="dial"></span><span class="dial hidden"></span><span class="dial"></span><span class="dial"></span>
+            <span class="dial hidden"></span><span class="dial"></span><span class="dial"></span><span class="dial hidden"></span><span class="dial"></span>
+            <span class="dial"></span><span class="dial hidden"></span><span class="dial"></span><span class="dial"></span><span class="dial"></span>
+            <span class="dial"></span><span class="dial"></span><span class="dial hidden"></span><span class="dial"></span><span class="dial"></span>
+          </div>
+        </div>
       </div>
-      <div class="panel">
-        <span class="badge">Final evaluation set</span>
-        <h3 style="margin-top:14px">Usable external evidence</h3>
-        <ul>
-          <li>821 samples from 63 connected studies.</li>
-          <li>All eight target organs retained.</li>
-          <li>No tuning or choice of the most favorable repeat.</li>
-        </ul>
+      <div class="brief-question-list">
+        <div class="brief-question">
+          <span class="brief-number">01</span>
+          <div><b>Do specialists help?</b><span>Compare one general practitioner with experts for different organs.</span></div>
+        </div>
+        <div class="brief-question">
+          <span class="brief-number">02</span>
+          <div><b>Can the front desk choose?</b><span>Can the model route a new sample without being told what it is?</span></div>
+        </div>
+        <div class="brief-question active">
+          <span class="brief-number">03</span>
+          <div><b>Should specialists share notes?</b><span>When does shared training help—and when does it confuse or harm a specialist?</span></div>
+        </div>
       </div>
     </div>
-    <div class="callout"><p><strong>One necessary qualification:</strong> six rows failed the unchanged coverage rule and were excluded without replacement, so the result is labeled post-access QC-amended external evaluation.</p></div>
+    <div class="callout"><p><strong>Where we are:</strong> the first two questions are answered. The third is the current research problem.</p></div>
   </div>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">External evaluation coverage</span>
-    <h2>The test set retains all eight organs across heterogeneous <em>studies</em></h2>
-    <div class="stats">
-      <div class="stat"><div class="n">821</div><div class="label">passing ARCHS4 samples</div></div>
-      <div class="stat"><div class="n">63</div><div class="label">connected study groups</div></div>
-      <div class="stat"><div class="n">8 / 8</div><div class="label">target organs retained</div></div>
-      <div class="stat"><div class="n">10,000</div><div class="label">paired study-bootstrap draws</div></div>
+    <span class="eyebrow">Recap: Stage 0</span>
+    <h2>The model chose the right population specialist <em>99.0% of the time</em></h2>
+    <div class="routing-diagram">
+      <div class="role-card">
+        <strong>New sample</strong>
+        <span>Only its gene-activity dials are visible. No population label is attached.</span>
+      </div>
+      <div class="route-arrow">→</div>
+      <div class="role-card front">
+        <strong>Front desk</strong>
+        <span>Reads the sample and chooses which specialist should handle it.</span>
+      </div>
+      <div class="route-arrow">→</div>
+      <div class="route-stack">
+        <div class="route-option"><b>Human specialist</b><span>learned from human samples</span></div>
+        <div class="route-option"><b>Mouse specialist</b><span>learned from mouse samples</span></div>
+      </div>
     </div>
-    <div class="cols">
-      <div class="panel"><h3>Liver</h3><p><strong>42 samples / 7 studies</strong></p><p>Retains multi-study coverage in the final evaluation.</p></div>
-      <div class="panel"><h3>Other seven organs</h3><p><strong>8 studies each</strong></p><p>Adipose, brain, colon, heart, lung, skeletal muscle, and skin all remain represented.</p></div>
+    <div class="stats" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="stat"><div class="n">99.0%</div><div class="label">correct automatic routing</div></div>
+      <div class="stat"><div class="n">No label</div><div class="label">the chooser used expression alone</div></div>
+      <div class="stat"><div class="n">Better</div><div class="label">specialists plus routing beat one general model</div></div>
     </div>
-    <p class="foot">Each organ contributes equally, and each study within an organ contributes equally. Individual identities are not verified in every ARCHS4 study.</p>
+    <div class="callout"><p><strong>What this established:</strong> the “front desk” works. Automatic routing is reliable enough to support the organ experiment.</p></div>
   </div>
 </section>
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Main result</span>
+    <span class="eyebrow">Recap: Stage 1</span>
+    <h2>Organ specialists beat general practitioner on <em>independent data</em></h2>
+    <div class="stage-result-row">
+      <div class="hospital-choice">
+        <div class="practitioner general">
+          <h3>One general model</h3>
+          <p>Trained across all organs.</p>
+        </div>
+        <div class="choice-arrow">vs</div>
+        <div class="practitioner special">
+          <h3>Eight organ specialists</h3>
+          <p>Each learns its own organ context.</p>
+          <div class="specialist-grid">
+            <span>Brain</span><span>Liver</span><span>Skin</span><span>Adipose</span>
+            <span>Lung</span><span>Muscle</span><span>Heart</span><span>Colon</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <span class="badge">The crucial test</span>
+        <h3 style="margin-top:12px">Train here, test somewhere else</h3>
+        <div class="transfer-strip">
+          <div class="transfer-site"><b>GTEx</b><span>clean training source</span></div>
+          <div class="route-arrow">→</div>
+          <div class="transfer-site"><b>ARCHS4</b><span>821 samples · 63 studies</span></div>
+        </div>
+        <p style="margin-top:18px">The models were frozen before opening the independent test.</p>
+      </div>
+    </div>
+    <div class="stats" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="stat"><div class="n">+3.8%</div><div class="label">better prediction with the correct organ specialist</div></div>
+      <div class="stat"><div class="n">+3.6%</div><div class="label">better prediction when front desk chose automatically</div></div>
+      <div class="stat"><div class="n">3 / 3</div><div class="label">independent trainings showed the benefit</div></div>
+    </div>
+    <div class="callout"><p><strong>What this established:</strong> organ specialization is real, survives a change of data source, and does not depend on revealing the organ label.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Stage 1: Main result</span>
     <h2>Specialists <em>beat</em> one general model—with or without organ labels</h2>
     <div class="cols left">
       <div>
@@ -240,7 +336,7 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Replication and controls</span>
+    <span class="eyebrow">Stage 1: Replication and controls</span>
     <h2>The gain <em>appears</em> in every repeat; extra capacity alone does not help</h2>
     <div class="seed-grid">
       <div class="seed"><div class="k">Repeat 1 · known / single / blend</div><div class="n">2.78 / 2.62 / 2.65%</div><p>Every specialist condition improves.</p></div>
@@ -258,7 +354,7 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Claim boundary</span>
+    <span class="eyebrow">Stage 1: Claim boundary</span>
     <h2>What the evidence <em>establishes</em>—and what it does not</h2>
     <div class="cols">
       <div class="panel">
@@ -279,7 +375,7 @@
 
 <section class="slide result-slide">
   <div class="inner">
-    <span class="eyebrow">Stage 2 · fixed data budget</span>
+    <span class="eyebrow">Stage 2: Preliminary result · fixed data budget</span>
     <h2>Replacing organ-specific data with another organ <em>hurts</em> prediction</h2>
     <div class="cols result-visual">
       <div>
@@ -303,7 +399,7 @@
 
 <section class="slide result-slide">
   <div class="inner">
-    <span class="eyebrow">Stage 2 · adding data without removing target-organ data</span>
+    <span class="eyebrow">Stage 2: Preliminary result · additive data</span>
     <h2>Extra data from another organ can help—but the pattern is not yet <em>stable</em></h2>
     <div class="cols result-visual">
       <div>
@@ -327,30 +423,78 @@
 
 <section class="slide">
   <div class="inner">
-    <span class="eyebrow">Future work · representation pivot</span>
-    <h2>The organ benefit is stable; shared <em>coordinates are not</em></h2>
-    <p class="lede">The shared path preserved prediction gains, but still compressed them into roughly two dominant directions and was not uniformly safe across organs.</p>
+    <span class="eyebrow">Stage 1: Methodology in one slide</span>
+    <h2>A specialist result only counts if it works <em>elsewhere</em></h2>
+    <div class="stats">
+      <div class="stat"><div class="n">9,195</div><div class="label">training samples from GTEx</div></div>
+      <div class="stat"><div class="n">821</div><div class="label">independent ARCHS4 test samples</div></div>
+      <div class="stat"><div class="n">63</div><div class="label">separately collected study groups</div></div>
+      <div class="stat"><div class="n">8 / 8</div><div class="label">target organs represented</div></div>
+    </div>
+    <div class="pipeline" style="grid-template-columns:repeat(4,1fr)">
+      <div class="pipe"><b>1 · Train</b><span>One general model and eight organ specialists learn from GTEx.</span></div>
+      <div class="pipe"><b>2 · Freeze</b><span>The models, test set, and comparison rules are locked before evaluation.</span></div>
+      <div class="pipe"><b>3 · Test elsewhere</b><span>All models predict hidden genes in independent ARCHS4 studies.</span></div>
+      <div class="pipe"><b>4 · Repeat fairly</b><span>All three trainings are retained; no best repeat is selected.</span></div>
+    </div>
+    <div class="callout"><p><strong>Qualification:</strong> six unusable rows failed the existing coverage rule and were excluded without replacement. Nothing was tuned to the test answers, so the result is reported as a post-access QC-amended external evaluation.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Stage 2: Diagnosis</span>
+    <h2>The instability exposed a <em>training-design problem</em>, not proof that sharing is impossible</h2>
     <div class="decision-grid">
       <div class="decision">
-        <span class="gate">What did not generalize</span>
-        <h3>Useful, but still compressed</h3>
-        <p>Direct supervision improved reconstruction, yet produced about 2 effective directions—below the pre-set minimum of 8.</p>
-        <p class="outcome"><strong>Boundary:</strong> utility alone is not a reusable biological representation.</p>
+        <span class="gate">Issue</span>
+        <h3>No stable helpful rule yet</h3>
+        <p>Helpful organ-to-organ effects changed across retraining, while two harmful relationships repeated.</p>
+        <p class="outcome"><strong>Evidence:</strong> 0 of 8 helpful candidates and 2 of 8 harmful candidates passed the nine-run stability test.</p>
       </div>
       <div class="decision">
-        <span class="gate">What survived</span>
-        <h3>Organ benefit is real</h3>
-        <p>All 8 of 8 specialists beat both the generic adapter and random specialists with donor-bootstrap intervals above zero.</p>
-        <p class="outcome"><strong>Keep:</strong> organ specialists remain the validated benchmark and control.</p>
+        <span class="gate">Mistake</span>
+        <h3>The answer key moved</h3>
+        <p>The shared model saw a different hidden-gene pattern and was graded against a different target each round—like using a rewritten answer key.</p>
+        <p class="outcome"><strong>Consequence:</strong> the model compressed toward the few signals that stayed obvious, and one organ crossed the safety limit.</p>
       </div>
       <div class="decision">
-        <span class="gate">Planned pivot</span>
-        <h3>Residual-aligned programs</h3>
-        <p>Learn common programs from training-only model errors, using inputs visible in both training and testing; then examine organ, tissue site, pathway, and data-quality structure.</p>
-        <p class="outcome"><strong>Success:</strong> stable coordinates, no organ-specific harm, and confirmation on new studies.</p>
+        <span class="gate">Correction</span>
+        <h3>Make the target fixed—and sharing optional</h3>
+        <p>Use one canonical masked view and one fixed target per sample. Give each organ a gate initialized to decline sharing.</p>
+        <p class="outcome"><strong>Grade the right outcome:</strong> stable, useful, no-harm share/decline decisions—not representation rank alone.</p>
       </div>
     </div>
-    <div class="callout"><p><strong>Target end product:</strong> a reproducible rule that predicts which biological domains should share training information—and a model that can safely decline to share.</p></div>
+    <div class="callout"><p><strong>What remains valid:</strong> organ specialists are the benchmark, and “private by default” is the safe policy until a reproducible sharing gate earns the right to open.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inner">
+    <span class="eyebrow">Future work: From specialists to pretraining design</span>
+    <h2>Discover the best <em>division of labor</em> for biological models</h2>
+    <p class="lede">The larger goal is to learn how training structure—domain boundaries, routing, and selective sharing—can produce models that are more accurate, robust, and efficient.</p>
+    <div class="decision-grid">
+      <div class="decision">
+        <span class="gate">Immediate test</span>
+        <h3>Can specialists share safely?</h3>
+        <p>Use one fixed answer key and let every organ decline shared information.</p>
+        <p class="outcome"><strong>Continue only if:</strong> the benefit repeats and no organ is harmed.</p>
+      </div>
+      <div class="decision">
+        <span class="gate">Representation discovery</span>
+        <h3>Organ is only the first split</h3>
+        <p>Compare organ, tissue site, biological programs, and data-quality contexts to find stronger domain boundaries.</p>
+        <p class="outcome"><strong>Question:</strong> which differences require separate experts, and which can share?</p>
+      </div>
+      <div class="decision">
+        <span class="gate">Pretraining payoff</span>
+        <h3>Turn the rule into architecture</h3>
+        <p>Use the discovered structure to choose training data, organize specialists, route samples, and prevent negative transfer.</p>
+        <p class="outcome"><strong>End product:</strong> a model that knows when to specialize, share, or refuse.</p>
+      </div>
+    </div>
+    <div class="callout"><p><strong>Hospital analogy:</strong> determine how to divide the departments, distribute the workload, share useful notes, and keep incompatible specialists separate—so the whole hospital runs better.</p></div>
   </div>
 </section>
 

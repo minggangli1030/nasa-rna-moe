@@ -89,3 +89,28 @@ stopped before producing a report because the original Stage-1 manifest is inten
 not tracked in Git. The retry added an explicit input path, transferred the compact
 manifest separately, and verified its frozen SHA256 before execution. No cohort,
 threshold, mapping rule, or scientific gate changed.
+
+## Real metadata-only catalog result
+
+The subsequently frozen real-metadata execution completed on 2026-08-04 at output
+`/media/volume/moe-reboot/results/archs4_downstream_metadata_catalog_v1_1532ea7`.
+All five files in its immutable checksum ledger were re-verified on 2026-08-11, along
+with both frozen metadata-only inputs. The run accessed no expression and produced no
+efficacy outcome.
+
+- input metadata rows: 1,098,771;
+- mechanically eligible rows: 23,975;
+- eligible series values: 931;
+- eligible GEO series tokens: 1,044;
+- per-organ metadata coverage: 1,628–3,944 samples and 92–168 study values;
+- prior Stage-1 series exclusions: 2,970 rows;
+- explicit GTEx exclusions: 349 rows;
+- eligible overlaps with either firewall: zero; and
+- catalog report SHA256:
+  `7723f5e2cf1a87b4b2551e42a0a3cb0174cda115f69f39e1d80aab0d17e67d7d`.
+
+The compact report and remote checksum ledger are versioned at
+`artifacts/final_evaluation/archs4_downstream_benchmark/metadata_catalog_v1_1532ea7/`.
+This result establishes a sufficiently large metadata candidate pool; it does not
+freeze confirmation membership, authorize ARCHS4 expression access, or settle any
+model comparison.

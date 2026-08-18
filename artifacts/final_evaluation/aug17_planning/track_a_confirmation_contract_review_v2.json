@@ -1,0 +1,158 @@
+{
+  "schema_version": 2,
+  "written": "2026-08-11",
+  "status": "metadata_complete_scientific_decisions_pending_no_expression_authorized",
+  "purpose": "Prospective untouched confirmation of the frozen final K8 organ-specialization reconstruction effect.",
+  "evidence_boundary": {
+    "metadata_only": true,
+    "expression_accessed": false,
+    "efficacy_scored": false,
+    "this_file_is_executable_protocol": false,
+    "reason_not_frozen_executable": "Membership/QC semantics and the total-parameter-matched generic K8 control require explicit scientific review."
+  },
+  "resolved_source_contract": {
+    "source": "ARCHS4 human gene-level v2.latest / reported ARCHS4 version 2.7",
+    "creation_date": "2026-07-03",
+    "expression_file_sha256": "284855959248f249ddef5a9a5b780c72b86ef99240ed1403f08b01609778ed56",
+    "expression_file_size_bytes": 62257385524,
+    "metadata_export_sha256": "40dfa45127726b016be64086fd226c0b66f37d2b46a53b28da766f29f0d3756b",
+    "catalog_protocol_sha256": "0e09c5dc3f840aa5a00136511251027aa9824865790afbe204dbda2ef1543771",
+    "catalog_report_sha256": "7723f5e2cf1a87b4b2551e42a0a3cb0174cda115f69f39e1d80aab0d17e67d7d",
+    "eligible_metadata_parquet_sha256": "7e7ca561bbddf99235b7be5802eabd98d5f7bf6b241ecdb08f8dd23060f5cf14",
+    "stage1_original_manifest_sha256": "0605a5781f0daa0e039f7e9ddd240c6f24025c62cd063f148bcedcecae0d5d54",
+    "organ_ontology_sha256": "42d31a298b81b14de3603c4259a68c1f142c2ff81c8b0ed45398dfb3a1e1b688",
+    "canonical_gene_order_sha256": "3332cb312000e426a866d669b3ba9b6206da50d70094fb5f9d30ef168e860dff",
+    "ordered_gene_length_sha256": "7dcb65374dbcc6246b05a6c0891b475d3802c97cd198bdcfcda3504b1cdd6941"
+  },
+  "verified_catalog": {
+    "n_input_samples": 1098771,
+    "n_eligible_samples": 23975,
+    "n_eligible_series_values": 931,
+    "n_eligible_geo_series_tokens": 1044,
+    "eligible_stage1_overlap_rows": 0,
+    "eligible_explicit_gtex_overlap_rows": 0,
+    "per_organ": {
+      "adipose": {"samples": 3393, "series_values": 92},
+      "brain": {"samples": 3847, "series_values": 154},
+      "colon": {"samples": 2032, "series_values": 122},
+      "heart": {"samples": 1830, "series_values": 127},
+      "liver": {"samples": 3367, "series_values": 122},
+      "lung": {"samples": 1628, "series_values": 119},
+      "skeletal_muscle": {"samples": 3944, "series_values": 113},
+      "skin": {"samples": 3934, "series_values": 168}
+    }
+  },
+  "resolved_model_contract": {
+    "candidate": "final frozen K8 package, not the adaptive K4 development branch",
+    "organ_order": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "seeds": [17, 42, 101],
+    "best_seed_selection": false,
+    "package_protocol_sha256": "7243f5345ae6fc2b522905d139ec82036f7854c1dd167e33f64814d8ca495500",
+    "package_manifest_sha256": "8c8e967faa7d63fda80bdb4c301678544290cbeb01f833ae7e6817be6a60e4e9",
+    "package_full_sha256_ledger_sha256": "b303ef625065615dc4ad335b5d46dbb5a7431c5f3aaa9eeecf9b26525bdb41d2",
+    "target_hidden_router_sha256": "b5a19bdee62efad108e0301f84afbbca088cfd04985f95cd37836a45b0236abe",
+    "router_report_sha256": "11cc62447194ca9328b68cb717019df93c888830b6f69a60b35b4555e9350a7d",
+    "axis_definitions_sha256": "1d7fba55d00f3fe363932abfba2a0e0d76e70e8dedf71aa46c69e29679b0b7cb",
+    "checkpoints": {
+      "17": {
+        "organ_k8": "0375df2669c7cb38a6cf31d45f26b73dd991abedfc28fe13c39f0ec3ee0e3138",
+        "pooled": "ae5d6d1619938d8061c8b5b6e1323ed345f71f67b34e3e065cc899f587da7c74"
+      },
+      "42": {
+        "organ_k8": "b5bbed3e83ab2fc64d1eaaf7073d26ab901a0b0aff315041586cc13ce0cff8c9",
+        "pooled": "969c510fb84e5e58605d34351db6c5608ef8d64d66b282ad9bf964b77bb33ce2"
+      },
+      "101": {
+        "organ_k8": "20d1fc2e300acc0e0d78eb3a11d5e4093a2950264abf0af3c704d91264512a42",
+        "pooled": "3e9edacfb6b0e530f210f271af4802072a3c0154922bcf0b4b9f54e0ee612043"
+      }
+    }
+  },
+  "recommended_membership_contract_for_review": {
+    "pre_expression_candidate_membership": "All 23,975 rows in the hash-bound eligible_metadata parquet, unless a separately frozen metadata-only manual review is completed before expression access.",
+    "primary_organ_set": [
+      "adipose",
+      "brain",
+      "colon",
+      "heart",
+      "liver",
+      "lung",
+      "skeletal_muscle",
+      "skin"
+    ],
+    "post_expression_qc": {
+      "only_allowed_exclusion": "fewer than 14,000 nonzero genes under the frozen canonical extraction contract",
+      "replacement_samples": false,
+      "replacement_studies": false,
+      "manual_relabeling": false,
+      "threshold_revision": false
+    },
+    "recommended_minimum_qc_passing_coverage": {
+      "connected_series_values_per_organ": 8,
+      "samples_per_organ": 50,
+      "justification": "Eight study units matches the original frozen design target; fifty samples is below the prior smallest retained organ except liver and is a feasibility floor rather than an outcome-derived power claim."
+    },
+    "recommended_failure_behavior": "If any frozen organ misses either coverage minimum after deterministic QC, stop before efficacy scoring and report cohort infeasibility; do not drop the organ or redefine the aggregate."
+  },
+  "recommended_evaluation_contract_for_review": {
+    "expression_space": "log1p TPM under the original frozen extraction and normalization order",
+    "target_panel": "the original 4,634 frozen score genes, all masked before every prediction",
+    "primary_condition": "blind_router_hard",
+    "primary_comparator": "pooled",
+    "supportive_conditions": [
+      "blind_router_soft",
+      "true_organ"
+    ],
+    "negative_control": "random_k8 using the already frozen GTEx-calibration assignments",
+    "capacity_attribution_control": "total-parameter-matched generic K8; exact construction and checkpoints do not yet exist",
+    "primary_metric": "masked log1p(TPM) MSE",
+    "primary_estimand": "sample MSE averaged within connected series value, equal connected-series weight within organ, then equal organ weight",
+    "uncertainty": "10,000 paired connected-series bootstrap draws within organ",
+    "recommended_confirmation_gate": [
+      "blind hard routing improves versus pooled in each fixed seed",
+      "the all-seed aggregate paired-bootstrap 95% interval excludes zero in the beneficial direction",
+      "no frozen organ has more than 2% relative MSE harm versus pooled",
+      "true-organ and soft-routing results are reported without replacing the primary hard-routing decision",
+      "random K8 does not pass the same specialization gate"
+    ]
+  },
+  "two_stage_freeze_recommendation": {
+    "stage_1_now": "Freeze scientific design, metadata membership, QC decision tree, model package, target panel, estimand, gates, and control definitions without expression access.",
+    "stage_2_before_expression": "After the separately authorized generic-K8 control is trained only on frozen GTEx development data, bind its checkpoints plus the final evaluator and launcher hashes in a no-choice execution manifest.",
+    "stage_2_may_change_scientific_design": false,
+    "expression_access_before_stage_2_complete": false
+  },
+  "decisions_requiring_review": [
+    "Confirm final K8, rather than the older selected K4-EPE development model, as the Track A target.",
+    "Choose all mechanically eligible catalog rows versus a metadata-manually-curated fixed subset before expression access.",
+    "Confirm that deterministic post-expression QC may produce the final scored membership even though only pre-QC candidate membership can be hash-bound now.",
+    "Confirm the eight-series and fifty-sample per-organ feasibility minima and fail-whole-confirmation behavior.",
+    "Decide whether the missing total-parameter-matched generic K8 is mandatory for Track A confirmation or a separately labeled attribution experiment.",
+    "Approve a two-stage freeze in which scientific choices are immutable now and execution/checkpoint hashes are added later without reopening those choices.",
+    "Confirm blind hard routing versus pooled as the single primary deployable claim and the proposed all-seed/bootstrap/per-organ safety gate."
+  ],
+  "execution_blockers": [
+    "Claude/user decision signoff on the seven review items",
+    "exact final metadata membership manifest and SHA256",
+    "frozen generic-K8 decision and, if mandatory, checkpoint SHA256 by seed",
+    "final evaluator source SHA256 and implementation commit",
+    "one-time launcher SHA256",
+    "complete execution manifest SHA256"
+  ],
+  "prohibited_until_all_blockers_clear": [
+    "ARCHS4 expression access for any catalog candidate",
+    "nonzero-gene QC measurement",
+    "model scoring",
+    "efficacy interpretation",
+    "membership replacement or threshold relaxation"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "compact_catalog_result_import_complete",
+  "verified_at": "2026-08-11T14:46:00-07:00",
+  "source_host_alias": "moe-reboot",
+  "source_root": "/media/volume/moe-reboot/results/archs4_downstream_metadata_catalog_v1_1532ea7",
+  "source_sha256_verification": "all five source files passed sha256sum -c on the source host on 2026-08-11",
+  "locally_imported": {
+    "catalog_report.json": "7723f5e2cf1a87b4b2551e42a0a3cb0174cda115f69f39e1d80aab0d17e67d7d",
+    "REMOTE_IMMUTABLE_SHA256SUMS": "verbatim source checksum ledger; three large/detail outputs intentionally remain on persistent VM storage"
+  },
+  "metadata_only_inputs_independently_rechecked": {
+    "human_sample_metadata_parquet_sha256": "40dfa45127726b016be64086fd226c0b66f37d2b46a53b28da766f29f0d3756b",
+    "stage1_original_manifest_sha256": "0605a5781f0daa0e039f7e9ddd240c6f24025c62cd063f148bcedcecae0d5d54"
+  },
+  "expression_accessed": false,
+  "scientific_outcome_accessed": false,
+  "note": "The compact report is versioned locally. The eligible metadata parquet and CSV inventories were downloaded to temporary local storage for metadata-only contract review, re-hashed successfully, and are not copied into Git."
+}
