@@ -30,6 +30,17 @@ datasets/
 *.parquet
 *.h5
 
+# Summer 2026 archived working data (the tracked source/reference exceptions remain).
+/su26/data/*
+!/su26/data/ensembl/
+!/su26/data/gencode/
+!/su26/data/osdr/
+!/su26/data/ontology/
+/su26/data/osdr/raw/
+/su26/data/osdr/*.parquet
+/su26/artifacts/**
+/su26/presentation/*.mp4
+
 # models
 checkpoints/
 checkpoints_moe/
@@ -37,6 +48,7 @@ checkpoints_performer/**/loss_plot.png
 checkpoints_performer/loss_plot.png
 *.pt
 *.pth
+fa26/bridge-rna-latest/
 
 # experiment logs
 wandb/
