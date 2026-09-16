@@ -1,0 +1,25 @@
+id,label,GEO_treatment,source_column,matches,instrument,library_selection
+GSE234465:GSM7469191,0,treatment: Earth control (Non EStim),GC-YA-NOS-1,True,Illumina NovaSeq 6000,cDNA
+GSE234465:GSM7469192,0,treatment: Earth control (Non EStim),GC-YA-NOS-2,True,Illumina NovaSeq 6000,cDNA
+GSE234465:GSM7469193,0,treatment: Earth control (Non EStim),GC-YA-NOS-3,True,Illumina NovaSeq 6000,cDNA
+GSE234465:GSM7469194,0,treatment: Earth control (Non EStim),GC-OS-NOS-1,True,Illumina NovaSeq 6000,cDNA
+GSE234465:GSM7469195,0,treatment: Earth control (Non EStim),GC-OS-NOS-2,True,Illumina NovaSeq 6000,cDNA
+GSE234465:GSM7469196,0,treatment: Earth control (Non EStim),GC-OS-NOS-3,True,Illumina NovaSeq 6000,cDNA
+GSE234465:GSM7469197,1,treatment: Exposed to microgravity (Non EStim),YA-NOES-1,True,Illumina NovaSeq 6000,cDNA
+GSE234465:GSM7469198,1,treatment: Exposed to microgravity (Non EStim),YA-NOES-2,True,Illumina NovaSeq 6000,cDNA
+GSE234465:GSM7469199,1,treatment: Exposed to microgravity (Non EStim),YA-NOES-3,True,Illumina NovaSeq 6000,cDNA
+GSE234465:GSM7469200,1,treatment: Exposed to microgravity (Non EStim),OS-NOES-1,True,Illumina NovaSeq 6000,cDNA
+GSE234465:GSM7469201,1,treatment: Exposed to microgravity (Non EStim),OS-NOES-2,True,Illumina NovaSeq 6000,cDNA
+GSE234465:GSM7469202,1,treatment: Exposed to microgravity (Non EStim),OS-NOES-3,True,Illumina NovaSeq 6000,cDNA
+GSE298393:GSM9013395,0,"No E-stim YA myobudles, ground control, Day 21 Rep1",YA-NoEstim-TOCO2GC--Chip-9,True,Illumina NovaSeq X,cDNA
+GSE298393:GSM9013396,0,"No E-stim YA myobudles, ground control, Day 21 Rep2",YA-NoEstim-TOCO2GC--Chip-11,True,Illumina NovaSeq X,cDNA
+GSE298393:GSM9013397,0,"No E-stim YA myobudles, ground control, Day 21 Rep3",YA-NoEstim-TOCO2GC--Chip-12,True,Illumina NovaSeq X,cDNA
+GSE298393:GSM9013398,0,"No E-stim OS myobudles, ground control, Day 21 Rep1",OS-NoEstim-TOCO2GC--Chip-13,True,Illumina NovaSeq X,cDNA
+GSE298393:GSM9013399,0,"No E-stim OS myobudles, ground control, Day 21 Rep2",OS-NoEstim-TOCO2GC--Chip-15,True,Illumina NovaSeq X,cDNA
+GSE298393:GSM9013400,0,"No E-stim OS myobudles, ground control, Day 21 Rep3",OS-NoEstim-TOCO2GC--Chip-16,True,Illumina NovaSeq X,cDNA
+GSE298393:GSM9013404,1,"No E-stim YA myobudles, microgravity, Day 21 Rep1",YA-NoEstim-SpX25-Chip-9,True,Illumina NovaSeq X,cDNA
+GSE298393:GSM9013405,1,"No E-stim YA myobudles, microgravity, Day 21 Rep2",YA-NoEstim-SpX25-Chip-10,True,Illumina NovaSeq X,cDNA
+GSE298393:GSM9013406,1,"No E-stim YA myobudles, microgravity, Day 21 Rep3",YA-NoEstim-SpX25-Chip-11,True,Illumina NovaSeq X,cDNA
+GSE298393:GSM9013410,1,"No E-stim OS myobudles, microgravity, Day 21 Rep1",OS-NoEstim-SpX25-Chip-13,True,Illumina NovaSeq X,cDNA
+GSE298393:GSM9013411,1,"No E-stim OS myobudles, microgravity, Day 21 Rep2",OS-NoEstim-SpX25-Chip-14,True,Illumina NovaSeq X,cDNA
+GSE298393:GSM9013412,1,"No E-stim OS myobudles, microgravity, Day 21 Rep3",OS-NoEstim-SpX25-Chip-15,True,Illumina NovaSeq X,cDNA

@@ -1,0 +1,6 @@
+id,sample,study,species,cell_type,condition,radiation_label,training_eligible,source_file,source_column,description_column,experiment_set,replicate,time,dose_Gy,title,agent,group,source_units,metadata_conflict,pretraining_catalog
+GSE230181:GSM7191283,GSM7191283,GSE230181,human,IMR90,irradiated,1,True,BFX01_expr.txt,MCA_SetA_Rep3A,MCA_SetA_Rep3,A,3,14d,10,IMR90 Sen IR set A rep 3,10Gy ionising radiation 14 days prior collection,normal,RPKM,,unseen
+GSE230181:GSM7191294,GSM7191294,GSE230181,human,IMR90,irradiated,1,True,BFX36_expr.txt,IR-3,IR-3,D,3,14d,10,IMR90 Sen IR set D rep 3,10Gy ionising radiation 14 days prior collection,normal,RPKM,,unseen
+GSE230181:GSM7191328,GSM7191328,GSE230181,human,IMR90,control,0,True,BFX17_expr.txt,IMR-3-3,IMR-3-3,B,3,see GEO agent,0,IMR90 NS Qui Set B rep 3,,normal,RPKM,,unseen
+GSE230181:GSM7191350,GSM7191350,GSE230181,human,ADSC,irradiated,1,False,BFX17_expr.txt,ADS-SnC-3,ADS-SnC-3,ADSC,3,14d,10,ADSC Sen IR rep 3,10Gy ionising radiation 14 days prior collection,normal,RPKM,,unseen
+GSE230181:GSM7191365,GSM7191365,GSE230181,human,HUVEC,control,0,False,BFX17_expr.txt,HUV-3,HUV-3,HUVEC,3,see GEO agent,0,HUVEC NS rep 3,,normal,RPKM,,unseen

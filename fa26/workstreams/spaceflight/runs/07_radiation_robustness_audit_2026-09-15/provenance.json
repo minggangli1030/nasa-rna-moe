@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "audit_radiation_robustness.py": "96d36d80ff4afd3499908b6447957e93d6768ff48ac60c07eb1d2c8da9c71533",
+    "check_radiation_training_stability.py": "f4025e22c06c4f2b7bb7e9914a00b4e7da2d7a91d76b8e39967ea2cfee4a8540",
+    "report_radiation_audit.py": "ff9ac5562f520e1874fcf527235546541f79ca606f61ad61f2eb02951b5e17f1"
+  },
+  "protocol_sha256": "0c155b735acb1f701c8790c71f23a7775d03265ee20521ace4a471bc46e0c86a",
+  "figures_visually_reviewed": [
+    "robustness_audit.png",
+    "all_configurations.png"
+  ],
+  "status": "complete"
+}

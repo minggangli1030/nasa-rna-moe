@@ -1,0 +1,8 @@
+{
+  "state": "complete",
+  "new_samples": 14,
+  "new_donors": 7,
+  "encoder_updated": false,
+  "flight_heads_updated": false,
+  "verdict": "Non-radiation muscle responses trigger probe; working flight classifier supported by lower probe component, not radiation-specific biology"
+}

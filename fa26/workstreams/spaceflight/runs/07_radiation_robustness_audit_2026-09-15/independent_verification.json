@@ -1,0 +1,13 @@
+{
+  "verified_split_groups": 792,
+  "all_train_reference_test_roles_disjoint": true,
+  "all_training_study_GSE230181": true,
+  "all_source_files_excluded_from_same_study_test_training": true,
+  "all_metric_confusions_recomputed": 672,
+  "all_saved_absolute_heads_reproduce_external_predictions": true,
+  "checkpoint_hash_verified": true,
+  "input_hash_verified": true,
+  "labels_independently_verified": 130,
+  "inference_seconds": 48.275869369506836,
+  "script_sha256": "ff9ac5562f520e1874fcf527235546541f79ca606f61ad61f2eb02951b5e17f1"
+}

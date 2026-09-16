@@ -1,0 +1,11 @@
+{
+  "status": "exploratory_discovery",
+  "scope": "all 940455 supplied ARCHS4 metadata rows; all 2896 supplied OSDR metadata rows; bounded expression subset based on available files and explicit designs, not outcomes",
+  "selection": "OSDR all cached study/exact-tissue/covariate strata with >=3 per condition; cap6 per condition by hash; explicit human cardiac, muscle-chip and paired bedrest cohorts",
+  "model": "r7hnr92k frozen official pre-norm; final hidden mean and gene-wise std as two descriptive readouts",
+  "minimum_canonical_coverage": 0.99,
+  "missing_gene_policy": "Never interpreted as measured zero. Missing canonical positions masked with training token -10 for model; normalization uses observed canonical genes; missingness documented and sensitivity to zero fill checked for incomplete HUMAN inputs only",
+  "analysis": "within-stratum effect distances, group/donor resampling and leave-one-unit-out directional consistency; no classifier tuning; raw expression and PCA comparators",
+  "pretraining": "Recorded from supplied manifest for human GSMs; OSDR overlap unknown. No generalization claims",
+  "manifest_sha256": "3b72cac621eef42cffc0e7b49e8fc1a21ec22db9e7172487ca3c5afad1550638"
+}

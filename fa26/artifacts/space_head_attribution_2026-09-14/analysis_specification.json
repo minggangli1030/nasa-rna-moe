@@ -1,0 +1,9 @@
+{
+  "recorded_at": "2026-09-14T20:37:09.908180-07:00",
+  "timing": "Recorded before inspecting BridgeRNA gene-attribution results",
+  "gene_response": "mean IG over held-out flight chips minus mean IG over held-out ground chips",
+  "robust_shortlist": "Top100 by absolute response attribution in all four head/reference cases, same sign in all four, sign retained in >=90% of 24 single-held-out-chip deletion contrasts",
+  "rank_comparison": "Spearman on all15137 observed genes; top100 overlap across references/pools and versus expression",
+  "pathways": "All50 predefined Hallmark sets, signed sum and mean absolute gene response attribution. Descriptive, overlapping associations; not activation or enrichment p-values.",
+  "perturbation": "Top25/100 per-sample absolute IG versus20 training-expression-mean/SD-matched random panels; replacement by primary training-ground reference; top-only TPM-renormalization sensitivity reported separately"
+}

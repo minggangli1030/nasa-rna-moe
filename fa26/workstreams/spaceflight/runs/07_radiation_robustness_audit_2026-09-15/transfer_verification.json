@@ -1,0 +1,6 @@
+{
+  "remote_local_embedding_sha256_match": true,
+  "sha256": "0a75cbf69ce21683717f1effc2645b0f36cffb686d3656480257b861d33db686",
+  "gpu_idle_after_completion": true,
+  "remote": "moe-reboot (149.165.175.241)"
+}

@@ -1,0 +1,34 @@
+{
+  "frozen_at_utc": "2026-09-13T16:42:16.469554+00:00",
+  "status": "exploratory bounded follow-up; prior gene/global results already known",
+  "panel": [
+    "TNF-alpha Signaling via NF-kB",
+    "DNA Repair",
+    "Myogenesis",
+    "Unfolded Protein Response",
+    "Inflammatory Response",
+    "Oxidative Phosphorylation",
+    "Reactive Oxygen Species Pathway",
+    "p53 Pathway",
+    "Circadian clock",
+    "Muscle contraction"
+  ],
+  "panel_sha256": "df6bba6aaf76b1a1c33023fa2f3f1d28d266a0a6648faa2136b87621b9d1fcd2",
+  "primary_score": "Within each contrast, standardize each measured gene across its samples, then average gene z-scores within the predefined set. Report exposed-minus-control score and fraction of genes with agreeing expression change. This is a gene-set expression score, not biochemical activation.",
+  "sensitivity": [
+    "Mean log1p expression shift with global-gene shift subtracted",
+    "Within-sample percentile-rank score difference",
+    "Leave one sample or paired donor/cell-line out",
+    "Repeat myogenesis/muscle-contraction scores excluding MYH1"
+  ],
+  "coverage": "At least 50% of mapped canonical pathway genes observed and >=10 genes; also report fraction of original published set retained. For cross-flight pathway comparison require a common observed gene subset.",
+  "scope": "All existing 54 general-survey contrasts plus two repeat-flight pool contrasts. Report mouse muscle grouped by four missions; human analogs kept separate. New onboard-1g studies GSE224805/GSE157937 analyzed separately, requiring >=99% canonical coverage for primary model inference.",
+  "new_controls": "MG63 microgravity versus onboard 1g (3+3). HMEC1 microgravity versus onboard 1g (3+2), onboard 1g versus Earth (2+3), microgravity versus Earth (3+3). Shared controls make these contrasts dependent; no pure radiation attribution.",
+  "no_claims": "No significance testing, classifier training, or novelty claim; study-specific biology, gene-set overlap and source normalization remain caveats.",
+  "input_source_amendment_before_results": {
+    "utc": "2026-09-13T16:47:15.645956+00:00",
+    "MG63": "All six author sample-count columns primary; NCBI raw counts for five matched GSMs as processing sensitivity. One GSM missing from NCBI export; no fabricated sample.",
+    "HMEC1": "All eight NCBI raw-count samples primary, replacing the filtered 70%-coverage CPM matrix. The published CPM table will be used for source sensitivity where genes overlap.",
+    "robust_highlight_rule": "Score direction retained for every leave-one-unit-out recomputation, agreeing sign in within-sample rank score and background-centered mean-log-expression score. Gene coherence reported separately; no significance threshold."
+  }
+}

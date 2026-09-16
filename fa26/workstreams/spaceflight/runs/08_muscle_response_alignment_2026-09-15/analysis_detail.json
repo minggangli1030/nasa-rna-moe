@@ -1,0 +1,5 @@
+{
+  "timing": "Before inference/evaluation outcomes",
+  "six_program_sensitivity": "Reuse run06 fixed six gene sets. Paired mean log1p-expression shifts and within-sample rank shifts; no new selection or labels.",
+  "additional_coverage": "EPS wider-gene-mask sensitivity uses only verified Entrez mappings; retained gene count and omissions in input_audit.json."
+}

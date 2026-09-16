@@ -1,0 +1,28 @@
+{
+  "question": "Does a radiation-response probe transfer and distinguish irradiation from other stress treatments?",
+  "development_study": "GSE230181",
+  "external_study": "GSE242706",
+  "development_target": "10 Gy irradiation-associated late response in normal IMR90 cultures versus matched non-senescent controls; not a validated radiation-specific mechanism",
+  "external_target": "16 Gy irradiated versus sham lung-chip samples; report separately by cell type and time",
+  "split": "Leave one entire source expression file out for IMR90 radiation/control tests; B and C sets remain together in BFX17",
+  "specificity": "Other stress treatments tested using head trained without their entire expression file; report IR-vs-other AUROC and false positive rate at fixed zero logit",
+  "models": [
+    "expression_linear",
+    "pca5_linear",
+    "bridge_meanstd_linear",
+    "six_programs_linear"
+  ],
+  "head": "StandardScaler training only + L2 logistic regression C=1, liblinear, seed=17; PCA train only; no search/calibration",
+  "encoder_update": false,
+  "gene_universe": "Observed common canonical positions across the two new studies; structural coverage filter without label/outcome selection",
+  "six_programs": "Reuse the fixed six programs from run05; no outcome-selected gene sets",
+  "old_flight_head": "Evaluate model-reliance alignment only as an out-of-domain diagnostic; never count ground radiation cultures as real flight positives",
+  "controlled_gravity": "Audit GSE222998; source CDS/transcript counts require a separate audited conversion, not silently treated as gene counts. Prior onboard-1g data remain previously explored context.",
+  "limitations": [
+    "Cell-culture replicates, not independent donors",
+    "High dose and senescence/time confounding",
+    "Cross-study cell type/time/preparation shifts",
+    "No universal sample requirement or causal percentages",
+    "No claim of independent pretraining absence from a catalog check"
+  ]
+}

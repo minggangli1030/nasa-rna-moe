@@ -1,0 +1,6 @@
+condition,sum,count,mean
+antimycin,0,5,0.0
+bleomycin,4,5,0.8
+oligomycin,3,5,0.6
+ras_induction,3,3,1.0
+rotenone,3,3,1.0

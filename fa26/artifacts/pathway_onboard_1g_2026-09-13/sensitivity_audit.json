@@ -1,0 +1,8 @@
+[
+  {
+    "study": "GSE157937",
+    "author_CPM_common_genes": 11010,
+    "canonical_fraction": 0.7260138476755688,
+    "mapping": "Unique canonical symbols after HGNC stable-ID/previous-symbol resolution; ambiguous or duplicate mappings excluded. CPM treated as library-size scaled counts, then divided by exon length; observed common-gene denominator used for BOTH sources. Filtered author table is sensitivity only."
+  }
+]

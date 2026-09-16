@@ -1,0 +1,42 @@
+{
+  "n_new_profiles": 123,
+  "n_training_profiles": 38,
+  "n_independent_donors": "Not established; IMR90 is one cell strain, culture replicates are not donors",
+  "common_genes": 15061,
+  "canonical_total": 15165,
+  "input_sha256": "a3d2b3ff7de75acb66b8da149e4c0bb3fe8428db5f9f091db6da7bfd89b56358",
+  "sample_counts": "{('GSE230181', 'ADSC', 'control'): 3, ('GSE230181', 'ADSC', 'irradiated'): 3, ('GSE230181', 'HMVEC', 'control'): 3, ('GSE230181', 'HMVEC', 'irradiated'): 3, ('GSE230181', 'HUVEC', 'control'): 3, ('GSE230181', 'HUVEC', 'irradiated'): 3, ('GSE230181', 'IMR90', 'antimycin'): 5, ('GSE230181', 'IMR90', 'bleomycin'): 5, ('GSE230181', 'IMR90', 'control'): 22, ('GSE230181', 'IMR90', 'irradiated'): 19, ('GSE230181', 'IMR90', 'oligomycin'): 5, ('GSE230181', 'IMR90', 'ras_induction'): 3, ('GSE230181', 'IMR90', 'rotenone'): 3, ('GSE230181', 'IMR90', 'vehicle'): 5, ('GSE230181', 'RPTEC', 'control'): 3, ('GSE230181', 'RPTEC', 'irradiated'): 3, ('GSE242706', 'Lung endothelium', 'control'): 8, ('GSE242706', 'Lung endothelium', 'irradiated'): 8, ('GSE242706', 'Lung epithelium', 'control'): 8, ('GSE242706', 'Lung epithelium', 'irradiated'): 8}",
+  "catalog_counts": "{('GSE230181', 'not_in_supplied_catalog'): 1, ('GSE230181', 'unseen'): 90, ('GSE242706', 'unseen'): 32}",
+  "column_reconciliations": "BFX01: set capitalization + trailing A; BFX02: strip _sequence; all source pairs in label_column_audit.csv",
+  "metadata_conflicts": [
+    {
+      "sample": "GSM7767418",
+      "metadata_conflict": "cell-line field contradicts title/cell-type; use agreeing title and cell-type, retain ambiguity"
+    },
+    {
+      "sample": "GSM7767434",
+      "metadata_conflict": "cell-line field contradicts title/cell-type; use agreeing title and cell-type, retain ambiguity"
+    }
+  ],
+  "sources": {
+    "GSE230181_BFX06_expr.txt.gz": "9cba300df96d5ad6f7135cfdeb0006ac0ec68c4ee845477386e9ec5680a806c9",
+    "GSE222998_family.soft.gz": "08eea73dbd5beab6d7e4c75f3a6a380831674c172c2246b54b0492748a23a609",
+    "GSE230181_family.soft.gz": "d999556a21f2b498d7b618f518b7fa2aab67a6ef3bf666cb07d3d5bec2a0b7fd",
+    "GSE242706_raw_counts_GRCh38.p13_NCBI.tsv.gz": "ae173409afa0f15c453ebf9a05e5bbd8b4a3f9bed930b50c62ec59283741370c",
+    "GSE222998.soft": "4c9179fc4a216f70cafff85a9188fe9bad13b7b6eb08ee586ecc0d4f8210da23",
+    "GSM7191291.soft": "ffa5f08a5b42593711939433550d5d4798e8cf323289c95c01cf633852284e0d",
+    "GSM6938058_SIMM050C.txt.gz": "d46125664c4ee72ac0443905aea1fbc2cf620ccbd95b4a336f2e4e6b62521893",
+    "GSE242706.soft": "914daf12234220f47b2700ec8cdf88397db575cfb7e7e69414f4092c5d081363",
+    "GSE242706_family.soft.gz": "fed5b4eb1f2a1d00446d13a216bee7184775acb8238495641a035dd6f6e7218a",
+    "GSE230358.soft": "ad797453823840cdfb743e10963971d52406a1846655512622bbc9e058210158",
+    "GSE230181_BFX02_expr.txt.gz": "99140f94f7179be99a5dc0cbde1ac1eb31977a9ffb4539986784d0d564d95049",
+    "GSE230181_BFX17_expr.txt.gz": "40120bb331e9fc6b8e4a510b09d0931c4d165f009e8e6d829ea6aa836e75e003",
+    "GSE230181.soft": "f34191618b74f5d5496f06580a30a01edc67a1194151719364533674bfa5dc32",
+    "GSE242706_NCBI_access.txt": "767f131aa22ef3b2e4e06c590ab0b42376ab8f4bd666f588a67f6831736c5078",
+    "GSE230181_BFX36_expr.txt.gz": "cf28130c717e4ba61be6b31117986235f919977f73c1a6a306e34225e4f90977",
+    "GSE222998_NCBI_access.txt": "c77280d8efed349ac96982688e7be620a8aa6532650984ee2162c83f7733521a",
+    "GSE230181_BFX01_expr.txt.gz": "62a1bf0aa61921680b2b96cb0092107d4fbaa3a29c17356ff61089baf9717f51"
+  },
+  "normalization": "RPKM rescaled directly to common-canonical TPM; NCBI counts divided by pinned gene exon length then same TPM denominator; log1p once; missing positions masked",
+  "preparation_script_sha256": "edd0ae268306f9ebfd8b83e15cb51704f50f0024b398da3f9a394e0363f48c58"
+}

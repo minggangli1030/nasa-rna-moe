@@ -1,0 +1,16 @@
+{
+  "archs4_metadata_rows_screened": 940455,
+  "archs4_human_rows": 510709,
+  "archs4_mouse_rows": 429746,
+  "keyword_hit_rows": 422,
+  "keyword_hit_series_strings": 29,
+  "keyword_hit_species": {
+    "human": 250,
+    "mouse": 172
+  },
+  "osdr_rows_screened": 2896,
+  "osdr_studies_screened": 94,
+  "expression_samples": 559,
+  "expression_studies": 28,
+  "scope_limit": "Keyword screen of supplied manifests, not an exhaustive census of all spaceflight datasets. Controls recovered by study; expression eligibility depends on given raw caches or small public source matrices. Non-flight analogs explicitly separated."
+}

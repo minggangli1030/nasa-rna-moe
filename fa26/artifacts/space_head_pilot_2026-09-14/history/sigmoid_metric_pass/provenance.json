@@ -1,0 +1,26 @@
+{
+  "python": "3.13.7",
+  "numpy": "2.3.3",
+  "sklearn": "1.7.2",
+  "execution": "Local CPU; cached frozen embeddings; no GPU or encoder update",
+  "sha256": {
+    "artifacts/general_survey_2026-09-12/manifest.csv": "fe6f3da88c2ed0eb96ea1f93c0b6653f2073ddfacc7a77c5595fe0d7cdd30dfd",
+    "artifacts/general_survey_2026-09-12/inputs.npz": "7a0545741784b7af00e96c28f47001ff61bf03977f67ba881ba8c0bfdaafd8f6",
+    "artifacts/general_survey_2026-09-12/embeddings.npz": "5b56ad7aed32e01fd353b3077acb2102a7ee976deea92d0f835caf21349f07cc",
+    "artifacts/general_survey_2026-09-12/inference_report.json": "0dc45c25e83aa01fc4684c2fc745ea99338cddf87a6b6cb27e18a9e7535c6100",
+    "artifacts/muscle_repeat_flight_2026-09-12/manifest.csv": "b7803d6a492b7f5cfbfc4d77cffc46e9b38510cf6353244046ecc8b24f37fb11",
+    "artifacts/muscle_repeat_flight_2026-09-12/inputs.npz": "6656a2876d201ecb950a2d7ae54e6556d87e8329e0e8509ed279d846e6c584c9",
+    "artifacts/muscle_repeat_flight_2026-09-12/embeddings.npz": "fb33538992ea163ef92c26c8fa710278b45b185ac2579b30d73a9e074e533dbf",
+    "artifacts/muscle_repeat_flight_2026-09-12/inference_report.json": "c7c01c5884e264c7dd632dbb207c6177069b2d9b9b13c674d12aa87fc3cb6ed0",
+    "space_head_pilot.py": "934eea5b2e2ab1cbe0e306839abd88a27f8605f49329980f0c7c06859eea3d82",
+    "artifacts/space_head_pilot_2026-09-14/protocol.json": "ab723cd58667b62d63fb198016a3f9f3e68d3e4332792c872e274e6d0594e32b"
+  },
+  "checks": [
+    "24 unique IDs and balanced study/pool/label cells",
+    "Aligned input/embedding/manifest IDs and input hashes",
+    "Gene order, observed mask and finite features",
+    "Study/pool separation appropriate to evaluation",
+    "Training-only scaler means",
+    "All heads converged"
+  ]
+}

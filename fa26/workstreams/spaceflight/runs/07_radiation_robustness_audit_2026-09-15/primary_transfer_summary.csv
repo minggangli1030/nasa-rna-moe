@@ -1,0 +1,7 @@
+experiment,auroc,balanced_accuracy,n,TP,TN,FP,FN
+24h,1.0,1.0,6,3,3,0,0
+6h,1.0,0.8333333333333333,6,3,2,1,0
+Lung endothelium_6h,0.875,0.75,8,3,3,1,1
+Lung endothelium_7d,1.0,0.5,8,4,0,4,0
+Lung epithelium_6h,1.0,0.75,8,4,2,2,0
+Lung epithelium_7d,0.5625,0.625,8,4,1,3,0

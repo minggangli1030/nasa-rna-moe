@@ -1,0 +1,40 @@
+{
+  "created_at": "2026-09-14T19:09:44.920121-07:00",
+  "status": "Frozen before head fitting; prior expression/embedding geometry already explored",
+  "cohort": [
+    "GSE234465 non-stimulated 12 chips",
+    "GSE298393 No E-stim Day21 12 chips"
+  ],
+  "label": "1 flight experiment; 0 matched ground. Not isolated radiation or gravity cause.",
+  "primary": "Train on each study, test all samples of other study (two folds). Shared pools preclude independent-donor claim.",
+  "secondary": "Within each study train one YA/OS donor pool, test other (four folds). No random chip CV.",
+  "models": [
+    "expression_linear",
+    "pca5_linear",
+    "bridge_mean_linear",
+    "bridge_mean_std_linear",
+    "pool_metadata_linear"
+  ],
+  "preprocessing": "Fixed shared observed-gene panel for expression; StandardScaler fitted to training rows only. PCA5 fitted on training rows only. Bridge mean and mean+std separately.",
+  "head": "L2 logistic regression C=1, solver liblinear, max_iter=2000, random_state=17, threshold score0.5; no tuning or calibration",
+  "sensitivity": "C=0.01 and C=100 cross-flight only; no winner selection. Leave-one-training-chip deletion at C=1 cross-flight only; descriptive sensitivity, not donor uncertainty.",
+  "metrics": [
+    "balanced_accuracy",
+    "AUROC",
+    "average_precision",
+    "TP",
+    "TN",
+    "FP",
+    "FN",
+    "uncalibrated_Brier"
+  ],
+  "attribution_gate": "Do not promote BridgeRNA gene attributions if cross-flight prediction fails. Expression coefficients are model associations only.",
+  "limitations": [
+    "Two flights and two donor pools, not 24 independent donors",
+    "Known source/processing differences",
+    "Data already used for discovery; not pristine confirmation",
+    "Pretraining absence based only on supplied catalog",
+    "No train-test biological donor disjointness across flights asserted"
+  ],
+  "execution": "Local CPU, frozen cached embeddings; no encoder tuning, no VM or watcher"
+}

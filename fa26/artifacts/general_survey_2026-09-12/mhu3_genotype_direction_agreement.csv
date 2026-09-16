@@ -1,0 +1,28 @@
+material,representation,genotype_response_cosine
+Cerebrum,Expression,0.21125903725624084
+Cerebrum,BridgeRNA mean,0.25664660334587097
+Cerebrum,BridgeRNA std,-0.015044040977954865
+Kidney,Expression,0.42989253997802734
+Kidney,BridgeRNA mean,0.9657549858093262
+Kidney,BridgeRNA std,0.4882611334323883
+Liver,Expression,0.6518579125404358
+Liver,BridgeRNA mean,0.595726728439331
+Liver,BridgeRNA std,0.4416670501232147
+Mandible,Expression,0.18783043324947357
+Mandible,BridgeRNA mean,0.36611664295196533
+Mandible,BridgeRNA std,-0.09335348755121231
+Spleen,Expression,0.5676919221878052
+Spleen,BridgeRNA mean,0.5093547701835632
+Spleen,BridgeRNA std,0.7063003778457642
+Temporal Bone,Expression,0.08711493760347366
+Temporal Bone,BridgeRNA mean,0.6894925832748413
+Temporal Bone,BridgeRNA std,-0.03601643070578575
+brown adipose tissue,Expression,0.8517011404037476
+brown adipose tissue,BridgeRNA mean,0.9948514699935913
+brown adipose tissue,BridgeRNA std,0.9350425601005554
+thymus,Expression,0.7775363326072693
+thymus,BridgeRNA mean,0.9930784702301025
+thymus,BridgeRNA std,0.9673585295677185
+white adipose tissue,Expression,0.5986639857292175
+white adipose tissue,BridgeRNA mean,-0.3161417245864868
+white adipose tissue,BridgeRNA std,0.43979161977767944

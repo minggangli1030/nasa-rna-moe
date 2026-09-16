@@ -1,0 +1,13 @@
+{
+  "samples": 559,
+  "seconds": 204.6691927909851,
+  "device": "NVIDIA A100-SXM4-40GB",
+  "checkpoint_sha256": "f3491beaa697a0408dc1daeb6f8d648566bd46bafc6e44938d723e7ffc325541",
+  "official_source_sha256": "3c8308f751cf2a05d612364ffc2d456f2a969f9aece4f34743ab8635586aaf9e",
+  "input_sha256": "7a0545741784b7af00e96c28f47001ff61bf03977f67ba881ba8c0bfdaafd8f6",
+  "readouts": [
+    "final_gene_mean",
+    "final_gene_std"
+  ],
+  "missing_human_sensitivity": "unknown token versus zero fill; zero fill is sensitivity only, not biological observed zero"
+}

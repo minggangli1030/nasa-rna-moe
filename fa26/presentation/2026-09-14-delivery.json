@@ -1,0 +1,22 @@
+{
+  "slides": 3,
+  "script_words": 301,
+  "rendered_sizes": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1280,
+      720
+    ]
+  ],
+  "pdf_pages": 3,
+  "visual_review": "All three slides inspected in PDF and responsive HTML; no clipping or graph-label collisions.",
+  "sha256": {
+    "2026-09-14-discovery.html": "2b5ccc78d79519aede34d592cb0e821db47dc7eadec82410709c6e92f215a193",
+    "2026-09-14-discovery.pdf": "5dd7651d8109f2df0e24f4918b4be3c35d7eebbef8efa2611c2fafb0a179b321",
+    "2026-09-14-speaking-script.md": "7bd813f3133cbc7e11a8e5b8484594ed324e691530e555b1a283e25591cfb18b",
+    "2026-09-14-chart-values.json": "a6e17cc0633b37303334b271791f48b2a983a0efdfba00bcc64c285c4d41897d"
+  }
+}

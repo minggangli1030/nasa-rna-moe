@@ -1,0 +1,15 @@
+{
+  "state": "complete",
+  "updated_at": "2026-09-14T20:51:18.590491-07:00",
+  "task": "Input-gene attribution for fixed GSE298393 heads, reciprocal held-out pools",
+  "vm": "moe-reboot 149.165.175.241",
+  "remote_directory": "/media/volume/moe-reboot/fa26_space_head_attribution_20260914",
+  "progress_file": "attribution.log",
+  "completion_marker": "ATTRIBUTION_COMPLETE",
+  "encoder_updated": false,
+  "head_updated": false,
+  "expression_baseline_complete": true,
+  "stable_gene_count": 44,
+  "report": "REPORT.md",
+  "all_checks_passed": true
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "training_pool": "YA",
+    "train_indices": [
+      0,
+      1,
+      2,
+      6,
+      7,
+      8
+    ],
+    "test_indices": [
+      3,
+      4,
+      5,
+      9,
+      10,
+      11
+    ],
+    "reference_names": [
+      "training_ground_mean_TPM",
+      "training_all_mean_TPM"
+    ],
+    "training_ids": [
+      "GSE298393:GSM9013395",
+      "GSE298393:GSM9013396",
+      "GSE298393:GSM9013397",
+      "GSE298393:GSM9013404",
+      "GSE298393:GSM9013405",
+      "GSE298393:GSM9013406"
+    ],
+    "test_ids": [
+      "GSE298393:GSM9013398",
+      "GSE298393:GSM9013399",
+      "GSE298393:GSM9013400",
+      "GSE298393:GSM9013410",
+      "GSE298393:GSM9013411",
+      "GSE298393:GSM9013412"
+    ]
+  },
+  {
+    "training_pool": "OS",
+    "train_indices": [
+      3,
+      4,
+      5,
+      9,
+      10,
+      11
+    ],
+    "test_indices": [
+      0,
+      1,
+      2,
+      6,
+      7,
+      8
+    ],
+    "reference_names": [
+      "training_ground_mean_TPM",
+      "training_all_mean_TPM"
+    ],
+    "training_ids": [
+      "GSE298393:GSM9013398",
+      "GSE298393:GSM9013399",
+      "GSE298393:GSM9013400",
+      "GSE298393:GSM9013410",
+      "GSE298393:GSM9013411",
+      "GSE298393:GSM9013412"
+    ],
+    "test_ids": [
+      "GSE298393:GSM9013395",
+      "GSE298393:GSM9013396",
+      "GSE298393:GSM9013397",
+      "GSE298393:GSM9013404",
+      "GSE298393:GSM9013405",
+      "GSE298393:GSM9013406"
+    ]
+  }
+]

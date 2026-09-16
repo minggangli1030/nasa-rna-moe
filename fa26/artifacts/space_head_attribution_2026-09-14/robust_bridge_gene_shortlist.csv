@@ -1,0 +1,45 @@
+model,gene,mean_signed_response_attribution,mean_abs_response_attribution,same_sign_all_pools_references,leave_one_chip_sign_fraction,worst_abs_rank,top100_all_pools_references,robust_candidate,gene_name
+bridge,MUSK,0.5070885711932891,0.5070885711932891,True,1.0,10.0,True,True,muscle associated receptor tyrosine kinase
+bridge,USF1,0.5045753265652431,0.5045753265652431,True,1.0,3.0,True,True,upstream transcription factor 1
+bridge,SETD7,0.501697171304623,0.501697171304623,True,1.0,2.0,True,True,"SET domain containing 7, histone lysine methyltransferase"
+bridge,BGN,0.371255127912649,0.371255127912649,True,1.0,6.0,True,True,biglycan
+bridge,RGS14,0.2790665525371835,0.2790665525371835,True,1.0,8.0,True,True,regulator of G protein signaling 14
+bridge,HNRNPR,0.2449940970486032,0.2449940970486032,True,1.0,20.0,True,True,heterogeneous nuclear ribonucleoprotein R
+bridge,FBXO4,0.232131120840868,0.232131120840868,True,1.0,26.0,True,True,F-box protein 4
+bridge,ADIPOR1,-0.2290863876625695,0.2290863876625695,True,1.0,12.0,True,True,adiponectin receptor 1
+bridge,ITGA7,0.2180852388459307,0.2180852388459307,True,1.0,12.0,True,True,integrin subunit alpha 7
+bridge,DPM1,0.1735382154299962,0.1735382154299962,True,1.0,29.0,True,True,"dolichyl-phosphate mannosyltransferase subunit 1, catalytic"
+bridge,PRPF19,0.1704653608390617,0.1704653608390617,True,1.0,79.0,True,True,pre-mRNA processing factor 19
+bridge,WSCD1,0.1686398396745418,0.1686398396745418,True,1.0,40.0,True,True,WSC domain sialate O sulfotransferase 1
+bridge,TEAD4,-0.1650125800343891,0.1650125800343891,True,1.0,58.0,True,True,TEA domain transcription factor 4
+bridge,GTPBP4,-0.1580830338596001,0.1580830338596001,True,1.0,46.0,True,True,GTP binding protein 4
+bridge,CAP2,0.1560760287877894,0.1560760287877894,True,1.0,34.0,True,True,cyclase associated actin cytoskeleton regulatory protein 2
+bridge,SLC25A4,-0.1473802985772732,0.1473802985772732,True,1.0,42.0,True,True,solute carrier family 25 member 4
+bridge,OLFML2A,0.1471721870209949,0.1471721870209949,True,1.0,67.0,True,True,olfactomedin like 2A
+bridge,MYOZ2,0.1440163118438675,0.1440163118438675,True,1.0,43.0,True,True,myozenin 2
+bridge,HSPB3,0.1430231361509069,0.1430231361509069,True,1.0,54.0,True,True,heat shock protein family B (small) member 3
+bridge,LRRC20,0.1398056696584776,0.1398056696584776,True,1.0,34.0,True,True,leucine rich repeat containing 20
+bridge,FNDC5,0.1383251138660009,0.1383251138660009,True,1.0,39.0,True,True,fibronectin type III domain containing 5
+bridge,ICAM1,0.1344658753802202,0.1344658753802202,True,1.0,79.0,True,True,intercellular adhesion molecule 1
+bridge,TMEM119,0.1327287604175053,0.1327287604175053,True,1.0,48.0,True,True,transmembrane protein 119
+bridge,SDHAF2,0.1215764761831682,0.1215764761831682,True,1.0,66.0,True,True,succinate dehydrogenase complex assembly factor 2
+bridge,RDH5,0.1179907095265658,0.1179907095265658,True,1.0,67.0,True,True,retinol dehydrogenase 5
+bridge,PCBP4,0.1157206294120446,0.1157206294120446,True,1.0,82.0,True,True,poly(rC) binding protein 4
+bridge,CADM2,0.112029788401492,0.112029788401492,True,1.0,59.0,True,True,cell adhesion molecule 2
+bridge,NEB,-0.1078112627541633,0.1078112627541633,True,1.0,77.0,True,True,nebulin
+bridge,GLRX5,0.1042348954969181,0.1042348954969181,True,1.0,57.0,True,True,glutaredoxin 5
+bridge,UBE2A,-0.1039445867518567,0.1039445867518567,True,1.0,99.0,True,True,ubiquitin conjugating enzyme E2 A
+bridge,ETV5,-0.1036518984874474,0.1036518984874474,True,1.0,64.0,True,True,ETS variant transcription factor 5
+bridge,JRK,0.1035155203871994,0.1035155203871994,True,1.0,70.0,True,True,Jrk helix-turn-helix protein
+bridge,LRP11,0.1032256130056796,0.1032256130056796,True,1.0,60.0,True,True,LDL receptor related protein 11
+bridge,SEPTIN9,0.1021345429442045,0.1021345429442045,True,1.0,74.0,True,True,septin 9
+bridge,LAMB2,-0.1018478693283722,0.1018478693283722,True,1.0,85.0,True,True,laminin subunit beta 2
+bridge,PFN2,0.1016283502030791,0.1016283502030791,True,1.0,99.0,True,True,profilin 2
+bridge,EEF1AKMT3,0.101608819104692,0.101608819104692,True,1.0,78.0,True,True,EEF1A lysine methyltransferase 3
+bridge,UXS1,0.1003443343491999,0.1003443343491999,True,1.0,80.0,True,True,UDP-glucuronate decarboxylase 1
+bridge,ZFAND6,-0.0962227794242294,0.0962227794242294,True,1.0,81.0,True,True,zinc finger AN1-type containing 6
+bridge,USE1,0.0945984139680417,0.0945984139680417,True,1.0,81.0,True,True,unconventional SNARE in the ER 1
+bridge,BCAS1,0.0934822645908273,0.0934822645908273,True,1.0,85.0,True,True,brain enriched myelin associated protein 1
+bridge,ZNF25,0.0924026308735883,0.0924026308735883,True,1.0,93.0,True,True,zinc finger protein 25
+bridge,FGF9,-0.0893601702039381,0.0893601702039381,True,1.0,93.0,True,True,fibroblast growth factor 9
+bridge,PKIA,0.0834049392945253,0.0834049392945253,True,1.0,97.0,True,True,cAMP-dependent protein kinase inhibitor alpha

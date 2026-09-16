@@ -1,0 +1,28 @@
+{
+  "checkpoint_sha256": "f3491beaa697a0408dc1daeb6f8d648566bd46bafc6e44938d723e7ffc325541",
+  "source_revision": "ddf5e4bd1e48692dbc41caead413d6ca56154fca",
+  "source_sha256": "3c8308f751cf2a05d612364ffc2d456f2a969f9aece4f34743ab8635586aaf9e",
+  "input_sha256": "94a4017ac2478b5953581603e30669516eb34a0b720a10fdc6b8b86335226dcb",
+  "candidate_parity": [
+    {
+      "masked": false,
+      "max_abs_error": 0.0
+    },
+    {
+      "masked": true,
+      "max_abs_error": 0.0
+    }
+  ],
+  "repeat_max_abs_error": 0.0,
+  "samples": 34,
+  "shape": [
+    34,
+    512
+  ],
+  "device": "NVIDIA A100-SXM4-40GB",
+  "torch": "2.6.0+cu124",
+  "dtype": "float32",
+  "seconds": 11.859083890914917,
+  "median_seconds_per_sample": 0.3257511854171753,
+  "peak_cuda_allocated_gib": 0.5562677383422852
+}

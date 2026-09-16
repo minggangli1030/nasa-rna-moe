@@ -1,0 +1,7 @@
+study,species,setting,tissue,material,stratum,contrast,n_control,n_exposed,n_training_samples,n_validation_samples,masked_vs_zero_shift_cosine,relative_shift_change
+GSE137081,human,actual_flight,heart,hiPSC-derived cardiomyocytes,all_lines,GSE137081|all_lines,6,6,7,5,0.9999271035194397,0.012545527890324593
+GSE113165,human,bed_rest_analog,skeletal muscle,human skeletal muscle biopsy,old,GSE113165|old,6,6,11,1,0.9999659061431885,0.008470525033771992
+GSE113165,human,bed_rest_analog,skeletal muscle,human skeletal muscle biopsy,young,GSE113165|young,6,6,11,1,0.9998562335968018,0.018815917894244194
+GSE126865,human,bed_rest_analog,skeletal muscle,human skeletal muscle biopsy,all_subjects,GSE126865|all_subjects,3,3,4,2,0.9999402165412903,0.010932560078799725
+GSE234465,human,actual_flight,skeletal muscle,human muscle chip,YA,GSE234465|YA,3,3,0,0,0.9999871850013733,0.005095369182527065
+GSE234465,human,actual_flight,skeletal muscle,human muscle chip,OS,GSE234465|OS,3,3,0,0,0.9999963641166687,0.002696204697713256

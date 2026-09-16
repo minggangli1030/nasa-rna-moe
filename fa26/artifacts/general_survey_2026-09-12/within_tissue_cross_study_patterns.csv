@@ -1,0 +1,409 @@
+contrast_a,contrast_b,study_a,study_b,species,setting,tissue,representation,response_cosine
+OSD-101|Left gastrocnemius|14bf1f06,OSD-103|Left quadriceps femoris|14bf1f06,OSD-101,OSD-103,mouse,actual_flight,skeletal muscle,raw,0.3777777387224838
+OSD-101|Left gastrocnemius|14bf1f06,OSD-103|Left quadriceps femoris|14bf1f06,OSD-101,OSD-103,mouse,actual_flight,skeletal muscle,model_mean,-0.31872004955058625
+OSD-101|Left gastrocnemius|14bf1f06,OSD-103|Left quadriceps femoris|14bf1f06,OSD-101,OSD-103,mouse,actual_flight,skeletal muscle,model_std,0.18801509548443698
+OSD-101|Left gastrocnemius|14bf1f06,OSD-104|Soleus-both sides|8d0b8dc2,OSD-101,OSD-104,mouse,actual_flight,skeletal muscle,raw,0.3910048421025582
+OSD-101|Left gastrocnemius|14bf1f06,OSD-104|Soleus-both sides|8d0b8dc2,OSD-101,OSD-104,mouse,actual_flight,skeletal muscle,model_mean,0.3800720015327065
+OSD-101|Left gastrocnemius|14bf1f06,OSD-104|Soleus-both sides|8d0b8dc2,OSD-101,OSD-104,mouse,actual_flight,skeletal muscle,model_std,0.42954637119509254
+OSD-101|Left gastrocnemius|14bf1f06,OSD-105|Left tibialis anterior|f829a3c1,OSD-101,OSD-105,mouse,actual_flight,skeletal muscle,raw,0.4628812382584177
+OSD-101|Left gastrocnemius|14bf1f06,OSD-105|Left tibialis anterior|f829a3c1,OSD-101,OSD-105,mouse,actual_flight,skeletal muscle,model_mean,0.08237818328696402
+OSD-101|Left gastrocnemius|14bf1f06,OSD-105|Left tibialis anterior|f829a3c1,OSD-101,OSD-105,mouse,actual_flight,skeletal muscle,model_std,0.5283505018151287
+OSD-101|Left gastrocnemius|14bf1f06,OSD-326|Quadriceps femoris|6a69abe9,OSD-101,OSD-326,mouse,actual_flight,skeletal muscle,raw,0.19484031153013537
+OSD-101|Left gastrocnemius|14bf1f06,OSD-326|Quadriceps femoris|6a69abe9,OSD-101,OSD-326,mouse,actual_flight,skeletal muscle,model_mean,0.20924640955697002
+OSD-101|Left gastrocnemius|14bf1f06,OSD-326|Quadriceps femoris|6a69abe9,OSD-101,OSD-326,mouse,actual_flight,skeletal muscle,model_std,0.1716305772676854
+OSD-101|Left gastrocnemius|14bf1f06,OSD-401|Gastrocnemius|344e21b7,OSD-101,OSD-401,mouse,actual_flight,skeletal muscle,raw,0.06338527896320895
+OSD-101|Left gastrocnemius|14bf1f06,OSD-401|Gastrocnemius|344e21b7,OSD-101,OSD-401,mouse,actual_flight,skeletal muscle,model_mean,0.18554692319695062
+OSD-101|Left gastrocnemius|14bf1f06,OSD-401|Gastrocnemius|344e21b7,OSD-101,OSD-401,mouse,actual_flight,skeletal muscle,model_std,0.07515910725313901
+OSD-101|Left gastrocnemius|14bf1f06,OSD-401|Quadriceps femoris|344e21b7,OSD-101,OSD-401,mouse,actual_flight,skeletal muscle,raw,0.050917823615222305
+OSD-101|Left gastrocnemius|14bf1f06,OSD-401|Quadriceps femoris|344e21b7,OSD-101,OSD-401,mouse,actual_flight,skeletal muscle,model_mean,0.24793936370816716
+OSD-101|Left gastrocnemius|14bf1f06,OSD-401|Quadriceps femoris|344e21b7,OSD-101,OSD-401,mouse,actual_flight,skeletal muscle,model_std,0.09106178906044583
+OSD-101|Left gastrocnemius|14bf1f06,OSD-419|Right gastrocnemius|2664dccf,OSD-101,OSD-419,mouse,actual_flight,skeletal muscle,raw,0.19014613734642985
+OSD-101|Left gastrocnemius|14bf1f06,OSD-419|Right gastrocnemius|2664dccf,OSD-101,OSD-419,mouse,actual_flight,skeletal muscle,model_mean,0.08901380598900378
+OSD-101|Left gastrocnemius|14bf1f06,OSD-419|Right gastrocnemius|2664dccf,OSD-101,OSD-419,mouse,actual_flight,skeletal muscle,model_std,0.3253770395835028
+OSD-101|Left gastrocnemius|14bf1f06,OSD-576|Right tibialis anterior|52cb5fea,OSD-101,OSD-576,mouse,actual_flight,skeletal muscle,raw,-0.0009260849011609892
+OSD-101|Left gastrocnemius|14bf1f06,OSD-576|Right tibialis anterior|52cb5fea,OSD-101,OSD-576,mouse,actual_flight,skeletal muscle,model_mean,-0.13962745672813065
+OSD-101|Left gastrocnemius|14bf1f06,OSD-576|Right tibialis anterior|52cb5fea,OSD-101,OSD-576,mouse,actual_flight,skeletal muscle,model_std,0.03593253517735381
+OSD-101|Left gastrocnemius|14bf1f06,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-101,OSD-665,mouse,actual_flight,skeletal muscle,raw,-0.026886327100289254
+OSD-101|Left gastrocnemius|14bf1f06,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-101,OSD-665,mouse,actual_flight,skeletal muscle,model_mean,0.33555302379276375
+OSD-101|Left gastrocnemius|14bf1f06,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-101,OSD-665,mouse,actual_flight,skeletal muscle,model_std,0.10589269323709226
+OSD-101|Left gastrocnemius|14bf1f06,OSD-666|Right quadriceps femoris|52cb5fea,OSD-101,OSD-666,mouse,actual_flight,skeletal muscle,raw,-0.15792269166105657
+OSD-101|Left gastrocnemius|14bf1f06,OSD-666|Right quadriceps femoris|52cb5fea,OSD-101,OSD-666,mouse,actual_flight,skeletal muscle,model_mean,-0.3351298774588827
+OSD-101|Left gastrocnemius|14bf1f06,OSD-666|Right quadriceps femoris|52cb5fea,OSD-101,OSD-666,mouse,actual_flight,skeletal muscle,model_std,-0.09273063104871247
+OSD-101|Left gastrocnemius|14bf1f06,OSD-770|Right soleus|df447f03,OSD-101,OSD-770,mouse,actual_flight,skeletal muscle,raw,0.025526358083114764
+OSD-101|Left gastrocnemius|14bf1f06,OSD-770|Right soleus|df447f03,OSD-101,OSD-770,mouse,actual_flight,skeletal muscle,model_mean,0.37434005892762534
+OSD-101|Left gastrocnemius|14bf1f06,OSD-770|Right soleus|df447f03,OSD-101,OSD-770,mouse,actual_flight,skeletal muscle,model_std,0.21977287828217779
+OSD-101|Left gastrocnemius|14bf1f06,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-101,OSD-99,mouse,actual_flight,skeletal muscle,raw,0.2868543415106056
+OSD-101|Left gastrocnemius|14bf1f06,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-101,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,-0.24313704290593144
+OSD-101|Left gastrocnemius|14bf1f06,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-101,OSD-99,mouse,actual_flight,skeletal muscle,model_std,0.017359030646756524
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-104|Soleus-both sides|8d0b8dc2,OSD-103,OSD-104,mouse,actual_flight,skeletal muscle,raw,0.21328976908224756
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-104|Soleus-both sides|8d0b8dc2,OSD-103,OSD-104,mouse,actual_flight,skeletal muscle,model_mean,0.2375405634354636
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-104|Soleus-both sides|8d0b8dc2,OSD-103,OSD-104,mouse,actual_flight,skeletal muscle,model_std,0.16437952269798642
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-105|Left tibialis anterior|f829a3c1,OSD-103,OSD-105,mouse,actual_flight,skeletal muscle,raw,0.4992402892434071
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-105|Left tibialis anterior|f829a3c1,OSD-103,OSD-105,mouse,actual_flight,skeletal muscle,model_mean,0.7129036400855006
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-105|Left tibialis anterior|f829a3c1,OSD-103,OSD-105,mouse,actual_flight,skeletal muscle,model_std,0.35927272156812273
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-326|Quadriceps femoris|6a69abe9,OSD-103,OSD-326,mouse,actual_flight,skeletal muscle,raw,-0.0010037412237353205
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-326|Quadriceps femoris|6a69abe9,OSD-103,OSD-326,mouse,actual_flight,skeletal muscle,model_mean,-0.22536868735935822
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-326|Quadriceps femoris|6a69abe9,OSD-103,OSD-326,mouse,actual_flight,skeletal muscle,model_std,-0.12798424877351677
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-401|Gastrocnemius|344e21b7,OSD-103,OSD-401,mouse,actual_flight,skeletal muscle,raw,-0.05081340999721344
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-401|Gastrocnemius|344e21b7,OSD-103,OSD-401,mouse,actual_flight,skeletal muscle,model_mean,-0.5680427513021726
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-401|Gastrocnemius|344e21b7,OSD-103,OSD-401,mouse,actual_flight,skeletal muscle,model_std,-0.03843180386139994
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-401|Quadriceps femoris|344e21b7,OSD-103,OSD-401,mouse,actual_flight,skeletal muscle,raw,0.03106199244815841
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-401|Quadriceps femoris|344e21b7,OSD-103,OSD-401,mouse,actual_flight,skeletal muscle,model_mean,-0.27300817650187903
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-401|Quadriceps femoris|344e21b7,OSD-103,OSD-401,mouse,actual_flight,skeletal muscle,model_std,-0.04315291050974069
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-419|Right gastrocnemius|2664dccf,OSD-103,OSD-419,mouse,actual_flight,skeletal muscle,raw,0.25019144661816545
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-419|Right gastrocnemius|2664dccf,OSD-103,OSD-419,mouse,actual_flight,skeletal muscle,model_mean,0.6765941464328202
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-419|Right gastrocnemius|2664dccf,OSD-103,OSD-419,mouse,actual_flight,skeletal muscle,model_std,0.3004740283100507
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-576|Right tibialis anterior|52cb5fea,OSD-103,OSD-576,mouse,actual_flight,skeletal muscle,raw,0.02982226959196118
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-576|Right tibialis anterior|52cb5fea,OSD-103,OSD-576,mouse,actual_flight,skeletal muscle,model_mean,0.5244038739416587
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-576|Right tibialis anterior|52cb5fea,OSD-103,OSD-576,mouse,actual_flight,skeletal muscle,model_std,0.12661317162294664
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-103,OSD-665,mouse,actual_flight,skeletal muscle,raw,-0.12296695530909749
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-103,OSD-665,mouse,actual_flight,skeletal muscle,model_mean,-0.4462546363456124
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-103,OSD-665,mouse,actual_flight,skeletal muscle,model_std,-0.09373628057059429
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-666|Right quadriceps femoris|52cb5fea,OSD-103,OSD-666,mouse,actual_flight,skeletal muscle,raw,0.1903790335426963
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-666|Right quadriceps femoris|52cb5fea,OSD-103,OSD-666,mouse,actual_flight,skeletal muscle,model_mean,0.8567206180849479
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-666|Right quadriceps femoris|52cb5fea,OSD-103,OSD-666,mouse,actual_flight,skeletal muscle,model_std,0.425493179750171
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-770|Right soleus|df447f03,OSD-103,OSD-770,mouse,actual_flight,skeletal muscle,raw,-0.37860939307120905
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-770|Right soleus|df447f03,OSD-103,OSD-770,mouse,actual_flight,skeletal muscle,model_mean,-0.9296457567937192
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-770|Right soleus|df447f03,OSD-103,OSD-770,mouse,actual_flight,skeletal muscle,model_std,-0.2106811152960897
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-103,OSD-99,mouse,actual_flight,skeletal muscle,raw,0.42086262486102677
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-103,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,0.006070541841343796
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-103,OSD-99,mouse,actual_flight,skeletal muscle,model_std,0.1808713422832682
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-105|Left tibialis anterior|f829a3c1,OSD-104,OSD-105,mouse,actual_flight,skeletal muscle,raw,0.06801639793365609
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-105|Left tibialis anterior|f829a3c1,OSD-104,OSD-105,mouse,actual_flight,skeletal muscle,model_mean,0.06288582955146285
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-105|Left tibialis anterior|f829a3c1,OSD-104,OSD-105,mouse,actual_flight,skeletal muscle,model_std,0.16198597965952719
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-326|Quadriceps femoris|6a69abe9,OSD-104,OSD-326,mouse,actual_flight,skeletal muscle,raw,0.08504112366348636
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-326|Quadriceps femoris|6a69abe9,OSD-104,OSD-326,mouse,actual_flight,skeletal muscle,model_mean,0.027045582184371517
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-326|Quadriceps femoris|6a69abe9,OSD-104,OSD-326,mouse,actual_flight,skeletal muscle,model_std,-0.04632017435093891
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-401|Gastrocnemius|344e21b7,OSD-104,OSD-401,mouse,actual_flight,skeletal muscle,raw,0.1915732443037117
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-401|Gastrocnemius|344e21b7,OSD-104,OSD-401,mouse,actual_flight,skeletal muscle,model_mean,-0.060538788641212635
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-401|Gastrocnemius|344e21b7,OSD-104,OSD-401,mouse,actual_flight,skeletal muscle,model_std,0.32210134975954935
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-401|Quadriceps femoris|344e21b7,OSD-104,OSD-401,mouse,actual_flight,skeletal muscle,raw,0.14435341681172303
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-401|Quadriceps femoris|344e21b7,OSD-104,OSD-401,mouse,actual_flight,skeletal muscle,model_mean,0.10884633767720012
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-401|Quadriceps femoris|344e21b7,OSD-104,OSD-401,mouse,actual_flight,skeletal muscle,model_std,0.17877960394038472
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-419|Right gastrocnemius|2664dccf,OSD-104,OSD-419,mouse,actual_flight,skeletal muscle,raw,0.18588508953703978
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-419|Right gastrocnemius|2664dccf,OSD-104,OSD-419,mouse,actual_flight,skeletal muscle,model_mean,0.6032424491552139
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-419|Right gastrocnemius|2664dccf,OSD-104,OSD-419,mouse,actual_flight,skeletal muscle,model_std,0.23887356028865836
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-576|Right tibialis anterior|52cb5fea,OSD-104,OSD-576,mouse,actual_flight,skeletal muscle,raw,0.08875351564827082
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-576|Right tibialis anterior|52cb5fea,OSD-104,OSD-576,mouse,actual_flight,skeletal muscle,model_mean,0.2637600615017564
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-576|Right tibialis anterior|52cb5fea,OSD-104,OSD-576,mouse,actual_flight,skeletal muscle,model_std,0.22908808018011378
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-104,OSD-665,mouse,actual_flight,skeletal muscle,raw,0.046324794714854414
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-104,OSD-665,mouse,actual_flight,skeletal muscle,model_mean,0.2746584134410184
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-104,OSD-665,mouse,actual_flight,skeletal muscle,model_std,0.2947295371946381
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-666|Right quadriceps femoris|52cb5fea,OSD-104,OSD-666,mouse,actual_flight,skeletal muscle,raw,0.03810770006109202
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-666|Right quadriceps femoris|52cb5fea,OSD-104,OSD-666,mouse,actual_flight,skeletal muscle,model_mean,0.39999641136555986
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-666|Right quadriceps femoris|52cb5fea,OSD-104,OSD-666,mouse,actual_flight,skeletal muscle,model_std,0.24581184460659242
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-770|Right soleus|df447f03,OSD-104,OSD-770,mouse,actual_flight,skeletal muscle,raw,0.11798103901058195
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-770|Right soleus|df447f03,OSD-104,OSD-770,mouse,actual_flight,skeletal muscle,model_mean,-0.10864172097407605
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-770|Right soleus|df447f03,OSD-104,OSD-770,mouse,actual_flight,skeletal muscle,model_std,0.5051531823307882
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-104,OSD-99,mouse,actual_flight,skeletal muscle,raw,-0.14381939445974468
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-104,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,-0.7829357212002132
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-104,OSD-99,mouse,actual_flight,skeletal muscle,model_std,-0.05925289297688334
+OSD-105|Left tibialis anterior|f829a3c1,OSD-326|Quadriceps femoris|6a69abe9,OSD-105,OSD-326,mouse,actual_flight,skeletal muscle,raw,0.13741535527081655
+OSD-105|Left tibialis anterior|f829a3c1,OSD-326|Quadriceps femoris|6a69abe9,OSD-105,OSD-326,mouse,actual_flight,skeletal muscle,model_mean,0.1290906631439447
+OSD-105|Left tibialis anterior|f829a3c1,OSD-326|Quadriceps femoris|6a69abe9,OSD-105,OSD-326,mouse,actual_flight,skeletal muscle,model_std,0.25448904254320337
+OSD-105|Left tibialis anterior|f829a3c1,OSD-401|Gastrocnemius|344e21b7,OSD-105,OSD-401,mouse,actual_flight,skeletal muscle,raw,-0.08082291466409436
+OSD-105|Left tibialis anterior|f829a3c1,OSD-401|Gastrocnemius|344e21b7,OSD-105,OSD-401,mouse,actual_flight,skeletal muscle,model_mean,-0.4718465395704779
+OSD-105|Left tibialis anterior|f829a3c1,OSD-401|Gastrocnemius|344e21b7,OSD-105,OSD-401,mouse,actual_flight,skeletal muscle,model_std,-0.018382742924540715
+OSD-105|Left tibialis anterior|f829a3c1,OSD-401|Quadriceps femoris|344e21b7,OSD-105,OSD-401,mouse,actual_flight,skeletal muscle,raw,0.066544180460062
+OSD-105|Left tibialis anterior|f829a3c1,OSD-401|Quadriceps femoris|344e21b7,OSD-105,OSD-401,mouse,actual_flight,skeletal muscle,model_mean,-0.23697386704237763
+OSD-105|Left tibialis anterior|f829a3c1,OSD-401|Quadriceps femoris|344e21b7,OSD-105,OSD-401,mouse,actual_flight,skeletal muscle,model_std,-0.0339889699625559
+OSD-105|Left tibialis anterior|f829a3c1,OSD-419|Right gastrocnemius|2664dccf,OSD-105,OSD-419,mouse,actual_flight,skeletal muscle,raw,0.13480334253822326
+OSD-105|Left tibialis anterior|f829a3c1,OSD-419|Right gastrocnemius|2664dccf,OSD-105,OSD-419,mouse,actual_flight,skeletal muscle,model_mean,0.37524874809437225
+OSD-105|Left tibialis anterior|f829a3c1,OSD-419|Right gastrocnemius|2664dccf,OSD-105,OSD-419,mouse,actual_flight,skeletal muscle,model_std,0.04925970923463321
+OSD-105|Left tibialis anterior|f829a3c1,OSD-576|Right tibialis anterior|52cb5fea,OSD-105,OSD-576,mouse,actual_flight,skeletal muscle,raw,-0.07544554750084287
+OSD-105|Left tibialis anterior|f829a3c1,OSD-576|Right tibialis anterior|52cb5fea,OSD-105,OSD-576,mouse,actual_flight,skeletal muscle,model_mean,0.23489534489365177
+OSD-105|Left tibialis anterior|f829a3c1,OSD-576|Right tibialis anterior|52cb5fea,OSD-105,OSD-576,mouse,actual_flight,skeletal muscle,model_std,-0.09890655256655244
+OSD-105|Left tibialis anterior|f829a3c1,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-105,OSD-665,mouse,actual_flight,skeletal muscle,raw,-0.15437338599670342
+OSD-105|Left tibialis anterior|f829a3c1,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-105,OSD-665,mouse,actual_flight,skeletal muscle,model_mean,-0.5329545188734657
+OSD-105|Left tibialis anterior|f829a3c1,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-105,OSD-665,mouse,actual_flight,skeletal muscle,model_std,-0.1669602724225093
+OSD-105|Left tibialis anterior|f829a3c1,OSD-666|Right quadriceps femoris|52cb5fea,OSD-105,OSD-666,mouse,actual_flight,skeletal muscle,raw,-0.06153273047118602
+OSD-105|Left tibialis anterior|f829a3c1,OSD-666|Right quadriceps femoris|52cb5fea,OSD-105,OSD-666,mouse,actual_flight,skeletal muscle,model_mean,0.560848893941636
+OSD-105|Left tibialis anterior|f829a3c1,OSD-666|Right quadriceps femoris|52cb5fea,OSD-105,OSD-666,mouse,actual_flight,skeletal muscle,model_std,0.10712112904367722
+OSD-105|Left tibialis anterior|f829a3c1,OSD-770|Right soleus|df447f03,OSD-105,OSD-770,mouse,actual_flight,skeletal muscle,raw,-0.055940336252684325
+OSD-105|Left tibialis anterior|f829a3c1,OSD-770|Right soleus|df447f03,OSD-105,OSD-770,mouse,actual_flight,skeletal muscle,model_mean,-0.6518947885375267
+OSD-105|Left tibialis anterior|f829a3c1,OSD-770|Right soleus|df447f03,OSD-105,OSD-770,mouse,actual_flight,skeletal muscle,model_std,0.16233084576407186
+OSD-105|Left tibialis anterior|f829a3c1,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-105,OSD-99,mouse,actual_flight,skeletal muscle,raw,0.6179827416814426
+OSD-105|Left tibialis anterior|f829a3c1,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-105,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,0.27241867564537037
+OSD-105|Left tibialis anterior|f829a3c1,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-105,OSD-99,mouse,actual_flight,skeletal muscle,model_std,0.47197317411431616
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|2c17a152,OSD-245,OSD-379,mouse,actual_flight,liver,raw,0.44074138221135795
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|2c17a152,OSD-245,OSD-379,mouse,actual_flight,liver,model_mean,-0.23204875401670128
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|2c17a152,OSD-245,OSD-379,mouse,actual_flight,liver,model_std,0.11251899408861205
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-245,OSD-379,mouse,actual_flight,liver,raw,0.3326697102493276
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-245,OSD-379,mouse,actual_flight,liver,model_mean,-0.7277539503378381
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-245,OSD-379,mouse,actual_flight,liver,model_std,0.02055981102777043
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|a45ca5be,OSD-245,OSD-379,mouse,actual_flight,liver,raw,0.35622695234388
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|a45ca5be,OSD-245,OSD-379,mouse,actual_flight,liver,model_mean,0.5092813194173764
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|a45ca5be,OSD-245,OSD-379,mouse,actual_flight,liver,model_std,0.09941513719635633
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|9abbe127,OSD-245,OSD-379,mouse,actual_flight,liver,raw,0.25644639524550733
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|9abbe127,OSD-245,OSD-379,mouse,actual_flight,liver,model_mean,0.7351020770344636
+OSD-245|Liver|83b7ee50,OSD-379|Left Lobe of the Liver|9abbe127,OSD-245,OSD-379,mouse,actual_flight,liver,model_std,0.30962961795790794
+OSD-245|Liver|83b7ee50,OSD-457|Liver|3ec2dbad,OSD-245,OSD-457,mouse,actual_flight,liver,raw,-0.10087078318816137
+OSD-245|Liver|83b7ee50,OSD-457|Liver|3ec2dbad,OSD-245,OSD-457,mouse,actual_flight,liver,model_mean,-0.3442230810513653
+OSD-245|Liver|83b7ee50,OSD-457|Liver|3ec2dbad,OSD-245,OSD-457,mouse,actual_flight,liver,model_std,0.2035260267194867
+OSD-245|Liver|83b7ee50,OSD-457|Liver|0f84cf73,OSD-245,OSD-457,mouse,actual_flight,liver,raw,-0.12766305985159687
+OSD-245|Liver|83b7ee50,OSD-457|Liver|0f84cf73,OSD-245,OSD-457,mouse,actual_flight,liver,model_mean,-0.7808196311842623
+OSD-245|Liver|83b7ee50,OSD-457|Liver|0f84cf73,OSD-245,OSD-457,mouse,actual_flight,liver,model_std,0.026771359785563633
+OSD-245|Liver|83b7ee50,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-245,OSD-463,mouse,actual_flight,liver,raw,0.1659582499622401
+OSD-245|Liver|83b7ee50,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-245,OSD-463,mouse,actual_flight,liver,model_mean,0.4711051215344264
+OSD-245|Liver|83b7ee50,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-245,OSD-463,mouse,actual_flight,liver,model_std,0.44054119836834127
+OSD-245|Liver|83b7ee50,OSD-48|Liver|b28df4aa,OSD-245,OSD-48,mouse,actual_flight,liver,raw,0.0179831334011716
+OSD-245|Liver|83b7ee50,OSD-48|Liver|b28df4aa,OSD-245,OSD-48,mouse,actual_flight,liver,model_mean,-0.9214471165080416
+OSD-245|Liver|83b7ee50,OSD-48|Liver|b28df4aa,OSD-245,OSD-48,mouse,actual_flight,liver,model_std,-0.525089377915476
+OSD-245|Liver|83b7ee50,OSD-686|Liver|df0bb62b,OSD-245,OSD-686,mouse,actual_flight,liver,raw,0.09122704415061238
+OSD-245|Liver|83b7ee50,OSD-686|Liver|df0bb62b,OSD-245,OSD-686,mouse,actual_flight,liver,model_mean,0.7955272273267744
+OSD-245|Liver|83b7ee50,OSD-686|Liver|df0bb62b,OSD-245,OSD-686,mouse,actual_flight,liver,model_std,0.46252635411956083
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|2c17a152,OSD-245,OSD-379,mouse,actual_flight,liver,raw,0.09203108817736057
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|2c17a152,OSD-245,OSD-379,mouse,actual_flight,liver,model_mean,0.1862011824820697
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|2c17a152,OSD-245,OSD-379,mouse,actual_flight,liver,model_std,0.0434820847786265
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-245,OSD-379,mouse,actual_flight,liver,raw,0.29455028988926235
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-245,OSD-379,mouse,actual_flight,liver,model_mean,0.6268100950108292
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-245,OSD-379,mouse,actual_flight,liver,model_std,0.350066548008587
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|a45ca5be,OSD-245,OSD-379,mouse,actual_flight,liver,raw,-0.11424550920325179
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|a45ca5be,OSD-245,OSD-379,mouse,actual_flight,liver,model_mean,-0.30205107873908804
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|a45ca5be,OSD-245,OSD-379,mouse,actual_flight,liver,model_std,-0.07794163447308258
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|9abbe127,OSD-245,OSD-379,mouse,actual_flight,liver,raw,0.0010216784064188869
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|9abbe127,OSD-245,OSD-379,mouse,actual_flight,liver,model_mean,-0.2707009707515709
+OSD-245|Liver|8f786fbe,OSD-379|Left Lobe of the Liver|9abbe127,OSD-245,OSD-379,mouse,actual_flight,liver,model_std,0.1911775652325194
+OSD-245|Liver|8f786fbe,OSD-457|Liver|3ec2dbad,OSD-245,OSD-457,mouse,actual_flight,liver,raw,0.20506535267195275
+OSD-245|Liver|8f786fbe,OSD-457|Liver|3ec2dbad,OSD-245,OSD-457,mouse,actual_flight,liver,model_mean,0.22905946986701367
+OSD-245|Liver|8f786fbe,OSD-457|Liver|3ec2dbad,OSD-245,OSD-457,mouse,actual_flight,liver,model_std,-0.0807114654211511
+OSD-245|Liver|8f786fbe,OSD-457|Liver|0f84cf73,OSD-245,OSD-457,mouse,actual_flight,liver,raw,0.21230748831976817
+OSD-245|Liver|8f786fbe,OSD-457|Liver|0f84cf73,OSD-245,OSD-457,mouse,actual_flight,liver,model_mean,0.5816026855437179
+OSD-245|Liver|8f786fbe,OSD-457|Liver|0f84cf73,OSD-245,OSD-457,mouse,actual_flight,liver,model_std,0.14344800751289463
+OSD-245|Liver|8f786fbe,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-245,OSD-463,mouse,actual_flight,liver,raw,0.03810602305959248
+OSD-245|Liver|8f786fbe,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-245,OSD-463,mouse,actual_flight,liver,model_mean,-0.20923517143822895
+OSD-245|Liver|8f786fbe,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-245,OSD-463,mouse,actual_flight,liver,model_std,-0.12997866647194936
+OSD-245|Liver|8f786fbe,OSD-48|Liver|b28df4aa,OSD-245,OSD-48,mouse,actual_flight,liver,raw,0.1775573563960163
+OSD-245|Liver|8f786fbe,OSD-48|Liver|b28df4aa,OSD-245,OSD-48,mouse,actual_flight,liver,model_mean,0.49840507346159935
+OSD-245|Liver|8f786fbe,OSD-48|Liver|b28df4aa,OSD-245,OSD-48,mouse,actual_flight,liver,model_std,0.34681476909994075
+OSD-245|Liver|8f786fbe,OSD-686|Liver|df0bb62b,OSD-245,OSD-686,mouse,actual_flight,liver,raw,0.2695853553697799
+OSD-245|Liver|8f786fbe,OSD-686|Liver|df0bb62b,OSD-245,OSD-686,mouse,actual_flight,liver,model_mean,-0.20008544856395502
+OSD-245|Liver|8f786fbe,OSD-686|Liver|df0bb62b,OSD-245,OSD-686,mouse,actual_flight,liver,model_std,-0.0007522041447934696
+OSD-326|Quadriceps femoris|6a69abe9,OSD-401|Gastrocnemius|344e21b7,OSD-326,OSD-401,mouse,actual_flight,skeletal muscle,raw,0.14260682445536227
+OSD-326|Quadriceps femoris|6a69abe9,OSD-401|Gastrocnemius|344e21b7,OSD-326,OSD-401,mouse,actual_flight,skeletal muscle,model_mean,0.1649024840780966
+OSD-326|Quadriceps femoris|6a69abe9,OSD-401|Gastrocnemius|344e21b7,OSD-326,OSD-401,mouse,actual_flight,skeletal muscle,model_std,-0.06474653908946502
+OSD-326|Quadriceps femoris|6a69abe9,OSD-401|Quadriceps femoris|344e21b7,OSD-326,OSD-401,mouse,actual_flight,skeletal muscle,raw,0.13412468158125604
+OSD-326|Quadriceps femoris|6a69abe9,OSD-401|Quadriceps femoris|344e21b7,OSD-326,OSD-401,mouse,actual_flight,skeletal muscle,model_mean,0.21220790896905903
+OSD-326|Quadriceps femoris|6a69abe9,OSD-401|Quadriceps femoris|344e21b7,OSD-326,OSD-401,mouse,actual_flight,skeletal muscle,model_std,-0.0070637310022080655
+OSD-326|Quadriceps femoris|6a69abe9,OSD-419|Right gastrocnemius|2664dccf,OSD-326,OSD-419,mouse,actual_flight,skeletal muscle,raw,0.030316425815294198
+OSD-326|Quadriceps femoris|6a69abe9,OSD-419|Right gastrocnemius|2664dccf,OSD-326,OSD-419,mouse,actual_flight,skeletal muscle,model_mean,-0.39316188132010127
+OSD-326|Quadriceps femoris|6a69abe9,OSD-419|Right gastrocnemius|2664dccf,OSD-326,OSD-419,mouse,actual_flight,skeletal muscle,model_std,-0.3117454540906984
+OSD-326|Quadriceps femoris|6a69abe9,OSD-576|Right tibialis anterior|52cb5fea,OSD-326,OSD-576,mouse,actual_flight,skeletal muscle,raw,-0.03263280624709801
+OSD-326|Quadriceps femoris|6a69abe9,OSD-576|Right tibialis anterior|52cb5fea,OSD-326,OSD-576,mouse,actual_flight,skeletal muscle,model_mean,-0.2142928062169319
+OSD-326|Quadriceps femoris|6a69abe9,OSD-576|Right tibialis anterior|52cb5fea,OSD-326,OSD-576,mouse,actual_flight,skeletal muscle,model_std,-0.19202385085029136
+OSD-326|Quadriceps femoris|6a69abe9,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-326,OSD-665,mouse,actual_flight,skeletal muscle,raw,0.019002709115691987
+OSD-326|Quadriceps femoris|6a69abe9,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-326,OSD-665,mouse,actual_flight,skeletal muscle,model_mean,0.008135066967309475
+OSD-326|Quadriceps femoris|6a69abe9,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-326,OSD-665,mouse,actual_flight,skeletal muscle,model_std,-0.10825151069726997
+OSD-326|Quadriceps femoris|6a69abe9,OSD-666|Right quadriceps femoris|52cb5fea,OSD-326,OSD-666,mouse,actual_flight,skeletal muscle,raw,-0.10604864489949488
+OSD-326|Quadriceps femoris|6a69abe9,OSD-666|Right quadriceps femoris|52cb5fea,OSD-326,OSD-666,mouse,actual_flight,skeletal muscle,model_mean,-0.06978438924773503
+OSD-326|Quadriceps femoris|6a69abe9,OSD-666|Right quadriceps femoris|52cb5fea,OSD-326,OSD-666,mouse,actual_flight,skeletal muscle,model_std,-0.029819960840853
+OSD-326|Quadriceps femoris|6a69abe9,OSD-770|Right soleus|df447f03,OSD-326,OSD-770,mouse,actual_flight,skeletal muscle,raw,0.11163310301067847
+OSD-326|Quadriceps femoris|6a69abe9,OSD-770|Right soleus|df447f03,OSD-326,OSD-770,mouse,actual_flight,skeletal muscle,model_mean,0.21584754394835134
+OSD-326|Quadriceps femoris|6a69abe9,OSD-770|Right soleus|df447f03,OSD-326,OSD-770,mouse,actual_flight,skeletal muscle,model_std,-0.02440262729509507
+OSD-326|Quadriceps femoris|6a69abe9,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-326,OSD-99,mouse,actual_flight,skeletal muscle,raw,-0.005403226547976992
+OSD-326|Quadriceps femoris|6a69abe9,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-326,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,-0.07323415031321799
+OSD-326|Quadriceps femoris|6a69abe9,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-326,OSD-99,mouse,actual_flight,skeletal muscle,model_std,-0.16723579536459218
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,raw,0.024077944736930267
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,model_mean,0.160363080223767
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,model_std,0.20697762917462356
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,raw,-0.008473968985187073
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,model_mean,0.21610377547057255
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,model_std,-0.22596505738200637
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,raw,-0.12243395242449229
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,model_mean,-0.3939844245923877
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,model_std,-0.37280964430008345
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,raw,0.4300806774261596
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,model_mean,0.4102774179825047
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,model_std,0.43277831421486024
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,raw,0.007907206375299423
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,model_mean,-0.3155336396424113
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,model_std,-0.3537549687775142
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,raw,0.015920610246105034
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,model_mean,0.2572700901375952
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,model_std,0.18915478942556602
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,raw,0.11208887361336607
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,model_mean,0.7376042853908406
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,model_std,0.23211330827645715
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,raw,0.02653996468368013
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,model_mean,-0.3653905355261949
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,model_std,-0.007266074436191277
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,raw,0.30692862768647367
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,model_mean,0.830520623163565
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,model_std,0.2830151345817942
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,raw,0.013997278998798674
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,model_mean,-0.5770357099129635
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,model_std,-0.17514626163741867
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,raw,-0.06477071924086207
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,model_mean,-0.3824834411687389
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,model_std,0.06525218436289952
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,raw,-0.014799047875080957
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,model_mean,-0.655922627605549
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,model_std,-0.3832376601447335
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,raw,0.0861359962343954
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,model_mean,-0.139786250532462
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,model_std,-0.33397040311373627
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,raw,0.05437871643218565
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,model_mean,-0.4144121876180192
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,model_std,0.3779190909405297
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,raw,-0.08393229693493195
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,model_mean,0.17380638808296184
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,model_std,-0.4599540252420393
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,raw,-0.13565249995450832
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,model_mean,-0.43024620821085535
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-457|Liver|3ec2dbad,OSD-379,OSD-457,mouse,actual_flight,liver,model_std,-0.10462529885642982
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,raw,-0.1590633148914279
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,model_mean,-0.6592193069931073
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-457|Liver|0f84cf73,OSD-379,OSD-457,mouse,actual_flight,liver,model_std,-0.13374919648602773
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,raw,0.05639658694537594
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,model_mean,0.1415315481880612
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-379,OSD-463,mouse,actual_flight,liver,model_std,-0.0167894006502178
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,raw,-0.04989812708847183
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,model_mean,-0.6668422239023202
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-48|Liver|b28df4aa,OSD-379,OSD-48,mouse,actual_flight,liver,model_std,-0.0502205176398961
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,raw,0.03654430075802903
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,model_mean,0.5724073150081982
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-686|Liver|df0bb62b,OSD-379,OSD-686,mouse,actual_flight,liver,model_std,0.21567259479886614
+OSD-401|Gastrocnemius|344e21b7,OSD-419|Right gastrocnemius|2664dccf,OSD-401,OSD-419,mouse,actual_flight,skeletal muscle,raw,0.025711090697307475
+OSD-401|Gastrocnemius|344e21b7,OSD-419|Right gastrocnemius|2664dccf,OSD-401,OSD-419,mouse,actual_flight,skeletal muscle,model_mean,-0.22753411220451733
+OSD-401|Gastrocnemius|344e21b7,OSD-419|Right gastrocnemius|2664dccf,OSD-401,OSD-419,mouse,actual_flight,skeletal muscle,model_std,0.09700431384534726
+OSD-401|Gastrocnemius|344e21b7,OSD-576|Right tibialis anterior|52cb5fea,OSD-401,OSD-576,mouse,actual_flight,skeletal muscle,raw,0.03712086911682751
+OSD-401|Gastrocnemius|344e21b7,OSD-576|Right tibialis anterior|52cb5fea,OSD-401,OSD-576,mouse,actual_flight,skeletal muscle,model_mean,-0.14811503457424074
+OSD-401|Gastrocnemius|344e21b7,OSD-576|Right tibialis anterior|52cb5fea,OSD-401,OSD-576,mouse,actual_flight,skeletal muscle,model_std,0.23362223043112246
+OSD-401|Gastrocnemius|344e21b7,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-401,OSD-665,mouse,actual_flight,skeletal muscle,raw,0.0804786545222922
+OSD-401|Gastrocnemius|344e21b7,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-401,OSD-665,mouse,actual_flight,skeletal muscle,model_mean,0.48506940870862325
+OSD-401|Gastrocnemius|344e21b7,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-401,OSD-665,mouse,actual_flight,skeletal muscle,model_std,0.3912451038927203
+OSD-401|Gastrocnemius|344e21b7,OSD-666|Right quadriceps femoris|52cb5fea,OSD-401,OSD-666,mouse,actual_flight,skeletal muscle,raw,0.026829778178165935
+OSD-401|Gastrocnemius|344e21b7,OSD-666|Right quadriceps femoris|52cb5fea,OSD-401,OSD-666,mouse,actual_flight,skeletal muscle,model_mean,-0.41685044671047994
+OSD-401|Gastrocnemius|344e21b7,OSD-666|Right quadriceps femoris|52cb5fea,OSD-401,OSD-666,mouse,actual_flight,skeletal muscle,model_std,0.02728460648487192
+OSD-401|Gastrocnemius|344e21b7,OSD-770|Right soleus|df447f03,OSD-401,OSD-770,mouse,actual_flight,skeletal muscle,raw,0.31891664762530036
+OSD-401|Gastrocnemius|344e21b7,OSD-770|Right soleus|df447f03,OSD-401,OSD-770,mouse,actual_flight,skeletal muscle,model_mean,0.7372958168578854
+OSD-401|Gastrocnemius|344e21b7,OSD-770|Right soleus|df447f03,OSD-401,OSD-770,mouse,actual_flight,skeletal muscle,model_std,0.7481058149923921
+OSD-401|Gastrocnemius|344e21b7,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-401,OSD-99,mouse,actual_flight,skeletal muscle,raw,-0.05339771041008696
+OSD-401|Gastrocnemius|344e21b7,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-401,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,0.2012504220107578
+OSD-401|Gastrocnemius|344e21b7,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-401,OSD-99,mouse,actual_flight,skeletal muscle,model_std,0.4727854793977737
+OSD-401|Quadriceps femoris|344e21b7,OSD-419|Right gastrocnemius|2664dccf,OSD-401,OSD-419,mouse,actual_flight,skeletal muscle,raw,0.01972339270075403
+OSD-401|Quadriceps femoris|344e21b7,OSD-419|Right gastrocnemius|2664dccf,OSD-401,OSD-419,mouse,actual_flight,skeletal muscle,model_mean,0.009162330873903304
+OSD-401|Quadriceps femoris|344e21b7,OSD-419|Right gastrocnemius|2664dccf,OSD-401,OSD-419,mouse,actual_flight,skeletal muscle,model_std,0.10738206431608927
+OSD-401|Quadriceps femoris|344e21b7,OSD-576|Right tibialis anterior|52cb5fea,OSD-401,OSD-576,mouse,actual_flight,skeletal muscle,raw,-0.05632367900586631
+OSD-401|Quadriceps femoris|344e21b7,OSD-576|Right tibialis anterior|52cb5fea,OSD-401,OSD-576,mouse,actual_flight,skeletal muscle,model_mean,-0.29350239735742656
+OSD-401|Quadriceps femoris|344e21b7,OSD-576|Right tibialis anterior|52cb5fea,OSD-401,OSD-576,mouse,actual_flight,skeletal muscle,model_std,-0.005002877259636169
+OSD-401|Quadriceps femoris|344e21b7,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-401,OSD-665,mouse,actual_flight,skeletal muscle,raw,-0.034428959615055696
+OSD-401|Quadriceps femoris|344e21b7,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-401,OSD-665,mouse,actual_flight,skeletal muscle,model_mean,0.20985056527680399
+OSD-401|Quadriceps femoris|344e21b7,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-401,OSD-665,mouse,actual_flight,skeletal muscle,model_std,0.21418141785156253
+OSD-401|Quadriceps femoris|344e21b7,OSD-666|Right quadriceps femoris|52cb5fea,OSD-401,OSD-666,mouse,actual_flight,skeletal muscle,raw,-0.07328575247190325
+OSD-401|Quadriceps femoris|344e21b7,OSD-666|Right quadriceps femoris|52cb5fea,OSD-401,OSD-666,mouse,actual_flight,skeletal muscle,model_mean,-0.3171480497602441
+OSD-401|Quadriceps femoris|344e21b7,OSD-666|Right quadriceps femoris|52cb5fea,OSD-401,OSD-666,mouse,actual_flight,skeletal muscle,model_std,-0.17811357963067473
+OSD-401|Quadriceps femoris|344e21b7,OSD-770|Right soleus|df447f03,OSD-401,OSD-770,mouse,actual_flight,skeletal muscle,raw,0.14983467916695417
+OSD-401|Quadriceps femoris|344e21b7,OSD-770|Right soleus|df447f03,OSD-401,OSD-770,mouse,actual_flight,skeletal muscle,model_mean,0.37672823247869847
+OSD-401|Quadriceps femoris|344e21b7,OSD-770|Right soleus|df447f03,OSD-401,OSD-770,mouse,actual_flight,skeletal muscle,model_std,0.504538133347571
+OSD-401|Quadriceps femoris|344e21b7,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-401,OSD-99,mouse,actual_flight,skeletal muscle,raw,0.022968995216957524
+OSD-401|Quadriceps femoris|344e21b7,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-401,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,-0.044810675537382744
+OSD-401|Quadriceps femoris|344e21b7,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-401,OSD-99,mouse,actual_flight,skeletal muscle,model_std,0.3181152264796001
+OSD-419|Right gastrocnemius|2664dccf,OSD-576|Right tibialis anterior|52cb5fea,OSD-419,OSD-576,mouse,actual_flight,skeletal muscle,raw,-0.023217170458064224
+OSD-419|Right gastrocnemius|2664dccf,OSD-576|Right tibialis anterior|52cb5fea,OSD-419,OSD-576,mouse,actual_flight,skeletal muscle,model_mean,0.5098467420520553
+OSD-419|Right gastrocnemius|2664dccf,OSD-576|Right tibialis anterior|52cb5fea,OSD-419,OSD-576,mouse,actual_flight,skeletal muscle,model_std,0.15951504244820353
+OSD-419|Right gastrocnemius|2664dccf,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-419,OSD-665,mouse,actual_flight,skeletal muscle,raw,-0.04994967525924155
+OSD-419|Right gastrocnemius|2664dccf,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-419,OSD-665,mouse,actual_flight,skeletal muscle,model_mean,-0.03239137855396361
+OSD-419|Right gastrocnemius|2664dccf,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-419,OSD-665,mouse,actual_flight,skeletal muscle,model_std,0.13709271998267555
+OSD-419|Right gastrocnemius|2664dccf,OSD-666|Right quadriceps femoris|52cb5fea,OSD-419,OSD-666,mouse,actual_flight,skeletal muscle,raw,0.06461358742950474
+OSD-419|Right gastrocnemius|2664dccf,OSD-666|Right quadriceps femoris|52cb5fea,OSD-419,OSD-666,mouse,actual_flight,skeletal muscle,model_mean,0.6536738545854466
+OSD-419|Right gastrocnemius|2664dccf,OSD-666|Right quadriceps femoris|52cb5fea,OSD-419,OSD-666,mouse,actual_flight,skeletal muscle,model_std,0.1925912879849687
+OSD-419|Right gastrocnemius|2664dccf,OSD-770|Right soleus|df447f03,OSD-419,OSD-770,mouse,actual_flight,skeletal muscle,raw,-0.11435300901408273
+OSD-419|Right gastrocnemius|2664dccf,OSD-770|Right soleus|df447f03,OSD-419,OSD-770,mouse,actual_flight,skeletal muscle,model_mean,-0.5786382972505026
+OSD-419|Right gastrocnemius|2664dccf,OSD-770|Right soleus|df447f03,OSD-419,OSD-770,mouse,actual_flight,skeletal muscle,model_std,-0.11368980462940234
+OSD-419|Right gastrocnemius|2664dccf,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-419,OSD-99,mouse,actual_flight,skeletal muscle,raw,0.06029666292552984
+OSD-419|Right gastrocnemius|2664dccf,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-419,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,-0.33500986028017743
+OSD-419|Right gastrocnemius|2664dccf,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-419,OSD-99,mouse,actual_flight,skeletal muscle,model_std,-0.1912977389988383
+OSD-457|Cerebrum|3ec2dbad,OSD-562|Right hippocampus|d48ef0fe,OSD-457,OSD-562,mouse,actual_flight,brain,raw,0.025847863067483434
+OSD-457|Cerebrum|3ec2dbad,OSD-562|Right hippocampus|d48ef0fe,OSD-457,OSD-562,mouse,actual_flight,brain,model_mean,-0.2348093834889534
+OSD-457|Cerebrum|3ec2dbad,OSD-562|Right hippocampus|d48ef0fe,OSD-457,OSD-562,mouse,actual_flight,brain,model_std,0.2078159299251056
+OSD-457|Cerebrum|3ec2dbad,OSD-562|Right hippocampus|d00a2420,OSD-457,OSD-562,mouse,actual_flight,brain,raw,0.09013093816086284
+OSD-457|Cerebrum|3ec2dbad,OSD-562|Right hippocampus|d00a2420,OSD-457,OSD-562,mouse,actual_flight,brain,model_mean,0.35983466156433697
+OSD-457|Cerebrum|3ec2dbad,OSD-562|Right hippocampus|d00a2420,OSD-457,OSD-562,mouse,actual_flight,brain,model_std,0.34659349285057145
+OSD-457|Cerebrum|3ec2dbad,OSD-564|Right hippocampus|416bbee1,OSD-457,OSD-564,mouse,actual_flight,brain,raw,-0.0827032063707276
+OSD-457|Cerebrum|3ec2dbad,OSD-564|Right hippocampus|416bbee1,OSD-457,OSD-564,mouse,actual_flight,brain,model_mean,0.2931037465166607
+OSD-457|Cerebrum|3ec2dbad,OSD-564|Right hippocampus|416bbee1,OSD-457,OSD-564,mouse,actual_flight,brain,model_std,0.284517224582256
+OSD-457|Cerebrum|0f84cf73,OSD-562|Right hippocampus|d48ef0fe,OSD-457,OSD-562,mouse,actual_flight,brain,raw,0.0007428606259468944
+OSD-457|Cerebrum|0f84cf73,OSD-562|Right hippocampus|d48ef0fe,OSD-457,OSD-562,mouse,actual_flight,brain,model_mean,-0.6064563959543315
+OSD-457|Cerebrum|0f84cf73,OSD-562|Right hippocampus|d48ef0fe,OSD-457,OSD-562,mouse,actual_flight,brain,model_std,-0.10936051319827841
+OSD-457|Cerebrum|0f84cf73,OSD-562|Right hippocampus|d00a2420,OSD-457,OSD-562,mouse,actual_flight,brain,raw,0.020662945881788502
+OSD-457|Cerebrum|0f84cf73,OSD-562|Right hippocampus|d00a2420,OSD-457,OSD-562,mouse,actual_flight,brain,model_mean,0.6864434715750899
+OSD-457|Cerebrum|0f84cf73,OSD-562|Right hippocampus|d00a2420,OSD-457,OSD-562,mouse,actual_flight,brain,model_std,-0.15068689890847592
+OSD-457|Cerebrum|0f84cf73,OSD-564|Right hippocampus|416bbee1,OSD-457,OSD-564,mouse,actual_flight,brain,raw,0.0013866576400680037
+OSD-457|Cerebrum|0f84cf73,OSD-564|Right hippocampus|416bbee1,OSD-457,OSD-564,mouse,actual_flight,brain,model_mean,0.5783555839225806
+OSD-457|Cerebrum|0f84cf73,OSD-564|Right hippocampus|416bbee1,OSD-457,OSD-564,mouse,actual_flight,brain,model_std,-0.14011755155044417
+OSD-457|Liver|3ec2dbad,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-457,OSD-463,mouse,actual_flight,liver,raw,0.1391231924501468
+OSD-457|Liver|3ec2dbad,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-457,OSD-463,mouse,actual_flight,liver,model_mean,0.15005674261157137
+OSD-457|Liver|3ec2dbad,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-457,OSD-463,mouse,actual_flight,liver,model_std,0.3304768108880816
+OSD-457|Liver|3ec2dbad,OSD-48|Liver|b28df4aa,OSD-457,OSD-48,mouse,actual_flight,liver,raw,-0.0943152509087274
+OSD-457|Liver|3ec2dbad,OSD-48|Liver|b28df4aa,OSD-457,OSD-48,mouse,actual_flight,liver,model_mean,0.27492733820733084
+OSD-457|Liver|3ec2dbad,OSD-48|Liver|b28df4aa,OSD-457,OSD-48,mouse,actual_flight,liver,model_std,-0.2554321454212204
+OSD-457|Liver|3ec2dbad,OSD-686|Liver|df0bb62b,OSD-457,OSD-686,mouse,actual_flight,liver,raw,0.30288995894419396
+OSD-457|Liver|3ec2dbad,OSD-686|Liver|df0bb62b,OSD-457,OSD-686,mouse,actual_flight,liver,model_mean,-0.12074167497814499
+OSD-457|Liver|3ec2dbad,OSD-686|Liver|df0bb62b,OSD-457,OSD-686,mouse,actual_flight,liver,model_std,0.26720203912623675
+OSD-457|Liver|0f84cf73,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-457,OSD-463,mouse,actual_flight,liver,raw,0.169409510221723
+OSD-457|Liver|0f84cf73,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-457,OSD-463,mouse,actual_flight,liver,model_mean,-0.08804045072471196
+OSD-457|Liver|0f84cf73,OSD-463|Left Lobe of the Liver|52cb5fea,OSD-457,OSD-463,mouse,actual_flight,liver,model_std,0.5906211284722878
+OSD-457|Liver|0f84cf73,OSD-48|Liver|b28df4aa,OSD-457,OSD-48,mouse,actual_flight,liver,raw,0.017191660156445923
+OSD-457|Liver|0f84cf73,OSD-48|Liver|b28df4aa,OSD-457,OSD-48,mouse,actual_flight,liver,model_mean,0.8013093221037826
+OSD-457|Liver|0f84cf73,OSD-48|Liver|b28df4aa,OSD-457,OSD-48,mouse,actual_flight,liver,model_std,-0.24783156350283053
+OSD-457|Liver|0f84cf73,OSD-686|Liver|df0bb62b,OSD-457,OSD-686,mouse,actual_flight,liver,raw,0.21981040620288586
+OSD-457|Liver|0f84cf73,OSD-686|Liver|df0bb62b,OSD-457,OSD-686,mouse,actual_flight,liver,model_mean,-0.4542942426917624
+OSD-457|Liver|0f84cf73,OSD-686|Liver|df0bb62b,OSD-457,OSD-686,mouse,actual_flight,liver,model_std,0.3459187258691384
+OSD-463|Left Lobe of the Liver|52cb5fea,OSD-48|Liver|b28df4aa,OSD-463,OSD-48,mouse,actual_flight,liver,raw,-0.1257441719151702
+OSD-463|Left Lobe of the Liver|52cb5fea,OSD-48|Liver|b28df4aa,OSD-463,OSD-48,mouse,actual_flight,liver,model_mean,-0.5349269588755944
+OSD-463|Left Lobe of the Liver|52cb5fea,OSD-48|Liver|b28df4aa,OSD-463,OSD-48,mouse,actual_flight,liver,model_std,-0.6903311402041534
+OSD-463|Left Lobe of the Liver|52cb5fea,OSD-686|Liver|df0bb62b,OSD-463,OSD-686,mouse,actual_flight,liver,raw,0.06777921033401253
+OSD-463|Left Lobe of the Liver|52cb5fea,OSD-686|Liver|df0bb62b,OSD-463,OSD-686,mouse,actual_flight,liver,model_mean,0.6071758258002886
+OSD-463|Left Lobe of the Liver|52cb5fea,OSD-686|Liver|df0bb62b,OSD-463,OSD-686,mouse,actual_flight,liver,model_std,0.5502985154406367
+OSD-48|Liver|b28df4aa,OSD-686|Liver|df0bb62b,OSD-48,OSD-686,mouse,actual_flight,liver,raw,-0.223773385016314
+OSD-48|Liver|b28df4aa,OSD-686|Liver|df0bb62b,OSD-48,OSD-686,mouse,actual_flight,liver,model_mean,-0.8007151649884503
+OSD-48|Liver|b28df4aa,OSD-686|Liver|df0bb62b,OSD-48,OSD-686,mouse,actual_flight,liver,model_std,-0.7360667205401934
+OSD-562|Right hippocampus|d48ef0fe,OSD-564|Right hippocampus|416bbee1,OSD-562,OSD-564,mouse,actual_flight,brain,raw,-0.47361846318273976
+OSD-562|Right hippocampus|d48ef0fe,OSD-564|Right hippocampus|416bbee1,OSD-562,OSD-564,mouse,actual_flight,brain,model_mean,-0.9215958299808863
+OSD-562|Right hippocampus|d48ef0fe,OSD-564|Right hippocampus|416bbee1,OSD-562,OSD-564,mouse,actual_flight,brain,model_std,-0.3758264745479028
+OSD-562|Right hippocampus|d00a2420,OSD-564|Right hippocampus|416bbee1,OSD-562,OSD-564,mouse,actual_flight,brain,raw,0.595276807050481
+OSD-562|Right hippocampus|d00a2420,OSD-564|Right hippocampus|416bbee1,OSD-562,OSD-564,mouse,actual_flight,brain,model_mean,0.9541563046198795
+OSD-562|Right hippocampus|d00a2420,OSD-564|Right hippocampus|416bbee1,OSD-562,OSD-564,mouse,actual_flight,brain,model_std,0.7484146670879684
+OSD-576|Right tibialis anterior|52cb5fea,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-576,OSD-665,mouse,actual_flight,skeletal muscle,raw,0.8189749171148902
+OSD-576|Right tibialis anterior|52cb5fea,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-576,OSD-665,mouse,actual_flight,skeletal muscle,model_mean,0.400786531535029
+OSD-576|Right tibialis anterior|52cb5fea,OSD-665|Right extensor digitorum longus|52cb5fea,OSD-576,OSD-665,mouse,actual_flight,skeletal muscle,model_std,0.7991455645321839
+OSD-576|Right tibialis anterior|52cb5fea,OSD-666|Right quadriceps femoris|52cb5fea,OSD-576,OSD-666,mouse,actual_flight,skeletal muscle,raw,0.6043772071254897
+OSD-576|Right tibialis anterior|52cb5fea,OSD-666|Right quadriceps femoris|52cb5fea,OSD-576,OSD-666,mouse,actual_flight,skeletal muscle,model_mean,0.702903685516865
+OSD-576|Right tibialis anterior|52cb5fea,OSD-666|Right quadriceps femoris|52cb5fea,OSD-576,OSD-666,mouse,actual_flight,skeletal muscle,model_std,0.5564041691340205
+OSD-576|Right tibialis anterior|52cb5fea,OSD-770|Right soleus|df447f03,OSD-576,OSD-770,mouse,actual_flight,skeletal muscle,raw,0.04691303676929326
+OSD-576|Right tibialis anterior|52cb5fea,OSD-770|Right soleus|df447f03,OSD-576,OSD-770,mouse,actual_flight,skeletal muscle,model_mean,-0.42776038114174253
+OSD-576|Right tibialis anterior|52cb5fea,OSD-770|Right soleus|df447f03,OSD-576,OSD-770,mouse,actual_flight,skeletal muscle,model_std,0.10404320307567635
+OSD-576|Right tibialis anterior|52cb5fea,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-576,OSD-99,mouse,actual_flight,skeletal muscle,raw,-0.11756329265809186
+OSD-576|Right tibialis anterior|52cb5fea,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-576,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,-0.09590673137594172
+OSD-576|Right tibialis anterior|52cb5fea,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-576,OSD-99,mouse,actual_flight,skeletal muscle,model_std,-0.04295780005649265
+OSD-580|heart right ventricle|c7240239,OSD-599|Heart|9de7889f,OSD-580,OSD-599,mouse,actual_flight,heart,raw,-0.4793622600880873
+OSD-580|heart right ventricle|c7240239,OSD-599|Heart|9de7889f,OSD-580,OSD-599,mouse,actual_flight,heart,model_mean,-0.8236047356668185
+OSD-580|heart right ventricle|c7240239,OSD-599|Heart|9de7889f,OSD-580,OSD-599,mouse,actual_flight,heart,model_std,-0.6765846446523459
+OSD-580|heart right ventricle|85cadd29,OSD-599|Heart|9de7889f,OSD-580,OSD-599,mouse,actual_flight,heart,raw,0.05535681826766769
+OSD-580|heart right ventricle|85cadd29,OSD-599|Heart|9de7889f,OSD-580,OSD-599,mouse,actual_flight,heart,model_mean,0.8532480518612963
+OSD-580|heart right ventricle|85cadd29,OSD-599|Heart|9de7889f,OSD-580,OSD-599,mouse,actual_flight,heart,model_std,-0.017932733129987194
+OSD-665|Right extensor digitorum longus|52cb5fea,OSD-666|Right quadriceps femoris|52cb5fea,OSD-665,OSD-666,mouse,actual_flight,skeletal muscle,raw,0.5489216125957632
+OSD-665|Right extensor digitorum longus|52cb5fea,OSD-666|Right quadriceps femoris|52cb5fea,OSD-665,OSD-666,mouse,actual_flight,skeletal muscle,model_mean,-0.13689204116814144
+OSD-665|Right extensor digitorum longus|52cb5fea,OSD-666|Right quadriceps femoris|52cb5fea,OSD-665,OSD-666,mouse,actual_flight,skeletal muscle,model_std,0.43087034727060913
+OSD-665|Right extensor digitorum longus|52cb5fea,OSD-770|Right soleus|df447f03,OSD-665,OSD-770,mouse,actual_flight,skeletal muscle,raw,0.165355614701698
+OSD-665|Right extensor digitorum longus|52cb5fea,OSD-770|Right soleus|df447f03,OSD-665,OSD-770,mouse,actual_flight,skeletal muscle,model_mean,0.5321035155913525
+OSD-665|Right extensor digitorum longus|52cb5fea,OSD-770|Right soleus|df447f03,OSD-665,OSD-770,mouse,actual_flight,skeletal muscle,model_std,0.3296883879299817
+OSD-665|Right extensor digitorum longus|52cb5fea,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-665,OSD-99,mouse,actual_flight,skeletal muscle,raw,-0.1701732436300735
+OSD-665|Right extensor digitorum longus|52cb5fea,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-665,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,-0.33243852380241445
+OSD-665|Right extensor digitorum longus|52cb5fea,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-665,OSD-99,mouse,actual_flight,skeletal muscle,model_std,-0.05349849548769002
+OSD-666|Right quadriceps femoris|52cb5fea,OSD-770|Right soleus|df447f03,OSD-666,OSD-770,mouse,actual_flight,skeletal muscle,raw,0.02020730792552295
+OSD-666|Right quadriceps femoris|52cb5fea,OSD-770|Right soleus|df447f03,OSD-666,OSD-770,mouse,actual_flight,skeletal muscle,model_mean,-0.7502734384692625
+OSD-666|Right quadriceps femoris|52cb5fea,OSD-770|Right soleus|df447f03,OSD-666,OSD-770,mouse,actual_flight,skeletal muscle,model_std,-0.001001005100504604
+OSD-666|Right quadriceps femoris|52cb5fea,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-666,OSD-99,mouse,actual_flight,skeletal muscle,raw,-0.03380457045674027
+OSD-666|Right quadriceps femoris|52cb5fea,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-666,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,-0.1889129341749998
+OSD-666|Right quadriceps femoris|52cb5fea,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-666,OSD-99,mouse,actual_flight,skeletal muscle,model_std,-0.05158728602922154
+OSD-770|Right soleus|df447f03,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-770,OSD-99,mouse,actual_flight,skeletal muscle,raw,0.008366557850496167
+OSD-770|Right soleus|df447f03,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-770,OSD-99,mouse,actual_flight,skeletal muscle,model_mean,0.04935912962185934
+OSD-770|Right soleus|df447f03,OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-770,OSD-99,mouse,actual_flight,skeletal muscle,model_std,0.5060320380761247
+GSE113165|old,GSE126865|all_subjects,GSE113165,GSE126865,human,bed_rest_analog,skeletal muscle,raw,0.45418063227754396
+GSE113165|old,GSE126865|all_subjects,GSE113165,GSE126865,human,bed_rest_analog,skeletal muscle,model_mean,0.9339323959042138
+GSE113165|old,GSE126865|all_subjects,GSE113165,GSE126865,human,bed_rest_analog,skeletal muscle,model_std,0.6220864568172938
+GSE113165|young,GSE126865|all_subjects,GSE113165,GSE126865,human,bed_rest_analog,skeletal muscle,raw,0.3089572747011252
+GSE113165|young,GSE126865|all_subjects,GSE113165,GSE126865,human,bed_rest_analog,skeletal muscle,model_mean,0.7373972728180372
+GSE113165|young,GSE126865|all_subjects,GSE113165,GSE126865,human,bed_rest_analog,skeletal muscle,model_std,0.3852737390243079

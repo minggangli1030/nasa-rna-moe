@@ -1,0 +1,32 @@
+                                                      auroc           balanced_accuracy          
+                                                        min       max               min       max
+route    feature    study     group                                                              
+ncbi     bridge     GSE111437 24h                  1.000000  1.000000          1.000000  1.000000
+                              6h                   1.000000  1.000000          0.500000  0.833333
+                    GSE242706 Lung endothelium_6h  0.812500  0.875000          0.625000  0.750000
+                              Lung endothelium_7d  1.000000  1.000000          0.500000  1.000000
+                              Lung epithelium_6h   1.000000  1.000000          0.500000  0.500000
+                              Lung epithelium_7d   0.500000  0.562500          0.500000  0.625000
+         expression GSE111437 24h                  1.000000  1.000000          0.500000  0.500000
+                              6h                   0.777778  0.888889          0.500000  0.500000
+                    GSE242706 Lung endothelium_6h  0.687500  0.750000          0.500000  0.500000
+                              Lung endothelium_7d  1.000000  1.000000          0.500000  0.500000
+                              Lung epithelium_6h   0.750000  0.812500          0.500000  0.500000
+                              Lung epithelium_7d   0.687500  1.000000          0.500000  0.500000
+original bridge     GSE111437 24h                  1.000000  1.000000          0.833333  1.000000
+                              6h                   1.000000  1.000000          0.500000  0.666667
+                    GSE242706 Lung endothelium_6h  0.812500  0.812500          0.500000  0.625000
+                              Lung endothelium_7d  1.000000  1.000000          0.875000  1.000000
+                              Lung epithelium_6h   1.000000  1.000000          0.500000  0.500000
+                              Lung epithelium_7d   0.562500  0.750000          0.500000  0.500000
+         expression GSE111437 24h                  1.000000  1.000000          0.500000  0.500000
+                              6h                   0.777778  0.888889          0.500000  0.500000
+                    GSE242706 Lung endothelium_6h  0.687500  0.750000          0.500000  0.500000
+                              Lung endothelium_7d  1.000000  1.000000          0.500000  0.500000
+                              Lung epithelium_6h   0.750000  0.750000          0.500000  0.500000
+                              Lung epithelium_7d   0.687500  0.875000          0.500000  0.500000
+pool time  irradiated_minus_control_flight_logit                                                               interpretation
+  YA  24h                              -6.069302 Out-of-domain diagnostic, not causal contribution or a validated flight test
+  YA   6h                              -3.252294 Out-of-domain diagnostic, not causal contribution or a validated flight test
+  OS  24h                              -5.457129 Out-of-domain diagnostic, not causal contribution or a validated flight test
+  OS   6h                              -3.444872 Out-of-domain diagnostic, not causal contribution or a validated flight test

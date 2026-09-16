@@ -1,0 +1,34 @@
+{
+  "samples": 130,
+  "common_genes": 15061,
+  "missing_old_samples": [
+    "GSM7191283",
+    "GSM7191294",
+    "GSM7191328",
+    "GSM7191350",
+    "GSM7191365"
+  ],
+  "original_route_comparator": "Identical retained sample IDs and 15061 genes; prior run06 profiles/embeddings reused where appropriate",
+  "training_n": 35,
+  "new_challenge_counts": "time  condition \n24h   control       3\n      irradiated    3\n6h    control       3\n      irradiated    3",
+  "catalog_new": {
+    "train": 7,
+    "val": 5
+  },
+  "no_exact_profile_duplicates": true,
+  "labels": "GSE111437 titles and dose/time characteristics agree for all 12 RNA-seq samples; old source mappings retained from audited run06",
+  "source_sha256": {
+    "GSE111437_family.soft.gz": "841c28a19fd8addb1a3041f980e58a92ddffb8cf4c1ffe7378c45c98ba4d6119",
+    "GSE111437_raw_counts_GRCh38.p13_NCBI.tsv.gz": "58967ebc9b25075e364001b7e1b3efac0fa12e36e0c9ee1afad2a4e2e77caff4",
+    "GSE230181_raw_counts_GRCh38.p13_NCBI.tsv.gz": "729a98df2b85de3ca8650578f48afc8dc3b7237cbba80269b528b23c390059c3",
+    "GSE242706_counts": "ae173409afa0f15c453ebf9a05e5bbd8b4a3f9bed930b50c62ec59283741370c"
+  },
+  "inputs_sha256": "2db9fb783fd5f7632d18c8e629b087d2b3e9fd5baba42b8156b8b06597fcbaf6",
+  "protocol_sha256": "0c155b735acb1f701c8790c71f23a7775d03265ee20521ace4a471bc46e0c86a",
+  "prepare_script_sha256": "96d36d80ff4afd3499908b6447957e93d6768ff48ac60c07eb1d2c8da9c71533",
+  "public_sources": [
+    "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE230181",
+    "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE242706",
+    "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE111437"
+  ]
+}

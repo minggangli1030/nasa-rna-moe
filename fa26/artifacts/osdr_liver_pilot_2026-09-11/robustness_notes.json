@@ -1,0 +1,5 @@
+{
+  "bootstrap_replicates": 500,
+  "seed": 20260911,
+  "scope": "Added after descriptive survey; resample animals within study/condition. Conditional sensitivity ranges, not study-level confidence or multiplicity-adjusted discovery. Cage dependence unknown. Top genes selected using these same data."
+}

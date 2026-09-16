@@ -1,0 +1,28 @@
+{
+  "frozen_at_utc": "2026-09-13T07:01:00.210054+00:00",
+  "question": "Do non-stimulated young/active and old/sedentary muscle-chip flight-minus-ground directions recur from GSE234465 to GSE298393?",
+  "cohort": "All 12 later-flight No E-stim Day21 samples, three chips per condition per donor pool; no stimulated or Day2 arms. Original 12 samples reused from completed survey.",
+  "model": "Same frozen r7hnr92k and official pinned source; final gene mean and std, mask missing with -10; human mask/zero sensitivity.",
+  "preprocessing": "Follow declared FPKM source units and rescale observed canonical FPKM to TPM; log1p once. Source lengths differ from first-flight counts/exon-length preprocessing; interpretation conditional on annotation.",
+  "checks": [
+    ">=99% unique stable-ID coverage",
+    "Exact GSM library-description/chip-column mapping",
+    "All balanced within-flight chip splits",
+    "Within-pool cross-flight response cosine for raw expression and model summaries",
+    "All 36 leave-one-chip-out pairs per pool/readout",
+    "Human mask-versus-zero sensitivity"
+  ],
+  "gene_panel": [
+    "PDK4",
+    "ACTN3",
+    "MYH1",
+    "ANKRD2",
+    "NMRK2",
+    "CDKN1A",
+    "DBP",
+    "MMP14",
+    "MT1X"
+  ],
+  "interpretation": "No significance or causal claims; shared cell pools are not independent donors; raw comparator required; report non-replication as well as agreement.",
+  "source": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE298393"
+}

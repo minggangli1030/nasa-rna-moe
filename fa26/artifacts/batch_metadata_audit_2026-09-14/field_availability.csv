@@ -1,0 +1,19 @@
+species,field,samples,nonempty_known_samples,unique_known_values,interpretation
+human,platform_id,86,86,5,"technical platform proxy, not actual preparation/run batch"
+human,instrument_model,86,86,5,"technical platform proxy, not actual preparation/run batch"
+human,library_strategy,86,86,1,"technical platform proxy, not actual preparation/run batch"
+human,library_source,86,86,1,"technical platform proxy, not actual preparation/run batch"
+human,library_selection,86,12,1,"technical platform proxy, not actual preparation/run batch"
+human,id.assay name,86,0,0,assay/protocol context; not automatically a removable technical effect
+human,library_type,86,0,0,assay/protocol context; not automatically a removable technical effect
+human,study.parameter value.sample preservation method,86,0,0,assay/protocol context; not automatically a removable technical effect
+human,study.parameter value.carcass preservation method,86,0,0,assay/protocol context; not automatically a removable technical effect
+mouse,platform_id,499,0,0,"technical platform proxy, not actual preparation/run batch"
+mouse,instrument_model,499,0,0,"technical platform proxy, not actual preparation/run batch"
+mouse,library_strategy,499,0,0,"technical platform proxy, not actual preparation/run batch"
+mouse,library_source,499,0,0,"technical platform proxy, not actual preparation/run batch"
+mouse,library_selection,499,0,0,"technical platform proxy, not actual preparation/run batch"
+mouse,id.assay name,499,499,24,assay/protocol context; not automatically a removable technical effect
+mouse,library_type,499,0,0,assay/protocol context; not automatically a removable technical effect
+mouse,study.parameter value.sample preservation method,499,499,7,assay/protocol context; not automatically a removable technical effect
+mouse,study.parameter value.carcass preservation method,499,108,4,assay/protocol context; not automatically a removable technical effect

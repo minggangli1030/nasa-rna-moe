@@ -1,0 +1,97 @@
+model,domain,AUROC_min,AUROC_max,BA_min,BA_max
+ncbi__bridge__hard_negative__absolute,6h,0.6666666666666667,0.6666666666666667,0.8333333333333333,0.8333333333333333
+ncbi__bridge__hard_negative__absolute,24h,0.888888888888889,0.888888888888889,0.6666666666666666,0.6666666666666666
+ncbi__bridge__hard_negative__absolute,Lung endothelium_6h,0.3125,0.3125,0.5,0.5
+ncbi__bridge__hard_negative__absolute,Lung endothelium_7d,0.0,0.0,0.5,0.5
+ncbi__bridge__hard_negative__absolute,Lung epithelium_6h,0.1875,0.1875,0.5,0.5
+ncbi__bridge__hard_negative__absolute,Lung epithelium_7d,0.0,0.0,0.5,0.5
+ncbi__bridge__hard_negative__matched_control,6h,0.6666666666666666,1.0,0.5,0.5
+ncbi__bridge__hard_negative__matched_control,24h,1.0,1.0,0.6666666666666666,1.0
+ncbi__bridge__hard_negative__matched_control,Lung endothelium_6h,0.5,0.875,0.5,0.5
+ncbi__bridge__hard_negative__matched_control,Lung endothelium_7d,0.0,1.0,0.5,0.5
+ncbi__bridge__hard_negative__matched_control,Lung epithelium_6h,0.5,0.75,0.5,0.5
+ncbi__bridge__hard_negative__matched_control,Lung epithelium_7d,0.0,0.0,0.5,0.5
+ncbi__bridge__ir_control__absolute,6h,1.0,1.0,0.8333333333333333,0.8333333333333333
+ncbi__bridge__ir_control__absolute,24h,1.0,1.0,1.0,1.0
+ncbi__bridge__ir_control__absolute,Lung endothelium_6h,0.875,0.875,0.75,0.75
+ncbi__bridge__ir_control__absolute,Lung endothelium_7d,1.0,1.0,0.5,0.5
+ncbi__bridge__ir_control__absolute,Lung epithelium_6h,1.0,1.0,0.75,0.75
+ncbi__bridge__ir_control__absolute,Lung epithelium_7d,0.5625,0.5625,0.625,0.625
+ncbi__bridge__ir_control__matched_control,6h,1.0,1.0,0.5,0.5
+ncbi__bridge__ir_control__matched_control,24h,1.0,1.0,0.5,0.5
+ncbi__bridge__ir_control__matched_control,Lung endothelium_6h,0.625,1.0,0.5,0.625
+ncbi__bridge__ir_control__matched_control,Lung endothelium_7d,1.0,1.0,0.75,1.0
+ncbi__bridge__ir_control__matched_control,Lung epithelium_6h,1.0,1.0,0.5,0.5
+ncbi__bridge__ir_control__matched_control,Lung epithelium_7d,0.25,0.75,0.5,0.5
+ncbi__expression__hard_negative__absolute,6h,0.7777777777777779,0.7777777777777779,0.5,0.5
+ncbi__expression__hard_negative__absolute,24h,1.0,1.0,0.6666666666666666,0.6666666666666666
+ncbi__expression__hard_negative__absolute,Lung endothelium_6h,0.75,0.75,0.5,0.5
+ncbi__expression__hard_negative__absolute,Lung endothelium_7d,1.0,1.0,0.5,0.5
+ncbi__expression__hard_negative__absolute,Lung epithelium_6h,0.75,0.75,0.5,0.5
+ncbi__expression__hard_negative__absolute,Lung epithelium_7d,0.9375,0.9375,0.5,0.5
+ncbi__expression__hard_negative__matched_control,6h,0.3333333333333333,1.0,0.5,0.5
+ncbi__expression__hard_negative__matched_control,24h,1.0,1.0,0.5,0.5
+ncbi__expression__hard_negative__matched_control,Lung endothelium_6h,0.625,1.0,0.375,0.5
+ncbi__expression__hard_negative__matched_control,Lung endothelium_7d,1.0,1.0,1.0,1.0
+ncbi__expression__hard_negative__matched_control,Lung epithelium_6h,0.75,0.75,0.5,0.625
+ncbi__expression__hard_negative__matched_control,Lung epithelium_7d,0.0,1.0,0.5,0.5
+ncbi__expression__ir_control__absolute,6h,0.888888888888889,0.888888888888889,0.5,0.5
+ncbi__expression__ir_control__absolute,24h,1.0,1.0,0.5,0.5
+ncbi__expression__ir_control__absolute,Lung endothelium_6h,0.75,0.75,0.5,0.5
+ncbi__expression__ir_control__absolute,Lung endothelium_7d,1.0,1.0,0.5,0.5
+ncbi__expression__ir_control__absolute,Lung epithelium_6h,0.75,0.75,0.5,0.5
+ncbi__expression__ir_control__absolute,Lung epithelium_7d,0.6875,0.6875,0.5,0.5
+ncbi__expression__ir_control__matched_control,6h,0.0,1.0,0.5,0.5
+ncbi__expression__ir_control__matched_control,24h,1.0,1.0,0.5,0.5
+ncbi__expression__ir_control__matched_control,Lung endothelium_6h,0.5,1.0,0.5,0.5
+ncbi__expression__ir_control__matched_control,Lung endothelium_7d,1.0,1.0,0.75,0.875
+ncbi__expression__ir_control__matched_control,Lung epithelium_6h,0.75,0.75,0.5,0.5
+ncbi__expression__ir_control__matched_control,Lung epithelium_7d,0.0,0.875,0.5,0.5
+original__bridge__hard_negative__absolute,6h,0.6666666666666667,0.6666666666666667,0.5,0.5
+original__bridge__hard_negative__absolute,24h,1.0,1.0,0.5,0.5
+original__bridge__hard_negative__absolute,Lung endothelium_6h,0.75,0.75,0.5,0.5
+original__bridge__hard_negative__absolute,Lung endothelium_7d,0.125,0.125,0.5,0.5
+original__bridge__hard_negative__absolute,Lung epithelium_6h,0.625,0.625,0.5,0.5
+original__bridge__hard_negative__absolute,Lung epithelium_7d,0.3125,0.3125,0.5,0.5
+original__bridge__hard_negative__matched_control,6h,1.0,1.0,0.5,0.5
+original__bridge__hard_negative__matched_control,24h,1.0,1.0,0.8333333333333333,1.0
+original__bridge__hard_negative__matched_control,Lung endothelium_6h,1.0,1.0,0.625,0.875
+original__bridge__hard_negative__matched_control,Lung endothelium_7d,1.0,1.0,0.875,1.0
+original__bridge__hard_negative__matched_control,Lung epithelium_6h,1.0,1.0,0.5,0.75
+original__bridge__hard_negative__matched_control,Lung epithelium_7d,0.0,0.25,0.5,0.5
+original__bridge__ir_control__absolute,6h,1.0,1.0,0.5,0.5
+original__bridge__ir_control__absolute,24h,1.0,1.0,1.0,1.0
+original__bridge__ir_control__absolute,Lung endothelium_6h,0.8125,0.8125,0.625,0.625
+original__bridge__ir_control__absolute,Lung endothelium_7d,1.0,1.0,0.875,0.875
+original__bridge__ir_control__absolute,Lung epithelium_6h,1.0,1.0,0.5,0.5
+original__bridge__ir_control__absolute,Lung epithelium_7d,0.75,0.75,0.5,0.5
+original__bridge__ir_control__matched_control,6h,1.0,1.0,0.5,0.5
+original__bridge__ir_control__matched_control,24h,1.0,1.0,0.5,0.5
+original__bridge__ir_control__matched_control,Lung endothelium_6h,0.625,1.0,0.625,0.625
+original__bridge__ir_control__matched_control,Lung endothelium_7d,1.0,1.0,0.75,1.0
+original__bridge__ir_control__matched_control,Lung epithelium_6h,1.0,1.0,0.625,0.625
+original__bridge__ir_control__matched_control,Lung epithelium_7d,0.25,0.875,0.5,0.5
+original__expression__hard_negative__absolute,6h,0.6666666666666667,0.6666666666666667,0.8333333333333333,0.8333333333333333
+original__expression__hard_negative__absolute,24h,1.0,1.0,0.8333333333333333,0.8333333333333333
+original__expression__hard_negative__absolute,Lung endothelium_6h,0.6875,0.6875,0.5,0.5
+original__expression__hard_negative__absolute,Lung endothelium_7d,1.0,1.0,0.5,0.5
+original__expression__hard_negative__absolute,Lung epithelium_6h,0.8125,0.8125,0.5,0.5
+original__expression__hard_negative__absolute,Lung epithelium_7d,0.8125,0.8125,0.5,0.5
+original__expression__hard_negative__matched_control,6h,0.0,1.0,0.5,0.5
+original__expression__hard_negative__matched_control,24h,1.0,1.0,0.5,0.5
+original__expression__hard_negative__matched_control,Lung endothelium_6h,0.5,0.875,0.375,0.625
+original__expression__hard_negative__matched_control,Lung endothelium_7d,1.0,1.0,1.0,1.0
+original__expression__hard_negative__matched_control,Lung epithelium_6h,0.75,0.875,0.625,0.625
+original__expression__hard_negative__matched_control,Lung epithelium_7d,0.375,1.0,0.375,0.5
+original__expression__ir_control__absolute,6h,1.0,1.0,0.5,0.5
+original__expression__ir_control__absolute,24h,1.0,1.0,0.5,0.5
+original__expression__ir_control__absolute,Lung endothelium_6h,0.6875,0.6875,0.5,0.5
+original__expression__ir_control__absolute,Lung endothelium_7d,1.0,1.0,0.5,0.5
+original__expression__ir_control__absolute,Lung epithelium_6h,0.75,0.75,0.5,0.5
+original__expression__ir_control__absolute,Lung epithelium_7d,0.6875,0.6875,0.5,0.5
+original__expression__ir_control__matched_control,6h,0.0,1.0,0.5,0.5
+original__expression__ir_control__matched_control,24h,1.0,1.0,0.5,0.5
+original__expression__ir_control__matched_control,Lung endothelium_6h,0.5,0.875,0.5,0.5
+original__expression__ir_control__matched_control,Lung endothelium_7d,1.0,1.0,0.875,0.875
+original__expression__ir_control__matched_control,Lung epithelium_6h,0.75,0.75,0.5,0.5
+original__expression__ir_control__matched_control,Lung epithelium_7d,0.375,0.875,0.5,0.5

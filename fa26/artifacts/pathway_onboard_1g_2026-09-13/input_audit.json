@@ -1,0 +1,69 @@
+[
+  {
+    "study": "GSE224805",
+    "source": "author",
+    "samples": 6,
+    "coverage": 0.9995384108143752,
+    "source_sha256": "07a9a54e887df86b2f8d2171072714e816c9a5f794468f3d2ac02770e19b5377",
+    "missing_genes": [
+      "CAST",
+      "FAM174C",
+      "H2AC19",
+      "HOMEZ",
+      "PAXX",
+      "PRRC2B",
+      "SOD2"
+    ],
+    "units": "author sample counts after DESeq2 normalization; sample-wide scale cancels in canonical TPM; gene/sample offsets are not independently excluded"
+  },
+  {
+    "study": "GSE157937",
+    "source": "NCBI",
+    "samples": 8,
+    "coverage": 0.9990108803165183,
+    "source_sha256": "4123820ce27ec81e7cafa14189c77beac56c97aea362cd1de01ed920e029b8ed",
+    "missing_genes": [
+      "CAST",
+      "CCDC195",
+      "FAM174C",
+      "FAM240B",
+      "FOXL3",
+      "LCE7A",
+      "LRRC51",
+      "MSLNL",
+      "PAXX",
+      "PNMA8C",
+      "PRR33",
+      "PRSS51",
+      "SMIM44",
+      "THSD8",
+      "TOMT"
+    ],
+    "units": "NCBI independently processed raw integer counts; Entrez mapped via pinned HGNC stable IDs"
+  },
+  {
+    "study": "GSE224805",
+    "source": "NCBI",
+    "samples": 5,
+    "coverage": 0.9990108803165183,
+    "source_sha256": "3dec495d532503161a2dc78ceb288317c91c1e5c434651f9a7a6e0a587aa4d68",
+    "missing_genes": [
+      "CAST",
+      "CCDC195",
+      "FAM174C",
+      "FAM240B",
+      "FOXL3",
+      "LCE7A",
+      "LRRC51",
+      "MSLNL",
+      "PAXX",
+      "PNMA8C",
+      "PRR33",
+      "PRSS51",
+      "SMIM44",
+      "THSD8",
+      "TOMT"
+    ],
+    "units": "NCBI independently processed raw integer counts; Entrez mapped via pinned HGNC stable IDs"
+  }
+]

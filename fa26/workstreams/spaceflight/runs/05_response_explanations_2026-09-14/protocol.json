@@ -1,0 +1,65 @@
+{
+  "question": "Which predefined response programs contribute to the existing flight score?",
+  "study": "GSE298393",
+  "n_chips": 12,
+  "independent_donor_pools": 2,
+  "status_of_data": "Previously explored development data; not independent confirmation",
+  "encoder_updated": false,
+  "heads_updated": false,
+  "programs": [
+    {
+      "key": "mitochondrial_expression",
+      "label": "Mitochondrial expression",
+      "gene_set": "Oxidative Phosphorylation"
+    },
+    {
+      "key": "dna_repair",
+      "label": "DNA repair expression",
+      "gene_set": "DNA Repair"
+    },
+    {
+      "key": "oxidative_stress",
+      "label": "Oxidative-stress-associated expression",
+      "gene_set": "Reactive Oxygen Species Pathway"
+    },
+    {
+      "key": "inflammatory_signaling",
+      "label": "Inflammatory signaling",
+      "gene_set": "TNF-alpha Signaling via NF-kB"
+    },
+    {
+      "key": "proteostasis",
+      "label": "Unfolded-protein-response expression",
+      "gene_set": "Unfolded Protein Response"
+    },
+    {
+      "key": "muscle_remodeling",
+      "label": "Muscle differentiation/remodeling",
+      "gene_set": "Myogenesis"
+    }
+  ],
+  "references": [
+    "training_ground_mean_TPM",
+    "training_all_mean_TPM"
+  ],
+  "random_panels_per_program_per_head": 20,
+  "random_matching": "Exact joint training log1p-expression mean/SD quintile-bin counts; without replacement; excludes target set",
+  "seed": 20260914,
+  "primary_perturbation": "Replace program inputs with training-ground reference; no TPM renormalization",
+  "sensitivities": [
+    "Training-all reference",
+    "TPM renormalization of target and all matched controls"
+  ],
+  "expression_score": "Mean per-gene log1p TPM difference from reference; not a functional activity measurement",
+  "allocation": "Split each gene IG equally among selected program memberships; outside-panel bucket; supporting and opposing totals separate",
+  "decision": "Descriptive pilot; no causal fractions, no radiation/gravity detector, no independent significance claim",
+  "validation": [
+    "Reproduce fixed logits within 1e-5",
+    "Exact random-bin matching and disjoint panels",
+    "Finite scores",
+    "Expression replacement equals summed linear attribution",
+    "Complete balanced sample/reference/panel matrix",
+    "Allocation reconstructs total attribution"
+  ],
+  "replication": "Two reciprocal head/pool directions, two references, leave-one-evaluation-chip sensitivity; shared biological pools"
+}

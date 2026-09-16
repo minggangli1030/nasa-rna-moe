@@ -1,0 +1,141 @@
+comparison,pool,source,pathway,n_genes,source_set_fraction,status,zscore_shift,rank_shift,background_centered_shift,leave_one_sign_retention,robust
+muscle_chip_source,YA,first_author_FPKM,TNF-alpha Signaling via NF-kB,183,0.915,ok,-0.8603151187397012,-0.036839127950149875,-0.2590908139081095,1.0,True
+muscle_chip_source,YA,first_author_FPKM,DNA Repair,137,0.9133333333333333,ok,0.04880989192827278,0.008739481912723113,0.07469531374026417,0.6666666666666666,False
+muscle_chip_source,YA,first_author_FPKM,Myogenesis,190,0.95,ok,-0.33342631684713075,-0.005580261680163345,-0.04147719261270755,1.0,True
+muscle_chip_source,YA,first_author_FPKM,Unfolded Protein Response,102,0.9026548672566371,ok,-0.16792116004836943,0.003229868724041296,0.022111825526582862,1.0,False
+muscle_chip_source,YA,first_author_FPKM,Inflammatory Response,177,0.885,ok,-0.5015077512897717,-0.010302887115008819,-0.06983447850938518,1.0,True
+muscle_chip_source,YA,first_author_FPKM,Oxidative Phosphorylation,173,0.865,ok,0.26822431981904077,0.0007174040360721223,0.1066531428123163,1.0,True
+muscle_chip_source,YA,first_author_FPKM,Reactive Oxygen Species Pathway,43,0.8775510204081632,ok,0.38991971706769685,0.014098878818932015,0.14808936619991786,1.0,True
+muscle_chip_source,YA,first_author_FPKM,p53 Pathway,186,0.93,ok,-0.3814885841816513,-0.0071384461583011705,-0.04496550889101525,1.0,True
+muscle_chip_source,YA,first_author_FPKM,Circadian clock,106,0.9464285714285714,ok,0.07099953015867698,0.0017315644991676704,0.08000398693828492,0.8333333333333334,False
+muscle_chip_source,YA,first_author_FPKM,Muscle contraction,192,0.9411764705882353,ok,-0.3594572325672034,-0.004314414459051896,-0.036993858313028705,1.0,True
+muscle_chip_source,YA,first_primary_counts,TNF-alpha Signaling via NF-kB,183,0.915,ok,-0.773314357539271,-0.0373302705959524,-0.26200820369120015,1.0,True
+muscle_chip_source,YA,first_primary_counts,DNA Repair,137,0.9133333333333333,ok,0.1774615345606374,0.008701869237444981,0.07808160305661227,0.8333333333333334,False
+muscle_chip_source,YA,first_primary_counts,Myogenesis,190,0.95,ok,-0.23639606816445433,-0.004168303761319048,-0.034721440345677035,1.0,True
+muscle_chip_source,YA,first_primary_counts,Unfolded Protein Response,102,0.9026548672566371,ok,-0.051359688461317554,0.003909931989355631,0.02718953127123136,0.6666666666666666,False
+muscle_chip_source,YA,first_primary_counts,Inflammatory Response,177,0.885,ok,-0.41924363815859284,-0.00929949648825723,-0.0678174814907172,1.0,True
+muscle_chip_source,YA,first_primary_counts,Oxidative Phosphorylation,173,0.865,ok,0.3343665309280765,0.0016700392039156187,0.10004445476960111,1.0,True
+muscle_chip_source,YA,first_primary_counts,Reactive Oxygen Species Pathway,43,0.8775510204081632,ok,0.5522976421957317,0.016247215995714326,0.14875291561036996,1.0,True
+muscle_chip_source,YA,first_primary_counts,p53 Pathway,186,0.93,ok,-0.24814108380675445,-0.0058017301004471555,-0.03563135364567904,1.0,True
+muscle_chip_source,YA,first_primary_counts,Circadian clock,106,0.9464285714285714,ok,0.2002481135616354,0.002922054044755873,0.08167869299948971,1.0,True
+muscle_chip_source,YA,first_primary_counts,Muscle contraction,192,0.9411764705882353,ok,-0.35117161651995243,-0.006217748269508938,-0.058576287061309795,1.0,True
+muscle_chip_source,YA,repeat_author_FPKM,TNF-alpha Signaling via NF-kB,183,0.915,ok,-0.387923474665797,-0.028207700572777217,-0.17926457332545137,1.0,True
+muscle_chip_source,YA,repeat_author_FPKM,DNA Repair,137,0.9133333333333333,ok,0.574505964269287,0.009047455783808722,0.06883633618189111,1.0,True
+muscle_chip_source,YA,repeat_author_FPKM,Myogenesis,190,0.95,ok,0.10612996745694592,-0.00831771574009954,-0.03825000679042345,1.0,False
+muscle_chip_source,YA,repeat_author_FPKM,Unfolded Protein Response,102,0.9026548672566371,ok,0.27771063599633916,-0.003134228080697521,-0.0020736258420528397,1.0,False
+muscle_chip_source,YA,repeat_author_FPKM,Inflammatory Response,177,0.885,ok,-0.1817821155895762,-0.015572336377345453,-0.1124772209456526,1.0,True
+muscle_chip_source,YA,repeat_author_FPKM,Oxidative Phosphorylation,173,0.865,ok,0.9242281814398483,0.008162316609138465,0.12467565485602705,1.0,True
+muscle_chip_source,YA,repeat_author_FPKM,Reactive Oxygen Species Pathway,43,0.8775510204081632,ok,0.15450244794682166,-0.00908293400892013,-0.02549977080728727,0.8333333333333334,False
+muscle_chip_source,YA,repeat_author_FPKM,p53 Pathway,186,0.93,ok,-0.04707033936815856,-0.008355170920408161,-0.06067794545690386,0.6666666666666666,False
+muscle_chip_source,YA,repeat_author_FPKM,Circadian clock,106,0.9464285714285714,ok,0.041660862802798945,-0.007128602786375171,-0.040032633181110944,0.6666666666666666,False
+muscle_chip_source,YA,repeat_author_FPKM,Muscle contraction,192,0.9411764705882353,ok,0.06074699100725802,-0.002243571216224538,-0.03512262595113025,1.0,False
+muscle_chip_source,OS,first_author_FPKM,TNF-alpha Signaling via NF-kB,183,0.915,ok,-0.5312764321355242,-0.005666280755980635,-0.08473666776869523,1.0,True
+muscle_chip_source,OS,first_author_FPKM,DNA Repair,137,0.9133333333333333,ok,-0.1166651209835745,0.011104820900174062,0.06396999701272144,0.8333333333333334,False
+muscle_chip_source,OS,first_author_FPKM,Myogenesis,190,0.95,ok,-0.41811226358344633,-0.00788784076197624,-0.05986869767782821,1.0,True
+muscle_chip_source,OS,first_author_FPKM,Unfolded Protein Response,102,0.9026548672566371,ok,-0.20146071988754627,0.01445415099822489,0.062462447255796416,1.0,False
+muscle_chip_source,OS,first_author_FPKM,Inflammatory Response,177,0.885,ok,-0.29252768337416424,0.006449381897688455,0.000654704409527862,1.0,False
+muscle_chip_source,OS,first_author_FPKM,Oxidative Phosphorylation,173,0.865,ok,0.30317174677995984,0.005824452658016788,0.1312041647166975,1.0,True
+muscle_chip_source,OS,first_author_FPKM,Reactive Oxygen Species Pathway,43,0.8775510204081632,ok,0.08200072784280743,0.01480432207543192,0.13322729814598477,0.8333333333333334,False
+muscle_chip_source,OS,first_author_FPKM,p53 Pathway,186,0.93,ok,-0.3496237488128624,-0.0008436092529332528,-0.008066894009663539,1.0,True
+muscle_chip_source,OS,first_author_FPKM,Circadian clock,106,0.9464285714285714,ok,0.022396687907257927,0.010290499808250253,0.11469794775151398,0.6666666666666666,False
+muscle_chip_source,OS,first_author_FPKM,Muscle contraction,192,0.9411764705882353,ok,-0.6284220378443688,-0.01064071985128423,-0.06705188882026558,1.0,True
+muscle_chip_source,OS,first_primary_counts,TNF-alpha Signaling via NF-kB,183,0.915,ok,-0.5714098563955917,-0.005955503186260147,-0.08681025740673859,1.0,True
+muscle_chip_source,OS,first_primary_counts,DNA Repair,137,0.9133333333333333,ok,-0.2609716017946016,0.010742437240277347,0.055410692754379376,1.0,False
+muscle_chip_source,OS,first_primary_counts,Myogenesis,190,0.95,ok,-0.5226763822489054,-0.007095023348157037,-0.061778530542828225,1.0,True
+muscle_chip_source,OS,first_primary_counts,Unfolded Protein Response,102,0.9026548672566371,ok,-0.3571005421533918,0.014633774057507765,0.051186445700460936,1.0,False
+muscle_chip_source,OS,first_primary_counts,Inflammatory Response,177,0.885,ok,-0.33527051447954975,0.007434981469309931,0.01428433198073753,1.0,False
+muscle_chip_source,OS,first_primary_counts,Oxidative Phosphorylation,173,0.865,ok,0.20663322914911741,0.009376722784820934,0.13122288174658703,1.0,True
+muscle_chip_source,OS,first_primary_counts,Reactive Oxygen Species Pathway,43,0.8775510204081632,ok,0.007285465985112616,0.016541428083452825,0.1327700049564804,0.3333333333333333,False
+muscle_chip_source,OS,first_primary_counts,p53 Pathway,186,0.93,ok,-0.41029632080748557,0.002171978604966096,-0.0009531872476923331,1.0,False
+muscle_chip_source,OS,first_primary_counts,Circadian clock,106,0.9464285714285714,ok,-0.11902011887923514,0.010489520658904072,0.10414253190845013,1.0,False
+muscle_chip_source,OS,first_primary_counts,Muscle contraction,192,0.9411764705882353,ok,-0.686077123746371,-0.011773257947780391,-0.0797167521487665,1.0,True
+muscle_chip_source,OS,repeat_author_FPKM,TNF-alpha Signaling via NF-kB,183,0.915,ok,0.4817858317866841,-0.005981134298242319,-0.013175748510679527,1.0,False
+muscle_chip_source,OS,repeat_author_FPKM,DNA Repair,137,0.9133333333333333,ok,0.9935489831311601,0.0011221918481116866,0.042729866835975905,1.0,True
+muscle_chip_source,OS,repeat_author_FPKM,Myogenesis,190,0.95,ok,0.5630125850001642,-0.00047948039485001814,0.012135451180990131,1.0,False
+muscle_chip_source,OS,repeat_author_FPKM,Unfolded Protein Response,102,0.9026548672566371,ok,0.9380281057910889,-0.002507814250757967,0.04850571774555812,1.0,False
+muscle_chip_source,OS,repeat_author_FPKM,Inflammatory Response,177,0.885,ok,0.4016363436565965,-0.004340706419348472,-0.05537766879161776,1.0,False
+muscle_chip_source,OS,repeat_author_FPKM,Oxidative Phosphorylation,173,0.865,ok,1.1088069392234585,0.0034138427156562567,0.04830792676775619,1.0,True
+muscle_chip_source,OS,repeat_author_FPKM,Reactive Oxygen Species Pathway,43,0.8775510204081632,ok,0.47877847627330805,-0.005743665221980221,-0.026806751394315764,1.0,False
+muscle_chip_source,OS,repeat_author_FPKM,p53 Pathway,186,0.93,ok,0.5226203942256713,-0.006474261482285026,-0.026089458200666105,1.0,False
+muscle_chip_source,OS,repeat_author_FPKM,Circadian clock,106,0.9464285714285714,ok,0.7393458612340438,0.0011959948196412773,0.020416402454732863,1.0,True
+muscle_chip_source,OS,repeat_author_FPKM,Muscle contraction,192,0.9411764705882353,ok,0.46545722999789585,0.0014366471412952109,-0.02205303343092402,1.0,False
+endothelial_source,microgravity_vs_onboard_1g,author_CPM,TNF-alpha Signaling via NF-kB,164,0.82,ok,-0.5326289577086647,-0.04621103874526489,-0.210232498434836,0.8,False
+endothelial_source,microgravity_vs_onboard_1g,author_CPM,DNA Repair,135,0.9,ok,-0.12084630136431684,-0.0032736233054124764,0.0016300618426575708,0.8,False
+endothelial_source,microgravity_vs_onboard_1g,author_CPM,Myogenesis,128,0.64,ok,-0.3795656107330334,-0.020315574856191343,-0.09185097897305744,1.0,True
+endothelial_source,microgravity_vs_onboard_1g,author_CPM,Unfolded Protein Response,100,0.8849557522123894,ok,-0.23920037463764282,-0.014982137450802457,-0.056336165048577413,1.0,True
+endothelial_source,microgravity_vs_onboard_1g,author_CPM,Inflammatory Response,113,0.565,ok,-0.21018100985668597,-0.014786705033504044,-0.07137457399639491,0.8,False
+endothelial_source,microgravity_vs_onboard_1g,author_CPM,Oxidative Phosphorylation,169,0.845,ok,0.2086068534186906,0.01802270483888624,0.086127477363106,1.0,True
+endothelial_source,microgravity_vs_onboard_1g,author_CPM,Reactive Oxygen Species Pathway,42,0.8571428571428571,ok,0.1624482176252544,0.008949836368092101,0.06686404427196013,1.0,True
+endothelial_source,microgravity_vs_onboard_1g,author_CPM,p53 Pathway,173,0.865,ok,-0.5505345344859294,-0.044529583370521375,-0.1995688871380472,0.8,False
+endothelial_source,microgravity_vs_onboard_1g,author_CPM,Circadian clock,100,0.8928571428571429,ok,0.0015814354523522958,0.0003088101725702286,0.011487897159757066,0.6,False
+endothelial_source,microgravity_vs_onboard_1g,author_CPM,Muscle contraction,95,0.46568627450980393,insufficient_coverage,,,,,False
+endothelial_source,microgravity_vs_onboard_1g,NCBI_counts,TNF-alpha Signaling via NF-kB,164,0.82,ok,-0.5375710544929284,-0.04746959526815964,-0.20666904059488464,0.8,False
+endothelial_source,microgravity_vs_onboard_1g,NCBI_counts,DNA Repair,135,0.9,ok,-0.1552985493337165,-0.004498603962727277,0.0011138926841759433,0.8,False
+endothelial_source,microgravity_vs_onboard_1g,NCBI_counts,Myogenesis,128,0.64,ok,-0.37866282786874783,-0.02047623609218896,-0.08997963812253168,1.0,True
+endothelial_source,microgravity_vs_onboard_1g,NCBI_counts,Unfolded Protein Response,100,0.8849557522123894,ok,-0.23074639136202452,-0.015119739630638951,-0.05137994296666892,1.0,True
+endothelial_source,microgravity_vs_onboard_1g,NCBI_counts,Inflammatory Response,113,0.565,ok,-0.2083837134206053,-0.014786905977135278,-0.06828325479755115,0.8,False
+endothelial_source,microgravity_vs_onboard_1g,NCBI_counts,Oxidative Phosphorylation,169,0.845,ok,0.1732410570561673,0.014842298645484697,0.07485823337045638,0.6,False
+endothelial_source,microgravity_vs_onboard_1g,NCBI_counts,Reactive Oxygen Species Pathway,42,0.8571428571428571,ok,0.08323212445188338,0.0033924786990181532,0.046593618424329075,0.8,False
+endothelial_source,microgravity_vs_onboard_1g,NCBI_counts,p53 Pathway,173,0.865,ok,-0.5751083311708548,-0.04493244011837205,-0.19475706912869062,0.8,False
+endothelial_source,microgravity_vs_onboard_1g,NCBI_counts,Circadian clock,100,0.8928571428571429,ok,0.007400388456180117,-3.860127157140347e-06,0.00942034614764753,0.6,False
+endothelial_source,microgravity_vs_onboard_1g,NCBI_counts,Muscle contraction,95,0.46568627450980393,insufficient_coverage,,,,,False
+endothelial_source,onboard_1g_vs_ground,author_CPM,TNF-alpha Signaling via NF-kB,164,0.82,ok,0.17511179069873362,0.021868977204758333,0.09861187766824972,0.8,False
+endothelial_source,onboard_1g_vs_ground,author_CPM,DNA Repair,135,0.9,ok,0.12302019268681513,0.008763133402854839,0.027361652883873933,0.8,False
+endothelial_source,onboard_1g_vs_ground,author_CPM,Myogenesis,128,0.64,ok,-0.058724081729584265,-0.0017051260217983422,-0.006663415083390856,0.8,False
+endothelial_source,onboard_1g_vs_ground,author_CPM,Unfolded Protein Response,100,0.8849557522123894,ok,0.10601929763469115,0.015557674841053637,0.046014309985057844,0.8,False
+endothelial_source,onboard_1g_vs_ground,author_CPM,Inflammatory Response,113,0.565,ok,0.007655189280665572,0.001306200584612116,0.015503932506423013,0.4,False
+endothelial_source,onboard_1g_vs_ground,author_CPM,Oxidative Phosphorylation,169,0.845,ok,0.22716046716102806,0.006234515152980458,0.022216652703368367,0.8,False
+endothelial_source,onboard_1g_vs_ground,author_CPM,Reactive Oxygen Species Pathway,42,0.8571428571428571,ok,0.05267519513990958,-0.0013441964736243817,-0.0015632893823941396,0.6,False
+endothelial_source,onboard_1g_vs_ground,author_CPM,p53 Pathway,173,0.865,ok,0.30860598458195815,0.034795482824336865,0.1578797918720779,0.8,False
+endothelial_source,onboard_1g_vs_ground,author_CPM,Circadian clock,100,0.8928571428571429,ok,0.23533997560933775,0.006153496821072024,0.03193450268369602,1.0,True
+endothelial_source,onboard_1g_vs_ground,author_CPM,Muscle contraction,95,0.46568627450980393,insufficient_coverage,,,,,False
+endothelial_source,onboard_1g_vs_ground,NCBI_counts,TNF-alpha Signaling via NF-kB,164,0.82,ok,0.17069437580824107,0.022553960553229335,0.09315132663964923,0.8,False
+endothelial_source,onboard_1g_vs_ground,NCBI_counts,DNA Repair,135,0.9,ok,0.14727316708586305,0.010272143169509085,0.029425910558021795,1.0,True
+endothelial_source,onboard_1g_vs_ground,NCBI_counts,Myogenesis,128,0.64,ok,-0.10188217935700833,-0.0018446180555553027,-0.009945373440134686,0.8,False
+endothelial_source,onboard_1g_vs_ground,NCBI_counts,Unfolded Protein Response,100,0.8849557522123894,ok,0.08059295150564696,0.014759006963366739,0.04085563642685641,0.8,False
+endothelial_source,onboard_1g_vs_ground,NCBI_counts,Inflammatory Response,113,0.565,ok,0.00040774514832949327,0.0016300547370451945,0.009336964274250015,0.4,False
+endothelial_source,onboard_1g_vs_ground,NCBI_counts,Oxidative Phosphorylation,169,0.845,ok,0.3335083516587511,0.010464711119710035,0.038683502742933196,0.8,False
+endothelial_source,onboard_1g_vs_ground,NCBI_counts,Reactive Oxygen Species Pathway,42,0.8571428571428571,ok,0.1492982435617158,0.00697327826074412,0.023887394279244023,1.0,True
+endothelial_source,onboard_1g_vs_ground,NCBI_counts,p53 Pathway,173,0.865,ok,0.32348724246998056,0.03538078012806711,0.1542455049724809,0.8,False
+endothelial_source,onboard_1g_vs_ground,NCBI_counts,Circadian clock,100,0.8928571428571429,ok,0.23613146780718197,0.0048358310626703815,0.027106414068788554,1.0,True
+endothelial_source,onboard_1g_vs_ground,NCBI_counts,Muscle contraction,95,0.46568627450980393,insufficient_coverage,,,,,False
+endothelial_source,microgravity_vs_ground,author_CPM,TNF-alpha Signaling via NF-kB,164,0.82,ok,-0.4254524751015936,-0.024342061540506554,-0.11162062076658626,1.0,True
+endothelial_source,microgravity_vs_ground,author_CPM,DNA Repair,135,0.9,ok,0.011390960158260383,0.005489510097442363,0.028991714726531503,0.3333333333333333,False
+endothelial_source,microgravity_vs_ground,author_CPM,Myogenesis,128,0.64,ok,-0.46561973845417,-0.022020700877989685,-0.0985143940564483,1.0,True
+endothelial_source,microgravity_vs_ground,author_CPM,Unfolded Protein Response,100,0.8849557522123894,ok,-0.12100786362071819,0.0005755373902511796,-0.01032185506351957,0.8333333333333334,False
+endothelial_source,microgravity_vs_ground,author_CPM,Inflammatory Response,113,0.565,ok,-0.2589807550348996,-0.013480504448891928,-0.055870641489971895,1.0,True
+endothelial_source,microgravity_vs_ground,author_CPM,Oxidative Phosphorylation,169,0.845,ok,0.4612894698106642,0.024257219991866696,0.10834413006647436,1.0,True
+endothelial_source,microgravity_vs_ground,author_CPM,Reactive Oxygen Species Pathway,42,0.8571428571428571,ok,0.2455557240128127,0.0076056398944677195,0.06530075488956599,1.0,True
+endothelial_source,microgravity_vs_ground,author_CPM,p53 Pathway,173,0.865,ok,-0.2171909226426182,-0.00973410054618451,-0.04168909526596931,0.8333333333333334,False
+endothelial_source,microgravity_vs_ground,author_CPM,Circadian clock,100,0.8928571428571429,ok,0.16097798710774658,0.006462306993642253,0.043422399843453086,1.0,True
+endothelial_source,microgravity_vs_ground,author_CPM,Muscle contraction,95,0.46568627450980393,insufficient_coverage,,,,,False
+endothelial_source,microgravity_vs_ground,NCBI_counts,TNF-alpha Signaling via NF-kB,164,0.82,ok,-0.43299464384365327,-0.0249156347149303,-0.11351771395523541,1.0,True
+endothelial_source,microgravity_vs_ground,NCBI_counts,DNA Repair,135,0.9,ok,-0.0031985092819909484,0.005773539206781808,0.03053980324219774,0.6666666666666666,False
+endothelial_source,microgravity_vs_ground,NCBI_counts,Myogenesis,128,0.64,ok,-0.5038153291569345,-0.022320854147744262,-0.09992501156266637,1.0,True
+endothelial_source,microgravity_vs_ground,NCBI_counts,Unfolded Protein Response,100,0.8849557522123894,ok,-0.12392811203820656,-0.0003607326672722122,-0.010524306539812511,0.8333333333333334,False
+endothelial_source,microgravity_vs_ground,NCBI_counts,Inflammatory Response,113,0.565,ok,-0.2768521887838966,-0.013156851240090084,-0.05894629052330114,1.0,True
+endothelial_source,microgravity_vs_ground,NCBI_counts,Oxidative Phosphorylation,169,0.845,ok,0.4893290380288344,0.025307009765194732,0.11354173611338958,1.0,True
+endothelial_source,microgravity_vs_ground,NCBI_counts,Reactive Oxygen Species Pathway,42,0.8571428571428571,ok,0.27101081680786343,0.010365756959762273,0.0704810127035731,1.0,True
+endothelial_source,microgravity_vs_ground,NCBI_counts,p53 Pathway,173,0.865,ok,-0.21820830742753453,-0.00955165999030494,-0.04051156415620971,0.8333333333333334,False
+endothelial_source,microgravity_vs_ground,NCBI_counts,Circadian clock,100,0.8928571428571429,ok,0.13740890948986426,0.004831970935513241,0.03652676021643608,1.0,True
+endothelial_source,microgravity_vs_ground,NCBI_counts,Muscle contraction,95,0.46568627450980393,insufficient_coverage,,,,,False
+MG63_source_matched5,microgravity_vs_onboard_1g,author_counts,TNF-alpha Signaling via NF-kB,183,0.915,ok,0.8433850770465166,0.0830101282549911,0.6158857201661965,1.0,True
+MG63_source_matched5,microgravity_vs_onboard_1g,author_counts,DNA Repair,137,0.9133333333333333,ok,-0.6119389632206761,-0.009354408654385082,-0.08392391005493494,1.0,True
+MG63_source_matched5,microgravity_vs_onboard_1g,author_counts,Myogenesis,190,0.95,ok,-0.269373189387375,0.005451239514341344,0.04164072836204606,1.0,False
+MG63_source_matched5,microgravity_vs_onboard_1g,author_counts,Unfolded Protein Response,102,0.9026548672566371,ok,-0.00029025240634469293,0.02838499390248639,0.19418810922607932,0.6,False
+MG63_source_matched5,microgravity_vs_onboard_1g,author_counts,Inflammatory Response,177,0.885,ok,0.2744097181446114,0.04084400846201813,0.3236276963059082,1.0,True
+MG63_source_matched5,microgravity_vs_onboard_1g,author_counts,Oxidative Phosphorylation,173,0.865,ok,-0.7043713817718058,0.00066405674555714,-0.018093363206919344,1.0,False
+MG63_source_matched5,microgravity_vs_onboard_1g,author_counts,Reactive Oxygen Species Pathway,43,0.8775510204081632,ok,-0.3913405737458697,0.006463445717497018,0.037353225447910754,1.0,False
+MG63_source_matched5,microgravity_vs_onboard_1g,author_counts,p53 Pathway,186,0.93,ok,-0.13258276181300926,0.02110955753485677,0.1669287363816626,0.8,False
+MG63_source_matched5,microgravity_vs_onboard_1g,author_counts,Circadian clock,106,0.9464285714285714,ok,-0.40298682119456647,0.015028357114442614,0.0841783531412037,1.0,False
+MG63_source_matched5,microgravity_vs_onboard_1g,author_counts,Muscle contraction,192,0.9411764705882353,ok,-0.30903022174519046,-0.0005511172733538849,0.023768405100985324,1.0,False
+MG63_source_matched5,microgravity_vs_onboard_1g,NCBI_counts,TNF-alpha Signaling via NF-kB,183,0.915,ok,0.8408692305059657,0.08840518768503858,0.6275610848577498,1.0,True
+MG63_source_matched5,microgravity_vs_onboard_1g,NCBI_counts,DNA Repair,137,0.9133333333333333,ok,-0.5894444402461175,-0.009491436634760153,-0.05632984893350157,1.0,True
+MG63_source_matched5,microgravity_vs_onboard_1g,NCBI_counts,Myogenesis,190,0.95,ok,-0.38887650219511327,0.00490865517153527,0.033715680825569416,1.0,False
+MG63_source_matched5,microgravity_vs_onboard_1g,NCBI_counts,Unfolded Protein Response,102,0.9026548672566371,ok,0.021990233977723758,0.0297228436248832,0.21673410580461527,0.4,False
+MG63_source_matched5,microgravity_vs_onboard_1g,NCBI_counts,Inflammatory Response,177,0.885,ok,0.2265754323128582,0.04205037695868169,0.3216482425146854,1.0,True
+MG63_source_matched5,microgravity_vs_onboard_1g,NCBI_counts,Oxidative Phosphorylation,173,0.865,ok,-0.6602038107299011,0.0027330323960464975,0.013721225656741609,1.0,False
+MG63_source_matched5,microgravity_vs_onboard_1g,NCBI_counts,Reactive Oxygen Species Pathway,43,0.8775510204081632,ok,-0.3823293764772932,0.007459308211444804,0.0647316592173226,1.0,False
+MG63_source_matched5,microgravity_vs_onboard_1g,NCBI_counts,p53 Pathway,186,0.93,ok,-0.13420664220532974,0.02372126357219806,0.1773812219245945,0.8,False
+MG63_source_matched5,microgravity_vs_onboard_1g,NCBI_counts,Circadian clock,106,0.9464285714285714,ok,-0.40538888317626265,0.01879982426810911,0.11397809237331535,1.0,False
+MG63_source_matched5,microgravity_vs_onboard_1g,NCBI_counts,Muscle contraction,192,0.9411764705882353,ok,-0.4006243153513659,0.0024305956743255197,0.02037555280719361,1.0,False

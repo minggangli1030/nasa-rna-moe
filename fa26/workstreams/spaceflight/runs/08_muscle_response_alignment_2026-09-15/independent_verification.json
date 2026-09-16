@@ -1,0 +1,15 @@
+{
+  "sample_order_and_input_checkpoint_hashes_verified": true,
+  "n_encodings": 76,
+  "n_biological_samples": 38,
+  "n_new_donor_pairs": 7,
+  "paired_labels_verified": true,
+  "fixed_probe_predictions_reproduced": true,
+  "group_shifts_recomputed": 88,
+  "projection_sums_recomputed": 400,
+  "opposite_pool_evaluation_verified": true,
+  "all_primary_signs_retained_under_training_source_deletion": true,
+  "EPS_primary_signs_retained_wider_mask": true,
+  "all_flight_probe_signs_retained_processing_routes": true,
+  "report_script_sha256": "9627725c3948866a37734ad11916cd9b47d4ec070d2239e45bad8c0ff73c3ea9"
+}

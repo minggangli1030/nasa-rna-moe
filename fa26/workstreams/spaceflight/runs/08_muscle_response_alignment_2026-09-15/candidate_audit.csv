@@ -1,0 +1,5 @@
+accession,species,material,exposure,decision,reason,source
+GSE200335,human,primary skeletal muscle cells,24h electrical pulse stimulation vs paired unstimulated,include: human muscle non-radiation challenge,7 donor pairs; exact title/treatment agreement; gene count matrix; no radiation exposure,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE200335
+GSE318627,mouse,3D C2C12 muscle constructs,20Gy X-ray / normal / unirradiated coculture with senescent construct,candidate only; excluded from primary human test,Mouse; overall design says n2 but sample records show n3; two constructs share dishes; independence and exact post-IR harvest timing need resolution,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318627
+GSE171644,mouse,skeletal muscle,ammonia,exclude from human muscle analysis,Primary GEO says mouse; secondary search index had mislabeled human,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE171644
+GSE274636,human,rhabdomyosarcoma,MYOD1 construct expression,exclude,Cancer context and sequenced contrast not controlled radiation despite title mentioning radiation resistance,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE274636

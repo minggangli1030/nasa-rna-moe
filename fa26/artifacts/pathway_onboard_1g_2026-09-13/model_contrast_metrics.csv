@@ -1,0 +1,16 @@
+contrast,role,representation,effect_over_within_rms,split_positive_fraction,split_median_cosine,loo_min_direction_cosine,resampling_unit,n_effective_units,n_balanced_splits
+GSE157937|microgravity_vs_onboard_1g|NCBI,primary,raw,0.9268639823238065,0.5,-0.12608141127074163,0.27677383095127706,within-condition sample splits,5,6
+GSE157937|microgravity_vs_onboard_1g|NCBI,primary,model_mean,1.084352731704712,0.6666666666666666,0.1611051324169548,0.6298837065696716,within-condition sample splits,5,6
+GSE157937|microgravity_vs_onboard_1g|NCBI,primary,model_std,0.9613403081893921,0.3333333333333333,-0.07739890462422483,0.31855812668800354,within-condition sample splits,5,6
+GSE157937|onboard_1g_vs_ground|NCBI,primary,raw,0.5820909923294454,0.3333333333333333,-0.2956581742625083,0.38234269054680864,within-condition sample splits,5,6
+GSE157937|onboard_1g_vs_ground|NCBI,primary,model_mean,0.4974013566970825,0.0,-0.47291017923195294,0.3684820234775543,within-condition sample splits,5,6
+GSE157937|onboard_1g_vs_ground|NCBI,primary,model_std,0.5135852694511414,0.16666666666666666,-0.48377529307924927,0.39312809705734253,within-condition sample splits,5,6
+GSE157937|microgravity_vs_ground|NCBI,primary,raw,0.8007968099398558,0.4444444444444444,-0.021500698034327907,0.6877933170980699,within-condition sample splits,6,9
+GSE157937|microgravity_vs_ground|NCBI,primary,model_mean,0.9181493520736694,0.7777777777777778,0.3672057001591061,0.8744563460350037,within-condition sample splits,6,9
+GSE157937|microgravity_vs_ground|NCBI,primary,model_std,0.7509943842887878,0.3333333333333333,-0.12057739001330076,0.6849352717399597,within-condition sample splits,6,9
+GSE224805|microgravity_vs_onboard_1g|NCBI,sensitivity,raw,2.716709155989749,1.0,0.7921032237230021,0.9620846053849132,within-condition sample splits,5,6
+GSE224805|microgravity_vs_onboard_1g|NCBI,sensitivity,model_mean,4.6765313148498535,1.0,0.963947890696843,0.9908341765403748,within-condition sample splits,5,6
+GSE224805|microgravity_vs_onboard_1g|NCBI,sensitivity,model_std,4.919086933135986,1.0,0.9508608054745573,0.9922143220901489,within-condition sample splits,5,6
+GSE224805|microgravity_vs_onboard_1g|author,primary,raw,2.7249708623378748,1.0,0.8348462001634905,0.984378207264783,within-condition sample splits,6,9
+GSE224805|microgravity_vs_onboard_1g|author,primary,model_mean,4.012866020202637,1.0,0.9534314848801375,0.9901608824729919,within-condition sample splits,6,9
+GSE224805|microgravity_vs_onboard_1g|author,primary,model_std,5.076042652130127,1.0,0.9538306837911749,0.9960635900497437,within-condition sample splits,6,9

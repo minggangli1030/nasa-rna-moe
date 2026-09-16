@@ -1,0 +1,49 @@
+model,context,n,auroc,leave_one_auroc_min,leave_one_auroc_max,leave_one_BA_min,leave_one_BA_max,exact_fixed_score_one_sided_permutation_p,null_label_assignments,multiplicity_adjusted
+ncbi__bridge__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,6,0.888888888888889,0.8333333333333333,1.0,0.5,0.75,0.1,20,False
+ncbi__bridge__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,6,0.6666666666666667,0.5,1.0,0.75,1.0,0.35,20,False
+ncbi__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,8,0.3125,0.16666666666666666,0.41666666666666663,0.5,0.5,0.8285714285714286,70,False
+ncbi__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,8,0.0,0.0,0.0,0.5,0.5,1.0,70,False
+ncbi__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,8,0.1875,0.08333333333333333,0.25,0.5,0.5,0.9428571428571428,70,False
+ncbi__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,8,0.0,0.0,0.0,0.5,0.5,1.0,70,False
+ncbi__bridge__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,6,1.0,1.0,1.0,1.0,1.0,0.05,20,False
+ncbi__bridge__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,6,1.0,1.0,1.0,0.75,1.0,0.05,20,False
+ncbi__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,8,0.875,0.8333333333333334,1.0,0.7083333333333333,0.875,0.05714285714285714,70,False
+ncbi__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,8,1.0,1.0,1.0,0.5,0.5,0.014285714285714285,70,False
+ncbi__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,8,1.0,1.0,1.0,0.6666666666666666,0.8333333333333333,0.014285714285714285,70,False
+ncbi__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,8,0.5625,0.41666666666666663,0.6666666666666667,0.5,0.6666666666666666,0.44285714285714284,70,False
+ncbi__expression__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,6,1.0,1.0,1.0,0.5,0.75,0.05,20,False
+ncbi__expression__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,6,0.7777777777777779,0.6666666666666666,1.0,0.5,0.5,0.2,20,False
+ncbi__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,8,0.75,0.6666666666666666,0.9166666666666667,0.5,0.5,0.17142857142857143,70,False
+ncbi__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,8,1.0,1.0,1.0,0.5,0.5,0.014285714285714285,70,False
+ncbi__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,8,0.75,0.6666666666666666,1.0,0.5,0.5,0.17142857142857143,70,False
+ncbi__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,8,0.9375,0.9166666666666666,1.0,0.5,0.5,0.02857142857142857,70,False
+ncbi__expression__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,6,1.0,1.0,1.0,0.5,0.5,0.05,20,False
+ncbi__expression__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,6,0.888888888888889,0.8333333333333333,1.0,0.5,0.5,0.1,20,False
+ncbi__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,8,0.75,0.6666666666666666,0.9166666666666667,0.5,0.5,0.17142857142857143,70,False
+ncbi__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,8,1.0,1.0,1.0,0.5,0.5,0.014285714285714285,70,False
+ncbi__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,8,0.75,0.6666666666666666,1.0,0.5,0.5,0.17142857142857143,70,False
+ncbi__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,8,0.6875,0.5833333333333334,0.9166666666666667,0.5,0.5,0.24285714285714285,70,False
+original__bridge__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,6,1.0,1.0,1.0,0.5,0.5,0.05,20,False
+original__bridge__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,6,0.6666666666666667,0.5,1.0,0.5,0.5,0.35,20,False
+original__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,8,0.75,0.6666666666666666,0.9166666666666666,0.5,0.5,0.17142857142857143,70,False
+original__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,8,0.125,0.0,0.16666666666666669,0.5,0.5,0.9714285714285714,70,False
+original__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,8,0.625,0.5,0.75,0.5,0.5,0.34285714285714286,70,False
+original__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,8,0.3125,0.08333333333333333,0.41666666666666663,0.5,0.5,0.8285714285714286,70,False
+original__bridge__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,6,1.0,1.0,1.0,1.0,1.0,0.05,20,False
+original__bridge__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,6,1.0,1.0,1.0,0.5,0.5,0.05,20,False
+original__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,8,0.8125,0.75,1.0,0.5,0.6666666666666666,0.1,70,False
+original__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,8,1.0,1.0,1.0,0.8333333333333333,1.0,0.014285714285714285,70,False
+original__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,8,1.0,1.0,1.0,0.5,0.5,0.014285714285714285,70,False
+original__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,8,0.75,0.6666666666666666,0.8333333333333334,0.5,0.5,0.17142857142857143,70,False
+original__expression__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,6,1.0,1.0,1.0,0.75,1.0,0.05,20,False
+original__expression__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,6,0.6666666666666667,0.5,1.0,0.75,1.0,0.35,20,False
+original__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,8,0.6875,0.5833333333333333,0.8333333333333334,0.5,0.5,0.24285714285714285,70,False
+original__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,8,1.0,1.0,1.0,0.5,0.5,0.014285714285714285,70,False
+original__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,8,0.8125,0.75,1.0,0.5,0.5,0.1,70,False
+original__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,8,0.8125,0.75,0.9166666666666667,0.5,0.5,0.1,70,False
+original__expression__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,6,1.0,1.0,1.0,0.5,0.5,0.05,20,False
+original__expression__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,6,1.0,1.0,1.0,0.5,0.5,0.05,20,False
+original__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,8,0.6875,0.5833333333333333,0.8333333333333334,0.5,0.5,0.24285714285714285,70,False
+original__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,8,1.0,1.0,1.0,0.5,0.5,0.014285714285714285,70,False
+original__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,8,0.75,0.6666666666666666,1.0,0.5,0.5,0.17142857142857143,70,False
+original__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,8,0.6875,0.5833333333333334,0.9166666666666667,0.5,0.5,0.24285714285714285,70,False

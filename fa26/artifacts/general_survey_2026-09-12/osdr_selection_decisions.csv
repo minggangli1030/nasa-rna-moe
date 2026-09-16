@@ -1,0 +1,121 @@
+study,material,reason,samples,stratum
+OSD-100,left eye,count_file_not_in_supplied_VM_cache,12,
+OSD-101,Left gastrocnemius,selected_up_to_6_per_condition,12,|||c57bl/6j|female|16 {week}||37 {day}||liquid nitrogen
+OSD-102,Left kidney,count_file_not_in_supplied_VM_cache,12,
+OSD-103,Left quadriceps femoris,selected_up_to_6_per_condition,12,|||c57bl/6j|female|16 {week}||37 {day}||liquid nitrogen
+OSD-104,Soleus-both sides,selected_up_to_6_per_condition,12,|||c57bl/6j|female|16 {week}||37 {day}||rnalater
+OSD-105,Left tibialis anterior,selected_up_to_6_per_condition,12,|||c57bl/6j|female|16 {week}||||rnalater
+OSD-137,Liver,fewer_than_3_each_after_matching,4,|||balb/c|female|12 {week}||39 {day}||liquid nitrogen
+OSD-137,Liver,fewer_than_3_each_after_matching,5,|||balb/c|female|12 {week}||40 {day}||liquid nitrogen
+OSD-137,Liver,fewer_than_3_each_after_matching,3,|||balb/c|female|12 {week}||41 {day}||liquid nitrogen
+OSD-161,Adrenal gland,count_file_not_in_supplied_VM_cache,10,
+OSD-162,eye,count_file_not_in_supplied_VM_cache,10,
+OSD-163,Left kidney,count_file_not_in_supplied_VM_cache,12,
+OSD-164,Liver,fewer_than_3_each_after_matching,3,|||c57bl/6ntac|female|8 {month}||21 {day}||mini cold bag to -80c freezer
+OSD-164,Liver,fewer_than_3_each_after_matching,3,|||c57bl/6ntac|female|8 {month}||21 {day}||mini cold bag to melfi
+OSD-164,Spleen,fewer_than_3_each_after_matching,3,|||c57bl/6ntac|female|8 {month}||21 {day}||mini cold bag to -80c freezer
+OSD-164,Spleen,fewer_than_3_each_after_matching,3,|||c57bl/6ntac|female|8 {month}||21 {day}||mini cold bag to melfi
+OSD-168,Liver,count_file_not_in_supplied_VM_cache,28,
+OSD-173,liver,count_file_not_in_supplied_VM_cache,4,
+OSD-194,Left retina,count_file_not_in_supplied_VM_cache,8,
+OSD-194,Right retina,count_file_not_in_supplied_VM_cache,1,
+OSD-238,dorsal skin,count_file_not_in_supplied_VM_cache,18,
+OSD-239,femoral skin,count_file_not_in_supplied_VM_cache,17,
+OSD-240,dorsal skin,count_file_not_in_supplied_VM_cache,20,
+OSD-241,femoral lateral skin,count_file_not_in_supplied_VM_cache,19,
+OSD-242,Liver,count_file_not_in_supplied_VM_cache,9,
+OSD-243,dorsal skin,count_file_not_in_supplied_VM_cache,37,
+OSD-244,Thymus,count_file_not_in_supplied_VM_cache,38,
+OSD-245,Liver,selected_up_to_6_per_condition,12,ISS-T|||c57bl/6ntac|female|36 {week}|||-80 {degree celsius}|liquid nitrogen
+OSD-245,Liver,selected_up_to_6_per_condition,12,LAR|||c57bl/6ntac|female|36 {week}|||{not available}|liquid nitrogen
+OSD-246,Spleen,count_file_not_in_supplied_VM_cache,31,
+OSD-247,descending colon,count_file_not_in_supplied_VM_cache,36,
+OSD-248,Left Lung,count_file_not_in_supplied_VM_cache,39,
+OSD-253,Left kidney,count_file_not_in_supplied_VM_cache,39,
+OSD-254,dorsal skin,count_file_not_in_supplied_VM_cache,40,
+OSD-255,Right retina,count_file_not_in_supplied_VM_cache,16,
+OSD-270,Heart,count_file_not_in_supplied_VM_cache,5,
+OSD-288,Spleen,count_file_not_in_supplied_VM_cache,9,
+OSD-289,thymus,count_file_not_in_supplied_VM_cache,15,
+OSD-326,Quadriceps femoris,selected_up_to_6_per_condition,8,|||c57bl/6j|male|9 {week}||24 to 28 {day}||snap frozen
+OSD-352,Brain,fewer_than_3_each_after_matching,2,|||balb/c|female|12 {week}||39 {day}||liquid nitrogen
+OSD-352,Brain,fewer_than_3_each_after_matching,3,|||balb/c|female|12 {week}||41 {day}||liquid nitrogen
+OSD-352,Brain,fewer_than_3_each_after_matching,1,|||balb/c|female|12 {week}||42 {day}||liquid nitrogen
+OSD-379,Left Lobe of the Liver,selected_up_to_6_per_condition,12,ISS-T|OLD||balb/canntac|female||||-80 {degree celsius}|liquid nitrogen
+OSD-379,Left Lobe of the Liver,selected_up_to_6_per_condition,12,ISS-T|YNG||balb/canntac|female||||-80 {degree celsius}|liquid nitrogen
+OSD-379,Left Lobe of the Liver,selected_up_to_6_per_condition,12,LAR|OLD||balb/canntac|female||||{not applicable}|liquid nitrogen
+OSD-379,Left Lobe of the Liver,selected_up_to_6_per_condition,12,LAR|YNG||balb/canntac|female||||{not applicable}|liquid nitrogen
+OSD-397,Left retina,count_file_not_in_supplied_VM_cache,6,
+OSD-397,Right retina,count_file_not_in_supplied_VM_cache,10,
+OSD-401,Gastrocnemius,selected_up_to_6_per_condition,6,|||balb/c|female|30 {week}||9 {week}||rnalater
+OSD-401,Quadriceps femoris,selected_up_to_6_per_condition,6,|||balb/c|female|30 {week}||9 {week}||rnalater
+OSD-419,Right gastrocnemius,selected_up_to_6_per_condition,10,|||c57bl/6j|female|16 {week}||37 {day}|mini cold bag to -80c freezer|rnalater
+OSD-420,Spleen-distal,count_file_not_in_supplied_VM_cache,20,
+OSD-421,thymus,count_file_not_in_supplied_VM_cache,20,
+OSD-426,Cells,count_file_not_in_supplied_VM_cache,18,
+OSD-457,Cerebrum,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen
+OSD-457,Cerebrum,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen
+OSD-457,Kidney,selected_up_to_6_per_condition,6,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen
+OSD-457,Kidney,selected_up_to_6_per_condition,6,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen
+OSD-457,Liver,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen
+OSD-457,Liver,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen
+OSD-457,Mandible,selected_up_to_6_per_condition,6,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen
+OSD-457,Mandible,selected_up_to_6_per_condition,6,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen
+OSD-457,Spleen,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen
+OSD-457,Spleen,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen
+OSD-457,Temporal Bone,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen
+OSD-457,Temporal Bone,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen
+OSD-457,brown adipose tissue,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen
+OSD-457,brown adipose tissue,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen
+OSD-457,thymus,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen
+OSD-457,thymus,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen
+OSD-457,white adipose tissue,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen
+OSD-457,white adipose tissue,selected_up_to_6_per_condition,12,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen
+OSD-462,Left kidney,count_file_not_in_supplied_VM_cache,28,
+OSD-463,Left Lobe of the Liver,selected_up_to_6_per_condition,12,|||c57bl/6j|male|16-17 {week}||38 {day}||liquid nitrogen
+OSD-464,Left Lung,selected_up_to_6_per_condition,12,|||c57bl/6j|male|16-17 {week}||38 {day}||liquid nitrogen
+OSD-47,Liver,fewer_than_3_each_after_matching,4,|||c57bl/6ntac|female|8 {month}||21 {day}||mini cold bag
+OSD-47,Liver,fewer_than_3_each_after_matching,2,|||c57bl/6ntac|female|8 {month}||22 {day}||mini cold bag
+OSD-48,Liver,selected_up_to_6_per_condition,10,||C|c57bl/6j|female|16 {week}||37 {day}|mini cold bag to -80c freezer|rlt buffer homogenized and snap frozen
+OSD-48,Liver,fewer_than_3_each_after_matching,4,||I|c57bl/6j|female|16 {week}||37 {day}|mini cold bag to -80c freezer|mini cold bag to -80c freezer
+OSD-506,Spleen,count_file_not_in_supplied_VM_cache,19,
+OSD-511,mammary gland,count_file_not_in_supplied_VM_cache,25,
+OSD-512,adrenal gland,count_file_not_in_supplied_VM_cache,20,
+OSD-513,Left kidney,count_file_not_in_supplied_VM_cache,20,
+OSD-515,thymus,count_file_not_in_supplied_VM_cache,20,
+OSD-525,Cerebellum,count_file_not_in_supplied_VM_cache,20,
+OSD-561,right hemisphere of cerebellum,count_file_not_in_supplied_VM_cache,26,
+OSD-562,Right hippocampus,fewer_than_3_each_after_matching,5,ISS-T|OLD||c57bl/6ntac|female|||||cryochiller
+OSD-562,Right hippocampus,fewer_than_3_each_after_matching,3,ISS-T|OLD||c57bl/6ntac|female|||||liquid nitrogen
+OSD-562,Right hippocampus,fewer_than_3_each_after_matching,4,ISS-T|YNG||c57bl/6ntac|female|||||cryochiller
+OSD-562,Right hippocampus,fewer_than_3_each_after_matching,3,ISS-T|YNG||c57bl/6ntac|female|||||liquid nitrogen
+OSD-562,Right hippocampus,selected_up_to_6_per_condition,6,LAR|OLD||c57bl/6ntac|female|||||for spatial transcriptomics: right brain hemispheres were placed in oct compound and placed on dry ice until frozen throughout; for bulkrnaseq: right brain hemispheres were snap frozen in liquid nitrogen
+OSD-562,Right hippocampus,selected_up_to_6_per_condition,6,LAR|YNG||c57bl/6ntac|female|||||for spatial transcriptomics: right brain hemispheres were placed in oct compound and placed on dry ice until frozen throughout; for bulkrnaseq: right brain hemispheres were snap frozen in liquid nitrogen
+OSD-563,right hemisphere of cerebellum,count_file_not_in_supplied_VM_cache,10,
+OSD-564,Right hippocampus,selected_up_to_6_per_condition,10,|||b6129sf2/j|female|14 - 15 {week}||28 {day}|cryochiller|for spatial transcriptomics: right brain hemispheres were placed in oct compound and placed on dry ice until frozen throughout; for bulkrnaseq: right brain hemispheres were snap frozen in liquid nitrogen
+OSD-576,Right tibialis anterior,selected_up_to_6_per_condition,12,|||c57bl/6j|male|16-17 {week}||38 {day}||liquid nitrogen
+OSD-580,Heart,fewer_than_3_each_after_matching,5,ISS-T|OLD||c57bl/6ntac|female|||||rnalater (time at 4c unknown)
+OSD-580,Heart,fewer_than_3_each_after_matching,5,ISS-T|OLD||c57bl/6ntac|female|||||rnalater for 48-72 hours at 4c
+OSD-580,Heart,fewer_than_3_each_after_matching,5,ISS-T|YNG||c57bl/6ntac|female|||||rnalater (time at 4c unknown)
+OSD-580,Heart,fewer_than_3_each_after_matching,5,ISS-T|YNG||c57bl/6ntac|female|||||rnalater for 48-72 hours at 4c
+OSD-580,heart right ventricle,selected_up_to_6_per_condition,10,LAR|OLD||c57bl/6ntac|female|||||liquid nitrogen
+OSD-580,heart right ventricle,selected_up_to_6_per_condition,10,LAR|YNG||c57bl/6ntac|female|||||liquid nitrogen
+OSD-599,Heart,selected_up_to_6_per_condition,6,|||c57bl/6j|female|9 - 11 {week}||30 {day}||rnalater or rnaprotect or liquid nitrogen
+OSD-612,Left cerebral hemisphere,count_file_not_in_supplied_VM_cache,10,
+OSD-613,Left cerebral hemisphere,count_file_not_in_supplied_VM_cache,18,
+OSD-665,Right extensor digitorum longus,selected_up_to_6_per_condition,12,|||c57bl/6j|male|16-17 {week}||38 {day}||liquid nitrogen
+OSD-666,Right quadriceps femoris,selected_up_to_6_per_condition,12,|||c57bl/6j|male|16-17 {week}||38 {day}||liquid nitrogen
+OSD-667,Colon,fewer_than_3_each_after_matching,4,|||b6129sf2/j|female|14-15 {week}|wild type|28 {day}|cryochiller|rnalater for 24 hours
+OSD-667,Colon,fewer_than_3_each_after_matching,5,|||b6129sf2/j|female|14-15 {week}|wild type|29 {day}|cryochiller|rnalater for 24 hours
+OSD-667,Colon,fewer_than_3_each_after_matching,4,|||b6;129s2|female|14-15 {week}|p21-null|28 {day}|cryochiller|rnalater for 24 hours
+OSD-667,Colon,selected_up_to_6_per_condition,6,|||b6;129s2|female|14-15 {week}|p21-null|29 {day}|cryochiller|rnalater for 24 hours
+OSD-686,Liver,selected_up_to_6_per_condition,9,|||c57bl/6j|male|9 {week}||30 {day}||liquid nitrogen
+OSD-690,Bone Marrow,count_file_not_in_supplied_VM_cache,24,
+OSD-714,Soleus,fewer_than_3_each_after_matching,6,|||c57bl/6j|male|8 {week}||39 {day}||liquid nitrogen
+OSD-714,Soleus,fewer_than_3_each_after_matching,6,|||c57bl/6j|male|9 {week}||30 {day}||liquid nitrogen
+OSD-714,Soleus,fewer_than_3_each_after_matching,3,|||c57bl/6ncrl|male|8 {week}||39 {day}||liquid nitrogen
+OSD-714,Soleus,fewer_than_3_each_after_matching,6,|||c57bl/6ncrl|male|9 {week}||30 {day}||liquid nitrogen
+OSD-770,Right soleus,selected_up_to_6_per_condition,12,|||c57bl/6j|male|16 - 17 {week}||38 {day}||liquid nitrogen
+OSD-771,Right kidney,count_file_not_in_supplied_VM_cache,40,
+OSD-98,Adrenal glands- both sides,count_file_not_in_supplied_VM_cache,11,
+OSD-99,Extensor digitorum longus- both sides,selected_up_to_6_per_condition,12,|||c57bl/6j|female|16 {week}||37 {day}|mini cold bag to -80c freezer|rnalater

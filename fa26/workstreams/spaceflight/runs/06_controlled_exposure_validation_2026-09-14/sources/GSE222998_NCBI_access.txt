@@ -1,0 +1,1 @@
+{'study': 'GSE222998', 'returncode': 56, 'valid_gzip': False, 'stderr': 'curl: (56) The requested URL returned error: 404\n', 'url': 'https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&acc=GSE222998&format=file&file=GSE222998_raw_counts_GRCh38.p13_NCBI.tsv.gz'}

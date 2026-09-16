@@ -1,0 +1,6 @@
+{
+  "timing": "After inspecting prespecified run07 outcomes",
+  "reason": "Common-count BRIDGE IR/control head transferred to 2Gy IMR90; test sensitivity to each training source before interpreting this lead",
+  "scope": "Both processing routes and both features; remove each entire training file; fixed C1 and threshold0; evaluate all six outside-study strata; no selecting or tuning models",
+  "additional": "Single-test-sample deletion and exact fixed-score label permutation summaries are descriptive, unadjusted, tiny-N; examine unchanged flight heads on new irradiation profiles as out-of-domain diagnostics"
+}

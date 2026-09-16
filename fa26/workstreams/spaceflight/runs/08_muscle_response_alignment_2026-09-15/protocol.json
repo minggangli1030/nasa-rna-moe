@@ -1,0 +1,24 @@
+{
+  "created_utc": "2026-09-15T21:16:53.571979+00:00",
+  "question": "Does the fixed irradiation-associated probe respond to human muscle flight and non-radiation muscle stimulation, and does its direction support the fixed flight head?",
+  "new_data": "GSE200335, all 14 human primary muscle samples, 7 matched donor EPS/control pairs; EPS is not radiation and not a flight label",
+  "existing_data": "24 nonstimulated muscle chips from both previously explored flights; no new biological replication",
+  "fixed_models": "Run07 ncbi BRIDGE IR/control absolute head primary; original-processing BRIDGE head sensitivity; unchanged GSE298393 flight heads YA/OS; no head or encoder training",
+  "processing": "NCBI counts EPS divided by pinned human exon length, rescale canonical TPM. Flight original/harmonized inputs reused and re-encoded after matching irradiation gene coverage where possible. Explicitly report coverage mismatches and original-mask sensitivity.",
+  "metrics": [
+    "paired EPS-minus-control probe and flight logits for each donor",
+    "probe FLT-minus-GC by flight/pool and label threshold calls; out-of-domain, not exposure prevalence",
+    "flight-logit perturbation from removing the probe-normal component relative to training-ground embedding mean; exact algebraic decomposition only",
+    "sensitivity to raw embedding versus radiation-training-standardized metric, both probe sources, both flights/pools",
+    "training-source-deletion stability of primary probe applied to flight, all deletions retained"
+  ],
+  "projection": "For metric s, q=(z-ref)/s, n=(w_probe*s)/norm(w_probe*s); component=q@n; projected contribution=component*(w_flight*s)@n. Standardized s uses probe training scales (excluded dimensions scale1); raw metric s=1. This is a geometry-dependent model diagnostic, not validated biological intervention or causal share. No percentages.",
+  "split": "Fixed flight head trained YA is evaluated on OS, and vice versa for GSE298393. Earlier GSE234465 is a previously explored failed-transfer diagnostic; EPS entirely outside flight-head training. Use training-pool ground means only as reference.",
+  "limits": [
+    "No tissue-matched radiation positive dataset verified yet",
+    "EPS is an exercise-like perturbation, not a radiation or microgravity experiment",
+    "No finite per-sample projection proves a named response is causally present",
+    "Donor pairs are evaluation units; chips share donor pools; no pooling as independent donors"
+  ],
+  "source_selection": "Pre-outcome metadata audit; excluded GSE318627 as primary due mouse species, co-cultured constructs and n2-vs-n3 discrepancy; GSE171644 is mouse despite secondary-index human label"
+}

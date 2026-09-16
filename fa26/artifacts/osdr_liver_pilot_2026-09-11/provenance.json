@@ -1,0 +1,40 @@
+{
+  "files": {
+    "fa26/osdr_pattern_pilot.py": "0bf32c3073001020ad010e5a922e3fe0c98c44ab78516a6e0abeff438d5e3301",
+    "fa26/pilot_robustness.py": "9e9bb51ca96484b343db02f07c50d49094a7bbdc19eb0de9824b59fa61557d13",
+    "fa26/bridge_infer_gtex.py": "058575f133524725febcae7aed1ee01f77eb3ab3684fa718d33496cf07b74396",
+    "fa26/audit_bridge_contract.py": "30fefe413b69cd89026a4a0da0a3a0f026b2d66a62d481c8e3da33bd76b94d80",
+    "fa26/bridge-rna-latest/upstream_embeddings/src/fm_embed/inference_model.py": "3c8308f751cf2a05d612364ffc2d456f2a969f9aece4f34743ab8635586aaf9e",
+    "fa26/bridge-rna-latest/upstream/preprocessing.py": "91b375f9f07366fbea7f248a219f7531378830351fa68136d27bf095c0dcd64e"
+  },
+  "output_hashes": {
+    "geometry.csv": "e017fefd6fb0c772eb2d4439da39f3685977234a14dd9340a00d24a5d26308cf",
+    "embeddings.npz": "639e0c871a726d4d0470643639adf816392e7420b5b14cc2af8683d65a9b1642",
+    "COMPLETE": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+    "REPORT.md": "c9107eca1e7fb8dc0cc9451c434322f66d6de7c5593c5dfdb1d295b6539ea3c7",
+    "robustness_notes.json": "dfea0f621d186fd1206d747e0df2dbd85487e315691430caa89737b2a5ce8d2b",
+    "candidate_decisions.csv": "15c1be349556e7d4cd4aa1ecbd641294ccaaed38d318eac94f9ca7d115dd8c6c",
+    "inputs.npz": "94a4017ac2478b5953581603e30669516eb34a0b720a10fdc6b8b86335226dcb",
+    "candidate_patterns.png": "d6cb82314dd04ca2691db1a2e8000fd08587629988b0db549c908de2ef44c26d",
+    "inference_report.json": "93f2e005d4aafce382d973c350c4269ed9984795dc92521650aeab23a72802a9",
+    "candidate_gene_bootstrap.csv": "d6423a72e6b9870ed066ffb35f0619db75cc288285e8bd51374be1cacc08d428",
+    "study_held_out_probe.csv": "8231f0481c7d5611a6db64e070752df3babe24282eba24d02de7931cf2090ce4",
+    "sample_qc.csv": "401c8afd3c1067a2b822fea5c90a8e9bb523a6da0241c87ae2c9d2442e833c0d",
+    "candidate_patterns.pdf": "3662aa78da851dcabb36a9fdbd7b4c956a912dbf7eccd172841ed31b6c260878",
+    "probe_predictions.csv": "73ff1a2699a85ea818ddd787858ef4fd7b1bc1f61621c112f2f81f470b946963",
+    "manifest.csv": "52e4d9f064a69b1c813234a9827ed30f20148a841a66b847d52f428ebe611da5",
+    "protocol.json": "3141cc0f690185d25113423a2da3e90a82b63de0659c9196b2ddc2dec7c136ba",
+    "analysis_summary.json": "91e05599a6f1ccae895829385490aa3fa7a272c52986bb3227b62caaffe07478",
+    "gene_shifts.csv": "842dc6b2cdc51662f4018c8ce534e54fd93b06c920d682e0db1e264b3f9399b8",
+    "pattern_overview.png": "81ce40f33ff380befab9fb087fcd452fe7d4d9de19e38bfdf833ec90897737aa",
+    "response_cosines.csv": "cbffa7964c90a4dde37aefb887bea0966bcc7d32e968dacbf1c9860415aaa2d7",
+    "response_bootstrap.csv": "d2ad6120c82b10274b2733e5f094f388bd3252bbf45d7557648b0f525ee5b3a8",
+    "input_audit.json": "bb1914d13dc559c499999928ddf2c415e26e9bd06344f7c661b5d30685605b75",
+    "pattern_overview.pdf": "9ac90ed00b56ca69f74ff80a2444724825ef707a575328f5efe45c7c98b97c5a"
+  },
+  "vm": "moe-reboot 149.165.175.241",
+  "vm_run_directory": "/media/volume/moe-reboot/fa26_pattern_pilot_20260911",
+  "status": "complete",
+  "gpu_job_running": false,
+  "notes": "34 samples; checkpoint frozen; no fine-tuning; source parity and repeat tests exact; pretraining overlap unverified"
+}

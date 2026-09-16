@@ -1,0 +1,65 @@
+model,evaluation,fold,n_train,auroc,balanced_accuracy,n,TP,TN,FP,FN,mean_positive_logit,mean_negative_logit
+expression_linear,held_out_expression_file,BFX01_expr.txt,28,1.0,1.0,10,5,5,0,0,10.835785788380822,-7.683255877728447
+expression_linear,held_out_expression_file,BFX02_expr.txt,32,1.0,1.0,6,3,3,0,0,9.569169761461538,-6.537024723712669
+expression_linear,held_out_expression_file,BFX17_expr.txt,26,1.0,1.0,12,6,6,0,0,5.180808728052246,-5.434989105754245
+expression_linear,held_out_expression_file,BFX36_expr.txt,28,1.0,1.0,10,5,5,0,0,11.304544385517417,-6.986237149862946
+expression_linear,external_lung_chip,Lung endothelium_6h,38,0.6875,0.5,8,4,0,4,0,23.6450801486296,21.824097287035286
+expression_linear,external_lung_chip,Lung endothelium_7d,38,1.0,0.5,8,4,0,4,0,38.269500631613276,27.039817260676184
+expression_linear,external_lung_chip,Lung epithelium_6h,38,0.75,0.5,8,4,0,4,0,23.56457372579156,21.9148505537921
+expression_linear,external_lung_chip,Lung epithelium_7d,38,0.6875,0.5,8,4,0,4,0,25.68738322076982,24.407142518406076
+expression_linear,other_cell_same_study,ADSC,38,1.0,0.5,6,3,0,3,0,16.72728439875501,4.372615139996825
+expression_linear,other_cell_same_study,HMVEC,38,1.0,0.5,6,3,0,3,0,15.888392194214871,8.979335668709309
+expression_linear,other_cell_same_study,HUVEC,38,1.0,0.5,6,3,0,3,0,10.286528911970157,2.8865379709984285
+expression_linear,other_cell_same_study,RPTEC,38,1.0,0.5,6,3,0,3,0,25.687235498435754,11.625252231317026
+expression_linear,radiation_vs_other_stress,bleomycin,28,1.0,0.5,10,5,0,5,0,11.304544385517417,2.0833184194686583
+expression_linear,radiation_vs_other_stress,antimycin,28,1.0,1.0,10,5,5,0,0,11.304544385517417,-1.4662376957927206
+expression_linear,radiation_vs_other_stress,oligomycin,28,1.0,1.0,10,5,5,0,0,11.304544385517417,-1.619926131886356
+expression_linear,radiation_vs_other_stress,rotenone,32,1.0,0.6666666666666666,6,3,1,2,0,9.569169761461538,-0.2855851916171939
+pca5_linear,held_out_expression_file,BFX01_expr.txt,28,1.0,1.0,10,5,5,0,0,11.241015406296375,-7.531464196955976
+pca5_linear,held_out_expression_file,BFX02_expr.txt,32,1.0,1.0,6,3,3,0,0,8.880867654581891,-7.835425777743264
+pca5_linear,held_out_expression_file,BFX17_expr.txt,26,1.0,1.0,12,6,6,0,0,5.0015824130877435,-5.441379264523924
+pca5_linear,held_out_expression_file,BFX36_expr.txt,28,1.0,1.0,10,5,5,0,0,10.95874294250423,-7.432405019600045
+pca5_linear,external_lung_chip,Lung endothelium_6h,38,0.6875,0.5,8,4,0,4,0,26.040691896925924,24.144463733043736
+pca5_linear,external_lung_chip,Lung endothelium_7d,38,1.0,0.5,8,4,0,4,0,41.49775857441584,29.569693098068875
+pca5_linear,external_lung_chip,Lung epithelium_6h,38,0.75,0.5,8,4,0,4,0,26.250264777470704,24.4275756618042
+pca5_linear,external_lung_chip,Lung epithelium_7d,38,0.6875,0.5,8,4,0,4,0,28.62618292106002,27.252593202909004
+pca5_linear,other_cell_same_study,ADSC,38,1.0,0.5,6,3,0,3,0,17.095236526512547,4.093440717899825
+pca5_linear,other_cell_same_study,HMVEC,38,1.0,0.5,6,3,0,3,0,15.631285782343951,8.583694751734155
+pca5_linear,other_cell_same_study,HUVEC,38,1.0,0.5,6,3,0,3,0,9.512046913461816,1.862033348842867
+pca5_linear,other_cell_same_study,RPTEC,38,1.0,0.5,6,3,0,3,0,27.46785574186842,11.86767746807861
+pca5_linear,radiation_vs_other_stress,bleomycin,28,1.0,0.6,10,5,1,4,0,10.95874294250423,1.606250360681892
+pca5_linear,radiation_vs_other_stress,antimycin,28,1.0,1.0,10,5,5,0,0,10.95874294250423,-1.8967405231906873
+pca5_linear,radiation_vs_other_stress,oligomycin,28,1.0,1.0,10,5,5,0,0,10.95874294250423,-2.199312565154652
+pca5_linear,radiation_vs_other_stress,rotenone,32,1.0,1.0,6,3,3,0,0,8.880867654581891,-1.3655566150443825
+bridge_meanstd_linear,held_out_expression_file,BFX01_expr.txt,28,1.0,1.0,10,5,5,0,0,3.526604357226165,-9.779848483783535
+bridge_meanstd_linear,held_out_expression_file,BFX02_expr.txt,32,1.0,1.0,6,3,3,0,0,7.77809828077307,-1.7866876071203162
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,26,1.0,1.0,12,6,6,0,0,5.277570978476578,-6.313506785983946
+bridge_meanstd_linear,held_out_expression_file,BFX36_expr.txt,28,1.0,1.0,10,5,5,0,0,9.73291391010253,-8.051424457047341
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,38,0.8125,0.625,8,1,4,0,3,-8.362519275981239,-16.111225236516788
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,38,1.0,1.0,8,4,4,0,0,14.395482360510893,-6.17535494967366
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,38,1.0,0.5,8,0,4,0,4,-10.403529829755863,-16.1073210458069
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,38,0.6875,0.5,8,0,4,0,4,-12.491718384224818,-14.012323197120248
+bridge_meanstd_linear,other_cell_same_study,ADSC,38,1.0,1.0,6,3,3,0,0,3.4745309041766324,-3.2868933592393197
+bridge_meanstd_linear,other_cell_same_study,HMVEC,38,1.0,0.5,6,0,3,0,3,-9.630344216497884,-13.447925860378058
+bridge_meanstd_linear,other_cell_same_study,HUVEC,38,1.0,0.5,6,0,3,0,3,-10.85654702175558,-19.347421840706875
+bridge_meanstd_linear,other_cell_same_study,RPTEC,38,1.0,0.5,6,3,0,3,0,14.932098177044239,4.681718409194777
+bridge_meanstd_linear,radiation_vs_other_stress,bleomycin,28,1.0,0.6,10,5,1,4,0,9.73291391010253,1.4695026863627163
+bridge_meanstd_linear,radiation_vs_other_stress,antimycin,28,1.0,1.0,10,5,5,0,0,9.73291391010253,-1.9039044723433687
+bridge_meanstd_linear,radiation_vs_other_stress,oligomycin,28,1.0,1.0,10,5,5,0,0,9.73291391010253,-2.083445585176299
+bridge_meanstd_linear,radiation_vs_other_stress,rotenone,32,1.0,0.5,6,3,0,3,0,7.77809828077307,3.2683712904336573
+six_programs_linear,held_out_expression_file,BFX01_expr.txt,28,1.0,0.5,10,0,5,0,5,-0.5947174596854075,-2.8207821714991312
+six_programs_linear,held_out_expression_file,BFX02_expr.txt,32,1.0,0.8333333333333333,6,2,3,0,1,0.006110961127066873,-2.113509680936233
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,26,0.2222222222222222,0.25,12,0,3,3,6,-2.0645445384238124,-0.3428876085463952
+six_programs_linear,held_out_expression_file,BFX36_expr.txt,28,1.0,0.5,10,5,0,5,0,9.470394211037997,2.2417471824607262
+six_programs_linear,external_lung_chip,Lung endothelium_6h,38,0.75,0.5,8,4,0,4,0,5.989986943480032,5.3672484853869475
+six_programs_linear,external_lung_chip,Lung endothelium_7d,38,1.0,0.5,8,4,0,4,0,9.092135657029619,6.734163270412341
+six_programs_linear,external_lung_chip,Lung epithelium_6h,38,0.4375,0.5,8,4,0,4,0,7.3709087259647665,7.294338222398427
+six_programs_linear,external_lung_chip,Lung epithelium_7d,38,0.5625,0.5,8,4,0,4,0,8.58451141527876,8.823900244485884
+six_programs_linear,other_cell_same_study,ADSC,38,1.0,0.5,6,0,3,0,3,-0.6394039164744173,-1.4383787431336987
+six_programs_linear,other_cell_same_study,HMVEC,38,0.0,0.5,6,3,0,3,0,1.205395807797186,1.9461950895680893
+six_programs_linear,other_cell_same_study,HUVEC,38,0.7777777777777778,0.5,6,2,1,2,1,0.663385553664391,0.047528695935039965
+six_programs_linear,other_cell_same_study,RPTEC,38,1.0,0.5,6,3,0,3,0,4.326693274727187,2.072878328049593
+six_programs_linear,radiation_vs_other_stress,bleomycin,28,1.0,0.5,10,5,0,5,0,9.470394211037997,5.895123999274177
+six_programs_linear,radiation_vs_other_stress,antimycin,28,1.0,0.5,10,5,0,5,0,9.470394211037997,3.8978196261839946
+six_programs_linear,radiation_vs_other_stress,oligomycin,28,1.0,0.6,10,5,1,4,0,9.470394211037997,0.5328303538165555
+six_programs_linear,radiation_vs_other_stress,rotenone,32,0.6666666666666667,0.6666666666666666,6,2,2,1,1,0.006110961127066873,-0.397396582576883

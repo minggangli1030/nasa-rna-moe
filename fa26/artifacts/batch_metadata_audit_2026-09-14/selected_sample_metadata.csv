@@ -1,0 +1,586 @@
+study,sample,species,tissue,condition_name,unit,survey_source,platform_id,instrument_model,library_strategy,library_source,library_selection,id.assay name,library_type,study.parameter value.sample preservation method,study.parameter value.carcass preservation method
+OSD-101,Mmus_C57-6J_GST_GC_Rep6_M38,mouse,skeletal muscle,ground,Mmus_C57-6J_GST_GC_Rep6_M38,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-101,Mmus_C57-6J_GST_GC_Rep3_M35,mouse,skeletal muscle,ground,Mmus_C57-6J_GST_GC_Rep3_M35,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-101,Mmus_C57-6J_GST_GC_Rep5_M37,mouse,skeletal muscle,ground,Mmus_C57-6J_GST_GC_Rep5_M37,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-101,Mmus_C57-6J_GST_GC_Rep4_M36,mouse,skeletal muscle,ground,Mmus_C57-6J_GST_GC_Rep4_M36,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-101,Mmus_C57-6J_GST_GC_Rep1_M33,mouse,skeletal muscle,ground,Mmus_C57-6J_GST_GC_Rep1_M33,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-101,Mmus_C57-6J_GST_GC_Rep2_M34,mouse,skeletal muscle,ground,Mmus_C57-6J_GST_GC_Rep2_M34,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-101,Mmus_C57-6J_GST_FLT_Rep2_M24,mouse,skeletal muscle,flight,Mmus_C57-6J_GST_FLT_Rep2_M24,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-101,Mmus_C57-6J_GST_FLT_Rep3_M25,mouse,skeletal muscle,flight,Mmus_C57-6J_GST_FLT_Rep3_M25,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-101,Mmus_C57-6J_GST_FLT_Rep5_M27,mouse,skeletal muscle,flight,Mmus_C57-6J_GST_FLT_Rep5_M27,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-101,Mmus_C57-6J_GST_FLT_Rep4_M26,mouse,skeletal muscle,flight,Mmus_C57-6J_GST_FLT_Rep4_M26,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-101,Mmus_C57-6J_GST_FLT_Rep6_M28,mouse,skeletal muscle,flight,Mmus_C57-6J_GST_FLT_Rep6_M28,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-101,Mmus_C57-6J_GST_FLT_Rep1_M23,mouse,skeletal muscle,flight,Mmus_C57-6J_GST_FLT_Rep1_M23,general_survey_2026-09-12,,,,,,OSD-101_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_GC_Rep3_M35,mouse,skeletal muscle,ground,Mmus_C57-6J_Quad_GC_Rep3_M35,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_GC_Rep6_M38,mouse,skeletal muscle,ground,Mmus_C57-6J_Quad_GC_Rep6_M38,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_GC_Rep4_M36,mouse,skeletal muscle,ground,Mmus_C57-6J_Quad_GC_Rep4_M36,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_GC_Rep1_M33,mouse,skeletal muscle,ground,Mmus_C57-6J_Quad_GC_Rep1_M33,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_GC_Rep2_M34,mouse,skeletal muscle,ground,Mmus_C57-6J_Quad_GC_Rep2_M34,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_GC_Rep5_M37,mouse,skeletal muscle,ground,Mmus_C57-6J_Quad_GC_Rep5_M37,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_FLT_Rep5_M27,mouse,skeletal muscle,flight,Mmus_C57-6J_Quad_FLT_Rep5_M27,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_FLT_Rep6_M28,mouse,skeletal muscle,flight,Mmus_C57-6J_Quad_FLT_Rep6_M28,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_FLT_Rep4_M26,mouse,skeletal muscle,flight,Mmus_C57-6J_Quad_FLT_Rep4_M26,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_FLT_Rep3_M25,mouse,skeletal muscle,flight,Mmus_C57-6J_Quad_FLT_Rep3_M25,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_FLT_Rep1_M23,mouse,skeletal muscle,flight,Mmus_C57-6J_Quad_FLT_Rep1_M23,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-103,Mmus_C57-6J_Quad_FLT_Rep2_M24,mouse,skeletal muscle,flight,Mmus_C57-6J_Quad_FLT_Rep2_M24,general_survey_2026-09-12,,,,,,OSD-103_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,Liquid Nitrogen,
+OSD-104,Mmus_C57-6J_SLS_GC_Rep1_M33,mouse,skeletal muscle,ground,Mmus_C57-6J_SLS_GC_Rep1_M33,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-104,Mmus_C57-6J_SLS_GC_Rep6_M38,mouse,skeletal muscle,ground,Mmus_C57-6J_SLS_GC_Rep6_M38,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-104,Mmus_C57-6J_SLS_GC_Rep3_M35,mouse,skeletal muscle,ground,Mmus_C57-6J_SLS_GC_Rep3_M35,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-104,Mmus_C57-6J_SLS_GC_Rep2_M34,mouse,skeletal muscle,ground,Mmus_C57-6J_SLS_GC_Rep2_M34,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-104,Mmus_C57-6J_SLS_GC_Rep4_M36,mouse,skeletal muscle,ground,Mmus_C57-6J_SLS_GC_Rep4_M36,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-104,Mmus_C57-6J_SLS_GC_Rep5_M37,mouse,skeletal muscle,ground,Mmus_C57-6J_SLS_GC_Rep5_M37,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-104,Mmus_C57-6J_SLS_FLT_Rep1_M23,mouse,skeletal muscle,flight,Mmus_C57-6J_SLS_FLT_Rep1_M23,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-104,Mmus_C57-6J_SLS_FLT_Rep2_M24,mouse,skeletal muscle,flight,Mmus_C57-6J_SLS_FLT_Rep2_M24,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-104,Mmus_C57-6J_SLS_FLT_Rep3_M25,mouse,skeletal muscle,flight,Mmus_C57-6J_SLS_FLT_Rep3_M25,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-104,Mmus_C57-6J_SLS_FLT_Rep5_M27,mouse,skeletal muscle,flight,Mmus_C57-6J_SLS_FLT_Rep5_M27,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-104,Mmus_C57-6J_SLS_FLT_Rep6_M28,mouse,skeletal muscle,flight,Mmus_C57-6J_SLS_FLT_Rep6_M28,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-104,Mmus_C57-6J_SLS_FLT_Rep4_M26,mouse,skeletal muscle,flight,Mmus_C57-6J_SLS_FLT_Rep4_M26,general_survey_2026-09-12,,,,,,OSD-104_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_GC_Rep5_M37,mouse,skeletal muscle,ground,Mmus_C57-6J_TA_GC_Rep5_M37,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_GC_Rep1_M33,mouse,skeletal muscle,ground,Mmus_C57-6J_TA_GC_Rep1_M33,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_GC_Rep6_M38,mouse,skeletal muscle,ground,Mmus_C57-6J_TA_GC_Rep6_M38,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_GC_Rep4_M36,mouse,skeletal muscle,ground,Mmus_C57-6J_TA_GC_Rep4_M36,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_GC_Rep2_M34,mouse,skeletal muscle,ground,Mmus_C57-6J_TA_GC_Rep2_M34,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_GC_Rep3_M35,mouse,skeletal muscle,ground,Mmus_C57-6J_TA_GC_Rep3_M35,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_FLT_Rep1_M23,mouse,skeletal muscle,flight,Mmus_C57-6J_TA_FLT_Rep1_M23,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_FLT_Rep3_M25,mouse,skeletal muscle,flight,Mmus_C57-6J_TA_FLT_Rep3_M25,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_FLT_Rep2_M24,mouse,skeletal muscle,flight,Mmus_C57-6J_TA_FLT_Rep2_M24,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_FLT_Rep4_M26,mouse,skeletal muscle,flight,Mmus_C57-6J_TA_FLT_Rep4_M26,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_FLT_Rep5_M27,mouse,skeletal muscle,flight,Mmus_C57-6J_TA_FLT_Rep5_M27,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-105,Mmus_C57-6J_TA_FLT_Rep6_M28,mouse,skeletal muscle,flight,Mmus_C57-6J_TA_FLT_Rep6_M28,general_survey_2026-09-12,,,,,,OSD-105_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,
+OSD-245,Mmus_C57-6T_LVR_GC_ISS-T_Rep2_G9,mouse,liver,ground,Mmus_C57-6T_LVR_GC_ISS-T_Rep2_G9,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_GC_ISS-T_Rep9_G5,mouse,liver,ground,Mmus_C57-6T_LVR_GC_ISS-T_Rep9_G5,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_GC_ISS-T_Rep10_G6,mouse,liver,ground,Mmus_C57-6T_LVR_GC_ISS-T_Rep10_G6,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_GC_ISS-T_Rep8_G3,mouse,liver,ground,Mmus_C57-6T_LVR_GC_ISS-T_Rep8_G3,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_GC_ISS-T_Rep1_G4,mouse,liver,ground,Mmus_C57-6T_LVR_GC_ISS-T_Rep1_G4,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_GC_ISS-T_Rep3_G10,mouse,liver,ground,Mmus_C57-6T_LVR_GC_ISS-T_Rep3_G10,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_FLT_ISS-T_Rep2_F8,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_ISS-T_Rep2_F8,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_FLT_ISS-T_Rep6_F1,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_ISS-T_Rep6_F1,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_FLT_ISS-T_Rep10_F6,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_ISS-T_Rep10_F6,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_FLT_ISS-T_Rep8_F3,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_ISS-T_Rep8_F3,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_FLT_ISS-T_Rep5_F7,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_ISS-T_Rep5_F7,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_FLT_ISS-T_Rep1_F5,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_ISS-T_Rep1_F5,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-245,Mmus_C57-6T_LVR_GC_LAR_Rep2_G4,mouse,liver,ground,Mmus_C57-6T_LVR_GC_LAR_Rep2_G4,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-245,Mmus_C57-6T_LVR_GC_LAR_Rep4_G5,mouse,liver,ground,Mmus_C57-6T_LVR_GC_LAR_Rep4_G5,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-245,Mmus_C57-6T_LVR_GC_LAR_Rep3_G10,mouse,liver,ground,Mmus_C57-6T_LVR_GC_LAR_Rep3_G10,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-245,Mmus_C57-6T_LVR_GC_LAR_Rep9_G3,mouse,liver,ground,Mmus_C57-6T_LVR_GC_LAR_Rep9_G3,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-245,Mmus_C57-6T_LVR_GC_LAR_Rep1_G6,mouse,liver,ground,Mmus_C57-6T_LVR_GC_LAR_Rep1_G6,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-245,Mmus_C57-6T_LVR_GC_LAR_Rep7_G9,mouse,liver,ground,Mmus_C57-6T_LVR_GC_LAR_Rep7_G9,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-245,Mmus_C57-6T_LVR_FLT_LAR_Rep8_F9,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_LAR_Rep8_F9,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-245,Mmus_C57-6T_LVR_FLT_LAR_Rep4_F6,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_LAR_Rep4_F6,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-245,Mmus_C57-6T_LVR_FLT_LAR_Rep9_F4,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_LAR_Rep9_F4,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-245,Mmus_C57-6T_LVR_FLT_LAR_Rep7_F8,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_LAR_Rep7_F8,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-245,Mmus_C57-6T_LVR_FLT_LAR_Rep6_F10,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_LAR_Rep6_F10,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-245,Mmus_C57-6T_LVR_FLT_LAR_Rep10_F5,mouse,liver,flight,Mmus_C57-6T_LVR_FLT_LAR_Rep10_F5,general_survey_2026-09-12,,,,,,OSD-245_transcription-profiling_rna-sequencing-(rna-seq)_ Illumina NovaSeq 6000,unknown,Liquid Nitrogen,{Not Available}
+OSD-326,SRR11148753,mouse,skeletal muscle,ground,SRR11148753,general_survey_2026-09-12,,,,,,OSD-326_transcription-profiling_rna-sequencing-(rna-seq),unknown,snap frozen,
+OSD-326,SRR11148755,mouse,skeletal muscle,ground,SRR11148755,general_survey_2026-09-12,,,,,,OSD-326_transcription-profiling_rna-sequencing-(rna-seq),unknown,snap frozen,
+OSD-326,SRR11148754,mouse,skeletal muscle,ground,SRR11148754,general_survey_2026-09-12,,,,,,OSD-326_transcription-profiling_rna-sequencing-(rna-seq),unknown,snap frozen,
+OSD-326,SRR11148756,mouse,skeletal muscle,ground,SRR11148756,general_survey_2026-09-12,,,,,,OSD-326_transcription-profiling_rna-sequencing-(rna-seq),unknown,snap frozen,
+OSD-326,SRR11148760,mouse,skeletal muscle,flight,SRR11148760,general_survey_2026-09-12,,,,,,OSD-326_transcription-profiling_rna-sequencing-(rna-seq),unknown,snap frozen,
+OSD-326,SRR11148757,mouse,skeletal muscle,flight,SRR11148757,general_survey_2026-09-12,,,,,,OSD-326_transcription-profiling_rna-sequencing-(rna-seq),unknown,snap frozen,
+OSD-326,SRR11148759,mouse,skeletal muscle,flight,SRR11148759,general_survey_2026-09-12,,,,,,OSD-326_transcription-profiling_rna-sequencing-(rna-seq),unknown,snap frozen,
+OSD-326,SRR11148758,mouse,skeletal muscle,flight,SRR11148758,general_survey_2026-09-12,,,,,,OSD-326_transcription-profiling_rna-sequencing-(rna-seq),unknown,snap frozen,
+OSD-379,RR8_LVR_GC_ISS-T_OLD_GI16,mouse,liver,ground,RR8_LVR_GC_ISS-T_OLD_GI16,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_ISS-T_OLD_GI11,mouse,liver,ground,RR8_LVR_GC_ISS-T_OLD_GI11,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_ISS-T_OLD_GI20,mouse,liver,ground,RR8_LVR_GC_ISS-T_OLD_GI20,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_ISS-T_OLD_GI13,mouse,liver,ground,RR8_LVR_GC_ISS-T_OLD_GI13,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_ISS-T_OLD_GI19,mouse,liver,ground,RR8_LVR_GC_ISS-T_OLD_GI19,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_ISS-T_OLD_GI14,mouse,liver,ground,RR8_LVR_GC_ISS-T_OLD_GI14,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_OLD_FI11,mouse,liver,flight,RR8_LVR_FLT_ISS-T_OLD_FI11,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_OLD_FI20,mouse,liver,flight,RR8_LVR_FLT_ISS-T_OLD_FI20,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_OLD_FI13,mouse,liver,flight,RR8_LVR_FLT_ISS-T_OLD_FI13,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_OLD_FI19,mouse,liver,flight,RR8_LVR_FLT_ISS-T_OLD_FI19,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_OLD_FI17,mouse,liver,flight,RR8_LVR_FLT_ISS-T_OLD_FI17,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_OLD_FI14,mouse,liver,flight,RR8_LVR_FLT_ISS-T_OLD_FI14,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_ISS-T_YNG_GI8,mouse,liver,ground,RR8_LVR_GC_ISS-T_YNG_GI8,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_ISS-T_YNG_GI3,mouse,liver,ground,RR8_LVR_GC_ISS-T_YNG_GI3,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_ISS-T_YNG_GI7,mouse,liver,ground,RR8_LVR_GC_ISS-T_YNG_GI7,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_ISS-T_YNG_GI2,mouse,liver,ground,RR8_LVR_GC_ISS-T_YNG_GI2,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_ISS-T_YNG_GI9,mouse,liver,ground,RR8_LVR_GC_ISS-T_YNG_GI9,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_ISS-T_YNG_GI4,mouse,liver,ground,RR8_LVR_GC_ISS-T_YNG_GI4,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_YNG_FI1,mouse,liver,flight,RR8_LVR_FLT_ISS-T_YNG_FI1,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_YNG_FI6,mouse,liver,flight,RR8_LVR_FLT_ISS-T_YNG_FI6,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_YNG_FI5,mouse,liver,flight,RR8_LVR_FLT_ISS-T_YNG_FI5,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_YNG_FI7,mouse,liver,flight,RR8_LVR_FLT_ISS-T_YNG_FI7,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_YNG_FI2,mouse,liver,flight,RR8_LVR_FLT_ISS-T_YNG_FI2,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_FLT_ISS-T_YNG_FI10,mouse,liver,flight,RR8_LVR_FLT_ISS-T_YNG_FI10,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,-80 {degree Celsius}
+OSD-379,RR8_LVR_GC_LAR_OLD_GL8,mouse,liver,ground,RR8_LVR_GC_LAR_OLD_GL8,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_GC_LAR_OLD_GL11,mouse,liver,ground,RR8_LVR_GC_LAR_OLD_GL11,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_GC_LAR_OLD_GL7,mouse,liver,ground,RR8_LVR_GC_LAR_OLD_GL7,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_GC_LAR_OLD_GL12,mouse,liver,ground,RR8_LVR_GC_LAR_OLD_GL12,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_GC_LAR_OLD_GL15,mouse,liver,ground,RR8_LVR_GC_LAR_OLD_GL15,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_GC_LAR_OLD_GL4,mouse,liver,ground,RR8_LVR_GC_LAR_OLD_GL4,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_OLD_FL4,mouse,liver,flight,RR8_LVR_FLT_LAR_OLD_FL4,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_OLD_FL7,mouse,liver,flight,RR8_LVR_FLT_LAR_OLD_FL7,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_OLD_FL16,mouse,liver,flight,RR8_LVR_FLT_LAR_OLD_FL16,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_OLD_FL8,mouse,liver,flight,RR8_LVR_FLT_LAR_OLD_FL8,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_OLD_FL15,mouse,liver,flight,RR8_LVR_FLT_LAR_OLD_FL15,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_OLD_FL11,mouse,liver,flight,RR8_LVR_FLT_LAR_OLD_FL11,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_GC_LAR_YNG_GL2,mouse,liver,ground,RR8_LVR_GC_LAR_YNG_GL2,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_GC_LAR_YNG_GL5,mouse,liver,ground,RR8_LVR_GC_LAR_YNG_GL5,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_GC_LAR_YNG_GL14,mouse,liver,ground,RR8_LVR_GC_LAR_YNG_GL14,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_GC_LAR_YNG_GL13,mouse,liver,ground,RR8_LVR_GC_LAR_YNG_GL13,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_GC_LAR_YNG_GL6,mouse,liver,ground,RR8_LVR_GC_LAR_YNG_GL6,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_GC_LAR_YNG_GL18,mouse,liver,ground,RR8_LVR_GC_LAR_YNG_GL18,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_YNG_FL13,mouse,liver,flight,RR8_LVR_FLT_LAR_YNG_FL13,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_YNG_FL5,mouse,liver,flight,RR8_LVR_FLT_LAR_YNG_FL5,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_YNG_FL17,mouse,liver,flight,RR8_LVR_FLT_LAR_YNG_FL17,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_YNG_FL2,mouse,liver,flight,RR8_LVR_FLT_LAR_YNG_FL2,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_YNG_FL6,mouse,liver,flight,RR8_LVR_FLT_LAR_YNG_FL6,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-379,RR8_LVR_FLT_LAR_YNG_FL1,mouse,liver,flight,RR8_LVR_FLT_LAR_YNG_FL1,general_survey_2026-09-12,,,,,,OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq,unknown,Liquid Nitrogen,{Not Applicable}
+OSD-401,GSM5398359,mouse,skeletal muscle,ground,GSM5398359,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-401,GSM5398360,mouse,skeletal muscle,ground,GSM5398360,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-401,GSM5398358,mouse,skeletal muscle,ground,GSM5398358,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-401,GSM5398362,mouse,skeletal muscle,flight,GSM5398362,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-401,GSM5398361,mouse,skeletal muscle,flight,GSM5398361,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-401,GSM5398363,mouse,skeletal muscle,flight,GSM5398363,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-401,GSM5398366,mouse,skeletal muscle,ground,GSM5398366,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-401,GSM5398365,mouse,skeletal muscle,ground,GSM5398365,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-401,GSM5398364,mouse,skeletal muscle,ground,GSM5398364,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-401,GSM5398369,mouse,skeletal muscle,flight,GSM5398369,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-401,GSM5398367,mouse,skeletal muscle,flight,GSM5398367,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-401,GSM5398368,mouse,skeletal muscle,flight,GSM5398368,general_survey_2026-09-12,,,,,,OSD-401_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater,
+OSD-419,RR1_GST-R_GC_M33,mouse,skeletal muscle,ground,RR1_GST-R_GC_M33,general_survey_2026-09-12,,,,,,OSD-419_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-419,RR1_GST-R_GC_M37,mouse,skeletal muscle,ground,RR1_GST-R_GC_M37,general_survey_2026-09-12,,,,,,OSD-419_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-419,RR1_GST-R_GC_M34,mouse,skeletal muscle,ground,RR1_GST-R_GC_M34,general_survey_2026-09-12,,,,,,OSD-419_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-419,RR1_GST-R_GC_M35,mouse,skeletal muscle,ground,RR1_GST-R_GC_M35,general_survey_2026-09-12,,,,,,OSD-419_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-419,RR1_GST-R_GC_M36,mouse,skeletal muscle,ground,RR1_GST-R_GC_M36,general_survey_2026-09-12,,,,,,OSD-419_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-419,RR1_GST-R_GC_M40,mouse,skeletal muscle,ground,RR1_GST-R_GC_M40,general_survey_2026-09-12,,,,,,OSD-419_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-419,RR1_GST-R_FLT_M26,mouse,skeletal muscle,flight,RR1_GST-R_FLT_M26,general_survey_2026-09-12,,,,,,OSD-419_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-419,RR1_GST-R_FLT_M23,mouse,skeletal muscle,flight,RR1_GST-R_FLT_M23,general_survey_2026-09-12,,,,,,OSD-419_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-419,RR1_GST-R_FLT_M24,mouse,skeletal muscle,flight,RR1_GST-R_FLT_M24,general_survey_2026-09-12,,,,,,OSD-419_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-419,RR1_GST-R_FLT_M25,mouse,skeletal muscle,flight,RR1_GST-R_FLT_M25,general_survey_2026-09-12,,,,,,OSD-419_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-457,GSM4614077,mouse,brain,ground,GSM4614077,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614078,mouse,brain,ground,GSM4614078,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614085,mouse,brain,ground,GSM4614085,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614088,mouse,brain,ground,GSM4614088,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614087,mouse,brain,ground,GSM4614087,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614080,mouse,brain,ground,GSM4614080,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614100,mouse,brain,flight,GSM4614100,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614090,mouse,brain,flight,GSM4614090,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614092,mouse,brain,flight,GSM4614092,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614089,mouse,brain,flight,GSM4614089,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614099,mouse,brain,flight,GSM4614099,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614097,mouse,brain,flight,GSM4614097,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614084,mouse,brain,ground,GSM4614084,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614083,mouse,brain,ground,GSM4614083,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614081,mouse,brain,ground,GSM4614081,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614086,mouse,brain,ground,GSM4614086,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614079,mouse,brain,ground,GSM4614079,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614082,mouse,brain,ground,GSM4614082,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614093,mouse,brain,flight,GSM4614093,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614091,mouse,brain,flight,GSM4614091,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614095,mouse,brain,flight,GSM4614095,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614096,mouse,brain,flight,GSM4614096,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614098,mouse,brain,flight,GSM4614098,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614094,mouse,brain,flight,GSM4614094,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614065,mouse,kidney,ground,GSM4614065,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614069,mouse,kidney,ground,GSM4614069,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614070,mouse,kidney,ground,GSM4614070,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614072,mouse,kidney,flight,GSM4614072,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614071,mouse,kidney,flight,GSM4614071,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614076,mouse,kidney,flight,GSM4614076,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614066,mouse,kidney,ground,GSM4614066,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614068,mouse,kidney,ground,GSM4614068,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614067,mouse,kidney,ground,GSM4614067,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614074,mouse,kidney,flight,GSM4614074,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614073,mouse,kidney,flight,GSM4614073,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614075,mouse,kidney,flight,GSM4614075,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613970,mouse,liver,ground,GSM4613970,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613980,mouse,liver,ground,GSM4613980,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613969,mouse,liver,ground,GSM4613969,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613979,mouse,liver,ground,GSM4613979,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613972,mouse,liver,ground,GSM4613972,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613977,mouse,liver,ground,GSM4613977,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613968,mouse,liver,flight,GSM4613968,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613957,mouse,liver,flight,GSM4613957,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613965,mouse,liver,flight,GSM4613965,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613960,mouse,liver,flight,GSM4613960,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613967,mouse,liver,flight,GSM4613967,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613958,mouse,liver,flight,GSM4613958,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613976,mouse,liver,ground,GSM4613976,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613973,mouse,liver,ground,GSM4613973,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613978,mouse,liver,ground,GSM4613978,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613974,mouse,liver,ground,GSM4613974,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613975,mouse,liver,ground,GSM4613975,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613971,mouse,liver,ground,GSM4613971,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613964,mouse,liver,flight,GSM4613964,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613963,mouse,liver,flight,GSM4613963,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613961,mouse,liver,flight,GSM4613961,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613966,mouse,liver,flight,GSM4613966,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613959,mouse,liver,flight,GSM4613959,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613962,mouse,liver,flight,GSM4613962,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613932,mouse,bone,ground,GSM4613932,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613930,mouse,bone,ground,GSM4613930,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613931,mouse,bone,ground,GSM4613931,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613924,mouse,bone,flight,GSM4613924,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613925,mouse,bone,flight,GSM4613925,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613926,mouse,bone,flight,GSM4613926,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613929,mouse,bone,ground,GSM4613929,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613928,mouse,bone,ground,GSM4613928,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613927,mouse,bone,ground,GSM4613927,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613921,mouse,bone,flight,GSM4613921,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613922,mouse,bone,flight,GSM4613922,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613923,mouse,bone,flight,GSM4613923,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613956,mouse,spleen,ground,GSM4613956,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613955,mouse,spleen,ground,GSM4613955,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613948,mouse,spleen,ground,GSM4613948,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613946,mouse,spleen,ground,GSM4613946,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613945,mouse,spleen,ground,GSM4613945,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613953,mouse,spleen,ground,GSM4613953,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613941,mouse,spleen,flight,GSM4613941,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613944,mouse,spleen,flight,GSM4613944,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613934,mouse,spleen,flight,GSM4613934,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613943,mouse,spleen,flight,GSM4613943,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613936,mouse,spleen,flight,GSM4613936,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613933,mouse,spleen,flight,GSM4613933,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613949,mouse,spleen,ground,GSM4613949,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613954,mouse,spleen,ground,GSM4613954,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613947,mouse,spleen,ground,GSM4613947,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613952,mouse,spleen,ground,GSM4613952,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613950,mouse,spleen,ground,GSM4613950,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613951,mouse,spleen,ground,GSM4613951,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613939,mouse,spleen,flight,GSM4613939,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613937,mouse,spleen,flight,GSM4613937,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613935,mouse,spleen,flight,GSM4613935,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613938,mouse,spleen,flight,GSM4613938,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613942,mouse,spleen,flight,GSM4613942,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613940,mouse,spleen,flight,GSM4613940,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614055,mouse,bone,ground,GSM4614055,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613916,mouse,bone,ground,GSM4613916,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614058,mouse,bone,ground,GSM4614058,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614057,mouse,bone,ground,GSM4614057,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613912,mouse,bone,ground,GSM4613912,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613910,mouse,bone,ground,GSM4613910,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614061,mouse,bone,flight,GSM4614061,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613911,mouse,bone,flight,GSM4613911,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613915,mouse,bone,flight,GSM4613915,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614064,mouse,bone,flight,GSM4614064,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614063,mouse,bone,flight,GSM4614063,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613909,mouse,bone,flight,GSM4613909,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614056,mouse,bone,ground,GSM4614056,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613918,mouse,bone,ground,GSM4613918,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613920,mouse,bone,ground,GSM4613920,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613914,mouse,bone,ground,GSM4613914,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614054,mouse,bone,ground,GSM4614054,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614053,mouse,bone,ground,GSM4614053,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613913,mouse,bone,flight,GSM4613913,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613917,mouse,bone,flight,GSM4613917,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613919,mouse,bone,flight,GSM4613919,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614062,mouse,bone,flight,GSM4614062,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614059,mouse,bone,flight,GSM4614059,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614060,mouse,bone,flight,GSM4614060,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614008,mouse,adipose,ground,GSM4614008,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614016,mouse,adipose,ground,GSM4614016,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614006,mouse,adipose,ground,GSM4614006,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614005,mouse,adipose,ground,GSM4614005,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614013,mouse,adipose,ground,GSM4614013,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614015,mouse,adipose,ground,GSM4614015,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614020,mouse,adipose,flight,GSM4614020,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614025,mouse,adipose,flight,GSM4614025,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614017,mouse,adipose,flight,GSM4614017,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614018,mouse,adipose,flight,GSM4614018,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614028,mouse,adipose,flight,GSM4614028,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614027,mouse,adipose,flight,GSM4614027,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614011,mouse,adipose,ground,GSM4614011,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614009,mouse,adipose,ground,GSM4614009,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614007,mouse,adipose,ground,GSM4614007,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614010,mouse,adipose,ground,GSM4614010,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614014,mouse,adipose,ground,GSM4614014,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614012,mouse,adipose,ground,GSM4614012,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614024,mouse,adipose,flight,GSM4614024,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614026,mouse,adipose,flight,GSM4614026,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614021,mouse,adipose,flight,GSM4614021,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614019,mouse,adipose,flight,GSM4614019,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614022,mouse,adipose,flight,GSM4614022,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614023,mouse,adipose,flight,GSM4614023,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614052,mouse,thymus,ground,GSM4614052,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614044,mouse,thymus,ground,GSM4614044,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614049,mouse,thymus,ground,GSM4614049,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614041,mouse,thymus,ground,GSM4614041,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614042,mouse,thymus,ground,GSM4614042,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614051,mouse,thymus,ground,GSM4614051,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614037,mouse,thymus,flight,GSM4614037,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614032,mouse,thymus,flight,GSM4614032,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614039,mouse,thymus,flight,GSM4614039,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614029,mouse,thymus,flight,GSM4614029,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614030,mouse,thymus,flight,GSM4614030,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614040,mouse,thymus,flight,GSM4614040,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614047,mouse,thymus,ground,GSM4614047,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614048,mouse,thymus,ground,GSM4614048,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614050,mouse,thymus,ground,GSM4614050,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614043,mouse,thymus,ground,GSM4614043,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614046,mouse,thymus,ground,GSM4614046,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614045,mouse,thymus,ground,GSM4614045,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614034,mouse,thymus,flight,GSM4614034,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614038,mouse,thymus,flight,GSM4614038,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614033,mouse,thymus,flight,GSM4614033,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614031,mouse,thymus,flight,GSM4614031,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614036,mouse,thymus,flight,GSM4614036,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614035,mouse,thymus,flight,GSM4614035,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613982,mouse,adipose,ground,GSM4613982,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613991,mouse,adipose,ground,GSM4613991,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613989,mouse,adipose,ground,GSM4613989,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613981,mouse,adipose,ground,GSM4613981,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613992,mouse,adipose,ground,GSM4613992,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613984,mouse,adipose,ground,GSM4613984,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614003,mouse,adipose,flight,GSM4614003,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614004,mouse,adipose,flight,GSM4614004,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613996,mouse,adipose,flight,GSM4613996,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613993,mouse,adipose,flight,GSM4613993,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614001,mouse,adipose,flight,GSM4614001,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613994,mouse,adipose,flight,GSM4613994,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613983,mouse,adipose,ground,GSM4613983,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613985,mouse,adipose,ground,GSM4613985,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613990,mouse,adipose,ground,GSM4613990,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613988,mouse,adipose,ground,GSM4613988,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613987,mouse,adipose,ground,GSM4613987,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613986,mouse,adipose,ground,GSM4613986,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613995,mouse,adipose,flight,GSM4613995,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613999,mouse,adipose,flight,GSM4613999,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614000,mouse,adipose,flight,GSM4614000,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613998,mouse,adipose,flight,GSM4613998,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4614002,mouse,adipose,flight,GSM4614002,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-457,GSM4613997,mouse,adipose,flight,GSM4613997,general_survey_2026-09-12,,,,,,OSD-457_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_GC_G2,mouse,liver,ground,RR23_LVR_GC_G2,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_GC_G7,mouse,liver,ground,RR23_LVR_GC_G7,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_GC_G3,mouse,liver,ground,RR23_LVR_GC_G3,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_GC_G6,mouse,liver,ground,RR23_LVR_GC_G6,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_GC_G8,mouse,liver,ground,RR23_LVR_GC_G8,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_GC_G5,mouse,liver,ground,RR23_LVR_GC_G5,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_FLT_F8_techrep1,mouse,liver,flight,RR23_LVR_FLT_F8,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_FLT_F3,mouse,liver,flight,RR23_LVR_FLT_F3,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_FLT_F1,mouse,liver,flight,RR23_LVR_FLT_F1,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_FLT_F4,mouse,liver,flight,RR23_LVR_FLT_F4,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_FLT_F5,mouse,liver,flight,RR23_LVR_FLT_F5,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-463,RR23_LVR_FLT_F7_techrep1,mouse,liver,flight,RR23_LVR_FLT_F7,general_survey_2026-09-12,,,,,,OSD-463_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_GC_G1,mouse,lung,ground,RR23_LNG_GC_G1,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_GC_G3,mouse,lung,ground,RR23_LNG_GC_G3,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_GC_G6,mouse,lung,ground,RR23_LNG_GC_G6,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_GC_G8,mouse,lung,ground,RR23_LNG_GC_G8,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_GC_G5,mouse,lung,ground,RR23_LNG_GC_G5,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_GC_G4,mouse,lung,ground,RR23_LNG_GC_G4,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_FLT_F1,mouse,lung,flight,RR23_LNG_FLT_F1,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_FLT_F3,mouse,lung,flight,RR23_LNG_FLT_F3,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_FLT_F5,mouse,lung,flight,RR23_LNG_FLT_F5,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_FLT_F4,mouse,lung,flight,RR23_LNG_FLT_F4,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_FLT_F6,mouse,lung,flight,RR23_LNG_FLT_F6,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-464,RR23_LNG_FLT_F2,mouse,lung,flight,RR23_LNG_FLT_F2,general_survey_2026-09-12,,,,,,OSD-464_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-48,Mmus_C57-6J_LVR_GC_C_Rep1_M36,mouse,liver,ground,Mmus_C57-6J_LVR_GC_C_Rep1_M36,general_survey_2026-09-12,,,,,,OSD-48_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RLT buffer homogenized and snap frozen,Mini Cold Bag to -80C freezer
+OSD-48,Mmus_C57-6J_LVR_GC_C_Rep4_M39,mouse,liver,ground,Mmus_C57-6J_LVR_GC_C_Rep4_M39,general_survey_2026-09-12,,,,,,OSD-48_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RLT buffer homogenized and snap frozen,Mini Cold Bag to -80C freezer
+OSD-48,Mmus_C57-6J_LVR_GC_C_Rep3_M38,mouse,liver,ground,Mmus_C57-6J_LVR_GC_C_Rep3_M38,general_survey_2026-09-12,,,,,,OSD-48_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RLT buffer homogenized and snap frozen,Mini Cold Bag to -80C freezer
+OSD-48,Mmus_C57-6J_LVR_GC_C_Rep5_M40,mouse,liver,ground,Mmus_C57-6J_LVR_GC_C_Rep5_M40,general_survey_2026-09-12,,,,,,OSD-48_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RLT buffer homogenized and snap frozen,Mini Cold Bag to -80C freezer
+OSD-48,Mmus_C57-6J_LVR_GC_C_Rep2_M37,mouse,liver,ground,Mmus_C57-6J_LVR_GC_C_Rep2_M37,general_survey_2026-09-12,,,,,,OSD-48_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RLT buffer homogenized and snap frozen,Mini Cold Bag to -80C freezer
+OSD-48,Mmus_C57-6J_LVR_FLT_C_Rep1_M25,mouse,liver,flight,Mmus_C57-6J_LVR_FLT_C_Rep1_M25,general_survey_2026-09-12,,,,,,OSD-48_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RLT buffer homogenized and snap frozen,Mini Cold Bag to -80C freezer
+OSD-48,Mmus_C57-6J_LVR_FLT_C_Rep5_M30,mouse,liver,flight,Mmus_C57-6J_LVR_FLT_C_Rep5_M30,general_survey_2026-09-12,,,,,,OSD-48_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RLT buffer homogenized and snap frozen,Mini Cold Bag to -80C freezer
+OSD-48,Mmus_C57-6J_LVR_FLT_C_Rep3_M27,mouse,liver,flight,Mmus_C57-6J_LVR_FLT_C_Rep3_M27,general_survey_2026-09-12,,,,,,OSD-48_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RLT buffer homogenized and snap frozen,Mini Cold Bag to -80C freezer
+OSD-48,Mmus_C57-6J_LVR_FLT_C_Rep2_M26,mouse,liver,flight,Mmus_C57-6J_LVR_FLT_C_Rep2_M26,general_survey_2026-09-12,,,,,,OSD-48_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RLT buffer homogenized and snap frozen,Mini Cold Bag to -80C freezer
+OSD-48,Mmus_C57-6J_LVR_FLT_C_Rep4_M28,mouse,liver,flight,Mmus_C57-6J_LVR_FLT_C_Rep4_M28,general_survey_2026-09-12,,,,,,OSD-48_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RLT buffer homogenized and snap frozen,Mini Cold Bag to -80C freezer
+OSD-562,RRRM2_HPC_GC_LAR_OLD_GO15,mouse,brain,ground,RRRM2_HPC_GC_LAR_OLD_GO15,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-562,RRRM2_HPC_GC_LAR_OLD_GO13,mouse,brain,ground,RRRM2_HPC_GC_LAR_OLD_GO13,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-562,RRRM2_HPC_GC_LAR_OLD_GO12,mouse,brain,ground,RRRM2_HPC_GC_LAR_OLD_GO12,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-562,RRRM2_HPC_FLT_LAR_OLD_FO5,mouse,brain,flight,RRRM2_HPC_FLT_LAR_OLD_FO5,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-562,RRRM2_HPC_FLT_LAR_OLD_FO2,mouse,brain,flight,RRRM2_HPC_FLT_LAR_OLD_FO2,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-562,RRRM2_HPC_FLT_LAR_OLD_FO3,mouse,brain,flight,RRRM2_HPC_FLT_LAR_OLD_FO3,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-562,RRRM2_HPC_GC_LAR_YNG_GY1,mouse,brain,ground,RRRM2_HPC_GC_LAR_YNG_GY1,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-562,RRRM2_HPC_GC_LAR_YNG_GY5,mouse,brain,ground,RRRM2_HPC_GC_LAR_YNG_GY5,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-562,RRRM2_HPC_GC_LAR_YNG_GY4,mouse,brain,ground,RRRM2_HPC_GC_LAR_YNG_GY4,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-562,RRRM2_HPC_FLT_LAR_YNG_FY7,mouse,brain,flight,RRRM2_HPC_FLT_LAR_YNG_FY7,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-562,RRRM2_HPC_FLT_LAR_YNG_FY6,mouse,brain,flight,RRRM2_HPC_FLT_LAR_YNG_FY6,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-562,RRRM2_HPC_FLT_LAR_YNG_FY10,mouse,brain,flight,RRRM2_HPC_FLT_LAR_YNG_FY10,general_survey_2026-09-12,,,,,,OSD-562_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,
+OSD-564,RR10_HPC_GC_WT_G1,mouse,brain,ground,RR10_HPC_GC_WT_G1,general_survey_2026-09-12,,,,,,OSD-564_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,Cryochiller
+OSD-564,RR10_HPC_GC_WT_G5,mouse,brain,ground,RR10_HPC_GC_WT_G5,general_survey_2026-09-12,,,,,,OSD-564_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,Cryochiller
+OSD-564,RR10_HPC_GC_WT_G9,mouse,brain,ground,RR10_HPC_GC_WT_G9,general_survey_2026-09-12,,,,,,OSD-564_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,Cryochiller
+OSD-564,RR10_HPC_GC_WT_G3,mouse,brain,ground,RR10_HPC_GC_WT_G3,general_survey_2026-09-12,,,,,,OSD-564_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,Cryochiller
+OSD-564,RR10_HPC_GC_WT_G7,mouse,brain,ground,RR10_HPC_GC_WT_G7,general_survey_2026-09-12,,,,,,OSD-564_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,Cryochiller
+OSD-564,RR10_HPC_FLT_WT_F1,mouse,brain,flight,RR10_HPC_FLT_WT_F1,general_survey_2026-09-12,,,,,,OSD-564_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,Cryochiller
+OSD-564,RR10_HPC_FLT_WT_F9,mouse,brain,flight,RR10_HPC_FLT_WT_F9,general_survey_2026-09-12,,,,,,OSD-564_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,Cryochiller
+OSD-564,RR10_HPC_FLT_WT_F3,mouse,brain,flight,RR10_HPC_FLT_WT_F3,general_survey_2026-09-12,,,,,,OSD-564_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,Cryochiller
+OSD-564,RR10_HPC_FLT_WT_F7,mouse,brain,flight,RR10_HPC_FLT_WT_F7,general_survey_2026-09-12,,,,,,OSD-564_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,Cryochiller
+OSD-564,RR10_HPC_FLT_WT_F5,mouse,brain,flight,RR10_HPC_FLT_WT_F5,general_survey_2026-09-12,,,,,,OSD-564_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,for spatial transcriptomics: right brain hemispheres were placed in OCT compound and placed on dry ice until frozen throughout; for bulkRNAseq: right brain hemispheres were snap frozen in liquid nitrogen,Cryochiller
+OSD-576,RR23_R-TA_GC_G1,mouse,skeletal muscle,ground,RR23_R-TA_GC_G1,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-576,RR23_R-TA_GC_G4,mouse,skeletal muscle,ground,RR23_R-TA_GC_G4,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-576,RR23_R-TA_GC_G6,mouse,skeletal muscle,ground,RR23_R-TA_GC_G6,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-576,RR23_R-TA_GC_G3,mouse,skeletal muscle,ground,RR23_R-TA_GC_G3,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-576,RR23_R-TA_GC_G5,mouse,skeletal muscle,ground,RR23_R-TA_GC_G5,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-576,RR23_R-TA_GC_G7,mouse,skeletal muscle,ground,RR23_R-TA_GC_G7,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-576,RR23_R-TA_FLT_F6,mouse,skeletal muscle,flight,RR23_R-TA_FLT_F6,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-576,RR23_R-TA_FLT_F2,mouse,skeletal muscle,flight,RR23_R-TA_FLT_F2,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-576,RR23_R-TA_FLT_F5,mouse,skeletal muscle,flight,RR23_R-TA_FLT_F5,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-576,RR23_R-TA_FLT_F3,mouse,skeletal muscle,flight,RR23_R-TA_FLT_F3,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-576,RR23_R-TA_FLT_F7,mouse,skeletal muscle,flight,RR23_R-TA_FLT_F7,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-576,RR23_R-TA_FLT_F4,mouse,skeletal muscle,flight,RR23_R-TA_FLT_F4,general_survey_2026-09-12,,,,,,OSD-576_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_GC_LAR_OLD_GO13,mouse,heart,ground,RRRM2_HRT_GC_LAR_OLD_GO13,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_GC_LAR_OLD_GO15,mouse,heart,ground,RRRM2_HRT_GC_LAR_OLD_GO15,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_GC_LAR_OLD_GO17,mouse,heart,ground,RRRM2_HRT_GC_LAR_OLD_GO17,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_GC_LAR_OLD_GO11,mouse,heart,ground,RRRM2_HRT_GC_LAR_OLD_GO11,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_GC_LAR_OLD_GO19,mouse,heart,ground,RRRM2_HRT_GC_LAR_OLD_GO19,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_FLT_LAR_OLD_FO19,mouse,heart,flight,RRRM2_HRT_FLT_LAR_OLD_FO19,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_FLT_LAR_OLD_FO17,mouse,heart,flight,RRRM2_HRT_FLT_LAR_OLD_FO17,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_FLT_LAR_OLD_FO3,mouse,heart,flight,RRRM2_HRT_FLT_LAR_OLD_FO3,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_FLT_LAR_OLD_FO5,mouse,heart,flight,RRRM2_HRT_FLT_LAR_OLD_FO5,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_FLT_LAR_OLD_FO1,mouse,heart,flight,RRRM2_HRT_FLT_LAR_OLD_FO1,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_GC_LAR_YNG_GY1,mouse,heart,ground,RRRM2_HRT_GC_LAR_YNG_GY1,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_GC_LAR_YNG_GY9,mouse,heart,ground,RRRM2_HRT_GC_LAR_YNG_GY9,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_GC_LAR_YNG_GY7,mouse,heart,ground,RRRM2_HRT_GC_LAR_YNG_GY7,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_GC_LAR_YNG_GY5,mouse,heart,ground,RRRM2_HRT_GC_LAR_YNG_GY5,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_GC_LAR_YNG_GY3,mouse,heart,ground,RRRM2_HRT_GC_LAR_YNG_GY3,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_FLT_LAR_YNG_FY8,mouse,heart,flight,RRRM2_HRT_FLT_LAR_YNG_FY8,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_FLT_LAR_YNG_FY14,mouse,heart,flight,RRRM2_HRT_FLT_LAR_YNG_FY14,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_FLT_LAR_YNG_FY12,mouse,heart,flight,RRRM2_HRT_FLT_LAR_YNG_FY12,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_FLT_LAR_YNG_FY6,mouse,heart,flight,RRRM2_HRT_FLT_LAR_YNG_FY6,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-580,RRRM2_HRT_FLT_LAR_YNG_FY10,mouse,heart,flight,RRRM2_HRT_FLT_LAR_YNG_FY10,general_survey_2026-09-12,,,,,,OSD-580_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-599,GSM6996079,mouse,heart,ground,GSM6996079,general_survey_2026-09-12,,,,,,OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater or RNAProtect or Liquid Nitrogen,
+OSD-599,GSM6996078,mouse,heart,ground,GSM6996078,general_survey_2026-09-12,,,,,,OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater or RNAProtect or Liquid Nitrogen,
+OSD-599,GSM6996077,mouse,heart,ground,GSM6996077,general_survey_2026-09-12,,,,,,OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater or RNAProtect or Liquid Nitrogen,
+OSD-599,GSM6996082,mouse,heart,flight,GSM6996082,general_survey_2026-09-12,,,,,,OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater or RNAProtect or Liquid Nitrogen,
+OSD-599,GSM6996081,mouse,heart,flight,GSM6996081,general_survey_2026-09-12,,,,,,OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater or RNAProtect or Liquid Nitrogen,
+OSD-599,GSM6996080,mouse,heart,flight,GSM6996080,general_survey_2026-09-12,,,,,,OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,RNALater or RNAProtect or Liquid Nitrogen,
+OSD-665,RR23_R-EDL_GC_G5,mouse,skeletal muscle,ground,RR23_R-EDL_GC_G5,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-665,RR23_R-EDL_GC_G6,mouse,skeletal muscle,ground,RR23_R-EDL_GC_G6,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-665,RR23_R-EDL_GC_G7,mouse,skeletal muscle,ground,RR23_R-EDL_GC_G7,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-665,RR23_R-EDL_GC_G2,mouse,skeletal muscle,ground,RR23_R-EDL_GC_G2,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-665,RR23_R-EDL_GC_G9,mouse,skeletal muscle,ground,RR23_R-EDL_GC_G9,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-665,RR23_R-EDL_GC_G3,mouse,skeletal muscle,ground,RR23_R-EDL_GC_G3,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-665,RR23_R-EDL_FLT_F7,mouse,skeletal muscle,flight,RR23_R-EDL_FLT_F7,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-665,RR23_R-EDL_FLT_F6,mouse,skeletal muscle,flight,RR23_R-EDL_FLT_F6,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-665,RR23_R-EDL_FLT_F8,mouse,skeletal muscle,flight,RR23_R-EDL_FLT_F8,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-665,RR23_R-EDL_FLT_F5,mouse,skeletal muscle,flight,RR23_R-EDL_FLT_F5,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-665,RR23_R-EDL_FLT_F4,mouse,skeletal muscle,flight,RR23_R-EDL_FLT_F4,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-665,RR23_R-EDL_FLT_F2,mouse,skeletal muscle,flight,RR23_R-EDL_FLT_F2,general_survey_2026-09-12,,,,,,OSD-665_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_GC_G9,mouse,skeletal muscle,ground,RR23_R-Quad_GC_G9,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_GC_G5,mouse,skeletal muscle,ground,RR23_R-Quad_GC_G5,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_GC_G4,mouse,skeletal muscle,ground,RR23_R-Quad_GC_G4,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_GC_G1_techrep1,mouse,skeletal muscle,ground,RR23_R-Quad_GC_G1,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_GC_G2,mouse,skeletal muscle,ground,RR23_R-Quad_GC_G2,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_GC_G8,mouse,skeletal muscle,ground,RR23_R-Quad_GC_G8,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_FLT_F6,mouse,skeletal muscle,flight,RR23_R-Quad_FLT_F6,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_FLT_F5,mouse,skeletal muscle,flight,RR23_R-Quad_FLT_F5,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_FLT_F8,mouse,skeletal muscle,flight,RR23_R-Quad_FLT_F8,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_FLT_F2,mouse,skeletal muscle,flight,RR23_R-Quad_FLT_F2,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_FLT_F4,mouse,skeletal muscle,flight,RR23_R-Quad_FLT_F4,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-666,RR23_R-Quad_FLT_F9,mouse,skeletal muscle,flight,RR23_R-Quad_FLT_F9,general_survey_2026-09-12,,,,,,OSD-666_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,Liquid Nitrogen,
+OSD-667,RR10_CLN_GC_KO_G11,mouse,colon,ground,RR10_CLN_GC_KO_G11,general_survey_2026-09-12,,,,,,OSD-667_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater for 24 hours,Cryochiller
+OSD-667,RR10_CLN_GC_KO_G15,mouse,colon,ground,RR10_CLN_GC_KO_G15,general_survey_2026-09-12,,,,,,OSD-667_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater for 24 hours,Cryochiller
+OSD-667,RR10_CLN_GC_KO_G19,mouse,colon,ground,RR10_CLN_GC_KO_G19,general_survey_2026-09-12,,,,,,OSD-667_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater for 24 hours,Cryochiller
+OSD-667,RR10_CLN_FLT_KO_F11,mouse,colon,flight,RR10_CLN_FLT_KO_F11,general_survey_2026-09-12,,,,,,OSD-667_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater for 24 hours,Cryochiller
+OSD-667,RR10_CLN_FLT_KO_F15,mouse,colon,flight,RR10_CLN_FLT_KO_F15,general_survey_2026-09-12,,,,,,OSD-667_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater for 24 hours,Cryochiller
+OSD-667,RR10_CLN_FLT_KO_F19,mouse,colon,flight,RR10_CLN_FLT_KO_F19,general_survey_2026-09-12,,,,,,OSD-667_transcription-profiling_rna-sequencing-(rna-seq)_illumina,unknown,RNALater for 24 hours,Cryochiller
+OSD-686,GSM7708683,mouse,liver,ground,GSM7708683,general_survey_2026-09-12,,,,,,OSD-686_transcription-profiling_rna-sequencing-(rna-seq)_illumina novaseq 6000,unknown,Liquid Nitrogen,
+OSD-686,GSM7708684,mouse,liver,ground,GSM7708684,general_survey_2026-09-12,,,,,,OSD-686_transcription-profiling_rna-sequencing-(rna-seq)_illumina novaseq 6000,unknown,Liquid Nitrogen,
+OSD-686,GSM7708682,mouse,liver,ground,GSM7708682,general_survey_2026-09-12,,,,,,OSD-686_transcription-profiling_rna-sequencing-(rna-seq)_illumina novaseq 6000,unknown,Liquid Nitrogen,
+OSD-686,GSM7708685,mouse,liver,flight,GSM7708685,general_survey_2026-09-12,,,,,,OSD-686_transcription-profiling_rna-sequencing-(rna-seq)_illumina novaseq 6000,unknown,Liquid Nitrogen,
+OSD-686,GSM7708686,mouse,liver,flight,GSM7708686,general_survey_2026-09-12,,,,,,OSD-686_transcription-profiling_rna-sequencing-(rna-seq)_illumina novaseq 6000,unknown,Liquid Nitrogen,
+OSD-686,GSM7708688,mouse,liver,flight,GSM7708688,general_survey_2026-09-12,,,,,,OSD-686_transcription-profiling_rna-sequencing-(rna-seq)_illumina novaseq 6000,unknown,Liquid Nitrogen,
+OSD-686,GSM7708687,mouse,liver,flight,GSM7708687,general_survey_2026-09-12,,,,,,OSD-686_transcription-profiling_rna-sequencing-(rna-seq)_illumina novaseq 6000,unknown,Liquid Nitrogen,
+OSD-686,GSM7708690,mouse,liver,flight,GSM7708690,general_survey_2026-09-12,,,,,,OSD-686_transcription-profiling_rna-sequencing-(rna-seq)_illumina novaseq 6000,unknown,Liquid Nitrogen,
+OSD-686,GSM7708689,mouse,liver,flight,GSM7708689,general_survey_2026-09-12,,,,,,OSD-686_transcription-profiling_rna-sequencing-(rna-seq)_illumina novaseq 6000,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_GC_G1_techrep1,mouse,skeletal muscle,ground,RR23_R-SLS_GC_G1,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_GC_G3,mouse,skeletal muscle,ground,RR23_R-SLS_GC_G3,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_GC_G9,mouse,skeletal muscle,ground,RR23_R-SLS_GC_G9,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_GC_G6,mouse,skeletal muscle,ground,RR23_R-SLS_GC_G6,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_GC_G2,mouse,skeletal muscle,ground,RR23_R-SLS_GC_G2,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_GC_G5,mouse,skeletal muscle,ground,RR23_R-SLS_GC_G5,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_FLT_F4,mouse,skeletal muscle,flight,RR23_R-SLS_FLT_F4,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_FLT_F7,mouse,skeletal muscle,flight,RR23_R-SLS_FLT_F7,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_FLT_F1_techrep1,mouse,skeletal muscle,flight,RR23_R-SLS_FLT_F1,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_FLT_F9,mouse,skeletal muscle,flight,RR23_R-SLS_FLT_F9,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_FLT_F5,mouse,skeletal muscle,flight,RR23_R-SLS_FLT_F5,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-770,RR23_R-SLS_FLT_F3,mouse,skeletal muscle,flight,RR23_R-SLS_FLT_F3,general_survey_2026-09-12,,,,,,OSD-770_transcription-profiling_rna-sequencing-(rna-seq)_Illumina,unknown,Liquid Nitrogen,
+OSD-99,Mmus_C57-6J_EDL_GC_Rep6_M40,mouse,skeletal muscle,ground,Mmus_C57-6J_EDL_GC_Rep6_M40,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-99,Mmus_C57-6J_EDL_GC_Rep3_M37,mouse,skeletal muscle,ground,Mmus_C57-6J_EDL_GC_Rep3_M37,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-99,Mmus_C57-6J_EDL_GC_Rep1_M31,mouse,skeletal muscle,ground,Mmus_C57-6J_EDL_GC_Rep1_M31,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-99,Mmus_C57-6J_EDL_GC_Rep4_M38,mouse,skeletal muscle,ground,Mmus_C57-6J_EDL_GC_Rep4_M38,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-99,Mmus_C57-6J_EDL_GC_Rep2_M32,mouse,skeletal muscle,ground,Mmus_C57-6J_EDL_GC_Rep2_M32,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-99,Mmus_C57-6J_EDL_GC_Rep5_M39,mouse,skeletal muscle,ground,Mmus_C57-6J_EDL_GC_Rep5_M39,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-99,Mmus_C57-6J_EDL_FLT_Rep6_M30,mouse,skeletal muscle,flight,Mmus_C57-6J_EDL_FLT_Rep6_M30,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-99,Mmus_C57-6J_EDL_FLT_Rep3_M27,mouse,skeletal muscle,flight,Mmus_C57-6J_EDL_FLT_Rep3_M27,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-99,Mmus_C57-6J_EDL_FLT_Rep2_M26,mouse,skeletal muscle,flight,Mmus_C57-6J_EDL_FLT_Rep2_M26,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-99,Mmus_C57-6J_EDL_FLT_Rep1_M23,mouse,skeletal muscle,flight,Mmus_C57-6J_EDL_FLT_Rep1_M23,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-99,Mmus_C57-6J_EDL_FLT_Rep5_M29,mouse,skeletal muscle,flight,Mmus_C57-6J_EDL_FLT_Rep5_M29,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+OSD-99,Mmus_C57-6J_EDL_FLT_Rep4_M28,mouse,skeletal muscle,flight,Mmus_C57-6J_EDL_FLT_Rep4_M28,general_survey_2026-09-12,,,,,,OSD-99_transcription-profiling_rna-sequencing-(rna-seq)_Illumina HiSeq 4000,unknown,RNALater,Mini Cold Bag to -80C freezer
+GSE137081,GSM4066596,human,heart,exposed,1,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066597,human,heart,exposed,2,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066598,human,heart,exposed,3,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066599,human,heart,exposed,1,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066600,human,heart,exposed,2,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066601,human,heart,exposed,3,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066602,human,heart,post-flight,1,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066603,human,heart,post-flight,2,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066604,human,heart,post-flight,3,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066605,human,heart,post-flight,1,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066606,human,heart,post-flight,2,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066607,human,heart,post-flight,3,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066608,human,heart,control,1,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066609,human,heart,control,2,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066610,human,heart,control,3,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066611,human,heart,control,1,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066612,human,heart,control,2,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE137081,GSM4066613,human,heart,control,3,general_survey_2026-09-12,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098323,human,skeletal muscle,control,3005,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098324,human,skeletal muscle,exposed,3005,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098333,human,skeletal muscle,control,3021,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098334,human,skeletal muscle,exposed,3021,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098337,human,skeletal muscle,control,3025,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098338,human,skeletal muscle,exposed,3025,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098339,human,skeletal muscle,control,3026,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098340,human,skeletal muscle,exposed,3026,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098343,human,skeletal muscle,control,1003,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098344,human,skeletal muscle,exposed,1003,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098345,human,skeletal muscle,control,1007,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098346,human,skeletal muscle,exposed,1007,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098347,human,skeletal muscle,control,1009,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098348,human,skeletal muscle,exposed,1009,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098351,human,skeletal muscle,control,1011,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098352,human,skeletal muscle,exposed,1011,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098355,human,skeletal muscle,control,1013,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098356,human,skeletal muscle,exposed,1013,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098357,human,skeletal muscle,control,1016,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098358,human,skeletal muscle,exposed,1016,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098363,human,skeletal muscle,control,2003,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098364,human,skeletal muscle,exposed,2003,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098373,human,skeletal muscle,control,2009,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE113165,GSM3098374,human,skeletal muscle,exposed,2009,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE126865,GSM3615662,human,skeletal muscle,control,11006,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE126865,GSM3615663,human,skeletal muscle,exposed,11006,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE126865,GSM3615664,human,skeletal muscle,control,12003,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE126865,GSM3615665,human,skeletal muscle,exposed,12003,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE126865,GSM3615666,human,skeletal muscle,control,12005,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE126865,GSM3615667,human,skeletal muscle,exposed,12005,general_survey_2026-09-12,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469191,human,skeletal muscle,control,GC-YA-NOES-1,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469192,human,skeletal muscle,control,GC-YA-NOES-2,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469193,human,skeletal muscle,control,GC-YA-NOES-3,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469194,human,skeletal muscle,control,GC-OS-NOES-1,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469195,human,skeletal muscle,control,GC-OS-NOES-2,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469196,human,skeletal muscle,control,GC-OS-NOES-3,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469197,human,skeletal muscle,exposed,YA-NOES-1,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469198,human,skeletal muscle,exposed,YA-NOES-2,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469199,human,skeletal muscle,exposed,YA-NOES-3,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469200,human,skeletal muscle,exposed,OS-NOES-1,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469201,human,skeletal muscle,exposed,OS-NOES-2,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE234465,GSM7469202,human,skeletal muscle,exposed,OS-NOES-3,general_survey_2026-09-12,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,,,,
+GSE298393,GSM9013395,human,skeletal muscle,ground,YA-NoEstim-TOCO2GC--Chip-9,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE298393,GSM9013396,human,skeletal muscle,ground,YA-NoEstim-TOCO2GC--Chip-11,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE298393,GSM9013397,human,skeletal muscle,ground,YA-NoEstim-TOCO2GC--Chip-12,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE298393,GSM9013398,human,skeletal muscle,ground,OS-NoEstim-TOCO2GC--Chip-13,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE298393,GSM9013399,human,skeletal muscle,ground,OS-NoEstim-TOCO2GC--Chip-15,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE298393,GSM9013400,human,skeletal muscle,ground,OS-NoEstim-TOCO2GC--Chip-16,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE298393,GSM9013404,human,skeletal muscle,flight,YA-NoEstim-SpX25-Chip-9,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE298393,GSM9013405,human,skeletal muscle,flight,YA-NoEstim-SpX25-Chip-10,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE298393,GSM9013406,human,skeletal muscle,flight,YA-NoEstim-SpX25-Chip-11,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE298393,GSM9013410,human,skeletal muscle,flight,OS-NoEstim-SpX25-Chip-13,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE298393,GSM9013411,human,skeletal muscle,flight,OS-NoEstim-SpX25-Chip-14,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE298393,GSM9013412,human,skeletal muscle,flight,OS-NoEstim-SpX25-Chip-15,muscle_repeat_flight_2026-09-12,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,,,,
+GSE224805,GSM7032597,human,osteoblast-like MG63 cancer cells,onboard_1g,GSM7032597,pathway_onboard_1g_2026-09-13,GPL18573,Illumina NextSeq 500,RNA-Seq,transcriptomic,,,,,
+GSE224805,GSM7032598,human,osteoblast-like MG63 cancer cells,onboard_1g,GSM7032598,pathway_onboard_1g_2026-09-13,GPL18573,Illumina NextSeq 500,RNA-Seq,transcriptomic,,,,,
+GSE224805,GSM7032599,human,osteoblast-like MG63 cancer cells,onboard_1g,GSM7032599,pathway_onboard_1g_2026-09-13,GPL18573,Illumina NextSeq 500,RNA-Seq,transcriptomic,,,,,
+GSE224805,GSM7032600,human,osteoblast-like MG63 cancer cells,microgravity,GSM7032600,pathway_onboard_1g_2026-09-13,GPL18573,Illumina NextSeq 500,RNA-Seq,transcriptomic,,,,,
+GSE224805,GSM7032601,human,osteoblast-like MG63 cancer cells,microgravity,GSM7032601,pathway_onboard_1g_2026-09-13,GPL18573,Illumina NextSeq 500,RNA-Seq,transcriptomic,,,,,
+GSE224805,GSM7032602,human,osteoblast-like MG63 cancer cells,microgravity,GSM7032602,pathway_onboard_1g_2026-09-13,GPL18573,Illumina NextSeq 500,RNA-Seq,transcriptomic,,,,,
+GSE157937,GSM4781322,human,microvascular endothelial HMEC-1 cells,microgravity,GSM4781322,pathway_onboard_1g_2026-09-13,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE157937,GSM4781323,human,microvascular endothelial HMEC-1 cells,microgravity,GSM4781323,pathway_onboard_1g_2026-09-13,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE157937,GSM4781324,human,microvascular endothelial HMEC-1 cells,microgravity,GSM4781324,pathway_onboard_1g_2026-09-13,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE157937,GSM4781325,human,microvascular endothelial HMEC-1 cells,onboard_1g,GSM4781325,pathway_onboard_1g_2026-09-13,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE157937,GSM4781326,human,microvascular endothelial HMEC-1 cells,onboard_1g,GSM4781326,pathway_onboard_1g_2026-09-13,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE157937,GSM4781327,human,microvascular endothelial HMEC-1 cells,ground,GSM4781327,pathway_onboard_1g_2026-09-13,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE157937,GSM4781328,human,microvascular endothelial HMEC-1 cells,ground,GSM4781328,pathway_onboard_1g_2026-09-13,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,
+GSE157937,GSM4781329,human,microvascular endothelial HMEC-1 cells,ground,GSM4781329,pathway_onboard_1g_2026-09-13,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,,,,

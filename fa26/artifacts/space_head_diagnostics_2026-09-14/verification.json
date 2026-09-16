@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "remedy_metric_checks": 32,
+  "adapted_heads_reproduced": 8,
+  "learning_curve_fits": 152,
+  "source_target_input_gene_order": "verified",
+  "original_embedding_max_abs_diff": 0.0,
+  "plots": "rendered for visual review",
+  "scores": "uncalibrated, exact positive label 1=flight; AUROC calculated from logits"
+}

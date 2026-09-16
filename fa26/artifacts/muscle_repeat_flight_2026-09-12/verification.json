@@ -1,0 +1,18 @@
+{
+  "verified_utc": "2026-09-13T07:25:35.358890+00:00",
+  "passed": [
+    "ordered sample IDs and canonical genes",
+    "finite mean/std/zero-fill outputs",
+    "source-file and input hashes",
+    "same checkpoint and official source as original survey",
+    "local/VM input, embedding and executed-script hash equality",
+    "prespecified sample and pool mapping",
+    "all 36 model-mean chip-deletion pairs remain negative",
+    "MYH1 negative across all 24 single-chip deletion cases",
+    "expression-only source-FPKM sensitivity remains negative",
+    "reviewed scientific figure visually inspected",
+    "current report and handoff links resolve"
+  ],
+  "postrun_check": "Expression-only source-FPKM sensitivity, not new model inference; review_repeat_flight.py",
+  "raw_unit_limitation": "FPKM per source annotation, not independently verified against raw counts."
+}

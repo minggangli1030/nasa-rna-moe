@@ -1,0 +1,51 @@
+{
+  "status": "diagnostics complete; no encoder update",
+  "python": "3.13.7",
+  "source_urls": [
+    "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE234465",
+    "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE298393"
+  ],
+  "artifact_sha256": {
+    "GSE234465_samples.soft": "d49d1d23d28c15f9bb5e97964dad88ba7448fe096ac34aa79d231a97498fb3be",
+    "REPORT.md": "c0562b16e4a8426e57e8e8cb193d238e209106760570f66f94d804e93f13dc64",
+    "adaptation_learning_curve.pdf": "a77ed84f240d11c5c9b901ef6bb3c2f14479d4a6d81841b0b28ba9413c4b6298",
+    "adaptation_learning_curve.png": "655a2ea8bb3d67d58b417bc2a6030ab4cb7881e9279f20ef6128190d752fdae9",
+    "adapted_head_predictions.csv": "fac02859787c5b33aea10f523045f4c87791d448b0832f20c5837e19dcdac6fe",
+    "adapted_heads/bridge_GSE234465_OS.joblib": "c46178ddde758ba266e9694f57e841a4b88edf1f50aaffe6752e9e4115fbba53",
+    "adapted_heads/bridge_GSE234465_YA.joblib": "cf1ec21ba6578b7b228f83d2e9d8db1d125b50a55ce444d679fb6ad64e0b7b9e",
+    "adapted_heads/bridge_GSE298393_OS.joblib": "befbb4bcc5c863de25213e93a4ff97311c2a6b321c3d683cba5543092deb20b0",
+    "adapted_heads/bridge_GSE298393_YA.joblib": "25b0a78bdbfdd47532e80c0aa510190bb00aa9ecac92f3db100c9bc4bc8ff5e5",
+    "adapted_heads/expression_GSE234465_OS.joblib": "629e07b3bf0174212dd3575a9b53268276b8b7253883976cf99f7c3ead86c62d",
+    "adapted_heads/expression_GSE234465_YA.joblib": "fde8927bf296cec0d6a690b406e475bdf6cdf5f9dfc805d8ab5dc51eea382b1a",
+    "adapted_heads/expression_GSE298393_OS.joblib": "449bba3c92065cb358e78872128d0e04716a025cb92a72e75b8f84b8efa560bb",
+    "adapted_heads/expression_GSE298393_YA.joblib": "b4e126ec5e1f780c76e3ddc2174c0768403791705eca4a3b37d804ebcc38c184",
+    "cohort.csv": "d84157b5f772e384c68a364df3d210d528cd04c459558b90ee7d60c1bebe6dff",
+    "diagnosis_and_remedies.pdf": "990f40d1e49940b389e451e934d0f896e7b46a4ee8bbe0a1e994220c7421e9a3",
+    "diagnosis_and_remedies.png": "80a8717a2964015bbf5a6a305ab54fe0e350e04f5958fefa337e00a83e327eae",
+    "expression_reversal_gene_contributions.csv": "0c9d52988d2fd15ce4f02fdf186657bad2adf35f86371df1ebc2e91089876fe3",
+    "inference.log": "e40183335996d7995dcf2a58dad35d2c9e35a1f0ce3c280a9790fc094a29ec3d",
+    "inference_report.json": "a272711bd1fb6d7b4b4f2e12c6e993e3cd5800671dd1865800433aae15eac49e",
+    "input_audit.json": "a97e70960d1a3b8b2ec2995470e618dc8d87a8b6ce3c7f9696424f190b65be4b",
+    "inputs.npz": "795122c3fa7b78fcc1e4f84d46f13019250dafa3165131cf2345287db44e3667",
+    "label_source_audit.csv": "a95121c527ab3a686cc9651606b0317734ae249055ffc6205a7a9efd500e0c7c",
+    "logit_decomposition.csv": "5be19db8e7a0241bee4bc46db3552f2cd5641695d80097a7004ba54064dedd1f",
+    "modules.json": "801e934b566d8e4ef49851ed0e95df5f2004382c6cb563e1a72a04b8bee3b216",
+    "out_of_domain_features.csv": "baba7b8a6cf3cbacd9e9bfd498445668581db8b9ac1de24272c7ff743ec19b09",
+    "protocol.json": "b7c5b50462920148149d0da8fa04d76181c08e919dc4c049a99b6aea30b3daf4",
+    "readouts.npz": "e87a11ee60422613bf5208cd7e3d1eac57caad9549dff8b021ac94c13e4aad18",
+    "remedy_metrics.csv": "e05b51913f30872dca7f0ef22ddb695e50b690329ad5917c136f12a2e4b7ec9d",
+    "remedy_predictions.csv": "b8803874261c0f439bddc2445ae35e19b595bbf87699ec11b6ca3db5ce2cf743",
+    "reproduction_check.json": "03f868d23863f83b70a1c593d9929604ed75a85385cf7baa5bee0a58c93f2b95",
+    "response_directions.csv": "c3a1275bf341a76667687dd8ba4ba803828781f9b4d99ca65a4391b8b0066792",
+    "supervised_adaptation_metrics.csv": "e726579f2d5f6a2e9f5396a51f9d5c9cd275a960fc0b511738fcd8bbe79feb9a",
+    "supervised_adaptation_predictions.csv": "880c88cc23a5303acc06a581e42a983a86a5305045ae937d0f48e22f09701000",
+    "target_label_learning_curve.csv": "ae81e5640e700958e335e38682028e63a653d52806bef6e4d8c7745a88447239",
+    "verification.json": "76aeaf3378d937a2931bff37e5d10efd2fdc7681016aad700b3accee8c1f2998"
+  },
+  "script_sha256": {
+    "space_head_diagnostics.py": "a78109b393c74681c3e342d0d53bd4a840edf9845e2a254ddb1b17a2d964d994",
+    "evaluate_space_head_diagnostics.py": "d33e4d9638d94c0fd1ea1b508981b724d4fc18ae866d5d12dd2cbe4388a8dae4",
+    "check_space_head_adaptation.py": "b1b125aa82c859999cb06382fbe8d747b7ce22f98737cc70dcefc9fd7771d97a",
+    "report_space_head_diagnostics.py": "e42661b4a410ed71f2d7ad1715cb8e819ad9bfcc5741edbfc6454b4fb9afc042"
+  }
+}

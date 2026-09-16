@@ -1,0 +1,30 @@
+species,series_id,n_keyword_hits,n_train,n_val,n_unseen,example_title
+human,GSE113165,56,48,8,0,14406X1_3005_old_M_pre_low
+human,GSE114117,3,2,1,0,mg2
+human,GSE126865,6,4,2,0,Subject 11006 Pre
+human,GSE137081,18,13,5,0,"Line 1, Flight rep1 [FB1]"
+human,GSE157937,5,5,0,0,space_microg_rep1
+human,GSE186045,26,22,4,0,1A-post bedrest muscle biopsy RNA-seq library
+human,GSE205559,3,1,2,0,Test 1
+human,GSE224805,3,0,0,3,"MG63, Âµg, rep4"
+human,GSE224900,75,0,0,75,19565X1 PREbc_Con
+human,GSE231848,18,0,0,18,"Male, Donor1, Day1"
+human,GSE234465,6,0,0,6,YA-NOES-1
+human,GSE248366,25,0,0,25,W005M_D3_ExptCtrl
+human,"GSE65943,GSE65944",2,2,0,0,Simulated Microgravity-1
+human,GSE80292,1,1,0,0,Microgravity
+human,GSE84582,3,3,0,0,Sample_4_MG2
+mouse,GSE118001,3,3,0,0,micro-gravity R1_1
+mouse,GSE131954,8,8,0,0,Retina_Flight_9
+mouse,GSE156174,5,4,1,0,8wk hindlimb unloaded MSC
+mouse,GSE158987,1,0,1,0,17390X1 Young Hindlimb Unloading
+mouse,GSE159771,8,7,1,0,NASA-M22 [RNA-Seq]
+mouse,GSE161693,8,8,0,0,WT-Unloading rep1
+mouse,GSE167462,48,42,6,0,18465X5 HU Control 1
+mouse,GSE205126,6,5,1,0,Tes_U9
+mouse,GSE223803,3,2,1,0,Spaceflight mouse 1 - F11
+mouse,GSE228604,3,2,1,0,SMG-1
+mouse,GSE237099,2,2,0,0,"Muscle, hindlimb unloading day 10, rep1"
+mouse,GSE240751,3,0,0,3,"liver of mice under microgravity in space for 30 days, replicate 1"
+mouse,GSE240814,65,0,0,65,11_S6
+mouse,GSE246962,9,0,0,9,"Control, c57b6l mice,repeated1 [S9_2_S]"

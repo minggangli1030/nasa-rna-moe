@@ -1,0 +1,15 @@
+{
+  "perturbation_rows": 6048,
+  "score_rows": 24,
+  "max_prior_logit_error": 8.881784197001252e-16,
+  "balanced_unique_design": true,
+  "finite_scores": true,
+  "expression_analytic_check_passed": true,
+  "exact_matching_passed": true,
+  "encoder_updated": false,
+  "heads_updated": false,
+  "input_panel_script_hashes_match": true,
+  "retrieved_output_hashes_match": true,
+  "figure_visually_reviewed": true,
+  "report_reviewed": true
+}

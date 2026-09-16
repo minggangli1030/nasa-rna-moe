@@ -1,0 +1,124 @@
+gsm,description,matrix_column,source_file,label_source
+GSM7191281,MCA_SetA_Rep1,MCA_SetA_Rep1A,BFX01_expr.txt,IMR90 Sen IR set A rep 1 | 10Gy ionising radiation 14 days prior collection
+GSM7191282,MCA_SetA_Rep2,MCA_SetA_Rep2A,BFX01_expr.txt,IMR90 Sen IR set A rep 2 | 10Gy ionising radiation 14 days prior collection
+GSM7191283,MCA_SetA_Rep3,MCA_SetA_Rep3A,BFX01_expr.txt,IMR90 Sen IR set A rep 3 | 10Gy ionising radiation 14 days prior collection
+GSM7191284,MCA_SetA_Rep4,MCA_SetA_Rep4A,BFX01_expr.txt,IMR90 Sen IR set A rep 4 | 10Gy ionising radiation 14 days prior collection
+GSM7191285,MCA_SetA_Rep5,MCA_SetA_Rep5A,BFX01_expr.txt,IMR90 Sen IR set A rep 5 | 10Gy ionising radiation 14 days prior collection
+GSM7191286,IMR-3-SnC-1,IMR-3-SnC-1,BFX17_expr.txt,IMR90 Sen IR set B rep 1 | 10Gy ionising radiation 14 days prior collection
+GSM7191287,IMR-3-SnC-2,IMR-3-SnC-2,BFX17_expr.txt,IMR90 Sen IR set B rep 2 | 10Gy ionising radiation 14 days prior collection
+GSM7191288,IMR-3-SnC-3,IMR-3-SnC-3,BFX17_expr.txt,IMR90 Sen IR set B rep 3 | 10Gy ionising radiation 14 days prior collection
+GSM7191289,IMR-LS-SnC-1,IMR-LS-SnC-1,BFX17_expr.txt,IMR90 Sen IR set C rep 1 | 10Gy ionising radiation 14 days prior collection
+GSM7191290,IMR-LS-SnC-2,IMR-LS-SnC-2,BFX17_expr.txt,IMR90 Sen IR set C rep 2 | 10Gy ionising radiation 14 days prior collection
+GSM7191291,IMR-LS-SnC-3,IMR-LS-SnC-3,BFX17_expr.txt,IMR90 Sen IR set C rep 3 | 10Gy ionising radiation 14 days prior collection
+GSM7191292,IR-1,IR-1,BFX36_expr.txt,IMR90 Sen IR set D rep 1 | 10Gy ionising radiation 14 days prior collection
+GSM7191293,IR-2,IR-2,BFX36_expr.txt,IMR90 Sen IR set D rep 2 | 10Gy ionising radiation 14 days prior collection
+GSM7191294,IR-3,IR-3,BFX36_expr.txt,IMR90 Sen IR set D rep 3 | 10Gy ionising radiation 14 days prior collection
+GSM7191295,IR-4,IR-4,BFX36_expr.txt,IMR90 Sen IR set D rep 4 | 10Gy ionising radiation 14 days prior collection
+GSM7191296,IR-5,IR-5,BFX36_expr.txt,IMR90 Sen IR set D rep 5 | 10Gy ionising radiation 14 days prior collection
+GSM7191297,IMR90-IR-R1_sequence,IMR90-IR-R1,BFX02_expr.txt,IMR90 Sen IR set E rep 1 | 10Gy ionising radiation 14 days prior collection
+GSM7191298,IMR90-IR-R2_sequence,IMR90-IR-R2,BFX02_expr.txt,IMR90 Sen IR set E rep 2 | 10Gy ionising radiation 14 days prior collection
+GSM7191299,IMR90-IR-R3_sequence,IMR90-IR-R3,BFX02_expr.txt,IMR90 Sen IR set E rep 3 | 10Gy ionising radiation 14 days prior collection
+GSM7191300,HS-D12-RasV12-pos-RNA-Rep-1,HS-D12-RasV12-pos-RNA-Rep-1,BFX06_expr.txt,IMR90 Sen Ras rep 1 | DOX for 12 days
+GSM7191301,HS-D12-RasV12-pos-RNA-Rep-2,HS-D12-RasV12-pos-RNA-Rep-2,BFX06_expr.txt,IMR90 Sen Ras rep 2 | DOX for 12 days
+GSM7191302,HS-D12-RasV12-pos-RNA-Rep-3,HS-D12-RasV12-pos-RNA-Rep-3,BFX06_expr.txt,IMR90 Sen Ras rep 3 | DOX for 12 days
+GSM7191303,Bleo-1,Bleo-1,BFX36_expr.txt,IMR90 Sen Bleo rep 1 | Bleomycin for 6 days on + 8 days off
+GSM7191304,Bleo-2,Bleo-2,BFX36_expr.txt,IMR90 Sen Bleo rep 2 | Bleomycin for 6 days on + 8 days off
+GSM7191305,Bleo-3,Bleo-3,BFX36_expr.txt,IMR90 Sen Bleo rep 3 | Bleomycin for 6 days on + 8 days off
+GSM7191306,Bleo-4,Bleo-4,BFX36_expr.txt,IMR90 Sen Bleo rep 4 | Bleomycin for 6 days on + 8 days off
+GSM7191307,Bleo-5,Bleo-5,BFX36_expr.txt,IMR90 Sen Bleo rep 5 | Bleomycin for 6 days on + 8 days off
+GSM7191308,IMR90-Rotenone-R1,IMR90-Rotenone-R1,BFX02_expr.txt,IMR90 Sen Rot rep 1 | Rotenone for 14 days
+GSM7191309,IMR90-Rotenone-R2,IMR90-Rotenone-R2,BFX02_expr.txt,IMR90 Sen Rot rep 2 | Rotenone for 14 days
+GSM7191310,IMR90-Rotenone-R3,IMR90-Rotenone-R3,BFX02_expr.txt,IMR90 Sen Rot rep 3 | Rotenone for 14 days
+GSM7191311,Anti-1,Anti-1,BFX36_expr.txt,IMR90 Sen Ant rep 1 | Antimycin A for 6 days on + 8 days off
+GSM7191312,Anti-2,Anti-2,BFX36_expr.txt,IMR90 Sen Ant rep 2 | Antimycin A for 6 days on + 8 days off
+GSM7191313,Anti-3,Anti-3,BFX36_expr.txt,IMR90 Sen Ant rep 3 | Antimycin A for 6 days on + 8 days off
+GSM7191314,Anti-4,Anti-4,BFX36_expr.txt,IMR90 Sen Ant rep 4 | Antimycin A for 6 days on + 8 days off
+GSM7191315,Anti-5,Anti-5,BFX36_expr.txt,IMR90 Sen Ant rep 5 | Antimycin A for 6 days on + 8 days off
+GSM7191316,Oligo-1,Oligo-1,BFX36_expr.txt,IMR90 Sen Oligo rep 1 | Oligomycin for 6 days on + 8 days off
+GSM7191317,Oligo-2,Oligo-2,BFX36_expr.txt,IMR90 Sen Oligo rep 2 | Oligomycin for 6 days on + 8 days off
+GSM7191318,Oligo-3,Oligo-3,BFX36_expr.txt,IMR90 Sen Oligo rep 3 | Oligomycin for 6 days on + 8 days off
+GSM7191319,Oligo-4,Oligo-4,BFX36_expr.txt,IMR90 Sen Oligo rep 4 | Oligomycin for 6 days on + 8 days off
+GSM7191320,Oligo-5,Oligo-5,BFX36_expr.txt,IMR90 Sen Oligo rep 5 | Oligomycin for 6 days on + 8 days off
+GSM7191321,MCA_setE_Rep1,MCA_SetE_Rep1A,BFX01_expr.txt,IMR90 NS Qui Set A rep 1 | 
+GSM7191322,MCA_setE_Rep2,MCA_SetE_Rep2A,BFX01_expr.txt,IMR90 NS Qui Set A rep 2 | 
+GSM7191323,MCA_setE_Rep3,MCA_SetE_Rep3A,BFX01_expr.txt,IMR90 NS Qui Set A rep 3 | 
+GSM7191324,MCA_setE_Rep4,MCA_SetE_Rep4A,BFX01_expr.txt,IMR90 NS Qui Set A rep 4 | 
+GSM7191325,MCA_setE_Rep5,MCA_SetE_Rep5A,BFX01_expr.txt,IMR90 NS Qui Set A rep 5 | 
+GSM7191326,IMR-3-1,IMR-3-1,BFX17_expr.txt,IMR90 NS Qui Set B rep 1 | 
+GSM7191327,IMR-3-2,IMR-3-2,BFX17_expr.txt,IMR90 NS Qui Set B rep 2 | 
+GSM7191328,IMR-3-3,IMR-3-3,BFX17_expr.txt,IMR90 NS Qui Set B rep 3 | 
+GSM7191329,IMR-LS-1,IMR-LS-1,BFX17_expr.txt,IMR90 NS Qui Set C rep 1 | 
+GSM7191330,IMR-LS-2,IMR-LS-2,BFX17_expr.txt,IMR90 NS Qui Set C rep 2 | 
+GSM7191331,IMR-LS-3,IMR-LS-3,BFX17_expr.txt,IMR90 NS Qui Set C rep 3 | 
+GSM7191332,NS-1,NS-1,BFX36_expr.txt,IMR90 NS Qui Set D rep 1 | 
+GSM7191333,NS-2,NS-2,BFX36_expr.txt,IMR90 NS Qui Set D rep 2 | 
+GSM7191334,NS-3,NS-3,BFX36_expr.txt,IMR90 NS Qui Set D rep 3 | 
+GSM7191335,NS-4,NS-4,BFX36_expr.txt,IMR90 NS Qui Set D rep 4 | 
+GSM7191336,NS-5,NS-5,BFX36_expr.txt,IMR90 NS Qui Set D rep 5 | 
+GSM7191337,IMR90-CTRL-1-R1,IMR90-CTRL-1-R1,BFX02_expr.txt,IMR90 NS Qui Set E rep 1 | 
+GSM7191338,IMR90-CTRL-1-R2,IMR90-CTRL-1-R2,BFX02_expr.txt,IMR90 NS Qui Set E rep 2 | 
+GSM7191339,IMR90-CTRL-1-R3,IMR90-CTRL-1-R3,BFX02_expr.txt,IMR90 NS Qui Set E rep 3 | 
+GSM7191340,HS-D12-Ctl-neg-RNA-Rep-1,HS-D12-Ctl-neg-RNA-Rep-1,BFX06_expr.txt,IMR90 NS Ras rep 1 | 
+GSM7191341,HS-D12-Ctl-neg-RNA-Rep-2,HS-D12-Ctl-neg-RNA-Rep-2,BFX06_expr.txt,IMR90 NS Ras rep 2 | 
+GSM7191342,HS-D12-Ctl-neg-RNA-Rep-3,HS-D12-Ctl-neg-RNA-Rep-3,BFX06_expr.txt,IMR90 NS Ras rep 3 | 
+GSM7191343,DMSO-1,DMSO-1,BFX36_expr.txt,IMR90 NS DMSO rep 1 | 
+GSM7191344,DMSO-2,DMSO-2,BFX36_expr.txt,IMR90 NS DMSO rep 2 | 
+GSM7191345,DMSO-3,DMSO-3,BFX36_expr.txt,IMR90 NS DMSO rep 3 | 
+GSM7191346,DMSO-4,DMSO-4,BFX36_expr.txt,IMR90 NS DMSO rep 4 | 
+GSM7191347,DMSO-5,DMSO-5,BFX36_expr.txt,IMR90 NS DMSO rep 5 | 
+GSM7191348,ADS-SnC-1,ADS-SnC-1,BFX17_expr.txt,ADSC Sen IR rep 1 | 10Gy ionising radiation 14 days prior collection
+GSM7191349,ADS-SnC-2,ADS-SnC-2,BFX17_expr.txt,ADSC Sen IR rep 2 | 10Gy ionising radiation 14 days prior collection
+GSM7191350,ADS-SnC-3,ADS-SnC-3,BFX17_expr.txt,ADSC Sen IR rep 3 | 10Gy ionising radiation 14 days prior collection
+GSM7191351,ADS-1,ADS-1,BFX17_expr.txt,ADSC NS rep 1 | 
+GSM7191352,ADS-2,ADS-2,BFX17_expr.txt,ADSC NS rep 2 | 
+GSM7191353,ADS-3,ADS-3,BFX17_expr.txt,ADSC NS rep 3 | 
+GSM7191354,RPT-SnC-1,RPT-SnC-1,BFX17_expr.txt,RPTEC Sen IR rep 1 | 10Gy ionising radiation 14 days prior collection
+GSM7191355,RPT-SnC-2,RPT-SnC-2,BFX17_expr.txt,RPTEC Sen IR rep 2 | 10Gy ionising radiation 14 days prior collection
+GSM7191356,RPT-SnC-3,RPT-SnC-3,BFX17_expr.txt,RPTEC Sen IR rep 3 | 10Gy ionising radiation 14 days prior collection
+GSM7191357,RPT-1,RPT-1,BFX17_expr.txt,RPTEC NS rep 1 | 
+GSM7191358,RPT-2,RPT-2,BFX17_expr.txt,RPTEC NS rep 2 | 
+GSM7191359,RPT-3,RPT-3,BFX17_expr.txt,RPTEC NS rep 3 | 
+GSM7191360,HUV-SnC-1,HUV-SnC-1,BFX17_expr.txt,HUVEC Sen IR rep 1 | 10Gy ionising radiation 14 days prior collection
+GSM7191361,HUV-SnC-2,HUV-SnC-2,BFX17_expr.txt,HUVEC Sen IR rep 2 | 10Gy ionising radiation 14 days prior collection
+GSM7191362,HUV-SnC-3,HUV-SnC-3,BFX17_expr.txt,HUVEC Sen IR rep 3 | 10Gy ionising radiation 14 days prior collection
+GSM7191363,HUV-1,HUV-1,BFX17_expr.txt,HUVEC NS rep 1 | 
+GSM7191364,HUV-2,HUV-2,BFX17_expr.txt,HUVEC NS rep 2 | 
+GSM7191365,HUV-3,HUV-3,BFX17_expr.txt,HUVEC NS rep 3 | 
+GSM7191366,HMV-SnC-1,HMV-SnC-1,BFX17_expr.txt,HMVEC Sen IR rep 1 | 10Gy ionising radiation 14 days prior collection
+GSM7191367,HMV-SnC-2,HMV-SnC-2,BFX17_expr.txt,HMVEC Sen IR rep 2 | 10Gy ionising radiation 14 days prior collection
+GSM7191368,HMV-SnC-3,HMV-SnC-3,BFX17_expr.txt,HMVEC Sen IR rep 3 | 10Gy ionising radiation 14 days prior collection
+GSM7191369,HMV-1,HMV-1,BFX17_expr.txt,HMVEC NS rep 1 | 
+GSM7191370,HMV-2,HMV-2,BFX17_expr.txt,HMVEC NS rep 2 | 
+GSM7191371,HMV-3,HMV-3,BFX17_expr.txt,HMVEC NS rep 3 | 
+GSM7767410,GSM7767410,GSM7767410,NCBI_gene_counts,"Alveolar epithelium, Ctrl 0 Gy, 6h, rep1 | Control 0 Gy"
+GSM7767411,GSM7767411,GSM7767411,NCBI_gene_counts,"Alveolar epithelium, Ctrl 0 Gy, 6h, rep2 | Control 0 Gy"
+GSM7767412,GSM7767412,GSM7767412,NCBI_gene_counts,"Alveolar epithelium, Ctrl 0 Gy, 6h, rep3 | Control 0 Gy"
+GSM7767413,GSM7767413,GSM7767413,NCBI_gene_counts,"Alveolar epithelium, Ctrl 0 Gy, 6h, rep4 | Control 0 Gy"
+GSM7767414,GSM7767414,GSM7767414,NCBI_gene_counts,"Alveolar epithelium, 16 Gy, 6h, rep1 | 16 Gy radiation"
+GSM7767415,GSM7767415,GSM7767415,NCBI_gene_counts,"Alveolar epithelium, 16 Gy, 6h, rep2 | 16 Gy radiation"
+GSM7767416,GSM7767416,GSM7767416,NCBI_gene_counts,"Alveolar epithelium, 16 Gy, 6h, rep3 | 16 Gy radiation"
+GSM7767417,GSM7767417,GSM7767417,NCBI_gene_counts,"Alveolar epithelium, 16 Gy, 6h, rep4 | 16 Gy radiation"
+GSM7767418,GSM7767418,GSM7767418,NCBI_gene_counts,"Microvascular endothelium, Ctrl 0 Gy, 6h, rep1 | Control 0 Gy"
+GSM7767419,GSM7767419,GSM7767419,NCBI_gene_counts,"Microvascular endothelium, Ctrl 0 Gy, 6h, rep2 | Control 0 Gy"
+GSM7767420,GSM7767420,GSM7767420,NCBI_gene_counts,"Microvascular endothelium, Ctrl 0 Gy, 6h, rep3 | Control 0 Gy"
+GSM7767421,GSM7767421,GSM7767421,NCBI_gene_counts,"Microvascular endothelium, Ctrl 0 Gy, 6h, rep4 | Control 0 Gy"
+GSM7767422,GSM7767422,GSM7767422,NCBI_gene_counts,"Microvascular endothelium, 16 Gy, 6h, rep1 | 16 Gy radiation"
+GSM7767423,GSM7767423,GSM7767423,NCBI_gene_counts,"Microvascular endothelium, 16 Gy, 6h, rep2 | 16 Gy radiation"
+GSM7767424,GSM7767424,GSM7767424,NCBI_gene_counts,"Microvascular endothelium, 16 Gy, 6h, rep3 | 16 Gy radiation"
+GSM7767425,GSM7767425,GSM7767425,NCBI_gene_counts,"Microvascular endothelium, 16 Gy, 6h, rep4 | 16 Gy radiation"
+GSM7767426,GSM7767426,GSM7767426,NCBI_gene_counts,"Alveolar epithelium, Ctrl 0 Gy, 7d rep1 | Control 0 Gy"
+GSM7767427,GSM7767427,GSM7767427,NCBI_gene_counts,"Alveolar epithelium, Ctrl 0 Gy, 7d, rep2 | Control 0 Gy"
+GSM7767428,GSM7767428,GSM7767428,NCBI_gene_counts,"Alveolar epithelium, Ctrl 0 Gy, 7d, rep3 | Control 0 Gy"
+GSM7767429,GSM7767429,GSM7767429,NCBI_gene_counts,"Alveolar epithelium, Ctrl 0 Gy, 7d, rep4 | Control 0 Gy"
+GSM7767430,GSM7767430,GSM7767430,NCBI_gene_counts,"Alveolar epithelium, 16 Gy, 7d, rep1 | 16 Gy radiation"
+GSM7767431,GSM7767431,GSM7767431,NCBI_gene_counts,"Alveolar epithelium, 16 Gy, 7d, rep2 | 16 Gy radiation"
+GSM7767432,GSM7767432,GSM7767432,NCBI_gene_counts,"Alveolar epithelium, 16 Gy, 7d, rep3 | 16 Gy radiation"
+GSM7767433,GSM7767433,GSM7767433,NCBI_gene_counts,"Alveolar epithelium, 16 Gy, 7d, rep4 | 16 Gy radiation"
+GSM7767434,GSM7767434,GSM7767434,NCBI_gene_counts,"Microvascular endothelium, Ctrl 0 Gy, 7d, rep1 | Control 0 Gy"
+GSM7767435,GSM7767435,GSM7767435,NCBI_gene_counts,"Microvascular endothelium, Ctrl 0 Gy, 7d, rep2 | Control 0 Gy"
+GSM7767436,GSM7767436,GSM7767436,NCBI_gene_counts,"Microvascular endothelium, Ctrl 0 Gy, 7d, rep3 | Control 0 Gy"
+GSM7767437,GSM7767437,GSM7767437,NCBI_gene_counts,"Microvascular endothelium, Ctrl 0 Gy, 7d, rep4 | Control 0 Gy"
+GSM7767438,GSM7767438,GSM7767438,NCBI_gene_counts,"Microvascular endothelium, 16 Gy, 7d, rep1 | 16 Gy radiation"
+GSM7767439,GSM7767439,GSM7767439,NCBI_gene_counts,"Microvascular endothelium, 16 Gy, 7d, rep2 | 16 Gy radiation"
+GSM7767440,GSM7767440,GSM7767440,NCBI_gene_counts,"Microvascular endothelium, 16 Gy, 7d, rep3 | 16 Gy radiation"
+GSM7767441,GSM7767441,GSM7767441,NCBI_gene_counts,"Microvascular endothelium, 16 Gy, 7d, rep4 | 16 Gy radiation"

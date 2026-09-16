@@ -1,0 +1,61 @@
+{
+  "samples_first_flight": 12,
+  "samples_repeat_flight": 12,
+  "common_genes": 15137,
+  "cross_flight": [
+    {
+      "pool": "YA",
+      "representation": "raw",
+      "cross_flight_cosine": -0.18534292508976502,
+      "leave_one_chip_each_min_cosine": -0.2788524220503514,
+      "leave_one_chip_each_max_cosine": 0.005061562490637208,
+      "leave_one_chip_each_positive_fraction": 0.027777777777777776
+    },
+    {
+      "pool": "YA",
+      "representation": "model_mean",
+      "cross_flight_cosine": -0.6859870886000922,
+      "leave_one_chip_each_min_cosine": -0.8562780957201866,
+      "leave_one_chip_each_max_cosine": -0.35853479780539177,
+      "leave_one_chip_each_positive_fraction": 0.0
+    },
+    {
+      "pool": "YA",
+      "representation": "model_std",
+      "cross_flight_cosine": -0.30583276102788387,
+      "leave_one_chip_each_min_cosine": -0.5320844510396404,
+      "leave_one_chip_each_max_cosine": 0.19855436497469275,
+      "leave_one_chip_each_positive_fraction": 0.16666666666666666
+    },
+    {
+      "pool": "OS",
+      "representation": "raw",
+      "cross_flight_cosine": -0.40165156458679324,
+      "leave_one_chip_each_min_cosine": -0.4838659651957474,
+      "leave_one_chip_each_max_cosine": -0.3283143940385829,
+      "leave_one_chip_each_positive_fraction": 0.0
+    },
+    {
+      "pool": "OS",
+      "representation": "model_mean",
+      "cross_flight_cosine": -0.9633443572993975,
+      "leave_one_chip_each_min_cosine": -0.9738634069409403,
+      "leave_one_chip_each_max_cosine": -0.9455474918498935,
+      "leave_one_chip_each_positive_fraction": 0.0
+    },
+    {
+      "pool": "OS",
+      "representation": "model_std",
+      "cross_flight_cosine": -0.7222558031480791,
+      "leave_one_chip_each_min_cosine": -0.7797798866717117,
+      "leave_one_chip_each_max_cosine": -0.6352882340074029,
+      "leave_one_chip_each_positive_fraction": 0.0
+    }
+  ],
+  "cautions": [
+    "Exploratory association; shared donor pools, different durations/hardware, source preprocessing difference.",
+    "Primary input assumes GEO-annotated FPKM units.",
+    "Source absent from provided pretraining catalog, not independently established unseen by checkpoint.",
+    "No causal, significance, classifier, or generalization claim."
+  ]
+}

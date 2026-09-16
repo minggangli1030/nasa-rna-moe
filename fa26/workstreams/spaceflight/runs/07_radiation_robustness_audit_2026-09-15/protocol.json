@@ -1,0 +1,40 @@
+{
+  "created_utc": "2026-09-15T16:17:05.172075+00:00",
+  "status": "Frozen before new-model outcomes",
+  "purpose": "Audit radiation specificity, preprocessing transport and matched-control response modeling",
+  "development": "All run06 studies are now development data; do not relabel them independent confirmation",
+  "new_challenge": "GSE111437 RNA-seq IMR90 2Gy 6h and 24h versus time-matched controls, all eligible profiles; select by metadata and source availability only",
+  "variants": [
+    "run06 source processing on matched available subset",
+    "NCBI gene counts for both studies, common pinned exon lengths and gene universe"
+  ],
+  "features": [
+    "expression",
+    "frozen BRIDGE mean+SD"
+  ],
+  "training_targets": [
+    "IR vs control",
+    "IR vs all normal-IMR90 negatives including nonradiation stresses"
+  ],
+  "model": "VarianceThreshold 1e-12; train StandardScaler; L2 LogisticRegression C1 liblinear seed17; fixed zero-logit threshold; no hyperparameter search",
+  "reference_variant": "Train in feature differences from matched control mean, leave each training control out of its own reference; test requires disjoint known controls, enumerate every choice of 2 reference controls and evaluate remaining controls plus treatments. References never scored as test samples. No external treatment labels used in model fitting. Report all variants, no outcome-selected winner.",
+  "evaluation": [
+    "whole original expression file held out, B and C together",
+    "GSE242706 separate cell/time strata, now development",
+    "non-radiation challenges held out by original expression file",
+    "new GSE111437 separate time strata, single prespecified evaluation"
+  ],
+  "audit": [
+    "sample mapping and exact duplicates",
+    "missing NCBI samples and matched-subset comparator",
+    "metadata contradictions exclusion sensitivity",
+    "prediction direction vs score offsets",
+    "pretraining catalog membership, no assertion of unseen encoder data"
+  ],
+  "limits": [
+    "2Gy still acute terrestrial radiation, not orbital exposure",
+    "cultures not independent donors",
+    "matched-control variant changes deployment requirements",
+    "irradiation detection is not evidence of flight-head reliance or causal share"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "muscle": [
+    {
+      "contrast": "GSE234465|YA",
+      "score": 0.3346113575963496
+    },
+    {
+      "contrast": "GSE234465|OS",
+      "score": 0.2069646657884903
+    },
+    {
+      "contrast": "GSE298393|YA",
+      "score": 0.9242298316315304
+    },
+    {
+      "contrast": "GSE298393|OS",
+      "score": 1.1088312155360196
+    }
+  ],
+  "mg63": [
+    {
+      "pathway": "TNF-alpha Signaling via NF-kB",
+      "score": 0.8735146810559452
+    },
+    {
+      "pathway": "Inflammatory Response",
+      "score": 0.3753625147251208
+    },
+    {
+      "pathway": "DNA Repair",
+      "score": -0.5713561722189382
+    }
+  ]
+}

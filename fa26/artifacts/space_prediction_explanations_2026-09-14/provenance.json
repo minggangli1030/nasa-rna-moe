@@ -1,0 +1,10 @@
+{
+  "method": "Positive and negative input-IG shares separately normalized; overlapping Hallmark memberships split equally; reference logit separate",
+  "trained_new_model": false,
+  "source_sha256": {
+    "attributions.npz": "108e6230934bb4aad15f74d16ea72d219b54756bd1022c24c2bbc08fdf64e2a7",
+    "attribution_rows.csv": "e38226207f4a370bda23e98d26594b6e58305851b71883618d922e8e25905e9f",
+    "integration_checks.csv": "8b287681994d5e5b02e4b93b7e8fcb5d4c0b71e0979b03c4d8c78632f01a64e0"
+  },
+  "script_sha256": "cbd68144844f2e2d102257fcfaa2590aeee82f06eedc677337cc3278b6d23c72"
+}

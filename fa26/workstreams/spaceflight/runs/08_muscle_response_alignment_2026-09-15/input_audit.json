@@ -1,0 +1,34 @@
+{
+  "n_encoded_profiles": 76,
+  "biological_samples": 38,
+  "new_biological_samples": 14,
+  "new_donors": 7,
+  "common_genes": 15061,
+  "flight_original_mask": 15137,
+  "EPS_wider_mask": 15132,
+  "missing_EPS_Entrez_from_full_flight_mask": [
+    "FOXL3",
+    "LRRC51",
+    "MSLNL",
+    "PNMA8C",
+    "PRSS51"
+  ],
+  "all_radiation_training_genes_present": true,
+  "all_primary_EPS_title_treatment_pairs_agree": true,
+  "new_catalog": {
+    "train": 13,
+    "val": 1
+  },
+  "input_sha256": "1866b4619abab8f55f5d48a465dd75ff19398b473015ca94c456bec8faac5ffe",
+  "source_sha256": {
+    "GSE318627_family.soft.gz": "1759ae222fdf0d79241647dd02cd16b58871cd86b4cbbfb5dfab8fffb1408276",
+    "GSE200335_family.soft.gz": "8301147b902d2b87f0e3c794079286342911d37521c20f6b7b5b1f749dfcae74",
+    "GSE171644_family.soft.gz": "42cd1bd37e6457783f1d4e0be7e205f2ddbb6069a5d67a0555c600f8156bf8ae",
+    "GSE200335_raw_counts_GRCh38.p13_NCBI.tsv.gz": "7bcba4f9c1b9167176f619b4ec36a046349b6368377c6e5f5de9725018a735d0"
+  },
+  "public_sources": [
+    "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE200335",
+    "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE234465",
+    "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE298393"
+  ]
+}

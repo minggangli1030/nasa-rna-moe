@@ -1,0 +1,10 @@
+{
+  "ids_and_input_hash_match": true,
+  "all_76_encodings_finite": true,
+  "effective_probe_weights_reproduce_pipeline": true,
+  "projected_probe_change_removed_to_reference": true,
+  "projected_plus_residual_reproduces_flight_delta": true,
+  "no_flight_training_pool_scored_as_heldout": true,
+  "no_head_or_encoder_training_on_muscle_outcomes": true,
+  "script_sha256": "e7626d60ad7d0c52b6f7cb725169817f26574de03e67ac29f5bb4b880754723c"
+}

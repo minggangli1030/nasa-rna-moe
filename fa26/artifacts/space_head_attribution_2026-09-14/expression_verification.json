@@ -1,0 +1,30 @@
+{
+  "analytic_completeness_passed": true,
+  "score_max_abs_error": 1.4876988529977098e-14,
+  "response_checks": [
+    {
+      "pool": "OS",
+      "reference": "training_all_mean_TPM",
+      "score_gap": 9.0984816946337,
+      "sum_gene_contributions": 9.098481694633698
+    },
+    {
+      "pool": "OS",
+      "reference": "training_ground_mean_TPM",
+      "score_gap": 9.0984816946337,
+      "sum_gene_contributions": 9.098481694633698
+    },
+    {
+      "pool": "YA",
+      "reference": "training_all_mean_TPM",
+      "score_gap": 11.366882524972242,
+      "sum_gene_contributions": 11.366882524972242
+    },
+    {
+      "pool": "YA",
+      "reference": "training_ground_mean_TPM",
+      "score_gap": 11.366882524972242,
+      "sum_gene_contributions": 11.366882524972242
+    }
+  ]
+}

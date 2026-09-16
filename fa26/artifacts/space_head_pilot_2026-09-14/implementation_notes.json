@@ -1,0 +1,4 @@
+{
+  "numerical_metric_revision": "Use decision logits for AUROC/AP to avoid sigmoid saturation/ties on shifted test data. Same model specification, labels, folds, and thresholds. First sigmoid-only outputs archived in history/sigmoid_metric_pass.",
+  "protocol_unchanged": true
+}

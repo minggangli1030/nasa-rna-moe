@@ -1,0 +1,11 @@
+{
+  "samples": 123,
+  "seconds": 45.50822591781616,
+  "device": "NVIDIA A100-SXM4-40GB",
+  "peak_memory_GB": 0.628284928,
+  "input_sha256": "a3d2b3ff7de75acb66b8da149e4c0bb3fe8428db5f9f091db6da7bfd89b56358",
+  "checkpoint_sha256": "f3491beaa697a0408dc1daeb6f8d648566bd46bafc6e44938d723e7ffc325541",
+  "official_source_sha256": "3c8308f751cf2a05d612364ffc2d456f2a969f9aece4f34743ab8635586aaf9e",
+  "script_sha256": "edd0ae268306f9ebfd8b83e15cb51704f50f0024b398da3f9a394e0363f48c58",
+  "encoder_updated": false
+}

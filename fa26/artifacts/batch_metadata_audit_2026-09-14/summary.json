@@ -1,0 +1,15 @@
+{
+  "status": "metadata inventory complete; no fine-tuning started",
+  "selected_biological_samples": 585,
+  "human_samples": 86,
+  "mouse_samples": 499,
+  "human_studies": 7,
+  "all_human_studies_have_one_recorded_instrument": true,
+  "no_explicit_run_or_preparation_batch_columns_in_cached_mouse_table": true,
+  "mouse_full_metadata_rows": 2896,
+  "cautions": [
+    "Missing fields mean unavailable in this cached table, not absent from all original records.",
+    "Platform/study associations with tissue and flight protocols are not evidence of purely technical batch effects.",
+    "Source reprocessing of the same biological sample is not independent replication."
+  ]
+}

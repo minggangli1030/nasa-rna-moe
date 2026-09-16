@@ -1,0 +1,18 @@
+{
+  "fit_count": 80,
+  "model_configurations": 16,
+  "finite_features_predictions": true,
+  "source_file_disjoint_training": true,
+  "calibration_controls_disjoint_from_test_and_training": true,
+  "scaler_and_variance_training_only": true,
+  "no_target_positive_fitting": true,
+  "fixed_threshold": 0,
+  "all_heads_converged": true,
+  "encoder_updated": false,
+  "metrics_rows": 672,
+  "prediction_rows": 5696,
+  "input_sha256": "2db9fb783fd5f7632d18c8e629b087d2b3e9fd5baba42b8156b8b06597fcbaf6",
+  "embedding_sha256": "0a75cbf69ce21683717f1effc2645b0f36cffb686d3656480257b861d33db686",
+  "script_sha256": "96d36d80ff4afd3499908b6447957e93d6768ff48ac60c07eb1d2c8da9c71533",
+  "protocol_sha256": "0c155b735acb1f701c8790c71f23a7775d03265ee20521ace4a471bc46e0c86a"
+}

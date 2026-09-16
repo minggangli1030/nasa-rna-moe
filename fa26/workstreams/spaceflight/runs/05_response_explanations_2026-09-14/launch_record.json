@@ -1,0 +1,22 @@
+{
+  "host": "moe-reboot",
+  "public_ip": "149.165.175.241",
+  "remote_directory": "/media/volume/moe-reboot/fa26_response_programs_20260914",
+  "pid": 106624,
+  "remote_input_hash_matches_local": true,
+  "remote_panels_hash_matches_local": true,
+  "watcher_id": "nasa-repeat-flight-watcher",
+  "watcher_interval_minutes": 15,
+  "last_checked_state": {
+    "state": "running",
+    "completed_perturbations": 4032,
+    "expected_perturbations": 6048,
+    "elapsed_seconds": 1308.5331301689148,
+    "last_sample": "GSE298393:GSM9013396",
+    "reference": "training_all_mean_TPM"
+  },
+  "watcher_check_utc": "2026-09-15T04:50:04Z",
+  "final_state": "complete and verified",
+  "watcher_status": "PAUSED",
+  "completion_review_utc": "2026-09-15"
+}

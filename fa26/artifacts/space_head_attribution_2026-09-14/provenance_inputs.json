@@ -1,0 +1,11 @@
+{
+  "source_input_sha256": "795122c3fa7b78fcc1e4f84d46f13019250dafa3165131cf2345287db44e3667",
+  "attribution_input_sha256": "c44a68dd0e79e23e3b22043c0133fac1fe5928d22e86508d68d04fa7ceec4ce5",
+  "source": "Public GEO GSE298393; same expression inputs already present on the user VM",
+  "heads": {
+    "bridge_GSE298393_YA.joblib": "25b0a78bdbfdd47532e80c0aa510190bb00aa9ecac92f3db100c9bc4bc8ff5e5",
+    "bridge_GSE298393_OS.joblib": "befbb4bcc5c863de25213e93a4ff97311c2a6b321c3d683cba5543092deb20b0",
+    "expression_GSE298393_OS.joblib": "449bba3c92065cb358e78872128d0e04716a025cb92a72e75b8f84b8efa560bb",
+    "expression_GSE298393_YA.joblib": "b4e126ec5e1f780c76e3ddc2174c0768403791705eca4a3b37d804ebcc38c184"
+  }
+}

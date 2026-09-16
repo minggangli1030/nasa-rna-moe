@@ -1,0 +1,9 @@
+{
+  "state": "complete",
+  "profiles": 123,
+  "encoder_updated": false,
+  "new_radiation_associated_heads_fitted": true,
+  "independent_general_validation": false,
+  "gravity_candidate_status": "Requires transcript/CDS quantification audit",
+  "watcher": "paused; no pending job"
+}

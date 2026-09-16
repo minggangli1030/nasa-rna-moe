@@ -1,0 +1,37 @@
+contrast,old_flight_head_training_pool,out_of_domain_diagnostic_only,treated_minus_control_flight_logit,limitation
+IMR90_IR_A,YA,True,-6.703816181701132,Different tissues/preparation; not a validated exposure contribution or flight test
+IMR90_IR_A,OS,True,-8.582555853996382,Different tissues/preparation; not a validated exposure contribution or flight test
+IMR90_IR_E,YA,True,-3.375572820670488,Different tissues/preparation; not a validated exposure contribution or flight test
+IMR90_IR_E,OS,True,-4.5900112151109616,Different tissues/preparation; not a validated exposure contribution or flight test
+IMR90_IR_B,YA,True,-8.873063846615196,Different tissues/preparation; not a validated exposure contribution or flight test
+IMR90_IR_B,OS,True,-8.14001165637372,Different tissues/preparation; not a validated exposure contribution or flight test
+IMR90_IR_C,YA,True,-17.067731290842783,Different tissues/preparation; not a validated exposure contribution or flight test
+IMR90_IR_C,OS,True,-17.898778308383726,Different tissues/preparation; not a validated exposure contribution or flight test
+IMR90_IR_D,YA,True,-7.222337118624182,Different tissues/preparation; not a validated exposure contribution or flight test
+IMR90_IR_D,OS,True,-10.56905330203008,Different tissues/preparation; not a validated exposure contribution or flight test
+lung_chip_Lung endothelium_6h,YA,True,-11.40820841537527,Different tissues/preparation; not a validated exposure contribution or flight test
+lung_chip_Lung endothelium_6h,OS,True,-10.605978285015624,Different tissues/preparation; not a validated exposure contribution or flight test
+lung_chip_Lung endothelium_7d,YA,True,-33.93599136000307,Different tissues/preparation; not a validated exposure contribution or flight test
+lung_chip_Lung endothelium_7d,OS,True,-28.52931733893132,Different tissues/preparation; not a validated exposure contribution or flight test
+lung_chip_Lung epithelium_6h,YA,True,-7.317554516124915,Different tissues/preparation; not a validated exposure contribution or flight test
+lung_chip_Lung epithelium_6h,OS,True,-6.5295383701114815,Different tissues/preparation; not a validated exposure contribution or flight test
+lung_chip_Lung epithelium_7d,YA,True,0.8290158035702007,Different tissues/preparation; not a validated exposure contribution or flight test
+lung_chip_Lung epithelium_7d,OS,True,0.9865891580823813,Different tissues/preparation; not a validated exposure contribution or flight test
+other_cell_ADSC,YA,True,-6.99618045425397,Different tissues/preparation; not a validated exposure contribution or flight test
+other_cell_ADSC,OS,True,-8.570814581272694,Different tissues/preparation; not a validated exposure contribution or flight test
+other_cell_HMVEC,YA,True,0.6184321898676135,Different tissues/preparation; not a validated exposure contribution or flight test
+other_cell_HMVEC,OS,True,2.3924690536709172,Different tissues/preparation; not a validated exposure contribution or flight test
+other_cell_HUVEC,YA,True,-7.192926145724414,Different tissues/preparation; not a validated exposure contribution or flight test
+other_cell_HUVEC,OS,True,-6.055986352109585,Different tissues/preparation; not a validated exposure contribution or flight test
+other_cell_RPTEC,YA,True,-12.480237466813229,Different tissues/preparation; not a validated exposure contribution or flight test
+other_cell_RPTEC,OS,True,-15.470659454888391,Different tissues/preparation; not a validated exposure contribution or flight test
+bleomycin,YA,True,-4.620568485973308,Different tissues/preparation; not a validated exposure contribution or flight test
+bleomycin,OS,True,-5.481839286527429,Different tissues/preparation; not a validated exposure contribution or flight test
+antimycin,YA,True,-3.332470947312549,Different tissues/preparation; not a validated exposure contribution or flight test
+antimycin,OS,True,-4.212737580187832,Different tissues/preparation; not a validated exposure contribution or flight test
+oligomycin,YA,True,-1.4453439085043556,Different tissues/preparation; not a validated exposure contribution or flight test
+oligomycin,OS,True,-4.169503780075547,Different tissues/preparation; not a validated exposure contribution or flight test
+rotenone,YA,True,-4.814845123634694,Different tissues/preparation; not a validated exposure contribution or flight test
+rotenone,OS,True,-2.921735590591955,Different tissues/preparation; not a validated exposure contribution or flight test
+ras_induction,YA,True,-22.912607601124744,Different tissues/preparation; not a validated exposure contribution or flight test
+ras_induction,OS,True,-23.48930758634644,Different tissues/preparation; not a validated exposure contribution or flight test

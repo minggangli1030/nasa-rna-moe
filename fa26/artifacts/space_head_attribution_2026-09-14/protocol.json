@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-14T20:27:42.991904-07:00",
+  "status": "Exploratory attribution of already evaluated experiment-specific heads; not biomarker validation",
+  "cohort": "GSE298393 No E-stim Day21; reciprocal YA/OS training-pool heads, six held-out chips per head",
+  "primary": "Training YA -> held-out OS; reverse pool direction for stability",
+  "target": "Raw flight-vs-ground logit of frozen BridgeRNA mean+SD head; no encoder/head updates",
+  "method": "Input Integrated Gradients, Gauss-Legendre8 vs16, adaptive32/64; fixed missing tokens",
+  "references": [
+    "mean training ground TPM",
+    "mean all training TPM"
+  ],
+  "numerical_gate": "sum IG matches logit difference within max(0.005,2% of absolute difference), L1 change <=5% at doubled quadrature; finite-difference gradient check",
+  "robustness": [
+    "Two training-only references",
+    "Both held-out pool directions",
+    "Leave-one held-out chip response attribution",
+    "Top25/100 absolute attributed genes replaced by training-ground values vs20 expression/SD-matched random sets",
+    "TPM-renormalized top-gene replacement sensitivity",
+    "Analytic expression-classifier attributions and matching random panel control"
+  ],
+  "interpretation": "Input evidence used by an experiment-specific classifier; not causal genes, independent samples, or calibrated radiation/gravity probabilities"
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "paths": 24,
+  "score_reproduction_max_abs_error": 4.085620730620576e-13,
+  "integration_max_abs_residual": 6.936585866146316e-05,
+  "integration_max_relative_L1_change": 1.044494808511658e-06,
+  "finite_difference_max_relative_error": 0.0059590572,
+  "stable_bridge_gene_count": 44,
+  "encoder_updated": false,
+  "head_updated": false
+}

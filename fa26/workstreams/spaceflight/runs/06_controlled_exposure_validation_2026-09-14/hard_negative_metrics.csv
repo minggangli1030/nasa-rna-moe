@@ -1,0 +1,17 @@
+model,evaluation,fold,n_train,auroc,balanced_accuracy,n,TP,TN,FP,FN,mean_positive_logit,mean_negative_logit
+expression_linear,held_out_file_with_other_stresses,BFX01_expr.txt,51,1.0,1.0,10,5,5,0,0,26.354949818353695,-3.507075992492431
+expression_linear,held_out_file_with_other_stresses,BFX02_expr.txt,52,1.0,0.8333333333333333,9,3,4,2,0,16.36967848718712,-1.806043530912197
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,49,1.0,1.0,12,6,6,0,0,13.164330531686185,-6.948727659204342
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,31,1.0,0.9199999999999999,30,5,21,4,0,11.867915504257018,-5.187233061839945
+expression_linear,external_lung_chip,Lung endothelium_6h,61,0.6875,0.5,8,4,0,4,0,89.81755261880281,86.79452341703606
+expression_linear,external_lung_chip,Lung endothelium_7d,61,1.0,0.5,8,4,0,4,0,128.3100571023257,101.33990247315195
+expression_linear,external_lung_chip,Lung epithelium_6h,61,0.8125,0.5,8,4,0,4,0,90.38096028892892,84.49097512075724
+expression_linear,external_lung_chip,Lung epithelium_7d,61,0.8125,0.5,8,4,0,4,0,98.73539738237633,92.5699844299632
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX01_expr.txt,51,1.0,1.0,10,5,5,0,0,13.834455404142656,-2.9048653919887726
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX02_expr.txt,52,0.9444444444444444,0.5833333333333334,9,3,1,5,0,11.711146528294298,4.8753296509218265
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,49,1.0,0.9166666666666667,12,6,5,1,0,13.654602229678474,-4.170711878593746
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,31,1.0,0.98,30,5,24,1,0,9.349453014612468,-7.641051381278621
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,61,0.8125,0.5,8,4,0,4,0,19.75141390646289,18.1131841049959
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,61,0.25,0.5,8,4,0,4,0,20.177277748323476,21.5001679642143
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,61,0.6875,0.5,8,4,0,4,0,22.57975893446179,20.7314957155994
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,61,0.3125,0.5,8,4,0,4,0,21.041826909206343,21.32979119502215

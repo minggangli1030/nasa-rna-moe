@@ -1,0 +1,187 @@
+model,evaluation,fold,id,condition,label,score_logit,positive
+expression_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191281,irradiated,1,26.91780343499803,True
+expression_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191282,irradiated,1,26.91027949786812,True
+expression_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191283,irradiated,1,25.74842865196872,True
+expression_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191284,irradiated,1,26.791349516288296,True
+expression_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191285,irradiated,1,25.406887990645323,True
+expression_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191321,control,0,-5.769382378653788,False
+expression_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191322,control,0,-2.626390270058051,False
+expression_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191323,control,0,-3.5500888775790576,False
+expression_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191324,control,0,-2.7436953848755654,False
+expression_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191325,control,0,-2.8458230512956946,False
+expression_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191297,irradiated,1,15.92460740298947,True
+expression_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191298,irradiated,1,16.824341127947775,True
+expression_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191299,irradiated,1,16.36008693062412,True
+expression_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191308,rotenone,0,4.126497027977727,True
+expression_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191309,rotenone,0,-0.3334263741345894,False
+expression_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191310,rotenone,0,2.01379059342371,True
+expression_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191337,control,0,-2.4003072691170657,False
+expression_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191338,control,0,-6.749906662638805,False
+expression_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191339,control,0,-7.492908500984159,False
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191286,irradiated,1,11.235672100468463,True
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191287,irradiated,1,11.18881250033598,True
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191288,irradiated,1,14.97205220790011,True
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191289,irradiated,1,12.44380088015667,True
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191290,irradiated,1,14.374202169759384,True
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191291,irradiated,1,14.771443331496496,True
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191326,control,0,-5.840120198134396,False
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191327,control,0,-3.945341751101672,False
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191328,control,0,-5.73824687771172,False
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191329,control,0,-9.58514090430951,False
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191330,control,0,-5.564621849078225,False
+expression_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191331,control,0,-11.01889437489053,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191292,irradiated,1,11.169294406974537,True
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191293,irradiated,1,12.01561821106483,True
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191294,irradiated,1,11.755269592224234,True
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191295,irradiated,1,12.302485953889452,True
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191296,irradiated,1,12.096909357132041,True
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191303,bleomycin,0,1.8613560556114985,True
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191304,bleomycin,0,2.5337220204329194,True
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191305,bleomycin,0,1.0104725185561152,True
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191306,bleomycin,0,0.03880628753247283,True
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191307,bleomycin,0,-1.4191698424465358,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191311,antimycin,0,-2.5191115471616286,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191312,antimycin,0,-3.8500231668329246,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191313,antimycin,0,-3.3069621469468213,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191314,antimycin,0,-4.254757058934927,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191315,antimycin,0,-3.2630240907123036,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191316,oligomycin,0,-2.7288489596879595,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191317,oligomycin,0,-2.491254807926821,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191318,oligomycin,0,-3.246125818331307,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191319,oligomycin,0,-4.101780582457793,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191320,oligomycin,0,-3.3995665281173184,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191332,control,0,-10.371859965397128,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191333,control,0,-10.304548844288718,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191334,control,0,-10.106665465944321,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191335,control,0,-10.51029426595782,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191336,control,0,-9.802072410456852,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191343,vehicle,0,-9.460849950133031,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191344,vehicle,0,-10.245313913564342,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191345,vehicle,0,-9.789340011173588,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191346,vehicle,0,-9.861489191512781,False
+expression_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191347,vehicle,0,-10.092124860146718,False
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767418,control,0,86.09191679065323,True
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767419,control,0,82.94082153455693,True
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767420,control,0,78.83096158681614,True
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767421,control,0,99.31439375611792,True
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767422,irradiated,1,81.52196381131031,True
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767423,irradiated,1,86.33198371406883,True
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767424,irradiated,1,99.81855240248743,True
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767425,irradiated,1,91.59771054734463,True
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767434,control,0,100.84121023727384,True
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767435,control,0,106.96162660629268,True
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767436,control,0,94.76080409086588,True
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767437,control,0,102.79596895817544,True
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767438,irradiated,1,133.35905456606605,True
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767439,irradiated,1,127.5754808377504,True
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767440,irradiated,1,122.73946708790582,True
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767441,irradiated,1,129.56622591758054,True
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767410,control,0,85.49050352296418,True
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767411,control,0,84.99013330044447,True
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767412,control,0,82.57906806998595,True
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767413,control,0,84.90419558963437,True
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767414,irradiated,1,90.67842442338618,True
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767415,irradiated,1,91.14825499129635,True
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767416,irradiated,1,96.62654989674704,True
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767417,irradiated,1,83.07061184428609,True
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767426,control,0,98.61794476837846,True
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767427,control,0,91.62469613319105,True
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767428,control,0,83.93186750271056,True
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767429,control,0,96.10542931557266,True
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767430,irradiated,1,102.9428935997701,True
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767431,irradiated,1,99.20811538080147,True
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767432,irradiated,1,94.8687735130012,True
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767433,irradiated,1,97.92180703593257,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191281,irradiated,1,13.485721860100341,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191282,irradiated,1,14.53039969185193,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191283,irradiated,1,12.869262549314112,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191284,irradiated,1,14.393760102186219,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191285,irradiated,1,13.893132817260677,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191321,control,0,-5.070410372077313,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191322,control,0,-2.601256017105562,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191323,control,0,-2.8399931532408442,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191324,control,0,-1.174364521794664,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX01_expr.txt,GSE230181:GSM7191325,control,0,-2.838302895725481,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191297,irradiated,1,11.92430340646406,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191298,irradiated,1,12.02990596982546,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191299,irradiated,1,11.179230208593378,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191308,rotenone,0,11.838726143277702,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191309,rotenone,0,6.011848702974925,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191310,rotenone,0,10.488995967707485,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191337,control,0,0.5246862134611987,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191338,control,0,1.0743569973366232,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX02_expr.txt,GSE230181:GSM7191339,control,0,-0.686636119226973,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191286,irradiated,1,12.051526362093684,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191287,irradiated,1,10.542050015665255,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191288,irradiated,1,12.741810550421604,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191289,irradiated,1,13.825571734998825,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191290,irradiated,1,15.669716794753521,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191291,irradiated,1,17.096937920137957,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191326,control,0,-1.3834792604745467,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191327,control,0,1.8021122499875446,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191328,control,0,-2.305614866194124,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191329,control,0,-7.949030477525463,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191330,control,0,-3.5777129204378078,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX17_expr.txt,GSE230181:GSM7191331,control,0,-11.610545996918079,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191292,irradiated,1,8.94856701751258,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191293,irradiated,1,9.27961575111553,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191294,irradiated,1,9.891776195148172,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191295,irradiated,1,8.953723140026776,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191296,irradiated,1,9.673582969259286,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191303,bleomycin,0,-0.1788416102528977,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191304,bleomycin,0,0.7376650452194128,True
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191305,bleomycin,0,-0.9813862049579531,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191306,bleomycin,0,-2.151727120821291,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191307,bleomycin,0,-3.8168955185944036,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191311,antimycin,0,-4.181473796589498,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191312,antimycin,0,-5.574294912583856,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191313,antimycin,0,-6.123018373886578,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191314,antimycin,0,-6.921358458184438,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191315,antimycin,0,-6.048778863430782,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191316,oligomycin,0,-3.676940444949354,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191317,oligomycin,0,-3.9566859769480667,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191318,oligomycin,0,-4.081162044944306,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191319,oligomycin,0,-5.197249814453619,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191320,oligomycin,0,-3.8314975058108707,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191332,control,0,-14.027885493069784,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191333,control,0,-13.965372633398124,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191334,control,0,-13.982026611398771,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191335,control,0,-14.311334841671005,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191336,control,0,-12.463454167848804,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191343,vehicle,0,-12.626637337242277,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191344,vehicle,0,-13.774579443699814,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191345,vehicle,0,-12.91175040254695,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191346,vehicle,0,-12.574727204234712,False
+bridge_meanstd_linear,held_out_file_with_other_stresses,BFX36_expr.txt,GSE230181:GSM7191347,vehicle,0,-14.404870795666785,False
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767418,control,0,19.159482793414412,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767419,control,0,19.38173715915335,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767420,control,0,20.39151515815868,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767421,control,0,13.52000130925715,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767422,irradiated,1,21.36802772114682,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767423,irradiated,1,21.895681238890806,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767424,irradiated,1,14.906728669437975,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767425,irradiated,1,20.835217996375956,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767434,control,0,22.144640823816964,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767435,control,0,19.253822824642327,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767436,control,0,23.706940772141426,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767437,control,0,20.89526743625648,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767438,irradiated,1,18.993303715294267,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767439,irradiated,1,19.158683643828113,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767440,irradiated,1,22.73734554986545,True
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767441,irradiated,1,19.819778084306073,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767410,control,0,21.43586188825243,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767411,control,0,21.828345290226125,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767412,control,0,21.310352213235685,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767413,control,0,18.35142347068336,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767414,irradiated,1,24.72620670340879,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767415,irradiated,1,24.7244903424446,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767416,irradiated,1,19.50417565861358,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767417,irradiated,1,21.36416303338019,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767426,control,0,22.148501131988194,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767427,control,0,20.20658523836512,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767428,control,0,21.74475409551204,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767429,control,0,21.219324314223247,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767430,irradiated,1,19.86084372456404,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767431,irradiated,1,20.83266205694302,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767432,irradiated,1,19.76311162511873,True
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767433,irradiated,1,23.710690230199592,True

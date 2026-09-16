@@ -1,0 +1,31 @@
+{
+  "studies": [
+    {
+      "study": "OSD-48",
+      "count_file": "GLDS-48_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+      "sha256": "aaa18232b0875fb09eeca24b3fd756815d2c670ca22efd3022354dcbe59678c2",
+      "canonical_coverage": 15165,
+      "samples": 10
+    },
+    {
+      "study": "OSD-379",
+      "count_file": "GLDS-379_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+      "sha256": "4d425b9532223951e80bcc04af2bc86f99ead888f53f40321aef730a545d9ac0",
+      "canonical_coverage": 15165,
+      "samples": 12
+    },
+    {
+      "study": "OSD-463",
+      "count_file": "GLDS-463_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+      "sha256": "02b5b5a8ea0d9d8dde856fee947ffa58a1674eb01d81d5bb621a301336d9a34d",
+      "canonical_coverage": 15165,
+      "samples": 12
+    }
+  ],
+  "reference_hashes": {
+    "data/ensembl/canonical_genes.csv": "1dbe9a5753e5982b3ddb383f35e92ce5795c21fc054fff685514831c8dadbb8d",
+    "data/ensembl/orthologs_one2one.txt": "bdfdf2a6d4e768aafd63d0bf9951316a32979b13bd9c2c01a60f06dc7b61e08d",
+    "data/gencode/gencode_v49_mouse_gene_exon_lengths.csv": "395d019ec1d19e3ee38957e22ed54e1e194f97baf640b94440c6d58bc185288d"
+  },
+  "input_sha256": "94a4017ac2478b5953581603e30669516eb34a0b720a10fdc6b8b86335226dcb"
+}

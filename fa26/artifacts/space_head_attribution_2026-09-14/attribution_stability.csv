@@ -1,0 +1,13 @@
+model,case1,case2,comparison,spearman,top100_overlap,top100_jaccard
+bridge,OS|training_all_mean_TPM,OS|training_ground_mean_TPM,reference,0.9956896329487723,96,0.9230769230769231
+bridge,OS|training_all_mean_TPM,YA|training_all_mean_TPM,pool_and_or_reference,0.43077739901190315,46,0.2987012987012987
+bridge,OS|training_all_mean_TPM,YA|training_ground_mean_TPM,pool_and_or_reference,0.4233151920851495,46,0.2987012987012987
+bridge,OS|training_ground_mean_TPM,YA|training_all_mean_TPM,pool_and_or_reference,0.4251799372967589,45,0.2903225806451613
+bridge,OS|training_ground_mean_TPM,YA|training_ground_mean_TPM,pool_and_or_reference,0.41578735893758667,45,0.2903225806451613
+bridge,YA|training_all_mean_TPM,YA|training_ground_mean_TPM,reference,0.9963405070652762,100,1.0
+expression,OS|training_all_mean_TPM,OS|training_ground_mean_TPM,reference,1.0,100,1.0
+expression,OS|training_all_mean_TPM,YA|training_all_mean_TPM,pool_and_or_reference,0.7877291428263563,0,0.0
+expression,OS|training_all_mean_TPM,YA|training_ground_mean_TPM,pool_and_or_reference,0.7877291428263563,0,0.0
+expression,OS|training_ground_mean_TPM,YA|training_all_mean_TPM,pool_and_or_reference,0.7877291428263563,0,0.0
+expression,OS|training_ground_mean_TPM,YA|training_ground_mean_TPM,pool_and_or_reference,0.7877291428263563,0,0.0
+expression,YA|training_all_mean_TPM,YA|training_ground_mean_TPM,reference,1.0,100,1.0

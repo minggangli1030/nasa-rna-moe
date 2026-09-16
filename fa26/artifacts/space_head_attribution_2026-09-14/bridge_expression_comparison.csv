@@ -1,0 +1,5 @@
+training_pool,reference,signed_response_spearman,top100_overlap
+OS,training_all_mean_TPM,0.11433289031309789,3
+OS,training_ground_mean_TPM,0.11257740403483851,2
+YA,training_all_mean_TPM,0.08704432042700078,2
+YA,training_ground_mean_TPM,0.0864999087229401,2

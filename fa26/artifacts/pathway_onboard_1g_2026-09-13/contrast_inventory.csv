@@ -1,0 +1,62 @@
+contrast,study,species,tissue,setting,source,role,n_control,n_exposed,paired
+GSE113165|old,GSE113165,human,skeletal muscle,bed_rest_analog,existing,primary,6,6,True
+GSE113165|young,GSE113165,human,skeletal muscle,bed_rest_analog,existing,primary,6,6,True
+GSE126865|all_subjects,GSE126865,human,skeletal muscle,bed_rest_analog,existing,primary,3,3,True
+GSE137081|all_lines,GSE137081,human,heart,actual_flight,existing,primary,6,6,True
+GSE234465|OS,GSE234465,human,skeletal muscle,actual_flight,existing,primary,3,3,False
+GSE234465|YA,GSE234465,human,skeletal muscle,actual_flight,existing,primary,3,3,False
+OSD-101|Left gastrocnemius|14bf1f06,OSD-101,mouse,skeletal muscle,actual_flight,existing,primary,6,6,False
+OSD-103|Left quadriceps femoris|14bf1f06,OSD-103,mouse,skeletal muscle,actual_flight,existing,primary,6,6,False
+OSD-104|Soleus-both sides|8d0b8dc2,OSD-104,mouse,skeletal muscle,actual_flight,existing,primary,6,6,False
+OSD-105|Left tibialis anterior|f829a3c1,OSD-105,mouse,skeletal muscle,actual_flight,existing,primary,6,6,False
+OSD-245|Liver|83b7ee50,OSD-245,mouse,liver,actual_flight,existing,primary,6,6,False
+OSD-245|Liver|8f786fbe,OSD-245,mouse,liver,actual_flight,existing,primary,6,6,False
+OSD-326|Quadriceps femoris|6a69abe9,OSD-326,mouse,skeletal muscle,actual_flight,existing,primary,4,4,False
+OSD-379|Left Lobe of the Liver|2c17a152,OSD-379,mouse,liver,actual_flight,existing,primary,6,6,False
+OSD-379|Left Lobe of the Liver|9abbe127,OSD-379,mouse,liver,actual_flight,existing,primary,6,6,False
+OSD-379|Left Lobe of the Liver|a45ca5be,OSD-379,mouse,liver,actual_flight,existing,primary,6,6,False
+OSD-379|Left Lobe of the Liver|a8ed2e02,OSD-379,mouse,liver,actual_flight,existing,primary,6,6,False
+OSD-401|Gastrocnemius|344e21b7,OSD-401,mouse,skeletal muscle,actual_flight,existing,primary,3,3,False
+OSD-401|Quadriceps femoris|344e21b7,OSD-401,mouse,skeletal muscle,actual_flight,existing,primary,3,3,False
+OSD-419|Right gastrocnemius|2664dccf,OSD-419,mouse,skeletal muscle,actual_flight,existing,primary,6,4,False
+OSD-457|Cerebrum|0f84cf73,OSD-457,mouse,brain,actual_flight,existing,primary,6,6,False
+OSD-457|Cerebrum|3ec2dbad,OSD-457,mouse,brain,actual_flight,existing,primary,6,6,False
+OSD-457|Kidney|0f84cf73,OSD-457,mouse,kidney,actual_flight,existing,primary,3,3,False
+OSD-457|Kidney|3ec2dbad,OSD-457,mouse,kidney,actual_flight,existing,primary,3,3,False
+OSD-457|Liver|0f84cf73,OSD-457,mouse,liver,actual_flight,existing,primary,6,6,False
+OSD-457|Liver|3ec2dbad,OSD-457,mouse,liver,actual_flight,existing,primary,6,6,False
+OSD-457|Mandible|0f84cf73,OSD-457,mouse,bone,actual_flight,existing,primary,3,3,False
+OSD-457|Mandible|3ec2dbad,OSD-457,mouse,bone,actual_flight,existing,primary,3,3,False
+OSD-457|Spleen|0f84cf73,OSD-457,mouse,spleen,actual_flight,existing,primary,6,6,False
+OSD-457|Spleen|3ec2dbad,OSD-457,mouse,spleen,actual_flight,existing,primary,6,6,False
+OSD-457|Temporal Bone|0f84cf73,OSD-457,mouse,bone,actual_flight,existing,primary,6,6,False
+OSD-457|Temporal Bone|3ec2dbad,OSD-457,mouse,bone,actual_flight,existing,primary,6,6,False
+OSD-457|brown adipose tissue|0f84cf73,OSD-457,mouse,adipose,actual_flight,existing,primary,6,6,False
+OSD-457|brown adipose tissue|3ec2dbad,OSD-457,mouse,adipose,actual_flight,existing,primary,6,6,False
+OSD-457|thymus|0f84cf73,OSD-457,mouse,thymus,actual_flight,existing,primary,6,6,False
+OSD-457|thymus|3ec2dbad,OSD-457,mouse,thymus,actual_flight,existing,primary,6,6,False
+OSD-457|white adipose tissue|0f84cf73,OSD-457,mouse,adipose,actual_flight,existing,primary,6,6,False
+OSD-457|white adipose tissue|3ec2dbad,OSD-457,mouse,adipose,actual_flight,existing,primary,6,6,False
+OSD-463|Left Lobe of the Liver|52cb5fea,OSD-463,mouse,liver,actual_flight,existing,primary,6,6,False
+OSD-464|Left Lung|52cb5fea,OSD-464,mouse,lung,actual_flight,existing,primary,6,6,False
+OSD-48|Liver|b28df4aa,OSD-48,mouse,liver,actual_flight,existing,primary,5,5,False
+OSD-562|Right hippocampus|d00a2420,OSD-562,mouse,brain,actual_flight,existing,primary,3,3,False
+OSD-562|Right hippocampus|d48ef0fe,OSD-562,mouse,brain,actual_flight,existing,primary,3,3,False
+OSD-564|Right hippocampus|416bbee1,OSD-564,mouse,brain,actual_flight,existing,primary,5,5,False
+OSD-576|Right tibialis anterior|52cb5fea,OSD-576,mouse,skeletal muscle,actual_flight,existing,primary,6,6,False
+OSD-580|heart right ventricle|85cadd29,OSD-580,mouse,heart,actual_flight,existing,primary,5,5,False
+OSD-580|heart right ventricle|c7240239,OSD-580,mouse,heart,actual_flight,existing,primary,5,5,False
+OSD-599|Heart|9de7889f,OSD-599,mouse,heart,actual_flight,existing,primary,3,3,False
+OSD-665|Right extensor digitorum longus|52cb5fea,OSD-665,mouse,skeletal muscle,actual_flight,existing,primary,6,6,False
+OSD-666|Right quadriceps femoris|52cb5fea,OSD-666,mouse,skeletal muscle,actual_flight,existing,primary,6,6,False
+OSD-667|Colon|1cbbec91,OSD-667,mouse,colon,actual_flight,existing,primary,3,3,False
+OSD-686|Liver|df0bb62b,OSD-686,mouse,liver,actual_flight,existing,primary,3,6,False
+OSD-770|Right soleus|df447f03,OSD-770,mouse,skeletal muscle,actual_flight,existing,primary,6,6,False
+OSD-99|Extensor digitorum longus- both sides|2664dccf,OSD-99,mouse,skeletal muscle,actual_flight,existing,primary,6,6,False
+GSE298393|OS,GSE298393,human,skeletal muscle,actual_flight,existing,primary,3,3,False
+GSE298393|YA,GSE298393,human,skeletal muscle,actual_flight,existing,primary,3,3,False
+GSE157937|microgravity_vs_onboard_1g|NCBI,GSE157937,human,microvascular endothelial HMEC-1 cells,microgravity_vs_onboard_1g,NCBI,primary,2,3,False
+GSE157937|onboard_1g_vs_ground|NCBI,GSE157937,human,microvascular endothelial HMEC-1 cells,onboard_1g_vs_ground,NCBI,primary,3,2,False
+GSE157937|microgravity_vs_ground|NCBI,GSE157937,human,microvascular endothelial HMEC-1 cells,microgravity_vs_ground,NCBI,primary,3,3,False
+GSE224805|microgravity_vs_onboard_1g|NCBI,GSE224805,human,osteoblast-like MG63 cancer cells,microgravity_vs_onboard_1g,NCBI,sensitivity,2,3,False
+GSE224805|microgravity_vs_onboard_1g|author,GSE224805,human,osteoblast-like MG63 cancer cells,microgravity_vs_onboard_1g,author,primary,3,3,False

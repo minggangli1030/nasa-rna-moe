@@ -1,0 +1,155 @@
+{
+  "n_samples": 34,
+  "n_studies": 3,
+  "geometry": [
+    {
+      "representation": "Raw log1p(TPM)",
+      "study_variance_fraction": 0.6870842417366295,
+      "within_study_condition_variance_fraction": 0.06962120793291433,
+      "median_pair_distance": 63.69879846022413,
+      "pc1_log_count_spearman": 0.812681436210848,
+      "pc1_nonzero_spearman": 0.5294522133260816
+    },
+    {
+      "representation": "PCA8 (descriptive fit)",
+      "study_variance_fraction": 0.7653680826491143,
+      "within_study_condition_variance_fraction": 0.0706659047246325,
+      "median_pair_distance": 60.526134476670066,
+      "pc1_log_count_spearman": 0.812681436210848,
+      "pc1_nonzero_spearman": 0.5294522133260816
+    },
+    {
+      "representation": "BridgeRNA mean",
+      "study_variance_fraction": 0.5409792277853616,
+      "within_study_condition_variance_fraction": 0.09069877744563043,
+      "median_pair_distance": 1.053626279371085,
+      "pc1_log_count_spearman": -0.18472116119174942,
+      "pc1_nonzero_spearman": -0.591030638137167
+    }
+  ],
+  "cosines": [
+    {
+      "representation": "Raw log1p(TPM)",
+      "study_a": "OSD-48",
+      "study_b": "OSD-379",
+      "flight_shift_cosine": 0.26917462206835796
+    },
+    {
+      "representation": "Raw log1p(TPM)",
+      "study_a": "OSD-48",
+      "study_b": "OSD-463",
+      "flight_shift_cosine": -0.10808659031831049
+    },
+    {
+      "representation": "Raw log1p(TPM)",
+      "study_a": "OSD-379",
+      "study_b": "OSD-463",
+      "flight_shift_cosine": 0.07906463981355893
+    },
+    {
+      "representation": "PCA8 (descriptive fit)",
+      "study_a": "OSD-48",
+      "study_b": "OSD-379",
+      "flight_shift_cosine": 0.32406467180719223
+    },
+    {
+      "representation": "PCA8 (descriptive fit)",
+      "study_a": "OSD-48",
+      "study_b": "OSD-463",
+      "flight_shift_cosine": -0.09628508084364039
+    },
+    {
+      "representation": "PCA8 (descriptive fit)",
+      "study_a": "OSD-379",
+      "study_b": "OSD-463",
+      "flight_shift_cosine": 0.13648523190358017
+    },
+    {
+      "representation": "BridgeRNA mean",
+      "study_a": "OSD-48",
+      "study_b": "OSD-379",
+      "flight_shift_cosine": 0.822618739227308
+    },
+    {
+      "representation": "BridgeRNA mean",
+      "study_a": "OSD-48",
+      "study_b": "OSD-463",
+      "flight_shift_cosine": -0.48932336031994716
+    },
+    {
+      "representation": "BridgeRNA mean",
+      "study_a": "OSD-379",
+      "study_b": "OSD-463",
+      "flight_shift_cosine": -0.28239906269966214
+    }
+  ],
+  "held_out_probe": [
+    {
+      "held_out_study": "OSD-48",
+      "representation": "Raw log1p(TPM)",
+      "n_test": 10,
+      "auroc": 0.43999999999999995,
+      "balanced_accuracy": 0.5
+    },
+    {
+      "held_out_study": "OSD-48",
+      "representation": "PCA8",
+      "n_test": 10,
+      "auroc": 0.48,
+      "balanced_accuracy": 0.5
+    },
+    {
+      "held_out_study": "OSD-48",
+      "representation": "BridgeRNA mean",
+      "n_test": 10,
+      "auroc": 0.36,
+      "balanced_accuracy": 0.6
+    },
+    {
+      "held_out_study": "OSD-379",
+      "representation": "Raw log1p(TPM)",
+      "n_test": 12,
+      "auroc": 0.6944444444444445,
+      "balanced_accuracy": 0.75
+    },
+    {
+      "held_out_study": "OSD-379",
+      "representation": "PCA8",
+      "n_test": 12,
+      "auroc": 0.8611111111111112,
+      "balanced_accuracy": 0.6666666666666667
+    },
+    {
+      "held_out_study": "OSD-379",
+      "representation": "BridgeRNA mean",
+      "n_test": 12,
+      "auroc": 0.638888888888889,
+      "balanced_accuracy": 0.6666666666666666
+    },
+    {
+      "held_out_study": "OSD-463",
+      "representation": "Raw log1p(TPM)",
+      "n_test": 12,
+      "auroc": 0.5555555555555556,
+      "balanced_accuracy": 0.5833333333333334
+    },
+    {
+      "held_out_study": "OSD-463",
+      "representation": "PCA8",
+      "n_test": 12,
+      "auroc": 0.4444444444444444,
+      "balanced_accuracy": 0.41666666666666663
+    },
+    {
+      "held_out_study": "OSD-463",
+      "representation": "BridgeRNA mean",
+      "n_test": 12,
+      "auroc": 0.24999999999999994,
+      "balanced_accuracy": 0.5833333333333334
+    }
+  ],
+  "same_direction_genes": 3869,
+  "same_direction_fraction": 0.25512693702604683,
+  "status": "descriptive_development_survey_complete",
+  "caution": "No pathway significance, causal inference, new model advantage, or untouched generalization claim. Study, sex, strain, protocol, and pretraining overlap remain limitations."
+}

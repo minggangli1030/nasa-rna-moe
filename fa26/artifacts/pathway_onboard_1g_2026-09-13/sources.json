@@ -1,0 +1,12 @@
+{
+  "retrieved_date": "2026-09-13",
+  "urls": {
+    "GSE224805_MG63_ug_vs_1g.xlsx": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE224nnn/GSE224805/suppl/GSE224805_MG63_ug_vs_1g.xlsx",
+    "GSE224805_NCBI_counts.tsv.gz": "https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&acc=GSE224805&format=file&file=GSE224805_raw_counts_GRCh38.p13_NCBI.tsv.gz",
+    "GSE157937_NCBI_counts.tsv.gz": "https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&acc=GSE157937&format=file&file=GSE157937_raw_counts_GRCh38.p13_NCBI.tsv.gz",
+    "hallmark_2020.gmt": "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=MSigDB_Hallmark_2020",
+    "reactome.gmt.zip": "https://reactome.org/download/current/ReactomePathways.gmt.zip"
+  },
+  "author_workbook_conversion": "Read first worksheet with pandas/openpyxl and export complete table to GSE224805_source_matrix.tsv.gz. Input preparation uses only the six X07/X08 sample columns, ID, and no supplied DE statistics.",
+  "NCBI_missing_sample": "GSM7032598 absent from GSE224805 NCBI matrix; alternate pipeline sensitivity uses exactly five shared GSMs."
+}

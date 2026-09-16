@@ -1,0 +1,10 @@
+{
+  "label_checks": 24,
+  "common_genes": 15137,
+  "normalization": "Both author-annotated FPKM, same 15137-gene denominator, log1p once, full canonical positions retained with NaN for missing; no gene-length division",
+  "limitation": "Units follow GEO annotations. Both FPKM does not mean identical upstream read processing.",
+  "sha256": {
+    "artifacts/muscle_repeat_flight_2026-09-12/GSE234465_FPKM.txt.gz": "40ca03eaf147185e7bfcab8c2d42af211daaf90cfb37adc524ee765d29e01e11",
+    "artifacts/muscle_repeat_flight_2026-09-12/GSE298393_genes.rawmatrix.tsv.gz": "f2a2aada3e10578954328d58473f50cb0c68ef1907bc9dda849d5efdeeaebcbb"
+  }
+}

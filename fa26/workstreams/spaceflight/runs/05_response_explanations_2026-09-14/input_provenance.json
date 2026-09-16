@@ -1,0 +1,12 @@
+{
+  "public_source": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE298393",
+  "sources": {
+    "artifacts/space_head_attribution_2026-09-14/attribution_inputs.npz": "c44a68dd0e79e23e3b22043c0133fac1fe5928d22e86508d68d04fa7ceec4ce5",
+    "artifacts/space_head_attribution_2026-09-14/attributions.npz": "108e6230934bb4aad15f74d16ea72d219b54756bd1022c24c2bbc08fdf64e2a7",
+    "artifacts/space_head_diagnostics_2026-09-14/modules.json": "801e934b566d8e4ef49851ed0e95df5f2004382c6cb563e1a72a04b8bee3b216",
+    "artifacts/pathway_onboard_1g_2026-09-13/hallmark_2020.gmt": "4275592957a1587652092bb398cf77216fde5b8daa2aedaa0e016f7d10bbdb81"
+  },
+  "copied_input_sha256": "c44a68dd0e79e23e3b22043c0133fac1fe5928d22e86508d68d04fa7ceec4ce5",
+  "panel_sha256": "244860bc3922867556499c5d15d3723b6a304159dcd63f1dec6e4aa51ed75f56",
+  "script_sha256": "552ff517eb02965b491ea5f0f4ece61b5fe26a2d2fdf38b2d884ffb62c621216"
+}

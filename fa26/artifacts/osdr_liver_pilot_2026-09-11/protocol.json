@@ -1,0 +1,39 @@
+{
+  "purpose": "exploratory within-liver pattern survey, development only",
+  "source_revision": "ddf5e4bd1e48692dbc41caead413d6ca56154fca",
+  "checkpoint": "r7hnr92k; only checkpoint listed on inspected author embedding branch",
+  "studies": {
+    "OSD-48": [
+      "RR1",
+      "_C_",
+      5
+    ],
+    "OSD-379": [
+      "RR8",
+      "_ISS-T_YNG_",
+      6
+    ],
+    "OSD-463": [
+      "RR23",
+      null,
+      6
+    ]
+  },
+  "selection": "Exact flight/ground labels, specified subgroup, lexicographic sample cap per condition, first explicit technical replicate only; fixed before expression comparison",
+  "qc": "Complete canonical gene measurement coverage; finite nonnegative counts; positive canonical TPM denominator; report nonzero genes and library size without adaptive sample removal",
+  "normalization": "mouse exon lengths; canonical 15165-gene TPM denominator; log1p once; no standardization before model",
+  "embedding": "official final layer, mean over genes, unmasked input, float32, frozen checkpoint",
+  "analyses": "study/condition variance fractions; within-study flight-ground centroid shifts and cross-study cosine; descriptive LOSO fixed logistic probe with raw, train-fit PCA8, and BridgeRNA; consistent gene differences",
+  "probe": "StandardScaler fitted per training split; LogisticRegression(C=1,class_weight=balanced,max_iter=2000,solver=liblinear); no hyperparameter selection",
+  "limitations": [
+    "Small study count",
+    "Sex, strain, preservation and library preparation differ across studies",
+    "Subject IDs inferred from sample names where explicit IDs absent",
+    "Cage structure unavailable; animal-level independence not fully verified",
+    "OSD-379 numeric age/duration unavailable in local catalog",
+    "Pretraining sample overlap not established",
+    "Old summer development datasets reused; no untouched confirmation"
+  ],
+  "metadata_sha256": "cba026e1b6b7cc39cfa2ff5fa16524dded98d52eaeeec6e7122d3b2392304755",
+  "manifest_sha256": "52e4d9f064a69b1c813234a9827ed30f20148a841a66b847d52f428ebe611da5"
+}

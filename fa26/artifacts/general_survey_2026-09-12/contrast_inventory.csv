@@ -1,0 +1,55 @@
+study,species,setting,tissue,material,stratum,contrast,n_control,n_exposed,n_training_samples,n_validation_samples
+OSD-101,mouse,actual_flight,skeletal muscle,Left gastrocnemius,|||c57bl/6j|female|16 {week}||37 {day}||liquid nitrogen,OSD-101|Left gastrocnemius|14bf1f06,6,6,0,0
+OSD-103,mouse,actual_flight,skeletal muscle,Left quadriceps femoris,|||c57bl/6j|female|16 {week}||37 {day}||liquid nitrogen,OSD-103|Left quadriceps femoris|14bf1f06,6,6,0,0
+OSD-104,mouse,actual_flight,skeletal muscle,Soleus-both sides,|||c57bl/6j|female|16 {week}||37 {day}||rnalater,OSD-104|Soleus-both sides|8d0b8dc2,6,6,0,0
+OSD-105,mouse,actual_flight,skeletal muscle,Left tibialis anterior,|||c57bl/6j|female|16 {week}||||rnalater,OSD-105|Left tibialis anterior|f829a3c1,6,6,0,0
+OSD-245,mouse,actual_flight,liver,Liver,ISS-T|||c57bl/6ntac|female|36 {week}|||-80 {degree celsius}|liquid nitrogen,OSD-245|Liver|83b7ee50,6,6,0,0
+OSD-245,mouse,actual_flight,liver,Liver,LAR|||c57bl/6ntac|female|36 {week}|||{not available}|liquid nitrogen,OSD-245|Liver|8f786fbe,6,6,0,0
+OSD-326,mouse,actual_flight,skeletal muscle,Quadriceps femoris,|||c57bl/6j|male|9 {week}||24 to 28 {day}||snap frozen,OSD-326|Quadriceps femoris|6a69abe9,4,4,0,0
+OSD-379,mouse,actual_flight,liver,Left Lobe of the Liver,ISS-T|OLD||balb/canntac|female||||-80 {degree celsius}|liquid nitrogen,OSD-379|Left Lobe of the Liver|2c17a152,6,6,0,0
+OSD-379,mouse,actual_flight,liver,Left Lobe of the Liver,ISS-T|YNG||balb/canntac|female||||-80 {degree celsius}|liquid nitrogen,OSD-379|Left Lobe of the Liver|a8ed2e02,6,6,0,0
+OSD-379,mouse,actual_flight,liver,Left Lobe of the Liver,LAR|OLD||balb/canntac|female||||{not applicable}|liquid nitrogen,OSD-379|Left Lobe of the Liver|a45ca5be,6,6,0,0
+OSD-379,mouse,actual_flight,liver,Left Lobe of the Liver,LAR|YNG||balb/canntac|female||||{not applicable}|liquid nitrogen,OSD-379|Left Lobe of the Liver|9abbe127,6,6,0,0
+OSD-401,mouse,actual_flight,skeletal muscle,Gastrocnemius,|||balb/c|female|30 {week}||9 {week}||rnalater,OSD-401|Gastrocnemius|344e21b7,3,3,0,0
+OSD-401,mouse,actual_flight,skeletal muscle,Quadriceps femoris,|||balb/c|female|30 {week}||9 {week}||rnalater,OSD-401|Quadriceps femoris|344e21b7,3,3,0,0
+OSD-419,mouse,actual_flight,skeletal muscle,Right gastrocnemius,|||c57bl/6j|female|16 {week}||37 {day}|mini cold bag to -80c freezer|rnalater,OSD-419|Right gastrocnemius|2664dccf,6,4,0,0
+OSD-457,mouse,actual_flight,brain,Cerebrum,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen,OSD-457|Cerebrum|3ec2dbad,6,6,0,0
+OSD-457,mouse,actual_flight,brain,Cerebrum,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen,OSD-457|Cerebrum|0f84cf73,6,6,0,0
+OSD-457,mouse,actual_flight,kidney,Kidney,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen,OSD-457|Kidney|3ec2dbad,3,3,0,0
+OSD-457,mouse,actual_flight,kidney,Kidney,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen,OSD-457|Kidney|0f84cf73,3,3,0,0
+OSD-457,mouse,actual_flight,liver,Liver,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen,OSD-457|Liver|3ec2dbad,6,6,0,0
+OSD-457,mouse,actual_flight,liver,Liver,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen,OSD-457|Liver|0f84cf73,6,6,0,0
+OSD-457,mouse,actual_flight,bone,Mandible,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen,OSD-457|Mandible|3ec2dbad,3,3,0,0
+OSD-457,mouse,actual_flight,bone,Mandible,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen,OSD-457|Mandible|0f84cf73,3,3,0,0
+OSD-457,mouse,actual_flight,spleen,Spleen,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen,OSD-457|Spleen|3ec2dbad,6,6,0,0
+OSD-457,mouse,actual_flight,spleen,Spleen,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen,OSD-457|Spleen|0f84cf73,6,6,0,0
+OSD-457,mouse,actual_flight,bone,Temporal Bone,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen,OSD-457|Temporal Bone|3ec2dbad,6,6,0,0
+OSD-457,mouse,actual_flight,bone,Temporal Bone,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen,OSD-457|Temporal Bone|0f84cf73,6,6,0,0
+OSD-457,mouse,actual_flight,adipose,brown adipose tissue,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen,OSD-457|brown adipose tissue|3ec2dbad,6,6,0,0
+OSD-457,mouse,actual_flight,adipose,brown adipose tissue,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen,OSD-457|brown adipose tissue|0f84cf73,6,6,0,0
+OSD-457,mouse,actual_flight,thymus,thymus,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen,OSD-457|thymus|3ec2dbad,6,6,0,0
+OSD-457,mouse,actual_flight,thymus,thymus,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen,OSD-457|thymus|0f84cf73,6,6,0,0
+OSD-457,mouse,actual_flight,adipose,white adipose tissue,|||c57bl/6ncrl|male|12 {week}|nrf2ko|||liquid nitrogen,OSD-457|white adipose tissue|3ec2dbad,6,6,0,0
+OSD-457,mouse,actual_flight,adipose,white adipose tissue,|||c57bl/6ncrl|male|12 {week}|wild type|||liquid nitrogen,OSD-457|white adipose tissue|0f84cf73,6,6,0,0
+OSD-463,mouse,actual_flight,liver,Left Lobe of the Liver,|||c57bl/6j|male|16-17 {week}||38 {day}||liquid nitrogen,OSD-463|Left Lobe of the Liver|52cb5fea,6,6,0,0
+OSD-464,mouse,actual_flight,lung,Left Lung,|||c57bl/6j|male|16-17 {week}||38 {day}||liquid nitrogen,OSD-464|Left Lung|52cb5fea,6,6,0,0
+OSD-48,mouse,actual_flight,liver,Liver,||C|c57bl/6j|female|16 {week}||37 {day}|mini cold bag to -80c freezer|rlt buffer homogenized and snap frozen,OSD-48|Liver|b28df4aa,5,5,0,0
+OSD-562,mouse,actual_flight,brain,Right hippocampus,LAR|OLD||c57bl/6ntac|female|||||for spatial transcriptomics: right brain hemispheres were placed in oct compound and placed on dry ice until frozen throughout; for bulkrnaseq: right brain hemispheres were snap frozen in liquid nitrogen,OSD-562|Right hippocampus|d48ef0fe,3,3,0,0
+OSD-562,mouse,actual_flight,brain,Right hippocampus,LAR|YNG||c57bl/6ntac|female|||||for spatial transcriptomics: right brain hemispheres were placed in oct compound and placed on dry ice until frozen throughout; for bulkrnaseq: right brain hemispheres were snap frozen in liquid nitrogen,OSD-562|Right hippocampus|d00a2420,3,3,0,0
+OSD-564,mouse,actual_flight,brain,Right hippocampus,|||b6129sf2/j|female|14 - 15 {week}||28 {day}|cryochiller|for spatial transcriptomics: right brain hemispheres were placed in oct compound and placed on dry ice until frozen throughout; for bulkrnaseq: right brain hemispheres were snap frozen in liquid nitrogen,OSD-564|Right hippocampus|416bbee1,5,5,0,0
+OSD-576,mouse,actual_flight,skeletal muscle,Right tibialis anterior,|||c57bl/6j|male|16-17 {week}||38 {day}||liquid nitrogen,OSD-576|Right tibialis anterior|52cb5fea,6,6,0,0
+OSD-580,mouse,actual_flight,heart,heart right ventricle,LAR|OLD||c57bl/6ntac|female|||||liquid nitrogen,OSD-580|heart right ventricle|c7240239,5,5,0,0
+OSD-580,mouse,actual_flight,heart,heart right ventricle,LAR|YNG||c57bl/6ntac|female|||||liquid nitrogen,OSD-580|heart right ventricle|85cadd29,5,5,0,0
+OSD-599,mouse,actual_flight,heart,Heart,|||c57bl/6j|female|9 - 11 {week}||30 {day}||rnalater or rnaprotect or liquid nitrogen,OSD-599|Heart|9de7889f,3,3,0,0
+OSD-665,mouse,actual_flight,skeletal muscle,Right extensor digitorum longus,|||c57bl/6j|male|16-17 {week}||38 {day}||liquid nitrogen,OSD-665|Right extensor digitorum longus|52cb5fea,6,6,0,0
+OSD-666,mouse,actual_flight,skeletal muscle,Right quadriceps femoris,|||c57bl/6j|male|16-17 {week}||38 {day}||liquid nitrogen,OSD-666|Right quadriceps femoris|52cb5fea,6,6,0,0
+OSD-667,mouse,actual_flight,colon,Colon,|||b6;129s2|female|14-15 {week}|p21-null|29 {day}|cryochiller|rnalater for 24 hours,OSD-667|Colon|1cbbec91,3,3,0,0
+OSD-686,mouse,actual_flight,liver,Liver,|||c57bl/6j|male|9 {week}||30 {day}||liquid nitrogen,OSD-686|Liver|df0bb62b,3,6,0,0
+OSD-770,mouse,actual_flight,skeletal muscle,Right soleus,|||c57bl/6j|male|16 - 17 {week}||38 {day}||liquid nitrogen,OSD-770|Right soleus|df447f03,6,6,0,0
+OSD-99,mouse,actual_flight,skeletal muscle,Extensor digitorum longus- both sides,|||c57bl/6j|female|16 {week}||37 {day}|mini cold bag to -80c freezer|rnalater,OSD-99|Extensor digitorum longus- both sides|2664dccf,6,6,0,0
+GSE137081,human,actual_flight,heart,hiPSC-derived cardiomyocytes,all_lines,GSE137081|all_lines,6,6,7,5
+GSE113165,human,bed_rest_analog,skeletal muscle,human skeletal muscle biopsy,old,GSE113165|old,6,6,11,1
+GSE113165,human,bed_rest_analog,skeletal muscle,human skeletal muscle biopsy,young,GSE113165|young,6,6,11,1
+GSE126865,human,bed_rest_analog,skeletal muscle,human skeletal muscle biopsy,all_subjects,GSE126865|all_subjects,3,3,4,2
+GSE234465,human,actual_flight,skeletal muscle,human muscle chip,YA,GSE234465|YA,3,3,0,0
+GSE234465,human,actual_flight,skeletal muscle,human muscle chip,OS,GSE234465|OS,3,3,0,0

@@ -1,0 +1,3 @@
+pool,common_genes,both_source_FPKM_cross_flight_cosine,original_counts_vs_FPKM_first_flight_cosine,leave_one_each_min,leave_one_each_max,leave_one_each_positive_fraction
+YA,15137,-0.1922653395390691,0.932161078089381,-0.2767612379422328,-0.002228263977476863,0.0
+OS,15137,-0.37595909542313155,0.9573652188127623,-0.458260465061175,-0.29950909678461307,0.0

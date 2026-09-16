@@ -1,0 +1,196 @@
+human,human_setting,mouse,representation,response_cosine
+GSE113165|old,bed_rest_analog,OSD-101|Left gastrocnemius|14bf1f06,raw,-0.00638458723328522
+GSE113165|old,bed_rest_analog,OSD-101|Left gastrocnemius|14bf1f06,model_mean,-0.19928012977676354
+GSE113165|old,bed_rest_analog,OSD-101|Left gastrocnemius|14bf1f06,model_std,0.1808496495680976
+GSE113165|old,bed_rest_analog,OSD-103|Left quadriceps femoris|14bf1f06,raw,0.09836520936119768
+GSE113165|old,bed_rest_analog,OSD-103|Left quadriceps femoris|14bf1f06,model_mean,0.7446297914563084
+GSE113165|old,bed_rest_analog,OSD-103|Left quadriceps femoris|14bf1f06,model_std,0.1562846972826508
+GSE113165|old,bed_rest_analog,OSD-104|Soleus-both sides|8d0b8dc2,raw,0.12570414567998836
+GSE113165|old,bed_rest_analog,OSD-104|Soleus-both sides|8d0b8dc2,model_mean,0.5781586589584703
+GSE113165|old,bed_rest_analog,OSD-104|Soleus-both sides|8d0b8dc2,model_std,0.429468422639174
+GSE113165|old,bed_rest_analog,OSD-105|Left tibialis anterior|f829a3c1,raw,-0.03599496088850688
+GSE113165|old,bed_rest_analog,OSD-105|Left tibialis anterior|f829a3c1,model_mean,0.46722141670013106
+GSE113165|old,bed_rest_analog,OSD-105|Left tibialis anterior|f829a3c1,model_std,0.21925386053381177
+GSE113165|old,bed_rest_analog,OSD-326|Quadriceps femoris|6a69abe9,raw,0.02374741450326576
+GSE113165|old,bed_rest_analog,OSD-326|Quadriceps femoris|6a69abe9,model_mean,0.0554593979556045
+GSE113165|old,bed_rest_analog,OSD-326|Quadriceps femoris|6a69abe9,model_std,0.18808598946075464
+GSE113165|old,bed_rest_analog,OSD-401|Gastrocnemius|344e21b7,raw,0.10545206158514062
+GSE113165|old,bed_rest_analog,OSD-401|Gastrocnemius|344e21b7,model_mean,-0.2793404245988186
+GSE113165|old,bed_rest_analog,OSD-401|Gastrocnemius|344e21b7,model_std,0.4266840039866873
+GSE113165|old,bed_rest_analog,OSD-401|Quadriceps femoris|344e21b7,raw,0.05420209382182498
+GSE113165|old,bed_rest_analog,OSD-401|Quadriceps femoris|344e21b7,model_mean,-0.10963185730916089
+GSE113165|old,bed_rest_analog,OSD-401|Quadriceps femoris|344e21b7,model_std,0.24264406261588042
+GSE113165|old,bed_rest_analog,OSD-419|Right gastrocnemius|2664dccf,raw,0.07771176835796753
+GSE113165|old,bed_rest_analog,OSD-419|Right gastrocnemius|2664dccf,model_mean,0.667205723598754
+GSE113165|old,bed_rest_analog,OSD-419|Right gastrocnemius|2664dccf,model_std,-0.008492413035031511
+GSE113165|old,bed_rest_analog,OSD-576|Right tibialis anterior|52cb5fea,raw,0.15250690145022747
+GSE113165|old,bed_rest_analog,OSD-576|Right tibialis anterior|52cb5fea,model_mean,0.5247497729768742
+GSE113165|old,bed_rest_analog,OSD-576|Right tibialis anterior|52cb5fea,model_std,0.2983068321854786
+GSE113165|old,bed_rest_analog,OSD-665|Right extensor digitorum longus|52cb5fea,raw,0.13610050175290864
+GSE113165|old,bed_rest_analog,OSD-665|Right extensor digitorum longus|52cb5fea,model_mean,-0.15355029057618544
+GSE113165|old,bed_rest_analog,OSD-665|Right extensor digitorum longus|52cb5fea,model_std,0.2843698817913034
+GSE113165|old,bed_rest_analog,OSD-666|Right quadriceps femoris|52cb5fea,raw,0.1628407839233179
+GSE113165|old,bed_rest_analog,OSD-666|Right quadriceps femoris|52cb5fea,model_mean,0.8332330456336323
+GSE113165|old,bed_rest_analog,OSD-666|Right quadriceps femoris|52cb5fea,model_std,0.3004398305770343
+GSE113165|old,bed_rest_analog,OSD-770|Right soleus|df447f03,raw,-0.14033417048572838
+GSE113165|old,bed_rest_analog,OSD-770|Right soleus|df447f03,model_mean,-0.6499411761086523
+GSE113165|old,bed_rest_analog,OSD-770|Right soleus|df447f03,model_std,0.4000098538082811
+GSE113165|old,bed_rest_analog,OSD-99|Extensor digitorum longus- both sides|2664dccf,raw,-0.1368868373307968
+GSE113165|old,bed_rest_analog,OSD-99|Extensor digitorum longus- both sides|2664dccf,model_mean,-0.336720457670138
+GSE113165|old,bed_rest_analog,OSD-99|Extensor digitorum longus- both sides|2664dccf,model_std,0.2619309768663775
+GSE113165|young,bed_rest_analog,OSD-101|Left gastrocnemius|14bf1f06,raw,-0.022563714846158912
+GSE113165|young,bed_rest_analog,OSD-101|Left gastrocnemius|14bf1f06,model_mean,0.007235024990361447
+GSE113165|young,bed_rest_analog,OSD-101|Left gastrocnemius|14bf1f06,model_std,0.09646306010206028
+GSE113165|young,bed_rest_analog,OSD-103|Left quadriceps femoris|14bf1f06,raw,0.05495176320230294
+GSE113165|young,bed_rest_analog,OSD-103|Left quadriceps femoris|14bf1f06,model_mean,0.5266865252457161
+GSE113165|young,bed_rest_analog,OSD-103|Left quadriceps femoris|14bf1f06,model_std,0.04819747341873987
+GSE113165|young,bed_rest_analog,OSD-104|Soleus-both sides|8d0b8dc2,raw,0.11207824189548632
+GSE113165|young,bed_rest_analog,OSD-104|Soleus-both sides|8d0b8dc2,model_mean,0.701012257868075
+GSE113165|young,bed_rest_analog,OSD-104|Soleus-both sides|8d0b8dc2,model_std,0.2941725011295684
+GSE113165|young,bed_rest_analog,OSD-105|Left tibialis anterior|f829a3c1,raw,-0.003052726761114694
+GSE113165|young,bed_rest_analog,OSD-105|Left tibialis anterior|f829a3c1,model_mean,0.28464839063763075
+GSE113165|young,bed_rest_analog,OSD-105|Left tibialis anterior|f829a3c1,model_std,0.05732868489870074
+GSE113165|young,bed_rest_analog,OSD-326|Quadriceps femoris|6a69abe9,raw,-0.005020847936110621
+GSE113165|young,bed_rest_analog,OSD-326|Quadriceps femoris|6a69abe9,model_mean,0.16187111547502778
+GSE113165|young,bed_rest_analog,OSD-326|Quadriceps femoris|6a69abe9,model_std,0.29884240641902643
+GSE113165|young,bed_rest_analog,OSD-401|Gastrocnemius|344e21b7,raw,0.1399647531523167
+GSE113165|young,bed_rest_analog,OSD-401|Gastrocnemius|344e21b7,model_mean,-0.3153810928436797
+GSE113165|young,bed_rest_analog,OSD-401|Gastrocnemius|344e21b7,model_std,0.2751477694072815
+GSE113165|young,bed_rest_analog,OSD-401|Quadriceps femoris|344e21b7,raw,0.09659527255154814
+GSE113165|young,bed_rest_analog,OSD-401|Quadriceps femoris|344e21b7,model_mean,-0.03136343265602184
+GSE113165|young,bed_rest_analog,OSD-401|Quadriceps femoris|344e21b7,model_std,0.3240621440069763
+GSE113165|young,bed_rest_analog,OSD-419|Right gastrocnemius|2664dccf,raw,0.06328331284903295
+GSE113165|young,bed_rest_analog,OSD-419|Right gastrocnemius|2664dccf,model_mean,0.5284299752911835
+GSE113165|young,bed_rest_analog,OSD-419|Right gastrocnemius|2664dccf,model_std,-0.03234582620544544
+GSE113165|young,bed_rest_analog,OSD-576|Right tibialis anterior|52cb5fea,raw,0.06397427630737733
+GSE113165|young,bed_rest_analog,OSD-576|Right tibialis anterior|52cb5fea,model_mean,0.37509188587979325
+GSE113165|young,bed_rest_analog,OSD-576|Right tibialis anterior|52cb5fea,model_std,-0.006537829478672605
+GSE113165|young,bed_rest_analog,OSD-665|Right extensor digitorum longus|52cb5fea,raw,0.10816014620359488
+GSE113165|young,bed_rest_analog,OSD-665|Right extensor digitorum longus|52cb5fea,model_mean,-0.0087330323048918
+GSE113165|young,bed_rest_analog,OSD-665|Right extensor digitorum longus|52cb5fea,model_std,0.18568130842852737
+GSE113165|young,bed_rest_analog,OSD-666|Right quadriceps femoris|52cb5fea,raw,0.15561621418501734
+GSE113165|young,bed_rest_analog,OSD-666|Right quadriceps femoris|52cb5fea,model_mean,0.6370098956751309
+GSE113165|young,bed_rest_analog,OSD-666|Right quadriceps femoris|52cb5fea,model_std,0.2583557207592006
+GSE113165|young,bed_rest_analog,OSD-770|Right soleus|df447f03,raw,0.03519248116421424
+GSE113165|young,bed_rest_analog,OSD-770|Right soleus|df447f03,model_mean,-0.46556607763412017
+GSE113165|young,bed_rest_analog,OSD-770|Right soleus|df447f03,model_std,0.26414149843937784
+GSE113165|young,bed_rest_analog,OSD-99|Extensor digitorum longus- both sides|2664dccf,raw,-0.0900170756791694
+GSE113165|young,bed_rest_analog,OSD-99|Extensor digitorum longus- both sides|2664dccf,model_mean,-0.5667667136293486
+GSE113165|young,bed_rest_analog,OSD-99|Extensor digitorum longus- both sides|2664dccf,model_std,0.027473458117758608
+GSE126865|all_subjects,bed_rest_analog,OSD-101|Left gastrocnemius|14bf1f06,raw,-0.02613488125684041
+GSE126865|all_subjects,bed_rest_analog,OSD-101|Left gastrocnemius|14bf1f06,model_mean,-0.17121495274583837
+GSE126865|all_subjects,bed_rest_analog,OSD-101|Left gastrocnemius|14bf1f06,model_std,0.07997308892679901
+GSE126865|all_subjects,bed_rest_analog,OSD-103|Left quadriceps femoris|14bf1f06,raw,0.0523375132896537
+GSE126865|all_subjects,bed_rest_analog,OSD-103|Left quadriceps femoris|14bf1f06,model_mean,0.7177458848685769
+GSE126865|all_subjects,bed_rest_analog,OSD-103|Left quadriceps femoris|14bf1f06,model_std,0.14258280672350274
+GSE126865|all_subjects,bed_rest_analog,OSD-104|Soleus-both sides|8d0b8dc2,raw,0.045812087896183074
+GSE126865|all_subjects,bed_rest_analog,OSD-104|Soleus-both sides|8d0b8dc2,model_mean,0.5016627305767885
+GSE126865|all_subjects,bed_rest_analog,OSD-104|Soleus-both sides|8d0b8dc2,model_std,0.14914341688189933
+GSE126865|all_subjects,bed_rest_analog,OSD-105|Left tibialis anterior|f829a3c1,raw,-0.009262400891938586
+GSE126865|all_subjects,bed_rest_analog,OSD-105|Left tibialis anterior|f829a3c1,model_mean,0.5182691691260823
+GSE126865|all_subjects,bed_rest_analog,OSD-105|Left tibialis anterior|f829a3c1,model_std,0.2323290676924584
+GSE126865|all_subjects,bed_rest_analog,OSD-326|Quadriceps femoris|6a69abe9,raw,0.010112580241616544
+GSE126865|all_subjects,bed_rest_analog,OSD-326|Quadriceps femoris|6a69abe9,model_mean,0.14009338744524882
+GSE126865|all_subjects,bed_rest_analog,OSD-326|Quadriceps femoris|6a69abe9,model_std,0.3619272244863652
+GSE126865|all_subjects,bed_rest_analog,OSD-401|Gastrocnemius|344e21b7,raw,-0.004482332531685434
+GSE126865|all_subjects,bed_rest_analog,OSD-401|Gastrocnemius|344e21b7,model_mean,-0.38988384449138636
+GSE126865|all_subjects,bed_rest_analog,OSD-401|Gastrocnemius|344e21b7,model_std,-0.08605184287792318
+GSE126865|all_subjects,bed_rest_analog,OSD-401|Quadriceps femoris|344e21b7,raw,0.0014794194502940332
+GSE126865|all_subjects,bed_rest_analog,OSD-401|Quadriceps femoris|344e21b7,model_mean,-0.17653536792492094
+GSE126865|all_subjects,bed_rest_analog,OSD-401|Quadriceps femoris|344e21b7,model_std,-0.11613308858127717
+GSE126865|all_subjects,bed_rest_analog,OSD-419|Right gastrocnemius|2664dccf,raw,0.060683637985227454
+GSE126865|all_subjects,bed_rest_analog,OSD-419|Right gastrocnemius|2664dccf,model_mean,0.6178699246603844
+GSE126865|all_subjects,bed_rest_analog,OSD-419|Right gastrocnemius|2664dccf,model_std,-0.03158493990722041
+GSE126865|all_subjects,bed_rest_analog,OSD-576|Right tibialis anterior|52cb5fea,raw,0.06750684692532755
+GSE126865|all_subjects,bed_rest_analog,OSD-576|Right tibialis anterior|52cb5fea,model_mean,0.4490712370792184
+GSE126865|all_subjects,bed_rest_analog,OSD-576|Right tibialis anterior|52cb5fea,model_std,0.20447609158320482
+GSE126865|all_subjects,bed_rest_analog,OSD-665|Right extensor digitorum longus|52cb5fea,raw,0.09681177580456622
+GSE126865|all_subjects,bed_rest_analog,OSD-665|Right extensor digitorum longus|52cb5fea,model_mean,-0.22796665349243722
+GSE126865|all_subjects,bed_rest_analog,OSD-665|Right extensor digitorum longus|52cb5fea,model_std,0.2013422150490471
+GSE126865|all_subjects,bed_rest_analog,OSD-666|Right quadriceps femoris|52cb5fea,raw,0.1295595152971014
+GSE126865|all_subjects,bed_rest_analog,OSD-666|Right quadriceps femoris|52cb5fea,model_mean,0.7881694085466266
+GSE126865|all_subjects,bed_rest_analog,OSD-666|Right quadriceps femoris|52cb5fea,model_std,0.4377451470893394
+GSE126865|all_subjects,bed_rest_analog,OSD-770|Right soleus|df447f03,raw,-0.1334645692658024
+GSE126865|all_subjects,bed_rest_analog,OSD-770|Right soleus|df447f03,model_mean,-0.6936112253883151
+GSE126865|all_subjects,bed_rest_analog,OSD-770|Right soleus|df447f03,model_std,-0.10246722509542186
+GSE126865|all_subjects,bed_rest_analog,OSD-99|Extensor digitorum longus- both sides|2664dccf,raw,-0.08920112859843585
+GSE126865|all_subjects,bed_rest_analog,OSD-99|Extensor digitorum longus- both sides|2664dccf,model_mean,-0.3233428338200179
+GSE126865|all_subjects,bed_rest_analog,OSD-99|Extensor digitorum longus- both sides|2664dccf,model_std,-0.06664733178594263
+GSE234465|YA,actual_flight,OSD-101|Left gastrocnemius|14bf1f06,raw,-0.013091705820357805
+GSE234465|YA,actual_flight,OSD-101|Left gastrocnemius|14bf1f06,model_mean,0.16280855571487116
+GSE234465|YA,actual_flight,OSD-101|Left gastrocnemius|14bf1f06,model_std,-0.003974992395311723
+GSE234465|YA,actual_flight,OSD-103|Left quadriceps femoris|14bf1f06,raw,-0.21230282375593754
+GSE234465|YA,actual_flight,OSD-103|Left quadriceps femoris|14bf1f06,model_mean,-0.8634622276822538
+GSE234465|YA,actual_flight,OSD-103|Left quadriceps femoris|14bf1f06,model_std,-0.21731433364461436
+GSE234465|YA,actual_flight,OSD-104|Soleus-both sides|8d0b8dc2,raw,-0.06873701942997165
+GSE234465|YA,actual_flight,OSD-104|Soleus-both sides|8d0b8dc2,model_mean,-0.3372363464650842
+GSE234465|YA,actual_flight,OSD-104|Soleus-both sides|8d0b8dc2,model_std,0.005592681910961996
+GSE234465|YA,actual_flight,OSD-105|Left tibialis anterior|f829a3c1,raw,-0.09609293148448603
+GSE234465|YA,actual_flight,OSD-105|Left tibialis anterior|f829a3c1,model_mean,-0.5400584413533189
+GSE234465|YA,actual_flight,OSD-105|Left tibialis anterior|f829a3c1,model_std,0.138689570140865
+GSE234465|YA,actual_flight,OSD-326|Quadriceps femoris|6a69abe9,raw,0.0908580608310799
+GSE234465|YA,actual_flight,OSD-326|Quadriceps femoris|6a69abe9,model_mean,0.3981375891955862
+GSE234465|YA,actual_flight,OSD-326|Quadriceps femoris|6a69abe9,model_std,0.490113124057366
+GSE234465|YA,actual_flight,OSD-401|Gastrocnemius|344e21b7,raw,0.0625497468511891
+GSE234465|YA,actual_flight,OSD-401|Gastrocnemius|344e21b7,model_mean,0.5369464013157687
+GSE234465|YA,actual_flight,OSD-401|Gastrocnemius|344e21b7,model_std,0.1034493138826774
+GSE234465|YA,actual_flight,OSD-401|Quadriceps femoris|344e21b7,raw,-0.01788030294995493
+GSE234465|YA,actual_flight,OSD-401|Quadriceps femoris|344e21b7,model_mean,0.16100819326008947
+GSE234465|YA,actual_flight,OSD-401|Quadriceps femoris|344e21b7,model_std,-0.05370692244583738
+GSE234465|YA,actual_flight,OSD-419|Right gastrocnemius|2664dccf,raw,-0.07701542074062641
+GSE234465|YA,actual_flight,OSD-419|Right gastrocnemius|2664dccf,model_mean,-0.7670674647647817
+GSE234465|YA,actual_flight,OSD-419|Right gastrocnemius|2664dccf,model_std,-0.43567508658006954
+GSE234465|YA,actual_flight,OSD-576|Right tibialis anterior|52cb5fea,raw,0.01786355555831113
+GSE234465|YA,actual_flight,OSD-576|Right tibialis anterior|52cb5fea,model_mean,-0.4582841803163941
+GSE234465|YA,actual_flight,OSD-576|Right tibialis anterior|52cb5fea,model_std,0.03848011614975541
+GSE234465|YA,actual_flight,OSD-665|Right extensor digitorum longus|52cb5fea,raw,0.04485551333263924
+GSE234465|YA,actual_flight,OSD-665|Right extensor digitorum longus|52cb5fea,model_mean,0.3045220240534864
+GSE234465|YA,actual_flight,OSD-665|Right extensor digitorum longus|52cb5fea,model_std,-0.01995366468770288
+GSE234465|YA,actual_flight,OSD-666|Right quadriceps femoris|52cb5fea,raw,-0.1302531865267422
+GSE234465|YA,actual_flight,OSD-666|Right quadriceps femoris|52cb5fea,model_mean,-0.714289620552616
+GSE234465|YA,actual_flight,OSD-666|Right quadriceps femoris|52cb5fea,model_std,-0.0693194921255475
+GSE234465|YA,actual_flight,OSD-770|Right soleus|df447f03,raw,0.09459387460268766
+GSE234465|YA,actual_flight,OSD-770|Right soleus|df447f03,model_mean,0.8350340453817542
+GSE234465|YA,actual_flight,OSD-770|Right soleus|df447f03,model_std,0.1952844339468339
+GSE234465|YA,actual_flight,OSD-99|Extensor digitorum longus- both sides|2664dccf,raw,-0.07548012570952381
+GSE234465|YA,actual_flight,OSD-99|Extensor digitorum longus- both sides|2664dccf,model_mean,0.1684332048353005
+GSE234465|YA,actual_flight,OSD-99|Extensor digitorum longus- both sides|2664dccf,model_std,0.11201660936844327
+GSE234465|OS,actual_flight,OSD-101|Left gastrocnemius|14bf1f06,raw,-0.0006680366489473842
+GSE234465|OS,actual_flight,OSD-101|Left gastrocnemius|14bf1f06,model_mean,0.16309437895328333
+GSE234465|OS,actual_flight,OSD-101|Left gastrocnemius|14bf1f06,model_std,-0.018819609603270008
+GSE234465|OS,actual_flight,OSD-103|Left quadriceps femoris|14bf1f06,raw,-0.26982166264213037
+GSE234465|OS,actual_flight,OSD-103|Left quadriceps femoris|14bf1f06,model_mean,-0.9072651155546362
+GSE234465|OS,actual_flight,OSD-103|Left quadriceps femoris|14bf1f06,model_std,-0.25937018177956517
+GSE234465|OS,actual_flight,OSD-104|Soleus-both sides|8d0b8dc2,raw,-0.052093686714358586
+GSE234465|OS,actual_flight,OSD-104|Soleus-both sides|8d0b8dc2,model_mean,-0.40605012013486413
+GSE234465|OS,actual_flight,OSD-104|Soleus-both sides|8d0b8dc2,model_std,0.12658391404169617
+GSE234465|OS,actual_flight,OSD-105|Left tibialis anterior|f829a3c1,raw,-0.08955340553331557
+GSE234465|OS,actual_flight,OSD-105|Left tibialis anterior|f829a3c1,model_mean,-0.6542148542422095
+GSE234465|OS,actual_flight,OSD-105|Left tibialis anterior|f829a3c1,model_std,0.02156821835076061
+GSE234465|OS,actual_flight,OSD-326|Quadriceps femoris|6a69abe9,raw,0.11393753535319817
+GSE234465|OS,actual_flight,OSD-326|Quadriceps femoris|6a69abe9,model_mean,0.1462706656227542
+GSE234465|OS,actual_flight,OSD-326|Quadriceps femoris|6a69abe9,model_std,0.12685387211258378
+GSE234465|OS,actual_flight,OSD-401|Gastrocnemius|344e21b7,raw,0.10244416294692449
+GSE234465|OS,actual_flight,OSD-401|Gastrocnemius|344e21b7,model_mean,0.6411450334006287
+GSE234465|OS,actual_flight,OSD-401|Gastrocnemius|344e21b7,model_std,0.47886075233597686
+GSE234465|OS,actual_flight,OSD-401|Quadriceps femoris|344e21b7,raw,0.010532369486332287
+GSE234465|OS,actual_flight,OSD-401|Quadriceps femoris|344e21b7,model_mean,0.22564912971304205
+GSE234465|OS,actual_flight,OSD-401|Quadriceps femoris|344e21b7,model_std,0.25812201434913085
+GSE234465|OS,actual_flight,OSD-419|Right gastrocnemius|2664dccf,raw,-0.10953385421456564
+GSE234465|OS,actual_flight,OSD-419|Right gastrocnemius|2664dccf,model_mean,-0.7259123832427163
+GSE234465|OS,actual_flight,OSD-419|Right gastrocnemius|2664dccf,model_std,-0.3440976989896541
+GSE234465|OS,actual_flight,OSD-576|Right tibialis anterior|52cb5fea,raw,-0.012705248659535328
+GSE234465|OS,actual_flight,OSD-576|Right tibialis anterior|52cb5fea,model_mean,-0.4620667931860047
+GSE234465|OS,actual_flight,OSD-576|Right tibialis anterior|52cb5fea,model_std,0.12278887858706738
+GSE234465|OS,actual_flight,OSD-665|Right extensor digitorum longus|52cb5fea,raw,0.05843821175729732
+GSE234465|OS,actual_flight,OSD-665|Right extensor digitorum longus|52cb5fea,model_mean,0.36563691458736297
+GSE234465|OS,actual_flight,OSD-665|Right extensor digitorum longus|52cb5fea,model_std,0.13750587856509988
+GSE234465|OS,actual_flight,OSD-666|Right quadriceps femoris|52cb5fea,raw,-0.16184599055549986
+GSE234465|OS,actual_flight,OSD-666|Right quadriceps femoris|52cb5fea,model_mean,-0.8086233131527423
+GSE234465|OS,actual_flight,OSD-666|Right quadriceps femoris|52cb5fea,model_std,-0.18902659197846397
+GSE234465|OS,actual_flight,OSD-770|Right soleus|df447f03,raw,0.2557950531551094
+GSE234465|OS,actual_flight,OSD-770|Right soleus|df447f03,model_mean,0.903076829249914
+GSE234465|OS,actual_flight,OSD-770|Right soleus|df447f03,model_std,0.559774229884135
+GSE234465|OS,actual_flight,OSD-99|Extensor digitorum longus- both sides|2664dccf,raw,-0.057724736554460476
+GSE234465|OS,actual_flight,OSD-99|Extensor digitorum longus- both sides|2664dccf,model_mean,0.2604895442750697
+GSE234465|OS,actual_flight,OSD-99|Extensor digitorum longus- both sides|2664dccf,model_std,0.3903213250292053

@@ -1,0 +1,43 @@
+{
+  "source_units": "FPKM per GEO Sample_data_processing; rawmatrix filename does not establish counts",
+  "conversion": "log1p(1e6 * FPKM / sum(FPKM over observed canonical genes)); no second division by gene length",
+  "limitation": "Source effective gene lengths and ambiguous phrase non-normalized FPKM are not independently verified. Cross-flight conclusions remain conditional on this annotation; first flight used counts/exon lengths.",
+  "coverage": 0.9981536432575008,
+  "missing_genes": [
+    "ACTL10",
+    "CAST",
+    "CCDC195",
+    "CCDC39",
+    "DERPC",
+    "EEF1AKMT4",
+    "EXOC3L2",
+    "FAM174C",
+    "FAM240A",
+    "FAM240B",
+    "H2AC19",
+    "HOMEZ",
+    "LCE7A",
+    "NPBWR1",
+    "PAXX",
+    "PERCC1",
+    "PRR33",
+    "PRRC2B",
+    "PRSS50",
+    "SCO2",
+    "SMIM38",
+    "SMIM44",
+    "SOD2",
+    "TBCE",
+    "TEX52",
+    "THSD8",
+    "TMEM247",
+    "TOMT"
+  ],
+  "source_sha256": "f2a2aada3e10578954328d58473f50cb0c68ef1907bc9dda849d5efdeeaebcbb",
+  "input_sha256": "6656a2876d201ecb950a2d7ae54e6556d87e8329e0e8509ed279d846e6c584c9",
+  "gene_order_sha256": "1dbe9a5753e5982b3ddb383f35e92ce5795c21fc054fff685514831c8dadbb8d",
+  "training_exposure": {
+    "not_in_supplied_catalog": 12
+  },
+  "sample_mapping": "GSM library description to cohort, setting, exact chip number; no rank/order matching"
+}

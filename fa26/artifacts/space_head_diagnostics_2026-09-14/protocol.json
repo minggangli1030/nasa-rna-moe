@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-14T19:30:58.567281-07:00",
+  "status": "Post-failure diagnostic development; all outcomes reported, no independent-confirmation claim",
+  "checks": [
+    "Verify GEO treatment versus labels and exact source columns",
+    "Recompute original embeddings on GPU",
+    "Inspect logit shift, training-scale OOD and response reversal",
+    "Harmonize both flights to annotated FPKM and shared denominator",
+    "Compare bounded scaling/rank/layer/module alternatives",
+    "Separate unlabeled target centering from inductive transfer",
+    "Test explicitly supervised target-pool adaptation only as a different data-availability scenario"
+  ],
+  "fixed_remedies": [
+    "L2 logistic C1 unchanged",
+    "Expression: unscaled, std-floor at train-median SD, sample ranks, all50Hallmark means",
+    "Bridge: original/harmonized mean+SD; normalized sample embeddings; train-median-SD floor",
+    "Layers1,6,11,12 mean+SD",
+    "All50Hallmark contextual gene mean+SD readout",
+    "Unlabeled target-center diagnostic for original readout",
+    "Target-pool head or target-adapted source head evaluated on other target pool"
+  ],
+  "prohibitions": [
+    "No held-out-label reversal",
+    "No tuning target test threshold",
+    "No choosing pathway genes by cross-flight outcome",
+    "Do not call 2-flight reuse independent validation"
+  ]
+}

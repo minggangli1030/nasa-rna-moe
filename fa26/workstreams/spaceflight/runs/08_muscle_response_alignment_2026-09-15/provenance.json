@@ -1,0 +1,9 @@
+{
+  "script_sha256": {
+    "muscle_response_alignment.py": "e7626d60ad7d0c52b6f7cb725169817f26574de03e67ac29f5bb4b880754723c",
+    "report_muscle_alignment.py": "9627725c3948866a37734ad11916cd9b47d4ec070d2239e45bad8c0ff73c3ea9"
+  },
+  "embeddings_sha256": "f8d64184dde88375cee240bd178e2744fb5357707856a51b55889dad9156f8ef",
+  "protocol_sha256": "1f1c5c142ee271608339bf5528be39e46efdf3433650b820d98a922cb3b1a693",
+  "figure_visually_reviewed": true
+}

@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-14",
+  "upstream_commit": "ddf5e4bd1e48692dbc41caead413d6ca56154fca",
+  "repository": "https://github.com/alwalt/bridge-rna",
+  "status": "Source and saved-result audit; raw matrices and training not executed",
+  "matched_challenge": {
+    "profiles": 34,
+    "animals": 17,
+    "animals_by_cohort": {
+      "RR1": 9,
+      "RR3-39": 4,
+      "RR3-40": 4
+    }
+  },
+  "sha256": {
+    "REVIEW.md": "93fed034ceb7f33c7332978039c2615440902eb9e65d5dee48d7d1d713a8272e",
+    "upstream/benchmarks/MODEL_STRENGTHS.md": "2dd68aaf39de98de56ad15a23e8713effbb250cbf99c115c1bb27c23889202b7",
+    "upstream/benchmarks/README.md": "87c984ee52ded03720ea07a5d5c4121788e63bc1ef34483b78e5f8f4b48bbd4b",
+    "upstream/benchmarks/contextual_gene_network_utility/README.md": "80457ad2795c31985aa916ca8a22979826ddd54892e705fb6c424bde16ba826b",
+    "upstream/benchmarks/contextual_graph_kernel_similarity/README.md": "9263cbeb2f739eb6c41756dc0946ea81c567992e021ec7916688e0dadd023c8f",
+    "upstream/benchmarks/contextual_rag_retrieval/README.md": "c3c1a06cab6b03c401b4b55140ff5191ec60e8e4903bc8ec5ab8c05d26ff8087",
+    "upstream/benchmarks/cross_species_exercise_response/README.md": "dc629d9ee1d0110ba54905e2663b7dffb0b32d0428f5247bda1f60cc941c35a3",
+    "upstream/benchmarks/frozen_sample_embedding_readout/README.md": "83c60c0a1c940c7a2be8f534cb630c589ead9bf5218a46af15ac5a830583ee70",
+    "upstream/benchmarks/frozen_sample_embedding_readout/pipeline/run_all.sh": "f84241f158ca28e50bff989a8ff26189cec0596708b77ffbf9524484ace79867",
+    "upstream/benchmarks/frozen_sample_embedding_readout/results/ranked_summary.csv": "8ea55c379372923ffb88b823499c9d5e82b2ba2d2db755e17774b310950ec3ab",
+    "upstream/benchmarks/frozen_sample_embedding_readout/results/response_geometry_summary.csv": "8f61c58bd28bd697fdedb336e728627da29c634111953cda847f87932e01fb0c",
+    "upstream/benchmarks/frozen_sample_embedding_readout/results/task_agnostic/task_agnostic_ranked_summary.csv": "8c90551e521eb3da961736d224db95841e9181e8121cce4190abdf48a8b10027",
+    "upstream/benchmarks/gene_property_prediction/README.md": "a9f87a5f1f67a5e6704985ab10c0d7b488f3b7e48ff052925659c30ed02f777e",
+    "upstream/benchmarks/landmark_gene_sufficiency/README.md": "46a8ae822486c7dd530767c9e4cd7c6ac4d1511266bfca53693d2fb705be7b33",
+    "upstream/benchmarks/library_prep_disentanglement/README.md": "4cae2ad758db7c5156db63c3fbc8627a1856245e63110156c3af0377adf6015a",
+    "upstream/benchmarks/library_prep_disentanglement/pipeline/prepare_controlled_data.py": "3dad4961126093eca8e7895ffdee68aea3618f7f8b500a75adbeec6f0e5e466f",
+    "upstream/benchmarks/library_prep_disentanglement/pipeline/run_task4.py": "2d8821b8881a461d43958ad25513ca41679b5e57f273ae9324b23d664a499de5",
+    "upstream/benchmarks/library_prep_disentanglement/pipeline/task4_model.py": "505e37d408d2065be268741cc6443973a2d9de9df709641c3d17b40e9ae0dbb1",
+    "upstream/benchmarks/library_prep_disentanglement/results/task4_disentanglement/main_summary.csv": "060a92f0e446e5894b095a1211e5a78430ec4af76c0338d7e80df481fcd89077",
+    "upstream/benchmarks/library_prep_disentanglement/results/task4_simple_correction_comparison/correction_tradeoff_summary.csv": "0c30760200aa4c9c98cc149c54c3010f49d7370133537a026401e1f8382d6a4a",
+    "upstream/benchmarks/library_prep_disentanglement/results/task4a_data_audit/controlled_dataset_audit.csv": "0502f8618f502ccd92a23f68c841151ddac215b56a19b9452b2289b92042e8c2",
+    "upstream/benchmarks/mouse_encode/README.md": "fea4928dd21b7301a136c92ee8cc37014358d3de763f7c3719541f582f6bcad2",
+    "upstream/benchmarks/multiscale_response_similarity/README.md": "3d987fe39e2004552197804d90f1ff270690e265beafc42e89ee530ea42b5473",
+    "upstream/benchmarks/osdr_batch_effect_representation/README.md": "205c83b5d818aa221735c7388a5a4b5f120657391e26816c0a3fbdbec25eb63b",
+    "upstream/benchmarks/paired_recount3/README.md": "b0fde9a8ceaae3f7f7a0d26e6e522e72b854c878074c268c1bbe0f9be7062338",
+    "upstream/benchmarks/rr1_library_prep_interaction/README.md": "c0a3a3fad85e69d3a362dcac750368702491005894bb75033f898f325ccb04c9",
+    "upstream/benchmarks/rr1_rr3_contextual_graph_case_study/README.md": "2cdc8a56e7486c3eb820194debad2b99fdf189176dc28523bce0be28f4e9616a",
+    "upstream/benchmarks/rr1_rr3_robust_response_comparison/README.md": "ec49a95cce079fb681aa5d802b0012f22d9ecc41e0df5b89231c04426379ca95",
+    "upstream/benchmarks/rr1_rr3_robust_response_comparison/results/manifest/cohort_metadata_summary.csv": "2ee6b7b93ccdabcc7b0e0ff369d9c90fb9757e93c4a0055c4267ce5549b897ee",
+    "upstream/benchmarks/rr1_rr3_robust_response_comparison/results/manifest/exact_matched_animals.csv": "62e772fc215fdb3053a6541fb88a39b68fb1b614bed0dcbb1dc66949f39cc934",
+    "upstream/benchmarks/rr1_rr3_robust_response_comparison/results/summary/primary_comparison.csv": "d2091545045dce4d1068358db7b38ee066e1e4d1a2c6825765ebde330a09c19e",
+    "upstream/benchmarks/tcga_downstream/README.md": "56e98779905759ae0654a03ecbe2ac34ac44972f996dd23e33a247cf8dc93dd7",
+    "upstream/benchmarks/tcga_imputation/README.md": "cd39c982d59c2f791a5c734f2c225c209cbb45a5f4ba3f7d807cd37a70eeabad",
+    "upstream_commit.json": "a57f03559392f9bc174908841f61a0fa786e76394b0b53c9d6f88179e4aea289",
+    "upstream_tree.json": "c799985faa2c68f56bb0d5b0a6ac19e9f86f34ab982d62a7682bc00b5e8dc6ec"
+  }
+}

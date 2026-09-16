@@ -1,0 +1,533 @@
+model,evaluation,fold,id,label,score_logit,predicted_positive,condition,cell_type
+expression_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191281,1,10.811378894472398,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191282,1,10.99018328333748,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191283,1,10.906694627212875,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191284,1,10.935814580076329,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191285,1,10.534857556805058,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191321,0,-7.956647279990132,False,control,IMR90
+expression_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191322,0,-7.654609217976021,False,control,IMR90
+expression_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191323,0,-7.630953096295836,False,control,IMR90
+expression_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191324,0,-7.646013435779598,False,control,IMR90
+expression_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191325,0,-7.528056358600749,False,control,IMR90
+expression_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191297,1,9.338223844058911,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191298,1,9.703227539397982,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191299,1,9.666057900927735,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191337,0,-4.8302746026695695,False,control,IMR90
+expression_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191338,0,-7.398349129520762,False,control,IMR90
+expression_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191339,0,-7.382450438947679,False,control,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191286,1,2.040690210653676e+17,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191287,1,4.7298778490998385,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191288,1,6.686098116680464,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191289,1,4.4648447123080786,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191290,1,5.625929310829198,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191291,1,5.225887805927528,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191326,0,-5.425361394172357,False,control,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191327,0,-5.023285603508283,False,control,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191328,0,-5.174202896530933,False,control,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191329,0,-6.224864828345469,False,control,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191330,0,-4.529656938498357,False,control,IMR90
+expression_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191331,0,-6.228477447977895,False,control,IMR90
+expression_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191292,1,10.348839980263989,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191293,1,388.9726050591613,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191294,1,11.21693699612758,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191295,1,371.8099227726364,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191296,1,11.732241016395207,True,irradiated,IMR90
+expression_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191332,0,-6.898998033260487,False,control,IMR90
+expression_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191333,0,-7.03334652982041,False,control,IMR90
+expression_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191334,0,-6.682482805088079,False,control,IMR90
+expression_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191335,0,-7.156686487599081,False,control,IMR90
+expression_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191336,0,-7.159092573971479,False,control,IMR90
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767418,0,20.95420228399149,True,control,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767419,0,20.35418612211102,True,control,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767420,0,19.423686626464132,True,control,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767421,0,26.564314115574472,True,control,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767422,1,20.032848782025336,True,irradiated,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767423,1,22.306787957295068,True,irradiated,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767424,1,27.65289348954941,True,irradiated,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767425,1,24.58779036564859,True,irradiated,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767434,0,27.188642934808772,True,control,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767435,0,29.494158909306012,True,control,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767436,0,24.619580288601117,True,control,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767437,0,26.85688690998882,True,control,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767438,1,40.50683487414308,True,irradiated,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767439,1,38.94922891233484,True,irradiated,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767440,1,34.71004309277477,True,irradiated,Lung endothelium
+expression_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767441,1,38.911895647200474,True,irradiated,Lung endothelium
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767410,0,22.536489493446798,True,control,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767411,0,22.272531615982594,True,control,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767412,0,21.491208442066366,True,control,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767413,0,21.35917266367264,True,control,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767414,1,23.572896346869978,True,irradiated,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767415,1,24.345772222118836,True,irradiated,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767416,1,25.930656552169932,True,irradiated,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767417,1,20.408969782007524,True,irradiated,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767426,0,26.71336524362985,True,control,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767427,0,24.222642683336108,True,control,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767428,0,20.97298029937398,True,control,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767429,0,25.719581847284385,True,control,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767430,1,26.42572579810177,True,irradiated,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767431,1,26.039156103068716,True,irradiated,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767432,1,24.386991247759685,True,irradiated,Lung epithelium
+expression_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767433,1,25.897659734149148,True,irradiated,Lung epithelium
+expression_linear,other_cell_same_study,ADSC,GSE230181:GSM7191348,1,17.014781438018375,True,irradiated,ADSC
+expression_linear,other_cell_same_study,ADSC,GSE230181:GSM7191349,1,16.586493636127194,True,irradiated,ADSC
+expression_linear,other_cell_same_study,ADSC,GSE230181:GSM7191350,1,16.580578122119462,True,irradiated,ADSC
+expression_linear,other_cell_same_study,ADSC,GSE230181:GSM7191351,0,4.301623641020811,True,control,ADSC
+expression_linear,other_cell_same_study,ADSC,GSE230181:GSM7191352,0,3.9727374473073556,True,control,ADSC
+expression_linear,other_cell_same_study,ADSC,GSE230181:GSM7191353,0,4.843484331662319,True,control,ADSC
+expression_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191366,1,15.863399180479432,True,irradiated,HMVEC
+expression_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191367,1,15.908262834476966,True,irradiated,HMVEC
+expression_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191368,1,15.89351456768823,True,irradiated,HMVEC
+expression_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191369,0,8.80099295666729,True,control,HMVEC
+expression_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191370,0,9.21175814897304,True,control,HMVEC
+expression_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191371,0,8.925255900487608,True,control,HMVEC
+expression_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191360,1,13.698215186392405,True,irradiated,HUVEC
+expression_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191361,1,8.467249260938766,True,irradiated,HUVEC
+expression_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191362,1,8.694122288579303,True,irradiated,HUVEC
+expression_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191363,0,2.687469435262691,True,control,HUVEC
+expression_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191364,0,2.8935398896831277,True,control,HUVEC
+expression_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191365,0,3.078604588049467,True,control,HUVEC
+expression_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191354,1,25.267733114462,True,irradiated,RPTEC
+expression_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191355,1,25.96349725887584,True,irradiated,RPTEC
+expression_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191356,1,25.830476121969443,True,irradiated,RPTEC
+expression_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191357,0,11.4861831161427,True,control,RPTEC
+expression_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191358,0,11.78058675545465,True,control,RPTEC
+expression_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191359,0,11.608986822353739,True,control,RPTEC
+expression_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191292,1,10.348839980263989,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191293,1,388.9726050591613,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191294,1,11.21693699612758,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191295,1,371.8099227726364,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191296,1,11.732241016395207,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191303,0,2.792226203563772,True,bleomycin,IMR90
+expression_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191304,0,3.32701909751781,True,bleomycin,IMR90
+expression_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191305,0,2.2964559162833287,True,bleomycin,IMR90
+expression_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191306,0,1.5836852223606723,True,bleomycin,IMR90
+expression_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191307,0,0.4167505781930827,True,bleomycin,IMR90
+expression_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191292,1,10.348839980263989,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191293,1,388.9726050591613,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191294,1,11.21693699612758,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191295,1,371.8099227726364,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191296,1,11.732241016395207,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191311,0,-0.9029293244819568,False,antimycin,IMR90
+expression_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191312,0,-1.9784504959448446,False,antimycin,IMR90
+expression_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191313,0,-1.2701180565499142,False,antimycin,IMR90
+expression_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191314,0,-1.8590823091623543,False,antimycin,IMR90
+expression_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191315,0,-1.320721408235159,False,antimycin,IMR90
+expression_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191292,1,10.348839980263989,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191293,1,388.9726050591613,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191294,1,11.21693699612758,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191295,1,371.8099227726364,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191296,1,11.732241016395207,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191316,0,-1.4501040077981853,False,oligomycin,IMR90
+expression_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191317,0,-1.130390746950155,False,oligomycin,IMR90
+expression_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191318,0,-1.7274152201897315,False,oligomycin,IMR90
+expression_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191319,0,-2.2432177895647496,False,oligomycin,IMR90
+expression_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191320,0,-1.549023058413874,False,oligomycin,IMR90
+expression_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191297,1,9.338223844058911,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191298,1,9.703227539397982,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191299,1,9.666057900927735,True,irradiated,IMR90
+expression_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191308,0,0.01969175480561073,True,rotenone,IMR90
+expression_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191309,0,-0.9410990812375205,False,rotenone,IMR90
+expression_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191310,0,0.06465175158032926,True,rotenone,IMR90
+expression_linear,other_stress_only,ras_induction,GSE230181:GSM7191300,0,20.470806301589885,True,ras_induction,IMR90
+expression_linear,other_stress_only,ras_induction,GSE230181:GSM7191301,0,21.16476575690706,True,ras_induction,IMR90
+expression_linear,other_stress_only,ras_induction,GSE230181:GSM7191302,0,19.6661830565796,True,ras_induction,IMR90
+pca5_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191281,1,11.265382613951916,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191282,1,11.423253927248824,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191283,1,11.294452650492468,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191284,1,11.374678865944201,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191285,1,10.847308973844095,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191321,0,-7.88074973625395,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191322,0,-7.427146919532541,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191323,0,-7.532877850592238,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191324,0,-7.455274770908284,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191325,0,-7.361271707493023,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191297,1,8.425187427967986,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191298,1,9.238415156752486,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191299,1,8.979000379025255,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191337,0,-6.261464264624569,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191338,0,-8.539871932676721,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191339,0,-8.704941135928564,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191286,1,2.109745486440616e+17,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191287,1,4.5841247628215624,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191288,1,6.571897863352895,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191289,1,4.221223194791093,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191290,1,5.384757859743156,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191291,1,4.983988592963659,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191326,0,-5.488456070330479,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191327,0,-5.182342854286007,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191328,0,-5.20290716381604,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191329,0,-6.168456803428933,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191330,0,-4.522450746796321,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191331,0,-6.13904088454807,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191292,1,9.952628613003908,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191293,1,512.8007246081518,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191294,1,10.863649107279683,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191295,1,489.9274966028275,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191296,1,11.421931584438475,True,irradiated,IMR90
+pca5_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191332,0,-7.31760523351186,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191333,0,-7.488784177051029,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191334,0,-7.120201186021789,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191335,0,-7.575534619593943,False,control,IMR90
+pca5_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191336,0,-7.660286388384984,False,control,IMR90
+pca5_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767418,0,23.121051298865428,True,control,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767419,0,22.819839535101615,True,control,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767420,0,21.80479462750061,True,control,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767421,0,28.832169470707647,True,control,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767422,1,22.45423931278848,True,irradiated,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767423,1,24.62459397584917,True,irradiated,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767424,1,30.030551146028856,True,irradiated,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767425,1,27.053383153037604,True,irradiated,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767434,0,29.6662234307884,True,control,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767435,0,32.09898832448899,True,control,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767436,0,27.198655937273,True,control,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767437,0,29.31490469972561,True,control,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767438,1,43.98091609607036,True,irradiated,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767439,1,42.112748438703335,True,irradiated,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767440,1,37.786073170427045,True,irradiated,Lung endothelium
+pca5_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767441,1,42.11129659246339,True,irradiated,Lung endothelium
+pca5_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767410,0,25.102570340687812,True,control,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767411,0,24.784456498822617,True,control,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767412,0,24.037451788251754,True,control,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767413,0,23.785824019454967,True,control,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767414,1,26.204423307788343,True,irradiated,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767415,1,27.037626802527328,True,irradiated,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767416,1,29.02288015777601,True,irradiated,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767417,1,22.736128841791572,True,irradiated,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767426,0,29.88665324167255,True,control,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767427,0,27.120162020017947,True,control,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767428,0,23.34789477962684,True,control,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767429,0,28.655662770319072,True,control,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767430,1,29.506742008734953,True,irradiated,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767431,1,28.9743757613487,True,irradiated,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767432,1,27.230711358179708,True,irradiated,Lung epithelium
+pca5_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767433,1,28.792902555977157,True,irradiated,Lung epithelium
+pca5_linear,other_cell_same_study,ADSC,GSE230181:GSM7191348,1,17.341677516659207,True,irradiated,ADSC
+pca5_linear,other_cell_same_study,ADSC,GSE230181:GSM7191349,1,16.946804902079027,True,irradiated,ADSC
+pca5_linear,other_cell_same_study,ADSC,GSE230181:GSM7191350,1,16.997227160799568,True,irradiated,ADSC
+pca5_linear,other_cell_same_study,ADSC,GSE230181:GSM7191351,0,4.028058731576796,True,control,ADSC
+pca5_linear,other_cell_same_study,ADSC,GSE230181:GSM7191352,0,3.620052037315445,True,control,ADSC
+pca5_linear,other_cell_same_study,ADSC,GSE230181:GSM7191353,0,4.632211384807251,True,control,ADSC
+pca5_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191366,1,15.587615877246975,True,irradiated,HMVEC
+pca5_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191367,1,15.653668521598087,True,irradiated,HMVEC
+pca5_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191368,1,15.652572948187062,True,irradiated,HMVEC
+pca5_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191369,0,8.381337395327408,True,control,HMVEC
+pca5_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191370,0,8.81019033593555,True,control,HMVEC
+pca5_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191371,0,8.559556523939554,True,control,HMVEC
+pca5_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191360,1,13.348057892622768,True,irradiated,HUVEC
+pca5_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191361,1,7.562438947629707,True,irradiated,HUVEC
+pca5_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191362,1,7.625643900133105,True,irradiated,HUVEC
+pca5_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191363,0,1.6026401662079346,True,control,HUVEC
+pca5_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191364,0,1.850991093614599,True,control,HUVEC
+pca5_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191365,0,2.1324687867060947,True,control,HUVEC
+pca5_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191354,1,27.172509895743044,True,irradiated,RPTEC
+pca5_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191355,1,27.652388177197075,True,irradiated,RPTEC
+pca5_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191356,1,27.578669152665217,True,irradiated,RPTEC
+pca5_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191357,0,11.839676070851771,True,control,RPTEC
+pca5_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191358,0,11.936157550197896,True,control,RPTEC
+pca5_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191359,0,11.827198783186226,True,control,RPTEC
+pca5_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191292,1,9.952628613003908,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191293,1,512.8007246081518,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191294,1,10.863649107279683,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191295,1,489.9274966028275,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191296,1,11.421931584438475,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191303,0,2.296504268171747,True,bleomycin,IMR90
+pca5_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191304,0,2.8930148956808597,True,bleomycin,IMR90
+pca5_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191305,0,1.7932259978571004,True,bleomycin,IMR90
+pca5_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191306,0,1.0950110614447865,True,bleomycin,IMR90
+pca5_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191307,0,-0.0483155065658753,False,bleomycin,IMR90
+pca5_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191292,1,9.952628613003908,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191293,1,512.8007246081518,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191294,1,10.863649107279683,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191295,1,489.9274966028275,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191296,1,11.421931584438475,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191311,0,-1.3770313662725617,False,antimycin,IMR90
+pca5_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191312,0,-2.3612863919424893,False,antimycin,IMR90
+pca5_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191313,0,-1.7459997611278604,False,antimycin,IMR90
+pca5_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191314,0,-2.2710182385946007,False,antimycin,IMR90
+pca5_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191315,0,-1.7295392603388446,False,antimycin,IMR90
+pca5_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191292,1,9.952628613003908,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191293,1,512.8007246081518,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191294,1,10.863649107279683,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191295,1,489.9274966028275,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191296,1,11.421931584438475,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191316,0,-2.057875834584826,False,oligomycin,IMR90
+pca5_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191317,0,-1.6999148389488543,False,oligomycin,IMR90
+pca5_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191318,0,-2.3083946632795063,False,oligomycin,IMR90
+pca5_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191319,0,-2.8263360541932028,False,oligomycin,IMR90
+pca5_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191320,0,-2.106002485211374,False,oligomycin,IMR90
+pca5_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191297,1,8.425187427967986,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191298,1,9.238415156752486,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191299,1,8.979000379025255,True,irradiated,IMR90
+pca5_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191308,0,-0.7980494415379089,False,rotenone,IMR90
+pca5_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191309,0,-2.1931849565471007,False,rotenone,IMR90
+pca5_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191310,0,-1.1054354470482166,False,rotenone,IMR90
+pca5_linear,other_stress_only,ras_induction,GSE230181:GSM7191300,0,21.896737662841538,True,ras_induction,IMR90
+pca5_linear,other_stress_only,ras_induction,GSE230181:GSM7191301,0,22.654493293550644,True,ras_induction,IMR90
+pca5_linear,other_stress_only,ras_induction,GSE230181:GSM7191302,0,20.937808978920508,True,ras_induction,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191281,1,3.267940171801481,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191282,1,4.182606911350654,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191283,1,3.45630549906021,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191284,1,3.0606509687703194,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191285,1,3.6655182351480784,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191321,0,-9.612255551017272,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191322,0,-9.703295238713377,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191323,0,-10.543159441507806,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191324,0,-9.684929860979855,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191325,0,-9.35560232669928,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191297,1,8.020838125454267,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191298,1,7.948454358601992,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191299,1,7.36500235826295,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191337,0,-0.8307311877348694,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191338,0,-1.943237724857669,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191339,0,-2.5860939087684107,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191286,1,4.5620226920909115,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191287,1,4.286068480180723,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191288,1,6.113179338846708,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191289,1,5.782983830394744,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191290,1,5.230276822496536,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191291,1,5.690894706849893,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191326,0,-4.669130289515656,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191327,0,-4.209006253767532,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191328,0,-5.18055091713383,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191329,0,-8.13699163822482,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191330,0,-6.985852256931859,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191331,0,-8.69950936032998,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191292,1,8.65717642799088,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191293,1,9.983642827362253,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191294,1,10.258026825250218,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191295,1,9.369280062760737,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191296,1,10.396443407148587,True,irradiated,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191332,0,-8.153067828404453,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191333,0,-7.86021882940277,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191334,0,-8.145722016461336,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191335,0,-8.289666629582014,False,control,IMR90
+bridge_meanstd_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191336,0,-7.808446981386088,False,control,IMR90
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767418,0,-18.81725134046345,False,control,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767419,0,-19.378915427862232,False,control,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767420,0,-20.46731707843089,False,control,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767421,0,-5.781417099310463,False,control,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767422,1,-17.642137981765096,False,irradiated,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767423,1,-11.269012024234247,False,irradiated,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767424,1,2.9552168246002286,True,irradiated,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767425,1,-7.4941439225257165,False,irradiated,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767434,0,-5.923264582669673,False,control,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767435,0,-0.9368625850130128,False,control,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767436,0,-11.10879186592775,False,control,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767437,0,-6.732500765084088,False,control,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767438,1,18.236240825508872,True,irradiated,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767439,1,17.214930714316065,True,irradiated,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767440,1,6.69009649407061,True,irradiated,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767441,1,15.44066140814812,True,irradiated,Lung endothelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767410,0,-15.426710403581264,False,control,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767411,0,-16.176291040630215,False,control,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767412,0,-17.179643058727212,False,control,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767413,0,-15.6466396802888,False,control,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767414,1,-10.60640897719152,False,irradiated,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767415,1,-10.697927062323235,False,irradiated,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767416,1,-9.079086048622667,False,irradiated,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767417,1,-11.230697230885912,False,irradiated,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767426,0,-11.909853635511801,False,control,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767427,0,-14.163336324517527,False,control,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767428,0,-17.99578579612348,False,control,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767429,0,-11.980317032328088,False,control,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767430,1,-11.929589306082011,False,irradiated,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767431,1,-13.258255760303198,False,irradiated,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767432,1,-13.967514461815458,False,irradiated,Lung epithelium
+bridge_meanstd_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767433,1,-10.811514008698481,False,irradiated,Lung epithelium
+bridge_meanstd_linear,other_cell_same_study,ADSC,GSE230181:GSM7191348,1,3.7079600739675302,True,irradiated,ADSC
+bridge_meanstd_linear,other_cell_same_study,ADSC,GSE230181:GSM7191349,1,3.105084584812846,True,irradiated,ADSC
+bridge_meanstd_linear,other_cell_same_study,ADSC,GSE230181:GSM7191350,1,3.6105480537494956,True,irradiated,ADSC
+bridge_meanstd_linear,other_cell_same_study,ADSC,GSE230181:GSM7191351,0,-3.1159720805740174,False,control,ADSC
+bridge_meanstd_linear,other_cell_same_study,ADSC,GSE230181:GSM7191352,0,-4.797934312264376,False,control,ADSC
+bridge_meanstd_linear,other_cell_same_study,ADSC,GSE230181:GSM7191353,0,-1.9467736848795751,False,control,ADSC
+bridge_meanstd_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191366,1,-9.639733135355346,False,irradiated,HMVEC
+bridge_meanstd_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191367,1,-10.03952206862736,False,irradiated,HMVEC
+bridge_meanstd_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191368,1,-9.211777445510933,False,irradiated,HMVEC
+bridge_meanstd_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191369,0,-14.248664891035665,False,control,HMVEC
+bridge_meanstd_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191370,0,-13.130232955885855,False,control,HMVEC
+bridge_meanstd_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191371,0,-12.964879734212618,False,control,HMVEC
+bridge_meanstd_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191360,1,-7.299882083476896,False,irradiated,HUVEC
+bridge_meanstd_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191361,1,-12.302041217088789,False,irradiated,HUVEC
+bridge_meanstd_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191362,1,-12.967717764701053,False,irradiated,HUVEC
+bridge_meanstd_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191363,0,-19.952926300843895,False,control,HUVEC
+bridge_meanstd_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191364,0,-19.926621992675454,False,control,HUVEC
+bridge_meanstd_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191365,0,-18.16271722860128,False,control,HUVEC
+bridge_meanstd_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191354,1,14.831895110920357,True,irradiated,RPTEC
+bridge_meanstd_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191355,1,14.438370050380083,True,irradiated,RPTEC
+bridge_meanstd_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191356,1,15.526029369832228,True,irradiated,RPTEC
+bridge_meanstd_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191357,0,4.515214477215076,True,control,RPTEC
+bridge_meanstd_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191358,0,3.943156845635667,True,control,RPTEC
+bridge_meanstd_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191359,0,5.586783904733603,True,control,RPTEC
+bridge_meanstd_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191292,1,8.65717642799088,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191293,1,9.983642827362253,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191294,1,10.258026825250218,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191295,1,9.369280062760737,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191296,1,10.396443407148587,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191303,0,1.9364343511637245,True,bleomycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191304,0,2.767135762972491,True,bleomycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191305,0,1.6543693080044952,True,bleomycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191306,0,1.1763188335196268,True,bleomycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191307,0,-0.18674482384671903,False,bleomycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191292,1,8.65717642799088,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191293,1,9.983642827362253,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191294,1,10.258026825250218,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191295,1,9.369280062760737,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191296,1,10.396443407148587,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191311,0,-1.3553370932385165,False,antimycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191312,0,-1.250507517641569,False,antimycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191313,0,-2.4194436756309754,False,antimycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191314,0,-2.190821396428664,False,antimycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191315,0,-2.30341267877708,False,antimycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191292,1,8.65717642799088,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191293,1,9.983642827362253,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191294,1,10.258026825250218,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191295,1,9.369280062760737,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191296,1,10.396443407148587,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191316,0,-2.0346229613721425,False,oligomycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191317,0,-2.1900595713309565,False,oligomycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191318,0,-1.766520975332365,False,oligomycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191319,0,-2.986333101927388,False,oligomycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191320,0,-1.4396913159186406,False,oligomycin,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191297,1,8.020838125454267,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191298,1,7.948454358601992,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191299,1,7.36500235826295,True,irradiated,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191308,0,3.604588919671867,True,rotenone,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191309,0,2.1307779805457625,True,rotenone,IMR90
+bridge_meanstd_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191310,0,4.069746971083344,True,rotenone,IMR90
+bridge_meanstd_linear,other_stress_only,ras_induction,GSE230181:GSM7191300,0,20.219120818651753,True,ras_induction,IMR90
+bridge_meanstd_linear,other_stress_only,ras_induction,GSE230181:GSM7191301,0,21.20760767014796,True,ras_induction,IMR90
+bridge_meanstd_linear,other_stress_only,ras_induction,GSE230181:GSM7191302,0,20.46947579327924,True,ras_induction,IMR90
+six_programs_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191281,1,-0.7747445688374168,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191282,1,-0.7351669383799848,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191283,1,-0.37474098389203325,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191284,1,-0.49118469495664274,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191285,1,-0.5977501123609599,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191321,0,-3.10283491740805,False,control,IMR90
+six_programs_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191322,0,-2.7966879692883895,False,control,IMR90
+six_programs_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191323,0,-2.7693703624720403,False,control,IMR90
+six_programs_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191324,0,-2.9456460077712388,False,control,IMR90
+six_programs_linear,held_out_expression_file,BFX01_expr.txt,GSE230181:GSM7191325,0,-2.4893716005559368,False,control,IMR90
+six_programs_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191297,1,0.1464319829072967,True,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191298,1,0.018912445815851442,True,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191299,1,-0.14701154534194766,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191337,0,-1.6127468473192104,False,control,IMR90
+six_programs_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191338,0,-2.3380743460028466,False,control,IMR90
+six_programs_linear,held_out_expression_file,BFX02_expr.txt,GSE230181:GSM7191339,0,-2.3897078494866415,False,control,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191286,1,-2.037038671110472,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191287,1,-1.0661121989014837,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191288,1,-0.665339528449008,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191289,1,-2.4780884759566963,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191290,1,-3.262667141072404,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191291,1,-2.878021215052807,False,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191326,0,-1.9482950293046826,False,control,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191327,0,-2.9105839487031324,False,control,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191328,0,-0.800120804618716,False,control,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191329,0,0.5557567732325805,True,control,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191330,0,2.0926928812070535,True,control,IMR90
+six_programs_linear,held_out_expression_file,BFX17_expr.txt,GSE230181:GSM7191331,0,0.9532244769085343,True,control,IMR90
+six_programs_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191292,1,7.906935802723396,True,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191293,1,9.361433738274231,True,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191294,1,10.100203152295023,True,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191295,1,9.632016658597424,True,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191296,1,10.351381703299896,True,irradiated,IMR90
+six_programs_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191332,0,2.147643277024628,True,control,IMR90
+six_programs_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191333,0,1.9427849619593462,True,control,IMR90
+six_programs_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191334,0,2.277300263547193,True,control,IMR90
+six_programs_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191335,0,1.9278105152880662,True,control,IMR90
+six_programs_linear,held_out_expression_file,BFX36_expr.txt,GSE230181:GSM7191336,0,2.9131968944843964,True,control,IMR90
+six_programs_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767418,0,5.887357303422495,True,control,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767419,0,5.477899280858645,True,control,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767420,0,4.673171182138205,True,control,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767421,0,5.4305661751284475,True,control,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767422,1,5.052062571241282,True,irradiated,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767423,1,5.680021528835772,True,irradiated,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767424,1,6.822888340291845,True,irradiated,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_6h,GSE242706:GSM7767425,1,6.404975333551227,True,irradiated,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767434,0,6.73680552419151,True,control,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767435,0,6.798197551272213,True,control,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767436,0,6.478583057260655,True,control,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767437,0,6.923066948924988,True,control,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767438,1,9.502530004835318,True,irradiated,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767439,1,9.151302264639972,True,irradiated,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767440,1,8.24334311597234,True,irradiated,Lung endothelium
+six_programs_linear,external_lung_chip,Lung endothelium_7d,GSE242706:GSM7767441,1,9.471367242670848,True,irradiated,Lung endothelium
+six_programs_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767410,0,7.746757643212725,True,control,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767411,0,7.6326076444425395,True,control,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767412,0,6.509277382728284,True,control,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767413,0,7.2887102192101585,True,control,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767414,1,7.14216569683184,True,irradiated,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767415,1,7.266959935645299,True,irradiated,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767416,1,7.340377192522074,True,irradiated,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_6h,GSE242706:GSM7767417,1,7.7341320788598535,True,irradiated,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767426,0,8.646152242602598,True,control,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767427,0,8.554581437642987,True,control,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767428,0,8.048664308229714,True,control,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767429,0,10.046202989468242,True,control,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767430,1,8.881349236434618,True,irradiated,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767431,1,8.721057868003498,True,irradiated,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767432,1,7.631806394886294,True,irradiated,Lung epithelium
+six_programs_linear,external_lung_chip,Lung epithelium_7d,GSE242706:GSM7767433,1,9.103832161790628,True,irradiated,Lung epithelium
+six_programs_linear,other_cell_same_study,ADSC,GSE230181:GSM7191348,1,-0.511160270928886,False,irradiated,ADSC
+six_programs_linear,other_cell_same_study,ADSC,GSE230181:GSM7191349,1,-0.8596889089673401,False,irradiated,ADSC
+six_programs_linear,other_cell_same_study,ADSC,GSE230181:GSM7191350,1,-0.5473625695270254,False,irradiated,ADSC
+six_programs_linear,other_cell_same_study,ADSC,GSE230181:GSM7191351,0,-1.6688139549340282,False,control,ADSC
+six_programs_linear,other_cell_same_study,ADSC,GSE230181:GSM7191352,0,-1.541823565686631,False,control,ADSC
+six_programs_linear,other_cell_same_study,ADSC,GSE230181:GSM7191353,0,-1.1044987087804368,False,control,ADSC
+six_programs_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191366,1,1.2418812351645352,True,irradiated,HMVEC
+six_programs_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191367,1,1.1753550942237403,True,irradiated,HMVEC
+six_programs_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191368,1,1.1989510940032821,True,irradiated,HMVEC
+six_programs_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191369,0,1.9256644774750997,True,control,HMVEC
+six_programs_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191370,0,1.9243006747351408,True,control,HMVEC
+six_programs_linear,other_cell_same_study,HMVEC,GSE230181:GSM7191371,0,1.9886201164940274,True,control,HMVEC
+six_programs_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191360,1,1.7161973206645118,True,irradiated,HUVEC
+six_programs_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191361,1,-0.022905050665034177,False,irradiated,HUVEC
+six_programs_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191362,1,0.2968643909936954,True,irradiated,HUVEC
+six_programs_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191363,0,0.055854258309099236,True,control,HUVEC
+six_programs_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191364,0,0.24578531651168295,True,control,HUVEC
+six_programs_linear,other_cell_same_study,HUVEC,GSE230181:GSM7191365,0,-0.15905348701566263,False,control,HUVEC
+six_programs_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191354,1,3.8606793143443308,True,irradiated,RPTEC
+six_programs_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191355,1,4.724361550018322,True,irradiated,RPTEC
+six_programs_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191356,1,4.395038959818909,True,irradiated,RPTEC
+six_programs_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191357,0,1.8576430860849766,True,control,RPTEC
+six_programs_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191358,0,2.18232050863093,True,control,RPTEC
+six_programs_linear,other_cell_same_study,RPTEC,GSE230181:GSM7191359,0,2.178671389432873,True,control,RPTEC
+six_programs_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191292,1,7.906935802723396,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191293,1,9.361433738274231,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191294,1,10.100203152295023,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191295,1,9.632016658597424,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191296,1,10.351381703299896,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191303,0,5.5466483399568824,True,bleomycin,IMR90
+six_programs_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191304,0,5.696426072098026,True,bleomycin,IMR90
+six_programs_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191305,0,6.2861518682502675,True,bleomycin,IMR90
+six_programs_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191306,0,5.872284352824183,True,bleomycin,IMR90
+six_programs_linear,radiation_vs_other_stress,bleomycin,GSE230181:GSM7191307,0,6.074109363241522,True,bleomycin,IMR90
+six_programs_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191292,1,7.906935802723396,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191293,1,9.361433738274231,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191294,1,10.100203152295023,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191295,1,9.632016658597424,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191296,1,10.351381703299896,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191311,0,3.889724800272145,True,antimycin,IMR90
+six_programs_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191312,0,3.989893710651099,True,antimycin,IMR90
+six_programs_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191313,0,3.8078097605161605,True,antimycin,IMR90
+six_programs_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191314,0,4.3865025391251296,True,antimycin,IMR90
+six_programs_linear,radiation_vs_other_stress,antimycin,GSE230181:GSM7191315,0,3.4151673203554362,True,antimycin,IMR90
+six_programs_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191292,1,7.906935802723396,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191293,1,9.361433738274231,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191294,1,10.100203152295023,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191295,1,9.632016658597424,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191296,1,10.351381703299896,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191316,0,0.8170263844434864,True,oligomycin,IMR90
+six_programs_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191317,0,-0.11640323657623161,False,oligomycin,IMR90
+six_programs_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191318,0,0.7283135801495746,True,oligomycin,IMR90
+six_programs_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191319,0,0.7484844015242482,True,oligomycin,IMR90
+six_programs_linear,radiation_vs_other_stress,oligomycin,GSE230181:GSM7191320,0,0.4867306395416989,True,oligomycin,IMR90
+six_programs_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191297,1,0.1464319829072967,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191298,1,0.018912445815851442,True,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191299,1,-0.14701154534194766,False,irradiated,IMR90
+six_programs_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191308,0,0.06723868889776258,True,rotenone,IMR90
+six_programs_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191309,0,-1.169374775598307,False,rotenone,IMR90
+six_programs_linear,radiation_vs_other_stress,rotenone,GSE230181:GSM7191310,0,-0.0900536610301042,False,rotenone,IMR90
+six_programs_linear,other_stress_only,ras_induction,GSE230181:GSM7191300,0,7.045977372287379,True,ras_induction,IMR90
+six_programs_linear,other_stress_only,ras_induction,GSE230181:GSM7191301,0,6.871292014249354,True,ras_induction,IMR90
+six_programs_linear,other_stress_only,ras_induction,GSE230181:GSM7191302,0,6.8770851951332315,True,ras_induction,IMR90

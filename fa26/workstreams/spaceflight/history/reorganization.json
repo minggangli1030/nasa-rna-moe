@@ -1,0 +1,72 @@
+[
+  {
+    "old": "fa26/space_head_pilot.py",
+    "new": "fa26/workstreams/spaceflight/scripts/space_head_pilot.py",
+    "original_sha256": "6a8e6bec34fcd18c14647b487d620a6b3e740a5cc90d0ba73f78cc84ba5c74f3",
+    "original_copy": "fa26/workstreams/spaceflight/history/before-response-reorganization/space_head_pilot.py",
+    "compatibility": "relative symlink; root discovery supports old and new invocation paths"
+  },
+  {
+    "old": "fa26/space_head_diagnostics.py",
+    "new": "fa26/workstreams/spaceflight/scripts/space_head_diagnostics.py",
+    "original_sha256": "a78109b393c74681c3e342d0d53bd4a840edf9845e2a254ddb1b17a2d964d994",
+    "original_copy": "fa26/workstreams/spaceflight/history/before-response-reorganization/space_head_diagnostics.py",
+    "compatibility": "relative symlink; root discovery supports old and new invocation paths"
+  },
+  {
+    "old": "fa26/evaluate_space_head_diagnostics.py",
+    "new": "fa26/workstreams/spaceflight/scripts/evaluate_space_head_diagnostics.py",
+    "original_sha256": "d33e4d9638d94c0fd1ea1b508981b724d4fc18ae866d5d12dd2cbe4388a8dae4",
+    "original_copy": "fa26/workstreams/spaceflight/history/before-response-reorganization/evaluate_space_head_diagnostics.py",
+    "compatibility": "relative symlink; root discovery supports old and new invocation paths"
+  },
+  {
+    "old": "fa26/check_space_head_adaptation.py",
+    "new": "fa26/workstreams/spaceflight/scripts/check_space_head_adaptation.py",
+    "original_sha256": "b1b125aa82c859999cb06382fbe8d747b7ce22f98737cc70dcefc9fd7771d97a",
+    "original_copy": "fa26/workstreams/spaceflight/history/before-response-reorganization/check_space_head_adaptation.py",
+    "compatibility": "relative symlink; root discovery supports old and new invocation paths"
+  },
+  {
+    "old": "fa26/report_space_head_diagnostics.py",
+    "new": "fa26/workstreams/spaceflight/scripts/report_space_head_diagnostics.py",
+    "original_sha256": "e42661b4a410ed71f2d7ad1715cb8e819ad9bfcc5741edbfc6454b4fb9afc042",
+    "original_copy": "fa26/workstreams/spaceflight/history/before-response-reorganization/report_space_head_diagnostics.py",
+    "compatibility": "relative symlink; root discovery supports old and new invocation paths"
+  },
+  {
+    "old": "fa26/space_head_attribution.py",
+    "new": "fa26/workstreams/spaceflight/scripts/space_head_attribution.py",
+    "original_sha256": "2cd206e3cc4da04934d1ff0d74b50a8e1c35342de8d0fc6fd44a1f89bc669f95",
+    "original_copy": "fa26/workstreams/spaceflight/history/before-response-reorganization/space_head_attribution.py",
+    "compatibility": "relative symlink; root discovery supports old and new invocation paths"
+  },
+  {
+    "old": "fa26/analyze_space_head_attribution.py",
+    "new": "fa26/workstreams/spaceflight/scripts/analyze_space_head_attribution.py",
+    "original_sha256": "496725ef11913cc90507201a5101b608a587f99f99cce5ccb07bf7f37671b50f",
+    "original_copy": "fa26/workstreams/spaceflight/history/before-response-reorganization/analyze_space_head_attribution.py",
+    "compatibility": "relative symlink; root discovery supports old and new invocation paths"
+  },
+  {
+    "old": "fa26/report_space_head_attribution.py",
+    "new": "fa26/workstreams/spaceflight/scripts/report_space_head_attribution.py",
+    "original_sha256": "48b09f890ac462c3ea1a8e1d120574be78822f21088f2dbb58753468e4544f2e",
+    "original_copy": "fa26/workstreams/spaceflight/history/before-response-reorganization/report_space_head_attribution.py",
+    "compatibility": "relative symlink; root discovery supports old and new invocation paths"
+  },
+  {
+    "old": "fa26/write_space_head_attribution_report.py",
+    "new": "fa26/workstreams/spaceflight/scripts/write_space_head_attribution_report.py",
+    "original_sha256": "63826a35abed5c44fde9137640c42742ab944be727b0f6e3c193d0bf5902bf9b",
+    "original_copy": "fa26/workstreams/spaceflight/history/before-response-reorganization/write_space_head_attribution_report.py",
+    "compatibility": "relative symlink; root discovery supports old and new invocation paths"
+  },
+  {
+    "old": "fa26/build_space_prediction_explanations.py",
+    "new": "fa26/workstreams/spaceflight/scripts/build_space_prediction_explanations.py",
+    "original_sha256": "cbd68144844f2e2d102257fcfaa2590aeee82f06eedc677337cc3278b6d23c72",
+    "original_copy": "fa26/workstreams/spaceflight/history/before-response-reorganization/build_space_prediction_explanations.py",
+    "compatibility": "relative symlink; root discovery supports old and new invocation paths"
+  }
+]

@@ -1,0 +1,4 @@
+representation,n_shared_samples,author_vs_NCBI_shift_cosine
+raw,5,0.9295511841773987
+model_mean,5,0.9917925596237183
+model_std,5,0.9739945530891418

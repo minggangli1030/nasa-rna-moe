@@ -1,0 +1,673 @@
+model,context,calibration,evaluation,auroc,balanced_accuracy,n,TP,TN,FP,FN,mean_positive_logit,mean_negative_logit
+ncbi__bridge__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,0.888888888888889,0.6666666666666666,6,1,3,0,2,-0.9394882869217197,-2.589129988988791
+ncbi__bridge__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,0.6666666666666667,0.8333333333333333,6,3,2,1,0,1.1906940026366841,-0.9033036424106231
+ncbi__bridge__hard_negative__absolute,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,9,4,5,0,0,9.746895424110505,-9.751189265190764
+ncbi__bridge__hard_negative__absolute,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,0.6666666666666666,6,3,1,2,0,11.758014430823158,1.4270781676704065
+ncbi__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,1.0,5,2,3,0,0,17.720101445431432,-0.8474829147216317
+ncbi__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,6,0,3,0,3,-9.318504101010618,-13.333376924693448
+ncbi__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.5,5,0,2,0,3,-13.505077555252754,-21.593882332508016
+ncbi__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,5,3,2,0,0,9.54002309764808,-3.8479853169718363
+ncbi__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,6,3,3,0,0,10.325520353371193,-12.840906339059288
+ncbi__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,0.5,6,3,0,3,0,23.155367949098792,2.6755418150468735
+ncbi__bridge__hard_negative__absolute,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,9,4,5,0,0,11.150592594475203,-11.023878408176973
+ncbi__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.3125,0.5,8,4,0,4,0,25.49152331397732,29.217938410757977
+ncbi__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,0.0,0.5,8,4,0,4,0,9.894874579204542,25.409043040395847
+ncbi__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,0.1875,0.5,8,4,0,4,0,31.99618068584125,34.193211584295646
+ncbi__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.0,0.5,8,4,0,4,0,31.392468689960317,34.07597791330635
+ncbi__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.6666666666666666,4,1,1,0,2,-0.48813786706368995,-9.614040167142011
+ncbi__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,1,new_2Gy_challenge,1.0,0.8333333333333333,4,2,1,0,1,0.6272959053670993,-6.267738849849676
+ncbi__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,2,new_2Gy_challenge,1.0,1.0,4,3,1,0,0,0.946121527475514,-5.311261983524415
+ncbi__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,0.6666666666666666,0.5,4,0,1,0,3,-1.086264731741423,-1.2760356561395858
+ncbi__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-4.13167231502478,-10.412258405989649
+ncbi__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-3.829168492490517,-9.504746938386884
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,7,4,3,0,0,14.790179340645377,-5.146521058538069
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,1,held_file,1.0,1.0,7,4,3,0,0,16.086122750778202,-2.986615374983375
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,2,held_file,1.0,1.0,7,4,3,0,0,15.15864157970922,-4.5324173267650165
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,3,held_file,1.0,1.0,7,4,3,0,0,15.29323030017892,-4.308102792648833
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,4,held_file,1.0,1.0,7,4,3,0,0,13.123396369182279,-7.9244926776432365
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,5,held_file,1.0,1.0,7,4,3,0,0,12.195915198113305,-9.470294629424876
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,6,held_file,1.0,1.0,7,4,3,0,0,12.330503918583007,-9.245980095308697
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,7,held_file,1.0,1.0,7,4,3,0,0,13.491858608246115,-7.3103889458701845
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,8,held_file,1.0,1.0,7,4,3,0,0,13.626447328715823,-7.086074411753995
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,9,held_file,1.0,1.0,7,4,3,0,0,12.69896615764684,-8.631876363535643
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,4,3,1,0,0,5.795261603309825,-10.266826014727767
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,1,held_file,1.0,1.0,4,3,1,0,0,6.503280098905006,-8.142770527942238
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,2,held_file,1.0,1.0,4,3,1,0,0,8.458069254647958,-2.2784030607133725
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,1.0,3,2,1,0,0,18.026731789579344,-7.645479300150564
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,1,other_cell_held_file,1.0,1.0,3,2,1,0,0,18.63973955221835,-5.806456012233474
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,2,other_cell_held_file,1.0,1.0,3,2,1,0,0,18.768596979781144,-5.419883729545164
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,4,0,1,0,3,-4.143316790760827,-5.734297553554045
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,1,other_cell_held_file,1.0,0.5,4,0,1,0,3,-3.9814476891309325,-5.248690248664358
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,2,other_cell_held_file,1.0,0.5,4,0,1,0,3,-4.861494686146406,-7.888831239710806
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.8333333333333333,4,2,1,0,1,2.7177150278383415,-5.4989733011475455
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,1,other_cell_held_file,1.0,0.8333333333333333,4,2,1,0,1,1.9260819816761465,-7.082239393471939
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,0.5,4,3,0,1,0,7.808909548011449,0.0846762416687678
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,1,held_file,1.0,1.0,4,3,1,0,0,1.4336269590329394,-12.665888936288232
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,4,3,1,0,0,17.46595305794817,-12.18243291777213
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,1,held_file,1.0,0.5,4,3,0,1,0,21.94095071072394,1.2425600405551154
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,2,held_file,1.0,1.0,4,3,1,0,0,18.88278197563481,-7.931946164712199
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,1.0,4,3,1,0,0,19.475499492142593,-6.35505719388353
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,1,other_cell_held_file,1.0,1.0,4,3,1,0,0,18.102997641508544,-10.472562745785602
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,2,other_cell_held_file,1.0,1.0,4,3,1,0,0,20.912452189350393,-2.04419910226009
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,7,4,3,0,0,15.5561283677423,-6.561816898696645
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,1,held_file,1.0,1.0,7,4,3,0,0,15.325997932418094,-6.945367624237008
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,2,held_file,1.0,1.0,7,4,3,0,0,15.584824031444407,-6.513990792526486
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,3,held_file,1.0,1.0,7,4,3,0,0,14.758690615170456,-7.890879819649737
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,4,held_file,1.0,1.0,7,4,3,0,0,15.39220442365153,-6.835023472181267
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,5,held_file,1.0,1.0,7,4,3,0,0,15.651030522677832,-6.4036466404707495
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,6,held_file,1.0,1.0,7,4,3,0,0,14.824897106403892,-7.780535667594002
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,7,held_file,1.0,1.0,7,4,3,0,0,15.420900087353635,-6.787197366011107
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,8,held_file,1.0,1.0,7,4,3,0,0,14.594766671079675,-8.164086393134363
+ncbi__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,9,held_file,1.0,1.0,7,4,3,0,0,14.853592770105992,-7.732709561423843
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.75,0.5,6,0,2,0,4,-6.349739007396073,-8.825051405161396
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,1,lung_development,0.75,0.5,6,0,2,0,4,-6.821446528953436,-9.768466448276131
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,2,lung_development,0.5,0.5,6,0,2,0,4,-3.461821052295254,-3.0492154949597543
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,3,lung_development,0.875,0.5,6,0,2,0,4,-7.476952557507533,-11.07947850538433
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,4,lung_development,0.625,0.5,6,0,2,0,4,-4.117327080849357,-4.360227552067965
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,5,lung_development,0.625,0.5,6,0,2,0,4,-4.5890346024067155,-5.3036425951826764
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,0.5,0.5,6,0,2,0,4,-6.831405733628269,-6.310699572934708
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,1,lung_development,1.0,0.5,6,0,2,0,4,-9.13482450235512,-10.917537110388405
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,2,lung_development,0.5,0.5,6,0,2,0,4,-6.8018906074247205,-6.25166932052761
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,3,lung_development,0.5,0.5,6,0,2,0,4,-7.6145682870691545,-7.8770246798164685
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,4,lung_development,0.0,0.5,6,0,2,0,4,-5.2816343921387485,-3.2111568899556566
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,5,lung_development,0.5,0.5,6,0,2,0,4,-7.585053160865609,-7.817994427409365
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,0.75,0.5,6,0,2,0,4,-6.0861346331467745,-8.446826285280192
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,1,lung_development,0.75,0.5,6,0,2,0,4,-6.063519470815465,-8.401595960617552
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,2,lung_development,0.5,0.5,6,0,2,0,4,-4.647187990292913,-5.568932999572464
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,3,lung_development,0.75,0.5,6,0,2,0,4,-6.142601990892484,-8.559761000771607
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,4,lung_development,0.5,0.5,6,0,2,0,4,-4.726270510369936,-5.7270980397265125
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,5,lung_development,0.5,0.5,6,0,2,0,4,-4.703655348038627,-5.681867715063891
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.0,0.5,6,0,2,0,4,-11.926743718410368,-7.371424603111734
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,1,lung_development,0.0,0.5,6,0,2,0,4,-11.891844984982201,-7.301627136255407
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,2,lung_development,0.0,0.5,6,0,2,0,4,-12.611872559821741,-8.741682285934488
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,3,lung_development,0.0,0.5,6,0,2,0,4,-10.934537274059295,-5.387011714409587
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,4,lung_development,0.0,0.5,6,0,2,0,4,-11.654564848898836,-6.827066864088663
+ncbi__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,5,lung_development,0.0,0.5,6,0,2,0,4,-11.619666115470666,-6.757269397232326
+ncbi__bridge__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,1.0,6,3,3,0,0,3.170079745124891,-1.6819597173196879
+ncbi__bridge__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,1.0,0.8333333333333333,6,3,2,1,0,1.3611951686129953,-0.8883126052485794
+ncbi__bridge__ir_control__absolute,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,9,4,5,0,0,2.425210418907464,-12.445912023819279
+ncbi__bridge__ir_control__absolute,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,0.8333333333333333,6,3,2,1,0,8.80365806583565,-0.5010217950567363
+ncbi__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,1.0,5,2,3,0,0,2.605122626684705,-2.9921831575855697
+ncbi__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,6,0,3,0,3,-3.048623179126206,-5.509064638604253
+ncbi__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.5,5,0,2,0,3,-5.446281924261584,-10.202743958528625
+ncbi__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,5,3,2,0,0,3.937201493018789,-4.736274094837097
+ncbi__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,6,3,3,0,0,4.2415573897525025,-7.4930526161063895
+ncbi__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,0.5,6,3,0,3,0,13.545404125759353,5.426072705071728
+ncbi__bridge__ir_control__absolute,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,9,4,5,0,0,10.473136514995833,-6.944948696144031
+ncbi__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.875,0.75,8,3,3,1,1,4.40571523283958,-0.6277008120605745
+ncbi__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,0.5,8,4,0,4,0,16.95329289772649,5.957153712919244
+ncbi__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,1.0,0.75,8,4,2,2,0,3.8433296053116246,0.05968026781773583
+ncbi__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.5625,0.625,8,4,1,3,0,2.48961339407441,1.7662210651433803
+ncbi__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-1.0693044155846383,-7.22318573166745
+ncbi__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-1.1640592344972542,-7.507450188405293
+ncbi__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-1.013779652889793,-7.056611443582918
+ncbi__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-4.8021084575988615,-6.458367227737939
+ncbi__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-5.294685636858824,-7.936098765517815
+ncbi__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-5.113579838486193,-7.392781370399924
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,7,4,3,0,0,7.733705726594003,-7.2290280849879265
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,1,held_file,1.0,1.0,7,4,3,0,0,7.93708819090563,-6.89005731113521
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,2,held_file,1.0,1.0,7,4,3,0,0,7.835751632147454,-7.058951575732164
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,3,held_file,1.0,1.0,7,4,3,0,0,7.468164227499581,-7.671597250145293
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,4,held_file,1.0,1.0,7,4,3,0,0,8.045543263424868,-6.709298856936479
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,5,held_file,1.0,1.0,7,4,3,0,0,7.944206704666687,-6.878193121533438
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,6,held_file,1.0,1.0,7,4,3,0,0,7.576619300018819,-7.490838795946575
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,7,held_file,1.0,1.0,7,4,3,0,0,8.14758916897832,-6.539222347680717
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,8,held_file,1.0,1.0,7,4,3,0,0,7.780001764330449,-7.151868022093839
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,9,held_file,1.0,1.0,7,4,3,0,0,7.678665205572264,-7.320762286690808
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,4,3,1,0,0,2.3371947477981614,-8.729956549203322
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,1,held_file,1.0,1.0,4,3,1,0,0,2.691896905737772,-7.665850075384494
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,2,held_file,1.0,1.0,4,3,1,0,0,3.6560089031271463,-4.773514083216366
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,1.0,3,2,1,0,0,2.350682341451983,-5.48251614595971
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,1,other_cell_held_file,1.0,1.0,3,2,1,0,0,1.297882782531084,-8.640914822722387
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,2,other_cell_held_file,1.0,1.0,3,2,1,0,0,1.7912498616656385,-7.160813585318725
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,4,0,1,0,3,-4.0064395178062835,-6.412706508216134
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,1,other_cell_held_file,1.0,0.5,4,0,1,0,3,-4.241728089617602,-7.118572223650081
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,2,other_cell_held_file,1.0,0.5,4,0,1,0,3,-4.453192622445775,-7.752965822134612
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.6666666666666666,4,1,1,0,2,-0.8906873920844519,-7.378940280664258
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,1,other_cell_held_file,1.0,0.6666666666666666,4,1,1,0,2,-0.6064952960871342,-6.81055608866962
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,4,3,1,0,0,3.9110095325782885,-5.339335845579273
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,1,held_file,1.0,1.0,4,3,1,0,0,2.155597193490618,-8.850160523754614
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,4,3,1,0,0,7.819947322845827,-7.971080893276339
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,1,held_file,1.0,1.0,4,3,1,0,0,8.740132241929187,-5.2105261360262745
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,2,held_file,1.0,1.0,4,3,1,0,0,7.7760951123718725,-8.102637524698212
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,1.0,4,3,1,0,0,5.655899450472531,-6.379372448753851
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,1,other_cell_held_file,1.0,1.0,4,3,1,0,0,5.176541544018277,-7.8174461681165965
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,2,other_cell_held_file,1.0,1.0,4,3,1,0,0,5.41988162101369,-7.087425937130367
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,7,4,3,0,0,11.144994596271932,-6.828985683732719
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,1,held_file,1.0,1.0,7,4,3,0,0,10.825419882836062,-7.361610206125856
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,2,held_file,1.0,1.0,7,4,3,0,0,11.185079103330434,-6.762178171968557
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,3,held_file,1.0,1.0,7,4,3,0,0,10.894200541409736,-7.246975775169713
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,4,held_file,1.0,1.0,7,4,3,0,0,10.901362596540205,-7.235039016618927
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,5,held_file,1.0,1.0,7,4,3,0,0,11.261021817034576,-6.6356069824616375
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,6,held_file,1.0,1.0,7,4,3,0,0,10.9701432551139,-7.120404585662797
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,7,held_file,1.0,1.0,7,4,3,0,0,10.941447103598701,-7.1682315048547585
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,8,held_file,1.0,1.0,7,4,3,0,0,10.650568541678002,-7.6530291080559225
+ncbi__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,9,held_file,1.0,1.0,7,4,3,0,0,11.010227762172377,-7.053597073898627
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.625,0.5,6,2,1,1,2,2.6027500143303395,-1.8493371253200834
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,1,lung_development,0.625,0.625,6,3,1,1,1,3.122745932793908,-0.8093452883929473
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,2,lung_development,1.0,0.625,6,1,2,0,3,-3.5658251492744055,-14.186487452529565
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,3,lung_development,0.625,0.625,6,3,1,1,1,3.358246515369943,-0.3383441232408728
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,4,lung_development,1.0,0.625,6,1,2,0,3,-3.3303245666983643,-13.715486287377498
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,5,lung_development,1.0,0.625,6,1,2,0,3,-2.810328648234799,-12.675494450450358
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,1.0,6,4,2,0,0,8.725739594140382,-12.23705523185282
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,1,lung_development,1.0,1.0,6,4,2,0,0,13.353022642100179,-2.9824891359332306
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,2,lung_development,1.0,1.0,6,4,2,0,0,11.468364484794808,-6.751805450543966
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,3,lung_development,1.0,1.0,6,4,2,0,0,10.957754147453556,-7.773026125226481
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,4,lung_development,1.0,1.0,6,4,2,0,0,9.073095990148195,-11.54234243983721
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,5,lung_development,1.0,0.75,6,4,1,1,0,13.70037903810799,-2.2877763439176237
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,1.0,0.5,6,0,2,0,4,-2.590516958343687,-8.04032290957377
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,1,lung_development,1.0,0.5,6,0,2,0,4,-2.057642395758247,-6.9745737844028834
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,2,lung_development,1.0,0.5,6,0,2,0,4,-2.776311979332721,-8.411912951551837
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,3,lung_development,1.0,0.5,6,0,2,0,4,-1.6268148156661102,-6.112918624218609
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,4,lung_development,1.0,0.5,6,0,2,0,4,-2.3454843992405885,-7.550257791367564
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,5,lung_development,1.0,0.5,6,0,2,0,4,-1.8126098366551446,-6.484508666196685
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.625,0.5,6,0,2,0,4,-7.525987720473651,-9.271130102756867
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,1,lung_development,0.375,0.5,6,0,2,0,4,-5.337287906746292,-4.89373047530213
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,2,lung_development,0.75,0.5,6,0,2,0,4,-8.654816908230181,-11.528788478269933
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,3,lung_development,0.25,0.5,6,0,2,0,4,-4.388444217845478,-2.996043097500513
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,4,lung_development,0.625,0.5,6,0,2,0,4,-7.705973219329375,-9.63110110046832
+ncbi__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,5,lung_development,0.375,0.5,6,0,2,0,4,-5.517273405602015,-5.253701473013587
+ncbi__expression__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.6666666666666666,6,3,1,2,0,2.4976240395568072,-0.11109877331164246
+ncbi__expression__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,0.7777777777777779,0.5,6,3,0,3,0,5.242565960802671,2.8906288045634163
+ncbi__expression__hard_negative__absolute,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,9,4,5,0,0,22.02937179319036,-13.388068436749455
+ncbi__expression__hard_negative__absolute,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,0.8333333333333333,6,3,2,1,0,20.555095356525925,-0.9421123949441824
+ncbi__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,0.5,5,2,0,3,0,42.29612411633682,27.597391384790836
+ncbi__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,6,3,0,3,0,56.17759629528947,50.45966444353681
+ncbi__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.5,5,3,0,2,0,51.415696943163816,41.22865132961524
+ncbi__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,5,3,2,0,0,13.944281580623063,-5.514147943198617
+ncbi__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,6,3,3,0,0,14.78488230945698,-11.000175001916157
+ncbi__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,0.5,6,3,0,3,0,102.55767534751203,76.20400364727409
+ncbi__expression__hard_negative__absolute,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,9,4,5,0,0,12.669429342207724,-9.802714807575565
+ncbi__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.75,0.5,8,4,0,4,0,92.60082816227508,88.73170565624093
+ncbi__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,0.5,8,4,0,4,0,132.25844609172515,103.88862875571478
+ncbi__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,0.75,0.5,8,4,0,4,0,92.05640625769153,88.18369959586727
+ncbi__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.9375,0.5,8,4,0,4,0,98.83093230269304,93.62782098457792
+ncbi__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-4.9484206163002185,-10.088949657602043
+ncbi__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-4.294760924339007,-8.12797058171841
+ncbi__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-4.301531058613166,-8.148280984540877
+ncbi__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,0.3333333333333333,0.5,4,0,1,0,3,-5.916998886966461,-5.6024553877028485
+ncbi__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-7.37958443064339,-9.990212018733624
+ncbi__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-7.64035836354046,-10.772533817424838
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,7,4,3,0,0,25.288166073640387,-6.988641078235865
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,1,held_file,1.0,1.0,7,4,3,0,0,26.162659068027928,-5.531152754256634
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,2,held_file,1.0,1.0,7,4,3,0,0,25.272764608937795,-7.014310186073518
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,3,held_file,1.0,1.0,7,4,3,0,0,25.251905560392387,-7.049075266982542
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,4,held_file,1.0,1.0,7,4,3,0,0,24.19908911294577,-8.803769346060225
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,5,held_file,1.0,1.0,7,4,3,0,0,23.30919465385564,-10.286926777877108
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,6,held_file,1.0,1.0,7,4,3,0,0,23.288335605310227,-10.321691858786131
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,7,held_file,1.0,1.0,7,4,3,0,0,24.183687648243186,-8.829438453897875
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,8,held_file,1.0,1.0,7,4,3,0,0,24.162828599697768,-8.864203534806899
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,9,held_file,1.0,1.0,7,4,3,0,0,23.27293414060763,-10.34736096662378
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,4,3,1,0,0,14.858750216893766,-12.975611968510927
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,1,held_file,1.0,1.0,4,3,1,0,0,14.723534889933008,-13.38125794939322
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,2,held_file,1.0,0.5,4,3,0,1,0,19.35398833455292,0.5101023844665497
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,1.0,3,2,1,0,0,5.1032632829106035,-10.151707951929687
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,1,other_cell_held_file,1.0,1.0,3,2,1,0,0,6.202619245747267,-6.853640063419669
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,2,other_cell_held_file,1.0,1.0,3,2,1,0,0,5.784890648417373,-8.106825855409395
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,4,0,1,0,3,-5.589915233177045,-7.404442693784456
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,1,other_cell_held_file,1.0,0.5,4,0,1,0,3,-5.987747156404126,-8.597938463465688
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,2,other_cell_held_file,1.0,0.5,4,0,1,0,3,-6.1583652397517605,-9.1097927135086
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.8333333333333333,4,2,1,0,1,0.14476568586615235,-7.488395650032208
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,1,other_cell_held_file,1.0,0.6666666666666666,4,1,1,0,2,-0.7375632876878871,-9.253053597140296
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,4,3,1,0,0,11.505357165014177,-5.6947162228382835
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,1,held_file,1.0,1.0,4,3,1,0,0,8.829348764266209,-11.046733024334218
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,4,3,1,0,0,15.293396707291157,-12.149322620937102
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,1,held_file,1.0,1.0,4,3,1,0,0,18.342093088115863,-3.0032334784629806
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,2,held_file,1.0,1.0,4,3,1,0,0,16.023298323817304,-9.959617771358658
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,1.0,4,3,1,0,0,12.908068842736435,-8.948294046656587
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,1,other_cell_held_file,1.0,1.0,4,3,1,0,0,12.999917391259352,-8.67274840108783
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,2,other_cell_held_file,1.0,1.0,4,3,1,0,0,13.393789717283846,-7.491131423014337
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,7,4,3,0,0,12.328875677913887,-8.962465647486447
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,1,held_file,1.0,1.0,7,4,3,0,0,12.21874623161607,-9.146014724649474
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,2,held_file,1.0,1.0,7,4,3,0,0,12.496450287383709,-8.683174631703404
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,3,held_file,1.0,1.0,7,4,3,0,0,12.294801892956645,-9.019255289081848
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,4,held_file,1.0,1.0,7,4,3,0,0,12.243091170401652,-9.105439826673498
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,5,held_file,1.0,1.0,7,4,3,0,0,12.520795226169296,-8.642599733727431
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,6,held_file,1.0,1.0,7,4,3,0,0,12.319146831742229,-8.978680391105875
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,7,held_file,1.0,1.0,7,4,3,0,0,12.410665779871476,-8.826148810890459
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,8,held_file,1.0,1.0,7,4,3,0,0,12.209017385444415,-9.162229468268903
+ncbi__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,9,held_file,1.0,1.0,7,4,3,0,0,12.486721441212051,-8.699389375322832
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.625,0.375,6,1,1,1,3,-3.1883020163996383,-4.4013493951035505
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,1,lung_development,0.625,0.375,6,1,1,1,3,-2.092680300169963,-2.2101059626442066
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,2,lung_development,1.0,0.5,6,0,2,0,4,-8.746544666990264,-15.517834696284806
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,3,lung_development,0.625,0.375,6,1,1,1,3,-2.017110378659228,-2.0589661196227316
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,4,lung_development,1.0,0.5,6,0,2,0,4,-8.670974745479532,-15.366694853263336
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,5,lung_development,1.0,0.5,6,0,2,0,4,-7.575353029249855,-13.17545142080399
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,1.0,6,4,2,0,0,11.950108394507279,-12.637996542466546
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,1,lung_development,1.0,1.0,6,4,2,0,0,16.66052331918623,-3.2171666931086307
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,2,lung_development,1.0,1.0,6,4,2,0,0,14.64029701270059,-7.257619306079915
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,3,lung_development,1.0,1.0,6,4,2,0,0,13.109515910826731,-10.31918150982763
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,4,lung_development,1.0,1.0,6,4,2,0,0,11.089289604341085,-14.359634122798914
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,5,lung_development,1.0,1.0,6,4,2,0,0,15.799704529020044,-4.938804273441001
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,0.75,0.5,6,0,2,0,4,-6.600179097381885,-10.48342513317002
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,1,lung_development,0.75,0.625,6,1,2,0,3,-5.540049951814913,-8.36316684203608
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,2,lung_development,0.75,0.625,6,1,2,0,3,-5.876434250889776,-9.03593544018581
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,3,lung_development,0.75,0.625,6,1,2,0,3,-5.628899218657736,-8.540865375721731
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,4,lung_development,0.75,0.625,6,1,2,0,3,-5.965283517732603,-9.213633973871456
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,5,lung_development,0.75,0.625,6,1,2,0,3,-4.90515437216563,-7.093375682737518
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.5,0.5,6,0,2,0,4,-8.926645882212576,-12.531072158488183
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,1,lung_development,0.5,0.5,6,0,2,0,4,-5.333076390056357,-5.343933174175733
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,2,lung_development,1.0,0.5,6,0,2,0,4,-10.281278484961156,-15.24033736398533
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,3,lung_development,0.0,0.5,6,0,2,0,4,-3.8293415289295956,-2.3364634519222105
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,4,lung_development,0.5,0.5,6,0,2,0,4,-8.777543623834394,-12.232867641731804
+ncbi__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,5,lung_development,0.5,0.5,6,0,2,0,4,-5.183974131678168,-5.045728657419359
+ncbi__expression__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.5,6,0,3,0,3,-2.4988059582305224,-5.0187177815336455
+ncbi__expression__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,0.888888888888889,0.5,6,0,3,0,3,-3.8027550401419554,-5.0340116697265715
+ncbi__expression__ir_control__absolute,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,9,4,5,0,0,9.29875496841644,-10.613495790455802
+ncbi__expression__ir_control__absolute,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,6,3,3,0,0,10.812591971052626,-4.900870373328317
+ncbi__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,0.5,5,2,0,3,0,11.607446571321919,3.7846771833596837
+ncbi__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,6,3,0,3,0,15.224397065525112,11.068348724144835
+ncbi__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.5,5,3,0,2,0,10.322508559432709,5.8511136552564995
+ncbi__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,5,3,2,0,0,5.9170168610139084,-5.02529748873744
+ncbi__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,6,3,3,0,0,5.90124706241825,-5.743315672267925
+ncbi__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,0.5,6,3,0,3,0,22.261737533042197,13.762287996795978
+ncbi__expression__ir_control__absolute,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,9,4,5,0,0,11.52903872979476,-6.681710292430867
+ncbi__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.75,0.5,8,4,0,4,0,21.61877551631462,19.783185234479983
+ncbi__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,0.5,8,4,0,4,0,35.182536080616586,24.532037129156034
+ncbi__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,0.75,0.5,8,4,0,4,0,20.96766750517439,19.82771124249756
+ncbi__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.6875,0.5,8,4,0,4,0,22.748159097353845,21.606461059904575
+ncbi__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-6.397106862068385,-9.35992289069572
+ncbi__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-6.354206630383338,-9.231222195640568
+ncbi__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-6.27349878696776,-8.989098665393838
+ncbi__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,0.0,0.5,4,0,1,0,3,-7.726965610099396,-7.658954731330915
+ncbi__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-8.478799758867337,-9.914457177634745
+ncbi__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-8.509591313910574,-10.006831842764464
+ncbi__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,7,4,3,0,0,10.865073457248283,-8.968073611514285
+ncbi__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,1,held_file,1.0,1.0,7,4,3,0,0,10.940935133461869,-8.841637484491644
+ncbi__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,2,held_file,1.0,1.0,7,4,3,0,0,10.910969935046936,-8.89157948184986
+ncbi__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,3,held_file,1.0,1.0,7,4,3,0,0,10.64375972017708,-9.33692983996629
+ncbi__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,4,held_file,1.0,1.0,7,4,3,0,0,10.811170652082719,-9.057911620123553
+ncbi__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,5,held_file,1.0,1.0,7,4,3,0,0,10.781205453667791,-9.107853617481767
+ncbi__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,6,held_file,1.0,1.0,7,4,3,0,0,10.513995238797932,-9.553203975598207
+ncbi__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,7,held_file,1.0,1.0,7,4,3,0,0,10.857067129881374,-8.981417490459128
+ncbi__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,8,held_file,1.0,1.0,7,4,3,0,0,10.589856915011516,-9.426767848575563
+ncbi__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,9,held_file,1.0,1.0,7,4,3,0,0,10.559891716596583,-9.476709845933776
+ncbi__expression__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,4,3,1,0,0,6.852349557994056,-10.874564368953624
+ncbi__expression__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,1,held_file,1.0,1.0,4,3,1,0,0,6.687041169242757,-11.370489535207511
+ncbi__expression__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,2,held_file,1.0,1.0,4,3,1,0,0,8.857072460454054,-4.860395661573618
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,1.0,3,2,1,0,0,0.16431575102938845,-8.686686873436384
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,1,other_cell_held_file,1.0,0.75,3,1,1,0,1,-0.0110790025993548,-9.212871134322622
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,2,other_cell_held_file,1.0,1.0,3,2,1,0,0,0.12233417976576386,-8.81263158722726
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,4,0,1,0,3,-4.387954038020857,-8.832759651232276
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,1,other_cell_held_file,1.0,0.5,4,0,1,0,3,-4.373751258100964,-8.790151311472602
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,2,other_cell_held_file,1.0,0.5,4,0,1,0,3,-4.473460365037231,-9.089278632281404
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.5,4,0,1,0,3,-3.8985911554111197,-8.812977922378192
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,1,other_cell_held_file,1.0,0.5,4,0,1,0,3,-3.9896764313616764,-8.995148474279311
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,4,3,1,0,0,3.6359294815090863,-7.917718221572487
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,1,held_file,1.0,1.0,4,3,1,0,0,2.649584504752819,-9.890408175085025
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,4,3,1,0,0,4.659053805203549,-9.854482834286678
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,1,held_file,1.0,1.0,4,3,1,0,0,5.5989290617517895,-7.034857064641966
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,2,held_file,1.0,1.0,4,3,1,0,0,4.669598184613232,-9.822849696057624
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,1.0,4,3,1,0,0,1.0215368233480513,-8.76888686806699
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,1,other_cell_held_file,1.0,1.0,4,3,1,0,0,0.942491107399691,-9.006024015912075
+ncbi__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,2,other_cell_held_file,1.0,1.0,4,3,1,0,0,0.9654062090346497,-8.937278711007199
+ncbi__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,7,4,3,0,0,8.487326095645425,-9.413458101755856
+ncbi__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,1,held_file,1.0,1.0,7,4,3,0,0,8.372448179546849,-9.604921295253481
+ncbi__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,2,held_file,1.0,1.0,7,4,3,0,0,8.566543595578397,-9.281428935200902
+ncbi__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,3,held_file,1.0,1.0,7,4,3,0,0,8.716621878476872,-9.031298463703441
+ncbi__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,4,held_file,1.0,1.0,7,4,3,0,0,8.40648171814492,-9.548198730923366
+ncbi__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,5,held_file,1.0,1.0,7,4,3,0,0,8.600577134176469,-9.224706370870786
+ncbi__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,6,held_file,1.0,1.0,7,4,3,0,0,8.750655417074944,-8.974575899373324
+ncbi__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,7,held_file,1.0,1.0,7,4,3,0,0,8.485699218077894,-9.416169564368408
+ncbi__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,8,held_file,1.0,1.0,7,4,3,0,0,8.63577750097637,-9.166039092870946
+ncbi__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,9,held_file,1.0,1.0,7,4,3,0,0,8.82987291700792,-8.842546732818366
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.625,0.5,6,0,2,0,4,-6.626468274632448,-7.4879328928185025
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,1,lung_development,0.625,0.5,6,0,2,0,4,-6.47970477620891,-7.194405895971423
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,2,lung_development,1.0,0.5,6,0,2,0,4,-8.69278038482724,-11.620557113208076
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,3,lung_development,0.5,0.5,6,0,2,0,4,-6.265637855529204,-6.766272054612014
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,4,lung_development,0.875,0.5,6,0,2,0,4,-8.478713464147528,-11.192423271848655
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,5,lung_development,0.875,0.5,6,0,2,0,4,-8.331949965723991,-10.898896275001583
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,0.75,6,2,2,0,2,-0.6510750108416348,-10.855655614197556
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,1,lung_development,1.0,0.875,6,3,2,0,1,1.0491224542394564,-7.45526068403538
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,2,lung_development,1.0,0.875,6,3,2,0,1,0.4499919205875321,-8.653521751339222
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,3,lung_development,1.0,0.875,6,3,2,0,1,-0.08990091198328751,-9.733307416480859
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,4,lung_development,1.0,0.75,6,2,2,0,2,-0.689031445635208,-10.931568483784705
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,5,lung_development,1.0,0.875,6,3,2,0,1,1.0111660194458831,-7.531173553622529
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,0.75,0.5,6,0,2,0,4,-8.894691231037807,-10.391977374911805
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,1,lung_development,0.75,0.5,6,0,2,0,4,-8.604394732540946,-9.811384377918078
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,2,lung_development,0.75,0.5,6,0,2,0,4,-8.088110450933238,-8.778815814702659
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,3,lung_development,0.75,0.5,6,0,2,0,4,-8.502709220140618,-9.608013353117425
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,4,lung_development,0.75,0.5,6,0,2,0,4,-7.98642493853291,-8.575444789902004
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,5,lung_development,0.75,0.5,6,0,2,0,4,-7.696128440036047,-7.994851792908275
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.5,0.5,6,0,2,0,4,-9.377646096122753,-10.427199659345867
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,1,lung_development,0.375,0.5,6,0,2,0,4,-8.36538388912647,-8.402675245353304
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,2,lung_development,0.875,0.5,6,0,2,0,4,-9.848752385316757,-11.369412237733883
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,3,lung_development,0.0,0.5,6,0,2,0,4,-7.672754731492921,-7.017416930086203
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,4,lung_development,0.5,0.5,6,0,2,0,4,-9.156123227683208,-9.98415392246678
+ncbi__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,5,lung_development,0.375,0.5,6,0,2,0,4,-8.143861020686924,-7.959629508474213
+original__bridge__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.5,6,3,0,3,0,4.691947695255202,1.4318510748689321
+original__bridge__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,0.6666666666666667,0.5,6,3,0,3,0,5.198945070744801,3.2403699279490894
+original__bridge__hard_negative__absolute,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,9,4,5,0,0,13.265179829989023,-4.077318487210347
+original__bridge__hard_negative__absolute,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,0.5,6,3,0,3,0,12.946538528025636,1.5661415191795642
+original__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,0.5,5,2,0,3,0,30.06518177687149,9.377544057661458
+original__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,6,0,3,0,3,-21.143002189743328,-24.68005323709806
+original__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.5,5,0,2,0,3,-25.540792537799145,-35.62981788602498
+original__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,0.75,5,3,1,1,0,13.260588514558693,1.0322701093168627
+original__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,6,3,3,0,0,17.316246573114217,-7.520689710944462
+original__bridge__hard_negative__absolute,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,0.6666666666666666,6,3,1,2,0,22.866382970271104,0.3574732824554003
+original__bridge__hard_negative__absolute,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,9,4,5,0,0,9.438828616616942,-13.46465274783229
+original__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.75,0.5,8,4,0,4,0,21.117553167235947,19.921724802812
+original__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,0.125,0.5,8,4,0,4,0,20.12519577510939,22.78914081054029
+original__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,0.625,0.5,8,4,0,4,0,24.06050979815542,22.625159771884018
+original__bridge__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.3125,0.5,8,4,0,4,0,22.441944767099244,23.121646850601923
+original__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.8333333333333333,4,2,1,0,1,1.0171274505952477,-8.743554476765045
+original__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,1,new_2Gy_challenge,1.0,1.0,4,3,1,0,0,1.928202201027555,-6.010330225468119
+original__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,2,new_2Gy_challenge,1.0,1.0,4,3,1,0,0,2.0936317279916583,-5.514041644575814
+original__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-1.306266912647813,-1.7583047146178692
+original__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-4.049138337450921,-9.986918989027211
+original__bridge__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-3.561066222163166,-8.522702643163928
+original__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,7,4,3,0,0,10.347358871427314,-6.063122305272931
+original__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,1,held_file,1.0,1.0,7,4,3,0,0,12.073337498932567,-3.186491259430831
+original__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,2,held_file,1.0,1.0,7,4,3,0,0,10.478572809887712,-5.84443240783891
+original__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,3,held_file,1.0,1.0,7,4,3,0,0,10.460516481182776,-5.874526289013805
+original__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,4,held_file,1.0,1.0,7,4,3,0,0,10.301631728928493,-6.139334209437627
+original__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,5,held_file,1.0,1.0,7,4,3,0,0,8.706867039883642,-8.797275357845699
+original__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,6,held_file,1.0,1.0,7,4,3,0,0,8.688810711178704,-8.827369239020594
+original__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,7,held_file,1.0,1.0,7,4,3,0,0,10.4328456673889,-5.920644312003606
+original__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,8,held_file,1.0,1.0,7,4,3,0,0,10.414789338683967,-5.950738193178501
+original__bridge__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,9,held_file,1.0,1.0,7,4,3,0,0,8.820024649639107,-8.608679341586585
+original__bridge__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,4,3,1,0,0,7.972056587196533,-7.328835646667654
+original__bridge__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,1,held_file,1.0,1.0,4,3,1,0,0,8.149663476674723,-6.7960149782330905
+original__bridge__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,2,held_file,1.0,1.0,4,3,1,0,0,8.291238886025809,-6.371288750179844
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,1.0,3,2,1,0,0,13.253390587075042,-6.507680402556885
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,1,other_cell_held_file,1.0,1.0,3,2,1,0,0,13.1761939683924,-6.7392702586047415
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,2,other_cell_held_file,1.0,1.0,3,2,1,0,0,13.831425485264953,-4.773575707987151
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,4,0,1,0,3,-3.142296633422589,-5.0407219021983485
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,1,other_cell_held_file,1.0,0.5,4,0,1,0,3,-3.2517149032548445,-5.368976711695119
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,2,other_cell_held_file,1.0,0.5,4,0,1,0,3,-3.998998584441569,-7.610827755255295
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.8333333333333333,4,2,1,0,1,4.78654038311425,-6.550231929868063
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,1,other_cell_held_file,1.0,0.8333333333333333,4,2,1,0,1,5.329930189932723,-5.4634523162311055
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,4,3,1,0,0,8.045529751957533,-2.295885569725211
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,1,held_file,1.0,1.0,4,3,1,0,0,4.334573198633153,-9.71779867637395
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,4,3,1,0,0,17.8343697195607,-12.454086917070994
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,1,held_file,1.0,0.5,4,3,0,1,0,22.242740444628776,0.7710252581331847
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,2,held_file,1.0,1.0,4,3,1,0,0,19.873243788514035,-6.337464710210973
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,1.0,4,3,1,0,0,15.612332948063488,-5.476105092959843
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,1,other_cell_held_file,1.0,1.0,4,3,1,0,0,14.259467020797816,-9.534702874756888
+original__bridge__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,2,other_cell_held_file,1.0,1.0,4,3,1,0,0,16.434461845239426,-3.0097184014320497
+original__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,7,4,3,0,0,15.764134864356274,-6.815655094887309
+original__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,1,held_file,1.0,1.0,7,4,3,0,0,15.812951115032837,-6.734294677093016
+original__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,2,held_file,1.0,1.0,7,4,3,0,0,15.85642705233605,-6.661834781587661
+original__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,3,held_file,1.0,1.0,7,4,3,0,0,15.023817839116372,-8.049516803620458
+original__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,4,held_file,1.0,1.0,7,4,3,0,0,15.864337362417496,-6.648650931451924
+original__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,5,held_file,1.0,1.0,7,4,3,0,0,15.907813299720708,-6.576191035946562
+original__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,6,held_file,1.0,1.0,7,4,3,0,0,15.075204086501044,-7.963873057979362
+original__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,7,held_file,1.0,1.0,7,4,3,0,0,15.95662955039728,-6.494830618152281
+original__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,8,held_file,1.0,1.0,7,4,3,0,0,15.124020337177607,-7.882512640185077
+original__bridge__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,9,held_file,1.0,1.0,7,4,3,0,0,15.167496274480813,-7.810052744679716
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,1.0,0.875,6,3,2,0,1,-0.02828940721738371,-5.515439671543926
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,1,lung_development,1.0,0.75,6,2,2,0,2,-0.2377659914797188,-5.934392840068583
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,2,lung_development,1.0,0.625,6,1,2,0,3,-0.765039032919515,-6.98893892294819
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,3,lung_development,1.0,0.625,6,1,2,0,3,-0.5320755589076572,-6.523011974924474
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,4,lung_development,1.0,0.625,6,1,2,0,3,-1.0593486003474561,-7.577558057804073
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,5,lung_development,1.0,0.625,6,1,2,0,3,-1.2688251846097849,-7.9965112263287335
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,0.875,6,3,2,0,1,3.9326177991615516,-8.089055203886144
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,1,lung_development,1.0,0.875,6,3,2,0,1,4.363892309652761,-7.226506182903715
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,2,lung_development,1.0,1.0,6,4,2,0,0,5.033494007247851,-5.88730278771356
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,3,lung_development,1.0,0.875,6,3,2,0,1,4.164821346025068,-7.624648110159114
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,4,lung_development,1.0,1.0,6,4,2,0,0,4.834423043620153,-6.285444714968932
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,5,lung_development,1.0,1.0,6,4,2,0,0,5.265697554111365,-5.422895693986517
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,1.0,0.5,6,0,2,0,4,-2.9852661466434434,-8.609242255362751
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,1,lung_development,1.0,0.5,6,0,2,0,4,-2.617858634000373,-7.874427230076613
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,2,lung_development,1.0,0.75,6,2,2,0,2,-1.5543300446357515,-5.747370051347371
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,3,lung_development,1.0,0.5,6,0,2,0,4,-2.5629354422247093,-7.764580846525286
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,4,lung_development,1.0,0.75,6,2,2,0,2,-1.499406852860084,-5.637523667796042
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,5,lung_development,1.0,0.75,6,2,2,0,2,-1.131999340217018,-4.902708642509908
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.125,0.5,6,0,2,0,4,-9.9321357698429,-7.559980054493086
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,1,lung_development,0.125,0.5,6,0,2,0,4,-9.553506053068642,-6.802720620944568
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,2,lung_development,0.25,0.5,6,0,2,0,4,-11.030148638010372,-9.756005790828041
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,3,lung_development,0.0,0.5,6,0,2,0,4,-8.030118296118678,-3.755945107044626
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,4,lung_development,0.125,0.5,6,0,2,0,4,-9.506760881060416,-6.709230276928101
+original__bridge__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,5,lung_development,0.125,0.5,6,0,2,0,4,-9.12813116428616,-5.951970843379582
+original__bridge__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,1.0,6,3,3,0,0,1.4776853804953454,-3.6408418235549695
+original__bridge__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,1.0,0.5,6,0,3,0,3,-0.650979706122688,-3.1655015115598104
+original__bridge__ir_control__absolute,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,9,4,5,0,0,3.586233573742157,-9.672436685607227
+original__bridge__ir_control__absolute,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,6,3,3,0,0,7.985249201633895,-1.4863912805952169
+original__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,1.0,5,2,3,0,0,2.0415370526244505,-3.3622088758798845
+original__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,6,0,3,0,3,-8.548693750485588,-11.494459564493928
+original__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.5,5,0,2,0,3,-10.093841625734754,-17.59200618991131
+original__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,5,3,2,0,0,5.287537721346872,-4.3627759035835965
+original__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,6,3,3,0,0,5.841017430186693,-7.838085184001861
+original__bridge__ir_control__absolute,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,0.5,6,3,0,3,0,11.86274673411215,3.6132234724636176
+original__bridge__ir_control__absolute,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,9,4,5,0,0,9.595841163599907,-7.841540041641034
+original__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.8125,0.625,8,1,4,0,3,-6.793315360708321,-14.457412893041953
+original__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,0.875,8,4,3,1,0,15.827608590125251,-4.5495690344257325
+original__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,1.0,0.5,8,0,4,0,4,-8.765675283633747,-14.425938263216278
+original__bridge__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.75,0.5,8,0,4,0,4,-10.714015508590755,-12.337241967559164
+original__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-1.323932640569499,-7.313476581546209
+original__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-1.3761035314838381,-7.469989254289218
+original__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-1.2426801457778074,-7.069719097171124
+original__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-4.935866030007812,-7.016427812358362
+original__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-5.12035616640084,-7.569898221537447
+original__bridge__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-5.019343058925277,-7.266858899110757
+original__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,7,4,3,0,0,6.392536251721337,-7.690468915871585
+original__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,1,held_file,1.0,1.0,7,4,3,0,0,6.806076914516817,-7.001234477879119
+original__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,2,held_file,1.0,1.0,7,4,3,0,0,6.397216615658163,-7.682668309310203
+original__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,3,held_file,1.0,1.0,7,4,3,0,0,6.295417745420632,-7.852333093039427
+original__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,4,held_file,1.0,1.0,7,4,3,0,0,7.172025985318368,-6.391319359876529
+original__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,5,held_file,1.0,1.0,7,4,3,0,0,6.763165686459717,-7.072753191307612
+original__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,6,held_file,1.0,1.0,7,4,3,0,0,6.661366816222187,-7.242417975036839
+original__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,7,held_file,1.0,1.0,7,4,3,0,0,7.176706349255197,-6.383518753315147
+original__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,8,held_file,1.0,1.0,7,4,3,0,0,7.07490747901766,-6.553183537044365
+original__bridge__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,9,held_file,1.0,1.0,7,4,3,0,0,6.666047180159015,-7.234617368475452
+original__bridge__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,4,3,1,0,0,2.862800115183136,-7.909888547000124
+original__bridge__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,1,held_file,1.0,1.0,4,3,1,0,0,3.0751539254074984,-7.272827116327042
+original__bridge__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,2,held_file,1.0,1.0,4,3,1,0,0,3.5173471354924892,-5.94624748607206
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,1.0,3,2,1,0,0,0.44873270426385536,-5.143242363472082
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,1,other_cell_held_file,1.0,0.5,3,0,1,0,2,-0.8082051591191644,-8.914055953621146
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,2,other_cell_held_file,1.0,0.75,3,1,1,0,1,-0.1661175374171653,-6.98779308851514
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,4,0,1,0,3,-2.834410135482461,-6.246254526046589
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,1,other_cell_held_file,1.0,0.5,4,0,1,0,3,-2.9808388444756475,-6.685540653026152
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,2,other_cell_held_file,1.0,0.5,4,0,1,0,3,-3.456757368978811,-8.113296226535633
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,1.0,4,3,1,0,0,2.1553878249381495,-6.876487744542995
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,1,other_cell_held_file,1.0,0.8333333333333333,4,2,1,0,1,2.016845100945013,-7.153573192529279
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,4,3,1,0,0,4.893558671345413,-6.393549271270958
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,1,held_file,1.0,1.0,4,3,1,0,0,4.2720774740802465,-7.63651166580129
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,4,3,1,0,0,9.182764445550468,-7.924525803534565
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,1,held_file,1.0,1.0,4,3,1,0,0,9.769983817390026,-6.162867688015892
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,2,held_file,1.0,1.0,4,3,1,0,0,9.50504040870936,-6.9576979140579205
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,1.0,4,3,1,0,0,4.041638547863461,-5.864734310049327
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,1,other_cell_held_file,1.0,1.0,4,3,1,0,0,3.466703185796721,-7.589540396249542
+original__bridge__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,2,other_cell_held_file,1.0,1.0,4,3,1,0,0,3.4662777514434,-7.590816699309507
+original__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,7,4,3,0,0,10.622220545354763,-7.283613520466599
+original__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,1,held_file,1.0,1.0,7,4,3,0,0,10.823253355403947,-6.948558837051291
+original__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,2,held_file,1.0,1.0,7,4,3,0,0,10.913402977401477,-6.798309467055371
+original__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,3,held_file,1.0,1.0,7,4,3,0,0,10.61304072997561,-7.298913212765171
+original__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,4,held_file,1.0,1.0,7,4,3,0,0,10.625873498084639,-7.2775252659167995
+original__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,5,held_file,1.0,1.0,7,4,3,0,0,10.716023120082177,-7.1272758959208815
+original__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,6,held_file,1.0,1.0,7,4,3,0,0,10.415660872656314,-7.627879641630674
+original__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,7,held_file,1.0,1.0,7,4,3,0,0,10.917055930131363,-6.792221212505578
+original__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,8,held_file,1.0,1.0,7,4,3,0,0,10.616693682705483,-7.2928249582153635
+original__bridge__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,9,held_file,1.0,1.0,7,4,3,0,0,10.706843304703044,-7.142575588219455
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.625,0.625,6,3,1,1,1,4.8801618061573855,-0.1431433099628645
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,1,lung_development,0.625,0.625,6,3,1,1,1,5.794780460658588,1.686093999039541
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,2,lung_development,1.0,0.625,6,1,2,0,3,-3.4205054630434506,-16.74447784836455
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,3,lung_development,0.625,0.625,6,3,1,1,1,6.03957740765224,2.1756878930268337
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,4,lung_development,1.0,0.625,6,1,2,0,3,-3.175708516049808,-16.254883954377238
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,5,lung_development,1.0,0.625,6,1,2,0,3,-2.2610898615486055,-14.425646645374837
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,1.0,6,4,2,0,0,13.416156450582832,-13.868393974682267
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,1,lung_development,1.0,0.75,6,4,1,1,0,19.597156654541525,-1.5063935667648651
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,2,lung_development,1.0,1.0,6,4,2,0,0,16.97846299533937,-6.743780885169183
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,3,lung_development,1.0,1.0,6,4,2,0,0,16.437848902839697,-7.825009070168525
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,4,lung_development,1.0,1.0,6,4,2,0,0,13.819155243637539,-13.062396388572843
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,5,lung_development,1.0,0.75,6,4,1,1,0,20.00015544759624,-0.7003959806554483
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,1.0,0.625,6,1,2,0,3,-1.3326066574755324,-7.820282356531502
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,1,lung_development,1.0,0.625,6,1,2,0,3,-0.6478687895624553,-6.450806620705341
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,2,lung_development,1.0,0.625,6,1,2,0,3,-2.0051645080590426,-9.165398057698507
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,3,lung_development,1.0,0.625,6,1,2,0,3,-0.12416142802938071,-5.403391897639196
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,4,lung_development,1.0,0.625,6,1,2,0,3,-1.4814571465259694,-8.117983334632369
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,5,lung_development,1.0,0.625,6,1,2,0,3,-0.7967192786128856,-6.748507598806205
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.5,0.5,6,0,2,0,4,-7.031978541863957,-9.801683570447096
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,1,lung_development,0.375,0.5,6,0,2,0,4,-4.18148961339179,-4.100705713502755
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,2,lung_development,0.875,0.5,6,0,2,0,4,-8.368529599220057,-12.474785685159262
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,3,lung_development,0.25,0.5,6,0,2,0,4,-3.1781388917296267,-2.0940042701784263
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,4,lung_development,0.75,0.5,6,0,2,0,4,-7.365178877557885,-10.468084241834942
+original__bridge__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,5,lung_development,0.625,0.5,6,0,2,0,4,-4.514689949085717,-4.767106384890614
+original__expression__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.8333333333333333,6,2,3,0,1,-0.6265569017901055,-3.792211120286265
+original__expression__hard_negative__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,0.6666666666666667,0.8333333333333333,6,3,2,1,0,0.9426439559611413,-1.160676308891065
+original__expression__hard_negative__absolute,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,9,4,5,0,0,26.650036033717484,-4.097493041575955
+original__expression__hard_negative__absolute,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,6,3,3,0,0,18.47136377629884,-4.229645594460643
+original__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,0.5,5,2,0,3,0,46.938291847945905,29.1442902945498
+original__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,6,3,0,3,0,48.38007495630851,43.107533756761505
+original__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.5,5,3,0,2,0,42.272305680692,32.257800815230034
+original__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,5,3,2,0,0,14.901108549175698,-4.149637233107169
+original__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,6,3,3,0,0,16.457717408287632,-8.507872728033052
+original__expression__hard_negative__absolute,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,0.5,6,3,0,3,0,93.1299270336411,67.19181125690172
+original__expression__hard_negative__absolute,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,9,4,5,0,0,12.129404348085389,-10.038401032513248
+original__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.6875,0.5,8,4,0,4,0,94.33530489775535,91.03421377608905
+original__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,0.5,8,4,0,4,0,134.41729594062107,106.35603694053385
+original__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,0.8125,0.5,8,4,0,4,0,94.97588327462283,88.67324960745938
+original__expression__hard_negative__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.8125,0.5,8,4,0,4,0,103.39785966892458,97.33529414863514
+original__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-4.6293848742857655,-10.017168472838543
+original__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-3.881813488158025,-7.774454314455317
+original__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-3.8796222275609544,-7.767880532664116
+original__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,0.0,0.5,4,0,1,0,3,-5.612578090334632,-4.670728809259062
+original__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-7.326147367659234,-9.811436641232866
+original__expression__hard_negative__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-7.7481144437369585,-11.077337869466048
+original__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,7,4,3,0,0,21.11172972036673,-7.649111922715089
+original__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,1,held_file,1.0,1.0,7,4,3,0,0,22.079537501653398,-6.036098953903977
+original__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,2,held_file,1.0,1.0,7,4,3,0,0,21.37299158275685,-7.213675485398224
+original__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,3,held_file,1.0,1.0,7,4,3,0,0,21.297218849721418,-7.339963373790606
+original__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,4,held_file,1.0,1.0,7,4,3,0,0,20.601849229538875,-8.498912740761503
+original__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,5,held_file,1.0,1.0,7,4,3,0,0,19.895303310642333,-9.67648927225575
+original__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,6,held_file,1.0,1.0,7,4,3,0,0,19.8195305776069,-9.802777160648132
+original__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,7,held_file,1.0,1.0,7,4,3,0,0,20.863111091928996,-8.063476303444642
+original__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,8,held_file,1.0,1.0,7,4,3,0,0,20.787338358893567,-8.18976419183702
+original__expression__hard_negative__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,9,held_file,1.0,1.0,7,4,3,0,0,20.08079243999702,-9.367340723331267
+original__expression__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,4,3,1,0,0,16.273123361168487,-9.515908824968784
+original__expression__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,1,held_file,1.0,1.0,4,3,1,0,0,15.974312825184818,-10.412340432919784
+original__expression__hard_negative__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,2,held_file,1.0,1.0,4,3,1,0,0,17.71353443157901,-5.194675613737205
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,1.0,3,2,1,0,0,6.562156406911951,-9.72580886244316
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,1,other_cell_held_file,1.0,1.0,3,2,1,0,0,7.493911124808549,-6.930544708753392
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,2,other_cell_held_file,1.0,1.0,3,2,1,0,0,7.170111369378827,-7.901943975042538
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,4,0,1,0,3,-5.495478109892342,-7.615108488977388
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,1,other_cell_held_file,1.0,0.5,4,0,1,0,3,-5.6244848613435074,-8.002128743330891
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,2,other_cell_held_file,1.0,0.5,4,0,1,0,3,-5.937462051543484,-8.94106031393081
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.8333333333333333,4,2,1,0,1,0.1072499672579587,-7.59131641553726
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,1,other_cell_held_file,1.0,0.6666666666666666,4,1,1,0,2,-0.4875327992844743,-8.780881948622131
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,4,3,1,0,0,10.957123266148926,-6.136809177712872
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,1,held_file,1.0,1.0,4,3,1,0,0,8.9078332617821,-10.23538918644651
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,4,3,1,0,0,13.739670633736006,-11.735160818290442
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,1,held_file,1.0,1.0,4,3,1,0,0,16.474121905313307,-3.5318070035585456
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,2,held_file,1.0,1.0,4,3,1,0,0,14.554280998369451,-9.291329724390096
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,1.0,4,3,1,0,0,11.375034855218376,-8.666329612957602
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,1,other_cell_held_file,1.0,1.0,4,3,1,0,0,11.479222469516538,-8.3537667700631
+original__expression__hard_negative__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,2,other_cell_held_file,1.0,1.0,4,3,1,0,0,11.751077671798114,-7.538201163218378
+original__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,7,4,3,0,0,12.785439615671143,-8.623579183330266
+original__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,1,held_file,1.0,1.0,7,4,3,0,0,12.720277928176849,-8.732181995820753
+original__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,2,held_file,1.0,1.0,7,4,3,0,0,12.93941485081394,-8.366953791425605
+original__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,3,held_file,1.0,1.0,7,4,3,0,0,12.612229007455396,-8.91226353035651
+original__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,4,held_file,1.0,1.0,7,4,3,0,0,12.663509810465818,-8.826795525339143
+original__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,5,held_file,1.0,1.0,7,4,3,0,0,12.882646733102906,-8.461567320943992
+original__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,6,held_file,1.0,1.0,7,4,3,0,0,12.555460889744365,-9.006877059874897
+original__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,7,held_file,1.0,1.0,7,4,3,0,0,12.817485045608613,-8.570170133434482
+original__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,8,held_file,1.0,1.0,7,4,3,0,0,12.490299202250071,-9.115479872365391
+original__expression__hard_negative__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,9,held_file,1.0,1.0,7,4,3,0,0,12.709436124887159,-8.750251667970238
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.625,0.375,6,1,1,1,3,-3.371047586299497,-4.19909330994608
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,1,lung_development,0.5,0.375,6,1,1,1,3,-1.6470558961743986,-0.751109929695879
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,2,lung_development,0.875,0.5,6,0,2,0,4,-10.305505641026084,-18.068009419399246
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,3,lung_development,0.5,0.5,6,2,1,1,2,-0.7573306616128223,1.0283405394272696
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,4,lung_development,0.875,0.5,6,0,2,0,4,-9.41578040646451,-16.28855895027611
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,5,lung_development,0.75,0.625,6,1,2,0,3,-7.691788716339409,-12.840575570025901
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,1.0,6,4,2,0,0,11.25905807383019,-13.50913556413883
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,1,lung_development,1.0,1.0,6,4,2,0,0,16.416422429656595,-3.1944068524860265
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,2,lung_development,1.0,1.0,6,4,2,0,0,13.396945584063921,-9.233360543671367
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,3,lung_development,1.0,1.0,6,4,2,0,0,14.110471687749293,-7.8063083363006225
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,4,lung_development,1.0,1.0,6,4,2,0,0,11.090994842156633,-13.845262027485962
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,5,lung_development,1.0,1.0,6,4,2,0,0,16.248359197983024,-3.5305333158331527
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,0.875,0.625,6,1,2,0,3,-3.97053969790427,-9.834064664987874
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,1,lung_development,0.75,0.625,6,1,2,0,3,-3.063946311802008,-8.020877892783354
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,2,lung_development,0.875,0.625,6,1,2,0,3,-4.149329544214598,-10.191644357608538
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,3,lung_development,0.75,0.625,6,1,2,0,3,-2.4775196265920574,-6.848024522363453
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,4,lung_development,0.875,0.625,6,1,2,0,3,-3.5629028590046503,-9.018790987188638
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,5,lung_development,0.75,0.625,6,1,2,0,3,-2.656309472902387,-7.205604214984104
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.75,0.5,6,0,2,0,4,-7.831230479935368,-13.214016927674095
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,1,lung_development,0.75,0.5,6,0,2,0,4,-4.119261298460011,-5.7900785647233945
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,2,lung_development,1.0,0.5,6,0,2,0,4,-9.696472973412662,-16.94450191462868
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,3,lung_development,0.375,0.375,6,1,1,1,3,-1.271805498769963,-0.09516696534329455
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,4,lung_development,0.625,0.5,6,0,2,0,4,-6.849017173722614,-11.249590315248593
+original__expression__hard_negative__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,5,lung_development,0.625,0.5,6,0,2,0,4,-3.1370479922472594,-3.825651952297889
+original__expression__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.5,6,0,3,0,3,-2.9628743362233276,-5.60962040093833
+original__expression__ir_control__absolute,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,1.0,0.5,6,0,3,0,3,-4.285342655433642,-5.604174323796758
+original__expression__ir_control__absolute,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,9,4,5,0,0,10.729564327589939,-7.572457948304513
+original__expression__ir_control__absolute,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,6,3,3,0,0,10.04416042070018,-5.96522934431927
+original__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,0.5,5,2,0,3,0,11.584183107495189,4.011938658367719
+original__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,6,3,0,3,0,14.056622024203483,10.46104999466577
+original__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.5,5,3,0,2,0,9.671931862264122,5.425479251420332
+original__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,5,3,2,0,0,5.913115581444029,-4.834216484859994
+original__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,6,3,3,0,0,5.751597457331762,-5.386137585734307
+original__expression__ir_control__absolute,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,0.5,6,3,0,3,0,21.761348427781314,13.736502445384966
+original__expression__ir_control__absolute,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,9,4,5,0,0,11.358513720171233,-6.8309445474408195
+original__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.6875,0.5,8,4,0,4,0,25.503541721282218,23.67683721693558
+original__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,0.5,8,4,0,4,0,40.15458060252612,28.945514127214786
+original__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,0.75,0.5,8,4,0,4,0,25.486978615756513,23.77827598709057
+original__expression__ir_control__absolute,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.6875,0.5,8,4,0,4,0,27.83565106679944,26.34154164773547
+original__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,0,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-6.2851737903389635,-9.32228559311014
+original__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-6.193270849410827,-9.046576770325732
+original__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|24h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-6.118501771960421,-8.822269537974519
+original__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,0,new_2Gy_challenge,0.0,0.5,4,0,1,0,3,-7.409992839732887,-7.386677793629489
+original__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,1,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-8.209535864838877,-9.785306868947432
+original__expression__ir_control__matched_control,GSE111437|NCBI_gene_counts|IMR90|6h,2,new_2Gy_challenge,1.0,0.5,4,0,1,0,3,-8.28748265480088,-10.019147238833458
+original__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,0,held_file,1.0,1.0,7,4,3,0,0,9.313131411436167,-9.025946045116482
+original__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,1,held_file,1.0,1.0,7,4,3,0,0,9.38227738243648,-8.910702760115955
+original__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,2,held_file,1.0,1.0,7,4,3,0,0,9.353008137193909,-8.959484835520243
+original__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,3,held_file,1.0,1.0,7,4,3,0,0,9.24674997568538,-9.136581771367789
+original__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,4,held_file,1.0,1.0,7,4,3,0,0,9.316839392531756,-9.01976607662383
+original__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,5,held_file,1.0,1.0,7,4,3,0,0,9.287570147289182,-9.068548152028116
+original__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,6,held_file,1.0,1.0,7,4,3,0,0,9.181311985780653,-9.24564508787567
+original__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,7,held_file,1.0,1.0,7,4,3,0,0,9.356716118289501,-8.953304867027589
+original__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,8,held_file,1.0,1.0,7,4,3,0,0,9.25045795678097,-9.13040180287514
+original__expression__ir_control__matched_control,GSE230181|BFX01_expr.txt|IMR90|A,9,held_file,1.0,1.0,7,4,3,0,0,9.221188711538398,-9.179183878279428
+original__expression__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,0,held_file,1.0,1.0,4,3,1,0,0,7.348238653926789,-9.740113489424033
+original__expression__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,1,held_file,1.0,1.0,4,3,1,0,0,7.2045452131583465,-10.171193811729356
+original__expression__ir_control__matched_control,GSE230181|BFX02_expr.txt|IMR90|E,2,held_file,1.0,1.0,4,3,1,0,0,8.324085260563061,-6.8125736695152295
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,0,other_cell_held_file,1.0,0.5,3,0,1,0,2,-0.5632249825175282,-8.816526243289395
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,1,other_cell_held_file,1.0,0.5,3,0,1,0,2,-0.5896310536002032,-8.895744456537418
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|ADSC|ADSC,2,other_cell_held_file,1.0,0.5,3,0,1,0,2,-0.5311681579810458,-8.720355769679939
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,0,other_cell_held_file,1.0,0.5,4,0,1,0,3,-5.1643945524702906,-8.831460260452317
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,1,other_cell_held_file,1.0,0.5,4,0,1,0,3,-5.118877903163107,-8.694910312530782
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|HMVEC|HMVEC,2,other_cell_held_file,1.0,0.5,4,0,1,0,3,-5.189326431160731,-8.90625589652366
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,0,other_cell_held_file,1.0,0.5,4,0,1,0,3,-4.22087197942177,-8.666722815568262
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|HUVEC|HUVEC,1,other_cell_held_file,1.0,0.5,4,0,1,0,3,-4.365024653689093,-8.95502816410291
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,0,held_file,1.0,1.0,4,3,1,0,0,2.9818084507971783,-8.264408079362719
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|B,1,held_file,1.0,1.0,4,3,1,0,0,2.4353410403243174,-9.357342900308447
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,0,held_file,1.0,1.0,4,3,1,0,0,3.549020508643894,-9.844588484159718
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,1,held_file,1.0,1.0,4,3,1,0,0,4.4941549072433356,-7.009185288361398
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|IMR90|C,2,held_file,1.0,1.0,4,3,1,0,0,3.6375991043685847,-9.578852696985638
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,0,other_cell_held_file,1.0,0.6666666666666666,4,1,1,0,2,-0.1245212605492611,-8.858852777378734
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,1,other_cell_held_file,1.0,0.6666666666666666,4,1,1,0,2,-0.06762747930859035,-8.688171433656718
+original__expression__ir_control__matched_control,GSE230181|BFX17_expr.txt|RPTEC|RPTEC,2,other_cell_held_file,1.0,0.6666666666666666,4,1,1,0,2,-0.13343775424678933,-8.88560225847131
+original__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,0,held_file,1.0,1.0,7,4,3,0,0,8.87297600351152,-9.198796654535874
+original__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,1,held_file,1.0,1.0,7,4,3,0,0,8.730981424066368,-9.435454286944461
+original__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,2,held_file,1.0,1.0,7,4,3,0,0,8.95935113716158,-9.054838098452434
+original__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,3,held_file,1.0,1.0,7,4,3,0,0,8.976738912655494,-9.025858472629244
+original__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,4,held_file,1.0,1.0,7,4,3,0,0,8.781058973622446,-9.351991704350993
+original__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,5,held_file,1.0,1.0,7,4,3,0,0,9.009428686717662,-8.971375515858972
+original__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,6,held_file,1.0,1.0,7,4,3,0,0,9.02681646221158,-8.942395890035776
+original__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,7,held_file,1.0,1.0,7,4,3,0,0,8.867434107272507,-9.20803314826756
+original__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,8,held_file,1.0,1.0,7,4,3,0,0,8.884821882766422,-9.179053522444363
+original__expression__ir_control__matched_control,GSE230181|BFX36_expr.txt|IMR90|D,9,held_file,1.0,1.0,7,4,3,0,0,9.11319159586164,-8.79843733395234
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,0,lung_development,0.625,0.5,6,0,2,0,4,-6.363551547560968,-7.239563848671281
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,1,lung_development,0.5,0.5,6,0,2,0,4,-5.96879300737255,-6.450046768294449
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,2,lung_development,0.875,0.5,6,0,2,0,4,-8.823130237994658,-12.15872122953866
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,3,lung_development,0.5,0.5,6,0,2,0,4,-5.72811964225946,-5.968700038068268
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,4,lung_development,0.875,0.5,6,0,2,0,4,-8.582456872881563,-11.677374499312474
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_6h,5,lung_development,0.75,0.5,6,0,2,0,4,-8.187698332693149,-10.887857418935639
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,0,lung_development,1.0,0.875,6,3,2,0,1,-0.2991125456009219,-11.27539224953592
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,1,lung_development,1.0,0.875,6,3,2,0,1,1.723906790528901,-7.229353577276273
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,2,lung_development,1.0,0.875,6,3,2,0,1,0.8614508894740587,-8.954265379385951
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,3,lung_development,1.0,0.875,6,3,2,0,1,0.7520056350565518,-9.173155888220972
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,4,lung_development,1.0,0.875,6,3,2,0,1,-0.11045026599828996,-10.898067690330654
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung endothelium|Lung endothelium_7d,5,lung_development,1.0,0.875,6,3,2,0,1,1.9125690701315317,-6.8520290180710095
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,0,lung_development,0.75,0.5,6,0,2,0,4,-8.142752153702979,-10.140739906908628
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,1,lung_development,0.75,0.5,6,0,2,0,4,-7.824062522684292,-9.503360644871249
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,2,lung_development,0.75,0.5,6,0,2,0,4,-7.543530920233095,-8.942297439968858
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,3,lung_development,0.75,0.5,6,0,2,0,4,-7.6649441140676995,-9.18512382763807
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,4,lung_development,0.75,0.5,6,0,2,0,4,-7.384412511616503,-8.62406062273567
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_6h,5,lung_development,0.75,0.5,6,0,2,0,4,-7.065722880597814,-7.986681360698295
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,0,lung_development,0.875,0.5,6,0,2,0,4,-9.073864419730256,-10.951442844999267
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,1,lung_development,0.75,0.5,6,0,2,0,4,-7.611315316658771,-8.026344638856298
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,2,lung_development,0.875,0.5,6,0,2,0,4,-9.69787793469083,-12.199469874920423
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,3,lung_development,0.375,0.5,6,0,2,0,4,-6.56211869357387,-5.927951392686501
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,4,lung_development,0.5,0.5,6,0,2,0,4,-8.648681311605936,-10.101076628750624
+original__expression__ir_control__matched_control,GSE242706|NCBI_gene_counts|Lung epithelium|Lung epithelium_7d,5,lung_development,0.375,0.5,6,0,2,0,4,-7.18613220853445,-7.175978422607657

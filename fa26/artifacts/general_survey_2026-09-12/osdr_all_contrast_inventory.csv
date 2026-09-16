@@ -1,0 +1,85 @@
+id.accession,study.characteristics.material type,counts_file,Ground Control,Ground control,Space Flight
+OSD-100,left eye,GLDS-100_rna_seq_Unnormalized_Counts.csv,6,0,6
+OSD-101,Left gastrocnemius,GLDS-101_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,6,0,6
+OSD-102,Left kidney,GLDS-102_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,6,0,6
+OSD-103,Left quadriceps femoris,GLDS-103_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,6,0,6
+OSD-104,Soleus-both sides,GLDS-104_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,6,0,6
+OSD-105,Left tibialis anterior,GLDS-105_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,6,0,6
+OSD-137,Liver,GLDS-137_rna_seq_Unnormalized_Counts.csv,6,0,6
+OSD-161,Adrenal gland,GLDS-161_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,5,0,5
+OSD-162,eye,GLDS-162_rna_seq_Unnormalized_Counts.csv,5,0,5
+OSD-163,Left kidney,GLDS-163_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,6,0,6
+OSD-164,Liver,GLDS-164_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,3,0,3
+OSD-164,Spleen,GLDS-164_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,3,0,3
+OSD-168,Liver,GLDS-168_rna_seq_Unnormalized_Counts.csv,14,0,14
+OSD-173,liver,GLDS-173_rna_seq_Unnormalized_Counts.csv,2,0,2
+OSD-194,Left retina,GLDS-194_rna_seq_Unnormalized_Counts.csv,3,0,5
+OSD-194,Right retina,GLDS-194_rna_seq_Unnormalized_Counts.csv,1,0,0
+OSD-238,dorsal skin,GLDS-238_rna_seq_Unnormalized_Counts.csv,6,0,12
+OSD-239,femoral skin,GLDS-239_rna_seq_Unnormalized_Counts.csv,6,0,11
+OSD-240,dorsal skin,GLDS-240_rna_seq_Unnormalized_Counts.csv,10,0,10
+OSD-241,femoral lateral skin,GLDS-241_rna_seq_Unnormalized_Counts.csv,10,0,9
+OSD-242,Liver,GLDS-242_rna_seq_Unnormalized_Counts.csv,4,0,5
+OSD-243,dorsal skin,GLDS-243_rna_seq_Unnormalized_Counts.csv,19,0,18
+OSD-244,Thymus,GLDS-244_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,19,0,19
+OSD-245,Liver,GLDS-245_rna_seq_Unnormalized_Counts.csv,19,0,20
+OSD-246,Spleen,GLDS-246_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,16,0,15
+OSD-247,descending colon,GLDS-247_rna_seq_Unnormalized_Counts.csv,17,0,19
+OSD-248,Left Lung,GLDS-248_rna_seq_Unnormalized_Counts.csv,19,0,20
+OSD-253,Left kidney,GLDS-253_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,19,0,20
+OSD-254,dorsal skin,GLDS-254_rna_seq_Unnormalized_Counts.csv,20,0,20
+OSD-255,Right retina,GLDS-255_rna_seq_STAR_Unnormalized_Counts.csv,8,0,8
+OSD-270,Heart,GLDS-270_rna_seq_STAR_Unnormalized_Counts.csv,2,0,3
+OSD-288,Spleen,GLDS-288_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,3,0,6
+OSD-289,thymus,GLDS-289_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,3,0,12
+OSD-326,Quadriceps femoris,GLDS-326_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,4,0,4
+OSD-352,Brain,GLDS-352_rna_seq_STAR_Unnormalized_Counts.csv,3,0,3
+OSD-379,Left Lobe of the Liver,GLDS-379_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,35,0,35
+OSD-397,Left retina,GLDS-397_rna_seq_STAR_Unnormalized_Counts.csv,2,0,4
+OSD-397,Right retina,GLDS-397_rna_seq_STAR_Unnormalized_Counts.csv,5,0,5
+OSD-401,Gastrocnemius,GLDS-401_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,3,0,3
+OSD-401,Quadriceps femoris,GLDS-401_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,3,0,3
+OSD-419,Right gastrocnemius,GLDS-419_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,8,0,4
+OSD-420,Spleen-distal,GLDS-420_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,10
+OSD-421,thymus,GLDS-421_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,10
+OSD-426,Cells,GLDS-426_rna_seq_STAR_Unnormalized_Counts.csv,6,0,12
+OSD-457,Cerebrum,GLDS-457_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,0,12,12
+OSD-457,Kidney,GLDS-457_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,0,6,6
+OSD-457,Liver,GLDS-457_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,0,12,12
+OSD-457,Mandible,GLDS-457_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,0,6,6
+OSD-457,Spleen,GLDS-457_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,0,12,12
+OSD-457,Temporal Bone,GLDS-457_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,0,12,12
+OSD-457,brown adipose tissue,GLDS-457_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,0,12,12
+OSD-457,thymus,GLDS-457_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,0,12,12
+OSD-457,white adipose tissue,GLDS-457_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,0,12,12
+OSD-462,Left kidney,GLDS-462_rna_seq_STAR_Unnormalized_Counts_mRNA_GLbulkRNAseq.csv,12,0,16
+OSD-463,Left Lobe of the Liver,GLDS-463_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,12
+OSD-464,Left Lung,GLDS-464_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,9,0,10
+OSD-47,Liver,GLDS-47_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,3,0,3
+OSD-48,Liver,GLDS-48_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,7,0,7
+OSD-506,Spleen,GLDS-506_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,9
+OSD-511,mammary gland,GLDS-511_rna_seq_STAR_Unnormalized_Counts.csv,15,0,10
+OSD-512,adrenal gland,GLDS-512_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,10
+OSD-513,Left kidney,GLDS-513_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,10
+OSD-515,thymus,GLDS-515_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,10
+OSD-525,Cerebellum,GLDS-525_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,10
+OSD-561,right hemisphere of cerebellum,GLDS-556_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,12,0,14
+OSD-562,Right hippocampus,GLDS-557_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,12,0,15
+OSD-563,right hemisphere of cerebellum,GLDS-568_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,5,0,5
+OSD-564,Right hippocampus,GLDS-569_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,5,0,5
+OSD-576,Right tibialis anterior,GLDS-570_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,9,0,9
+OSD-580,Heart,GLDS-573_rna_seq_STAR_Unnormalized_Counts.csv,10,0,10
+OSD-580,heart right ventricle,GLDS-573_rna_seq_STAR_Unnormalized_Counts.csv,10,0,10
+OSD-599,Heart,GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,3,0,3
+OSD-612,Left cerebral hemisphere,GLDS-588_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,5,0,5
+OSD-613,Left cerebral hemisphere,GLDS-589_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,9,0,9
+OSD-665,Right extensor digitorum longus,GLDS-604_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,10
+OSD-666,Right quadriceps femoris,GLDS-605_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,10
+OSD-667,Colon,GLDS-606_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,9
+OSD-686,Liver,GLDS-617_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,3,0,6
+OSD-690,Bone Marrow,GLDS-620_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,12,0,12
+OSD-714,Soleus,GLDS-638_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,9,0,12
+OSD-770,Right soleus,GLDS-673_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,10,0,10
+OSD-771,Right kidney,GLDS-674_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,20,0,20
+OSD-98,Adrenal glands- both sides,GLDS-98_rna_seq_Unnormalized_Counts.csv,5,0,6
+OSD-99,Extensor digitorum longus- both sides,GLDS-99_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv,6,0,6

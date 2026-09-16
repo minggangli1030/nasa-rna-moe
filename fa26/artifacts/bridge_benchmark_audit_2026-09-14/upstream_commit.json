@@ -1,0 +1,30 @@
+{
+  "sha": "ddf5e4bd1e48692dbc41caead413d6ca56154fca",
+  "html_url": "https://github.com/alwalt/bridge-rna/commit/ddf5e4bd1e48692dbc41caead413d6ca56154fca",
+  "commit": {
+    "author": {
+      "name": "walt",
+      "email": "walt@uchicago.edu",
+      "date": "2026-09-08T08:18:28Z"
+    },
+    "committer": {
+      "name": "walt",
+      "email": "walt@uchicago.edu",
+      "date": "2026-09-08T08:18:28Z"
+    },
+    "message": "osdr core analaysis",
+    "tree": {
+      "sha": "3917884839c4a6e98c25b7d438225e08ac2b6677",
+      "url": "https://api.github.com/repos/alwalt/bridge-rna/git/trees/3917884839c4a6e98c25b7d438225e08ac2b6677"
+    },
+    "url": "https://api.github.com/repos/alwalt/bridge-rna/git/commits/ddf5e4bd1e48692dbc41caead413d6ca56154fca",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "saved_heads_reproduced": 30,
+  "metric_rows": 50,
+  "prediction_rows": 480,
+  "training_chip_deletion_refits": 120,
+  "independent_metric_checks": "Pairwise AUROC from logits; classwise accuracy; saved-head score reproduction",
+  "passed": true
+}

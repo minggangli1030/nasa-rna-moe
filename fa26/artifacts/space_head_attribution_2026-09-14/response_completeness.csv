@@ -1,0 +1,9 @@
+model,training_pool,reference,attributed_flight_ground_logit_gap
+bridge,OS,training_all_mean_TPM,10.266195670747479
+bridge,OS,training_ground_mean_TPM,10.266197188817289
+bridge,YA,training_all_mean_TPM,12.453936732855405
+bridge,YA,training_ground_mean_TPM,12.453933132277385
+expression,OS,training_all_mean_TPM,9.098481694633698
+expression,OS,training_ground_mean_TPM,9.098481694633698
+expression,YA,training_all_mean_TPM,11.366882524972242
+expression,YA,training_ground_mean_TPM,11.366882524972242

@@ -1,0 +1,33 @@
+{
+  "samples": 559,
+  "species_counts": {
+    "mouse": 499,
+    "human": 60
+  },
+  "studies": 28,
+  "contrasts": 54,
+  "broad_tissues": [
+    "adipose",
+    "bone",
+    "brain",
+    "colon",
+    "heart",
+    "kidney",
+    "liver",
+    "lung",
+    "skeletal muscle",
+    "spleen",
+    "thymus"
+  ],
+  "common_measured_genes": 15100,
+  "settings": {
+    "actual_flight": 529,
+    "bed_rest_analog": 30
+  },
+  "human_training_exposure": {
+    "train": 39,
+    "unseen": 12,
+    "val": 9
+  },
+  "caution": "Discovery screen; split stability is not significance. 54 comparisons, no multiple-testing claims. Tissue/sex/strain/protocol and cage structure can confound. Human cardiac pre/post has timing differences; human muscle YA/OS jointly differ in age/activity. Analog results are not flight results."
+}

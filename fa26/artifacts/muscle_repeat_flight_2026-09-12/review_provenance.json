@@ -1,0 +1,53 @@
+{
+  "reviewed_utc": "2026-09-13T07:25:35.358890+00:00",
+  "executed_script_sha256": {
+    "fa26/muscle_repeat_flight.py": "62025925a4d4d2974e666bcde210f079f7075e253cbcb40d67e2ccc35dfcb6d5",
+    "fa26/general_space_survey.py": "43bdd5ca2bed96d5e6a624f1570b9c550fc8efa64ae597ef5d5c9239484f56b8",
+    "fa26/analyze_general_survey.py": "9fdf3517566cb6e353dd7fb425ce45a24ba4b6bec5b93a74132b42af0f6ac8e4",
+    "fa26/audit_bridge_contract.py": "30fefe413b69cd89026a4a0da0a3a0f026b2d66a62d481c8e3da33bd76b94d80"
+  },
+  "review_script_sha256": "6afbbdbe7710c225079027d9978ec3b2ac4aefcabe3ab0ad582a053f740aca58",
+  "artifact_sha256": {
+    "ANALYSIS_COMPLETE": "9773098c757c6e1b0f18dac00ac3ddcdc6194e8add54b9f3b79cfa653ce2fe38",
+    "COMPLETE": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "GSE234465_FPKM.txt.gz": "40ca03eaf147185e7bfcab8c2d42af211daaf90cfb37adc524ee765d29e01e11",
+    "GSE298393_genes.rawmatrix.tsv.gz": "f2a2aada3e10578954328d58473f50cb0c68ef1907bc9dda849d5efdeeaebcbb",
+    "GSE298393_samples.soft": "4765ec371f9d82b8d080e60d83ca1c3d9f49ffd04bb11545d36e81b1be768305",
+    "GSE298393_series.soft": "19e89ede80d709dca2824bd1039bfe0c1dd955329e7998bd629ebb608a8f86e8",
+    "HANDOFF.md": "71b6adee703748ad1fc18eb316b1233b2b810612f020424618459e86b9e72fe2",
+    "INFERENCE_COMPLETE": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1",
+    "REPORT.md": "e378254bdae32989201e5a7278a1b323a2c3bfaec5ab47d22ac29e6f4d96253c",
+    "SCIENTIFIC_REVIEW_COMPLETE": "ba3e2144964937c1271a91ad1ca55ad781bb25eb6585a9a61d78459327f71e1b",
+    "analysis_summary.json": "f030e9532c71e8ec6071f57fe345731c3ba887fc52b0b1f6dc70eeb2656fa54e",
+    "cross_flight_direction.csv": "29ab0400055c0e3c312ae3a1063d7b35140f18d994fe96ab04d22f705ce7611a",
+    "cross_flight_pattern.pdf": "96930a76250aa1b3c06071b17b92ec6b65a9b0cf99804d8ef782dd68b4943410",
+    "cross_flight_pattern.png": "9a6f223a185b282299b2bccaaf1afa75154b9f361d838718b49731d7b2a89bb4",
+    "cross_flight_pattern_reviewed.pdf": "f15bfb7c9149b4a8d0ba934a3826980f391b3d47084d30f941112254820c58e2",
+    "cross_flight_pattern_reviewed.png": "abbbfd45ade5e8783e90f2489841bea67bf8e7ec9b0bf5f9f7e8a139e42ddc98",
+    "embeddings.npz": "fb33538992ea163ef92c26c8fa710278b45b185ac2579b30d73a9e074e533dbf",
+    "execution_status.json": "be932f72143c1e7720cbc4c493e2d907731b5921a2338148c439878b41cc9c1a",
+    "first_flight_FPKM_gene_panel.csv": "e4954f964a94468889ec67ecb3da6c8e39b15b8a5228d9a01395d7400d740c64",
+    "gene_mapping.csv": "30b9d7ad251157f915bb6c0c1d0f410d0191a91ac290eaee58add679a04f9e8f",
+    "gene_panel_leave_one_out.csv": "9cba0450d53c40b64bcc320cae838eb58f8a9d41dcf858ae8818465b6cf5a519",
+    "history/MONDAY-DISCUSSION.md": "dedd222dc3da0f28f340cec1606abdf8ab983c3b7082d0af3574296e09388da5",
+    "history/REPORT.md": "e9b01da39f7df47ae757be1f2514d50189710e753f88c4f725b0e908b7bd1e78",
+    "history/artifact_provenance.json": "8e8ad676b5ce484383d508d7f1e4d796998cfe22835e5ded6c8207f98a36ac82",
+    "inference_report.json": "c7c01c5884e264c7dd632dbb207c6177069b2d9b9b13c674d12aa87fc3cb6ed0",
+    "inputs.npz": "6656a2876d201ecb950a2d7ae54e6556d87e8329e0e8509ed279d846e6c584c9",
+    "manifest.csv": "b7803d6a492b7f5cfbfc4d77cffc46e9b38510cf6353244046ecc8b24f37fb11",
+    "missingness_sensitivity.csv": "6f2673f877e24ea5843477e2411060ecb0986a498ca957efc632c14895386988",
+    "preprocessing_audit.json": "231af5ae2d7de54f96a1875cc380e3266cb5a130195953686e46b7284e950d4d",
+    "prespecified_gene_shifts.csv": "e14eac16b3f8ce53cf7408b2ce8e4b96e5be3a7d8245bb745ad890e58b19be10",
+    "protocol.json": "4234227fd2ab32b9c5ec8180c094b6936a90ac14e6e699105ca4f7b04e3cad2e",
+    "run.sh": "f12078722b801178d99ce0f63366426120d07f71163752324d4d91d54719f371",
+    "sample_qc.csv": "a27cdd86701875ffe015ecb375050c55b1d8fd72646ef58446ae60210ab8dd89",
+    "source_FPKM_sensitivity.csv": "67fba3139aafa7b6e1719e0d2cd9823041c3fb03282ddf205dde2bf39b1818a2",
+    "verification.json": "4958e4c17957ecdb50ea347072af01b24d48b5fb9d29d9ebe00d0d51321a8f9d",
+    "within_flight_robustness.csv": "9701f1dce6a8e04ae813067f7b9c2d69d543f140d05d425443a401c71db972e8"
+  },
+  "sources": {
+    "first_flight_FPKM": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE234nnn/GSE234465/suppl/GSE234465_FPKM.txt.gz",
+    "second_flight": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE298393"
+  },
+  "watcher_status": "PAUSED"
+}

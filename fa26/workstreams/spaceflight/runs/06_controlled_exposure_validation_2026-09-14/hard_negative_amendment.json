@@ -1,0 +1,11 @@
+{
+  "timing": "Written after inspecting the original pilot; exploratory adaptation, not pristine validation",
+  "reason": "IR-vs-control probe ranks IR above other stresses but makes positive calls on bleomycin/rotenone/Ras at its original threshold",
+  "change": "Add normal-IMR90 known non-IR treatments and vehicle as negative training labels; exclude hTERT/Ras; retain entire-file holdouts and external study",
+  "fixed": "Same C=1, no threshold tuning or hyperparameter search",
+  "models": [
+    "expression_linear",
+    "bridge_meanstd_linear"
+  ],
+  "limitations": "The same evaluation datasets informed this adaptation; independent confirmation is still required"
+}

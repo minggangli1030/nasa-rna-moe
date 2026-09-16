@@ -1,0 +1,351 @@
+[
+  {
+    "source_file": "GLDS-101_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "58d06633156313f358a5c595d34f081bfe653e21570200ddda8393b364330d5e"
+  },
+  {
+    "source_file": "GLDS-103_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "0864d89c3dbe212cdaf1dedd6dad3f9f7c163ba2a69908f7ab01cb38da04f819"
+  },
+  {
+    "source_file": "GLDS-104_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "1f62196b43c03b9549c171e1c77fed942171d282a7a86d4a8f802a32adca397d"
+  },
+  {
+    "source_file": "GLDS-105_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "0db847a3892d88dd2d3428c49bee851e00005bff0c5184b5800fbd2cadb5a757"
+  },
+  {
+    "source_file": "GLDS-245_rna_seq_Unnormalized_Counts.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 0.9993405868776789,
+    "missing_genes": [
+      "ARVCF",
+      "EPPK1",
+      "ETV3L",
+      "GPR52",
+      "LIM2",
+      "LIN54",
+      "RPS6KA4",
+      "SHLD3",
+      "TCTN2",
+      "TUSC3"
+    ],
+    "mapping_methods": {
+      "stable_id": 15155,
+      "missing": 10
+    },
+    "source_sha256": "3cbddedc563f1d269d132565563f3fb0b6141ef3da55265d29faff69523f6371"
+  },
+  {
+    "source_file": "GLDS-326_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "1afdd4190a98512e5e7b5f9f86040d381447f260a354213315c53e8a64ed45cc"
+  },
+  {
+    "source_file": "GLDS-379_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "4d425b9532223951e80bcc04af2bc86f99ead888f53f40321aef730a545d9ac0"
+  },
+  {
+    "source_file": "GLDS-401_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "d961ec3c5c4d8220002a0f786a6b8c417ca31f77dff25359b23af3935b4432f1"
+  },
+  {
+    "source_file": "GLDS-419_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "8e65173a559104a31434e6f5327f6e3e75d27d219df284cf23a02dc94f22e5c2"
+  },
+  {
+    "source_file": "GLDS-457_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "83d767cf348cf7feefdacde85431ee26523895e1c67cb4b7437e3636543d9da9"
+  },
+  {
+    "source_file": "GLDS-463_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "02b5b5a8ea0d9d8dde856fee947ffa58a1674eb01d81d5bb621a301336d9a34d"
+  },
+  {
+    "source_file": "GLDS-464_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "6a1988cc17b13992c50e2fd65ab8cb22613fa85e816ceeac760d77fff0a94427"
+  },
+  {
+    "source_file": "GLDS-48_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "aaa18232b0875fb09eeca24b3fd756815d2c670ca22efd3022354dcbe59678c2"
+  },
+  {
+    "source_file": "GLDS-557_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "647578de197d18593a05a937a362f744955b89dbf85df8e00c8ecaa29691033d"
+  },
+  {
+    "source_file": "GLDS-569_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "b8e575b49d4abd160d7cfbab46f81b3ad1df38065d22873d2ade38917fe76b5f"
+  },
+  {
+    "source_file": "GLDS-570_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "bb38e4c208e682d75d2b0a692c614f76c02b185541a7ce283e0299ac65bdc069"
+  },
+  {
+    "source_file": "GLDS-573_rna_seq_STAR_Unnormalized_Counts.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "0c1a1fc4269b51f69215806249caa97807fe79d8b77860ca6189a00da6eb6b5c"
+  },
+  {
+    "source_file": "GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "c83dd92db427c16bdbb140a289a1678137886c8f07ef9fa0e88b05de39dfcb28"
+  },
+  {
+    "source_file": "GLDS-604_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "9ed737452368182d43e0d8248e09e76791c44d3c3a3e7c7197a1e5ca7a4b1ecc"
+  },
+  {
+    "source_file": "GLDS-605_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "fa2b5d101d12dd24e6476a21f1840eb3d5ee415d5a611d8c75936bd8896457a2"
+  },
+  {
+    "source_file": "GLDS-606_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "babe2e51fc4a55fc4f544532b44a464cc3a257e02390a2104b9578b8a6d832d6"
+  },
+  {
+    "source_file": "GLDS-617_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "68f3a03cfdef4ac42edaa768ff5bba50c4a77cf0f0dca0b9dc00eae7c0a223ec"
+  },
+  {
+    "source_file": "GLDS-673_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "f03840d0ee4556d29d2c012d69f2de2a9447da2c67a983ad042590fc36a804fb"
+  },
+  {
+    "source_file": "GLDS-99_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv",
+    "source_kind": "osdr_counts",
+    "coverage": 1.0,
+    "missing_genes": [],
+    "mapping_methods": {
+      "stable_id": 15165
+    },
+    "source_sha256": "1d632b2cffa1e07aca7e709b4db2cbedc59ab5865caf7f4f2fa9aa654a61000b"
+  },
+  {
+    "source_file": "human_matrix_v11.h5",
+    "source_kind": "human_h5",
+    "coverage": 0.996505110451698,
+    "missing_genes": [
+      "ANKRD40CL",
+      "B3GALT9",
+      "CCDC194",
+      "CCDC195",
+      "DERPC",
+      "DPEP2NB",
+      "EEF1AKMT4",
+      "ERFL",
+      "EXOC1L",
+      "FAM240A",
+      "FAM240B",
+      "FOXL3",
+      "HDGFL2",
+      "HDGFL3",
+      "INAFM2",
+      "IQCM",
+      "KANTR",
+      "LCE7A",
+      "LZTS3",
+      "MAP3K20",
+      "MAP3K21",
+      "MDFIC2",
+      "MINDY4B",
+      "MISP3",
+      "MYMX",
+      "NSG2",
+      "P3R3URF",
+      "PERCC1",
+      "PLSCR3",
+      "PNMA8C",
+      "PRAG1",
+      "PRR33",
+      "PWWP3A",
+      "REXO5",
+      "RNF227",
+      "RSKR",
+      "SELENOF",
+      "SELENOK",
+      "SELENOM",
+      "SELENOO",
+      "SELENOT",
+      "SHLD3",
+      "SMIM34",
+      "SMIM38",
+      "SMIM43",
+      "SMIM44",
+      "STRIT1",
+      "TEX50",
+      "TEX52",
+      "THSD8",
+      "TLE7",
+      "TOMT",
+      "TUG1"
+    ],
+    "mapping_methods": {
+      "exact_symbol": 14651,
+      "hgnc_previous_symbol": 438,
+      "missing": 53,
+      "stable_id": 23
+    },
+    "source_sha256": "large existing v11 matrix; selected count values hashed separately"
+  },
+  {
+    "source_file": "GSE234465_estimated-counts.txt.gz",
+    "source_kind": "human_muscle_counts",
+    "coverage": 0.9989449390042862,
+    "missing_genes": [
+      "CCDC195",
+      "DERPC",
+      "EEF1AKMT4",
+      "EXOC3L2",
+      "FAM240A",
+      "FAM240B",
+      "LCE7A",
+      "PERCC1",
+      "PRR33",
+      "SMIM38",
+      "SMIM44",
+      "TBCE",
+      "TEX52",
+      "THSD8",
+      "TMEM247",
+      "TOMT"
+    ],
+    "mapping_methods": {
+      "exact_symbol": 14937,
+      "stable_id": 210,
+      "missing": 16,
+      "hgnc_previous_symbol": 2
+    },
+    "source_sha256": "fcd664aa254a6079cd487c9a756d0ec5a92a5d68bed42790dc7b0db6d92bd315"
+  }
+]

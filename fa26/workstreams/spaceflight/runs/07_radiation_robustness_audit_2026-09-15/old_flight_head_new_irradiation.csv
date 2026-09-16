@@ -1,0 +1,5 @@
+pool,time,irradiated_minus_control_flight_logit,interpretation
+YA,24h,-6.069302165522458,"Out-of-domain diagnostic, not causal contribution or a validated flight test"
+YA,6h,-3.2522939460548823,"Out-of-domain diagnostic, not causal contribution or a validated flight test"
+OS,24h,-5.457128845736103,"Out-of-domain diagnostic, not causal contribution or a validated flight test"
+OS,6h,-3.4448722481325453,"Out-of-domain diagnostic, not causal contribution or a validated flight test"

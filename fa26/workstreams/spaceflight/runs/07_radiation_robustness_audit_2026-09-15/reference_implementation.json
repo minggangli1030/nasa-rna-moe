@@ -1,0 +1,8 @@
+{
+  "timing": "Before model outcomes",
+  "reference_size": "min(2, n_control-1); necessary because one retained B control was unavailable in NCBI counts",
+  "contexts": "Study/source/cell/experiment; normal IMR90 BFX36 vehicle+drugs form a separate vehicle reference context from quiescent-control+IR set D; BFX02 rotenone shares control set E. Ras excluded from training and evaluated separately.",
+  "training_reference": "Only control/vehicle samples within training partition; leave focal control out of its reference",
+  "test_reference": "Every possible reference subset; references disjoint from scored samples; no external irradiated sample fitted",
+  "interpretation": "Repeated calibration choices are dependent sensitivity analyses, not additional independent sample size; reference subtraction happens on frozen expression/embedding features, not before encoder inference"
+}

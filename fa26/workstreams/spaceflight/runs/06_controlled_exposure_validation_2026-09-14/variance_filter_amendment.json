@@ -1,0 +1,7 @@
+{
+  "reason": "TAS1R2 has residual training SD ~1e-22 in a held-out-file fold, causing expression/PCA logits up to 1e17 despite finite values",
+  "change": "Add VarianceThreshold(1e-12) before scaling in each independently fitted pipeline, using training samples only",
+  "not_tuned_to_outcome": true,
+  "old_results": "history/before-near-zero-variance-fix",
+  "scope": "All four model types and adaptive comparison; encoder/input data unchanged"
+}

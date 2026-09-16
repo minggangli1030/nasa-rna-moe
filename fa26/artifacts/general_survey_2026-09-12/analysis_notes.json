@@ -1,0 +1,7 @@
+{
+  "status": "completed exploratory survey",
+  "partition_check": "All balanced splits enumerated (3\u2013400), replacing initial 200 Monte Carlo splits to remove sampling noise; same partitions across representations. No cohort/readout selection changed.",
+  "followup_selection": "Gene shortlist, mission grouping, and figure selected after screening; descriptive, not independent validation.",
+  "chip_design_audit": "Three chips per condition per five-male-donor pool, asynchronous ground incubator versus flight hardware; original paper reports temperature/fluid-flow issues.",
+  "next_dataset": "GSE298393 identified from later publication, not analyzed in this survey."
+}

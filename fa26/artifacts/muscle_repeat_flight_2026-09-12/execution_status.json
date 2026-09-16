@@ -1,0 +1,18 @@
+{
+  "checked_utc": "2026-09-13T07:26:36.179124+00:00",
+  "vm": "149.165.175.241",
+  "vm_run": "/media/volume/moe-reboot/fa26_muscle_repeat_flight_20260912",
+  "phase": "complete",
+  "watcher": "nasa-repeat-flight-watcher",
+  "interval_minutes": 15,
+  "remaining": "none",
+  "script_sha256": {
+    "fa26/muscle_repeat_flight.py": "62025925a4d4d2974e666bcde210f079f7075e253cbcb40d67e2ccc35dfcb6d5",
+    "fa26/general_space_survey.py": "43bdd5ca2bed96d5e6a624f1570b9c550fc8efa64ae597ef5d5c9239484f56b8",
+    "fa26/analyze_general_survey.py": "9fdf3517566cb6e353dd7fb425ce45a24ba4b6bec5b93a74132b42af0f6ac8e4",
+    "fa26/audit_bridge_contract.py": "30fefe413b69cd89026a4a0da0a3a0f026b2d66a62d481c8e3da33bd76b94d80"
+  },
+  "input_sha256": "6656a2876d201ecb950a2d7ae54e6556d87e8329e0e8509ed279d846e6c584c9",
+  "protocol_sha256": "4234227fd2ab32b9c5ec8180c094b6936a90ac14e6e699105ca4f7b04e3cad2e",
+  "watcher_status": "PAUSED"
+}

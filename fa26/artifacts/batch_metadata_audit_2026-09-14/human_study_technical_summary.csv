@@ -1,0 +1,8 @@
+study,selected_samples,tissue,conditions,platform_id,instrument_model,library_strategy,library_source,library_selection,instrument_varies_within_study
+GSE113165,24,skeletal muscle,control | exposed,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,False
+GSE126865,6,skeletal muscle,control | exposed,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,False
+GSE137081,18,heart,control | exposed | post-flight,GPL11154,Illumina HiSeq 2000,RNA-Seq,transcriptomic,,False
+GSE157937,8,microvascular endothelial HMEC-1 cells,ground | microgravity | onboard_1g,GPL16791,Illumina HiSeq 2500,RNA-Seq,transcriptomic,,False
+GSE224805,6,osteoblast-like MG63 cancer cells,microgravity | onboard_1g,GPL18573,Illumina NextSeq 500,RNA-Seq,transcriptomic,,False
+GSE234465,12,skeletal muscle,control | exposed,GPL24676,Illumina NovaSeq 6000,RNA-Seq,transcriptomic,,False
+GSE298393,12,skeletal muscle,flight | ground,GPL34281,Illumina NovaSeq X,RNA-Seq,transcriptomic,cDNA,False

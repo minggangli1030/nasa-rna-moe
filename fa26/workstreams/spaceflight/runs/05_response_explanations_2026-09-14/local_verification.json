@@ -1,0 +1,8 @@
+{
+  "aligned_sample_ids": true,
+  "allocation_sums_to_100_percent_separately": true,
+  "allocation_reconstructs_signed_IG": true,
+  "program_count": 6,
+  "gene_sets_are_associations_not_exposure_detectors": true,
+  "new_model_training": false
+}

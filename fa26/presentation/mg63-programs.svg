@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="756pt" height="345.6pt" viewBox="0 0 756 345.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-13T11:06:48.302016</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.7, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 345.6 
+L 756 345.6 
+L 756 0 
+L 0 0 
+L 0 345.6 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 294.84 269.568 
+L 703.08 269.568 
+L 703.08 55.296 
+L 294.84 55.296 
+L 294.84 269.568 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 368.113846 269.568 
+L 368.113846 55.296 
+" clip-path="url(#p684d25cb7c)" style="fill: none; stroke: #cccbc8; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #666660" x="368.113846" y="293.7255" transform="rotate(-0 368.113846 293.7255)">−0.5</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 472.790769 269.568 
+L 472.790769 55.296 
+" clip-path="url(#p684d25cb7c)" style="fill: none; stroke: #cccbc8; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #666660" x="472.790769" y="293.7255" transform="rotate(-0 472.790769 293.7255)">0</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 577.467692 269.568 
+L 577.467692 55.296 
+" clip-path="url(#p684d25cb7c)" style="fill: none; stroke: #cccbc8; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #666660" x="577.467692" y="293.7255" transform="rotate(-0 577.467692 293.7255)">+0.5</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 682.144615 269.568 
+L 682.144615 55.296 
+" clip-path="url(#p684d25cb7c)" style="fill: none; stroke: #cccbc8; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #666660" x="682.144615" y="293.7255" transform="rotate(-0 682.144615 293.7255)">+1.0</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #666660" x="498.96" y="323.2105" transform="rotate(-0 498.96 323.2105)">Lower expression ←   → Higher expression</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_9"/>
+     <g id="text_6">
+      <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #666660" transform="translate(183.291719 82.118811)">TNF / NF-kB</text>
+      <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #666660" transform="translate(149.520156 101.155092)">signaling genes</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_10"/>
+     <g id="text_7">
+      <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #666660" transform="translate(168.273281 160.664266)">Inflammatory</text>
+      <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #666660" transform="translate(148.887969 179.700547)">response genes</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_11"/>
+     <g id="text_8">
+      <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #666660" transform="translate(190.012031 239.20972)">DNA repair</text>
+      <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #666660" transform="translate(231.497344 258.246001)">genes</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_12">
+    <path d="M 472.790769 269.568 
+L 472.790769 55.296 
+" clip-path="url(#p684d25cb7c)" style="fill: none; stroke: #87867f; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 294.84 269.568 
+L 703.08 269.568 
+" style="fill: none; stroke: #cccbc8; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 472.790769 65.035636 
+L 655.664427 65.035636 
+L 655.664427 102.737455 
+L 472.790769 102.737455 
+z
+" clip-path="url(#p684d25cb7c)" style="fill: #7a8c6f"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 472.790769 143.581091 
+L 551.374355 143.581091 
+L 551.374355 181.282909 
+L 472.790769 181.282909 
+z
+" clip-path="url(#p684d25cb7c)" style="fill: #7a8c6f"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 472.790769 222.126545 
+L 353.175157 222.126545 
+L 353.175157 259.828364 
+L 472.790769 259.828364 
+z
+" clip-path="url(#p684d25cb7c)" style="fill: #798c91"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #141413" x="666.13212" y="89.681233" transform="rotate(-0 666.13212 89.681233)">+0.87</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #141413" x="561.842048" y="168.226687" transform="rotate(-0 561.842048 168.226687)">+0.38</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #141413" x="342.707465" y="246.772142" transform="rotate(-0 342.707465 246.772142)">−0.57</text>
+   </g>
+  </g>
+  <g id="text_12">
+   <text style="font-size: 18px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #141413" x="30.24" y="31.104" transform="rotate(-0 30.24 31.104)">Average gene-set score: microgravity − onboard 1g</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p684d25cb7c">
+   <rect x="294.84" y="55.296" width="408.24" height="214.272"/>
+  </clipPath>
+ </defs>
+</svg>
