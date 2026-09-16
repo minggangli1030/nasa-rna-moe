@@ -69,5 +69,30 @@ artifacts/stage1_gtex_to_archs4/qc_amended_protocol_*.json
 # misc
 .DS_Store
 
+# Fall 2026 reproducible/local-only material
+/fa26/**/history/
+/fa26/**/__pycache__/
+/fa26/**/.pytest_cache/
+/fa26/artifacts/bridge_benchmark_audit_*/upstream/
+/fa26/workstreams/spaceflight/runs/*/sources/*.soft
+/fa26/workstreams/spaceflight/runs/*/sources/*.soft.gz
+/fa26/workstreams/spaceflight/runs/*/sources/*_expr.txt.gz
+/fa26/workstreams/spaceflight/runs/*/sources/*_raw_counts_*.tsv.gz
+/fa26/workstreams/spaceflight/runs/*/inputs.npz
+/fa26/workstreams/spaceflight/runs/*/original_inputs.npz
+/fa26/workstreams/spaceflight/runs/*/embeddings.npz
+/fa26/workstreams/spaceflight/runs/*/attributions.npz
+/fa26/workstreams/spaceflight/runs/*/expression_attributions.npz
+/fa26/workstreams/spaceflight/runs/*/heads/
+/fa26/artifacts/*/inputs.npz
+/fa26/artifacts/*/embeddings.npz
+/fa26/artifacts/*/attributions.npz
+/fa26/artifacts/*/expression_attributions.npz
+/fa26/artifacts/*/readouts.npz
+/fa26/artifacts/*/heads/
+/fa26/artifacts/pathway_onboard_*/GSE*_source_matrix.tsv.gz
+/fa26/artifacts/pathway_onboard_*/*.xlsx
+/fa26/artifacts/muscle_repeat_flight_*/GSE*.gz
+
 # large presentation media — preserve in the local closeout backup or external storage
 presentation/*.mp4

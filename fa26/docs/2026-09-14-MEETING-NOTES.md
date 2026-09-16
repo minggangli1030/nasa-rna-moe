@@ -1,5 +1,11 @@
 # Meeting notes — September 14, 2026
 
+> Post-meeting status (September 15): the authorized spaceflight sequence is complete
+> through the human-muscle response-alignment control. No job is running or queued. The
+> current irradiation-associated probe is not specific enough to support a
+> radiation-driven flight interpretation. See [`PROJECT-LOG.md`](PROJECT-LOG.md),
+> [`MEETINGS.md`](MEETINGS.md), and [`ROADMAP.md`](ROADMAP.md).
+
 Status: documentation and planning only. Do not execute data preparation, inference,
 training, evaluation jobs or watchers from these notes. Execution will be requested separately.
 

@@ -1,6 +1,6 @@
 # Fall next-step plan — 2026-09-11
 
-**Status update:** The [initial pilot is complete](artifacts/osdr_liver_pilot_2026-09-11/REPORT.md).
+**Status update:** The [initial pilot is complete](../osdr_liver_pilot_2026-09-11/REPORT.md).
 Source matching, the primary VM restart, and 34-sample inference were executed after
 this plan was agreed. Follow the report for findings and the next experiment.
 

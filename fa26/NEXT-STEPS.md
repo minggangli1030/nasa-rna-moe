@@ -1,5 +1,9 @@
 # Fall next steps — updated September 15, 2026
 
+> Canonical forward plan: [`docs/ROADMAP.md`](docs/ROADMAP.md). This file retains the
+> detailed scientific rationale that led to the current decision gate. No new run is
+> queued, and the final selection requires a meeting/mentor decision.
+
 ## Latest completed step — human muscle response alignment (September 15)
 
 The [human muscle follow-up](workstreams/spaceflight/runs/08_muscle_response_alignment_2026-09-15/REPORT.md)
