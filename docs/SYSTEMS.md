@@ -4,12 +4,12 @@
 
 | Concern | Implementation |
 | --- | --- |
-| DDP bootstrap and full training loop | [train_single.py](../su26/core/train_single.py): `_init_ddp`, `main` |
+| DDP bootstrap and full training loop | [train_single.py](../research/specialization/core/train_single.py): `_init_ddp`, `main` |
 | Input throughput and rank sharding | Same file: streaming Parquet dataset, row-group batch sampler, preload path, `DistributedSampler` |
 | GPU numerics | Same file: `torch.amp.autocast` and `GradScaler` |
-| Expert routing | [train_moe.py](../su26/core/train_moe.py) |
-| Organ adapter training | [train_fixed_partition_banks.py](../su26/core/train_fixed_partition_banks.py) |
-| Budget-controlled evaluation | [evaluate_gtex_k8_adapter_scale.py](../su26/evaluation/evaluate_gtex_k8_adapter_scale.py) |
+| Expert routing | [train_moe.py](../research/specialization/core/train_moe.py) |
+| Organ adapter training | [train_fixed_partition_banks.py](../research/specialization/core/train_fixed_partition_banks.py) |
+| Budget-controlled evaluation | [evaluate_gtex_k8_adapter_scale.py](../research/specialization/evaluation/evaluate_gtex_k8_adapter_scale.py) |
 
 ## Execution model
 
@@ -21,7 +21,7 @@ Species/organ expert partitions describe biological specialization. They should 
 
 The author reports hands-on work in Savio and Jetstream environments. Exact node counts, accelerator utilization, samples/second, gradient communication timings, and latency distributions are not established by the retained evidence. Do not infer a measured systems improvement from a biological MSE result. Original cluster launchers are excluded because they contain environment-specific paths and operational details.
 
-The source uses research-relative data paths. Execute Summer tools from `su26/` after provisioning authorized data and references. Multi-GPU training requires CUDA GPUs and correctly configured distributed rendezvous; it is not covered by the CPU tests.
+The source uses research-relative data paths. Execute Summer tools from `research/specialization/` after provisioning authorized data and references. Multi-GPU training requires CUDA GPUs and correctly configured distributed rendezvous; it is not covered by the CPU tests.
 
 ## Portable launch template
 

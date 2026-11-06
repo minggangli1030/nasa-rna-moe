@@ -33,27 +33,32 @@ These figures are transcribed from the original closeout report, not recomputed 
 
 ## Explore the implementation
 
-| Area | Code |
+```text
+research/specialization/  distributed trainer, specialist models, controlled evaluation
+research/spaceflight/    inference contracts, flight heads, attribution, diagnostics
+scripts/                 portable GPU-training launcher
+docs/                    systems, results, provenance, validation
+```
+
+| Start here | What to inspect |
 | --- | --- |
-| Models and training | [su26/core/](su26/core/) |
-| Cohorts, routing, leakage audits, and evaluation | [su26/evaluation/](su26/evaluation/) |
-| Public-data preprocessing | [su26/preprocessing/](su26/preprocessing/) |
-| Gene-order and normalization contracts | [fa26/audit_bridge_contract.py](fa26/audit_bridge_contract.py) |
-| Frozen embedding inference | [fa26/bridge_infer_gtex.py](fa26/bridge_infer_gtex.py) |
-| Spaceflight attribution and specificity analyses | [fa26/workstreams/spaceflight/scripts/](fa26/workstreams/spaceflight/scripts/) |
-| Focused synthetic tests | [fa26/tests/](fa26/tests/) and [su26/tests/](su26/tests/) |
+| [Specialization code guide](research/specialization/README.md) | DDP/AMP, input pipeline, MoE, adapters, metrics |
+| [Spaceflight code guide](research/spaceflight/README.md) | Input contracts, frozen inference, heads, attribution |
+| [Systems walkthrough](docs/SYSTEMS.md) | Code-supported distributed/GPU behaviors |
+| [Full code map](docs/CODE-MAP.md) | Organization and curation boundaries |
+
+This is a curated implementation portfolio rather than the full research archive. Superseded variants and one-off operational scripts are omitted; selected modules keep the direct dependencies needed to read and test them coherently.
 
 ## Local checks
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements.txt
-python -m pytest -q fa26/tests
-python -m pytest -q su26/tests/test_headroom_metrics.py
+python -m pip install -r requirements-test.txt
+python -m pytest -q research/spaceflight/tests research/specialization/tests
 ```
 
-Requirements are inherited research dependencies and are not version locked. Full training and archived evaluations require external data, model files, and frozen manifests omitted from this copy. Some broader tests therefore require the original research archive. These commands are synthetic code checks, not reproduction of the reported biological results.
+The offline test dependencies are separate from the full research dependencies in `requirements.txt`; neither list is version locked. Full training and archived evaluations require external data, model files, and frozen manifests omitted from this copy. Full archived experiments require the original research archive. These commands are synthetic code checks, not reproduction of the reported biological results.
 
 ## Provenance and limitations
 

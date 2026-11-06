@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Portable launcher; provision the documented input data before training.
 set -euo pipefail
-cd "$(dirname "$0")/../su26"
+cd "$(dirname "$0")/../research/specialization"
 export DATASET_VARIANT="${DATASET_VARIANT:-human_20k_v3}"
 exec torchrun \
   --nnodes="${NNODES:-1}" \

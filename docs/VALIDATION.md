@@ -1,13 +1,12 @@
 # Validation
 
-Prepared November 6, 2026.
+Updated November 6, 2026 after source reorganization.
 
-- `python -m pytest -q fa26/tests su26/tests/test_headroom_metrics.py`: **23 passed** in an isolated validation environment with a fresh SciPy wheel.
-- Python source passed syntax parsing; the portable training launcher passed `bash -n`.
-- Local Markdown links resolve.
-- Prepared text files passed checks for common token formats, private keys, personal machine paths, email addresses, and IPv4 addresses.
-- Original data/result artifacts, meeting records, notebook outputs, operational launchers, and original Git history are excluded.
+- `python -m pytest -q research/spaceflight/tests research/specialization/tests`: **47 passed** in an isolated environment with a fresh SciPy wheel.
+- The 31 retained Python implementation/test files passed syntax checks; the portable training launcher passed shell syntax checks.
+- Local Markdown links resolve; common token, private-key, personal-machine-path, email, and IP checks passed.
+- Selected implementations have one canonical copy; superseded source variants and compatibility symlinks are omitted from the current portfolio tree.
 
-The first broad test attempt encountered a broken system SciPy native extension. Re-running in an isolated environment resolved that environment issue. No CUDA training, multi-node run, full research suite, or scientific metric reproduction was performed. Pattern checks do not establish publication clearance for unpublished work.
+Expanding the suite exposed an import-time console-output side effect in the original shared trainer. Console configuration now occurs only at execution and reconfigures streams without replacing/closing their descriptors. This allowed captured test runs to exit normally without changing model training mathematics.
 
-The initial GitHub check exposed a missing Matplotlib test dependency in the workflow. The workflow now installs that dependency explicitly; no research algorithm change was needed.
+An initial GitHub check lacked Matplotlib; the workflow now declares all test dependencies and installs CPU PyTorch for offline checks. The numerical attention helper emits four upstream PyTorch AMP deprecation warnings. No CUDA training, multi-node experiment, full archived suite, or scientific-metric reproduction was performed.
